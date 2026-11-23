@@ -45,6 +45,7 @@
 #include "EnemyStateScriptPointerOpcode.hpp"
 #include "EnemyStateScorePopupOpcode.hpp"
 #include "EnemyStateBulletClearOpcode.hpp"
+#include "EnemyStateResourceOpcode.hpp"
 #include "ItemRewardPopupQueue.hpp"
 #include "EnemyStateSharedQueuedParametersOpcode.hpp"
 #include "EnemyStatePlayerAngleOpcode.hpp"
@@ -878,6 +879,140 @@ int main() {
     };
     auto bits = [](float value) { std::uint32_t out; std::memcpy(&out,&value,4); return out; };
 
+    // Native opcode 622 selects a variable-length StageResource record by its
+    // type/id pair. It publishes the record's byte offset before assigning the
+    // nested Background Timer from the record's leading word.
+    {
+        alignas(StageResourceRecordHeader) std::array<std::byte,36> records{};
+        auto* first = reinterpret_cast<StageResourceRecordHeader*>(records.data());
+        *first = {17, 0x11, 12, {100}};
+        auto* second = reinterpret_cast<StageResourceRecordHeader*>(records.data() + 12);
+        *second = {23, 0x10, 12, {200}};
+        auto* sentinel = reinterpret_cast<StageResourceRecordHeader*>(records.data() + 24);
+        *sentinel = {-1, 0, 0, {0}};
+        stage_resource.record_data = records.data();
+        stage_resource.background.selected_record_offset = 0xaabbccddu;
+        stage_resource.background.selection_timer = 41;
+
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_value = 200;
+        dispatch_integer_read_hook = &observe_integer_read;
+        set_packet(622, {static_cast<std::uint32_t>(-101)}, 0x1u);
+        assert(enemy.state.execute_opcode() == 0);
+        dispatch_integer_read_hook = nullptr;
+        assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
+        assert(stage_resource.background.selected_record_offset == 12);
+        assert(stage_resource.background.selection_timer.current == 23);
+        assert(stage_resource.background.selection_timer.previous == 22);
+        assert(stage_resource.background.selection_timer.current_fraction == 23.0f);
+
+        // A missing key reaches the negative sentinel and leaves the prior
+        // selected record and Timer untouched.
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_value = 999;
+        dispatch_integer_read_hook = &observe_integer_read;
+        set_packet(622, {static_cast<std::uint32_t>(-101)}, 0x1u);
+        assert(enemy.state.execute_opcode() == 0);
+        dispatch_integer_read_hook = nullptr;
+        assert(dispatch_integer_read_calls == 1);
+        assert(stage_resource.background.selected_record_offset == 12);
+        assert(stage_resource.background.selection_timer.current == 23);
+
+        // The VM operand exception must occur before the process owner is
+        // dereferenced or either Background field is published.
+        process_stage_resource = nullptr;
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_hook = &observe_integer_read;
+        dispatch_integer_throw_at = 1;
+        set_packet(622, {static_cast<std::uint32_t>(-101)}, 0x1u);
+        bool stage_record_operand_threw = false;
+        try { enemy.state.execute_opcode(); }
+        catch (int value) { stage_record_operand_threw = value == 609; }
+        dispatch_integer_throw_at = 0;
+        dispatch_integer_read_hook = nullptr;
+        process_stage_resource = &stage_resource;
+        assert(stage_record_operand_threw && dispatch_integer_read_calls == 1);
+        assert(stage_resource.background.selected_record_offset == 12);
+        assert(stage_resource.background.selection_timer.current == 23);
+    }
+
+    // Native opcode 623 captures the Context's EnemyController before reading
+    // its operand; only bit zero of the real EnemyData+0x84 word is changed.
+    {
+        controller.data.field_84.value = 0xa5a5a5a0u;
+        alternate_controller.data.field_84.value = 0x5a5a5a5eu;
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_value = static_cast<std::int32_t>(0xdeadbeefu);
+        dispatch_integer_read_hook = &retarget_enemy_controller_during_integer_read;
+        set_packet(623, {static_cast<std::uint32_t>(-101)}, 0x1u);
+        assert(enemy.state.execute_opcode() == 0);
+        dispatch_integer_read_hook = nullptr;
+        assert(dispatch_integer_read_calls == 1);
+        assert(controller.data.field_84.value == 0xa5a5a5a1u);
+        assert(alternate_controller.data.field_84.value == 0x5a5a5a5eu);
+        assert(context.enemies == &alternate_controller);
+        assert(enemy.state.context == &alternate_context);
+        context.enemies = &controller;
+        enemy.state.context = &context;
+
+        controller.data.field_84.value = 0x12345678u;
+        alternate_controller.data.field_84.value = 0x87654321u;
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_hook = &observe_integer_read;
+        dispatch_integer_throw_at = 1;
+        set_packet(623, {static_cast<std::uint32_t>(-101)}, 0x1u);
+        bool controller_flag_operand_threw = false;
+        try { enemy.state.execute_opcode(); }
+        catch (int value) { controller_flag_operand_threw = value == 609; }
+        dispatch_integer_throw_at = 0;
+        dispatch_integer_read_hook = nullptr;
+        assert(controller_flag_operand_threw && dispatch_integer_read_calls == 1);
+        assert(controller.data.field_84.value == 0x12345678u);
+        assert(alternate_controller.data.field_84.value == 0x87654321u);
+    }
+
+    // The callback selectors use the native 0x56FE8C member-function table.
+    // 624 installs the rectangle-clear callback with flag zero; 631 installs
+    // the all-Bullet reset callback with flag one. 625/626 read two separate
+    // adjacent null-filled data tables into distinct state words.
+    {
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_value = 2;
+        dispatch_integer_read_hook = &observe_integer_read;
+        enemy.state.update_callback = nullptr;
+        enemy.state.field_2d8 = 0xffffffffu;
+        set_packet(624, {static_cast<std::uint32_t>(-101)}, 0x1u);
+        assert(enemy.state.execute_opcode() == 0);
+        assert(dispatch_integer_read_calls == 1);
+        assert(enemy.state.update_callback == &EnemyState::clear_all_bullets_for_enemy_clear);
+        assert(enemy.state.field_2d8 == 0);
+
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_value = 1;
+        set_packet(631, {static_cast<std::uint32_t>(-101)}, 0x1u);
+        assert(enemy.state.execute_opcode() == 0);
+        assert(dispatch_integer_read_calls == 1);
+        assert(enemy.state.update_callback == &EnemyState::clear_bullets_in_animation_rectangle);
+        assert(enemy.state.field_2d8 == 1);
+
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_value = 1;
+        enemy.state.field_2dc = 0x11223344u;
+        set_packet(625, {static_cast<std::uint32_t>(-101)}, 0x1u);
+        assert(enemy.state.execute_opcode() == 0);
+        assert(dispatch_integer_read_calls == 1 && enemy.state.field_2dc == 0);
+
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_value = 2;
+        enemy.state.field_2e4 = 0x55667788u;
+        set_packet(626, {static_cast<std::uint32_t>(-101)}, 0x1u);
+        assert(enemy.state.execute_opcode() == 0);
+        assert(dispatch_integer_read_calls == 1 && enemy.state.field_2e4 == 0);
+        dispatch_integer_read_hook = nullptr;
+    }
+
+    // StageResource opcode 622 and callback configuration 623-626/631 are
+    // executed through the maintained root, including real owner writes.
     // Native opcode 550 performs a raw inline-name lookup through the actual
     // Enemy EclManager::loader_value and the strict-exact EclLoader binary
     // search. The name begins at EclInstruction+0x14 (after the leading word),
@@ -4511,4 +4646,5 @@ int main() {
     dispatch_test_bullets->~BulletController();
 
     std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy queued-shot properties 605/606/607/608 (speed/count writes, metadata COW and 16/32-bit sound stores with operand exceptions), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy opcode spawn 300/301/304/305/309/311/312/321 (whole 653B production Boss, selected-slot guard, live EnemyController::create, relative/mirrored position, flags, counters, parent link and operand order), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), LaserController::find_laser 704-710/714 (real intrusive-list first-match lookup and iterator cleanup), Enemy Laser position opcode 704 (Context capture, live retargeting and operand exception order), Enemy Laser mutation opcodes 705/706/707/708/709/710/714 (shared +0x704 triplet, conditional +0x7C/+0x78/+0x70/+0x714 setters, erase-before-handle-clear and slot-0x0C flag vcall), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS StageResource opcode 622 and callback configuration 623-626/631\n";
 }

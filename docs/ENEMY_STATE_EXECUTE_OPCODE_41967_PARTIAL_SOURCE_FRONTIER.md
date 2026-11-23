@@ -461,6 +461,41 @@ source fragments.
   requests an immediate same-tick ECL exit. Ordinary handled fragments return
   zero so `EclRuntime::tick` performs the normal instruction advance.
 
+## StageResource record selection and opcode cluster 622–626/631 (CORE/RECON-1269)
+
+The maintained root now routes Enemy opcodes **622, 623, 624, 625, 626 and
+631** through `src/EnemyStateResourceOpcode.cpp`.
+
+- **622** reads integer operand 0 before loading the process StageResource
+  owner, then calls `StageResourceOwner::select_record`. The 133-byte native
+  leaf at `0x004773C0` scans the variable-length record stream at owner
+  +`0x3330`, matches signed kind `0x10` and the requested identifier, stores
+  the byte offset at owner +`0x20`, and assigns the record's leading integer
+  to the Timer at owner +`0x10`. Negative leading values terminate the scan;
+  a miss preserves the old offset and Timer. The leaf is now strict exact
+  **133/133 bytes**, including its one REL32 to `Timer::operator=(int)`.
+- **623** captures the live Context EnemyController before reading operand 0,
+  then calls the actual `set_field_84_bit_0` setter. The host checks receiver
+  retargeting, upper-bit preservation and exception-before-write behavior.
+- **624/631** select the original three-entry member callback table at
+  `0x0056FE8C`, install the chosen callback at EnemyState +`0x2E0`, and set
+  +`0x2D8` to 0/1 respectively. The two callback targets are the independently
+  strict-exact 758B animation-rectangle Bullet clear and 291B all-Bullet reset
+  methods.
+- **625/626** use separate overlapping zero-table views at `0x0056FE98` and
+  `0x0056FE9C`, writing EnemyState +`0x2DC` and +`0x2E4`. They are not aliases
+  for the 624/631 member-function table.
+
+The original six case blocks total **337B/64 instruction heads/9 ordered E8
+calls**; selector indices are 140–144 and 149. The focused verifier pins the
+original selector/pointer table entries, bounded case maps, the 133B leaf
+SHA-256 and direct call target, and replays the new whole-function match unit.
+The root host exercises record match/miss/sentinel/operand exception paths,
+Context receiver capture, callback installation and both zero-table writes
+under ASan/UBSan. The parent dispatcher remains NONEXACT. The exact StageResource
+leaf's subsystem is established but its origin remains unknown; no authored
+credit is inferred. See [the whole leaf proof](STAGE_RESOURCE_RECORD_SELECTION_EXACT.md).
+
 ## Remaining scope
 
 This is a **partial root reconstruction**, not an exact or complete dispatcher.
@@ -524,8 +559,8 @@ scripts/compile-probe.sh src/EnemyStateDynamicParameterOpcode.cpp build/core212-
 scripts/compile-probe.sh src/EnemyStateExecuteOpcode.cpp build/core209-canonical/EnemyStateExecuteOpcode.obj /nologo /c /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
 ```
 
-The maintained dispatcher verifier currently compiles **58** locked-profile
-i386 COFF source units and executes **124** focused host source units under
+The maintained dispatcher verifier currently compiles **67** locked-profile
+i386 COFF source units and executes **132** focused host source units under
 ASan/UBSan. Its focused native checks include the 609-612 shared
 1,457B/314-instruction/29-E8 branch, the 614 572B/129-instruction/19-E8
 queue-copy branch, the 616 175B/37-instruction/7-E8 paired Bullet/Laser radial-cancel branch, the 617 203B/41-instruction/8-E8 Player-relative angle branch, the 618 243B/55-instruction/10-E8 shared queued-polar branch, the 619 148B/35-instruction/7-E8 writable metadata radial-offset branch, the 620 250B/57-instruction/8-E8 shared queued-vector branch, the 621 346B/70-instruction/7-E8 mesh branch, the 627/628 pair (364B/78 instructions/14 E8), the 629 callback-table case (46B dispatch plus 758B/205-instruction/34-E8 and 291B/86-instruction/17-E8 callbacks (plus 10B separate INT3 alignment)), the 630 109B/24-instruction/5-E8 score-popup case, the 632 252B/62-instruction/10-E8 borrowed script-pointer branch, the 633 163B/41-instruction/6-E8 queued-record decrement branch, the four Laser branches

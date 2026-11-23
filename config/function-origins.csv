@@ -2079,7 +2079,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00475150,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00475170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004751B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004773C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004773C0,unknown,StageResource,review,unknown,CORE/RECON-1269; docs/STAGE_RESOURCE_RECORD_SELECTION_EXACT.md; called by Enemy opcode 622; process owner record stream at +0x3330; original authorship unresolved
 0x00477450,authored,Animation,authored,high,CORE/RECON-1001; docs/CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md; Original genuine Animation+0x438 event word and VM update E8 0x42B5D0; native game protocol original E8 and complete source original exact
 0x00477480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00477520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -32448,3 +32448,16 @@ symbol = "?set_speed@Laser@th20@@QAEXM@Z"
 target_address = 0x0049CB10
 size = 26
 relocations = []
+
+# CORE/RECON-1269: StageResource variable-record selector called by Enemy opcode 622.
+[units.stage_resource_select_record]
+source = "src/StageResourceRecordSelection.cpp"
+object = "build/gpt-web-enemy-resource/StageResourceRecordSelection.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise"]
+functions = ["th20::StageResourceOwner::select_record"]
+symbol = "?select_record@StageResourceOwner@th20@@QAEXH@Z"
+target_address = 0x004773C0
+size = 133
+relocations = [
+  { offset = 0x69, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+]

@@ -18,7 +18,7 @@ NATIVE_SHA256='e6874e1ee7d7def173d3c4af12934573812db26a5572987ec0fa6fafb24a73f0'
 
 HOST_SOURCES=[
     'tests/enemy_state_dispatch_root.cpp',
-    'src/EnemyStateExecuteOpcode.cpp', 'src/EnemyStateSpawnOpcode.cpp', 'src/EnemyStateQueuedShotPropertyOpcode.cpp', 'src/EnemyStateAnimationFlagsClearOpcode.cpp', 'src/EnemyStateScreenOpcode.cpp', 'src/EnemyStateMovementOpcode.cpp',
+    'src/EnemyStateExecuteOpcode.cpp', 'src/EnemyStateResourceOpcode.cpp', 'src/StageResourceRecordSelection.cpp', 'src/EnemyStateSpawnOpcode.cpp', 'src/EnemyStateQueuedShotPropertyOpcode.cpp', 'src/EnemyStateAnimationFlagsClearOpcode.cpp', 'src/EnemyStateScreenOpcode.cpp', 'src/EnemyStateMovementOpcode.cpp',
     'src/Player.cpp', 'src/PlayerStorage.cpp', 'src/PlayerAccessors.cpp',
     'src/Rectangle.cpp',
     'src/PlayerDirection.cpp',
@@ -180,6 +180,37 @@ def main() -> None:
         calls=[int(insn.op_str,16) for insn in instructions
                if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
         assert calls==expected_calls,(opcode,calls,expected_calls)
+
+    # The 622-626/631 neighborhood is a six-case owner/callback cluster.
+    # Keep its compressed selectors, exact native extents and ordered calls
+    # pinned independently from the partial natural-C++ dispatcher source.
+    resource_cases={
+        622:(140,0x00495BF4,0x00495C1F,[0x004AB080,0x004773C0],10),
+        623:(141,0x0048C1CF,0x0048C211,[0x00412730,0x004AB080,0x0049C4B0],14),
+        624:(142,0x00490A69,0x00490AAA,[0x004AB080],11),
+        625:(143,0x00490AEB,0x00490B1C,[0x004AB080],9),
+        626:(144,0x00490B1C,0x00490B4D,[0x004AB080],9),
+        631:(149,0x00490AAA,0x00490AEB,[0x004AB080],11),
+    }
+    for opcode,(index,start,end,expected_calls,expected_heads) in resource_cases.items():
+        assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
+        assert struct.unpack_from('<I',pointer_table,index*4)[0]==start,(opcode,start)
+        body=pe.get_data(start-image_base,end-start)
+        instructions=list(decoder.disasm(body,start))
+        assert len(instructions)==expected_heads,(opcode,len(instructions),expected_heads)
+        assert instructions[-1].address+instructions[-1].size==end,(opcode,end)
+        calls=[int(insn.op_str,16) for insn in instructions
+               if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
+        assert calls==expected_calls,(opcode,calls,expected_calls)
+
+    stage_record=pe.get_data(0x004773C0-image_base,133)
+    assert hashlib.sha256(stage_record).hexdigest()==        'd43301bd43c94636c56325535da3657300be6db11a45227ea203adbbeefab9b8'
+    stage_record_instructions=list(decoder.disasm(stage_record,0x004773C0))
+    assert len(stage_record_instructions)==44
+    assert stage_record_instructions[-1].address+stage_record_instructions[-1].size==0x00477445
+    stage_record_calls=[int(insn.op_str,16) for insn in stage_record_instructions
+                        if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
+    assert stage_record_calls==[0x00423520]
 
     screen_case={
         517:(67,0x00493F8E,0x00493FF1,[0x004AB080,0x004AB080,0x004AB080,0x004250F0]),
@@ -871,6 +902,7 @@ def main() -> None:
         ('src/SoundInfEnqueue323.cpp','build/gpt-web-sound-canonical/SoundInfEnqueue323.obj'),
         ('src/NativeSoundCommandArrayView.cpp','build/gpt-web-sound-canonical/NativeSoundCommandArrayView.obj'),
         ('src/StoneEnemyRecord.cpp','build/gpt-web-stone-enemy-record-canonical/StoneEnemyRecord.obj'),
+        ('src/EnemyStateResourceOpcode.cpp','build/gpt-web-enemy-resource/EnemyStateResourceOpcode.obj'),
     ):
         subprocess.run([str(ROOT/'scripts/compile-probe.sh'),source,obj,*profile],cwd=ROOT,check=True)
 
@@ -879,6 +911,7 @@ def main() -> None:
     for unit,expected in (
         ('enemy_state_clear_bullets_in_animation_rectangle','exact (758/758 bytes)'),
         ('enemy_state_clear_all_bullets_for_enemy_clear','exact (291/291 bytes)'),
+        ('stage_resource_select_record','exact (133/133 bytes)'),
     ):
         replay=subprocess.run(
             [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/compare-coff-function.py'),'--unit',unit],
@@ -1557,6 +1590,22 @@ def main() -> None:
     for actual,expected in zip(shot_command_calls,expected_shot_command_calls):
         assert expected in actual,(actual,expected)
 
+    resource_source=(ROOT/'src/EnemyStateResourceOpcode.cpp').read_text(encoding='utf-8')
+    root_source=(ROOT/'src/EnemyStateExecuteOpcode.cpp').read_text(encoding='utf-8')
+    stage_header=(ROOT/'src/StageResource.hpp').read_text(encoding='utf-8')
+    stage_source=(ROOT/'src/StageResourceRecordSelection.cpp').read_text(encoding='utf-8')
+    for opcode in ('case 622:', 'case 623:', 'case 624:', 'case 631:', 'case 625:', 'case 626:'):
+        assert opcode in resource_source, opcode
+    assert 'execute_enemy_resource_opcode(*this, opcode)' in root_source
+    assert 'record_data) == 0x3330' in stage_header
+    assert 'selected_record_offset) == 0x010' in stage_header
+    assert 'selection_timer) == 0x000' in stage_header
+    assert 'identifier[1]' in stage_header
+    assert 'current->identifier[0]' in stage_source and 'current->stride' in stage_source
+    assert 'background.selection_timer' in stage_source
+    assert 'callback_table_tail[index]' in resource_source
+    assert 'callback_table_tail[index + 1]' in resource_source
+
     setter_object=ROOT/'build/core213-canonical/EnemyStateControllerSetterOpcode.obj'
     setter_dump=subprocess.run(['objdump','-dr',str(setter_object)],cwd=ROOT,
         check=True,text=True,capture_output=True).stdout
@@ -1591,6 +1640,7 @@ def main() -> None:
         'Enemy Laser position opcode 704',
         'Enemy Laser mutation opcodes 705/706/707/708/709/710/714',
         'shot commands 609/610/611/612',
+        'StageResource opcode 622 and callback configuration 623-626/631',
     ):
         assert marker in result.stdout, marker
     print(result.stdout,end='')
@@ -1604,6 +1654,7 @@ def main() -> None:
     print('PASS original compressed dispatch pointers and ordered E8 maps for timer/mode/time 538/539/540/541/542/574 (624B/130 heads/16 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for card/health 523/536/537/561/562 (235B/52 heads/11 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for front sound/gauge/title 516/519/527/534/548 (351B/78 heads/14 calls)')
+    print('PASS original 622-626/631 compressed selectors and six bounded case maps (337B/64 heads/9 E8 calls); StageResource selector leaf is 133B/44 heads/1 E8')
     print('PASS original compressed dispatch pointer and ordered E8 map for selected-Enemy position opcode 324 (276B/53 instructions/11 calls)')
     print('PASS natural C++ opcode-324 COFF object retains all eleven ordered calls and repeated XY position reads')
     print('PASS natural C++ 553/554 COFF helper retains all seven ordered Context/VM/setter calls')

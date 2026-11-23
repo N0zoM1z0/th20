@@ -50,7 +50,7 @@ canonically accepted.
   [complex branch closure](BULLET_12140_PRIMARY_OPCODE_34_OF_34_RESTORED.md),
   [command-9 call proof](BULLET_12140_COMMAND9_STYLE_ANIMATION_FRONTIER.md), and
   [original command coverage verifier](../scripts/verify-bullet-command-call-coverage.py).
-- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199/1210–1215/1245–1261
+- **Enemy ECL opcode dispatcher** at 0x0048C010, **41,967B**. CORE/RECON-1196–1199/1210–1215/1245–1269
   maintain the partial natural-C++ root entry and wire the complete 400–448 movement
   family, nine Pattern cases, 21 bounds/health/controller/state cases, five controller
   selection/clear cases, six timer/mode/runtime-time cases, five Card/health cases,
@@ -58,7 +58,7 @@ canonically accepted.
   membership 549, fog 551, controller setters 553/554, animation/sound Boss
   555, bit flag 552, selected-position Boss 324, script-control cases
   800/801/802, reserved selector 569, global-owner opcodes
-  524/575, four indexed parameter-copy cases and the
+  524/575, StageResource selection/callback opcodes 622–626/631, four indexed parameter-copy cases and the
   independently maintained opcode fragments. The focused root host now executes
   the production 549/551/553/554/555 helpers, with real controller setter
   leaves, Context-retarget/operand-failure tests and full BulletController
@@ -105,6 +105,16 @@ canonically accepted.
   Shared-owner preservation, old command data and second-index exception
   before COW/growth are tested; its 10-E8 map and ordered COFF relocations are
   checked (CORE/RECON-1256).
+  The 622–626/631 StageResource cluster is now routed through the production
+  root helper. Opcode 622 calls the whole 133B `StageResourceOwner::select_record`
+  leaf, which strictly replays all 132 ordinary bytes plus its Timer assignment
+  relocation; its variable-stride records, negative sentinel and miss-preserving
+  Timer/offset behavior are host-tested. Opcode 623 captures the Context
+  EnemyController before the operand and calls the real bit-0 setter. 624/631
+  install the two original Bullet callback targets; 625/626 read the separate
+  overlapping zero-table views. The six native case blocks total 337B/64
+  instruction heads/9 ordered E8 calls. StageResource subsystem ownership is
+  established but original source origin remains unknown (CORE/RECON-1269).
   The 653B `EnemyState::spawn_from_opcode()` Boss at `0x00496FB0` is now
   whole-function strict exact: all 577 ordinary bytes and 19 original
   relocation destinations match. Both float-default call sites preserve the

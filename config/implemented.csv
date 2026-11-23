@@ -1811,3 +1811,4 @@ th20::LaserBeamInf::set_parameter_flag
 th20::StoneEnemyRecord::StoneEnemyRecord
 th20::DiagnosticAllocator::allocate_object<StoneEnemyRecord>
 th20::StoneEnemyController::add_record
+th20::StageResourceOwner::select_record

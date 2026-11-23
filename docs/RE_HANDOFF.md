@@ -19,21 +19,35 @@ The target is resources/th20.exe, the Japanese TH20 1.00a Steamless executable:
 
 The canonical status is in config/matches.csv, config/match-units.toml,
 config/functions.csv and config/function-origins.csv. The ledger-derived
-summary checked on 2026-11-22 is:
+summary checked on 2026-11-23 is:
 
 | Measure | Current value |
 | --- | ---: |
 | Provisional candidates | 6,929 |
-| Review / authored / excluded | 5,868 / 975 / 86 |
-| Mapped functions | 1,812 |
-| Source-present functions | 1,798 |
-| Exact functions | 955 |
-| Exact original bytes | 298,898 |
-| Manifest units | 1,790 |
+| Review / authored / excluded | 5,857 / 972 / 100 |
+| Mapped functions | 1,828 |
+| Source-present functions | 1,814 |
+| Exact functions | 944 |
+| Exact original bytes | 298,672 |
+| Manifest units | 1,804 |
 
 Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
+
+## Latest checkpoint — StageResource selector and Enemy opcodes 622–626/631
+
+The maintained partial Enemy root now executes opcodes 622–626/631 through
+`src/EnemyStateResourceOpcode.cpp`. The 133-byte StageResource record selector
+at `0x004773C0` strictly replays **133/133 bytes**, including its single Timer
+assignment relocation. The six native case blocks total 337B/64 instruction
+heads/9 ordered E8 calls. Root tests cover variable-stride record scanning,
+negative sentinels, miss preservation, Timer assignment, operand exceptions,
+Context receiver capture, callback installation and the separate zero-table
+views. See [the StageResource selector proof](STAGE_RESOURCE_RECORD_SELECTION_EXACT.md)
+and [the maintained dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md).
+The 41,967-byte dispatcher remains NONEXACT; the StageResource leaf's original
+source origin also remains unknown and receives no authored credit.
 
 ## Latest checkpoints — Enemy ECL opcodes 616, 617, 618, 619, 620, 627/628, 629/630, 632 and 633
 
@@ -204,8 +218,8 @@ The false-returning root-test stubs for the shared, writable queued-parameter
 and script-pointer helpers are removed. The production helpers are included
 in HOST_SOURCES and the locked-profile COFF compile list; their native opcode
 verifiers are invoked by the maintained root verifier. The focused root host
-passes under ASan/UBSan, and the root verifier compiles **62 locked-profile
-i386 COFF source units** and 129 focused host sources. See the dedicated
+passes under ASan/UBSan, and the root verifier compiles **67 locked-profile
+i386 COFF source units** and 132 focused host sources. See the dedicated
 [opcode-620 source frontier](ENEMY_41967_620_SHARED_QUEUED_VECTOR_SOURCE_FRONTIER.md).
 
 This is still an inline fragment only. No standalone function unit or
@@ -268,8 +282,8 @@ Recent committed case families exercised by the maintained root include:
   timer/mode, Card/health, animation spawn, membership, fog, bit flags,
   sound/gauge/title and selected-position cases.
 
-The maintained root verifier currently compiles **62 locked-profile i386
-COFF units** and runs 129 focused host source units under ASan/UBSan, including
+The maintained root verifier currently compiles **67 locked-profile i386
+COFF units** and runs 132 focused host source units under ASan/UBSan, including
 opcodes 616, 617, 618, 619, 620, 627, 628, 629, 630, 632 and 633. The exact per-case boundaries and host limitations are documented in the
 [dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and the focused case notes linked from the [evidence index](EVIDENCE_INDEX.md).
@@ -283,9 +297,9 @@ source-present but NONEXACT.
 
 ## Continuation order
 
-1. Continue the remaining large Enemy dispatcher cases. Scan the still-open
-   622–631 selector neighborhood and the other unhandled ranges; investigate
-   each parent branch and its real leaf dependencies together.
+1. Continue the remaining large Enemy dispatcher cases outside the now-routed
+   622–633 cluster. Prioritize the unhandled 300/500-series and other broad
+   parent branches; investigate each branch and its real leaf dependencies together.
 2. Continue convergence of the 41,967B Enemy root and the open FrontInf,
    Bullet and Animation Bosses. Do not substitute trivial setters for Boss
    work; preserve natural C++ control flow and real ownership.
