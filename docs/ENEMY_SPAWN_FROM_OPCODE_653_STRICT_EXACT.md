@@ -84,5 +84,5 @@ fields, copied counters, source identity, parent linkage, and exception-before
 creation behavior. The real `EnemyController::create()` and production typed
 Enemy allocator specialization are linked; only the later `Enemy::apply_spawn`
 Boss is a capture boundary in this fixture. The maintained root verifier now
-executes **125 focused host source units** under ASan/UBSan and compiles **59
+executes **127 focused host source units** under ASan/UBSan and compiles **61
 locked-profile i386 COFF units**.

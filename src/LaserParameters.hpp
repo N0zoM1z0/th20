@@ -93,6 +93,7 @@ public:
     LaserController() noexcept;
     ~LaserController() override;
     void select_context(std::int32_t index);
+    Laser* find_laser(std::int32_t handle);
     std::int32_t cancel_all(std::int32_t mode, std::int32_t argument);
     std::int32_t cancel_near(const Vector3& center, float radius,
                              std::int32_t mode, std::int32_t argument);
@@ -139,7 +140,7 @@ public:
     virtual void set_position(const Vector3&);            // slot 00
     virtual void point_at_distance(float, Vector3&);      // slot 04
     virtual void slot_08() = 0;
-    virtual void set_parameter_flag(std::uint32_t) = 0;   // slot 0C
+    virtual void set_parameter_flag(std::uint32_t);       // slot 0C; common no-op for Line/Curve/Infinite
     virtual void slot_10() = 0;
     virtual std::int32_t initialize_laser(const void* parameters) = 0; // Native slot +0x14; returns negative on failure
     virtual void slot_18() = 0;
@@ -161,6 +162,10 @@ public:
     virtual std::int32_t erase(std::int32_t, std::int32_t) = 0; // slot 44
     virtual std::int32_t proximity(const Vector3&, float) = 0; // slot 48
     virtual std::int32_t cancel_all(std::int32_t) = 0;   // slot 4C
+    void set_angle(float value);
+    void set_speed(float value);
+    void set_field_7c(float value);
+    void set_handle(std::uint32_t value);
     virtual void slot_50() = 0;
     virtual void slot_54() = 0;
     virtual void slot_58() = 0;

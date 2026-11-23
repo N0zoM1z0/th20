@@ -14,6 +14,7 @@ namespace th20 {
 class LaserBeamInf : public Laser {
 public:
     LaserBeamInf() noexcept;
+    void set_parameter_flag(std::uint32_t value) override;
     std::int32_t initialize_laser(const void* input) override;
 
     LaserType3Parameters parameters;

@@ -217,6 +217,18 @@ source fragments.
   accessor and receives no duplicate byte credit. See the
   [opcode-617 source frontier](ENEMY_41967_617_PLAYER_ANGLE_SOURCE_FRONTIER.md).
   The 41,967B parent remains NONEXACT; no standalone unit or byte credit.
+- Native opcodes 605/606/607/608 are four adjacent queued-shot property
+  cases (705B total / 164 x86 / 31 ordered E8 calls), selectors 126–129.
+  The production helper uses ensure-only `shared_shot` for 605/606 (speed,
+  speed-step, 16-bit count and rows) and `writable_shot` for 607/608 (pair-
+  second `ShotMetadata::field_38`, `sound` and `alternate_sound`). The 16-bit
+  607 store targets metadata `+0x38`, not the record's Vector3; 608 writes the
+  two metadata words at `+0x3C/+0x40`. The root host checks argument order,
+  COW, narrowing, shared-owner stability and exception-visible partial writes.
+  Native selector/extent/hash/call-map/store-width checks are maintained;
+  see the [605–608 queued-shot frontier](ENEMY_41967_605_608_QUEUED_SHOT_PROPERTIES_SOURCE_FRONTIER.md).
+  The 41,967B parent remains NONEXACT; these inline cases receive no separate
+  byte credit.
 - Native opcode 618 is the 243-byte / 55-instruction shared queued-polar
   update at 0x00492BC6, selector index 136, with ten original E8 calls.
   The maintained root host executes the production helper, real ensure-only

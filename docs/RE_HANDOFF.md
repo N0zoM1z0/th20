@@ -76,6 +76,14 @@ re-read between operands, and the root host tests retargeting with two real
 Player objects, direct atan2(0,0)==0 semantics, and second-operand exception
 preservation. See [the opcode-617 source frontier](ENEMY_41967_617_PLAYER_ANGLE_SOURCE_FRONTIER.md).
 
+Native opcodes 605–608 now run through the production queued-shot property
+helper. Their four original inline bodies total 705B/164 x86/31 E8 across
+selectors 126–129. 605/606 use shared_shot for speed/count fields; 607/608 use
+writable_shot and the pair-second ShotMetadata receiver for `field_38`, sound
+and alternate sound. The root host covers narrowing, COW, owner preservation
+and exception-visible partial writes. See [the 605–608 native/source frontier](ENEMY_41967_605_608_QUEUED_SHOT_PROPERTIES_SOURCE_FRONTIER.md).
+The parent remains NONEXACT; no inline byte credit is claimed.
+
 Native opcode 618 is the **243-byte / 55-instruction / 10-E8** case at
 `0x00492BC6`, selector index 136. Its natural C++ source reads the integer
 selector and both float operands before the real ensure-only `shared_shot`,
@@ -163,8 +171,8 @@ The false-returning root-test stubs for the shared, writable queued-parameter
 and script-pointer helpers are removed. The production helpers are included
 in HOST_SOURCES and the locked-profile COFF compile list; their native opcode
 verifiers are invoked by the maintained root verifier. The focused root host
-passes under ASan/UBSan, and the root verifier compiles **58 locked-profile
-i386 COFF source units** and 125 focused host sources. See the dedicated
+passes under ASan/UBSan, and the root verifier compiles **61 locked-profile
+i386 COFF source units** and 127 focused host sources. See the dedicated
 [opcode-620 source frontier](ENEMY_41967_620_SHARED_QUEUED_VECTOR_SOURCE_FRONTIER.md).
 
 This is still an inline fragment only. No standalone function unit or
@@ -227,8 +235,8 @@ Recent committed case families exercised by the maintained root include:
   timer/mode, Card/health, animation spawn, membership, fog, bit flags,
   sound/gauge/title and selected-position cases.
 
-The maintained root verifier currently compiles **58 locked-profile i386
-COFF units** and runs 125 focused host source units under ASan/UBSan, including
+The maintained root verifier currently compiles **61 locked-profile i386
+COFF units** and runs 127 focused host source units under ASan/UBSan, including
 opcodes 616, 617, 618, 619, 620, 627, 628, 629, 630, 632 and 633. The exact per-case boundaries and host limitations are documented in the
 [dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and the focused case notes linked from the [evidence index](EVIDENCE_INDEX.md).

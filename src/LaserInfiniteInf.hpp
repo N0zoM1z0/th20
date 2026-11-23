@@ -9,7 +9,10 @@ namespace th20 {
 class LaserInfiniteInf : public Laser {
 public:
     LaserInfiniteInf() noexcept;
+    void set_position(const Vector3& value) override;
     std::int32_t initialize_laser(const void* input) override;
+    void set_parameter_velocity(const Vector3& value);
+    void set_angular_velocity(float value);
     std::int32_t cancel_rectangle(const Vector3& rectangle_center,
                                   const Vector3& rectangle_size,
                                   float rectangle_direction, std::int32_t mode,

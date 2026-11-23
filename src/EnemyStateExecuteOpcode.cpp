@@ -38,6 +38,7 @@
 #include "EnemyStateBulletLaserCancelOpcode.hpp"
 #include "EnemyStateBulletClearOpcode.hpp"
 #include "EnemyStateShotCommandOpcode.hpp"
+#include "EnemyStateQueuedShotPropertyOpcode.hpp"
 #include "EnemyStateShotFireOpcode.hpp"
 
 namespace th20 {
@@ -274,6 +275,8 @@ int EnemyState::execute_opcode() {
     if (execute_enemy_queue_copy_opcode(*this, opcode))
         return 0;
     if (execute_enemy_shot_fire_opcode(*this, opcode))
+        return 0;
+    if (execute_enemy_queued_shot_property_opcode(*this, opcode))
         return 0;
     if (execute_enemy_player_angle_opcode(*this, opcode))
         return 0;
