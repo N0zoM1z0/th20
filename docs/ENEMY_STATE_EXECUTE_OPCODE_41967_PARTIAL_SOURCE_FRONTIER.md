@@ -238,6 +238,13 @@ source fragments.
   queue growth are checked under ASan/UBSan. See the
   [opcode-618 source frontier](ENEMY_41967_618_SHARED_QUEUED_POLAR_SOURCE_FRONTIER.md).
   The 41,967B parent remains NONEXACT; no standalone unit or byte credit.
+- The shared LaserController::find_laser leaf at 0x00498FF0 is a 230-byte /
+  70-instruction / 11-E8 function used by Enemy opcodes 704–710. The natural
+  C++ helper uses the actual intrusive list, preserves the +0x8C handle test,
+  repeats node_value() on the match return, and destroys the iterator on both
+  paths. The maintained root host covers empty/missing/later/duplicate lookup
+  cases. See LASER_CONTROLLER_FIND_LASER_230_SOURCE_FRONTIER.md. The seven
+  caller branches and the 41,967B parent remain NONEXACT.
 - Native opcode 620 is the 250-byte / 57-instruction shared queued-vector
   update at 0x00492D4D, selector index 138, with eight original E8 calls.
   The maintained root host executes the production helper and real

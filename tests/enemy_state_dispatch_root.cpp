@@ -706,6 +706,36 @@ int main() {
     session.contexts[0].primary_owner = dispatch_test_bullets;
     context.object_14 = dispatch_test_lasers;
     session.contexts[0].object_14 = dispatch_test_lasers;
+
+    // Native LaserController::find_laser at 0x00498FF0 is the shared handle
+    // lookup used by opcodes 704-710. Exercise empty/missing lookups, list
+    // order, a later-element hit, and duplicate handles (first node wins).
+    DispatchTestLaser find_laser_first;
+    DispatchTestLaser find_laser_second;
+    find_laser_first.handle = 0x11223344u;
+    find_laser_second.handle = 0x55667788u;
+    find_laser_first.link.initialize(&find_laser_first);
+    find_laser_second.link.initialize(&find_laser_second);
+    assert(dispatch_test_lasers->find_laser(0x11223344) == nullptr);
+    assert(find_laser_first.link.iterator == nullptr && find_laser_second.link.iterator == nullptr);
+    dispatch_test_lasers->active.append(&find_laser_first.link);
+    dispatch_test_lasers->active.append(&find_laser_second.link);
+    assert(dispatch_test_lasers->find_laser(0x55667788) == &find_laser_second);
+    assert(find_laser_first.link.iterator == nullptr && find_laser_second.link.iterator == nullptr);
+    assert(dispatch_test_lasers->find_laser(0x99aabbcc) == nullptr);
+    assert(find_laser_first.link.iterator == nullptr && find_laser_second.link.iterator == nullptr);
+    find_laser_second.handle = find_laser_first.handle;
+    assert(dispatch_test_lasers->find_laser(0x11223344) == &find_laser_first);
+    assert(find_laser_first.link.iterator == nullptr && find_laser_second.link.iterator == nullptr);
+    find_laser_first.handle = 0xffffffffu;
+    find_laser_second.handle = 0xffffffffu;
+    assert(dispatch_test_lasers->find_laser(-1) == &find_laser_first);
+    assert(find_laser_first.link.iterator == nullptr && find_laser_second.link.iterator == nullptr);
+    dispatch_test_lasers->active.remove(&find_laser_first.link);
+    dispatch_test_lasers->active.remove(&find_laser_second.link);
+    assert(dispatch_test_lasers->active.front() == nullptr);
+    assert(find_laser_first.link.iterator == nullptr && find_laser_second.link.iterator == nullptr);
+
     enemy.state.context = &context;
     session.contexts[0].enemies = &controller;
     dispatch_operand_original_context = &context;
@@ -3881,5 +3911,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy queued-shot properties 605/606/607/608 (speed/count writes, metadata COW and 16/32-bit sound stores with operand exceptions), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy opcode spawn 300/301/304/305/309/311/312/321 (whole 653B production Boss, selected-slot guard, live EnemyController::create, relative/mirrored position, flags, counters, parent link and operand order), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy queued-shot properties 605/606/607/608 (speed/count writes, metadata COW and 16/32-bit sound stores with operand exceptions), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy opcode spawn 300/301/304/305/309/311/312/321 (whole 653B production Boss, selected-slot guard, live EnemyController::create, relative/mirrored position, flags, counters, parent link and operand order), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), LaserController::find_laser 704-710 (real intrusive-list first-match lookup and iterator cleanup), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

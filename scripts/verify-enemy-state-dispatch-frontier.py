@@ -6,6 +6,7 @@ import re
 from collections import Counter
 import struct
 import subprocess
+import sys
 from pathlib import Path
 import pefile
 from capstone import CS_ARCH_X86, CS_MODE_32, Cs
@@ -44,6 +45,7 @@ HOST_SOURCES=[
     'src/EnemyStateShotCommandOpcode.cpp', 'src/EnemyQueuedSelection.cpp', 'src/ShotMetadata.cpp',
     'src/EnemyStateSharedQueuedParametersOpcode.cpp', 'src/EnemyStateQueuedParametersOpcode.cpp', 'src/EnemyStatePlayerAngleOpcode.cpp',
     'src/EnemyStateBulletLaserCancelOpcode.cpp', 'src/EnemyStateBulletClearOpcode.cpp', 'src/BulletSpatialCancellation.cpp', 'src/BulletLimitedCancellation.cpp',
+    'src/LaserControllerFindLaser.cpp',
     'src/LaserCommandMethods.cpp',
     'src/BulletDistance.cpp', 'src/LaserCancelNear.cpp', 'src/LaserBase.cpp', 'src/LaserCancelCircleDefault.cpp',
     'src/EnemyStateLaserOpcode.cpp', 'src/LaserParameters.cpp',
@@ -646,6 +648,8 @@ def main() -> None:
     assert all(f'set_packet({opcode},' in root_test_source for opcode in (605,606,607,608))
     assert 'queued_speed_second_float_threw' in root_test_source
     assert 'queued_sound_second_integer_threw' in root_test_source
+    assert 'find_laser(0x55667788) == &find_laser_second' in root_test_source
+    assert 'find_laser(0x11223344) == &find_laser_first' in root_test_source
     assert 'queued_record_607.owner->field_38' in root_test_source
     assert 'queued_record_608.owner->sound == 333' in root_test_source
     assert 'queued_count_second_integer_threw' in root_test_source
@@ -778,6 +782,7 @@ def main() -> None:
         ('src/BulletDistance.cpp','build/gpt-web-enemy-616-canonical/BulletDistance.obj'),
         ('src/LaserCancelNear.cpp','build/gpt-web-enemy-616-canonical/LaserCancelNear.obj'),
         ('src/LaserCommandMethods.cpp','build/gpt-web-laser-canonical/LaserCommandMethods.obj'),
+        ('src/LaserControllerFindLaser.cpp','build/gpt-web-laser-canonical/LaserControllerFindLaser.obj'),
         ('src/LaserBase.cpp','build/gpt-web-enemy-616-canonical/LaserBase.obj'),
         ('src/LaserCancelCircleDefault.cpp','build/gpt-web-enemy-616-canonical/LaserCancelCircleDefault.obj'),
         ('src/PlayerDirection.cpp','build/core208-canonical/PlayerDirection.obj'),
@@ -920,6 +925,7 @@ def main() -> None:
     position_ref_function=player_direction_dump.split(position_ref_marker,1)[1].split('Disassembly of section',1)[0]
     assert '0x614' in position_ref_function
     print('PASS natural C++ opcode-617 COFF: two Context::player/Player::position_ref reads, ordered VM operands, atan2 and destination writeback')
+    subprocess.run([sys.executable,str(ROOT/'scripts/verify-laser-controller-find-laser-source.py')],cwd=ROOT,check=True)
 
     shared_queued_object=ROOT/'build/gpt-web-enemy-620-canonical/EnemyStateSharedQueuedParametersOpcode.obj'
     shared_queued_dump=subprocess.run(
@@ -1516,7 +1522,7 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy queued-shot properties 605/606/607/608 (speed/count writes, metadata COW and 16/32-bit sound stores with operand exceptions), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy opcode spawn 300/301/304/305/309/311/312/321 (whole 653B production Boss, selected-slot guard, live EnemyController::create, relative/mirrored position, flags, counters, parent link and operand order), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n' in result.stdout
+    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy queued-shot properties 605/606/607/608 (speed/count writes, metadata COW and 16/32-bit sound stores with operand exceptions), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy opcode spawn 300/301/304/305/309/311/312/321 (whole 653B production Boss, selected-slot guard, live EnemyController::create, relative/mirrored position, flags, counters, parent link and operand order), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), LaserController::find_laser 704-710 (real intrusive-list first-match lookup and iterator cleanup), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n' in result.stdout
     print(result.stdout,end='')
     print(f'PASS maintained root host executes {len(HOST_SOURCES)} focused source units under ASan/UBSan')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
@@ -1549,7 +1555,7 @@ def main() -> None:
     print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
     print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, five restored membership/fog/controller/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases, opcode 614 queue copy, four shot-command variants, four Laser variants, Enemy mesh lifecycle and 41 opcode fragments wired')
-    print('PASS all sixty-one i386 COFF source units compile under locked MSVC profile')
+    print('PASS all sixty-two i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
 
