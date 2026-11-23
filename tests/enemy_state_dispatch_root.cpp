@@ -850,6 +850,94 @@ int main() {
     };
     auto bits = [](float value) { std::uint32_t out; std::memcpy(&out,&value,4); return out; };
 
+    // Native opcode 550 performs a raw inline-name lookup through the actual
+    // Enemy EclManager::loader_value and the strict-exact EclLoader binary
+    // search. The name begins at EclInstruction+0x14 (after the leading word),
+    // and no integer/float VM argument accessor is called.
+    EclLoader loader_550;
+    loader_550.records.push_back({"alpha", packet.data()});
+    loader_550.records.push_back({"beta", packet.data()});
+    loader_550.records.push_back({"gamma", packet.data()});
+    loader_550.subroutine_count = 3;
+    auto* const saved_enemy_loader = enemy.loader;
+    enemy.loader = &loader_550;
+    const auto run_subroutine_name_lookup = [&](const char* name, std::int32_t expected) {
+        enemy.state.field_27c = 12345;
+        set_packet(550, {0,0,0,0,0,0,0,0});
+        std::memcpy(packet.data() + 16 + 0x14, name, std::strlen(name) + 1);
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_hook = nullptr;
+        assert(enemy.state.execute_opcode() == 0);
+        assert(enemy.state.field_27c == expected);
+        assert(dispatch_integer_read_calls == 0);
+    };
+    run_subroutine_name_lookup("alpha", 0);
+    run_subroutine_name_lookup("beta", 1);
+    run_subroutine_name_lookup("gamma", 2);
+    run_subroutine_name_lookup("delta", -1);
+    loader_550.records.clear();
+    loader_550.subroutine_count = 0;
+    run_subroutine_name_lookup("alpha", -1);
+    enemy.loader = saved_enemy_loader;
+    enemy.state.field_27c = -1;
+
+    // Native opcode 1002 reads its operand before resolving the Context
+    // EnemyController. Retargeting during the read must therefore select the
+    // alternate controller; the complete 32-bit value is preserved.
+    controller.field_e0 = 0x11223344u;
+    alternate_controller.field_e0 = 0x55667788u;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_value = static_cast<std::int32_t>(0xa1b2c3d4u);
+    dispatch_integer_read_hook = &retarget_context_during_integer_read;
+    set_packet(1002, {static_cast<std::uint32_t>(-101)}, 0x1u);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_integer_read_hook = nullptr;
+    assert(dispatch_integer_read_calls == 1);
+    assert(controller.field_e0 == 0x11223344u);
+    assert(alternate_controller.field_e0 == 0xa1b2c3d4u);
+    enemy.state.context = &context;
+
+    // An operand exception occurs before the native Context/owner lookup and
+    // leaves both controllers untouched.
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_hook = &observe_integer_read;
+    dispatch_integer_throw_at = 1;
+    set_packet(1002, {static_cast<std::uint32_t>(-101)}, 0x1u);
+    bool opcode1002_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { opcode1002_threw = value == 609; }
+    dispatch_integer_throw_at = 0;
+    dispatch_integer_read_hook = nullptr;
+    assert(opcode1002_threw && dispatch_integer_read_calls == 1);
+    assert(controller.field_e0 == 0x11223344u);
+    assert(alternate_controller.field_e0 == 0xa1b2c3d4u);
+
+    // Native opcode 1003 is a direct full-word EnemyState+0x278 assignment.
+    enemy.state.field_278 = -17;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_value = -0x1234567;
+    dispatch_integer_read_hook = &observe_integer_read;
+    set_packet(1003, {static_cast<std::uint32_t>(-101)}, 0x1u);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_integer_read_hook = nullptr;
+    assert(dispatch_integer_read_calls == 1);
+    assert(dispatch_integer_read_index == -101);
+    assert(enemy.state.field_278 == -0x1234567);
+
+    // A failed operand read must not partially update the +0x278 word.
+    enemy.state.field_278 = 0x13572468;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_hook = &observe_integer_read;
+    dispatch_integer_throw_at = 1;
+    set_packet(1003, {static_cast<std::uint32_t>(-101)}, 0x1u);
+    bool opcode1003_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { opcode1003_threw = value == 609; }
+    dispatch_integer_throw_at = 0;
+    dispatch_integer_read_hook = nullptr;
+    assert(opcode1003_threw && dispatch_integer_read_calls == 1);
+    assert(enemy.state.field_278 == 0x13572468);
+
     // The 1,457-byte native 609-612 branch now runs through the real root
     // dispatcher, the production writable-shot COW selector and the real
     // PMR BulletCommand vector. The four opcodes differ in explicit/cursor

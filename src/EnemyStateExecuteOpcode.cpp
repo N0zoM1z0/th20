@@ -239,6 +239,30 @@ int EnemyState::execute_opcode() {
         return 0;
     }
 
+    // Native opcode 1002 reads its operand before loading the current
+    // Context's EnemyController, then stores the complete word at +0xE0.
+    if (opcode == 1002) {
+        const auto value = static_cast<std::uint32_t>(integer_argument(0));
+        context->enemy_controller()->field_e0 = value;
+        return 0;
+    }
+
+    // Native opcode 1003 writes the full signed operand to EnemyState+0x278.
+    if (opcode == 1003) {
+        field_278 = integer_argument(0);
+        return 0;
+    }
+
+    // Native opcode 550 resolves the inline subroutine name at instruction
+    // +0x14 through the Enemy's actual EclLoader and caches the sorted-table
+    // index for the later defeat/spawn application. This is a raw name field,
+    // not a VM integer operand.
+    if (opcode == 550) {
+        field_27c = entity->loader_value()->subroutine_index(
+            reinterpret_cast<const char*>(&instruction) + 0x14);
+        return 0;
+    }
+
     // Native switch case 0x0d funnels this complete animation-setter family
     // through EnemyState::change_animation (the original 0x00496B90 owner).
     switch (opcode) {

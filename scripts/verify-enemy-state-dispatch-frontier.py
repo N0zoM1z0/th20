@@ -295,6 +295,28 @@ def main() -> None:
                if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
         assert calls==expected_calls,(opcode,calls,expected_calls)
 
+    # The final three owned native selectors include the 1002/1003
+    # controller/state stores immediately before the shared epilogue.
+    enemy_state_tail_cases={
+        1002:(171,0x00496355,0x00496387,50,10,
+              'ffa345dd7dda00d19cd5ce12a935de0eda8071d1a2a44758ac8594336ac97ffe',
+              [0x004AB080,0x00412730]),
+        1003:(172,0x00496387,0x004963A2,27,6,
+              'cd4fe2a92d47e9773b1850338d7e8dd89620ba581f899a08423f69dd7596674c',
+              [0x004AB080]),
+    }
+    for opcode,(index,start,end,size,instruction_count,digest,expected_calls) in enemy_state_tail_cases.items():
+        assert selector[opcode-300]==index,(opcode,selector[opcode-300],index)
+        assert struct.unpack_from('<I',pointer_table,index*4)[0]==start,(opcode,start)
+        body=pe.get_data(start-image_base,end-start)
+        assert len(body)==size and hashlib.sha256(body).hexdigest()==digest,(opcode,len(body))
+        instructions=list(decoder.disasm(body,start))
+        assert len(instructions)==instruction_count,(opcode,len(instructions))
+        assert instructions[-1].address+instructions[-1].size==end,(opcode,end)
+        calls=[int(insn.op_str,16) for insn in instructions
+               if insn.mnemonic=='call' and insn.op_str.startswith('0x')]
+        assert calls==expected_calls,(opcode,calls,expected_calls)
+
     # Opcode 569 is a reserved selector that points directly at the common
     # return-zero epilogue rather than owning an inline case body.
     assert selector[569-300] == 173
@@ -601,6 +623,15 @@ def main() -> None:
     assert case524.index('current_game_controller->set_field_34') < case524.index('field_280 = value') < case524.index('field_284 = 0')
     case575=root[root.index('case 575:'):root.index('default:',root.index('case 575:'))]
     assert case575.index('player(0)') < case575.index('integer_argument(0)') < case575.index('set_entity_flag_10')
+    case1002=root[root.index('if (opcode == 1002)'):root.index('if (opcode == 1003)')]
+    assert case1002.index('integer_argument(0)') < case1002.index('context->enemy_controller()') < case1002.index('field_e0 = value')
+    case1003=root[root.index('if (opcode == 1003)'):root.index('// Native opcode 550')]
+    assert 'field_278 = integer_argument(0);' in case1003
+    dispatch_test_source=(ROOT/'tests/enemy_state_dispatch_root.cpp').read_text()
+    assert 'set_packet(1002,' in dispatch_test_source and 'set_packet(1003,' in dispatch_test_source
+    assert 'opcode1002_threw' in dispatch_test_source and 'opcode1003_threw' in dispatch_test_source
+    assert 'alternate_controller.field_e0 == 0xa1b2c3d4u' in dispatch_test_source
+    assert 'enemy.state.field_278 == -0x1234567' in dispatch_test_source
     assert 'current_game_controller->set_field_34' in root
     assert 'receiver->set_entity_flag_10(value)' in root
     assert 'return 1;' in root
