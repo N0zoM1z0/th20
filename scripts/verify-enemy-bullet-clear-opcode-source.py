@@ -82,6 +82,15 @@ CALLBACKS = {
 }
 
 
+TIMER_SETTER = {
+    "end": 0x0049CB07,
+    "size": 39,
+    "instructions": 14,
+    "sha256": "1c8c8efe0e3529f45f58dcb33d31b0403d7a1c2392b694805653ee0889249658",
+    "calls": [0x0047C5F0],
+    "call_sites": [(0x0049CAFB,0x0047C5F0)],
+}
+
 def direct_calls(instructions):
     return [
         int(insn.op_str, 16)
@@ -138,6 +147,26 @@ def main() -> None:
             if insn.mnemonic == "call" and insn.op_str.startswith("0x")
         ]
         assert call_sites == case_data["call_sites"], (hex(start), call_sites)
+
+    timer_raw = pe.get_data(0x0049CAE0 - image_base, TIMER_SETTER["size"])
+    assert len(timer_raw) == TIMER_SETTER["size"]
+    assert hashlib.sha256(timer_raw).hexdigest() == TIMER_SETTER["sha256"]
+    timer_insns = list(decoder.disasm(timer_raw, 0x0049CAE0))
+    assert len(timer_insns) == TIMER_SETTER["instructions"]
+    assert timer_insns[-1].address + timer_insns[-1].size == TIMER_SETTER["end"]
+    assert direct_calls(timer_insns) == TIMER_SETTER["calls"]
+    timer_call_sites = [
+        (insn.address, int(insn.op_str, 16))
+        for insn in timer_insns
+        if insn.mnemonic == "call" and insn.op_str.startswith("0x")
+    ]
+    assert timer_call_sites == TIMER_SETTER["call_sites"]
+    timer_source = (ROOT / "src/BulletTimer4D8.cpp").read_text(encoding="utf8")
+    assert "void Bullet::set_timer_4d8(float value)" in timer_source
+    assert "timer_4d8 = value;" in timer_source
+    timer_manifest = (ROOT / "config/match-units.toml").read_text(encoding="utf8")
+    assert "[units.bullet_timer_4d8]" in timer_manifest
+    assert "target_address = 0x0049CAE0" in timer_manifest
 
     source = (ROOT / "src/EnemyStateBulletClearOpcode.cpp").read_text(encoding="utf8")
     first = source[source.index("int EnemyState::clear_bullets_in_animation_rectangle"):
@@ -243,6 +272,7 @@ def main() -> None:
     print("PASS native callback table 0x56FE8C: null, 0x488B80 animation-rectangle clear, 0x488E80 all-bullet reset")
     print("PASS native EnemyState callback 0x00488B80: 768B / 215 x86 / 34 ordered direct calls")
     print("PASS native EnemyState callback 0x00488E80: 291B / 86 x86 / 17 ordered direct calls")
+    print("PASS native Bullet Timer +0x4D8 leaf 0x0049CAE0: 39B / 14 x86 / one ordered Timer::operator=(float) E8")
     print("PASS natural C++ animation resolve, rotated rectangle filters, live Enemy/Player positions, Bullet Timer/color/state and callback-table dispatch")
     print("PASS root-host opcode 629 both callbacks, no state/field filter, Player overlap side effect and operand exception-before-side-effects")
 
