@@ -2,6 +2,7 @@
 """Compare the maintained StageResource VM state machine with original TH20 code."""
 from __future__ import annotations
 
+import hashlib
 import importlib.util
 import json
 import subprocess
@@ -9,6 +10,18 @@ import sys
 from pathlib import Path
 
 from project import ROOT, attest_compiler
+
+
+def digest_bundle(paths: list[Path]) -> str:
+    digest = hashlib.sha256()
+    for path in paths:
+        relative = path.relative_to(ROOT).as_posix().encode("utf-8")
+        content = path.read_bytes()
+        digest.update(len(relative).to_bytes(4, "little"))
+        digest.update(relative)
+        digest.update(len(content).to_bytes(8, "little"))
+        digest.update(content)
+    return digest.hexdigest()
 
 
 def main() -> int:
@@ -31,6 +44,13 @@ def main() -> int:
         ROOT / "src/StageResourceFog.cpp",
         ROOT / "src/StageResourceInterruptAnimations.cpp",
         ROOT / "src/StageResourcePrimaryRotationFlag.cpp",
+        ROOT / "src/StageResourceGlobals.cpp",
+        ROOT / "src/StageResourceMeshUpdate.cpp",
+        ROOT / "src/StageResourceObjectUpdate.cpp",
+        ROOT / "src/AnimationPoolUpdate.cpp",
+        ROOT / "src/AnimationIsActive.cpp",
+        ROOT / "src/StageResourceUpdate.cpp",
+        ROOT / "src/AnimationParticleGridNormalize202.cpp",
         ROOT / "src/Interpolation.cpp",
         ROOT / "src/FogValue.cpp",
         ROOT / "src/Easing.cpp",
@@ -88,11 +108,29 @@ def main() -> int:
     data = json.loads(report.read_text(encoding="utf-8"))
     if data.get("status") != "passed" or data.get("failed") != 0:
         raise ValueError(f"StageResource VM CPU oracle reported mismatches: {data}")
+    source_inputs = [path for path in sources if path != ROOT / "tests/stage_resource_vm_cpu_compare.cpp"] + [
+        ROOT / "src/StageResource.hpp",
+        ROOT / "src/Animation.hpp",
+        ROOT / "src/RenderMesh.hpp",
+        ROOT / "src/Viewport.hpp",
+        ROOT / "src/Graphics.hpp",
+        ROOT / "src/StageResourceUpdateAdapters.hpp",
+        ROOT / "src/StageResourceUpdateAdapters.cpp",
+        ROOT / "src/AnimationRuntimeOwner.hpp",
+        ROOT / "src/Angle.hpp",
+        ROOT / "src/Vector3.hpp",
+        ROOT / "src/Timer.hpp",
+        ROOT / "src/ClockScalar.hpp",
+        ROOT / "src/ScalarMath.hpp",
+        ROOT / "src/Interpolation.hpp",
+        ROOT / "src/FogValue.hpp",
+    ]
     summary = {
         "status": "passed",
         "checks": data["checks"],
         "failed": data["failed"],
-        "source_sha256": module.digest(ROOT / "src/StageResourceScript.cpp"),
+        "source_sha256": digest_bundle(source_inputs),
+        "source_files": [path.relative_to(ROOT).as_posix() for path in source_inputs],
         "header_sha256": module.digest(ROOT / "src/StageResource.hpp"),
         "test_sha256": module.digest(ROOT / "tests/stage_resource_vm_cpu_compare.cpp"),
         "compiler": lock["version"],

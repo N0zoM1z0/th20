@@ -26,6 +26,28 @@ static_assert(offsetof(StageResourceFileHeader, animation_count) == 0x02);
 static_assert(offsetof(StageResourceFileHeader, instance_offset) == 0x04);
 static_assert(offsetof(StageResourceFileHeader, animation_name) == 0x10);
 
+// Native resource object and its variable-length primitive table. Object
+// records are 0x30 bytes; primitive records begin immediately after the object
+// and advance by their signed byte-size field until a negative type sentinel.
+struct StageResourceObjectRecord {
+    std::uint16_t identifier;
+    std::uint8_t layer;
+    std::uint8_t flags;
+    float parameters[11];
+};
+static_assert(sizeof(StageResourceObjectRecord) == 0x30);
+static_assert(offsetof(StageResourceObjectRecord, flags) == 0x03);
+static_assert(offsetof(StageResourceObjectRecord, parameters) == 0x04);
+
+struct StageResourcePrimitiveHeader {
+    std::int16_t type;
+    std::int16_t size;
+    std::int16_t script_index;
+    std::int16_t animation_index;
+};
+static_assert(sizeof(StageResourcePrimitiveHeader) == 8);
+static_assert(offsetof(StageResourcePrimitiveHeader, animation_index) == 0x06);
+
 struct StageResourceInstructionHeader {
     std::int32_t time;
     std::int16_t opcode;
@@ -67,6 +89,7 @@ struct StageBackgroundFogOwner {
                  const FogValue& target);
     void __fastcall execute_script();
     void update_camera_motion(const float* rate);
+    void __fastcall update_meshes();
 };
 using StageBackgroundScriptState = StageBackgroundFogOwner;
 
@@ -97,6 +120,8 @@ struct StageResourceOwner {
                  const FogValue& target);
     void interrupt_animations(std::int32_t event);
     void set_primary_rotation_flag(std::uint32_t value);
+    std::int32_t __fastcall update_objects();
+    std::int32_t __fastcall update();
 };
 
 extern StageResourceOwner* process_stage_resource;

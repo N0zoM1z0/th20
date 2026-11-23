@@ -204,6 +204,7 @@ public:
     void interrupt(std::int32_t event);
     void interrupt_offset_7(std::int32_t event);
     std::int32_t update();
+    bool is_active() const;
     Vector3& position(Vector3& output);
     // Recursive raw world-position composition used by VM child spawning.
     Vector3& world_position_for_spawn(Vector3& output);

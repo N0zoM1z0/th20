@@ -2047,8 +2047,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00472060,unknown,MeshInterfaces,review,pending,"CORE/EXACT-095: Frozen source233files;659 complete canonical units/131 fresh objects/129436 disjoint comparison bytes strictly replay. Thirteen complete mesh protocol roots add1165 comparison bytes; all origins remain unknown pending independent classification. Actual full EnemyState deformation remains1548/native1649 and is not a canonical unit. Public owned semantic grid/deformation checks preserve old radius, actual clocks, XY weighting/XYZ normalization, separate coordinate domains and real strip publication. Native unused radius conversion, full allocation/deletion/publication/renderer/game and invalid-conversion domains remain open. See docs/RENDER_MESH_RECONSTRUCTION.md."
 0x00472090,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004720D0,compiler,EnemyMeshLifetime,exclude,high,"CORE/EXACT-136: Actual typed destroy_at call, complete real mesh destructor and optional sized-delete36 branch establish an automatically generated compiler wrapper; the automatic Concurrency label is not source evidence. Whole native control flow and canonical relocation replay are independently verified. Five affected objects build once and all16 old affected units remain exact;158 objects are reused. See docs/ENEMY_MESH_LIFETIME_RECONSTRUCTION.md."
-0x00472100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004722E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00472100,authored,StageResource,authored,high,"CORE/RECON-1301; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original calls to 0x004739E0, 0x004751B0 and 0x004722E0; owner/camera/Graphics state flow"
+0x004722E0,authored,StageResource,authored,high,"CORE/RECON-1301; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original two-slot mesh-mode branches, 24px taper, angle progression, interior vertex writes and Timer dispatch"
 0x00472840,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00472A10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00472A30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2059,7 +2059,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00473490,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00473590,authored,Interpolation,authored,medium,"CORE/ORIGIN-511; docs/INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md; independently decoded original source PE E8 call users, complete custom game interpolation instantiations and precise original field anchors; all native body bytes strictly exact"
 0x004739D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004739E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004739E0,authored,StageResource,authored,high,"CORE/RECON-1301; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original file/object/primitive layout, animation-pool forwarding, active-count and rotation-lock behavior"
 0x00473B20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474780,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474860,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2069,7 +2069,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00474D40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474D60,unknown,EnemyDispatchState,review,unknown,CORE/EXACT-148; docs/ENEMY_DISPATCH_STATE_RECONSTRUCTION.md; Complete25-byte Session forwarding query reaches actual PlayerTable+88 and its independently reviewed mutating field1F4 clamp. Source/exactness do not establish origin.
 0x00474D80,unknown,EnemyDispatchState,review,unknown,"CORE/EXACT-148; docs/ENEMY_DISPATCH_STATE_RECONSTRUCTION.md; Complete73-byte PlayerTable query clamps signed field1F4 to0..999, writes it back and returns it. Existing independent integer-clamp anchor0x471170 is reused. Source/exactness do not establish origin."
-0x00474DD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00474DD0,"unknown","Animation",review,"unknown","CORE/RECON-1301; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; 42-byte Animation state predicate is semantically reconstructed as Animation::is_active; authored-versus-compiler origin is intentionally unresolved"
 0x00474E00,authored,Player,authored,high,CORE/EXACT-308; docs/PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md; typed original Session and Player state accessors
 0x00474E20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
