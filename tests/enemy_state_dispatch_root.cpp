@@ -571,6 +571,12 @@ AnimationFile::~AnimationFile() = default;
 AnimationBase::AnimationBase() noexcept = default;
 Animation::Animation() noexcept = default;
 Animation::~Animation() noexcept = default;
+// Background layout fixtures need the existing camera value constructors;
+// the renderer-facing constructor bodies remain outside this root-host link.
+TransformMatrix::TransformMatrix() {}
+ViewportState::ViewportState()
+    : field_of_view(0), field_58(0), field_5c(0), viewport{}, field_f8(0),
+      offset_x(0), offset_y(0), adjusted_viewport{} {}
 AnimationHandle AnimationFile::spawn(const char* expected_stem, std::int32_t script,
     const Vector3* position, float rotation, std::int32_t layer,
     std::uint32_t flags, Animation** output) {
@@ -784,10 +790,15 @@ int main() {
     EnemyController alternate_controller;
     Context alternate_context;
     AnimationFile test_animation_file;
-    StageResourceOwner stage_resource{};
+    alignas(StageResourceOwner) std::array<std::byte, sizeof(StageResourceOwner)> stage_resource_storage{};
+    // Construct the real nested Viewport/Animation members in place. The
+    // renderer allocator is an explicit test boundary, so this stack fixture
+    // intentionally does not run the Background cleanup destructor.
+    auto& stage_resource = *::new (static_cast<void*>(stage_resource_storage.data())) StageResourceOwner{};
     dispatch_test_enemy_controller = &controller;
     dispatch_test_animation_file = &test_animation_file;
     process_stage_resource = &stage_resource;
+    stage_resource.script_state.owner = &stage_resource;
     dispatch_test_bullets = ::new (static_cast<void*>(bullet_controller_storage.data())) BulletController();
     dispatch_test_bullets_alternate = ::new (static_cast<void*>(alternate_bullet_controller_storage.data())) BulletController();
     dispatch_test_lasers = ::new (static_cast<void*>(laser_controller_storage.data())) LaserController();
@@ -879,20 +890,20 @@ int main() {
     };
     auto bits = [](float value) { std::uint32_t out; std::memcpy(&out,&value,4); return out; };
 
-    // Native opcode 622 selects a variable-length StageResource record by its
-    // type/id pair. It publishes the record's byte offset before assigning the
-    // nested Background Timer from the record's leading word.
+    // Native opcode 622 selects a variable-length Background instruction by
+    // opcode/argument. It publishes the byte cursor before assigning the
+    // ScriptState Timer from the instruction's leading time word.
     {
-        alignas(StageResourceRecordHeader) std::array<std::byte,36> records{};
-        auto* first = reinterpret_cast<StageResourceRecordHeader*>(records.data());
+        alignas(StageResourceInstructionHeader) std::array<std::byte,36> records{};
+        auto* first = reinterpret_cast<StageResourceInstructionHeader*>(records.data());
         *first = {17, 0x11, 12, {100}};
-        auto* second = reinterpret_cast<StageResourceRecordHeader*>(records.data() + 12);
+        auto* second = reinterpret_cast<StageResourceInstructionHeader*>(records.data() + 12);
         *second = {23, 0x10, 12, {200}};
-        auto* sentinel = reinterpret_cast<StageResourceRecordHeader*>(records.data() + 24);
+        auto* sentinel = reinterpret_cast<StageResourceInstructionHeader*>(records.data() + 24);
         *sentinel = {-1, 0, 0, {0}};
-        stage_resource.record_data = records.data();
-        stage_resource.background.selected_record_offset = 0xaabbccddu;
-        stage_resource.background.selection_timer = 41;
+        stage_resource.instructions = reinterpret_cast<const StageResourceInstructionHeader*>(records.data());
+        stage_resource.script_state.instruction_offset = 0xaabbccddu;
+        stage_resource.script_state.timer = 41;
 
         dispatch_integer_read_calls = 0;
         dispatch_integer_read_value = 200;
@@ -901,13 +912,13 @@ int main() {
         assert(enemy.state.execute_opcode() == 0);
         dispatch_integer_read_hook = nullptr;
         assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_index == -101);
-        assert(stage_resource.background.selected_record_offset == 12);
-        assert(stage_resource.background.selection_timer.current == 23);
-        assert(stage_resource.background.selection_timer.previous == 22);
-        assert(stage_resource.background.selection_timer.current_fraction == 23.0f);
+        assert(stage_resource.script_state.instruction_offset == 12);
+        assert(stage_resource.script_state.timer.current == 23);
+        assert(stage_resource.script_state.timer.previous == 22);
+        assert(stage_resource.script_state.timer.current_fraction == 23.0f);
 
         // A missing key reaches the negative sentinel and leaves the prior
-        // selected record and Timer untouched.
+        // instruction cursor and Timer untouched.
         dispatch_integer_read_calls = 0;
         dispatch_integer_read_value = 999;
         dispatch_integer_read_hook = &observe_integer_read;
@@ -915,25 +926,25 @@ int main() {
         assert(enemy.state.execute_opcode() == 0);
         dispatch_integer_read_hook = nullptr;
         assert(dispatch_integer_read_calls == 1);
-        assert(stage_resource.background.selected_record_offset == 12);
-        assert(stage_resource.background.selection_timer.current == 23);
+        assert(stage_resource.script_state.instruction_offset == 12);
+        assert(stage_resource.script_state.timer.current == 23);
 
         // The VM operand exception must occur before the process owner is
-        // dereferenced or either Background field is published.
+        // dereferenced or either ScriptState field is published.
         process_stage_resource = nullptr;
         dispatch_integer_read_calls = 0;
         dispatch_integer_read_hook = &observe_integer_read;
         dispatch_integer_throw_at = 1;
         set_packet(622, {static_cast<std::uint32_t>(-101)}, 0x1u);
-        bool stage_record_operand_threw = false;
+        bool stage_instruction_operand_threw = false;
         try { enemy.state.execute_opcode(); }
-        catch (int value) { stage_record_operand_threw = value == 609; }
+        catch (int value) { stage_instruction_operand_threw = value == 609; }
         dispatch_integer_throw_at = 0;
         dispatch_integer_read_hook = nullptr;
         process_stage_resource = &stage_resource;
-        assert(stage_record_operand_threw && dispatch_integer_read_calls == 1);
-        assert(stage_resource.background.selected_record_offset == 12);
-        assert(stage_resource.background.selection_timer.current == 23);
+        assert(stage_instruction_operand_threw && dispatch_integer_read_calls == 1);
+        assert(stage_resource.script_state.instruction_offset == 12);
+        assert(stage_resource.script_state.timer.current == 23);
     }
 
     // Native opcode 623 captures the Context's EnemyController before reading

@@ -1597,12 +1597,14 @@ def main() -> None:
     for opcode in ('case 622:', 'case 623:', 'case 624:', 'case 631:', 'case 625:', 'case 626:'):
         assert opcode in resource_source, opcode
     assert 'execute_enemy_resource_opcode(*this, opcode)' in root_source
-    assert 'record_data) == 0x3330' in stage_header
-    assert 'selected_record_offset) == 0x010' in stage_header
-    assert 'selection_timer) == 0x000' in stage_header
-    assert 'identifier[1]' in stage_header
-    assert 'current->identifier[0]' in stage_source and 'current->stride' in stage_source
-    assert 'background.selection_timer' in stage_source
+    assert 'instructions) == 0x3330' in stage_header
+    assert 'instruction_offset) == 0x010' in stage_header
+    assert 'timer) == 0x000' in stage_header
+    assert 'arguments[1]' in stage_header
+    assert 'sizeof(StageBackgroundScriptState) == 0x3310' in stage_header
+    assert 'sizeof(StageResourceOwner) == 0x336c' in stage_header
+    assert 'current->arguments[0]' in stage_source and 'current->size' in stage_source
+    assert 'script_state.timer' in stage_source and 'script_state.instruction_offset' in stage_source
     assert 'callback_table_tail[index]' in resource_source
     assert 'callback_table_tail[index + 1]' in resource_source
 

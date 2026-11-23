@@ -461,14 +461,14 @@ source fragments.
   requests an immediate same-tick ECL exit. Ordinary handled fragments return
   zero so `EclRuntime::tick` performs the normal instruction advance.
 
-## StageResource record selection and opcode cluster 622–626/631 (CORE/RECON-1269)
+## StageResource instruction selection and opcode cluster 622–626/631 (CORE/RECON-1269)
 
 The maintained root now routes Enemy opcodes **622, 623, 624, 625, 626 and
 631** through `src/EnemyStateResourceOpcode.cpp`.
 
 - **622** reads integer operand 0 before loading the process StageResource
   owner, then calls `StageResourceOwner::select_record`. The 133-byte native
-  leaf at `0x004773C0` scans the variable-length record stream at owner
+  leaf at `0x004773C0` scans the variable-length instruction stream at owner
   +`0x3330`, matches signed kind `0x10` and the requested identifier, stores
   the byte offset at owner +`0x20`, and assigns the record's leading integer
   to the Timer at owner +`0x10`. Negative leading values terminate the scan;

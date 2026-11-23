@@ -38,10 +38,10 @@ complete.
 ## Latest checkpoint — StageResource selector and Enemy opcodes 622–626/631
 
 The maintained partial Enemy root now executes opcodes 622–626/631 through
-`src/EnemyStateResourceOpcode.cpp`. The 133-byte StageResource record selector
+`src/EnemyStateResourceOpcode.cpp`. The 133-byte StageResource instruction selector
 at `0x004773C0` strictly replays **133/133 bytes**, including its single Timer
 assignment relocation. The six native case blocks total 337B/64 instruction
-heads/9 ordered E8 calls. Root tests cover variable-stride record scanning,
+heads/9 ordered E8 calls. Root tests cover variable-size instruction scanning,
 negative sentinels, miss preservation, Timer assignment, operand exceptions,
 Context receiver capture, callback installation and the separate zero-table
 views. See [the StageResource selector proof](STAGE_RESOURCE_RECORD_SELECTION_EXACT.md)

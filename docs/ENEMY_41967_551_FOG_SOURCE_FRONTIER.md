@@ -20,7 +20,7 @@ The branch has no state-dependent shortcut or operand reordering. Earlier VM exc
 
 The global at `0x005C069C` is now represented by the existing neutral `StageResourceOwner* process_stage_resource`. Its original class spelling remains unproved, so the new `StageBackgroundFogOwner` name is explicitly a neutral layout description, not a claim about the game's source identifier.
 
-The original 45-byte wrapper `0x0049C5B0` adds `0x10` to its `StageResourceOwner*` receiver and calls the 130-byte nested fog method `0x004776C0`. That method adds `0x134` to its receiver, giving the real `FogInterpolation` at **owner+0x144**. It also copies the stored current `FogValue` from nested receiver+`0x354`, i.e. **owner+0x364**. The separate accepted EnemyController animation-file selector calls `0x004AADF0`, whose 20-byte getter reads the real `AnimationFile*` at **owner+0x3334**.
+The original 45-byte wrapper `0x0049C5B0` adds `0x10` to its `StageResourceOwner*` receiver and calls the 130-byte nested fog method `0x004776C0`. That method adds `0x134` to its receiver, giving the real `FogInterpolation` at **owner+0x144**. It also copies the stored current `FogValue` from nested receiver+`0x354`, i.e. **owner+0x364**. The same `+0x10` subobject is now represented by the complete 0x3310-byte `StageBackgroundScriptState` view; the fog-specific `StageBackgroundFogOwner` tag is retained solely because it is already the exact native C++ symbol spelling for the 130-byte leaf. The separate accepted EnemyController animation-file selector calls `0x004AADF0`, whose 20-byte getter reads the real `AnimationFile*` at **owner+0x3334**.
 
 The partial production layout therefore contains:
 
