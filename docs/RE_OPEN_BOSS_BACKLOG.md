@@ -109,8 +109,18 @@ canonically accepted.
   The 250B opcode-620 shared queued-vector case is now executed in the root
   host with the real ensure-only shared_shot selector and std::pair access.
   The -990.0f threshold, COMISS/JBE NaN path, shared metadata ownership and
-  second-operand exception order are tested; the 47-unit COFF/root-host
+  second-operand exception order are tested; the 48-unit COFF/root-host
   verifier passes (CORE/RECON-1251).
+  The 148B opcode-619 writable metadata radial-offset branch is now executed
+  through the production helper and real writable_shot COW selector. Ordered
+  pair extraction, float operand 1 after COW, radial field_00 writeback and
+  exception-after-clone/before-store are checked against the original
+  148B/35-instruction/7-E8 case.
+  The 163B opcode-633 queued-record decrement is also executed through the
+  production helper. Its six-call native map, writable-shot COW, pair
+  extraction, wrapping uint32 decrement, signed high-bit clamp and
+  selector-exception-before-COW are checked under ASan/UBSan. The 48-unit
+  locked-profile COFF / 112-source root verifier passes for both cases.
   The 346B opcode-621 mesh lifecycle is now also executed in the root host
   with real allocator templates and EnemyMeshOwner release; zero/negative/
   positive radius and operand-exception order are covered. RenderMesh

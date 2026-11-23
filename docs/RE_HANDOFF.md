@@ -35,15 +35,17 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
-## Latest checkpoints — Enemy ECL opcodes 616, 617, 618 and 620
+## Latest checkpoints — Enemy ECL opcodes 616, 617, 618, 619, 620 and 633
 
-Enemy ECL opcodes 616, 617, 618 and 620 are now integrated into the
+Enemy ECL opcodes 616, 617, 618, 619, 620 and 633 are now integrated into the
 maintained root host and focused verifiers. Their production/test/verifier
 changes are checkpointed and retained:
 
 - `src/EnemyStateBulletLaserCancelOpcode.cpp`
 - `src/EnemyStatePlayerAngleOpcode.cpp`
 - `src/EnemyStateSharedQueuedParametersOpcode.cpp`
+- `src/EnemyStateQueuedParametersOpcode.cpp`
+- `src/EnemyStateQueuedParametersOpcode.cpp`
 - `tests/enemy_state_dispatch_root.cpp`
 - `scripts/verify-enemy-bullet-laser-cancel-opcode-source.py`
 - `scripts/verify-enemy-player-angle-opcode-source.py`
@@ -85,11 +87,28 @@ queued record's `vector_40.x/y/z`, preserves the `-990.0f` threshold and
 test checks shared metadata ownership, threshold boundary, NaN, and the
 second-operand exception after the X write.
 
-The false-returning root-test stub is removed. The production helper is
+Native opcode 619 is the 148-byte / 35-instruction / 7-E8 writable queued
+metadata update at 0x00492CB9, selector index 137. It calls the real
+writable_shot COW selector, extracts both pair members in native order, then
+reads float operand 1 and writes ShotMetadata::field_00, consumed as the
+Bullet/Laser radial offset. The root host proves COW precedes the float read:
+a float exception preserves the clone but leaves the metadata field unchanged.
+See the opcode-619 source frontier
+(ENEMY_41967_619_WRITABLE_METADATA_RADIAL_OFFSET_SOURCE_FRONTIER.md).
+
+Native opcode 633 is the 163-byte / 41-instruction / 6-E8 queued-record
+decrement at 0x0049378E, selector index 151. It retains writable_shot and
+both ordered pair extractions, performs wrapping uint32 decrement of record
+field_30, then clamps a signed-negative result to zero. Boundary and
+selector-exception tests cover both arithmetic and COW side effects.
+See the opcode-633 source frontier
+(ENEMY_41967_633_WRITABLE_QUEUED_RECORD_DECREMENT_SOURCE_FRONTIER.md).
+
+Both false-returning root-test stubs for the shared and writable queued-parameter helpers are removed. The production helpers are
 included in `HOST_SOURCES` and the locked-profile COFF compile list; the
 native opcode verifier is invoked by the maintained root verifier. The
 focused root host passes under ASan/UBSan, and the root verifier compiles
-**47 locked-profile i386 COFF source units** and 111 focused host sources. See the dedicated
+**48 locked-profile i386 COFF source units** and 112 focused host sources. See the dedicated
 [opcode-620 source frontier](ENEMY_41967_620_SHARED_QUEUED_VECTOR_SOURCE_FRONTIER.md).
 
 This is still an inline fragment only. No standalone function unit or
@@ -121,6 +140,10 @@ Recent committed case families exercised by the maintained root include:
 - **620:** 250B shared queued-vector update; real ensure-only shared record,
   pair extraction, ordered X/Y writes, native `COMISS/JBE` NaN behavior and
   second-operand exception coverage.
+- **619:** 148B writable queued-metadata radial-offset update; real COW selector,
+  ordered pair extraction, COW-before-float and exception-after-clone coverage.
+- **633:** 163B writable queued-record decrement; real COW selector, ordered pair
+  extraction, uint32 wrap/signed high-bit clamp and selector-exception coverage.
 - **621:** 346B mesh-owner lifecycle; real allocator templates and
   EnemyMeshOwner destructor. Renderer-dependent RenderMesh ctor/dtor and
   allocator startup remain host fixtures.
@@ -139,9 +162,9 @@ Recent committed case families exercised by the maintained root include:
   timer/mode, Card/health, animation spawn, membership, fog, bit flags,
   sound/gauge/title and selected-position cases.
 
-The maintained root verifier currently compiles **47 locked-profile i386
-COFF units** and runs 111 focused host source units under ASan/UBSan, including
-opcodes 616, 617, 618 and 620. The exact per-case boundaries and host limitations are documented in the
+The maintained root verifier currently compiles **48 locked-profile i386
+COFF units** and runs 112 focused host source units under ASan/UBSan, including
+opcodes 616, 617, 618, 619, 620 and 633. The exact per-case boundaries and host limitations are documented in the
 [dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and the focused case notes linked from the [evidence index](EVIDENCE_INDEX.md).
 
@@ -154,8 +177,8 @@ source-present but NONEXACT.
 
 ## Continuation order
 
-1. Continue the remaining large Enemy dispatcher cases. The next native
-   targets include opcode 619 and the remaining unhandled ranges; investigate
+1. Continue the remaining large Enemy dispatcher cases. Scan the still-open
+   622–631 selector neighborhood and the other unhandled ranges; investigate
    each parent branch and its real leaf dependencies together.
 2. Continue convergence of the 41,967B Enemy root and the open FrontInf,
    Bullet and Animation Bosses. Do not substitute trivial setters for Boss

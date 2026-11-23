@@ -233,6 +233,21 @@ source fragments.
   std::get<0/1>, VM operand, COMISS/JBE and direct XYZ-store behavior. See the
   [opcode-620 source frontier](ENEMY_41967_620_SHARED_QUEUED_VECTOR_SOURCE_FRONTIER.md).
   The parent remains NONEXACT; no standalone unit or exact-byte credit is claimed.
+- Native opcode 619 is the 148-byte / 35-instruction writable queued-metadata
+  update at 0x00492CB9, selector index 137, with seven original E8 calls. The
+  production helper uses writable_shot, preserves pair get<0>/get<1> order,
+  reads float operand 1 after COW and writes ShotMetadata::field_00 (the
+  Bullet/Laser radial offset). The root host checks COW-before-float and
+  exception-after-clone/before-store. See the opcode-619 source frontier
+  (ENEMY_41967_619_WRITABLE_METADATA_RADIAL_OFFSET_SOURCE_FRONTIER.md).
+  The parent remains NONEXACT; no standalone unit or byte credit.
+- Native opcode 633 is the 163-byte / 41-instruction queued-record decrement
+  at 0x0049378E, selector index 151, with six original E8 calls. It preserves
+  writable_shot and both pair extractions, performs wrapping uint32 decrement
+  of record field_30 and the native signed-negative clamp. Boundary and
+  selector-exception tests run in the root host. See the opcode-633 source
+  frontier (ENEMY_41967_633_WRITABLE_QUEUED_RECORD_DECREMENT_SOURCE_FRONTIER.md).
+  The parent remains NONEXACT; no standalone unit or byte credit.
 - Native opcode 621 is the 346-byte / 70-instruction mesh-owner lifecycle
   branch at 0x00495A9A, with seven original E8 calls. The ASan/UBSan root host
   executes the production helper, real DiagnosticAllocator allocation/release
@@ -386,7 +401,7 @@ function bodies; no duplicate byte credit is assigned.
 The remaining inline cases in the original 41,967B body, including most of the
 300-series, unhandled 500-series cases, other 520-series operations and
 additional opcode ranges, still need source recovery. The maintained root now
-also represents 609/610/611/612, 614, 616, 617, 618, 620, 621, 702/703/711/712/713 and
+also represents 609/610/611/612, 614, 616, 617, 618, 619, 620, 621, 633, 702/703/711/712/713 and
 800/801/802, alongside 324, 524/575, 527/534, 539, 548, 549, 551, 552,
 553/554, 555 and reserved selector 569. These fragments do not close their
 surrounding switch tables or the dispatcher as a whole. Unknown opcodes
@@ -417,17 +432,17 @@ scripts/compile-probe.sh src/EnemyStateDynamicParameterOpcode.cpp build/core212-
 scripts/compile-probe.sh src/EnemyStateExecuteOpcode.cpp build/core209-canonical/EnemyStateExecuteOpcode.obj /nologo /c /std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc
 ```
 
-The maintained dispatcher verifier currently compiles **47** locked-profile
-i386 COFF source units and executes **111** focused host source units under
+The maintained dispatcher verifier currently compiles **48** locked-profile
+i386 COFF source units and executes **112** focused host source units under
 ASan/UBSan. Its focused native checks include the 609-612 shared
 1,457B/314-instruction/29-E8 branch, the 614 572B/129-instruction/19-E8
-queue-copy branch, the 616 175B/37-instruction/7-E8 paired Bullet/Laser radial-cancel branch, the 617 203B/41-instruction/8-E8 Player-relative angle branch, the 618 243B/55-instruction/10-E8 shared queued-polar branch, the 620 250B/57-instruction/8-E8 shared queued-vector branch, the 621 346B/70-instruction/7-E8 mesh branch, the four Laser branches
+queue-copy branch, the 616 175B/37-instruction/7-E8 paired Bullet/Laser radial-cancel branch, the 617 203B/41-instruction/8-E8 Player-relative angle branch, the 618 243B/55-instruction/10-E8 shared queued-polar branch, the 619 148B/35-instruction/7-E8 writable metadata radial-offset branch, the 620 250B/57-instruction/8-E8 shared queued-vector branch, the 621 346B/70-instruction/7-E8 mesh branch, the 633 163B/41-instruction/6-E8 queued-record decrement branch, the four Laser branches
 (2,699B/607 CFG heads/62 E8), the 712 196B/42-instruction/9-E8
 rectangle-cancel branch, and the 800-802 script-control branches
 (627B/128 instructions/25 E8). It also checks the 553/554 setter maps and
 their ordered COFF relocations. Exact leaf replay receipts and explicit
 host-fixture boundaries are recorded in each linked case frontier. Opcodes
-616, 617, 618 and 620 are included in this 47-unit focused result. No full cold replay or
+616, 617, 618, 619, 620 and 633 are included in this 48-unit focused result. No full cold replay or
 whole-root byte credit is claimed; the parent remains NONEXACT.
 
 No assembly, byte padding, or synthetic instruction sequences are used. The
