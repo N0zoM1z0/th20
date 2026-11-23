@@ -276,6 +276,10 @@ address,name,module,confidence,evidence
 0x00473B20,th20::StageResourceObjectRecord::is_outside_viewport,StageResource,high,CORE/RECON-1303; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md
 0x00473140,th20::FogInterpolation::stop,Interpolation,high,EXACT-046; docs/EXACT_INTERPOLATION_RECONSTRUCTION.md
 0x00474CE0,th20::FogInterpolation::factor,Interpolation,high,EXACT-046; docs/EXACT_INTERPOLATION_RECONSTRUCTION.md
+0x004750A0,th20::NativeAnimationResetHooks::reset_after_stage_draw_4750a0,Animation,high,CORE/RECON-1304; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md
+0x00475120,th20::NativeAnimationResetHooks::reset_draw_cache_475120,Animation,high,CORE/RECON-1304; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md
+0x00475150,th20::NativeAnimationResetHooks::invalidate_draw_owner_475150,Animation,high,CORE/RECON-1304; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md
+0x00475170,CMFCPropertyPage::CommonInit,MFC,high,Visual Studio 2010 MFC CommonInit library body called by 0x004750A0
 0x0042A980,th20::Vector2Interpolation::sample,Interpolation,high,EXACT-046; docs/EXACT_INTERPOLATION_RECONSTRUCTION.md
 0x004299B0,th20::Vector2Interpolation::stop,Interpolation,high,EXACT-046; docs/EXACT_INTERPOLATION_RECONSTRUCTION.md
 0x00437600,th20::Vector2Interpolation::factor,Interpolation,high,EXACT-046; docs/EXACT_INTERPOLATION_RECONSTRUCTION.md

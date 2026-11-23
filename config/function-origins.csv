@@ -2074,10 +2074,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00474E20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474E70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004750A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00475120,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00475150,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00475170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004750A0,authored,Animation,authored,high,"CORE/RECON-1304; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original game-owned 119-byte AnimationPool post-stage-draw reset orchestrates seven already exact reset hooks, the MFC common-field reset, large draw-cache reset and final two scalar clears. Sparse-memory differential compares all touched native pages; no native-byte exactness claim."
+0x00475120,authored,Animation,authored,high,"CORE/RECON-1304; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original game-specific AnimationPool draw-cache reset writes the high owner state fields +0x7D40E90 and +0x7D40E8C; its only known parent is the stage-draw reset boss."
+0x00475150,authored,Animation,authored,high,"CORE/RECON-1304; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original AnimationPool owner invalidation leaf stores 0xFF at owner+0; called by the stage-draw reset boss."
+0x00475170,unknown,MFC,review,pending,"Ghidra identifies the body as Visual Studio 2010 MFC CMFCPropertyPage::CommonInit; the stage-draw reset boss calls it to clear four base fields at +0xB8..+0xC4. Keep this library routine outside game-authored credit."
 0x004751B0,authored,StageResource,authored,high,"CORE/RECON-1300; docs/STAGE_RESOURCE_SCRIPT_VM_8572_SOURCE_FRONTIER.md. The native owner update at 0x00472100 calls this 8,572-byte interpreter on Background+0x10. Its variable-length stage instruction stream drives game-specific camera modes, Fog, ANM slots, background meshes, clear color and owner state. It is not a generic runtime or MFC routine. The process owner is independently consumed by Enemy resource/fog opcodes and the original mesh diagnostic retains the ZUN game source path. Original class spelling remains unresolved."
 0x004773C0,unknown,StageResource,review,unknown,CORE/RECON-1269; docs/STAGE_RESOURCE_RECORD_SELECTION_EXACT.md; called by Enemy opcode 622; process owner record stream at +0x3330; original authorship unresolved
 0x00477450,authored,Animation,authored,high,CORE/RECON-1001; docs/CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md; Original genuine Animation+0x438 event word and VM update E8 0x42B5D0; native game protocol original E8 and complete source original exact

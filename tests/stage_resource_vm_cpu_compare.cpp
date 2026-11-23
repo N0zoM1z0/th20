@@ -8,6 +8,7 @@
 #include "NativeCardHudAnimationView.hpp"
 #include "NativeViewIndexOwner.hpp"
 #include "AnimationRuntimeOwner.hpp"
+#include "NativeAnimationResetHooksView.hpp"
 #include "RenderMesh.hpp"
 #include "ScalarMath.hpp"
 #include "StageResourceObjectVisibility.hpp"
@@ -793,6 +794,52 @@ int wmain(int argc, wchar_t** argv) {
             compare_stage_object_culling(test);
         *native_zero = 200.0f;
 
+        {
+            constexpr std::size_t sparse_extent = 0x07D42000u;
+            constexpr std::array<std::size_t, 3> page_offsets{
+                0u, 0x06000E00u, 0x07D40E00u};
+            auto* storage = static_cast<std::uint8_t*>(
+                VirtualAlloc(nullptr, sparse_extent, MEM_RESERVE, PAGE_NOACCESS));
+            if (!storage)
+                throw std::runtime_error("cannot reserve sparse AnimationPool draw-reset fixture");
+            for (const auto offset : page_offsets) {
+                if (!VirtualAlloc(storage + offset, 0x1000, MEM_COMMIT, PAGE_READWRITE)) {
+                    VirtualFree(storage, 0, MEM_RELEASE);
+                    throw std::runtime_error("cannot commit sparse AnimationPool draw-reset page");
+                }
+            }
+            std::array<std::array<std::uint8_t, 0x1000>, 3> before{}, expected{}, actual{};
+            for (unsigned test = 0; test < 128; ++test) {
+                for (std::size_t page = 0; page < page_offsets.size(); ++page) {
+                    for (auto& byte : before[page])
+                        byte = static_cast<std::uint8_t>(random());
+                    std::memcpy(storage + page_offsets[page], before[page].data(), 0x1000);
+                }
+                FloatingEnvironment::prepare();
+                cpu<void>(0x004750a0, storage);
+                for (std::size_t page = 0; page < page_offsets.size(); ++page)
+                    std::memcpy(expected[page].data(), storage + page_offsets[page], 0x1000);
+                for (std::size_t page = 0; page < page_offsets.size(); ++page)
+                    std::memcpy(storage + page_offsets[page], before[page].data(), 0x1000);
+                FloatingEnvironment::prepare();
+                reinterpret_cast<th20::NativeAnimationResetHooks*>(storage)
+                    ->reset_after_stage_draw_4750a0();
+                for (std::size_t page = 0; page < page_offsets.size(); ++page)
+                    std::memcpy(actual[page].data(), storage + page_offsets[page], 0x1000);
+                ++checks;
+                ++groups["animation_pool_stage_draw_reset"];
+                if (actual != expected) {
+                    ++failed;
+                    if (failures.size() < 30) {
+                        failures.push_back("animation_pool_stage_draw_reset test" +
+                                           std::to_string(test));
+                        std::cerr << failures.back() << '\n';
+                    }
+                }
+            }
+            VirtualFree(storage, 0, MEM_RELEASE);
+        }
+
         for (unsigned test = 0; test < 6; ++test) {
             const std::uint32_t flags = test < 6 ?
                 std::array<std::uint32_t, 6>{0u, 4u, 4u, 4u, 8u, 8u}[test] : random();
@@ -876,7 +923,7 @@ int wmain(int argc, wchar_t** argv) {
             comma = true;
             report << th20::json_string(label) << ':' << count;
         }
-        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases), Animation flag-clear leaf 0x472A10 (128 cases), and StageResourceObjectRecord viewport culling boss 0x473B20 (1024 cases with two independently implemented D3DX import test seams); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
+        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases), Animation flag-clear leaf 0x472A10 (128 cases), and StageResourceObjectRecord viewport culling boss 0x473B20 (1024 cases with two independently implemented D3DX import test seams); AnimationPool stage-draw reset boss 0x4750A0 (128 sparse-memory cases across three committed pages); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
         for (unsigned index = 0; index < failures.size(); ++index) {
             if (index) report << ',';
             report << th20::json_string(failures[index]);
