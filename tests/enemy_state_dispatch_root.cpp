@@ -177,6 +177,9 @@ std::int32_t dispatch_read_trace_count = 0;
 bool dispatch_read_trace_enabled = false;
 std::int32_t dispatch_float_throw_at = 0;
 void (*dispatch_float_read_hook)(std::int32_t) = nullptr;
+EnemyQueuedRecord* dispatch_opcode619_record = nullptr;
+ShotMetadata* dispatch_opcode619_original_metadata = nullptr;
+bool dispatch_opcode619_cow_visible_before_float = false;
 Context* dispatch_operand_original_context = nullptr;
 Context* dispatch_operand_alternate_context = nullptr;
 EnemyState* dispatch_operand_state = nullptr;
@@ -214,6 +217,15 @@ void throw_during_mesh_float_read(std::int32_t) {
     throw 554;
 }
 void observe_float_read(std::int32_t) {}
+void observe_opcode619_cow_before_float(std::int32_t index) {
+    assert(index == -102);
+    assert(dispatch_opcode619_record != nullptr);
+    assert(dispatch_opcode619_original_metadata != nullptr);
+    assert(dispatch_opcode619_record->owner.get() != dispatch_opcode619_original_metadata);
+    assert(dispatch_opcode619_record->owner.use_count() == 1);
+    assert(dispatch_opcode619_record->owner->field_00 == dispatch_opcode619_original_metadata->field_00);
+    dispatch_opcode619_cow_visible_before_float = true;
+}
 void throw_during_float_read(std::int32_t) {
     if (dispatch_float_read_calls == dispatch_float_throw_at) throw 554;
 }
@@ -566,7 +578,6 @@ bool execute_enemy_phase_opcode(EnemyState&, const EclInstruction&, std::int32_t
 bool execute_enemy_card_start_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_script_pointer_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_shot_fire_opcode(EnemyState&, std::int32_t) { return false; }
-bool execute_enemy_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }
 int execute_enemy_animation_secondary_opcode(EnemyState&) { return 0; }
 int execute_enemy_animation_state_opcode(EnemyState&) { return 0; }
 int execute_enemy_animation_effect_flag2_opcode(EnemyState&) { return 0; }
@@ -1495,6 +1506,123 @@ int main() {
     assert(enemy.state.queued.empty());
     assert(metadata_owner_618.use_count() == 1);
     metadata_owner_618.reset();
+
+    // Native opcode 619 writes ShotMetadata::field_00 (the radial offset
+    // consumed by BulletEmitter/Laser creation). Its original order is
+    // selector read, writable-shot COW, pair get<0>, pair get<1>, then the
+    // single float read and metadata write. Use queue index one to exercise
+    // the real forward-list selector as well as shared-owner cloning.
+    enemy.state.queued.clear();
+    auto& queued_record_619 = enemy.state.queued.emplace_front();
+    enemy.state.queued.emplace_front(); // queued_record_619 is now index 1
+    auto metadata_owner_619 = std::make_shared<ShotMetadata>();
+    metadata_owner_619->field_00 = 1.25f;
+    metadata_owner_619->field_14 = 2.5f;
+    metadata_owner_619->field_24 = 0x12345678u;
+    queued_record_619.owner = metadata_owner_619;
+    queued_record_619.vector_34 = {11.0f,22.0f,33.0f};
+    queued_record_619.vector_40 = {44.0f,55.0f,66.0f};
+    auto* const original_metadata_619 = metadata_owner_619.get();
+    assert(metadata_owner_619.use_count() == 2);
+    dispatch_opcode619_record = &queued_record_619;
+    dispatch_opcode619_original_metadata = original_metadata_619;
+    dispatch_opcode619_cow_visible_before_float = false;
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_indices = {};
+    dispatch_integer_read_scripted_values = {};
+    dispatch_integer_read_scripted_values[0] = 1;
+    dispatch_integer_read_scripted = true;
+    dispatch_integer_throw_at = 0;
+    dispatch_integer_read_hook = &observe_integer_read;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {3.25f};
+    dispatch_float_throw_at = 0;
+    dispatch_float_read_hook = &observe_opcode619_cow_before_float;
+    dispatch_read_trace_count = 0;
+    dispatch_read_kinds = {};
+    dispatch_read_indices = {};
+    dispatch_read_trace_enabled = true;
+    set_packet(619, {static_cast<std::uint32_t>(-101),bits(-102.0f),0,0,0,0,0,0}, 3);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_read_trace_enabled = false;
+    dispatch_integer_read_hook = nullptr;
+    dispatch_integer_read_scripted = false;
+    dispatch_float_read_hook = nullptr;
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_indices[0] == -101);
+    assert(dispatch_float_read_calls == 1 && dispatch_float_read_indices[0] == -102);
+    assert(dispatch_read_trace_count == 2);
+    assert(dispatch_read_kinds[0] == 'i' && dispatch_read_indices[0] == -101);
+    assert(dispatch_read_kinds[1] == 'f' && dispatch_read_indices[1] == -102);
+    assert(dispatch_opcode619_cow_visible_before_float);
+    assert(queued_record_619.owner.get() != original_metadata_619);
+    assert(queued_record_619.owner.use_count() == 1);
+    assert(metadata_owner_619.get() == original_metadata_619 && metadata_owner_619.use_count() == 1);
+    assert(metadata_owner_619->field_00 == 1.25f);
+    assert(queued_record_619.owner->field_00 == 3.25f);
+    assert(queued_record_619.owner->field_14 == 2.5f);
+    assert(queued_record_619.owner->field_24 == 0x12345678u);
+    assert(queued_record_619.vector_34.x == 11.0f &&
+           queued_record_619.vector_34.y == 22.0f &&
+           queued_record_619.vector_34.z == 33.0f);
+    assert(queued_record_619.vector_40.x == 44.0f &&
+           queued_record_619.vector_40.y == 55.0f &&
+           queued_record_619.vector_40.z == 66.0f);
+    dispatch_opcode619_record = nullptr;
+    dispatch_opcode619_original_metadata = nullptr;
+    enemy.state.queued.clear();
+    metadata_owner_619.reset();
+
+    // A throwing float read happens after writable_shot has cloned shared
+    // metadata, but before field_00 is assigned. The clone itself is a
+    // native-visible side effect and must not be rolled back by the throw.
+    auto& queued_record_619_throw = enemy.state.queued.emplace_front();
+    enemy.state.queued.emplace_front();
+    auto metadata_owner_619_throw = std::make_shared<ShotMetadata>();
+    metadata_owner_619_throw->field_00 = 7.5f;
+    metadata_owner_619_throw->field_14 = 9.5f;
+    queued_record_619_throw.owner = metadata_owner_619_throw;
+    auto* const original_metadata_619_throw = metadata_owner_619_throw.get();
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_indices = {};
+    dispatch_integer_read_scripted_values = {};
+    dispatch_integer_read_scripted_values[0] = 1;
+    dispatch_integer_read_scripted = true;
+    dispatch_integer_throw_at = 0;
+    dispatch_integer_read_hook = &observe_integer_read;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_values = {12.5f};
+    dispatch_float_throw_at = 1;
+    dispatch_float_read_hook = &throw_during_float_read;
+    dispatch_read_trace_count = 0;
+    dispatch_read_kinds = {};
+    dispatch_read_indices = {};
+    dispatch_read_trace_enabled = true;
+    set_packet(619, {static_cast<std::uint32_t>(-101),bits(-102.0f),0,0,0,0,0,0}, 3);
+    bool queued_metadata_float_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { queued_metadata_float_threw = value == 554; }
+    dispatch_read_trace_enabled = false;
+    dispatch_integer_read_hook = nullptr;
+    dispatch_integer_read_scripted = false;
+    dispatch_float_read_hook = nullptr;
+    dispatch_float_throw_at = 0;
+    assert(queued_metadata_float_threw);
+    assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_indices[0] == -101);
+    assert(dispatch_float_read_calls == 1 && dispatch_float_read_indices[0] == -102);
+    assert(dispatch_read_trace_count == 2);
+    assert(dispatch_read_kinds[0] == 'i' && dispatch_read_indices[0] == -101);
+    assert(dispatch_read_kinds[1] == 'f' && dispatch_read_indices[1] == -102);
+    assert(queued_record_619_throw.owner.get() != original_metadata_619_throw);
+    assert(queued_record_619_throw.owner.use_count() == 1);
+    assert(metadata_owner_619_throw.get() == original_metadata_619_throw);
+    assert(metadata_owner_619_throw.use_count() == 1);
+    assert(queued_record_619_throw.owner->field_00 == 7.5f);
+    assert(metadata_owner_619_throw->field_00 == 7.5f);
+    assert(queued_record_619_throw.owner->field_14 == 9.5f);
+    enemy.state.queued.clear();
+    metadata_owner_619_throw.reset();
 
     // Native opcode 617 computes atan2(player.y-target_y, player.x-target_x)
     // and writes float destination zero. It deliberately obtains Context's
@@ -2677,5 +2805,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }
