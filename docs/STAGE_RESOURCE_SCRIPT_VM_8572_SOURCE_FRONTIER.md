@@ -41,7 +41,7 @@ Run the focused original-CPU comparison with:
 scripts/repo-python scripts/run-stage-resource-vm-cpu.py
 ```
 
-The current result is **45,510 checks, 0 failures**, comparing the complete `0x3310`-byte ScriptState, two external primitive Animation records, the shared ViewIndex owner and clear-color/rotation globals against the locked original PE. The test now constructs the actual `StageResourceOwner` and passes its real `script_state` subobject to the original `0x004751B0` routine; the owner pointer and nested animation array are no longer detached test allocations.
+The current result is **45,766 checks, 0 failures**, comparing the complete `0x3310`-byte ScriptState, two external primitive Animation records, the shared ViewIndex owner and clear-color/rotation globals against the locked original PE. The test now constructs the actual `StageResourceOwner` and passes its real `script_state` subobject to the original `0x004751B0` routine; the owner pointer and nested animation array are no longer detached test allocations.
 
 The same focused runner now also compares the surrounding parent update, the two-slot mesh deformation boss and the separate object/primitive updater. Their source reconstruction, origin boundary, exact test coverage and deliberate RenderMesh-initialization suppression are documented in `docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md`.
 

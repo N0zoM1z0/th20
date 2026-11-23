@@ -2049,8 +2049,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004720D0,compiler,EnemyMeshLifetime,exclude,high,"CORE/EXACT-136: Actual typed destroy_at call, complete real mesh destructor and optional sized-delete36 branch establish an automatically generated compiler wrapper; the automatic Concurrency label is not source evidence. Whole native control flow and canonical relocation replay are independently verified. Five affected objects build once and all16 old affected units remain exact;158 objects are reused. See docs/ENEMY_MESH_LIFETIME_RECONSTRUCTION.md."
 0x00472100,authored,StageResource,authored,high,"CORE/RECON-1301; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original calls to 0x004739E0, 0x004751B0 and 0x004722E0; owner/camera/Graphics state flow"
 0x004722E0,authored,StageResource,authored,high,"CORE/RECON-1301; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original two-slot mesh-mode branches, 24px taper, angle progression, interior vertex writes and Timer dispatch"
-0x00472840,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00472A10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00472840,unknown,Math,review,unknown,CORE/RECON-1302; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; called before D3DXMatrixRotationY in Animation draw; matrix identity semantics established; generic utility origin unresolved
+0x00472A10,unknown,Animation,review,unknown,CORE/RECON-1302; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; clears only AnimationFlags::byte_02 bit zero at native +0x49A; accessor origin unresolved
 0x00472A30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00472D10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00473140,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
