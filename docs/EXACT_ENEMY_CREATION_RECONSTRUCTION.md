@@ -91,17 +91,25 @@ receipt set is one complete frozen-source batch, not a reused old-source result.
 All 40 public tests, tracking/progress and source checks pass locally. The exact
 pushed GitHub head is checked separately.
 
-## Preserved nonexact work
+## CORE/RECON-1263 — whole 653-byte opcode-spawn Boss strict exact
 
-The complete 00496FB0 opcode spawn entry is 653 bytes and now has a maintained
-natural C++ body in `src/EnemyStateSpawnOpcode.cpp`. The 41,967-byte dispatcher
-routes native case-0 opcodes 300/301/304/305/321 to this leaf. The body performs
-the EnemyController capacity guard, parses the padded script-name payload and
-per-operand defaults, applies relative/mirrored position rules, copies the
-EnemyCounters block and source Enemy identity, then calls the existing
-`EnemyController::create` path. Native case 6 covers 309/310/311/312 through
-the exact `EnemyController::selected(0)` leaf at `0x00485660`; only an empty
-slot branches to this same spawn leaf. That guard is now restored in the root.
+The complete `0x00496FB0` `EnemyState::spawn_from_opcode()` function now
+strictly replays all 653 bytes from natural C++, including all 19 original
+relocation destinations and all 577 ordinary bytes. The explicit identity
+float casts in `SPAWN_FLOAT` reproduce the original outgoing stack-slot
+reservation before both X/Y operand loads; they do not add instructions or
+change the value. The complete native body has 192 x86 instructions and 17
+ordered direct calls. See the [full native and canonical COFF proof](ENEMY_SPAWN_FROM_OPCODE_653_STRICT_EXACT.md).
+
+The 41,967-byte dispatcher routes native case-zero opcodes 300/301/304/305/321
+to this Boss. It performs the EnemyController capacity guard, parses the
+padded script-name payload and per-operand defaults, applies relative/mirrored
+position and spawn-flag rules, copies EnemyCounters and source Enemy identity,
+then calls the existing `EnemyController::create` path. Native case six covers
+309/310/311/312 through the exact `EnemyController::selected(0)` leaf; only an
+empty slot branches to this same spawn Boss. The whole dispatcher remains
+NONEXACT and receives no parent byte credit. Original source origin remains
+unknown, so no authored-origin byte credit is claimed for this exact function.
 
 ## CORE/RECON-1197 — exact opcode-303 animation creation
 

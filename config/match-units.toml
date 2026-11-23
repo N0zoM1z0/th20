@@ -32301,3 +32301,34 @@ relocations = [
   { offset = 0x104, type = "REL32", symbol = "?set_field_20ec@Player@th20@@QAEXM@Z", target = 0x00479080 },
   { offset = 0x11B, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1263: original whole Enemy opcode-spawn Boss; natural C++ strict exact.
+[units.enemy_state_spawn_from_opcode]
+source = "src/EnemyStateSpawnOpcode.cpp"
+object = "build/core213-canonical/EnemyStateSpawnOpcode.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyState::spawn_from_opcode"]
+symbol = "?spawn_from_opcode@EnemyState@th20@@QAEHXZ"
+target_address = 0x00496FB0
+size = 653
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x1F, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x26, type = "REL32", symbol = "?count@EnemyController@th20@@QBEHXZ", target = 0x00478080 },
+  { offset = 0x36, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x3D, type = "REL32", symbol = "?capacity@EnemyController@th20@@QBEHXZ", target = 0x0045BCF0 },
+  { offset = 0x53, type = "REL32", symbol = "?current_instruction@EclManager@th20@@QAEPAUEclInstruction@2@XZ", target = 0x00499310 },
+  { offset = 0x7C, type = "REL32", symbol = "??0EnemySpawn@th20@@QAE@XZ", target = 0x0047BB30 },
+  { offset = 0x98, type = "REL32", symbol = "?float_argument_value@EnemyState@th20@@QAEMHM@Z", target = 0x004AAFE0 },
+  { offset = 0xB7, type = "REL32", symbol = "?float_argument_value@EnemyState@th20@@QAEMHM@Z", target = 0x004AAFE0 },
+  { offset = 0x112, type = "REL32", symbol = "?position_x@Motion@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x132, type = "REL32", symbol = "?position_y@Motion@th20@@QBEMXZ", target = 0x00499390 },
+  { offset = 0x1A3, type = "DIR32", symbol = "__real@bf800000", target = 0x0056E0F4 },
+  { offset = 0x1C6, type = "REL32", symbol = "?integer_argument_value@EnemyState@th20@@QAEHHH@Z", target = 0x004AB0B0 },
+  { offset = 0x1DE, type = "REL32", symbol = "?integer_argument_value@EnemyState@th20@@QAEHHH@Z", target = 0x004AB0B0 },
+  { offset = 0x1F6, type = "REL32", symbol = "?integer_argument_value@EnemyState@th20@@QAEHHH@Z", target = 0x004AB0B0 },
+  { offset = 0x21E, type = "REL32", symbol = "?identifier_value@Enemy@th20@@QAE?AUIdentifier32@2@XZ", target = 0x00498F90 },
+  { offset = 0x231, type = "REL32", symbol = "?enemy_controller@Context@th20@@QAEPAUEnemyController@2@XZ", target = 0x00412730 },
+  { offset = 0x277, type = "REL32", symbol = "?create@EnemyController@th20@@QAEPAUEnemy@2@PBDABUEnemySpawn@2@PAU32@@Z", target = 0x004A8920 },
+  { offset = 0x285, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

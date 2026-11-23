@@ -1815,3 +1815,4 @@ th20::Bullet::set_timer_4d8,0x0049CAE0,function
 th20::EclManager::select,0x00540200,function
 th20::EnemyState::clear_bullets_in_animation_rectangle,0x00488B80,function
 th20::EnemyState::clear_all_bullets_for_enemy_clear,0x00488E80,function
+th20::EnemyState::spawn_from_opcode,0x00496FB0,function

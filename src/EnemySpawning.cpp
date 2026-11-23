@@ -1,8 +1,11 @@
 #include "EnemyController.hpp"
 #include "Context.hpp"
 #include "DiagnosticAllocator.hpp"
+#include "DiagnosticObjectFactories.hpp"
 
 namespace th20 {
+
+template Enemy* DiagnosticAllocator::allocate_object<Enemy>(const char*);
 
 std::int32_t EnemyController::count() const { return static_cast<std::int32_t>(field_124); }
 std::int32_t EnemyController::capacity() const { return static_cast<std::int32_t>(data.field_88); }

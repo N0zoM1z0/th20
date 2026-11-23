@@ -10,7 +10,9 @@ union EclOperand { std::int32_t integer; float real; };
 // the padded script-name byte count; the script name begins at operand one,
 // and default values follow the padded name payload.
 #define SPAWN_INTEGER(ins, index) (reinterpret_cast<std::int32_t*>((ins) + 1)[index])
-#define SPAWN_FLOAT(ins, index) (reinterpret_cast<EclOperand*>((ins) + 1)[index].real)
+// The identity cast preserves the native MSVC outgoing float-slot reservation
+// before the operand load at both float_argument_value call sites.
+#define SPAWN_FLOAT(ins, index) static_cast<float>(reinterpret_cast<EclOperand*>((ins) + 1)[index].real)
 
 int EnemyState::spawn_from_opcode() {
     if (context->enemy_controller()->count() >= context->enemy_controller()->capacity())
