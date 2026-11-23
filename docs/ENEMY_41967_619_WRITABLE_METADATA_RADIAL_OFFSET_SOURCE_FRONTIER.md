@@ -9,8 +9,7 @@ case fragment in the original 41,967-byte EnemyState::execute_opcode body at
 0x0048C010, not a standalone native function or independently replayable unit.
 The parent remains **NONEXACT** and receives no whole-parent byte credit.
 
-Checkpoint: 5d7856ece4c121348cdde8d184643a731425ee9f
-(gpt-web: restore Enemy opcode 619 metadata radial offset).
+Checkpoint subject: gpt-web: restore Enemy opcode 619 metadata radial offset.
 
 ## Locked native case
 

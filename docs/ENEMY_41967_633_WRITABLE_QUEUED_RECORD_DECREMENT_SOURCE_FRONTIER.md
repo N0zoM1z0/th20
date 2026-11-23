@@ -9,8 +9,7 @@ case fragment in the original 41,967-byte EnemyState::execute_opcode body at
 0x0048C010, not a standalone native function or independently replayable unit.
 The parent remains **NONEXACT** and receives no whole-parent byte credit.
 
-Checkpoint: 8714ad591dcbec8d8e698e72cef9e317e140737e
-(gpt-web: restore Enemy opcode 633 queued counter decrement).
+Checkpoint subject: gpt-web: restore Enemy opcode 633 queued counter decrement.
 
 ## Locked native case
 
