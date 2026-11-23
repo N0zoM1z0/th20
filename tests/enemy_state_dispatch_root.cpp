@@ -2042,6 +2042,187 @@ int main() {
     dispatch_test_lasers_alternate->active.remove(&laser_wrong_context.link);
     enemy.state.context = &context;
 
+    // Native opcodes 627/628 compose the real 401B capped Bullet radial
+    // cancellation Boss and the 288B Laser radial cancellation Boss. Both
+    // branches use the same radius, controller re-lookup and live-position
+    // sequence; the Bullet call has mode 0, maximum 0x1869f, effects 0.
+    auto run_limited_radial_cancel_case = [&](std::int32_t opcode) {
+        assert(dispatch_test_bullets->active.front() == nullptr);
+        assert(dispatch_test_bullets_alternate->active.front() == nullptr);
+        assert(dispatch_test_lasers->active.front() == nullptr);
+        assert(dispatch_test_lasers_alternate->active.front() == nullptr);
+        Bullet limited_first;
+        Bullet limited_second;
+        Bullet limited_old_center;
+        Bullet limited_field_excluded;
+        Bullet limited_state_excluded;
+        limited_first.state = 1;
+        limited_first.position = {10.0f,20.0f,0.0f};
+        limited_first.size.x = 2.0f;
+        limited_first.flags.fields.effect_mode = 3;
+        limited_second.state = 2;
+        limited_second.position = {30.0f,40.0f,0.0f};
+        limited_second.size.x = 2.0f;
+        limited_second.flags.fields.effect_mode = 2;
+        limited_old_center.state = 1;
+        limited_old_center.position = {10.0f,20.0f,0.0f};
+        limited_old_center.size.x = 2.0f;
+        limited_field_excluded.state = 1;
+        limited_field_excluded.position = {30.0f,40.0f,0.0f};
+        limited_field_excluded.size.x = 2.0f;
+        limited_field_excluded.field_18 = 1;
+        limited_state_excluded.state = 3;
+        limited_state_excluded.position = {30.0f,40.0f,0.0f};
+        limited_state_excluded.size.x = 2.0f;
+        dispatch_test_bullets_alternate->active.append(&limited_first.link);
+        dispatch_test_bullets_alternate->active.append(&limited_second.link);
+        dispatch_test_bullets_alternate->active.append(&limited_old_center.link);
+        dispatch_test_bullets_alternate->active.append(&limited_field_excluded.link);
+        dispatch_test_bullets_alternate->active.append(&limited_state_excluded.link);
+
+        DispatchTestLaser limited_laser_zero;
+        DispatchTestLaser limited_laser_one;
+        DispatchTestLaser limited_laser_two;
+        DispatchTestLaser limited_laser_wrong_context;
+        limited_laser_zero.state = 0;
+        limited_laser_zero.circle_result = 2;
+        limited_laser_one.state = 1;
+        limited_laser_one.circle_result = 100;
+        limited_laser_two.state = 2;
+        limited_laser_two.circle_result = 3;
+        limited_laser_wrong_context.state = 0;
+        limited_laser_wrong_context.circle_result = 50;
+        limited_laser_zero.link.initialize(&limited_laser_zero);
+        limited_laser_one.link.initialize(&limited_laser_one);
+        limited_laser_two.link.initialize(&limited_laser_two);
+        limited_laser_wrong_context.link.initialize(&limited_laser_wrong_context);
+        dispatch_test_lasers->active.append(&limited_laser_zero.link);
+        dispatch_test_lasers->active.append(&limited_laser_one.link);
+        dispatch_test_lasers->active.append(&limited_laser_two.link);
+        dispatch_test_lasers_alternate->active.append(&limited_laser_wrong_context.link);
+
+        dispatch_test_bullets->cancel_counter = 0;
+        dispatch_test_bullets_alternate->cancel_counter = 0;
+        bullet_cancel_calls = 0;
+        bullet_cancel_mode = -1;
+        dispatch_test_lasers->cancel_position = {-1.0f,-2.0f,-3.0f};
+        dispatch_test_lasers_alternate->cancel_position = {-4.0f,-5.0f,-6.0f};
+        context.primary_owner = dispatch_test_bullets;
+        alternate_context.primary_owner = dispatch_test_bullets_alternate;
+        context.object_14 = dispatch_test_lasers;
+        alternate_context.object_14 = dispatch_test_lasers_alternate;
+        enemy.state.context = &context;
+        enemy.state.motion_110.position = {10.0f,20.0f,0.0f};
+        dispatch_operand_original_context = &context;
+        dispatch_operand_alternate_context = &alternate_context;
+        dispatch_operand_state = &enemy.state;
+        dispatch_float_read_calls = 0;
+        dispatch_float_read_indices = {};
+        dispatch_float_read_values = {5.0f};
+        dispatch_float_throw_at = 0;
+        dispatch_float_read_hook = &retarget_context_player_during_first_float_read;
+        dispatch_bullet_cancel_hook = &retarget_to_original_and_move_enemy_during_bullet_cancel;
+        dispatch_read_trace_count = 0;
+        dispatch_read_kinds = {};
+        dispatch_read_indices = {};
+        dispatch_read_trace_enabled = true;
+        set_packet(opcode, {bits(-101.0f),0,0,0,0,0,0,0}, 1);
+        assert(enemy.state.execute_opcode() == 0);
+        dispatch_read_trace_enabled = false;
+        dispatch_float_read_hook = nullptr;
+        dispatch_bullet_cancel_hook = nullptr;
+        assert(dispatch_float_read_calls == 1 && dispatch_float_read_indices[0] == -101);
+        assert(dispatch_read_trace_count == 1);
+        assert(dispatch_read_kinds[0] == 'f' && dispatch_read_indices[0] == -101);
+        assert(enemy.state.context == &context);
+        assert(enemy.state.motion_110.position.x == 30.0f &&
+               enemy.state.motion_110.position.y == 40.0f &&
+               enemy.state.motion_110.position.z == 0.0f);
+        assert(dispatch_test_bullets->cancel_counter == 0);
+        assert(dispatch_test_bullets_alternate->cancel_counter == 2);
+        assert(bullet_cancel_calls == 2 && bullet_cancel_mode == 0);
+        assert(limited_first.state == 4 && limited_second.state == 4);
+        assert(limited_old_center.state == 1);
+        assert(limited_field_excluded.state == 1 && limited_field_excluded.field_18 == 1);
+        assert(limited_state_excluded.state == 3);
+        assert(limited_first.flags.fields.effect_mode == 0);
+        assert(limited_second.flags.fields.effect_mode == 0);
+        assert(dispatch_test_lasers->cancel_position.x == 30.0f &&
+               dispatch_test_lasers->cancel_position.y == 40.0f &&
+               dispatch_test_lasers->cancel_position.z == 0.0f);
+        assert(dispatch_test_lasers_alternate->cancel_position.x == -4.0f &&
+               dispatch_test_lasers_alternate->cancel_position.y == -5.0f &&
+               dispatch_test_lasers_alternate->cancel_position.z == -6.0f);
+        assert(limited_laser_zero.circle_calls == 1);
+        assert(limited_laser_one.circle_calls == 0);
+        assert(limited_laser_two.circle_calls == 1);
+        assert(limited_laser_wrong_context.circle_calls == 0);
+        assert(limited_laser_zero.circle_radius == 5.0f &&
+               limited_laser_two.circle_radius == 5.0f);
+        assert(limited_laser_zero.circle_mode == 0 &&
+               limited_laser_zero.circle_argument == 1);
+        assert(limited_laser_two.circle_mode == 0 &&
+               limited_laser_two.circle_argument == 1);
+
+        dispatch_test_bullets_alternate->active.remove(&limited_first.link);
+        dispatch_test_bullets_alternate->active.remove(&limited_second.link);
+        dispatch_test_bullets_alternate->active.remove(&limited_old_center.link);
+        dispatch_test_bullets_alternate->active.remove(&limited_field_excluded.link);
+        dispatch_test_bullets_alternate->active.remove(&limited_state_excluded.link);
+        dispatch_test_lasers->active.remove(&limited_laser_zero.link);
+        dispatch_test_lasers->active.remove(&limited_laser_one.link);
+        dispatch_test_lasers->active.remove(&limited_laser_two.link);
+        dispatch_test_lasers_alternate->active.remove(&limited_laser_wrong_context.link);
+        enemy.state.context = &context;
+    };
+    run_limited_radial_cancel_case(627);
+    run_limited_radial_cancel_case(628);
+
+    // Both capped-cancellation opcodes read the radius before looking up any
+    // Context owner. A throwing radius leaves both Bullet and Laser lists,
+    // controller counters and cancel positions untouched.
+    {
+        Bullet untouched_limited_bullet;
+        untouched_limited_bullet.state = 1;
+        untouched_limited_bullet.position = {10.0f,20.0f,0.0f};
+        untouched_limited_bullet.size.x = 2.0f;
+        DispatchTestLaser untouched_limited_laser;
+        untouched_limited_laser.state = 0;
+        untouched_limited_laser.link.initialize(&untouched_limited_laser);
+        dispatch_test_bullets->active.append(&untouched_limited_bullet.link);
+        dispatch_test_lasers->active.append(&untouched_limited_laser.link);
+        dispatch_test_bullets->cancel_counter = 0;
+        dispatch_test_lasers->cancel_position = {-1.0f,-2.0f,-3.0f};
+        bullet_cancel_calls = 0;
+        dispatch_float_read_calls = 0;
+        dispatch_float_read_indices = {};
+        dispatch_float_throw_at = 1;
+        dispatch_float_read_hook = &throw_during_float_read;
+        dispatch_read_trace_count = 0;
+        dispatch_read_kinds = {};
+        dispatch_read_indices = {};
+        dispatch_read_trace_enabled = true;
+        set_packet(628, {bits(-101.0f),0,0,0,0,0,0,0}, 1);
+        bool opcode628_radius_threw = false;
+        try { enemy.state.execute_opcode(); }
+        catch (int value) { opcode628_radius_threw = value == 554; }
+        dispatch_read_trace_enabled = false;
+        dispatch_float_read_hook = nullptr;
+        dispatch_float_throw_at = 0;
+        assert(opcode628_radius_threw);
+        assert(dispatch_float_read_calls == 1 && dispatch_float_read_indices[0] == -101);
+        assert(dispatch_read_trace_count == 1);
+        assert(dispatch_read_kinds[0] == 'f' && dispatch_read_indices[0] == -101);
+        assert(bullet_cancel_calls == 0 && dispatch_test_bullets->cancel_counter == 0);
+        assert(untouched_limited_bullet.state == 1);
+        assert(untouched_limited_laser.circle_calls == 0);
+        assert(dispatch_test_lasers->cancel_position.x == -1.0f &&
+               dispatch_test_lasers->cancel_position.y == -2.0f &&
+               dispatch_test_lasers->cancel_position.z == -3.0f);
+        dispatch_test_bullets->active.remove(&untouched_limited_bullet.link);
+        dispatch_test_lasers->active.remove(&untouched_limited_laser.link);
+    }
+
     // Native opcode 712 reads both dimensions before resolving animation
     // link zero, then obtains the live Context BulletController, rotation and
     // Enemy position before calling the complete 707B cancellation Boss.
@@ -3004,5 +3185,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }
