@@ -369,6 +369,26 @@ def main() -> None:
                                0x0040B280, 0x0048B160, 0x004AAFB0], opcode619_calls
     print('PASS original Enemy opcode 619: selector 137, 148B / 35 x86 / 7 ordered direct E8 calls')
 
+    # Opcode 633 decrements the queued record's +0x30 word through the
+    # writable pair selector. Its signed JGE is modeled as a high-bit test
+    # after explicitly wrapping the uint32 subtraction.
+    opcode633_index = selector[633 - 300]
+    assert opcode633_index == 151, opcode633_index
+    opcode633_start = struct.unpack_from('<I', pointer_table, opcode633_index * 4)[0]
+    opcode633_end = 0x00493831
+    assert opcode633_start == 0x0049378E, hex(opcode633_start)
+    opcode633_body = pe.get_data(opcode633_start - image_base, opcode633_end - opcode633_start)
+    assert len(opcode633_body) == 163
+    assert hashlib.sha256(opcode633_body).hexdigest() == '90eb5f86bcdf5af4629fcfbdf5f647f5befec2e77ba0794f048b91fd4b4ac536'
+    opcode633_instructions = list(decoder.disasm(opcode633_body, opcode633_start))
+    assert len(opcode633_instructions) == 41
+    assert opcode633_instructions[-1].address + opcode633_instructions[-1].size == opcode633_end
+    opcode633_calls = [int(insn.op_str, 16) for insn in opcode633_instructions
+                       if insn.mnemonic == 'call' and insn.op_str.startswith('0x')]
+    assert opcode633_calls == [0x004AB080, 0x00498B80, 0x0040B280,
+                               0x0048B180, 0x0040B280, 0x0048B160], opcode633_calls
+    print('PASS original Enemy opcode 633: selector 108, 163B / 41 x86 / 6 ordered direct E8 calls')
+
     root=(ROOT/'src/EnemyStateExecuteOpcode.cpp').read_text()
     script_control=(ROOT/'src/EnemyStateScriptControlOpcode.cpp').read_text()
     ecl_manager_select=(ROOT/'src/EclManagerSelect.cpp').read_text()
@@ -404,6 +424,14 @@ def main() -> None:
     assert [case619_source.index(token) for token in case619_order] == sorted(case619_source.index(token) for token in case619_order)
     assert '(void)record;' in case619_source
     assert 'metadata->field_00 = state.float_argument(1);' in case619_source
+    case633_source=queued_parameters_source[queued_parameters_source.index('case 633:'):queued_parameters_source.index('case 700:')]
+    case633_order=('integer_argument(0)','writable_shot','std::get<0>(std::move(selected))',
+                   'std::get<1>(std::move(selected))','record->field_30 -= 1u;',
+                   'record->field_30 & 0x80000000u')
+    assert [case633_source.index(token) for token in case633_order] == sorted(case633_source.index(token) for token in case633_order)
+    assert 'record->field_30 = 0;' in case633_source
+    assert 'std::bit_cast' not in case633_source
+    assert 'static_assert(offsetof(EnemyQueuedRecord, field_30) == 0x30);' in queued_parameters_source
     assert 'case 618:' in shared_queued_source
     assert 'state.float_argument(1)' in shared_queued_source
     assert 'state.float_argument(2)' in shared_queued_source
@@ -762,6 +790,18 @@ def main() -> None:
         assert expected in actual,(actual,expected)
     assert re.search(r'fstps\s+\(%ecx\)',queued_parameters_function)
     print('PASS natural C++ opcode-619 COFF: integer selector, writable-shot COW, ordered pair get<0>/get<1>, float operand and metadata offset-zero store')
+    expected_opcode633_calls=[
+        '?integer_argument@EnemyState@th20',
+        '?writable_shot@EnemyState@th20',
+        '??$get@$0A@PAUEnemyQueuedRecord',
+        '??$get@$00PAUEnemyQueuedRecord',
+    ]
+    assert len(queued_parameters_calls) >= 9,queued_parameters_calls
+    for actual,expected in zip(queued_parameters_calls[5:9],expected_opcode633_calls):
+        assert expected in actual,(actual,expected)
+    assert '??$bit_cast' not in queued_parameters_function
+    assert re.search(r'and\s+\$0x80000000',queued_parameters_function)
+    print('PASS natural C++ opcode-633 COFF: writable-shot COW, ordered pair extraction, uint32 wrap and signed high-bit clamp')
 
     mesh_source_audit=subprocess.run(
         [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-mesh-opcode-source.py')],
@@ -1103,7 +1143,7 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
     print(result.stdout,end='')
     print(f'PASS maintained root host executes {len(HOST_SOURCES)} focused source units under ASan/UBSan')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')

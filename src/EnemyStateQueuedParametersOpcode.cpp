@@ -4,6 +4,10 @@
 
 namespace th20 {
 
+#if defined(_M_IX86) || defined(__i386__)
+static_assert(offsetof(EnemyQueuedRecord, field_30) == 0x30);
+#endif
+
 bool execute_enemy_queued_parameters_opcode(EnemyState& state, std::int32_t opcode) {
     switch (opcode) {
     case 619: {
@@ -13,6 +17,18 @@ bool execute_enemy_queued_parameters_opcode(EnemyState& state, std::int32_t opco
         auto* metadata = std::get<1>(std::move(selected));
         (void)record;
         metadata->field_00 = state.float_argument(1);
+        return true;
+    }
+    case 633: {
+        const auto selector = state.integer_argument(0);
+        auto selected = state.writable_shot(static_cast<std::uint32_t>(selector));
+        auto* record = std::get<0>(std::move(selected));
+        auto* metadata = std::get<1>(std::move(selected));
+        (void)metadata;
+        record->field_30 -= 1u;
+        if ((record->field_30 & 0x80000000u) != 0) {
+            record->field_30 = 0;
+        }
         return true;
     }
     case 700: {
