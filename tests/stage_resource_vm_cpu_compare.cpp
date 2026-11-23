@@ -34,6 +34,11 @@ R cpu(std::uint32_t va, void* self, A... args) {
     using Function = R(__thiscall*)(void*, A...);
     return reinterpret_cast<Function>(mapped_image_base + va - 0x400000)(self, args...);
 }
+template<class R, class... A>
+R cpu_cdecl(std::uint32_t va, A... args) {
+    using Function = R(__cdecl*)(A...);
+    return reinterpret_cast<Function>(mapped_image_base + va - 0x400000)(args...);
+}
 
 [[noreturn]] void outside_scope() {
     throw std::runtime_error("A dependency outside the StageResource VM state oracle scope was reached");
@@ -584,6 +589,66 @@ int wmain(int argc, wchar_t** argv) {
             compare_object_update(test);
         }
 
+        auto compare_matrix_identity = [&](unsigned test) {
+            th20::Matrix4 matrix{};
+            for (unsigned row = 0; row < 4; ++row)
+                for (unsigned column = 0; column < 4; ++column)
+                    matrix.elements[row][column] = std::bit_cast<float>(bits());
+            std::array<std::uint8_t, sizeof(matrix)> before{}, expected{};
+            std::memcpy(before.data(), &matrix, before.size());
+
+            FloatingEnvironment::prepare();
+            auto* expected_return = cpu_cdecl<th20::Matrix4*>(0x00472840, &matrix);
+            std::memcpy(expected.data(), &matrix, expected.size());
+
+            std::memcpy(&matrix, before.data(), before.size());
+            FloatingEnvironment::prepare();
+            auto* source_return = th20::matrix_identity(&matrix);
+
+            ++checks;
+            ++groups["matrix_identity"];
+            if (expected_return != source_return ||
+                std::memcmp(&matrix, expected.data(), expected.size()) != 0) {
+                ++failed;
+                if (failures.size() < 30) {
+                    failures.push_back("matrix_identity test" + std::to_string(test));
+                    std::cerr << failures.back() << '\n';
+                }
+            }
+        };
+
+        auto compare_animation_flag_clear = [&](unsigned test) {
+            th20::Animation animation{};
+            auto* bytes = reinterpret_cast<std::uint8_t*>(&animation);
+            for (unsigned index = 0; index < sizeof(animation); ++index)
+                bytes[index] = static_cast<std::uint8_t>(random());
+            std::array<std::uint8_t, sizeof(animation)> before{}, expected{};
+            std::memcpy(before.data(), &animation, before.size());
+
+            FloatingEnvironment::prepare();
+            cpu<void>(0x00472a10, &animation);
+            std::memcpy(expected.data(), &animation, expected.size());
+
+            std::memcpy(&animation, before.data(), before.size());
+            FloatingEnvironment::prepare();
+            animation.clear_flag_02();
+
+            ++checks;
+            ++groups["animation_clear_flag_02"];
+            if (std::memcmp(&animation, expected.data(), expected.size()) != 0) {
+                ++failed;
+                if (failures.size() < 30) {
+                    failures.push_back("animation_clear_flag_02 test" + std::to_string(test));
+                    std::cerr << failures.back() << '\n';
+                }
+            }
+        };
+
+        for (unsigned test = 0; test < 128; ++test) {
+            compare_matrix_identity(test);
+            compare_animation_flag_clear(test);
+        }
+
         for (unsigned test = 0; test < 6; ++test) {
             const std::uint32_t flags = test < 6 ?
                 std::array<std::uint32_t, 6>{0u, 4u, 4u, 4u, 8u, 8u}[test] : random();
@@ -667,7 +732,7 @@ int wmain(int argc, wchar_t** argv) {
             comma = true;
             report << th20::json_string(label) << ':' << count;
         }
-        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
+        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases) and Animation flag-clear leaf 0x472A10 (128 cases); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
         for (unsigned index = 0; index < failures.size(); ++index) {
             if (index) report << ',';
             report << th20::json_string(failures[index]);

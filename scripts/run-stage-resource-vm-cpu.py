@@ -49,6 +49,8 @@ def main() -> int:
         ROOT / "src/StageResourceObjectUpdate.cpp",
         ROOT / "src/AnimationPoolUpdate.cpp",
         ROOT / "src/AnimationIsActive.cpp",
+        ROOT / "src/AnimationClearFlag02.cpp",
+        ROOT / "src/Matrix4Identity.cpp",
         ROOT / "src/StageResourceUpdate.cpp",
         ROOT / "src/AnimationParticleGridNormalize202.cpp",
         ROOT / "src/Interpolation.cpp",
@@ -111,6 +113,7 @@ def main() -> int:
     source_inputs = [path for path in sources if path != ROOT / "tests/stage_resource_vm_cpu_compare.cpp"] + [
         ROOT / "src/StageResource.hpp",
         ROOT / "src/Animation.hpp",
+        ROOT / "src/Matrix4.hpp",
         ROOT / "src/RenderMesh.hpp",
         ROOT / "src/Viewport.hpp",
         ROOT / "src/Graphics.hpp",

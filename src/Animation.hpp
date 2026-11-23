@@ -144,6 +144,7 @@ struct AnimationBase {
     float field_4b8, field_4bc;
     AnimationBase() noexcept;
 };
+static_assert(offsetof(AnimationBase, flags) + offsetof(AnimationFlags, byte_02) == 0x49a);
 class Animation {
 public:
     AnimationBase base;
@@ -205,6 +206,7 @@ public:
     void interrupt_offset_7(std::int32_t event);
     std::int32_t update();
     bool is_active() const;
+    void clear_flag_02();
     Vector3& position(Vector3& output);
     // Recursive raw world-position composition used by VM child spawning.
     Vector3& world_position_for_spawn(Vector3& output);

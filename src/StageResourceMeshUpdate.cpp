@@ -3,7 +3,6 @@
 #include "RenderMesh.hpp"
 #include "ScalarMath.hpp"
 
-#include <bit>
 #include <cstdint>
 
 namespace th20 {
