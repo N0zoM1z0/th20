@@ -1078,3 +1078,4 @@ address,name,module,confidence,evidence
 0x004C84B0,th20::LaserType2Parameters::LaserType2Parameters(const th20::LaserType2Parameters&),LaserParameters,high,"CORE/EXACT-1251; docs/LASER_TYPE2_PARAMETERS_COPY_EXACT.md; original 256-byte Type2 copy constructor and PMR vector relocation"
 0x00571B14,th20::sound_command_name_571b14,Sound,high,CORE/RECON-1207; native 0x4D9B50 passes the same six-byte "dummy" command-name literal to both SoundInf::enqueue calls
 0x00540200,th20::EclManager::select,EclManager,high,CORE/RECON-1215; docs/ENEMY_41967_800_801_SCRIPT_CONTROL_SOURCE_FRONTIER.md
+0x0056F00C,native_six_56f00c,Math,high,CORE/RECON-1259; native Enemy opcode 629 Bullet-circle radius is exactly 6.0f at this original .rdata address

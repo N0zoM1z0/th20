@@ -12,6 +12,8 @@ class HitCtrlInf;
 class BombController;
 class WeaponStoneInfo;
 class LaserController;
+struct ItemRewardPopupQueue;
+struct Player;
 // Twelve independent context slots. Unresolved pointer roles retain offsets.
 struct Context {
     BulletController* primary_owner;
@@ -32,6 +34,7 @@ struct Context {
     Player* player();
     EffectInfo* effect_info();
     WeaponStoneInfo* weapon_stone_info();
+    ItemRewardPopupQueue* item_reward_popup_queue();
     BulletController* bullet_controller();
     LaserController* laser_controller();
     void set_bullet_controller(BulletController* value);

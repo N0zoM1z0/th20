@@ -108,6 +108,9 @@ struct EnemyState {
     // Actual 4A8260 whole tick is retained as a private nonexact candidate.
     int tick();
     int advance_scripts();
+    // Native callback-table targets used by Enemy ECL opcode 629.
+    int clear_bullets_in_animation_rectangle();
+    int clear_all_bullets_for_enemy_clear();
     void combine_movements();
     bool flag_04_bit_30();
     int update_movements();

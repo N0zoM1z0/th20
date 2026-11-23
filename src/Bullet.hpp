@@ -80,6 +80,12 @@ struct Bullet {
     Context* context;
     std::int32_t type() const;
     std::int32_t color_index() const;
+    Vector3& position_ref();
+    Animation* animation_ref();
+    void set_timer_4d8(float value);
+    // Native callback leaves at 0x0049C760 and 0x0049C260.
+    void set_field_18_to_ten();
+    void clear_field_18();
     Bullet();
     ~Bullet();
     void select_context(std::int32_t index);

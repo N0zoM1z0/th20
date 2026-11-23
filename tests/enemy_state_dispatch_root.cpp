@@ -40,6 +40,9 @@
 #include "EnemyStateQueueCopyOpcode.hpp"
 #include "EnemyStateQueuedParametersOpcode.hpp"
 #include "EnemyStateScriptPointerOpcode.hpp"
+#include "EnemyStateScorePopupOpcode.hpp"
+#include "EnemyStateBulletClearOpcode.hpp"
+#include "ItemRewardPopupQueue.hpp"
 #include "EnemyStateSharedQueuedParametersOpcode.hpp"
 #include "EnemyStatePlayerAngleOpcode.hpp"
 #include "EnemyStateBulletLaserCancelOpcode.hpp"
@@ -118,7 +121,7 @@ extern const float native_448 = 448.0f;
 extern const float native_gameplay_width = 384.0f;
 extern const float native_zero_56e0e8 = 0.0f;
 extern const float native_speed_override_threshold = -990.0f;
-extern const float native_one_56c8cc = 1.0f;
+extern const float native_one = 1.0f;
 std::int32_t render_mesh_ctor_calls = 0;
 std::int32_t render_mesh_dtor_calls = 0;
 std::array<std::int32_t,4> render_mesh_ctor_arguments{};
@@ -187,6 +190,9 @@ EnemyController* dispatch_operand_alternate_enemy_controller = nullptr;
 BulletController* dispatch_operand_alternate_bullet_controller = nullptr;
 void retarget_enemy_controller_during_integer_read(std::int32_t) {
     dispatch_operand_original_context->enemies = dispatch_operand_alternate_enemy_controller;
+    dispatch_operand_state->context = dispatch_operand_alternate_context;
+}
+void retarget_context_during_integer_read(std::int32_t) {
     dispatch_operand_state->context = dispatch_operand_alternate_context;
 }
 void retarget_context_player_during_first_float_read(std::int32_t) {
@@ -1823,6 +1829,295 @@ int main() {
     enemy.state.queued.clear();
     metadata_owner_632_throw.reset();
 
+    // Native opcode 629 dispatches through the three-entry member callback
+    // table at 0x56FE8C: index 1 selects the animation-rectangle Bullet pass,
+    // index 2 selects the all-Bullet reset. The first callback uses the live
+    // Enemy position as the rotated rectangle center, the first Enemy
+    // Animation only for dimensions/rotation, and global Player zero for the
+    // independent player-overlap side effect.
+    {
+        assert(dispatch_test_bullets_alternate->active.front() == nullptr);
+        void* const original_state_context_player_629 = alternate_context.object_04;
+        void* const original_global_player_629 = session.contexts[0].object_04;
+        const Vector3 original_global_position_629 = dispatch_test_player->position;
+        const float original_global_scale_629 = dispatch_test_player->field_20ec;
+        Player state_context_player_629;
+        alternate_context.object_04 = &state_context_player_629;
+        session.contexts[0].object_04 = dispatch_test_player;
+        enemy.state.context = &alternate_context;
+        enemy.state.animations.clear();
+        enemy.state.animations.emplace_back();
+        enemy.state.animations[0].handle.value = dispatch_test_animation_handle;
+        dispatch_animation.base.vector_50 = {20.0f,8.0f};
+        dispatch_animation.base.vector_38.z = 1.57079632679f;
+        enemy.state.motion_110.position = {100.0f,100.0f,0.0f};
+        enemy.state.counters.field_10 = 4.25f;
+        state_context_player_629.position = {100.0f,112.0f,0.0f};
+        state_context_player_629.field_20ec = 2.25f;
+        dispatch_test_player->position = {116.0f,100.0f,0.0f};
+        dispatch_test_player->field_20ec = 1.25f;
+
+        Bullet clear_inside_629;
+        Bullet clear_outside_629;
+        Bullet clear_unfiltered_629;
+        Animation clear_inside_animation_629;
+        Animation clear_outside_animation_629;
+        Animation clear_unfiltered_animation_629;
+        clear_inside_629.state = 1;
+        clear_inside_629.field_18 = 0;
+        clear_inside_629.position = {100.0f,112.0f,0.0f};
+        clear_inside_629.animation = &clear_inside_animation_629;
+        clear_inside_629.timer_4d8 = 2.5f;
+        clear_inside_animation_629.set_packed_color(0x11223344u);
+        clear_outside_629.state = 2;
+        clear_outside_629.field_18 = 0;
+        clear_outside_629.position = {112.0f,100.0f,0.0f};
+        clear_outside_629.animation = &clear_outside_animation_629;
+        clear_outside_629.timer_4d8 = 3.5f;
+        clear_outside_animation_629.set_packed_color(0x22334455u);
+        clear_unfiltered_629.state = 3;
+        clear_unfiltered_629.field_18 = 1;
+        clear_unfiltered_629.position = {100.0f,112.0f,0.0f};
+        clear_unfiltered_629.animation = &clear_unfiltered_animation_629;
+        clear_unfiltered_629.timer_4d8 = 5.5f;
+        clear_unfiltered_animation_629.set_packed_color(0x33445566u);
+        dispatch_test_bullets_alternate->active.append(&clear_inside_629.link);
+        dispatch_test_bullets_alternate->active.append(&clear_outside_629.link);
+        dispatch_test_bullets_alternate->active.append(&clear_unfiltered_629.link);
+
+        animation_pool_resolve_calls = 0;
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_indices = {};
+        dispatch_integer_read_scripted_values = {};
+        dispatch_integer_read_scripted_values[0] = 1;
+        dispatch_integer_read_scripted = true;
+        dispatch_integer_throw_at = 0;
+        dispatch_integer_read_hook = &observe_integer_read;
+        dispatch_read_trace_count = 0;
+        dispatch_read_kinds = {};
+        dispatch_read_indices = {};
+        dispatch_read_trace_enabled = true;
+        set_packet(629, {static_cast<std::uint32_t>(-101),0,0,0,0,0,0,0}, 1);
+        assert(enemy.state.execute_opcode() == 0);
+        dispatch_read_trace_enabled = false;
+        dispatch_integer_read_hook = nullptr;
+        dispatch_integer_read_scripted = false;
+        assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_indices[0] == -101);
+        assert(dispatch_read_trace_count == 1);
+        assert(dispatch_read_kinds[0] == 'i' && dispatch_read_indices[0] == -101);
+        assert(animation_pool_resolve_calls == 1);
+        assert(animation_pool_resolve_last_handle == dispatch_test_animation_handle);
+        assert(enemy.state.animations[0].handle.value == dispatch_test_animation_handle);
+        assert(clear_inside_629.timer_4d8.current_fraction == 4.25f);
+        assert(clear_inside_629.field_18 == 10);
+        assert(clear_inside_animation_629.base.color_490 == 0xffa05000u);
+        assert(clear_unfiltered_629.timer_4d8.current_fraction == 4.25f);
+        assert(clear_unfiltered_629.field_18 == 10);
+        assert(clear_unfiltered_animation_629.base.color_490 == 0xffa05000u);
+        assert(clear_outside_629.timer_4d8.current_fraction == 3.5f);
+        assert(clear_outside_629.field_18 == 0);
+        assert(clear_outside_animation_629.base.color_490 == 0x22334455u);
+        assert(dispatch_test_player->field_20ec == 4.25f);
+        assert(state_context_player_629.field_20ec == 2.25f);
+
+        // The second geometry pass uses the live Enemy center and global
+        // Player position with the original 10-unit radius; an outside Player
+        // keeps its previous movement scale while Bullet handling still runs.
+        state_context_player_629.position = {116.0f,100.0f,0.0f};
+        state_context_player_629.field_20ec = 8.5f;
+        dispatch_test_player->position = {100.0f,112.0f,0.0f};
+        dispatch_test_player->field_20ec = 7.5f;
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_indices = {};
+        dispatch_integer_read_scripted_values = {};
+        dispatch_integer_read_scripted_values[0] = 1;
+        dispatch_integer_read_scripted = true;
+        dispatch_integer_read_hook = &observe_integer_read;
+        set_packet(629, {static_cast<std::uint32_t>(-101),0,0,0,0,0,0,0}, 1);
+        assert(enemy.state.execute_opcode() == 0);
+        dispatch_integer_read_hook = nullptr;
+        dispatch_integer_read_scripted = false;
+        assert(dispatch_integer_read_calls == 1);
+        assert(dispatch_test_player->field_20ec == 7.5f);
+        assert(state_context_player_629.field_20ec == 8.5f);
+
+        dispatch_test_bullets_alternate->active.remove(&clear_inside_629.link);
+        dispatch_test_bullets_alternate->active.remove(&clear_outside_629.link);
+        dispatch_test_bullets_alternate->active.remove(&clear_unfiltered_629.link);
+
+        // Callback index 2 resets every active Bullet regardless of its
+        // position/state/field_18 and resets Player zero's movement scale.
+        Bullet clear_all_first_629;
+        Bullet clear_all_second_629;
+        Animation clear_all_first_animation_629;
+        Animation clear_all_second_animation_629;
+        clear_all_first_629.state = 3;
+        clear_all_first_629.field_18 = 10;
+        clear_all_first_629.position = {-400.0f,900.0f,0.0f};
+        clear_all_first_629.animation = &clear_all_first_animation_629;
+        clear_all_first_629.timer_4d8 = 8.5f;
+        clear_all_first_animation_629.set_packed_color(0x44556677u);
+        clear_all_second_629.state = 0;
+        clear_all_second_629.field_18 = 7;
+        clear_all_second_629.position = {700.0f,-800.0f,0.0f};
+        clear_all_second_629.animation = &clear_all_second_animation_629;
+        clear_all_second_629.timer_4d8 = 9.5f;
+        clear_all_second_animation_629.set_packed_color(0x55667788u);
+        dispatch_test_bullets_alternate->active.append(&clear_all_first_629.link);
+        dispatch_test_bullets_alternate->active.append(&clear_all_second_629.link);
+        dispatch_test_player->field_20ec = 2.5f;
+        state_context_player_629.field_20ec = 9.5f;
+        animation_pool_resolve_calls = 0;
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_indices = {};
+        dispatch_integer_read_scripted_values = {};
+        dispatch_integer_read_scripted_values[0] = 2;
+        dispatch_integer_read_scripted = true;
+        dispatch_integer_read_hook = &observe_integer_read;
+        set_packet(629, {static_cast<std::uint32_t>(-101),0,0,0,0,0,0,0}, 1);
+        assert(enemy.state.execute_opcode() == 0);
+        dispatch_integer_read_hook = nullptr;
+        dispatch_integer_read_scripted = false;
+        assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_indices[0] == -101);
+        assert(animation_pool_resolve_calls == 0);
+        assert(clear_all_first_629.timer_4d8.current_fraction == 1.0f);
+        assert(clear_all_first_629.field_18 == 0);
+        assert(clear_all_first_animation_629.base.color_490 == 0xffffffffu);
+        assert(clear_all_second_629.timer_4d8.current_fraction == 1.0f);
+        assert(clear_all_second_629.field_18 == 0);
+        assert(clear_all_second_animation_629.base.color_490 == 0xffffffffu);
+        assert(dispatch_test_player->field_20ec == 1.0f);
+        assert(state_context_player_629.field_20ec == 9.5f);
+        dispatch_test_bullets_alternate->active.remove(&clear_all_first_629.link);
+        dispatch_test_bullets_alternate->active.remove(&clear_all_second_629.link);
+
+        // Operand failure occurs before callback selection, animation resolve,
+        // active-list traversal, Bullet mutation or Player scale publication.
+        Bullet untouched_629;
+        Animation untouched_animation_629;
+        untouched_629.state = 1;
+        untouched_629.field_18 = 4;
+        untouched_629.position = {100.0f,112.0f,0.0f};
+        untouched_629.animation = &untouched_animation_629;
+        untouched_629.timer_4d8 = 6.5f;
+        untouched_animation_629.set_packed_color(0x66778899u);
+        dispatch_test_bullets_alternate->active.append(&untouched_629.link);
+        dispatch_test_player->field_20ec = 3.25f;
+        state_context_player_629.field_20ec = 6.75f;
+        animation_pool_resolve_calls = 0;
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_indices = {};
+        dispatch_integer_read_scripted = false;
+        dispatch_integer_throw_at = 0;
+        dispatch_integer_read_hook = &throw_during_integer_read;
+        dispatch_read_trace_count = 0;
+        dispatch_read_kinds = {};
+        dispatch_read_indices = {};
+        dispatch_read_trace_enabled = true;
+        set_packet(629, {static_cast<std::uint32_t>(-101),0,0,0,0,0,0,0}, 1);
+        bool opcode629_integer_threw = false;
+        try { enemy.state.execute_opcode(); }
+        catch (int value) { opcode629_integer_threw = value == 553; }
+        dispatch_read_trace_enabled = false;
+        dispatch_integer_read_hook = nullptr;
+        assert(opcode629_integer_threw);
+        assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_indices[0] == -101);
+        assert(dispatch_read_trace_count == 1);
+        assert(dispatch_read_kinds[0] == 'i' && dispatch_read_indices[0] == -101);
+        assert(animation_pool_resolve_calls == 0);
+        assert(untouched_629.timer_4d8.current_fraction == 6.5f);
+        assert(untouched_629.field_18 == 4);
+        assert(untouched_animation_629.base.color_490 == 0x66778899u);
+        assert(dispatch_test_player->field_20ec == 3.25f);
+        assert(state_context_player_629.field_20ec == 6.75f);
+        dispatch_test_bullets_alternate->active.remove(&untouched_629.link);
+
+        enemy.state.context = &context;
+        alternate_context.object_04 = original_state_context_player_629;
+        session.contexts[0].object_04 = original_global_player_629;
+        dispatch_test_player->position = original_global_position_629;
+        dispatch_test_player->field_20ec = original_global_scale_629;
+    }
+
+    // Native opcode 630 first awards the integer amount to the real process
+    // Session, then re-reads Context +0x1C as the reward-number queue, reads
+    // the live Enemy position and enqueues the negative-marker glyph (-1)
+    // with the original integer value as color.
+    {
+        ItemRewardPopupQueue original_score_queue{};
+        ItemRewardPopupQueue retargeted_score_queue{};
+        original_score_queue.current = 0;
+        retargeted_score_queue.current = 0;
+        context.object_1c = &original_score_queue;
+        alternate_context.object_1c = &retargeted_score_queue;
+        enemy.state.context = &context;
+        enemy.state.motion_110.position = {13.0f,24.0f,35.0f};
+        session.table.players[0].score = 1000;
+        const auto score_before_630 = session.table.players[0].score;
+        dispatch_operand_state = &enemy.state;
+        dispatch_operand_alternate_context = &alternate_context;
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_indices = {};
+        dispatch_integer_read_scripted_values = {};
+        dispatch_integer_read_scripted_values[0] = 120;
+        dispatch_integer_read_scripted = true;
+        dispatch_integer_throw_at = 0;
+        dispatch_integer_read_hook = &retarget_context_during_integer_read;
+        dispatch_read_trace_count = 0;
+        dispatch_read_kinds = {};
+        dispatch_read_indices = {};
+        dispatch_read_trace_enabled = true;
+        set_packet(630, {static_cast<std::uint32_t>(-101),0,0,0,0,0,0,0}, 1);
+        assert(enemy.state.execute_opcode() == 0);
+        dispatch_read_trace_enabled = false;
+        dispatch_integer_read_hook = nullptr;
+        dispatch_integer_read_scripted = false;
+        assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_indices[0] == -101);
+        assert(dispatch_read_trace_count == 1);
+        assert(dispatch_read_kinds[0] == 'i' && dispatch_read_indices[0] == -101);
+        assert(session.table.players[0].score == score_before_630 + 12);
+        assert(original_score_queue.current == 0);
+        assert(original_score_queue.entries[0].active == 0);
+        assert(retargeted_score_queue.current == 1);
+        const auto& score_popup_630 = retargeted_score_queue.entries[0];
+        assert(score_popup_630.active == 1 && score_popup_630.digit_count == 1);
+        assert(score_popup_630.digits[0] == 10);
+        assert(score_popup_630.color == 120);
+        assert(score_popup_630.clock_value == 1.0f);
+        assert(score_popup_630.position.x == 13.0f &&
+               score_popup_630.position.y == 24.0f &&
+               score_popup_630.position.z == 35.0f);
+
+        // A throwing integer operand precedes Session::add_score and the
+        // Context queue lookup, so neither score nor popup state may change.
+        enemy.state.context = &context;
+        const auto score_before_630_throw = session.table.players[0].score;
+        dispatch_integer_read_calls = 0;
+        dispatch_integer_read_indices = {};
+        dispatch_integer_read_scripted = false;
+        dispatch_integer_throw_at = 0;
+        dispatch_integer_read_hook = &throw_during_integer_read;
+        dispatch_read_trace_count = 0;
+        dispatch_read_kinds = {};
+        dispatch_read_indices = {};
+        dispatch_read_trace_enabled = true;
+        set_packet(630, {static_cast<std::uint32_t>(-101),0,0,0,0,0,0,0}, 1);
+        bool opcode630_integer_threw = false;
+        try { enemy.state.execute_opcode(); }
+        catch (int value) { opcode630_integer_threw = value == 553; }
+        dispatch_read_trace_enabled = false;
+        dispatch_integer_read_hook = nullptr;
+        assert(opcode630_integer_threw);
+        assert(dispatch_integer_read_calls == 1 && dispatch_integer_read_indices[0] == -101);
+        assert(dispatch_read_trace_count == 1);
+        assert(dispatch_read_kinds[0] == 'i' && dispatch_read_indices[0] == -101);
+        assert(session.table.players[0].score == score_before_630_throw);
+        assert(original_score_queue.current == 0);
+        assert(original_score_queue.entries[0].active == 0);
+        assert(retargeted_score_queue.current == 1);
+        enemy.state.context = &context;
+    }
+
     // Native opcode 617 computes atan2(player.y-target_y, player.x-target_x)
     // and writes float destination zero. It deliberately obtains Context's
     // Player twice: the first position reference survives operand 1, while a
@@ -3185,5 +3480,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy callback-table Bullet clear 629 (215/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

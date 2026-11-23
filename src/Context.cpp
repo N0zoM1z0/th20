@@ -1,7 +1,10 @@
 #include "Context.hpp"
 #include "WeaponStoneInfo.hpp"
+#include "ItemRewardPopupQueue.hpp"
+#include "Player.hpp"
 namespace th20 {
 WeaponStoneInfo* Context::weapon_stone_info() {return static_cast<WeaponStoneInfo*>(overlay_owner);}
+ItemRewardPopupQueue* Context::item_reward_popup_queue() {return static_cast<ItemRewardPopupQueue*>(object_1c);}
 Player* Context::player() { return static_cast<Player*>(object_04); }
 Context::Context() noexcept
     : primary_owner(nullptr), object_04(nullptr), enemies(nullptr), object_0c(nullptr),

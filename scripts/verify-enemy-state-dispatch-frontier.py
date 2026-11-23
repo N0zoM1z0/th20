@@ -18,18 +18,19 @@ NATIVE_SHA256='e6874e1ee7d7def173d3c4af12934573812db26a5572987ec0fa6fafb24a73f0'
 HOST_SOURCES=[
     'tests/enemy_state_dispatch_root.cpp',
     'src/EnemyStateExecuteOpcode.cpp', 'src/EnemyStateAnimationFlagsClearOpcode.cpp', 'src/EnemyStateScreenOpcode.cpp', 'src/EnemyStateMovementOpcode.cpp',
-    'src/Player.cpp', 'src/PlayerStorage.cpp',
+    'src/Player.cpp', 'src/PlayerStorage.cpp', 'src/PlayerAccessors.cpp',
     'src/Rectangle.cpp',
     'src/PlayerDirection.cpp',
     'src/EnemyStatePatternOpcode.cpp', 'src/EnemyStateControlOpcode.cpp', 'src/EnemyStateDynamicParameterOpcode.cpp',
     'src/EnemyStateControllerManagementOpcode.cpp', 'src/EnemyStateTimeOpcode.cpp', 'src/EnemyStateCardOpcode.cpp', 'src/EnemyStateFrontendOpcode.cpp',
-    'src/EnemySpawning.cpp', 'src/Card.cpp', 'src/AnimationHandle.cpp', 'src/EclSelection.cpp', 'src/Session.cpp',
+    'src/EnemySpawning.cpp', 'src/Card.cpp', 'src/AnimationHandle.cpp', 'src/AnimationParameters.cpp', 'src/AnimationPackedColor.cpp', 'src/EclSelection.cpp', 'src/Session.cpp', 'src/SessionScore.cpp', 'src/ItemRewardPopupQueue.cpp',
     'src/EnemyControllerConstruction.cpp', 'src/EnemyInitialization.cpp', 'src/EnemyData.cpp',
     'src/EnemyState.cpp', 'src/EnemyMovement.cpp', 'src/Enemy.cpp', 'src/PlayerRecord.cpp',
+    'src/NativeFloatGlobals.cpp',
     'src/EnemyScript.cpp', 'src/EnemyScriptAdvance.cpp', 'src/EnemyVariables.cpp', 'src/EnemySpawn.cpp',
     'src/EnemyHealth.cpp', 'src/EnemyPattern.cpp', 'src/EnemyCounters.cpp',
     'src/EclRuntimeLifetime.cpp', 'src/EclArguments.cpp', 'src/EclLoaderBase.cpp',
-    'src/EclLoaderBuffer.cpp', 'src/EclCallSetup.cpp', 'src/Timer.cpp',
+    'src/EclLoaderBuffer.cpp', 'src/EclCallSetup.cpp', 'src/Timer.cpp', 'src/TimerFloat.cpp',
     'src/ClockScalar.cpp', 'src/Motion.cpp', 'src/MotionConfiguration.cpp',
     'src/MotionUpdates.cpp', 'src/MotionMath.cpp', 'src/Vector2.cpp',
     'src/Vector3.cpp', 'src/Angle.cpp', 'src/Interpolation.cpp',
@@ -42,7 +43,7 @@ HOST_SOURCES=[
     'src/EnemyStateDialogueOpcode.cpp',
     'src/EnemyStateShotCommandOpcode.cpp', 'src/EnemyQueuedSelection.cpp', 'src/ShotMetadata.cpp',
     'src/EnemyStateSharedQueuedParametersOpcode.cpp', 'src/EnemyStateQueuedParametersOpcode.cpp', 'src/EnemyStatePlayerAngleOpcode.cpp',
-    'src/EnemyStateBulletLaserCancelOpcode.cpp', 'src/BulletSpatialCancellation.cpp', 'src/BulletLimitedCancellation.cpp',
+    'src/EnemyStateBulletLaserCancelOpcode.cpp', 'src/EnemyStateBulletClearOpcode.cpp', 'src/BulletSpatialCancellation.cpp', 'src/BulletLimitedCancellation.cpp',
     'src/BulletDistance.cpp', 'src/LaserCancelNear.cpp', 'src/LaserBase.cpp', 'src/LaserCancelCircleDefault.cpp',
     'src/EnemyStateLaserOpcode.cpp', 'src/LaserParameters.cpp',
     'src/EnemyStateBulletCancelOpcode.cpp', 'src/BulletRectangleCancellation.cpp',
@@ -54,8 +55,8 @@ HOST_SOURCES=[
     'src/MeshResourceAccess.cpp',
     'src/EnemyStateAnimationSpawnOpcode.cpp', 'src/EnemyStateFogOpcode.cpp',
     'src/EnemyStateMembershipOpcode.cpp', 'src/EnemyStateControllerSetterOpcode.cpp',
-    'src/EnemyStateScriptControlOpcode.cpp', 'src/EnemyStateScriptPointerOpcode.cpp', 'src/EclManagerSelect.cpp', 'src/EnemyStateAccessor.cpp',
-    'src/Bullet.cpp', 'src/BulletController.cpp', 'src/BulletValues.cpp',
+    'src/EnemyStateScriptControlOpcode.cpp', 'src/EnemyStateScriptPointerOpcode.cpp', 'src/EnemyStateScorePopupOpcode.cpp', 'src/EclManagerSelect.cpp', 'src/EnemyStateAccessor.cpp',
+    'src/Bullet.cpp', 'src/BulletTimer4D8.cpp', 'src/BulletController.cpp', 'src/BulletValues.cpp',
     'src/BulletCancellation.cpp',
     'src/GeometryMetrics.cpp',
     'src/FogValue.cpp', 'src/EffectParameters.cpp',
@@ -423,7 +424,14 @@ def main() -> None:
     screen=(ROOT/'src/EnemyStateScreenOpcode.cpp').read_text()
     player_angle_source=(ROOT/'src/EnemyStatePlayerAngleOpcode.cpp').read_text()
     bullet_laser_cancel_source=(ROOT/'src/EnemyStateBulletLaserCancelOpcode.cpp').read_text()
+    bullet_clear_source=(ROOT/'src/EnemyStateBulletClearOpcode.cpp').read_text()
+    bullet_timer_source=(ROOT/'src/BulletTimer4D8.cpp').read_text()
+    native_float_globals_source=(ROOT/'src/NativeFloatGlobals.cpp').read_text()
+    popup_queue_source=(ROOT/'src/ItemRewardPopupQueue.cpp').read_text()
+    session_score_source=(ROOT/'src/SessionScore.cpp').read_text()
+    animation_packed_color_source=(ROOT/'src/AnimationPackedColor.cpp').read_text()
     assert 'execute_enemy_bullet_laser_cancel_opcode(*this, opcode)' in root
+    assert 'execute_enemy_bullet_clear_opcode(*this, opcode)' in root
     assert 'state.float_argument(0)' in bullet_laser_cancel_source
     assert 'state.context->bullet_controller()' in bullet_laser_cancel_source
     assert 'state.context->laser_controller()' in bullet_laser_cancel_source
@@ -446,6 +454,20 @@ def main() -> None:
     assert '(void)record;' in case619_source
     assert 'metadata->field_00 = state.float_argument(1);' in case619_source
     script_pointer_source=(ROOT/'src/EnemyStateScriptPointerOpcode.cpp').read_text()
+    score_popup_source=(ROOT/'src/EnemyStateScorePopupOpcode.cpp').read_text()
+    context_source=(ROOT/'src/Context.cpp').read_text()
+    assert 'session.add_score' in score_popup_source
+    assert 'item_reward_popup_queue()' in score_popup_source
+    assert 'queue->enqueue(&position, -1, static_cast<std::uint32_t>(amount))' in score_popup_source
+    assert 'entry->digits[count]=10;' in popup_queue_source
+    assert 'entry->position=*position;' in popup_queue_source
+    assert 'entry->clock_value=native_one_56c8cc;' in popup_queue_source
+    assert 'void PlayerRecord::add_score(std::uint64_t amount)' in session_score_source
+    assert 'void Session::add_score(std::uint32_t amount)' in session_score_source
+    assert 'record.add_score(amount);' in session_score_source
+    assert 'void Animation::set_packed_color(std::uint32_t color)' in animation_packed_color_source
+    assert 'Context::item_reward_popup_queue()' in context_source
+    assert 'static_cast<ItemRewardPopupQueue*>(object_1c)' in context_source
     assert script_pointer_source.index('integer_argument(0)') < script_pointer_source.index('integer_argument(1)') < script_pointer_source.index('writable_shot(') < script_pointer_source.index('metadata.commands.size()') < script_pointer_source.index('metadata.commands.resize(required_size)') < script_pointer_source.index('metadata.commands[index].script')
     assert 'reinterpret_cast<const char*>(&instruction) + 0x1c' in script_pointer_source
     assert 'std::string' not in script_pointer_source
@@ -538,7 +560,10 @@ def main() -> None:
     assert 'bool execute_enemy_shot_command_opcode(EnemyState&' not in root_test_source
     assert 'bool execute_enemy_shared_queued_parameters_opcode(EnemyState&' not in root_test_source
     assert 'bool execute_enemy_script_pointer_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }' not in root_test_source
+    assert 'bool execute_enemy_score_popup_opcode(EnemyState&, std::int32_t) { return false; }' not in root_test_source
+    assert 'bool execute_enemy_bullet_clear_opcode(EnemyState&, std::int32_t) { return false; }' not in root_test_source
     assert 'src/EnemyStateScriptPointerOpcode.cpp' in HOST_SOURCES
+    assert 'src/EnemyStateBulletClearOpcode.cpp' in HOST_SOURCES
     assert 'bool execute_enemy_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }' not in root_test_source
     assert 'src/EnemyStateQueuedParametersOpcode.cpp' in HOST_SOURCES
     assert 'std::numeric_limits<float>::quiet_NaN()' in root_test_source
@@ -625,7 +650,7 @@ def main() -> None:
     dynamic_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',dynamic)]
     assert {529,530,570,571}.issubset(set(dynamic_labels)),dynamic_labels
     bullet_limited_cancel_source=(ROOT/'src/BulletLimitedCancellation.cpp').read_text()
-    for source in (root,movement,pattern,control,dynamic,management,time_source,card_source,frontend_source,flags_clear,screen,queued_parameters_source,script_pointer_source,bullet_laser_cancel_source,bullet_limited_cancel_source):
+    for source in (root,movement,pattern,control,dynamic,management,time_source,card_source,frontend_source,flags_clear,screen,queued_parameters_source,script_pointer_source,score_popup_source,context_source,popup_queue_source,session_score_source,animation_packed_color_source,bullet_clear_source,bullet_timer_source,native_float_globals_source,bullet_laser_cancel_source,bullet_limited_cancel_source):
         for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
             assert forbidden not in source
 
@@ -646,6 +671,9 @@ def main() -> None:
         ('src/EnemyStateControllerSetterOpcode.cpp','build/core213-canonical/EnemyStateControllerSetterOpcode.obj'),
         ('src/EnemyStateScriptControlOpcode.cpp','build/core220-canonical/EnemyStateScriptControlOpcode.obj'),
         ('src/EnemyStateScriptPointerOpcode.cpp','build/gpt-web-enemy-632-canonical/EnemyStateScriptPointerOpcode.obj'),
+        ('src/EnemyStateBulletClearOpcode.cpp','build/gpt-web-enemy-629-canonical/EnemyStateBulletClearOpcode.obj'),
+        ('src/EnemyStateScorePopupOpcode.cpp','build/gpt-web-enemy-630-canonical/EnemyStateScorePopupOpcode.obj'),
+        ('src/ItemRewardPopupQueue.cpp','build/gpt-web-enemy-630-canonical/ItemRewardPopupQueue.obj'),
         ('src/EnemyStateShotCommandOpcode.cpp','build/core222-canonical/EnemyStateShotCommandOpcode.obj'),
         ('src/EnemyStateLaserOpcode.cpp','build/core223-canonical/EnemyStateLaserOpcode.obj'),
         ('src/EnemyStateMeshOpcode.cpp','build/core224-canonical/EnemyStateMeshOpcode.obj'),
@@ -655,6 +683,7 @@ def main() -> None:
         ('src/EnemyStateQueuedParametersOpcode.cpp','build/gpt-web-enemy-619-canonical/EnemyStateQueuedParametersOpcode.obj'),
         ('src/Player.cpp','build/core208-canonical/Player.obj'),
         ('src/PlayerStorage.cpp','build/core208-canonical/PlayerStorage.obj'),
+        ('src/PlayerAccessors.cpp','build/gpt-web-enemy-629-canonical/PlayerAccessors.obj'),
         ('src/EnemyStatePlayerAngleOpcode.cpp','build/gpt-web-enemy-617-canonical/EnemyStatePlayerAngleOpcode.obj'),
         ('src/EnemyStateBulletLaserCancelOpcode.cpp','build/gpt-web-enemy-627-628-canonical/EnemyStateBulletLaserCancelOpcode.obj'),
         ('src/BulletLimitedCancellation.cpp','build/gpt-web-enemy-627-628-canonical/BulletLimitedCancellation.obj'),
@@ -666,12 +695,18 @@ def main() -> None:
         ('src/PlayerDirection.cpp','build/core208-canonical/PlayerDirection.obj'),
         ('src/EclManagerSelect.cpp','build/core219-canonical/EclManagerSelect.obj'),
         ('src/EnemyStateAccessor.cpp','build/core221-canonical/EnemyStateAccessor.obj'),
-        ('src/Bullet.cpp','build/core174-canonical/Bullet.obj'),
+        ('src/Bullet.cpp','build/gpt-web-enemy-629-canonical/Bullet.obj'),
+        ('src/BulletTimer4D8.cpp','build/gpt-web-enemy-629-canonical/BulletTimer4D8.obj'),
         ('src/BulletController.cpp','build/core203-canonical/BulletController.obj'),
         ('src/BulletValues.cpp','build/core141-canonical/BulletValues.obj'),
         ('src/BulletCancellation.cpp','build/core226-canonical/BulletCancellation.obj'),
         ('src/EnemyData.cpp','build/core178-canonical/EnemyData.obj'),
         ('src/Context.cpp','build/core163-canonical/Context.obj'),
+        ('src/AnimationParameters.cpp','build/gpt-web-enemy-629-canonical/AnimationParameters.obj'),
+        ('src/AnimationPackedColor.cpp','build/gpt-web-enemy-629-canonical/AnimationPackedColor.obj'),
+        ('src/NativeFloatGlobals.cpp','build/gpt-web-enemy-629-canonical/NativeFloatGlobals.obj'),
+        ('src/SessionScore.cpp','build/gpt-web-enemy-630-canonical/SessionScore.obj'),
+        ('src/TimerFloat.cpp','build/gpt-web-enemy-629-canonical/TimerFloat.obj'),
         ('src/DamageQueryProtocol.cpp','build/core209-canonical/DamageQueryProtocol.obj'),
         ('src/Rectangle.cpp','build/core163-canonical/Rectangle.obj'),
         ('src/FrontInfDialogueCommand626.cpp','build/gpt-web-dialogue-canonical/FrontInfDialogueCommand626.obj'),
@@ -836,6 +871,128 @@ def main() -> None:
     assert '??$bit_cast' not in queued_parameters_function
     assert re.search(r'and\s+\$0x80000000',queued_parameters_function)
     print('PASS natural C++ opcode-633 COFF: writable-shot COW, ordered pair extraction, uint32 wrap and signed high-bit clamp')
+
+    score_popup_audit=subprocess.run(
+        [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-score-popup-opcode-source.py')],
+        cwd=ROOT,check=True,text=True,capture_output=True)
+    assert 'PASS original Enemy opcode 630: selector 148, 109B / 24 x86 / 5 ordered direct E8 calls' in score_popup_audit.stdout
+    print(score_popup_audit.stdout,end='')
+
+    bullet_clear_audit=subprocess.run(
+        [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-bullet-clear-opcode-source.py')],
+        cwd=ROOT,check=True,text=True,capture_output=True)
+    assert 'PASS original Enemy opcode 629: selector 147, 46B / 10 x86 / one direct E8 plus indirect callback' in bullet_clear_audit.stdout
+    assert 'PASS native EnemyState callback 0x00488B80: 768B / 215 x86 / 34 ordered direct calls' in bullet_clear_audit.stdout
+    assert 'PASS native EnemyState callback 0x00488E80: 291B / 86 x86 / 17 ordered direct calls' in bullet_clear_audit.stdout
+    print(bullet_clear_audit.stdout,end='')
+
+    bullet_clear_object=ROOT/'build/gpt-web-enemy-629-canonical/EnemyStateBulletClearOpcode.obj'
+    bullet_clear_dump=subprocess.run(
+        ['objdump','-dr',str(bullet_clear_object)],cwd=ROOT,check=True,text=True,capture_output=True).stdout
+    bullet_clear_first_marker='<?clear_bullets_in_animation_rectangle@EnemyState@th20@@QAEHXZ>:'
+    bullet_clear_second_marker='<?clear_all_bullets_for_enemy_clear@EnemyState@th20@@QAEHXZ>:'
+    bullet_clear_dispatch_marker='<?execute_enemy_bullet_clear_opcode@th20@@YA_NAAUEnemyState@1@H@Z>:'
+    for marker in (bullet_clear_first_marker,bullet_clear_second_marker,bullet_clear_dispatch_marker):
+        assert marker in bullet_clear_dump
+    bullet_clear_first=bullet_clear_dump.split(bullet_clear_first_marker,1)[1].split('Disassembly of section',1)[0]
+    bullet_clear_first_calls=re.findall(r'DISP32\s+([^\r\n]+)',bullet_clear_first)
+    expected_bullet_clear_first_calls=[
+        '??A?$vector@UEnemyAnimationLink',
+        '?resolve@AnimationHandle@th20',
+        '?scale_x_value@Animation@th20',
+        '?scale_y_value@Animation@th20',
+        '?rotation_z_value@Animation@th20',
+        '?bullet_controller@Context@th20',
+        '?active_list@BulletController@th20',
+        '?__autoclassinit2@?$IntrusiveIterator@UBullet',
+        '?begin@?$IntrusiveList@UBullet',
+        '?end@?$IntrusiveList@UBullet',
+        '?advance@?$IntrusiveIterator@UBullet',
+        '?differs@?$IntrusiveIterator@UBullet',
+        '?get@?$IntrusiveIterator@UBullet',
+        '?node_value@?$IntrusiveLink@UBullet',
+        '?position_ref@Bullet@th20',
+        '?position_ref@Bullet@th20',
+        '?position_ref@EnemyState@th20',
+        '?position_ref@EnemyState@th20',
+        '?rectangle_circle@geometry@th20',
+        '?set_timer_4d8@Bullet@th20',
+        '?animation_ref@Bullet@th20',
+        '?set_packed_color@Animation@th20',
+        '?set_field_18_to_ten@Bullet@th20',
+        '??1?$IntrusiveIterator@UBullet',
+        '?player@Context@th20',
+        '?position_ref@Player@th20',
+        '?player@Context@th20',
+        '?position_ref@Player@th20',
+        '?position_ref@EnemyState@th20',
+        '?position_ref@EnemyState@th20',
+        '?rectangle_circle@geometry@th20',
+        '?player@th20',
+        '?set_field_20ec@Player@th20',
+        '@__security_check_cookie@4',
+    ]
+    assert len(bullet_clear_first_calls)==len(expected_bullet_clear_first_calls),bullet_clear_first_calls
+    for actual,expected in zip(bullet_clear_first_calls,expected_bullet_clear_first_calls):
+        assert expected in actual,(actual,expected)
+    bullet_clear_second=bullet_clear_dump.split(bullet_clear_second_marker,1)[1].split('Disassembly of section',1)[0]
+    bullet_clear_second_calls=re.findall(r'DISP32\s+([^\r\n]+)',bullet_clear_second)
+    expected_bullet_clear_second_calls=[
+        '?bullet_controller@Context@th20',
+        '?active_list@BulletController@th20',
+        '?__autoclassinit2@?$IntrusiveIterator@UBullet',
+        '?begin@?$IntrusiveList@UBullet',
+        '?end@?$IntrusiveList@UBullet',
+        '?advance@?$IntrusiveIterator@UBullet',
+        '?differs@?$IntrusiveIterator@UBullet',
+        '?get@?$IntrusiveIterator@UBullet',
+        '?node_value@?$IntrusiveLink@UBullet',
+        '?set_timer_4d8@Bullet@th20',
+        '?animation_ref@Bullet@th20',
+        '?set_packed_color@Animation@th20',
+        '?clear_field_18@Bullet@th20',
+        '??1?$IntrusiveIterator@UBullet',
+        '?player@th20',
+        '?set_field_20ec@Player@th20',
+        '@__security_check_cookie@4',
+    ]
+    assert len(bullet_clear_second_calls)==len(expected_bullet_clear_second_calls),bullet_clear_second_calls
+    for actual,expected in zip(bullet_clear_second_calls,expected_bullet_clear_second_calls):
+        assert expected in actual,(actual,expected)
+    bullet_clear_dispatch=bullet_clear_dump.split(bullet_clear_dispatch_marker,1)[1].split('Disassembly of section',1)[0]
+    assert '?integer_argument@EnemyState@th20' in bullet_clear_dispatch
+    assert re.search(r'call\s+\*',bullet_clear_dispatch)
+    print('PASS natural C++ opcode-629 COFF: real AnimationHandle, geometry, intrusive Bullet list, Timer/color setters and indirect member callback table')
+
+    score_popup_object=ROOT/'build/gpt-web-enemy-630-canonical/EnemyStateScorePopupOpcode.obj'
+    score_popup_dump=subprocess.run(
+        ['objdump','-dr',str(score_popup_object)],cwd=ROOT,check=True,text=True,capture_output=True).stdout
+    score_popup_marker='<?execute_enemy_score_popup_opcode@th20@@YA_NAAUEnemyState@1@H@Z>:'
+    assert score_popup_marker in score_popup_dump
+    score_popup_function=score_popup_dump.split(score_popup_marker,1)[1].split('Disassembly of section',1)[0]
+    score_popup_calls=re.findall(r'DISP32\s+([^\r\n]+)',score_popup_function)
+    expected_score_popup_calls=[
+        '?integer_argument@EnemyState@th20',
+        '?add_score@Session@th20',
+        '?item_reward_popup_queue@Context@th20',
+        '?position_ref@EnemyState@th20',
+        '?enqueue@ItemRewardPopupQueue@th20',
+    ]
+    assert len(score_popup_calls)==5,score_popup_calls
+    for actual,expected in zip(score_popup_calls,expected_score_popup_calls):
+        assert expected in actual,(actual,expected)
+
+    context_object=ROOT/'build/core163-canonical/Context.obj'
+    context_dump=subprocess.run(
+        ['objdump','-dr',str(context_object)],cwd=ROOT,check=True,text=True,capture_output=True).stdout
+    context_popup_marker='<?item_reward_popup_queue@Context@th20@@QAEPAUItemRewardPopupQueue@2@XZ>:'
+    assert context_popup_marker in context_dump
+    context_popup_function=context_dump.split(context_popup_marker,1)[1].split('Disassembly of section',1)[0]
+    assert '0x1c(' in context_popup_function
+    popup_object=ROOT/'build/gpt-web-enemy-630-canonical/ItemRewardPopupQueue.obj'
+    popup_dump=subprocess.run(['objdump','-dr',str(popup_object)],cwd=ROOT,check=True,text=True,capture_output=True).stdout
+    assert '<?enqueue@ItemRewardPopupQueue@th20@@QAEXPBUVector3@2@HI@Z>:' in popup_dump
+    print('PASS natural C++ opcode-630 COFF: integer, Session::add_score, Context +0x1C queue, live position and real 255B enqueue')
 
     script_pointer_audit=subprocess.run(
         [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-script-pointer-opcode-source.py')],
@@ -1205,7 +1362,7 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy callback-table Bullet clear 629 (215/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n' in result.stdout
     print(result.stdout,end='')
     print(f'PASS maintained root host executes {len(HOST_SOURCES)} focused source units under ASan/UBSan')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
@@ -1238,7 +1395,7 @@ def main() -> None:
     print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
     print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, five restored membership/fog/controller/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases, opcode 614 queue copy, four shot-command variants, four Laser variants, Enemy mesh lifecycle and 41 opcode fragments wired')
-    print('PASS all fifty i386 COFF source units compile under locked MSVC profile')
+    print('PASS all fifty-eight i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
 

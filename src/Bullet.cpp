@@ -9,4 +9,8 @@ Bullet::Bullet()
      style(nullptr),draw_next(nullptr),angle(0.0f),command_flags{},field_4d0(0),
      field_4d4(0),field_518(0),view_index(0),context(nullptr) {}
 Bullet::~Bullet() = default;
+Vector3& Bullet::position_ref() { return position; }
+Animation* Bullet::animation_ref() { return animation; }
+void Bullet::set_field_18_to_ten() { field_18 = 10; }
+void Bullet::clear_field_18() { field_18 = 0; }
 }

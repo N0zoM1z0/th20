@@ -28,3 +28,5 @@ address,name,module,confidence,evidence
 0x005C6108,native_card_records_5c6108,NativeCardRecordArchive*,unknown,CORE/RECON-1207; docs/FRONT_INF_DIALOGUE_COMMAND626_SOURCE_FRONTIER.md; shared stage/card-data owner supplies secondary records and voice-used byte region at +0x91F48+0x36
 0x005C6110,th20::native_card_script_table_5c6110,const std::uint8_t*,medium,CORE/RECON-1206; docs/FRONT_INF_DIALOGUE_COMMAND626_SOURCE_FRONTIER.md; table supplies FrontInf voice file and voice-id records
 0x005706F8,th20::front_dialogue_allocator_label_5706f8,const char[],medium,CORE/RECON-1206; docs/FRONT_INF_DIALOGUE_COMMAND626_SOURCE_FRONTIER.md; native FrontInf dialogue factory allocation diagnostic label
+0x0056E734,th20::native_ten_56e734,float,high,CORE/RECON-1259; original 10.0f radius used by Enemy opcode 629 Player overlap and WeaponStone progress-mesh updater
+0x0056F00C,th20::native_six_56f00c,float,high,CORE/RECON-1259; original 6.0f Bullet radius used by Enemy opcode 629 animation-rectangle callback

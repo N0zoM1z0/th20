@@ -6,15 +6,6 @@
 // Complete query consumers use the existing real owner storage. The whole
 // HitCtrlInf query and original Item reward implementation remain open.
 namespace th20 {
-void PlayerRecord::add_score(std::uint64_t amount) {
-    score+=amount/10;
-    if (score>=1000000000u) score=999999999u;
-}
-void Session::add_score(std::uint32_t amount) {
-    auto& values=table;
-    auto& record=values.player(0);
-    record.add_score(amount);
-}
 std::int32_t Timer::changed() const {return current!=previous?1:0;}
 std::int32_t Timer::every(std::int32_t divisor) const {
     return current!=previous && current%divisor==0?1:0;

@@ -108,6 +108,8 @@ public:
     void clear_entity_flag2();
     IntPoint& fixed_position_ref();
     void set_clock_scale(float value);
+    // Original 29B Player+0x20EC float setter at 0x00479080.
+    void set_field_20ec(float value);
     // Original 20B x87 getter at 0x004AAA40; real field +0x223C.
     float clock_scale_value() const;
     Vector3& position_ref();
