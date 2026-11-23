@@ -835,7 +835,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00426030,unknown,SoundLoadingProtocol,review,pending,"CORE/EXACT-111: Complete SoundInf preload1146/load835/free119/destructor26 and actual Graphics preload getter26; five roots2152B. Real SDK GUID by-value factory ABI, 52B TrackFormat, four-field PreloadedTrack, original global-versus-receiver publication, lock2, requested-size short-read behavior, malloc/free family and event/thread/factory ordering. Complete preload EH42/FuncInfo36/map8/cleanup16 privately replay. Same-source O2/ASan/UBSan validates140 independent arithmetic/event/thread/factory failure cases, actual PMR throw/unwind and allocation/replacement failure. Startup, stream/COM/WaveReader/factory/find/reopen/thread execution and invalid CRT/CP932 domains remain undefined interfaces. Whole poll2920/native2948 remains private nonexact; no stream prefix or inert shaping is admitted. See docs/SOUND_PROTOCOL_RECONSTRUCTION.md. Frozen261-file graph passes761 strict units/147 fresh objects/144535 disjoint bytes. Five complete roots admitted; two main loading origins independently audited. Three supporting origins remain pending."
 0x00426050,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004260B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004260D0,library,StandardLibrary,exclude,high,CORE/RECON-1204; docs/SOUND_INF_ENQUEUE_323_NATIVE_FRONTIER.md; native SoundCommand array indexer is library/compiler support; no game-authored byte credit
+0x004260D0,library,StandardLibrary,exclude,high,CORE/RECON-1204; docs/SOUND_INF_ENQUEUE_323_NATIVE_FRONTIER.md; native SoundCommand array indexer is standard-library/compiler support; excluded from game-authored byte credit
 0x004260F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00426110,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00426140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1217,12 +1217,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044B320,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B380,library,AnimationPmr,exclude,high,"CORE/EXACT-135: Actual string pointer/capacity producer, capacity-plus-one count and allocator callee corroborate the explicit SDK deallocation helper. Complete native control flow and whole fresh production contribution strictly replay with independent anchors. One actual Animation object rebuild preserves all22 prior affected units;162 objects are reused. SDK/compiler source presence is separate from authored exact coverage. See docs/ANIMATION_PMR_RETIREMENT_RECONSTRUCTION.md."
-0x0044B3A0,unknown,CxxRuntime,authored,high,CORE/RECON-1192
+0x0044B3A0,library,CxxRuntime,exclude,high,CORE/RECON-1192; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; std::_Func_impl_no_alloc _Delete_this thunk is MSVC standard-library support; excluded from game-authored byte credit
 0x0044B3D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B400,unknown,CxxUtility,review,pending,"CORE/RECON-963; docs/ANIMATION_SPAWN_STEM_77_17_STRICT_EXACT.md; whole original 77B typed PMR string comparison and physical E8 original, strict full 77/77; C++ STL/PMR original source provenance uncertain"
 0x0044B450,unknown,CxxRuntime,review,pending,CORE/RECON-1094; docs/ANIMATION_FILE_PATH_PMR_NINE_STRICT_EXACT.md; complete original 141B generic native helper with real parent original native 132B _Find_stem 0x0044B690 E8+0x5D; zero authored-game exact credit
 0x0044B4E0,unknown,CxxRuntime,review,pending,CORE/RECON-1094; docs/ANIMATION_FILE_PATH_PMR_NINE_STRICT_EXACT.md; complete original 80B generic native helper with real parent original native 81B/132B path subparsers 0x0044B630/+0x2A and 0x0044B690/+0x2A; zero authored-game exact credit
-0x0044B530,unknown,CxxRuntime,authored,high,CORE/RECON-1192
+0x0044B530,library,CxxRuntime,exclude,high,CORE/RECON-1192; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; std::_Func_impl_no_alloc _Get thunk is MSVC standard-library support; excluded from game-authored byte credit
 0x0044B550,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B5C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B630,unknown,CxxRuntime,review,pending,"CORE/RECON-1096; docs/ANIMATION_LOADER_NESTED_FIVE_STL_415_STRICT_EXACT.md; full native original 81B standard library source, genuine original E8 from 0x44c590+0x2f; generic uncredited"
@@ -1886,7 +1886,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0046A660,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046A680,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046A6B0,compiler,AsciiInf,exclude,high,"CORE/EXACT-160; docs/ASCII_OWNER_RECONSTRUCTION.md; Pinned SDK std::array is an aggregate without a written default-constructor body. Native count320/stride320 and TextLine callback, complete81-byte compiler-generated constructor plus all5 emitted INT3 bytes and full shared noexcept EH support establish compiler origin. TextLine219 is freshly replayed after its recovered noexcept declaration; unchanged old code. Excluded from authored coverage."
-0x0046A710,unknown,CxxUtility,authored,high,CORE/RECON-1187
+0x0046A710,library,CxxUtility,exclude,high,CORE/RECON-1187; docs/CARD_TEXT_PAYLOAD_MOVE64_STRICT_EXACT.md; std::pmr::string move constructor is MSVC standard-library support; excluded from game-authored byte credit
 0x0046A780,unknown,CardText,review,pending,"CORE/RECON-1007; docs/CARD_TEXT_PAYLOAD_56_23_167_STRICT_EXACT.md; Genuine standard-library PMR string copy constructor generated by capture copy; real original physical native body and source C++20 exact, compiler-generated/template ownership uncredited"
 0x0046A830,unknown,CxxRuntime,review,pending,"CORE/RECON-1009; docs/CARD_START_PMR_STRING_CHAR128_STRICT_EXACT.md; source generated exact standard PMR string constructor, 2 original HIGHLOW EH/cookie and 4 E8; original 1896B Card start direct caller; game credit zero"
 0x0046A8B0,library,AsciiInf,exclude,high,"CORE/EXACT-160; docs/ASCII_OWNER_RECONSTRUCTION.md; Complete45-byte pinned SDK std::list<std::function<void()>> default constructor with actual eight-byte head/count storage, compressed-pair initialization and full sentinel allocation interface. Native independent33-byte compressed storage and136-byte sentinel producer corroborate the library partition. Full relocation replay; excluded from authored coverage. No standard-container facade or aggregate padding."
@@ -2396,17 +2396,17 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00486600,library,Bullet,exclude,high,"CORE/LIB-254; docs/BULLET_EMITTER_VECTOR_STL_ORIGIN_AUDIT.md; Real MSVC std::pmr::vector<BulletCommand> count based on original 44-byte difference of vector storage pointers, called from full 3735B Bullet shot emitter. Actual pinned STL template instantiation yields native 41/41 strict zero-relocation replay. Library origin: excluded from game-authored exact credit."
 0x00486630,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004866B0,unknown,CxxRuntime,authored,high,CORE/RECON-1191
+0x004866B0,library,CxxRuntime,exclude,high,CORE/RECON-1191; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; std::_Func_impl_no_alloc move constructor is MSVC standard-library support; excluded from game-authored byte credit
 0x004866F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00486740,unknown,CxxRuntime,authored,high,CORE/RECON-1190
+0x00486740,library,CxxRuntime,exclude,high,CORE/RECON-1190; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; std::function callable constructor is MSVC standard-library support; excluded from game-authored byte credit
 0x004867B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00486800,unknown,CxxRuntime,authored,high,CORE/RECON-1188
+0x00486800,library,CxxRuntime,exclude,high,CORE/RECON-1188; docs/CARD_TEXT_PAYLOAD_MOVE64_STRICT_EXACT.md; std::function callable constructor is MSVC standard-library support; excluded from game-authored byte credit
 0x00486870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004869D0,unknown,CxxRuntime,authored,high,CORE/RECON-1190
-0x00486A30,unknown,CxxRuntime,authored,high,CORE/RECON-1188
+0x004869D0,library,CxxRuntime,exclude,high,CORE/RECON-1190; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; std::_Func_class::_Reset is MSVC standard-library support; excluded from game-authored byte credit
+0x00486A30,library,CxxRuntime,exclude,high,CORE/RECON-1188; docs/CARD_TEXT_PAYLOAD_MOVE64_STRICT_EXACT.md; std::_Func_class::_Reset is MSVC standard-library support; excluded from game-authored byte credit
 0x00486A80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00486AD0,unknown,CxxRuntime,authored,high,CORE/RECON-1192
+0x00486AD0,library,CxxRuntime,exclude,high,CORE/RECON-1192; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; std::invoke specialization is MSVC standard-library support; excluded from game-authored byte credit
 0x00486AE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486AF0,unknown,CardText,review,pending,"CORE/RECON-1029; docs/CARD_TEXT_PAYLOAD_MOVE64_STRICT_EXACT.md; 64B source exact typed lambda payload move, real 66B wrapper and 108B PMR move callee remain independently scoped; generated compiler or authored ownership uncertain"
 0x00486B30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2416,7 +2416,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00486DE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486E10,unknown,CardSpell,review,pending,CORE/RECON-999; docs/CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md; 0xE0-stride record array subscript; original compiler/template ownership uncertain; full native verified and origin classification separate from code exactness
 0x00486E30,unknown,CardSpell,review,medium,"CORE/RECON-1122; docs/CARD_TIME_ARCHIVE_ACCESSORS_38_41_NATIVE_EXACT.md; Raw 44-byte record index primitive at original 0x00486E30: whole 20B/9 i386, no relocs, compiler-like folded generic helper with five native consumers. Authorship unresolved, held review and no extra game-authored bytes."
-0x00486E50,unknown,CardText,authored,high,CORE/RECON-1193
+0x00486E50,authored,CardText,authored,high,CORE/RECON-1193; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; 34-byte deferred Card tick callback contains the game-specific captured-Card/event-4 action; distinct from its std::function library thunks
 0x00486E80,authored,CardText,authored,high,"CORE/RECON-1037; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; complete native 111B Card-specific text dispatch, correct physical 4 E8/1 PE HIGHLOW and 0x00FFFFFF literal, natural typed std::function and actual PMR string c_str, whole source exact"
 0x00486EF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00486F20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -2430,13 +2430,13 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00487BB0,authored,Card,authored,high,"CORE/RECON-1121; docs/CARD_CAPTURE_REFRESH123_STRICT_EXACT.md; original genuine 123B Card bomb/capture state path, exact four original E8 relocation roles and Card+0x78,+0x7C,+0xC0 field accesses"
 0x00487C30,authored,CardSpell,authored,high,"CORE/RECON-1030; docs/CARD_START1896_TEXT_TASK_CONSTRUCTION_FRONTIER.md; complete source-present 1750B 61 E8/16 HL generated C++20 candidate, true 1896B 62 E8/26 HL, real capture/std::function/AsciiInf queue producer and lock-18 consumer, native std::move and text callback/EH frontier NONEXACT"
 0x004883A0,authored,CardSpell,authored,high,CORE/RECON-999; docs/CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md; Card UI owner flag +0x3344 bit0 publication on Card finish; full native verified and origin classification separate from code exactness
-0x004883C0,unknown,CxxRuntime,authored,high,CORE/RECON-1192
+0x004883C0,library,CxxRuntime,exclude,high,CORE/RECON-1192; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; std::_Func_impl_no_alloc copy thunk is MSVC standard-library support; excluded from game-authored byte credit
 0x004883F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488410,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00488440,unknown,CxxRuntime,authored,high,CORE/RECON-1192
+0x00488440,library,CxxRuntime,exclude,high,CORE/RECON-1192; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; std::_Func_impl_no_alloc call thunk is MSVC standard-library support; excluded from game-authored byte credit
 0x00488460,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00488480,unknown,CxxRuntime,authored,high,CORE/RECON-1192
-0x004884F0,unknown,CxxRuntime,authored,high,CORE/RECON-1192
+0x00488480,library,CxxRuntime,exclude,high,CORE/RECON-1192; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; std::_Func_impl_no_alloc move thunk is MSVC standard-library support; excluded from game-authored byte credit
+0x004884F0,library,CxxRuntime,exclude,high,CORE/RECON-1192; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; std::_Func_impl_no_alloc target-type thunk is MSVC standard-library support; excluded from game-authored byte credit
 0x00488500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00488510,authored,CardSpell,authored,high,CORE/RECON-999; docs/CARD_SPELL_FINISH_FOUR_LEAVES_STRICT_EXACT.md; Game-specific capped 99999 spell capture-count state at record+0xC0/+0xC4; full native verified and origin classification separate from code exactness
 0x00488550,unknown,DamageQueryProtocol,review,pending,"CORE/EXACT-103: Thirteen new complete actual query consumers980B plus the existing45B Timer/Cursor shared head with real Player/Shot/Enemy/Session/Overlay owners. Full246B Shot and251B Enemy search, native unsigned64 score division/addition/cap and Session uint32 zero extension, actual frame/period gating, forced defeat and preserved-bit marker protocols. Complete typed templates/EH and existing-head aliases replay as support; no duplicate physical credit. O2/ASan/UBSan actual protocol scope passes. Whole private query1685/native1707 remains nonexact and unaccepted; native post-retirement heap lifetime, callbacks, original Item spawn, enclosing lifetime/RTTI/full-link/startup remain open. Authored/reference attribution stays independent. See docs/DAMAGE_QUERY_PROTOCOL_RECONSTRUCTION.md. Frozen251-file graph passes731 strict units/142 fresh objects/138358 disjoint bytes;14 complete maintained candidates include45B Timer/Cursor alias;13 new physical roots980B and36 independent relocations. Full45 support contributions replay."
@@ -2460,7 +2460,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004888C0,authored,CardSpell,authored,high,CORE/RECON-1003; docs/CARD_START_FIVE_225_STRICT_EXACT.md; Clear Card+0x78 bit7 on opening a new spell; dedicated game-specific transition; entire independent original native code and true Card start source role
 0x004888E0,authored,Animation,authored,high,CORE/RECON-1003; docs/CARD_START_FIVE_225_STRICT_EXACT.md; Forward event2 to original genuine 34B animation event setter; entire independent original native code and true Card start source role
 0x00488900,authored,CardSpell,authored,high,CORE/RECON-1001; docs/CARD_HUD_CLEANUP_71_22_34_STRICT_EXACT.md; Original game-specific event 3 forwarding through 34B Animation method; native game protocol original E8 and complete source original exact
-0x00488920,unknown,CardText,authored,high,CORE/RECON-1193
+0x00488920,authored,CardText,authored,high,CORE/RECON-1193; docs/CARD_TEXT_CALLBACK111_STRICT_EXACT.md; 22-byte game-specific event-4 bridge forwards the captured Card handle to the existing native AnimationHandle event bridge
 0x00488940,authored,AsciiInf,authored,high,CORE/RECON-1120; docs/CARD_DRAW_BOSS797_AND_ASCII_SETTERS75_STRICT_EXACT.md; full original body/relocations and true parent Card Draw callback grounded; no duplicate physical heads
 0x00488960,authored,CardSpell,authored,high,CORE/RECON-1003; docs/CARD_START_FIVE_225_STRICT_EXACT.md; Update true Card+0x78 bit9 through ordinary bitfield assignment; entire independent original native code and true Card start source role
 0x00488990,unknown,Card,review,pending,"EXACT-075: Six whole Card construction/time-state/binding/lookup contributions add725body/730comparisonbytes. Frozen568unit/104fresh-object graph replays99122disjointbytes. Native200-byte allocation, CardInf RTTI/vtable/string, real five typed handles/Timer/Vector3, aligned double clocks/natural gaps and complete nonthrowing EH establish actual owner. Defined32-bit wrapping encoding preserves all three native stores and signed remainders; validation returns full-width int0/1. Actual Session/Context binds stored index and publishes borrowed Card pointer. Shared Context getter/setter physical folding adds no duplicate coverage. O2/UBSan dirty guards, independent wide arithmetic, valid/corrupted words and whole-state/two-context checks pass. Card destruction remains an explicit fixture; factory/initialization/gameplay/disposal, Player/game owners, whole readers,41KB opcode root and whole-game runtime remain open. Authored origins stay pending. See docs/EXACT_CARD_RECONSTRUCTION.md."
@@ -2765,7 +2765,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0049CA70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CAA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CAC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0049CAE0,unknown,Bullet,review,medium,"CORE/RECON-1260; docs/BULLET_TIMER_4D8_SETTER_EXACT.md; complete 39-byte native wrapper forwards float to Timer::operator=(float) on Bullet+0x4D8; independent calls from both opcode-629 callbacks establish receiver and storage role. Original method spelling is inferred; authored/compiler origin remains pending."
+0x0049CAE0,authored,Bullet,authored,high,CORE/RECON-1260; docs/BULLET_TIMER_4D8_SETTER_EXACT.md; 39-byte Bullet+0x4D8 float forwarding wrapper is called independently by both original Enemy opcode-629 game callbacks; not a compiler/STL helper
 0x0049CB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CB30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CB60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3288,7 +3288,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004AE8A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AE930,unknown,Dialogue,review,pending,"CORE/RECON-1208; docs/FRONT_INF_DIALOGUE_COMMAND626_SOURCE_FRONTIER.md; current class-specific Dialogue allocation source preserves zero-before-construction and sized-delete unwind; 168-byte candidate against 156-byte target remains nonexact; original allocator owner remains pending"
 0x004AE9D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004AE9F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004AE9F0,library,CxxUtility,exclude,high,CORE/RECON-1205; std::destroy_at<Dialogue> is a standard-library destruction primitive instantiated for the Dialogue owner; excluded from game-authored byte credit
 0x004AEA00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AEA10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004AEA20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -3503,7 +3503,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004B8030,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B8050,authored,Player,authored,high,"CORE/RECON-1140; docs/ITEM_UPDATE_DEPENDENCY_ACCESSORS_EXACT.md; Player::motion_parameters.field_10 getter, native Player+0x2090, exact 20B, called by ItemInf update"
 0x004B8070,unknown,HudGauge,review,pending,"CORE/EXACT-161; docs/DIALOGUE_OWNER_RECONSTRUCTION.md; Complete20-byte actual FrontInf getter returns field+1BC. Full owner, original member partition and pointer width are preserved; full strict replay. Null and live-pointer behavior remain distinct from ready-state access. Origin pending."
-0x004B8090,authored,SoundInf,authored,high,CORE/RECON-1205; docs/FRONT_DIALOGUE_FIELD_VIEWS20_STRICT_EXACT.md; native 19-byte queued_track accessor at +0x2444 is game-owned and consumed by FrontInf dialogue voice guard
+0x004B8090,unknown,SoundInf,review,unknown,CORE/RECON-1205; docs/FRONT_DIALOGUE_FIELD_VIEWS20_STRICT_EXACT.md; exact borrowed SoundInf+0x2444 view; original class/member owner is not proven
 0x004B80B0,authored,PlayerRecord,authored,high,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md Complete native 73B field_b8 clamp -1..7; std::clamp<int> call at +0x2A to 0x00471170.
 0x004B8100,authored,PlayerRecord,authored,high,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md Complete native 73B field_bc clamp 0..7; std::clamp<int> call at +0x2A to 0x00471170.
 0x004B8150,authored,PlayerRecord,authored,high,CORE/RECON-1150; docs/PLAYER_RECORD_ITEM_PROGRESS_ACCESSORS_EXACT.md Complete native 73B field_c0 clamp 0..10; std::clamp<int> call at +0x2A to 0x00471170.
@@ -3511,7 +3511,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004B81D0,authored,PlayerOptions,authored,high,CORE/EXACT-322; docs/PLAYER_OPTION_COUNT_AND_WEAPON_EXACT_RECONSTRUCTION.md; independent original game option-count caller and genuine PlayerRecord field_38 clamp
 0x004B8210,authored,PlayerOptions,authored,high,CORE/EXACT-322; docs/PLAYER_OPTION_COUNT_AND_WEAPON_EXACT_RECONSTRUCTION.md; native Player option state/count/virtual interface
 0x004B8250,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004B8270,authored,FrontInf,authored,high,CORE/RECON-1205; docs/FRONT_DIALOGUE_FIELD_VIEWS20_STRICT_EXACT.md; native 20-byte message_file accessor at +0x170 is game-owned and consumed by FrontInf dialogue command
+0x004B8270,unknown,FrontInf,review,unknown,CORE/RECON-1205; docs/FRONT_DIALOGUE_FIELD_VIEWS20_STRICT_EXACT.md; exact borrowed FrontInf+0x170 view; original class/member owner is not proven
 0x004B8290,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004B82C0,authored,PlayerRecord,authored,high,"CORE/RECON-1141; docs/ITEM_UPDATE_PLAYER_RECORD_ACCESSORS_EXACT.md PlayerRecord field_44 clamped to [0,1000000], native 64B; std::clamp REL32 at +0x27 targets 0x471170."
 0x004B8300,authored,PlayerRecord,authored,high,"CORE/RECON-1141; docs/ITEM_UPDATE_PLAYER_RECORD_ACCESSORS_EXACT.md PlayerRecord field_48 clamped to [5000,10000], native 64B; std::clamp REL32 at +0x27 targets 0x471170."

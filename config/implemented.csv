@@ -1796,3 +1796,5 @@ th20::NativeCardStageVoiceOwnerView::stage_voice_flags_640e0
 th20::Graphics::play_front_dialogue_voice_4d9b50
 th20::LaserController::cancel_all
 th20::SoundInf::enqueue
+th20::Bullet::set_timer_4d8
+th20::EclManager::select
