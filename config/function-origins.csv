@@ -1332,8 +1332,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00450430,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00450460,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00450490,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004504C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004504F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004504C0,authored,Animation,authored,high,"CORE/RECON-1305; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original game-owned 33-byte forwarding wrapper calls the Animation Y-rotation setter at 0x004504F0; both are one semantic property operation and no duplicate code credit is claimed."
+0x004504F0,authored,Animation,authored,high,"CORE/RECON-1305; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original game Animation setter writes the Y rotation at +0x3C and sets the rotation dirty bit in +0x49C; called from the StageResource object renderer."
 0x00450520,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00450560,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00450590,authored,Animation,authored,high,CORE/EXACT-376; docs/ANGLE_ANIMATION_DRAW_ABI_EXACT_RECONSTRUCTION.md; entire original function and independently native PE anchors; one physical folded Angle ClockScalar float converter
@@ -2066,7 +2066,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00474870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474CE0,unknown,Interpolation,review,pending,"EXACT-046: shared easing/eight-type interpolation protocol dependency batch. Complete native flow, direct branches/returns, aggregate and scalar ABI, shared heads, constants and dispatch bindings independently audited. Cold strict replay291units/60objects/34844disjointbytes and finite C++20/UBSan curve/state/guard/wrapping/truncation checks pass. Names/origins pending. See docs/EXACT_INTERPOLATION_RECONSTRUCTION.md."
-0x00474D40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00474D40,unknown,Animation,review,pending,"CORE/RECON-1305; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; returns the Animation Y-rotation float at +0x3C. The one-load accessor may be game-authored or compiler/library-generated; origin remains open."
 0x00474D60,unknown,EnemyDispatchState,review,unknown,CORE/EXACT-148; docs/ENEMY_DISPATCH_STATE_RECONSTRUCTION.md; Complete25-byte Session forwarding query reaches actual PlayerTable+88 and its independently reviewed mutating field1F4 clamp. Source/exactness do not establish origin.
 0x00474D80,unknown,EnemyDispatchState,review,unknown,"CORE/EXACT-148; docs/ENEMY_DISPATCH_STATE_RECONSTRUCTION.md; Complete73-byte PlayerTable query clamps signed field1F4 to0..999, writes it back and returns it. Existing independent integer-clamp anchor0x471170 is reused. Source/exactness do not establish origin."
 0x00474DD0,"unknown","Animation",review,"unknown","CORE/RECON-1301; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; 42-byte Animation state predicate is semantically reconstructed as Animation::is_active; authored-versus-compiler origin is intentionally unresolved"
@@ -2090,8 +2090,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00477750,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00477770,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00477790,authored,StageResource,authored,high,"CORE/RECON-1300; docs/STAGE_RESOURCE_SCRIPT_VM_8572_SOURCE_FRONTIER.md. Called by the stage VM opcode 22 and changes only Background owner state_flags bit 4. The helper is part of the same game-specific stage interpreter/owner protocol, not a generic library function."
-0x004777C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004777F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004777C0,authored,Animation,authored,high,"CORE/RECON-1305; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original game Animation Y-scale setter writes +0x54 and sets scale dirty bit +0x49C."
+0x004777F0,authored,Animation,authored,high,"CORE/RECON-1305; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original game Animation X-scale setter writes +0x50 and sets scale dirty bit +0x49C."
 0x00477820,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00477840,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00477860,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

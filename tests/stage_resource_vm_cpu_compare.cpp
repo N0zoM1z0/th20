@@ -840,6 +840,100 @@ int wmain(int argc, wchar_t** argv) {
             VirtualFree(storage, 0, MEM_RELEASE);
         }
 
+        for (unsigned test = 0; test < 128; ++test) {
+            alignas(th20::Animation) std::array<std::uint8_t, sizeof(th20::Animation)> storage{};
+            auto* animation = ::new (storage.data()) th20::Animation();
+            auto* bytes = reinterpret_cast<std::uint8_t*>(animation);
+            for (unsigned index = 0; index < sizeof(*animation); ++index)
+                bytes[index] = static_cast<std::uint8_t>(random());
+            std::array<std::uint8_t, sizeof(th20::Animation)> before{}, expected{};
+            std::memcpy(before.data(), animation, before.size());
+            const float angle = std::bit_cast<float>(bits());
+
+            FloatingEnvironment::prepare();
+            cpu<void>(0x004504c0, animation, angle);
+            std::memcpy(expected.data(), animation, expected.size());
+            std::memcpy(animation, before.data(), before.size());
+            FloatingEnvironment::prepare();
+            animation->set_rotation_y_forward(angle);
+            ++checks;
+            ++groups["animation_set_rotation_y"];
+            if (std::memcmp(animation, expected.data(), expected.size()) != 0) {
+                ++failed;
+                if (failures.size() < 30) failures.push_back("animation_set_rotation_y test" + std::to_string(test));
+            }
+
+            std::memcpy(animation, before.data(), before.size());
+            FloatingEnvironment::prepare();
+            cpu<void>(0x004504f0, animation, angle);
+            std::memcpy(expected.data(), animation, expected.size());
+            std::memcpy(animation, before.data(), before.size());
+            FloatingEnvironment::prepare();
+            animation->set_rotation_y(angle);
+            ++checks;
+            ++groups["animation_set_rotation_y_body"];
+            if (std::memcmp(animation, expected.data(), expected.size()) != 0) {
+                ++failed;
+                if (failures.size() < 30) failures.push_back("animation_set_rotation_y_body test" + std::to_string(test));
+            }
+
+            std::memcpy(animation, before.data(), before.size());
+            FloatingEnvironment::prepare();
+            cpu<void>(0x004777f0, animation, angle);
+            std::memcpy(expected.data(), animation, expected.size());
+            std::memcpy(animation, before.data(), before.size());
+            FloatingEnvironment::prepare();
+            animation->set_scale_x(angle);
+            ++checks;
+            ++groups["animation_set_scale_x"];
+            if (std::memcmp(animation, expected.data(), expected.size()) != 0) {
+                ++failed;
+                if (failures.size() < 30) failures.push_back("animation_set_scale_x test" + std::to_string(test));
+            }
+
+            std::memcpy(animation, before.data(), before.size());
+            FloatingEnvironment::prepare();
+            cpu<void>(0x004777c0, animation, angle);
+            std::memcpy(expected.data(), animation, expected.size());
+            std::memcpy(animation, before.data(), before.size());
+            FloatingEnvironment::prepare();
+            animation->set_scale_y(angle);
+            ++checks;
+            ++groups["animation_set_scale_y"];
+            if (std::memcmp(animation, expected.data(), expected.size()) != 0) {
+                ++failed;
+                if (failures.size() < 30) failures.push_back("animation_set_scale_y test" + std::to_string(test));
+            }
+
+            std::memcpy(animation, before.data(), before.size());
+            FloatingEnvironment::prepare();
+            const float expected_rotation = cpu<float>(0x00474d40, animation);
+            FloatingEnvironment::prepare();
+            const float actual_rotation = animation->rotation_y_value();
+            ++checks;
+            ++groups["animation_rotation_y_accessor"];
+            if (std::bit_cast<std::uint32_t>(expected_rotation) !=
+                std::bit_cast<std::uint32_t>(actual_rotation)) {
+                ++failed;
+                if (failures.size() < 30) failures.push_back("animation_rotation_y_accessor test" + std::to_string(test));
+            }
+        }
+
+        for (unsigned test = 0; test < 128; ++test) {
+            const float value = std::bit_cast<float>(bits());
+            FloatingEnvironment::prepare();
+            const float expected = cpu_cdecl<float>(0x00438540, value);
+            FloatingEnvironment::prepare();
+            const float actual = th20::normalize_angle(value);
+            ++checks;
+            ++groups["normalize_angle_438540"];
+            if (std::bit_cast<std::uint32_t>(expected) !=
+                std::bit_cast<std::uint32_t>(actual)) {
+                ++failed;
+                if (failures.size() < 30) failures.push_back("normalize_angle_438540 test" + std::to_string(test));
+            }
+        }
+
         for (unsigned test = 0; test < 6; ++test) {
             const std::uint32_t flags = test < 6 ?
                 std::array<std::uint32_t, 6>{0u, 4u, 4u, 4u, 8u, 8u}[test] : random();

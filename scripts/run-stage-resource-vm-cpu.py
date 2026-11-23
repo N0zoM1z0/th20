@@ -51,6 +51,7 @@ def main() -> int:
         ROOT / "src/RendererDeviceResetHooks108.cpp",
         ROOT / "src/RendererStageDrawReset.cpp",
         ROOT / "src/AnimationIsActive.cpp",
+        ROOT / "src/AnimationObjectDrawLeaves.cpp",
         ROOT / "src/StageResourceObjectVisibility.cpp",
         ROOT / "src/AnimationClearFlag02.cpp",
         ROOT / "src/Matrix4Identity.cpp",
