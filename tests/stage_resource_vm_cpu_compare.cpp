@@ -5,7 +5,8 @@
 #include "StageResource.hpp"
 #include "StageResourceScriptAdapters.hpp"
 #include "ClockScalar.hpp"
-#include "ClockScalar.hpp"
+#include "NativeCardHudAnimationView.hpp"
+#include "NativeViewIndexOwner.hpp"
 #include "Viewport.hpp"
 
 #include <algorithm>
@@ -51,10 +52,29 @@ std::vector<std::uint32_t> instruction(
 
 namespace th20 {
 StageResourceOwner* process_stage_resource = nullptr;
+NativeViewIndexOwner test_view_index_owner{};
+NativeViewIndexOwner* native_view_index_owner_5c0028 = &test_view_index_owner;
+
+void NativeViewIndexOwner::set_view_index(std::int32_t value) {
+    view_index_6c4 = value;
+}
 
 AnimationBase::AnimationBase() noexcept {}
 Animation::Animation() noexcept : base() {}
 Animation::~Animation() noexcept {}
+std::int32_t Animation::update() {
+    if ((base.flags.word_1c & 1u) == 0) outside_scope();
+    return 0;
+}
+void NativeHudAnimationView::set_vm_event_477450(std::int32_t event) {
+    auto* animation = reinterpret_cast<Animation*>(this);
+    animation->base.field_438 = event;
+    (void)animation->update();
+}
+void Animation::stop() {
+    base.field_28 = -1;
+    base.flags.byte_02 &= 0xfeu;
+}
 AnimationHandle::AnimationHandle() noexcept : value(0) {}
 TransformMatrix::TransformMatrix() {}
 ViewportState::ViewportState()
@@ -63,16 +83,26 @@ ViewportState::ViewportState()
 
 void stage_vm_assign_animation(StageBackgroundScriptState&, std::int32_t,
                                std::int32_t) { outside_scope(); }
-void stage_vm_stop_animation(Animation& animation) {
-    animation.base.field_28 = -1;
-    animation.base.flags.byte_02 &= 0xfeu;
+void stage_vm_stop_animation(Animation& animation) { animation.stop(); }
+void stage_vm_reset_meshes(StageBackgroundScriptState& state) {
+    for (std::int32_t index = 0; index < 2; ++index) {
+        if (state.fields_3294[9 + index] != 0) outside_scope();
+        state.fields_3294[9 + index] = 0;
+        state.fields_3294[11 + index] = std::bit_cast<std::uint32_t>(112.0f);
+        state.fields_3294[13 + index] = std::bit_cast<std::uint32_t>(192.0f);
+        state.fields_3294[15 + index] = 0xffffffffu;
+        state.mesh_phase_x[index] = 0.0f;
+        state.mesh_phase_y[index] = 0.0f;
+        state.mesh_timers[index] = 0;
+        native_view_index_owner_5c0028->set_view_index(index);
+    }
 }
-void stage_vm_reset_meshes(StageBackgroundScriptState&) { outside_scope(); }
-void stage_vm_interrupt_animations(StageResourceOwner&, std::uint32_t) { outside_scope(); }
+void stage_vm_interrupt_animations(StageResourceOwner& owner, std::uint32_t event) {
+    owner.interrupt_animations(static_cast<std::int32_t>(event));
+}
 void stage_vm_set_clear_color(std::uint32_t value) { source_clear_color = value; }
 void stage_vm_set_primary_rotation_flag(std::uint32_t value) {
-    process_stage_resource->state_flags = (process_stage_resource->state_flags & ~16u) |
-                                          ((value & 1u) << 4);
+    process_stage_resource->set_primary_rotation_flag(value);
 }
 }
 
@@ -85,6 +115,9 @@ int wmain(int argc, wchar_t** argv) {
         const auto pe = th20::parse_pe(bytes);
         Mapping image(bytes, pe);
         mapped_image_base = image.address();
+        *reinterpret_cast<float*>(mapped_image_base + 0x16e0e8) = 200.0f;
+        *reinterpret_cast<void**>(mapped_image_base + 0x1c0028) =
+            &th20::test_view_index_owner;
 
         std::mt19937 random(0x4751b0);
         unsigned checks = 0, failed = 0;
@@ -135,19 +168,39 @@ int wmain(int argc, wchar_t** argv) {
                            unsigned ticks = 1) {
             alignas(th20::StageResourceOwner)
                 std::uint8_t owner_storage[sizeof(th20::StageResourceOwner)]{};
-            auto& owner = *reinterpret_cast<th20::StageResourceOwner*>(owner_storage);
+            auto& owner = *::new (owner_storage) th20::StageResourceOwner{};
             owner.instructions = reinterpret_cast<const th20::StageResourceInstructionHeader*>(
                 code.data());
+            std::array<th20::Animation, 2> primitive_animations{};
+            for (auto& animation : primitive_animations)
+                animation.base.flags.word_1c = 1;
+            th20::StageResourceFileHeader file{};
+            file.animation_count = static_cast<std::int16_t>(primitive_animations.size());
+            owner.primitive_animations = primitive_animations.data();
+            owner.file = &file;
             th20::process_stage_resource = &owner;
 
-            alignas(th20::StageBackgroundScriptState)
-                std::uint8_t state_storage[sizeof(th20::StageBackgroundScriptState)]{};
-            std::memset(state_storage, 0xa5, sizeof(state_storage));
-            auto& state = *reinterpret_cast<th20::StageBackgroundScriptState*>(state_storage);
+            auto& state = owner.script_state;
             prepare(state);
             state.owner = &owner;
             initialize(state);
-
+            // Native Animation::update returns immediately when this gate is set.
+            // That isolates the event write and both owner traversal loops without
+            // substituting the nontrivial 39KB animation VM.
+            for (auto& animation : state.animations)
+                animation.base.flags.word_1c = 1;
+            if (label == "opcode_17") {
+                state.fields_3294[9] = 0;
+                state.fields_3294[10] = 0;
+                for (unsigned index = 0; index < 2; ++index) {
+                    state.mesh_timers[index].previous = static_cast<std::int32_t>(random());
+                    state.mesh_timers[index].current = static_cast<std::int32_t>(random());
+                    state.mesh_timers[index].current_fraction = finite();
+                    state.mesh_timers[index].flags = random();
+                    state.mesh_phase_x[index] = finite();
+                    state.mesh_phase_y[index] = finite();
+                }
+            }
             const float rate_value = float(random() % 5) * 0.5f;
             const float* rate = random() % 6 ? &rate_value : nullptr;
             th20::ClockScalar source_rate{};
@@ -157,22 +210,31 @@ int wmain(int argc, wchar_t** argv) {
             *reinterpret_cast<void**>(mapped_image_base + 0x1c069c) = &owner;
 
             std::array<std::uint8_t, sizeof(state)> before{}, expected{};
+            std::array<std::uint8_t, sizeof(th20::Animation) * 2> primitive_before{}, primitive_expected{};
+            const auto initial_view_index = static_cast<std::int32_t>(random());
+            th20::test_view_index_owner.view_index_6c4 = initial_view_index;
             for (unsigned tick = 0; tick < ticks; ++tick) {
                 std::memcpy(before.data(), &state, sizeof(state));
+                std::memcpy(primitive_before.data(), primitive_animations.data(), primitive_before.size());
                 const auto initial_flags = random();
                 const auto initial_color = random();
                 owner.state_flags = initial_flags;
+                th20::test_view_index_owner.view_index_6c4 = initial_view_index;
                 *reinterpret_cast<std::uint32_t*>(mapped_image_base + 0x1c5b20) = initial_color;
 
                 FloatingEnvironment::prepare();
                 cpu<void>(0x004751b0, &state);
                 std::memcpy(expected.data(), &state, sizeof(state));
+                std::memcpy(primitive_expected.data(), primitive_animations.data(), primitive_expected.size());
                 const auto expected_flags = owner.state_flags;
+                const auto expected_view_index = th20::test_view_index_owner.view_index_6c4;
                 const auto expected_color = *reinterpret_cast<std::uint32_t*>(
                     mapped_image_base + 0x1c5b20);
 
                 std::memcpy(&state, before.data(), sizeof(state));
+                std::memcpy(primitive_animations.data(), primitive_before.data(), primitive_before.size());
                 owner.state_flags = initial_flags;
+                th20::test_view_index_owner.view_index_6c4 = initial_view_index;
                 source_clear_color = initial_color;
                 FloatingEnvironment::prepare();
                 state.execute_script();
@@ -191,7 +253,10 @@ int wmain(int argc, wchar_t** argv) {
                         break;
                     }
                 }
+                if (std::memcmp(primitive_animations.data(), primitive_expected.data(), primitive_expected.size()) != 0)
+                    why += " primitive animation array";
                 if (owner.state_flags != expected_flags) why += " rotation global";
+                if (th20::test_view_index_owner.view_index_6c4 != expected_view_index) why += " view index global";
                 if (source_clear_color != expected_color) why += " clear color global";
                 if (!why.empty()) {
                     ++failed;
@@ -202,6 +267,9 @@ int wmain(int argc, wchar_t** argv) {
                 }
             }
             th20::timer_clock_sources[0] = &th20::default_timer_clock;
+            th20::process_stage_resource = nullptr;
+            *reinterpret_cast<const float**>(mapped_image_base + 0x1aefe0) = nullptr;
+            *reinterpret_cast<void**>(mapped_image_base + 0x1c069c) = nullptr;
         };
 
         for (unsigned motion = 0; motion < 16; ++motion)
@@ -238,7 +306,7 @@ int wmain(int argc, wchar_t** argv) {
                     state.fov_interpolation.duration = static_cast<int>(random() % 110) - 2;
                 }, 3);
 
-        for (int opcode : {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 20, 21, 22, 23, -1})
+        for (int opcode : {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, -1})
             for (unsigned test = 0; test < 400; ++test) {
                 std::vector<std::uint32_t> args(11);
                 for (auto& value : args) value = bits();
@@ -258,7 +326,14 @@ int wmain(int argc, wchar_t** argv) {
                 const auto tail = instruction(0, {}, test % 2 ? 100000 : 0);
                 code.insert(code.end(), tail.begin(), tail.end());
                 compare("opcode_" + std::to_string(opcode), code,
-                        [](th20::StageBackgroundScriptState&) {}, 3);
+                        [opcode](th20::StageBackgroundScriptState& state) {
+                            if (opcode == 19) {
+                                // The original Animation VM exits before any external
+                                // dependencies when flags.word_1c bit 0 is set.
+                                for (auto& animation : state.animations)
+                                    animation.base.flags.word_1c |= 1u;
+                            }
+                        }, 3);
             }
 
         std::ofstream report(argv[2]);
@@ -271,12 +346,13 @@ int wmain(int argc, wchar_t** argv) {
             comma = true;
             report << th20::json_string(label) << ':' << count;
         }
-        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; camera modes 0..15, future instruction interpolation, opcodes 1..16/18/20..23 and unknown; positive ANM binding, mesh opcode17, animation interrupt19 and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
+        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed and the shared view-index owner; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, mesh allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
         for (unsigned index = 0; index < failures.size(); ++index) {
             if (index) report << ',';
             report << th20::json_string(failures[index]);
         }
         report << "]\n}\n";
+        th20::process_stage_resource = nullptr;
         std::cout << "StageResource VM: " << checks << " checks, " << failed << " failures\n";
         return failed ? 1 : 0;
     } catch (const std::exception& error) {

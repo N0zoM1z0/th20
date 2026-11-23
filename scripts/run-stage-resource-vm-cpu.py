@@ -29,6 +29,8 @@ def main() -> int:
         ROOT / "tests/stage_resource_vm_cpu_compare.cpp",
         ROOT / "src/StageResourceScript.cpp",
         ROOT / "src/StageResourceFog.cpp",
+        ROOT / "src/StageResourceInterruptAnimations.cpp",
+        ROOT / "src/StageResourcePrimaryRotationFlag.cpp",
         ROOT / "src/Interpolation.cpp",
         ROOT / "src/FogValue.cpp",
         ROOT / "src/Easing.cpp",
@@ -79,6 +81,8 @@ def main() -> int:
         print(run.stdout.strip())
     if run.stderr:
         print(run.stderr.strip(), file=sys.stderr)
+    if "Unhandled page fault" in run.stderr or "Unhandled exception" in run.stderr:
+        raise ValueError("StageResource VM oracle process faulted after producing its report")
     if run.returncode:
         raise ValueError(f"StageResource VM CPU oracle failed with exit status {run.returncode}")
     data = json.loads(report.read_text(encoding="utf-8"))

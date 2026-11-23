@@ -1082,6 +1082,6 @@ address,name,module,confidence,evidence
 0x00511870,th20::DiagnosticAllocator::allocate_object<StoneEnemyRecord>,CxxAllocator,medium,docs/STONE_ENEMY_RECORD_RECONSTRUCTION.md
 0x00512F60,th20::StoneEnemyController::add_record,StoneEnemyController,medium,config/source-diagnostics.csv; docs/STONE_ENEMY_RECORD_RECONSTRUCTION.md
 
-0x004751B0,th20::StageBackgroundFogOwner::execute_script,StageResource,medium,"CORE/RECON-1300; docs/STAGE_RESOURCE_SCRIPT_VM_8572_SOURCE_FRONTIER.md; original-PE CPU comparison 43,080/43,080 state checks"
+0x004751B0,th20::StageBackgroundFogOwner::execute_script,StageResource,medium,"CORE/RECON-1300; docs/STAGE_RESOURCE_SCRIPT_VM_8572_SOURCE_FRONTIER.md; original-PE CPU comparison 45,480/45,480 whole-state checks"
 0x00477480,th20::StageResourceOwner::interrupt_animations,StageResource,high,CORE/RECON-1301; docs/STAGE_RESOURCE_SCRIPT_VM_8572_SOURCE_FRONTIER.md; complete 160-byte original body and both original event-bridge relocations strictly replayed
 0x00477790,th20::StageResourceOwner::set_primary_rotation_flag,StageResource,medium,CORE/RECON-1300; docs/STAGE_RESOURCE_SCRIPT_VM_8572_SOURCE_FRONTIER.md; original 45-byte Background owner flag helper and opcode-22 caller
