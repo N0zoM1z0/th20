@@ -28,3 +28,4 @@ th20::native_zero_56e0e8,0x0056E0E8,data
 th20::native_0_01,0x0056E1A0,data
 th20::native_ten_56e734,0x0056E734,data
 th20::native_six_56f00c,0x0056F00C,data
+th20::process_stage_resource,0x005C069C,data

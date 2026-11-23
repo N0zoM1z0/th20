@@ -13,6 +13,19 @@ struct StageResourceOwner;
 // The instruction stream is variable length: time/opcode/size form the
 // native eight-byte instruction header and argument zero follows at +0x08.
 // The selector and the 8.5KB VM both consume the same signed size field.
+struct StageResourceFileHeader {
+    std::int16_t object_count;
+    std::int16_t animation_count;
+    std::uint32_t instance_offset;
+    std::uint32_t script_offset;
+    std::uint32_t field_0c;
+    char animation_name[128];
+};
+static_assert(sizeof(StageResourceFileHeader) == 0x90);
+static_assert(offsetof(StageResourceFileHeader, animation_count) == 0x02);
+static_assert(offsetof(StageResourceFileHeader, instance_offset) == 0x04);
+static_assert(offsetof(StageResourceFileHeader, animation_name) == 0x10);
+
 struct StageResourceInstructionHeader {
     std::int32_t time;
     std::int16_t opcode;
@@ -52,6 +65,8 @@ struct StageBackgroundFogOwner {
 
     void set_fog(std::int32_t duration, std::int32_t mode,
                  const FogValue& target);
+    void __fastcall execute_script();
+    void update_camera_motion(const float* rate);
 };
 using StageBackgroundScriptState = StageBackgroundFogOwner;
 
@@ -62,7 +77,7 @@ struct StageResourceOwner {
     std::byte unknown_000[0x10];
     StageBackgroundScriptState script_state;
     Animation* primitive_animations;
-    void* file;
+    const StageResourceFileHeader* file;
     void* objects;
     void* instances;
     const StageResourceInstructionHeader* instructions;
@@ -80,6 +95,8 @@ struct StageResourceOwner {
     void select_record(std::int32_t identifier);
     void set_fog(std::int32_t duration, std::int32_t mode,
                  const FogValue& target);
+    void interrupt_animations(std::int32_t event);
+    void set_primary_rotation_flag(std::uint32_t value);
 };
 
 extern StageResourceOwner* process_stage_resource;

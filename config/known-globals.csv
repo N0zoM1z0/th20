@@ -30,3 +30,4 @@ address,name,module,confidence,evidence
 0x005706F8,th20::front_dialogue_allocator_label_5706f8,const char[],medium,CORE/RECON-1206; docs/FRONT_INF_DIALOGUE_COMMAND626_SOURCE_FRONTIER.md; native FrontInf dialogue factory allocation diagnostic label
 0x0056E734,th20::native_ten_56e734,float,high,CORE/RECON-1259; original 10.0f radius used by Enemy opcode 629 Player overlap and WeaponStone progress-mesh updater
 0x0056F00C,th20::native_six_56f00c,float,high,CORE/RECON-1259; original 6.0f Bullet radius used by Enemy opcode 629 animation-rectangle callback
+0x005C069C,th20::process_stage_resource,StageResourceOwner*,high,CORE/RECON-1270; docs/STAGE_RESOURCE_SCRIPT_VM_8572_SOURCE_FRONTIER.md; original VM opcode 22 and helper 0x00477790 use this owner; NativeCardUiDirtyView is a partial view of the same +0x3344 state_flags word.
