@@ -4,9 +4,10 @@
 handle lookup at `0x00498FF0` is now linked into the maintained Enemy root
 host and covered by native PE, i386 COFF, and ASan/UBSan regression checks.
 This is a real leaf used by Enemy ECL opcodes 704–710; it is not a synthetic
-replacement and does not claim that all seven parent opcode branches are
-restored. Opcode 704 now has a separate inline source frontier; siblings
-705–710 remain open.
+replacement and does not claim that the 41,967-byte parent is restored. All
+seven caller fragments 704–710 now have natural C++ source and focused root
+coverage. See the [opcode-704 position frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md)
+and [opcode-705–710 mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
 
 ## Locked native evidence
 
@@ -69,6 +70,8 @@ This restores the shared leaf and is now exercised by the separately
 recovered inline Enemy opcode-704 position-update fragment (176B/37
 instructions/six direct E8 calls plus a conditional `set_position` vcall).
 See [the opcode-704 source frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md).
-Sibling caller fragments 705–710 remain open, and the 41,967-byte
-`EnemyState::execute_opcode` parent remains **NONEXACT**. No parent-byte
+All seven Enemy caller fragments 704–710 now have natural C++ source and
+focused root coverage. See the [opcode-704 position frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md)
+and [opcode-705–710 mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
+The 41,967-byte `EnemyState::execute_opcode` parent remains **NONEXACT**. No parent-byte
 credit is claimed and no full cold replay was run.

@@ -27,6 +27,54 @@ bool execute_enemy_laser_lookup_opcode(EnemyState& state, std::int32_t opcode) {
 // The four creation branches share the queued-shot COW protocol, command-
 // vector copy, Context Laser owner and common Laser factory. Their native case
 // bodies are inline in the 41,967B EnemyState::execute_opcode Boss.
+bool execute_enemy_laser_mutation_opcode(EnemyState& state, std::int32_t opcode) {
+    switch (opcode) {
+    case 705: {
+        auto* const controller = state.context->laser_controller();
+        const auto handle = state.integer_argument(0);
+        auto* const laser = controller->find_laser(handle);
+        Vector3 value;
+        value.x = state.float_argument(1);
+        value.y = state.float_argument(2);
+        if (laser != nullptr) {
+            value.z = 0.0f;
+            laser->set_parameter_vector_704(value);
+        }
+        return true;
+    }
+    case 706:
+    case 707:
+    case 708:
+    case 709: {
+        auto* const controller = state.context->laser_controller();
+        const auto handle = state.integer_argument(0);
+        auto* const laser = controller->find_laser(handle);
+        if (laser == nullptr) return true;
+
+        const float value = state.float_argument(1);
+        switch (opcode) {
+        case 706: laser->set_field_7c(value); break;
+        case 707: laser->set_speed(value); break;
+        case 708: laser->set_angle(value); break;
+        case 709: laser->set_parameter_field_714(value); break;
+        }
+        return true;
+    }
+    case 710: {
+        auto* const controller = state.context->laser_controller();
+        const auto handle = state.integer_argument(0);
+        auto* const laser = controller->find_laser(handle);
+        if (laser != nullptr) {
+            (void)laser->erase(0, 0);
+            laser->set_handle(0);
+        }
+        return true;
+    }
+    default:
+        return false;
+    }
+}
+
 bool execute_enemy_laser_opcode(EnemyState& state, std::int32_t opcode) {
     switch (opcode) {
     case 702: {

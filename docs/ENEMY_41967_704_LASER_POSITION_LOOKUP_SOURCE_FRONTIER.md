@@ -61,7 +61,8 @@ conditional vcall and ordered natural-C++ COFF relocations. The maintained
 root verifier runs **128 focused host source units** under ASan/UBSan and
 compiles **62 locked-profile i386 COFF units**; no full cold replay is used.
 
-Opcode 704 is now a recovered inline source fragment. The sibling Laser
-caller fragments 705–710 remain open, and the complete 41,967-byte
-`EnemyState::execute_opcode` parent remains **NONEXACT**. No inline parent byte
-credit is claimed.
+Opcode 704 and sibling Laser caller fragments 705–710 now all have natural
+C++ source and focused root coverage. The six small setter leaves called by
+705–710 strictly replay 172/172 bytes; see the [705–710 mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
+The complete 41,967-byte `EnemyState::execute_opcode` parent remains
+**NONEXACT**. No inline parent byte credit is claimed.

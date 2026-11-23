@@ -244,8 +244,8 @@ source fragments.
   repeats node_value() on the match return, and destroys the iterator on both
   paths. The maintained root host covers empty/missing/later/duplicate lookup
   cases. See LASER_CONTROLLER_FIND_LASER_230_SOURCE_FRONTIER.md. Opcode 704
-  now has a separate inline source frontier; sibling callers 705–710 and the
-  41,967B parent remain NONEXACT.
+  now has separate inline source frontiers for all seven caller branches
+  704–710; the 41,967B parent remains NONEXACT.
 - Native Enemy opcode 704 is now a separate production source fragment. Its
   original selector 156 case is 176B/37 instructions/six E8 calls plus one
   conditional `Laser::set_position` vcall. It captures the Context
@@ -255,7 +255,18 @@ source fragments.
   retargeting during handle/float reads, missing handles and both integer and
   float exceptions before mutation. See
   [the opcode-704 source frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md).
-  Sibling inline callers 705–710 and the 41,967B parent remain NONEXACT.
+  Sibling inline callers 705–710 now also have natural C++ source and focused
+  root coverage; see [the 705–710 Laser mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
+  The complete 41,967B parent remains NONEXACT.
+- Native Enemy opcodes 705–710 are now source fragments totaling 724B/158
+  x86/31 E8 plus one indirect slot-0x44 virtual erase. They preserve 705's
+  handle lookup before both float reads and unconditional float consumption
+  on a miss; 706–709's null guard before the float read and stores to
+  +0x7C/+0x78/+0x70/+0x714; and 710's virtual erase(0,0) before set_handle(0).
+  The six called Laser setter leaves (172B total) are individually strict
+  exact natural C++ units. See
+  [the 705–710 Laser mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
+  These remain inline fragments; the complete 41,967B parent is NONEXACT.
 - Native opcode 620 is the 250-byte / 57-instruction shared queued-vector
   update at 0x00492D4D, selector index 138, with eight original E8 calls.
   The maintained root host executes the production helper and real

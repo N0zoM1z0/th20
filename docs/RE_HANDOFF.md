@@ -43,9 +43,14 @@ changes are checkpointed and retained:
 
 - `src/EnemyStatePlayerAngleOpcode.cpp`
 - `src/EnemyStateLaserOpcode.cpp`
+- `src/LaserCommandMethods.cpp`
+- `src/LaserParameters.hpp`
 - `src/LaserControllerFindLaser.cpp`
 - `scripts/verify-laser-controller-find-laser-source.py`
 - `scripts/verify-enemy-laser-lookup-opcode-source.py`
+- `scripts/verify-enemy-laser-mutation-opcodes-source.py`
+- `docs/ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md`
+- `docs/LASER_MUTATION_SETTER_LEAVES_EXACT.md`
 - `src/EnemyStateSharedQueuedParametersOpcode.cpp`
 - `src/EnemyStateQueuedParametersOpcode.cpp`
 - `src/EnemyStateScriptPointerOpcode.cpp`
@@ -111,7 +116,10 @@ inline source fragment: Context owner capture, integer handle operand, real
 virtual `set_position`. Its native PE/COFF verifier and live Context-retarget /
 missing-handle / operand-exception root tests pass. See
 [the opcode-704 source frontier](ENEMY_41967_704_LASER_POSITION_LOOKUP_SOURCE_FRONTIER.md).
-Sibling opcode fragments 705–710 and the 41,967B Enemy root remain NONEXACT.
+Sibling opcode fragments 705–710 now have natural C++ source, focused root
+coverage and strict-exact setter leaves; see
+[the 705–710 Laser mutation frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
+The 41,967B Enemy root remains NONEXACT.
 
 Native opcode 620 is the **250-byte / 57-instruction / 8-E8** case at
 `0x00492D4D`, selector index 138. Its natural C++ source uses the real
