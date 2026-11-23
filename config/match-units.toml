@@ -32218,3 +32218,86 @@ relocations = [
   { offset = 0xC9, type = "REL32", symbol = "??1?$IntrusiveIterator@VLaser@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
   { offset = 0xE4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
+
+# CORE/RECON-1262: original whole-function Enemy opcode-629 callback Boss.
+[units.enemy_state_clear_bullets_in_animation_rectangle]
+source = "src/EnemyStateBulletClearOpcode.cpp"
+object = "build/gpt-web-enemy-629-canonical/EnemyStateBulletClearOpcode.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyState::clear_bullets_in_animation_rectangle"]
+symbol = "?clear_bullets_in_animation_rectangle@EnemyState@th20@@QAEHXZ"
+target_address = 0x00488B80
+size = 758
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?clear_bullets_in_animation_rectangle@EnemyState@th20@@QAEHXZ", target = 0x0056908D },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x3A, type = "REL32", symbol = "??A?$vector@UEnemyAnimationLink@th20@@V?$polymorphic_allocator@UEnemyAnimationLink@th20@@@pmr@std@@@std@@QAEAAUEnemyAnimationLink@th20@@I@Z", target = 0x0048BCE0 },
+  { offset = 0x41, type = "REL32", symbol = "?resolve@AnimationHandle@th20@@QAEPAVAnimation@2@XZ", target = 0x0044CED0 },
+  { offset = 0x4C, type = "REL32", symbol = "?scale_x_value@Animation@th20@@QAEMXZ", target = 0x004379C0 },
+  { offset = 0x57, type = "REL32", symbol = "?scale_y_value@Animation@th20@@QAEMXZ", target = 0x004379A0 },
+  { offset = 0x62, type = "REL32", symbol = "?rotation_z_value@Animation@th20@@QAEMXZ", target = 0x00437930 },
+  { offset = 0x73, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x7A, type = "REL32", symbol = "?active_list@BulletController@th20@@QAEAAU?$IntrusiveList@UBullet@th20@@@2@XZ", target = 0x00485970 },
+  { offset = 0x87, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UBullet@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x93, type = "REL32", symbol = "?begin@?$IntrusiveList@UBullet@th20@@@th20@@QAE?AV?$IntrusiveIterator@UBullet@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 0xA2, type = "REL32", symbol = "?end@?$IntrusiveList@UBullet@th20@@@th20@@QAEPAV?$IntrusiveIterator@UBullet@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 0xAF, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UBullet@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 0xBC, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UBullet@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 0xCF, type = "REL32", symbol = "?get@?$IntrusiveIterator@UBullet@th20@@@th20@@QAEPAV?$IntrusiveLink@UBullet@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 0xDA, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UBullet@th20@@@th20@@QAEPAUBullet@2@XZ", target = 0x0040C300 },
+  { offset = 0xE5, type = "REL32", symbol = "?position_ref@Bullet@th20@@QAEAAUVector3@2@XZ", target = 0x00499370 },
+  { offset = 0xF7, type = "REL32", symbol = "?position_ref@Bullet@th20@@QAEAAUVector3@2@XZ", target = 0x00499370 },
+  { offset = 0x108, type = "REL32", symbol = "?position_ref@EnemyState@th20@@QAEAAUVector3@2@XZ", target = 0x00499350 },
+  { offset = 0x11A, type = "REL32", symbol = "?position_ref@EnemyState@th20@@QAEAAUVector3@2@XZ", target = 0x00499350 },
+  { offset = 0x12C, type = "DIR32", symbol = "?native_six_56f00c@th20@@3MB", target = 0x0056F00C },
+  { offset = 0x183, type = "REL32", symbol = "?rectangle_circle@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x00457610 },
+  { offset = 0x1A6, type = "REL32", symbol = "?set_timer_4d8@Bullet@th20@@QAEXM@Z", target = 0x0049CAE0 },
+  { offset = 0x1AE, type = "REL32", symbol = "?animation_ref@Bullet@th20@@QAEPAVAnimation@2@XZ", target = 0x00421810 },
+  { offset = 0x1BE, type = "REL32", symbol = "?set_packed_color@Animation@th20@@QAEXI@Z", target = 0x0044FA10 },
+  { offset = 0x1C6, type = "REL32", symbol = "?set_field_18_to_ten@Bullet@th20@@QAEXXZ", target = 0x0049C760 },
+  { offset = 0x1DB, type = "REL32", symbol = "??1?$IntrusiveIterator@UBullet@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 0x1EA, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x1F1, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x209, type = "REL32", symbol = "?player@Context@th20@@QAEPAVPlayer@2@XZ", target = 0x0040FF90 },
+  { offset = 0x210, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x221, type = "REL32", symbol = "?position_ref@EnemyState@th20@@QAEAAUVector3@2@XZ", target = 0x00499350 },
+  { offset = 0x233, type = "REL32", symbol = "?position_ref@EnemyState@th20@@QAEAAUVector3@2@XZ", target = 0x00499350 },
+  { offset = 0x245, type = "DIR32", symbol = "?native_ten_56e734@th20@@3MB", target = 0x0056E734 },
+  { offset = 0x29C, type = "REL32", symbol = "?rectangle_circle@geometry@th20@@YA_NMMMMMMMM@Z", target = 0x00457610 },
+  { offset = 0x2AD, type = "REL32", symbol = "?player@th20@@YAPAVPlayer@1@H@Z", target = 0x00460830 },
+  { offset = 0x2D6, type = "REL32", symbol = "?set_field_20ec@Player@th20@@QAEXM@Z", target = 0x00479080 },
+  { offset = 0x2EE, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-1262: original whole-function Enemy opcode-629 callback Boss.
+[units.enemy_state_clear_all_bullets_for_enemy_clear]
+source = "src/EnemyStateBulletClearOpcode.cpp"
+object = "build/gpt-web-enemy-629-canonical/EnemyStateBulletClearOpcode.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::EnemyState::clear_all_bullets_for_enemy_clear"]
+symbol = "?clear_all_bullets_for_enemy_clear@EnemyState@th20@@QAEHXZ"
+target_address = 0x00488E80
+size = 291
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?clear_all_bullets_for_enemy_clear@EnemyState@th20@@QAEHXZ", target = 0x005685FD },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x35, type = "REL32", symbol = "?bullet_controller@Context@th20@@QAEPAUBulletController@2@XZ", target = 0x0040C300 },
+  { offset = 0x3C, type = "REL32", symbol = "?active_list@BulletController@th20@@QAEAAU?$IntrusiveList@UBullet@th20@@@2@XZ", target = 0x00485970 },
+  { offset = 0x49, type = "REL32", symbol = "?__autoclassinit2@?$IntrusiveIterator@UBullet@th20@@@th20@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x55, type = "REL32", symbol = "?begin@?$IntrusiveList@UBullet@th20@@@th20@@QAE?AV?$IntrusiveIterator@UBullet@th20@@@2@XZ", target = 0x00412280 },
+  { offset = 0x64, type = "REL32", symbol = "?end@?$IntrusiveList@UBullet@th20@@@th20@@QAEPAV?$IntrusiveIterator@UBullet@th20@@@2@XZ", target = 0x00412540 },
+  { offset = 0x71, type = "REL32", symbol = "?advance@?$IntrusiveIterator@UBullet@th20@@@th20@@QAEAAV12@XZ", target = 0x00411C30 },
+  { offset = 0x7E, type = "REL32", symbol = "?differs@?$IntrusiveIterator@UBullet@th20@@@th20@@QBE_NPBV12@@Z", target = 0x00411BB0 },
+  { offset = 0x8D, type = "REL32", symbol = "?get@?$IntrusiveIterator@UBullet@th20@@@th20@@QAEPAV?$IntrusiveLink@UBullet@th20@@@2@XZ", target = 0x0040C300 },
+  { offset = 0x98, type = "REL32", symbol = "?node_value@?$IntrusiveLink@UBullet@th20@@@th20@@QAEPAUBullet@2@XZ", target = 0x0040C300 },
+  { offset = 0xA4, type = "DIR32", symbol = "?native_one_56c8cc@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0xB1, type = "REL32", symbol = "?set_timer_4d8@Bullet@th20@@QAEXM@Z", target = 0x0049CAE0 },
+  { offset = 0xB9, type = "REL32", symbol = "?animation_ref@Bullet@th20@@QAEPAVAnimation@2@XZ", target = 0x00421810 },
+  { offset = 0xC6, type = "REL32", symbol = "?set_packed_color@Animation@th20@@QAEXI@Z", target = 0x0044FA10 },
+  { offset = 0xCE, type = "REL32", symbol = "?clear_field_18@Bullet@th20@@QAEXXZ", target = 0x0049C260 },
+  { offset = 0xE0, type = "REL32", symbol = "??1?$IntrusiveIterator@UBullet@th20@@@th20@@QAE@XZ", target = 0x00411B00 },
+  { offset = 0xE8, type = "REL32", symbol = "?player@th20@@YAPAVPlayer@1@H@Z", target = 0x00460830 },
+  { offset = 0xF7, type = "DIR32", symbol = "?native_one_56c8cc@th20@@3MB", target = 0x0056C8CC },
+  { offset = 0x104, type = "REL32", symbol = "?set_field_20ec@Player@th20@@QAEXM@Z", target = 0x00479080 },
+  { offset = 0x11B, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]

@@ -106,11 +106,13 @@ canonically accepted.
   before COW/growth are tested; its 10-E8 map and ordered COFF relocations are
   checked (CORE/RECON-1256).
   Opcode 629 now dispatches through its original three-entry member callback
-  table to two complete natural-C++ EnemyState callback Bosses (768B rotated
-  animation-rectangle Bullet clear and 291B all-active-Bullet reset). Real
+  table to two complete natural-C++ EnemyState callback Bosses. The 758B
+  rotated-animation rectangle body and 291B all-active-Bullet reset body now
+  strictly replay all 59 original relocations and all 813 ordinary bytes; the
+  rectangle's separate 10B INT3 alignment tail is not source credit. Real
   AnimationHandle resolution, geometry, Bullet intrusive traversal, Timer,
-  color, field and Player setters are exercised; original 6.0f/10.0f globals,
-  callback table and all 51 E8 call sites are pinned (CORE/RECON-1259).
+  color, field and Player setters remain exercised; original 6.0f/10.0f
+  globals, callback table and all 51 E8 call sites are pinned (CORE/RECON-1262).
   Opcode 630 now awards score through the real Session owner and enqueues the
   popup through Context+0x1C and the strict-exact 255B ItemRewardPopupQueue
   Boss. Native 109B/24-instruction/5-E8 case, -1 marker, live Enemy position,

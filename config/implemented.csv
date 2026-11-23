@@ -1798,3 +1798,5 @@ th20::LaserController::cancel_all
 th20::SoundInf::enqueue
 th20::Bullet::set_timer_4d8
 th20::EclManager::select
+th20::EnemyState::clear_bullets_in_animation_rectangle
+th20::EnemyState::clear_all_bullets_for_enemy_clear

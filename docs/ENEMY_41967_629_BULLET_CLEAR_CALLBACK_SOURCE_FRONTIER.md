@@ -12,8 +12,13 @@ The two native callback Bosses are separately bounded and pinned:
 
 | Callback | Original extent | Size / instructions / E8 | SHA-256 |
 | --- | --- | --- | --- |
-| Animation-rectangle Bullet clear | `0x00488B80..0x00488E80` | 768B / 215 / 34 | `6e7dc966aa80eb468ac1ea53755f7dfa5b34e80bcb165d0a54b076b41a388f46` |
-| All-active-Bullet reset | `0x00488E80..0x00488FA3` | 291B / 86 / 17 | `981d4d97b63177f87684ca7a6bb854b32bbe9213f01c5282869be60323d2024b` |
+| Animation-rectangle Bullet clear | `0x00488B80..0x00488E76` | 758B body / 205 x86 / 34 E8 | `2f66245e6c05e12b15c2b32030a0d23be74dac207e5c6bf0724beffd0c8df3b1` |
+| All-active-Bullet reset | `0x00488E80..0x00488FA3` | 291B body / 86 / 17 | `981d4d97b63177f87684ca7a6bb854b32bbe9213f01c5282869be60323d2024b` |
+
+The first callback's 768-byte native region includes a separate ten-byte
+`INT3` alignment tail at `0x00488E76..0x00488E7F`; it is not part of the
+758-byte C++ function and is not credited as source. The second callback has
+no tail bytes in its 291-byte body.
 
 `scripts/verify-enemy-bullet-clear-opcode-source.py` pins the original
 selector, 46-byte branch, indirect call, callback table words, complete
@@ -58,6 +63,24 @@ The two native iterator destructors occur before their respective Player
 phases. The maintained COFF call-order checks preserve this lifetime boundary
 as well as the AnimationHandle, Context, position, geometry, Bullet Timer,
 animation, field setter and Player calls.
+
+## Whole-function strict replay
+
+Both callback Bosses now have independent canonical COFF units in
+`config/match-units.toml`, built from the same natural C++ translation unit.
+The 758-byte rectangle callback strictly replays all 38 original relocation
+fields and all 606 ordinary bytes. The 291-byte all-Bullet reset strictly
+replays all 21 original relocation fields and all 207 ordinary bytes. Fresh
+pinned-compiler replay reports `exact (758/758 bytes)` and
+`exact (291/291 bytes)` respectively. The 10-byte rectangle alignment tail
+is verified as original `0xCC` data separately, never padded into the source.
+
+The native iterator receiver lifetimes are reflected in ordinary source:
+Context's BulletController result flows directly into `active_list()`, and
+`iterator.get()` is retained as a typed intrusive-link local before
+`node_value()`. The all-Bullet callback also retains global Player zero in an
+explicit local before passing the original 1.0f global to its movement-scale
+setter; this reproduces the native stack/argument order without assembly.
 
 ## Runtime and leaf verification
 

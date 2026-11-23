@@ -103,7 +103,7 @@ See the opcode-619 source frontier
 
 Native opcode 629 is the **46-byte / 10-instruction** callback-table branch
 at `0x00490B4D`, selector index 147. Its native table at `0x0056FE8C` selects
-the 768B animation-rectangle Bullet callback or the 291B all-Bullet reset
+the 758B animation-rectangle Bullet callback or the 291B all-Bullet reset
 callback. Both complete callbacks are now natural C++ `EnemyState` members,
 with real AnimationHandle resolution, rotated `geometry::rectangle_circle`,
 active Bullet iterator, Bullet Timer/color/field setters, Context/Player
@@ -196,7 +196,7 @@ Recent committed case families exercised by the maintained root include:
   growth and exact EclInstruction+0x1C pointer identity, plus second-index exception.
 - **627/628:** two 182B capped Bullet/Laser cancellation branches; real 401B limited
   Bullet and 288B Laser Bosses, 99,999 cap/effects arguments and live Context retargeting.
-- **629:** 46B callback-table case plus 768B and 291B native callback Bosses;
+- **629:** 46B callback-table case plus 758B and 291B native callback Bosses (10B INT3 alignment is separate);
   real AnimationHandle/geometry/Bullet iterator/Timer/color/Player paths and both
   callback modes execute under ASan/UBSan.
 - **630:** 109B score-popup case; real Session score, Context +0x1C popup queue,

@@ -260,7 +260,7 @@ source fragments.
   [opcode-627/628 source frontier](ENEMY_41967_627_628_CAPPED_RADIAL_CANCEL_SOURCE_FRONTIER.md).
 - Native opcode 629 is the 46-byte / 10-instruction callback-table branch at
   `0x00490B4D`, selector index 147. Its original table at `0x0056FE8C`
-  dispatches to the complete 768B animation-rectangle Bullet callback or
+  dispatches to the complete 758B animation-rectangle Bullet callback or
   291B all-active-Bullet reset callback. Both are natural `EnemyState` C++
   members using real AnimationHandle, rotated rectangle geometry, Bullet
   intrusive traversal, Timer/color/field setters and Player scale side effects.
@@ -471,7 +471,7 @@ The maintained dispatcher verifier currently compiles **58** locked-profile
 i386 COFF source units and executes **124** focused host source units under
 ASan/UBSan. Its focused native checks include the 609-612 shared
 1,457B/314-instruction/29-E8 branch, the 614 572B/129-instruction/19-E8
-queue-copy branch, the 616 175B/37-instruction/7-E8 paired Bullet/Laser radial-cancel branch, the 617 203B/41-instruction/8-E8 Player-relative angle branch, the 618 243B/55-instruction/10-E8 shared queued-polar branch, the 619 148B/35-instruction/7-E8 writable metadata radial-offset branch, the 620 250B/57-instruction/8-E8 shared queued-vector branch, the 621 346B/70-instruction/7-E8 mesh branch, the 627/628 pair (364B/78 instructions/14 E8), the 629 callback-table case (46B dispatch plus 768B/215-instruction/34-E8 and 291B/86-instruction/17-E8 callbacks), the 630 109B/24-instruction/5-E8 score-popup case, the 632 252B/62-instruction/10-E8 borrowed script-pointer branch, the 633 163B/41-instruction/6-E8 queued-record decrement branch, the four Laser branches
+queue-copy branch, the 616 175B/37-instruction/7-E8 paired Bullet/Laser radial-cancel branch, the 617 203B/41-instruction/8-E8 Player-relative angle branch, the 618 243B/55-instruction/10-E8 shared queued-polar branch, the 619 148B/35-instruction/7-E8 writable metadata radial-offset branch, the 620 250B/57-instruction/8-E8 shared queued-vector branch, the 621 346B/70-instruction/7-E8 mesh branch, the 627/628 pair (364B/78 instructions/14 E8), the 629 callback-table case (46B dispatch plus 758B/205-instruction/34-E8 and 291B/86-instruction/17-E8 callbacks (plus 10B separate INT3 alignment)), the 630 109B/24-instruction/5-E8 score-popup case, the 632 252B/62-instruction/10-E8 borrowed script-pointer branch, the 633 163B/41-instruction/6-E8 queued-record decrement branch, the four Laser branches
 (2,699B/607 CFG heads/62 E8), the 712 196B/42-instruction/9-E8
 rectangle-cancel branch, and the 800-802 script-control branches
 (627B/128 instructions/25 E8). It also checks the 553/554 setter maps and

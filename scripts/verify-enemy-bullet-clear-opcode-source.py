@@ -23,10 +23,15 @@ CALLBACK_TABLE = 0x0056FE8C
 
 CALLBACKS = {
     0x00488B80: {
-        "end": 0x00488E80,
-        "size": 768,
-        "instructions": 215,
-        "sha256": "6e7dc966aa80eb468ac1ea53755f7dfa5b34e80bcb165d0a54b076b41a388f46",
+        "end": 0x00488E76,
+        "size": 758,
+        "extent_end": 0x00488E80,
+        "extent_size": 768,
+        "extent_sha256": "6e7dc966aa80eb468ac1ea53755f7dfa5b34e80bcb165d0a54b076b41a388f46",
+        "tail_padding": 10,
+        "instructions": 205,
+        "extent_instructions": 215,
+        "sha256": "2f66245e6c05e12b15c2b32030a0d23be74dac207e5c6bf0724beffd0c8df3b1",
         "calls": [
             0x0048BCE0,0x0044CED0,0x004379C0,0x004379A0,0x00437930,
             0x0040C300,0x00485970,0x0040C080,0x00412280,0x00412540,
@@ -59,7 +64,12 @@ CALLBACKS = {
     0x00488E80: {
         "end": 0x00488FA3,
         "size": 291,
+        "extent_end": 0x00488FA3,
+        "extent_size": 291,
+        "extent_sha256": "981d4d97b63177f87684ca7a6bb854b32bbe9213f01c5282869be60323d2024b",
+        "tail_padding": 0,
         "instructions": 86,
+        "extent_instructions": 86,
         "sha256": "981d4d97b63177f87684ca7a6bb854b32bbe9213f01c5282869be60323d2024b",
         "calls": [
             0x0040C300,0x00485970,0x0040C080,0x00412280,0x00412540,
@@ -136,6 +146,15 @@ def main() -> None:
         raw = pe.get_data(start - image_base, case_data["size"])
         assert len(raw) == case_data["size"]
         assert hashlib.sha256(raw).hexdigest() == case_data["sha256"]
+        extent = pe.get_data(start - image_base, case_data["extent_size"])
+        assert len(extent) == case_data["extent_size"]
+        assert hashlib.sha256(extent).hexdigest() == case_data["extent_sha256"]
+        extent_insns = list(decoder.disasm(extent, start))
+        assert len(extent_insns) == case_data["extent_instructions"]
+        tail = extent[case_data["size"]:]
+        assert len(tail) == case_data["tail_padding"]
+        assert tail == b"\xCC" * case_data["tail_padding"]
+        assert start + case_data["extent_size"] == case_data["extent_end"]
         insns = list(decoder.disasm(raw, start))
         assert len(insns) == case_data["instructions"]
         assert insns[-1].address + insns[-1].size == case_data["end"]
@@ -211,6 +230,10 @@ def main() -> None:
     assert "Animation* Bullet::animation_ref() { return animation; }" in bullet_source
     assert "void Bullet::set_field_18_to_ten() { field_18 = 10; }" in bullet_source
     assert "void Bullet::clear_field_18() { field_18 = 0; }" in bullet_source
+    assert first.count("auto* const link = iterator.get();") == 1
+    assert second.count("auto* const link = iterator.get();") == 1
+    assert "auto* controller = context->bullet_controller()" not in first + second
+    assert "auto* controller = context->bullet_controller()" not in first + second
     assert "void Bullet::set_timer_4d8(float value)" in (ROOT / "src/BulletTimer4D8.cpp").read_text()
     assert "void Player::set_field_20ec(float value) { field_20ec = value; }" in (ROOT / "src/PlayerAccessors.cpp").read_text()
     assert "Player* player(std::int32_t index)" in (ROOT / "src/Player.cpp").read_text()
@@ -223,7 +246,8 @@ def main() -> None:
         "bullet->set_timer_4d8(native_one_56c8cc)",
         "bullet->animation_ref()->set_packed_color(0xffffffffu)",
         "bullet->clear_field_18()",
-        "player(0)->set_field_20ec(native_one_56c8cc)",
+        "Player* const target_player = player(0)",
+        "target_player->set_field_20ec(native_one_56c8cc)",
     ]
     cursor = 0
     for token in second_order:
@@ -270,8 +294,8 @@ def main() -> None:
 
     print("PASS original Enemy opcode 629: selector 147, 46B / 10 x86 / one direct E8 plus indirect callback")
     print("PASS native callback table 0x56FE8C: null, 0x488B80 animation-rectangle clear, 0x488E80 all-bullet reset")
-    print("PASS native EnemyState callback 0x00488B80: 768B / 215 x86 / 34 ordered direct calls")
-    print("PASS native EnemyState callback 0x00488E80: 291B / 86 x86 / 17 ordered direct calls")
+    print("PASS native EnemyState callback 0x00488B80: 758B body / 205 x86 / 34 ordered direct calls; separate 10B INT3 alignment tail")
+    print("PASS native EnemyState callback 0x00488E80: 291B body / 86 x86 / 17 ordered direct calls")
     print("PASS native Bullet Timer +0x4D8 leaf 0x0049CAE0: 39B / 14 x86 / one ordered Timer::operator=(float) E8")
     print("PASS natural C++ animation resolve, rotated rectangle filters, live Enemy/Player positions, Bullet Timer/color/state and callback-table dispatch")
     print("PASS root-host opcode 629 both callbacks, no state/field filter, Player overlap side effect and operand exception-before-side-effects")

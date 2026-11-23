@@ -17,13 +17,13 @@ int EnemyState::clear_bullets_in_animation_rectangle() {
     const float width = animation->scale_x_value();
     const float height = animation->scale_y_value();
     const float direction = animation->rotation_z_value();
-    auto* controller = context->bullet_controller();
-    auto& active = controller->active_list();
+    auto& active = context->bullet_controller()->active_list();
     {
         auto iterator = active.begin();
         auto* const end = active.end();
         for (; iterator.differs(end); iterator.advance()) {
-            Bullet* const bullet = iterator.get()->node_value();
+            auto* const link = iterator.get();
+            Bullet* const bullet = link->node_value();
             const float bullet_y = bullet->position_ref().y;
             const float bullet_x = bullet->position_ref().x;
             const float center_y = position_ref().y;
@@ -49,20 +49,21 @@ int EnemyState::clear_bullets_in_animation_rectangle() {
 }
 
 int EnemyState::clear_all_bullets_for_enemy_clear() {
-    auto* controller = context->bullet_controller();
-    auto& active = controller->active_list();
+    auto& active = context->bullet_controller()->active_list();
     {
         auto iterator = active.begin();
         auto* const end = active.end();
         for (; iterator.differs(end); iterator.advance()) {
-            Bullet* const bullet = iterator.get()->node_value();
+            auto* const link = iterator.get();
+            Bullet* const bullet = link->node_value();
             bullet->set_timer_4d8(native_one_56c8cc);
             bullet->animation_ref()->set_packed_color(0xffffffffu);
             bullet->clear_field_18();
         }
     }
 
-    player(0)->set_field_20ec(native_one_56c8cc);
+    Player* const target_player = player(0);
+    target_player->set_field_20ec(native_one_56c8cc);
     return 0;
 }
 

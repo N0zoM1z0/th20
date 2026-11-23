@@ -427,6 +427,10 @@ def main() -> None:
     bullet_clear_source=(ROOT/'src/EnemyStateBulletClearOpcode.cpp').read_text()
     bullet_timer_source=(ROOT/'src/BulletTimer4D8.cpp').read_text()
     native_float_globals_source=(ROOT/'src/NativeFloatGlobals.cpp').read_text()
+    assert 'auto& active = context->bullet_controller()->active_list();' in bullet_clear_source
+    assert bullet_clear_source.count('auto* const link = iterator.get();') == 2
+    assert 'Player* const target_player = player(0);' in bullet_clear_source
+    assert 'target_player->set_field_20ec(native_one_56c8cc);' in bullet_clear_source
     popup_queue_source=(ROOT/'src/ItemRewardPopupQueue.cpp').read_text()
     session_score_source=(ROOT/'src/SessionScore.cpp').read_text()
     animation_packed_color_source=(ROOT/'src/AnimationPackedColor.cpp').read_text()
@@ -720,6 +724,18 @@ def main() -> None:
     ):
         subprocess.run([str(ROOT/'scripts/compile-probe.sh'),source,obj,*profile],cwd=ROOT,check=True)
 
+    # The two callback-table Bosses are whole independent functions, not just
+    # source fragments. Their exact units share this single production object.
+    for unit,expected in (
+        ('enemy_state_clear_bullets_in_animation_rectangle','exact (758/758 bytes)'),
+        ('enemy_state_clear_all_bullets_for_enemy_clear','exact (291/291 bytes)'),
+    ):
+        replay=subprocess.run(
+            [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/compare-coff-function.py'),'--unit',unit],
+            cwd=ROOT,check=True,text=True,capture_output=True)
+        assert expected in replay.stdout,(unit,replay.stdout)
+        print(replay.stdout,end='')
+
     queue_source_audit=subprocess.run(
         [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-queue-copy-opcode-source.py')],
         cwd=ROOT,check=True,text=True,capture_output=True)
@@ -882,8 +898,8 @@ def main() -> None:
         [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-bullet-clear-opcode-source.py')],
         cwd=ROOT,check=True,text=True,capture_output=True)
     assert 'PASS original Enemy opcode 629: selector 147, 46B / 10 x86 / one direct E8 plus indirect callback' in bullet_clear_audit.stdout
-    assert 'PASS native EnemyState callback 0x00488B80: 768B / 215 x86 / 34 ordered direct calls' in bullet_clear_audit.stdout
-    assert 'PASS native EnemyState callback 0x00488E80: 291B / 86 x86 / 17 ordered direct calls' in bullet_clear_audit.stdout
+    assert 'PASS native EnemyState callback 0x00488B80: 758B body / 205 x86 / 34 ordered direct calls; separate 10B INT3 alignment tail' in bullet_clear_audit.stdout
+    assert 'PASS native EnemyState callback 0x00488E80: 291B body / 86 x86 / 17 ordered direct calls' in bullet_clear_audit.stdout
     print(bullet_clear_audit.stdout,end='')
 
     bullet_timer_audit=subprocess.run(
@@ -977,7 +993,7 @@ def main() -> None:
     bullet_timer_function=bullet_timer_dump.split(bullet_timer_marker,1)[1].split('Disassembly of section',1)[0]
     bullet_timer_calls=re.findall(r'DISP32\s+([^\r\n]+)',bullet_timer_function)
     assert len(bullet_timer_calls)==1 and '??4Timer@th20@@QAEXM@Z' in bullet_timer_calls[0],bullet_timer_calls
-    print('PASS natural C++ opcode-629 COFF: real AnimationHandle, geometry, intrusive Bullet list, Timer/color setters, exact Timer leaf and indirect member callback table')
+    print('PASS natural C++ opcode-629 COFF: 758B/291B whole callback Bosses strictly exact, real AnimationHandle, geometry, intrusive Bullet list, Timer/color setters, exact Timer leaf and indirect member callback table')
 
     score_popup_object=ROOT/'build/gpt-web-enemy-630-canonical/EnemyStateScorePopupOpcode.obj'
     score_popup_dump=subprocess.run(
@@ -1377,7 +1393,7 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy callback-table Bullet clear 629 (215/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n' in result.stdout
+    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n' in result.stdout
     print(result.stdout,end='')
     print(f'PASS maintained root host executes {len(HOST_SOURCES)} focused source units under ASan/UBSan')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')

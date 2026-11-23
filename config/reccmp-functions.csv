@@ -1813,3 +1813,5 @@ th20::LaserController::cancel_all,0x004C9490,function
 th20::SoundInf::enqueue,0x00428C90,function
 th20::Bullet::set_timer_4d8,0x0049CAE0,function
 th20::EclManager::select,0x00540200,function
+th20::EnemyState::clear_bullets_in_animation_rectangle,0x00488B80,function
+th20::EnemyState::clear_all_bullets_for_enemy_clear,0x00488E80,function
