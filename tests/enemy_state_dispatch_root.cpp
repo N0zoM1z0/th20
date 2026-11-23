@@ -576,7 +576,6 @@ std::int32_t FrontInf::dialogue_ready() {
 }
 bool execute_enemy_phase_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_card_start_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
-bool execute_enemy_script_pointer_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }
 bool execute_enemy_shot_fire_opcode(EnemyState&, std::int32_t) { return false; }
 int execute_enemy_animation_secondary_opcode(EnemyState&) { return 0; }
 int execute_enemy_animation_state_opcode(EnemyState&) { return 0; }
@@ -1712,6 +1711,117 @@ int main() {
     assert(metadata_owner_633_throw.use_count() == 2);
     enemy.state.queued.clear();
     metadata_owner_633_throw.reset();
+
+    // Native opcode 632 borrows the fourth trailing ECL payload word as a
+    // BulletCommand::script pointer. Both indexes are read before writable
+    // metadata COW; only then may PMR command growth and pointer publication
+    // occur. The pointed-to bytes remain owned by this instruction packet.
+    enemy.state.queued.clear();
+    auto& queued_record_632 = enemy.state.queued.emplace_front();
+    enemy.state.queued.emplace_front(); // selected record is index 1
+    auto metadata_owner_632 = std::make_shared<ShotMetadata>();
+    metadata_owner_632->commands.resize(1);
+    metadata_owner_632->commands[0].flags = 0xaabbccdd;
+    metadata_owner_632->commands[0].opcode = 0x11223344;
+    metadata_owner_632->commands[0].operand_10 = 0x55667788;
+    metadata_owner_632->commands[0].script = "original command script";
+    queued_record_632.owner = metadata_owner_632;
+    auto* const original_metadata_632 = metadata_owner_632.get();
+    auto* const original_command_632 = &metadata_owner_632->commands[0];
+    std::shared_ptr<ShotMetadata> shared_metadata_632 = metadata_owner_632;
+    assert(metadata_owner_632.use_count() == 3);
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_indices = {};
+    dispatch_integer_read_scripted_values = {};
+    dispatch_integer_read_scripted_values[0] = 1;
+    dispatch_integer_read_scripted_values[1] = 2;
+    dispatch_integer_read_scripted = true;
+    dispatch_integer_throw_at = 0;
+    dispatch_integer_read_hook = &observe_integer_read;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_hook = nullptr;
+    dispatch_read_trace_count = 0;
+    dispatch_read_kinds = {};
+    dispatch_read_indices = {};
+    dispatch_read_trace_enabled = true;
+    set_packet(632, {static_cast<std::uint32_t>(-101),
+                     static_cast<std::uint32_t>(-102),0,0,0,0,0,0}, 0x0fffu);
+    auto* const instruction_632 = reinterpret_cast<EclInstruction*>(packet.data() + 16);
+    auto* const borrowed_script_632 = reinterpret_cast<const char*>(instruction_632) + 0x1c;
+    std::memcpy(const_cast<char*>(borrowed_script_632), "borrowed-script", 16);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_read_trace_enabled = false;
+    dispatch_integer_read_hook = nullptr;
+    dispatch_integer_read_scripted = false;
+    assert(dispatch_integer_read_calls == 2);
+    assert(dispatch_integer_read_indices[0] == -101 && dispatch_integer_read_indices[1] == -102);
+    assert(dispatch_float_read_calls == 0);
+    assert(dispatch_read_trace_count == 2);
+    assert(dispatch_read_kinds[0] == 'i' && dispatch_read_indices[0] == -101);
+    assert(dispatch_read_kinds[1] == 'i' && dispatch_read_indices[1] == -102);
+    assert(queued_record_632.owner.get() != original_metadata_632);
+    assert(queued_record_632.owner.use_count() == 1);
+    assert(metadata_owner_632.get() == original_metadata_632);
+    assert(metadata_owner_632.use_count() == 2);
+    assert(metadata_owner_632->commands.size() == 1);
+    assert(metadata_owner_632->commands[0].script == original_command_632->script);
+    assert(metadata_owner_632->commands[0].flags == 0xaabbccddu);
+    assert(metadata_owner_632->commands[0].opcode == 0x11223344u);
+    assert(queued_record_632.owner->commands.size() == 3);
+    assert(queued_record_632.owner->commands[0].script == original_command_632->script);
+    assert(queued_record_632.owner->commands[0].flags == 0xaabbccddu);
+    assert(queued_record_632.owner->commands[0].opcode == 0x11223344u);
+    assert(queued_record_632.owner->commands[0].operand_10 == 0x55667788);
+    assert(queued_record_632.owner->commands[2].script == borrowed_script_632);
+    assert(std::strcmp(queued_record_632.owner->commands[2].script, "borrowed-script") == 0);
+    assert(queued_record_632.owner->commands[2].flags == 0);
+    assert(queued_record_632.owner->commands[2].opcode == 0);
+    enemy.state.queued.clear();
+    shared_metadata_632.reset();
+    metadata_owner_632.reset();
+
+    // If the second index read throws, COW, PMR growth and script publication
+    // must not have started: the native branch reads both operands first.
+    enemy.state.queued.clear();
+    auto& queued_record_632_throw = enemy.state.queued.emplace_front();
+    enemy.state.queued.emplace_front();
+    auto metadata_owner_632_throw = std::make_shared<ShotMetadata>();
+    metadata_owner_632_throw->commands.resize(1);
+    metadata_owner_632_throw->commands[0].script = "before throw";
+    queued_record_632_throw.owner = metadata_owner_632_throw;
+    auto* const original_metadata_632_throw = metadata_owner_632_throw.get();
+    dispatch_integer_read_calls = 0;
+    dispatch_integer_read_indices = {};
+    dispatch_integer_read_scripted = false;
+    dispatch_integer_throw_at = 0;
+    dispatch_integer_read_hook = &throw_during_second_integer_read;
+    dispatch_float_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_float_read_hook = nullptr;
+    dispatch_read_trace_count = 0;
+    dispatch_read_kinds = {};
+    dispatch_read_indices = {};
+    dispatch_read_trace_enabled = true;
+    set_packet(632, {static_cast<std::uint32_t>(-101),
+                     static_cast<std::uint32_t>(-102),0,0,0,0,0,0}, 0x0fffu);
+    bool opcode632_second_index_threw = false;
+    try { enemy.state.execute_opcode(); }
+    catch (int value) { opcode632_second_index_threw = value == 557; }
+    dispatch_read_trace_enabled = false;
+    dispatch_integer_read_hook = nullptr;
+    assert(opcode632_second_index_threw);
+    assert(dispatch_integer_read_calls == 2);
+    assert(dispatch_integer_read_indices[0] == -101 && dispatch_integer_read_indices[1] == -102);
+    assert(dispatch_read_trace_count == 2);
+    assert(dispatch_read_kinds[0] == 'i' && dispatch_read_indices[0] == -101);
+    assert(dispatch_read_kinds[1] == 'i' && dispatch_read_indices[1] == -102);
+    assert(queued_record_632_throw.owner.get() == original_metadata_632_throw);
+    assert(metadata_owner_632_throw.use_count() == 2);
+    assert(metadata_owner_632_throw->commands.size() == 1);
+    assert(std::strcmp(metadata_owner_632_throw->commands[0].script, "before throw") == 0);
+    enemy.state.queued.clear();
+    metadata_owner_632_throw.reset();
 
     // Native opcode 617 computes atan2(player.y-target_y, player.x-target_x)
     // and writes float destination zero. It deliberately obtains Context's
@@ -2894,5 +3004,5 @@ int main() {
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }

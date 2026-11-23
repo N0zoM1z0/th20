@@ -54,7 +54,7 @@ HOST_SOURCES=[
     'src/MeshResourceAccess.cpp',
     'src/EnemyStateAnimationSpawnOpcode.cpp', 'src/EnemyStateFogOpcode.cpp',
     'src/EnemyStateMembershipOpcode.cpp', 'src/EnemyStateControllerSetterOpcode.cpp',
-    'src/EnemyStateScriptControlOpcode.cpp', 'src/EclManagerSelect.cpp', 'src/EnemyStateAccessor.cpp',
+    'src/EnemyStateScriptControlOpcode.cpp', 'src/EnemyStateScriptPointerOpcode.cpp', 'src/EclManagerSelect.cpp', 'src/EnemyStateAccessor.cpp',
     'src/Bullet.cpp', 'src/BulletController.cpp', 'src/BulletValues.cpp',
     'src/BulletCancellation.cpp',
     'src/GeometryMetrics.cpp',
@@ -387,7 +387,26 @@ def main() -> None:
                        if insn.mnemonic == 'call' and insn.op_str.startswith('0x')]
     assert opcode633_calls == [0x004AB080, 0x00498B80, 0x0040B280,
                                0x0048B180, 0x0040B280, 0x0048B160], opcode633_calls
-    print('PASS original Enemy opcode 633: selector 108, 163B / 41 x86 / 6 ordered direct E8 calls')
+    print('PASS original Enemy opcode 633: selector 151, 163B / 41 x86 / 6 ordered direct E8 calls')
+
+    # Opcode 632 stores a borrowed pointer into the fourth trailing ECL word.
+    opcode632_index = selector[632 - 300]
+    assert opcode632_index == 150, opcode632_index
+    opcode632_start = struct.unpack_from('<I', pointer_table, opcode632_index * 4)[0]
+    opcode632_end = 0x0049392D
+    assert opcode632_start == 0x00493831, hex(opcode632_start)
+    opcode632_body = pe.get_data(opcode632_start - image_base, opcode632_end - opcode632_start)
+    assert len(opcode632_body) == 252
+    assert hashlib.sha256(opcode632_body).hexdigest() == '45cdbd018eea322e53dcffa4af1834acceeb26b2f9ba2aa72d6a17d41535f277'
+    opcode632_instructions = list(decoder.disasm(opcode632_body, opcode632_start))
+    assert len(opcode632_instructions) == 62
+    assert opcode632_instructions[-1].address + opcode632_instructions[-1].size == opcode632_end
+    opcode632_calls = [int(insn.op_str, 16) for insn in opcode632_instructions
+                       if insn.mnemonic == 'call' and insn.op_str.startswith('0x')]
+    assert opcode632_calls == [0x004AB080,0x004AB080,0x00498B80,0x0040B280,
+                               0x0048B180,0x0040B280,0x0048B160,
+                               0x00486600,0x004862F0,0x0047C6C0], opcode632_calls
+    print('PASS original Enemy opcode 632: selector 150, 252B / 62 x86 / 10 ordered direct E8 calls')
 
     root=(ROOT/'src/EnemyStateExecuteOpcode.cpp').read_text()
     script_control=(ROOT/'src/EnemyStateScriptControlOpcode.cpp').read_text()
@@ -424,6 +443,10 @@ def main() -> None:
     assert [case619_source.index(token) for token in case619_order] == sorted(case619_source.index(token) for token in case619_order)
     assert '(void)record;' in case619_source
     assert 'metadata->field_00 = state.float_argument(1);' in case619_source
+    script_pointer_source=(ROOT/'src/EnemyStateScriptPointerOpcode.cpp').read_text()
+    assert script_pointer_source.index('integer_argument(0)') < script_pointer_source.index('integer_argument(1)') < script_pointer_source.index('writable_shot(') < script_pointer_source.index('metadata.commands.size()') < script_pointer_source.index('metadata.commands.resize(required_size)') < script_pointer_source.index('metadata.commands[index].script')
+    assert 'reinterpret_cast<const char*>(&instruction) + 0x1c' in script_pointer_source
+    assert 'std::string' not in script_pointer_source
     case633_source=queued_parameters_source[queued_parameters_source.index('case 633:'):queued_parameters_source.index('case 700:')]
     case633_order=('integer_argument(0)','writable_shot','std::get<0>(std::move(selected))',
                    'std::get<1>(std::move(selected))','record->field_30 -= 1u;',
@@ -511,6 +534,8 @@ def main() -> None:
     assert 'player_fixture.entity_flags.fields.bit_10 == 1' in root_test_source
     assert 'bool execute_enemy_shot_command_opcode(EnemyState&' not in root_test_source
     assert 'bool execute_enemy_shared_queued_parameters_opcode(EnemyState&' not in root_test_source
+    assert 'bool execute_enemy_script_pointer_opcode(EnemyState&, const EclInstruction&, std::int32_t) { return false; }' not in root_test_source
+    assert 'src/EnemyStateScriptPointerOpcode.cpp' in HOST_SOURCES
     assert 'bool execute_enemy_queued_parameters_opcode(EnemyState&, std::int32_t) { return false; }' not in root_test_source
     assert 'src/EnemyStateQueuedParametersOpcode.cpp' in HOST_SOURCES
     assert 'std::numeric_limits<float>::quiet_NaN()' in root_test_source
@@ -596,7 +621,7 @@ def main() -> None:
     assert set(time_labels)=={538,539,540,541,542,574},time_labels
     dynamic_labels=[int(x) for x in re.findall(r'\bcase\s+(\d+)\s*:',dynamic)]
     assert {529,530,570,571}.issubset(set(dynamic_labels)),dynamic_labels
-    for source in (root,movement,pattern,control,dynamic,management,time_source,card_source,frontend_source,flags_clear,screen,queued_parameters_source):
+    for source in (root,movement,pattern,control,dynamic,management,time_source,card_source,frontend_source,flags_clear,screen,queued_parameters_source,script_pointer_source):
         for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
             assert forbidden not in source
 
@@ -616,6 +641,7 @@ def main() -> None:
         ('src/EnemyStateExecuteOpcode.cpp','build/core209-canonical/EnemyStateExecuteOpcode.obj'),
         ('src/EnemyStateControllerSetterOpcode.cpp','build/core213-canonical/EnemyStateControllerSetterOpcode.obj'),
         ('src/EnemyStateScriptControlOpcode.cpp','build/core220-canonical/EnemyStateScriptControlOpcode.obj'),
+        ('src/EnemyStateScriptPointerOpcode.cpp','build/gpt-web-enemy-632-canonical/EnemyStateScriptPointerOpcode.obj'),
         ('src/EnemyStateShotCommandOpcode.cpp','build/core222-canonical/EnemyStateShotCommandOpcode.obj'),
         ('src/EnemyStateLaserOpcode.cpp','build/core223-canonical/EnemyStateLaserOpcode.obj'),
         ('src/EnemyStateMeshOpcode.cpp','build/core224-canonical/EnemyStateMeshOpcode.obj'),
@@ -802,6 +828,34 @@ def main() -> None:
     assert '??$bit_cast' not in queued_parameters_function
     assert re.search(r'and\s+\$0x80000000',queued_parameters_function)
     print('PASS natural C++ opcode-633 COFF: writable-shot COW, ordered pair extraction, uint32 wrap and signed high-bit clamp')
+
+    script_pointer_audit=subprocess.run(
+        [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-script-pointer-opcode-source.py')],
+        cwd=ROOT,check=True,text=True,capture_output=True)
+    assert 'PASS original opcode 632: 252B / 62 x86 / 10 direct E8' in script_pointer_audit.stdout
+    print(script_pointer_audit.stdout,end='')
+
+    script_pointer_object=ROOT/'build/gpt-web-enemy-632-canonical/EnemyStateScriptPointerOpcode.obj'
+    script_pointer_dump=subprocess.run(
+        ['objdump','-dr',str(script_pointer_object)],cwd=ROOT,check=True,text=True,capture_output=True).stdout
+    script_pointer_marker='<?execute_enemy_script_pointer_opcode@th20@@YA_NAAUEnemyState@1@ABUEclInstruction@1@H@Z>:'
+    assert script_pointer_marker in script_pointer_dump
+    script_pointer_function=script_pointer_dump.split(script_pointer_marker,1)[1].split('Disassembly of section',1)[0]
+    script_pointer_calls=re.findall(r'DISP32\s+([^\r\n]+)',script_pointer_function)
+    expected_script_pointer_calls=[
+        '?integer_argument@EnemyState@th20',
+        '?integer_argument@EnemyState@th20',
+        '?writable_shot@EnemyState@th20',
+        '?size@?$vector@UBulletCommand',
+        '?resize@?$vector@UBulletCommand',
+        '??A?$vector@UBulletCommand',
+    ]
+    assert len(script_pointer_calls)==7,script_pointer_calls
+    for actual,expected in zip(script_pointer_calls,expected_script_pointer_calls):
+        assert expected in actual,(actual,expected)
+    assert 'add    $0x1c,%esi' in script_pointer_function
+    assert re.search(r'mov\s+%esi,0x28\(%eax\)',script_pointer_function)
+    print('PASS natural C++ opcode-632 COFF: two integer reads before writable COW, PMR size/resize/index, borrowed +0x1C pointer store')
 
     mesh_source_audit=subprocess.run(
         [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-enemy-mesh-opcode-source.py')],
@@ -1143,7 +1197,7 @@ def main() -> None:
         *HOST_SOURCES,'-o',str(host)]
     subprocess.run(command,cwd=ROOT,check=True)
     result=subprocess.run([str(host)],cwd=ROOT,check=True,text=True,capture_output=True)
-    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
+    assert 'PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return' in result.stdout
     print(result.stdout,end='')
     print(f'PASS maintained root host executes {len(HOST_SOURCES)} focused source units under ASan/UBSan')
     print('PASS immutable native EnemyState::execute_opcode root: 41,967B and SHA-256')
@@ -1176,7 +1230,7 @@ def main() -> None:
     print('PASS original compressed dispatch pointers and ordered E8 maps for global-owner opcodes 524/575 (135B/31 heads/5 calls)')
     print('PASS original compressed dispatch pointers and ordered E8 maps for dynamic parameter copies 529/530/570/571 (1,262B/268 heads/48 calls)')
     print('PASS 49 movement cases, nine EnemyPattern cases, 21 control/state cases, five controller selection/clear cases, six timer/mode/time cases, five card/health cases, five front sound/gauge/title cases, five restored membership/fog/controller/animation cases, two global-owner cases, one reserved epilogue case, four dynamic parameter cases, opcode 614 queue copy, four shot-command variants, four Laser variants, Enemy mesh lifecycle and 41 opcode fragments wired')
-    print('PASS all forty-eight i386 COFF source units compile under locked MSVC profile')
+    print('PASS all forty-nine i386 COFF source units compile under locked MSVC profile')
     print('PARTIAL source root only; remaining inline cases open, no strict exact-byte credit')
 
 
