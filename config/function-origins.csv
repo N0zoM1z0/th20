@@ -2060,7 +2060,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00473590,authored,Interpolation,authored,medium,"CORE/ORIGIN-511; docs/INTERPOLATION_BOSSES_8571_EXACT_ORIGIN_AUDIT.md; independently decoded original source PE E8 call users, complete custom game interpolation instantiations and precise original field anchors; all native body bytes strictly exact"
 0x004739D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004739E0,authored,StageResource,authored,high,"CORE/RECON-1301; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original file/object/primitive layout, animation-pool forwarding, active-count and rotation-lock behavior"
-0x00473B20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00473B20,authored,StageResource,authored,high,"CORE/RECON-1303; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; original 3153-byte object-specific culling body is tied to StageResourceObjectRecord fields, per-instance translation, Background camera/Viewports, the original 16-point bounds sample and fixed stage-screen clipping. It is game-owned behavior, not a generic D3DX or compiler helper. Semantic C++ reconstruction is verified against the original call path; no native-byte exactness is claimed."
 0x00474780,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474860,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

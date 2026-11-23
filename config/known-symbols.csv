@@ -273,6 +273,7 @@ address,name,module,confidence,evidence
 0x0042A3A0,th20::IntegerTripleInterpolation::sample,Interpolation,high,EXACT-046; docs/EXACT_INTERPOLATION_RECONSTRUCTION.md
 0x0042B1F0,th20::AngleInterpolation::sample,Interpolation,high,EXACT-046; docs/EXACT_INTERPOLATION_RECONSTRUCTION.md
 0x00473590,th20::FogInterpolation::sample,Interpolation,high,EXACT-046; docs/EXACT_INTERPOLATION_RECONSTRUCTION.md
+0x00473B20,th20::StageResourceObjectRecord::is_outside_viewport,StageResource,high,CORE/RECON-1303; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md
 0x00473140,th20::FogInterpolation::stop,Interpolation,high,EXACT-046; docs/EXACT_INTERPOLATION_RECONSTRUCTION.md
 0x00474CE0,th20::FogInterpolation::factor,Interpolation,high,EXACT-046; docs/EXACT_INTERPOLATION_RECONSTRUCTION.md
 0x0042A980,th20::Vector2Interpolation::sample,Interpolation,high,EXACT-046; docs/EXACT_INTERPOLATION_RECONSTRUCTION.md

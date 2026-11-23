@@ -10,6 +10,7 @@
 #include "AnimationRuntimeOwner.hpp"
 #include "RenderMesh.hpp"
 #include "ScalarMath.hpp"
+#include "StageResourceObjectVisibility.hpp"
 #include "Viewport.hpp"
 
 #include <algorithm>
@@ -56,6 +57,59 @@ std::vector<std::uint32_t> instruction(
     std::copy(args.begin(), args.end(), code.begin() + 2);
     return code;
 }
+}
+
+extern "C" th20::Matrix4* __stdcall stage_test_d3dx_matrix_translation(
+    th20::Matrix4* output, float x, float y, float z) {
+    for (unsigned row = 0; row < 4; ++row)
+        for (unsigned column = 0; column < 4; ++column)
+            output->elements[row][column] = row == column ? 1.0f : 0.0f;
+    output->elements[3][0] = x;
+    output->elements[3][1] = y;
+    output->elements[3][2] = z;
+    return output;
+}
+
+extern "C" th20::Vector3* __stdcall stage_test_d3dx_vec3_project_array(
+    th20::Vector3* output, std::uint32_t output_stride,
+    const th20::Vector3* input, std::uint32_t input_stride,
+    const th20::NativeViewport* viewport, const th20::Matrix4* projection,
+    const th20::Matrix4* view, const th20::Matrix4* world, std::uint32_t count) {
+    auto multiply = [](const th20::Matrix4& left, const th20::Matrix4& right) {
+        th20::Matrix4 result{};
+        for (unsigned row = 0; row < 4; ++row)
+            for (unsigned column = 0; column < 4; ++column)
+                for (unsigned inner = 0; inner < 4; ++inner)
+                    result.elements[row][column] +=
+                        left.elements[row][inner] * right.elements[inner][column];
+        return result;
+    };
+    const auto world_view = multiply(*world, *view);
+    const auto combined = multiply(world_view, *projection);
+    auto* output_bytes = reinterpret_cast<std::uint8_t*>(output);
+    const auto* input_bytes = reinterpret_cast<const std::uint8_t*>(input);
+    for (std::uint32_t index = 0; index < count; ++index) {
+        th20::Vector3 point;
+        std::memcpy(&point, input_bytes + index * input_stride, sizeof(point));
+        const auto& m = combined.elements;
+        const float x = point.x * m[0][0] + point.y * m[1][0] +
+                        point.z * m[2][0] + m[3][0];
+        const float y = point.x * m[0][1] + point.y * m[1][1] +
+                        point.z * m[2][1] + m[3][1];
+        const float z = point.x * m[0][2] + point.y * m[1][2] +
+                        point.z * m[2][2] + m[3][2];
+        const float w = point.x * m[0][3] + point.y * m[1][3] +
+                        point.z * m[2][3] + m[3][3];
+        const float reciprocal_w = 1.0f / w;
+        const th20::Vector3 projected{
+            static_cast<float>(viewport->x) +
+                (1.0f + x * reciprocal_w) * static_cast<float>(viewport->width) * 0.5f,
+            static_cast<float>(viewport->y) +
+                (1.0f - y * reciprocal_w) * static_cast<float>(viewport->height) * 0.5f,
+            viewport->min_z + z * reciprocal_w * (viewport->max_z - viewport->min_z)};
+        std::memcpy(output_bytes + index * output_stride, &projected, sizeof(projected));
+    }
+    return output;
 }
 
 namespace th20 {
@@ -135,7 +189,13 @@ int wmain(int argc, wchar_t** argv) {
         const auto pe = th20::parse_pe(bytes);
         Mapping image(bytes, pe);
         mapped_image_base = image.address();
-        *reinterpret_cast<float*>(mapped_image_base + 0x16e0e8) = 200.0f;
+        *reinterpret_cast<void**>(mapped_image_base + 0x16c308) =
+            reinterpret_cast<void*>(&stage_test_d3dx_vec3_project_array);
+        *reinterpret_cast<void**>(mapped_image_base + 0x16c30c) =
+            reinterpret_cast<void*>(&stage_test_d3dx_matrix_translation);
+        auto* native_zero = reinterpret_cast<float*>(mapped_image_base + 0x16e0e8);
+        const float native_zero_original = *native_zero;
+        *native_zero = 200.0f;
         // Isolate the mesh deformation body from RenderMesh initialization; the
         // source-side RenderMesh::initialize test seam is the same no-op.
         auto* mesh_initialize = reinterpret_cast<std::uint8_t*>(mapped_image_base + 0x9d850);
@@ -649,6 +709,90 @@ int wmain(int argc, wchar_t** argv) {
             compare_animation_flag_clear(test);
         }
 
+        auto compare_stage_object_culling = [&](unsigned test) {
+            th20::StageResourceObjectRecord object{};
+            th20::ViewportState viewport{};
+            th20::Matrix4 view{}, projection{};
+            th20::matrix_identity(&view);
+            th20::matrix_identity(&projection);
+            const float jitter = static_cast<float>(static_cast<int>(test % 9) - 4) * 0.025f;
+            view.elements[3][0] = jitter;
+            view.elements[3][1] = -jitter;
+            projection.elements[0][0] = 0.75f + static_cast<float>(test % 5) * 0.05f;
+            projection.elements[1][1] = 0.8f + static_cast<float>(test % 4) * 0.05f;
+            projection.elements[2][2] = 0.9f;
+            std::memcpy(&viewport.view, &view, sizeof(view));
+            std::memcpy(&viewport.projection, &projection, sizeof(projection));
+            viewport.vector_00 = {0.0f, 0.0f, 0.0f};
+            viewport.vector_3c = {jitter, 0.0f, 0.0f};
+            viewport.viewport = {static_cast<std::uint32_t>(test % 3) * 16u,
+                                 static_cast<std::uint32_t>(test % 2) * 8u,
+                                 test % 2 ? 640u : 320u,
+                                 test % 3 ? 480u : 240u, 0.0f, 1.0f};
+
+            th20::Vector3 position{}, extent{}, instance_offset{};
+            float max_distance_squared = 100.0f;
+            std::int32_t bypass_bounds = 0;
+            switch (test % 12) {
+            case 0: position = {0.0f, 0.0f, 0.5f}; extent = {0.2f, 0.2f, 0.2f}; break;
+            case 1: position = {2.0f, 0.0f, 0.5f}; extent = {0.1f, 0.1f, 0.1f}; break;
+            case 2: position = {1.05f, 0.0f, 0.5f}; extent = {0.2f, 0.2f, 0.2f}; break;
+            case 3: position = {0.0f, 0.0f, 2.0f}; extent = {0.1f, 0.1f, 0.1f}; break;
+            case 4: position = {0.0f, 0.0f, -1.0f}; extent = {0.1f, 0.1f, 0.1f}; break;
+            case 5: position = {0.5f, 0.0f, 0.5f}; extent = {0.1f, 0.1f, 0.1f}; max_distance_squared = 0.0f; break;
+            case 6: position = {2.0f, 0.0f, 0.5f}; extent = {0.1f, 0.1f, 0.1f}; bypass_bounds = 1; break;
+            case 7: position = {0.0f, 2.0f, 0.5f}; extent = {0.1f, 0.1f, 0.1f}; break;
+            case 8: position = {0.0f, 0.0f, 0.5f}; extent = {2.0f, 2.0f, 2.0f}; break;
+            case 9: position = {0.0f, 0.0f, 0.5f}; extent = {0.0f, 0.0f, 0.0f}; break;
+            case 10: position = {0.0f, 0.0f, 0.5f}; extent = {0.1f, 0.1f, 0.1f}; instance_offset = {10.0f, 0.0f, 0.0f}; max_distance_squared = 100.0f; break;
+            default: position = {-1.05f, 0.0f, 0.5f}; extent = {0.2f, 0.2f, 0.2f}; break;
+            }
+            if (test >= 12) {
+                auto sample = [&]() { return static_cast<float>(static_cast<int>(random() % 6001u) - 3000) / 1000.0f; };
+                position = {sample(), sample(), static_cast<float>(random() % 1001u) / 1000.0f};
+                extent = {static_cast<float>(random() % 1000u) / 1000.0f,
+                          static_cast<float>(random() % 1000u) / 1000.0f,
+                          static_cast<float>(random() % 1000u) / 1000.0f};
+                instance_offset = {sample() * 0.25f, sample() * 0.25f, sample() * 0.25f};
+                max_distance_squared = test % 3 ? 100.0f : 0.5f;
+                bypass_bounds = test % 5 == 0 ? 1 : 0;
+            }
+            object.parameters[0] = static_cast<float>(bypass_bounds);
+            object.parameters[5] = position.x;
+            object.parameters[6] = position.y;
+            object.parameters[7] = position.z;
+            object.parameters[8] = extent.x;
+            object.parameters[9] = extent.y;
+            object.parameters[10] = extent.z;
+
+            // The surrounding VM oracle uses 200 in this shared global to
+            // suppress unrelated geometry paths; restore the PE's real zero
+            // while this function's depth and edge clipping are compared.
+            *native_zero = native_zero_original;
+            FloatingEnvironment::prepare();
+            const auto expected = cpu<std::int32_t>(0x00473b20, &object,
+                &instance_offset, max_distance_squared, &viewport);
+            FloatingEnvironment::prepare();
+            const auto actual = object.is_outside_viewport(
+                instance_offset, max_distance_squared, viewport);
+            *native_zero = 200.0f;
+            ++checks;
+            ++groups["stage_object_viewport_culling"];
+            if (expected != actual) {
+                ++failed;
+                if (failures.size() < 30) {
+                    std::ostringstream error;
+                    error << "stage_object_viewport_culling test" << test
+                          << " expected=" << expected << " actual=" << actual;
+                    failures.push_back(error.str());
+                    std::cerr << failures.back() << '\n';
+                }
+            }
+        };
+        for (unsigned test = 0; test < 1024; ++test)
+            compare_stage_object_culling(test);
+        *native_zero = 200.0f;
+
         for (unsigned test = 0; test < 6; ++test) {
             const std::uint32_t flags = test < 6 ?
                 std::array<std::uint32_t, 6>{0u, 4u, 4u, 4u, 8u, 8u}[test] : random();
@@ -732,7 +876,7 @@ int wmain(int argc, wchar_t** argv) {
             comma = true;
             report << th20::json_string(label) << ':' << count;
         }
-        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases) and Animation flag-clear leaf 0x472A10 (128 cases); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
+        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases), Animation flag-clear leaf 0x472A10 (128 cases), and StageResourceObjectRecord viewport culling boss 0x473B20 (1024 cases with two independently implemented D3DX import test seams); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
         for (unsigned index = 0; index < failures.size(); ++index) {
             if (index) report << ',';
             report << th20::json_string(failures[index]);

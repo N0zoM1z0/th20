@@ -34,6 +34,11 @@ struct StageResourceObjectRecord {
     std::uint8_t layer;
     std::uint8_t flags;
     float parameters[11];
+
+    // Original 0x473B20 object-space distance and projected-bounds culler.
+    std::int32_t is_outside_viewport(const Vector3& instance_offset,
+                                     float max_distance_squared,
+                                     const ViewportState& viewport) const;
 };
 static_assert(sizeof(StageResourceObjectRecord) == 0x30);
 static_assert(offsetof(StageResourceObjectRecord, flags) == 0x03);
