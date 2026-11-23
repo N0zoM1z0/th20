@@ -3988,7 +3988,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004D6C40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D7280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D7750,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004D7D20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004D7D20,authored,LaserBeamInf,authored,high,CORE/RECON-1268; docs/LASER_MUTATION_SETTER_LEAVES_EXACT.md; type-3 Laser vtable slot +0x0C establishes the Beam flag-bit override
 0x004D7D50,authored,Laser,authored,high,CORE/EXACT-1235; docs/LASER_BASE_VIRTUAL_HELPERS_EXACT.md; original native caller/vtable/member layout independently anchors the owner
 0x004D7D80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D7DD0,authored,Laser,authored,high,CORE/EXACT-1237; docs/LASER_BASE_VIRTUAL_HELPERS_EXACT.md; original native caller/vtable/member layout independently anchors the owner

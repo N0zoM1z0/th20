@@ -27,7 +27,7 @@ void LaserInfiniteInf::set_angular_velocity(float value) {
     parameters.angular_velocity = value;
 }
 void LaserBeamInf::set_parameter_flag(std::uint32_t value) {
-    parameters.flags = (parameters.flags & ~1u) | (value & 1u);
+    parameters.flags = (value & 1u) | (parameters.flags & ~1u);
 }
 
 } // namespace th20

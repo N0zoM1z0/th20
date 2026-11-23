@@ -38,4 +38,18 @@ LaserCommandMethods.cpp
 These are small leaf functions, not substitutes for the larger Enemy ECL
 caller work. Their original callers are the inline Enemy opcode 705–710
 fragments; see [the caller/source frontier](ENEMY_41967_705_710_LASER_MUTATIONS_SOURCE_FRONTIER.md).
+The Beam override is a separate reconstructed virtual method, not one of the
+six strict-exact setter leaves. Its Enemy opcode-714 caller is tracked as a
+separate inline branch rather than folded into this leaf inventory.
 The 41,967-byte `EnemyState::execute_opcode()` parent remains **NONEXACT**.
+
+## Opcode-714 virtual flag setter (reconstructed, not strict exact)
+
+`LaserBeamInf::set_parameter_flag` at `0x004D7D20` is also implemented in
+natural C++ and masks only bit zero of `LaserBeamInf::parameters.flags` at
+`+0x730`. Its locked-profile COFF body matches **39/42 bytes**; the remaining
+three bytes are register-allocation differences (`or` destination and final
+store register). It is tracked as reconstructed rather than strict exact. The
+three non-Beam Laser vtables share the 13-byte no-op body at `0x0040EC90`,
+which is already physically tracked as `std::_Iterator_base0::_Adopt`; that
+folded address is not double-credited as a second authored function.
