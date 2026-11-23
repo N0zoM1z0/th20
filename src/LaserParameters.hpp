@@ -115,6 +115,17 @@ static_assert(sizeof(LaserType0Parameters) == 0x54);
 static_assert(sizeof(LaserType1Parameters) == 0x74);
 static_assert(sizeof(LaserType2Parameters) == 0x5c);
 static_assert(sizeof(LaserType3Parameters) == 0x50);
+// All four derived Laser parameter records share the native three-word
+// lane at Laser+0x704 and the scalar lane at Laser+0x714, although their
+// type-specific meanings differ (velocity/vector vs. angle/width/etc.).
+static_assert(offsetof(LaserType0Parameters, angle) == 0x0c);
+static_assert(offsetof(LaserType1Parameters, velocity) == 0x0c);
+static_assert(offsetof(LaserType2Parameters, angle) == 0x0c);
+static_assert(offsetof(LaserType3Parameters, vector_0c) == 0x0c);
+static_assert(offsetof(LaserType0Parameters, width) == 0x1c);
+static_assert(offsetof(LaserType1Parameters, angular_velocity) == 0x1c);
+static_assert(offsetof(LaserType2Parameters, color) == 0x1c);
+static_assert(offsetof(LaserType3Parameters, field_1c) == 0x1c);
 static_assert(offsetof(LaserType0Parameters, commands) == 0x38);
 static_assert(offsetof(LaserType1Parameters, commands) == 0x60);
 static_assert(offsetof(LaserType2Parameters, flags) == 0x28);
@@ -165,6 +176,8 @@ public:
     void set_angle(float value);
     void set_speed(float value);
     void set_field_7c(float value);
+    void set_parameter_vector_704(const Vector3& value);
+    void set_parameter_field_714(float value);
     void set_handle(std::uint32_t value);
     virtual void slot_50() = 0;
     virtual void slot_54() = 0;
