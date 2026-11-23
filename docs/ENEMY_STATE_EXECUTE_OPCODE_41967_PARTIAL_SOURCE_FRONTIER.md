@@ -43,11 +43,13 @@ source fragments.
   return when an existing dialogue is not ready.
 - Native switch case `0` routes direct spawn opcodes 300/301/304/305/321 to
   the maintained 653-byte `EnemyState::spawn_from_opcode()` implementation in
-  `src/EnemyStateSpawnOpcode.cpp`. It reconstructs the script-name payload,
-  default operands, relative/mirrored position, spawn flags, counters, identity
-  and `EnemyController::create` handoff. The leaf remains NONEXACT: its extent
-  and all 19 relocation destinations match, but 14 ordinary bytes differ in
-  the two float argument stack-slot/load sequences.
+  `src/EnemyStateSpawnOpcode.cpp`. The whole 653B Boss now strictly replays all
+  577 ordinary bytes and all 19 original relocation destinations; the
+  identity `static_cast<float>` preserves native stack-slot/load order at both
+  float operands. It reconstructs the script-name payload, defaults,
+  relative/mirrored position, spawn flags, counters, identity and
+  `EnemyController::create` handoff. Original source origin remains unknown;
+  the 41,967B dispatcher parent remains NONEXACT.
 - Native switch case `6` handles 309/310/311/312 through the exact
   `EnemyController::selected(0)` leaf at `0x00485660`; when the slot is empty it
   branches to the same spawn leaf, otherwise it skips creation. The leaf keeps

@@ -105,6 +105,11 @@ canonically accepted.
   Shared-owner preservation, old command data and second-index exception
   before COW/growth are tested; its 10-E8 map and ordered COFF relocations are
   checked (CORE/RECON-1256).
+  The 653B `EnemyState::spawn_from_opcode()` Boss at `0x00496FB0` is now
+  whole-function strict exact: all 577 ordinary bytes and 19 original
+  relocation destinations match. Both float-default call sites preserve the
+  native outgoing stack-slot/load order through an identity C++ cast; no asm
+  or padding is used. Source origin remains unknown (CORE/RECON-1263).
   Opcode 629 now dispatches through its original three-entry member callback
   table to two complete natural-C++ EnemyState callback Bosses. The 758B
   rotated-animation rectangle body and 291B all-active-Bullet reset body now

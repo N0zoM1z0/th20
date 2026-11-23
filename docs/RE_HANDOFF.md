@@ -101,6 +101,14 @@ a float exception preserves the clone but leaves the metadata field unchanged.
 See the opcode-619 source frontier
 (ENEMY_41967_619_WRITABLE_METADATA_RADIAL_OFFSET_SOURCE_FRONTIER.md).
 
+Native Enemy spawn opcodes 300/301/304/305/321 now route to the whole
+653-byte `EnemyState::spawn_from_opcode()` Boss, strictly exact across all 577
+ordinary bytes and all 19 relocation fields. The native float-argument stack
+reservation order is recovered with an identity C++ cast, not assembly. The
+309/310/311/312 selected-slot guard also routes an empty slot to this same
+Boss. Original source origin remains unknown, and the 41,967-byte dispatcher
+parent remains NONEXACT. See [the 653B spawn Boss proof](ENEMY_SPAWN_FROM_OPCODE_653_STRICT_EXACT.md).
+
 Native opcode 629 is the **46-byte / 10-instruction** callback-table branch
 at `0x00490B4D`, selector index 147. Its native table at `0x0056FE8C` selects
 the 758B animation-rectangle Bullet callback or the 291B all-Bullet reset
@@ -156,7 +164,7 @@ and script-pointer helpers are removed. The production helpers are included
 in HOST_SOURCES and the locked-profile COFF compile list; their native opcode
 verifiers are invoked by the maintained root verifier. The focused root host
 passes under ASan/UBSan, and the root verifier compiles **58 locked-profile
-i386 COFF source units** and 124 focused host sources. See the dedicated
+i386 COFF source units** and 125 focused host sources. See the dedicated
 [opcode-620 source frontier](ENEMY_41967_620_SHARED_QUEUED_VECTOR_SOURCE_FRONTIER.md).
 
 This is still an inline fragment only. No standalone function unit or
@@ -220,7 +228,7 @@ Recent committed case families exercised by the maintained root include:
   sound/gauge/title and selected-position cases.
 
 The maintained root verifier currently compiles **58 locked-profile i386
-COFF units** and runs 124 focused host source units under ASan/UBSan, including
+COFF units** and runs 125 focused host source units under ASan/UBSan, including
 opcodes 616, 617, 618, 619, 620, 627, 628, 629, 630, 632 and 633. The exact per-case boundaries and host limitations are documented in the
 [dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and the focused case notes linked from the [evidence index](EVIDENCE_INDEX.md).

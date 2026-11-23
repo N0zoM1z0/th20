@@ -250,6 +250,13 @@ RenderMesh::RenderMesh(std::int32_t columns_value, std::int32_t rows_value,
 }
 RenderMesh::~RenderMesh() { ++render_mesh_dtor_calls; }
 Enemy::~Enemy() = default;
+std::int32_t spawn_apply_calls = 0;
+void Enemy::select_context(std::int32_t index) { context = &session.context(index); }
+int Enemy::apply_spawn(const EnemySpawn& parameters) {
+    ++spawn_apply_calls;
+    spawn_parameters = parameters;
+    return 0;
+}
 EnemyController::~EnemyController() = default;
 BulletController::~BulletController() = default;
 void BulletController::enable() {}
@@ -608,7 +615,6 @@ Animation* AnimationPoolOwner::resolve_handle(std::uint32_t handle) {
 }
 void AnimationPoolOwner::retire_handle(std::uint32_t) {}
 void AnimationPoolOwner::interrupt_handle(std::uint32_t, std::int32_t) {}
-int EnemyState::spawn_from_opcode() { return 0; }
 int EnemyState::spawn_animation() { return 0; }
 void EnemyState::change_animation() {}
 void TH20_FASTCALL set_animation_handle_flag0_recursively(AnimationHandle* handle) {
@@ -3475,10 +3481,191 @@ int main() {
     assert((dispatch_order == std::array<std::int32_t,4>{1,2,3,0}));
     assert(std::abs(animation_spawn_rotation - 0.9272952f) < 0.00001f);
 
+    // The original 653-byte opcode-spawn Boss now runs as production source
+    // through the real EnemyController::create owner. Only Enemy::apply_spawn
+    // is a test boundary here; it captures the exact EnemySpawn payload before
+    // the separate large initialization/update Boss.
+    controller.loader = &loader;
+    controller.context = &context;
+    controller.player_index = 0;
+    controller.field_124 = 0;
+    controller.data.field_88 = 4;
+    loader.records.push_back({"spawnboss123", packet.data()});
+    loader.subroutine_count = 2;
+    enemy.children.reset(&enemy);
+    enemy.state.identifier = 0x12345678u;
+    enemy.state.counters.field_00 = 0x11112222u;
+    enemy.state.counters.field_04 = 0x33334444u;
+    enemy.state.motion_110.position = {10.0f,20.0f,0.0f};
+    enemy.state.flags.word_04 = 1u << 3; // mirrored X
+    enemy.state.flags.word_08 = 1u << 2; // create as a child of this Enemy
+
+    auto set_spawn_packet = [&](std::int16_t opcode, float x, float y,
+                                std::int32_t health_value,
+                                std::int32_t field_0c_value,
+                                std::int32_t field_10_value,
+                                std::uint16_t references = 0) {
+        std::array<std::uint32_t,16> words{};
+        words[0] = 12;
+        std::memcpy(words.data() + 1, "spawnboss123", 12);
+        words[4] = bits(x);
+        words[5] = bits(y);
+        words[6] = static_cast<std::uint32_t>(health_value);
+        words[7] = static_cast<std::uint32_t>(field_0c_value);
+        words[8] = static_cast<std::uint32_t>(field_10_value);
+        auto* ins = reinterpret_cast<EclInstruction*>(packet.data() + 16);
+        std::memset(ins, 0, sizeof(EclInstruction) + sizeof(words));
+        ins->opcode = opcode;
+        ins->length = static_cast<std::uint16_t>(sizeof(EclInstruction) + sizeof(words));
+        ins->references = references;
+        ins->argument_count = static_cast<std::uint8_t>(words.size());
+        std::memcpy(ins + 1, words.data(), sizeof(words));
+    };
+
+    // Capacity is the first Boss guard: a full controller performs no operand
+    // reads and does not allocate or publish a child.
+    controller.field_124 = 4;
+    dispatch_float_read_calls = dispatch_integer_read_calls = 0;
+    dispatch_float_read_hook = &observe_float_read;
+    dispatch_integer_read_hook = &observe_integer_read;
+    set_spawn_packet(300, -101.0f, -102.0f, -103, -104, -105, 0x3eu);
+    assert(enemy.state.spawn_from_opcode() == 0);
+    assert(controller.count() == 4 && spawn_apply_calls == 0);
+    assert(dispatch_float_read_calls == 0 && dispatch_integer_read_calls == 0);
+    dispatch_float_read_hook = nullptr;
+    dispatch_integer_read_hook = nullptr;
+    controller.field_124 = 0;
+
+    // Case zero opcode 300 exercises the root route and the complete spawn
+    // parameter Boss: both referenced float defaults precede three integer
+    // defaults, then relative motion, mirrored X, copied counters, identity
+    // and the parent-aware EnemyController::create handoff.
+    dispatch_float_read_calls = dispatch_integer_read_calls = 0;
+    dispatch_float_read_indices = {};
+    dispatch_integer_read_indices = {};
+    dispatch_float_read_values = {1.5f,2.5f};
+    dispatch_integer_read_scripted_values = {500,0x1234,0x5678};
+    dispatch_integer_read_scripted = true;
+    dispatch_read_trace_enabled = true;
+    dispatch_read_trace_count = 0;
+    dispatch_float_read_hook = &observe_float_read;
+    dispatch_integer_read_hook = &observe_integer_read;
+    set_spawn_packet(300, -101.0f, -102.0f, -103, -104, -105, 0x3eu);
+    assert(enemy.state.execute_opcode() == 0);
+    dispatch_float_read_hook = nullptr;
+    dispatch_integer_read_hook = nullptr;
+    dispatch_integer_read_scripted = false;
+    dispatch_read_trace_enabled = false;
+    assert(dispatch_float_read_calls == 2);
+    assert(dispatch_float_read_indices[0] == -101 && dispatch_float_read_indices[1] == -102);
+    assert(dispatch_integer_read_calls == 3);
+    assert(dispatch_integer_read_indices[0] == -103);
+    assert(dispatch_integer_read_indices[1] == -104);
+    assert(dispatch_integer_read_indices[2] == -105);
+    assert(dispatch_read_trace_count == 5);
+    assert(dispatch_read_kinds[0] == 'f' && dispatch_read_kinds[1] == 'f');
+    assert(dispatch_read_kinds[2] == 'i' && dispatch_read_kinds[3] == 'i' && dispatch_read_kinds[4] == 'i');
+    assert(dispatch_read_indices[0] == -101 && dispatch_read_indices[1] == -102);
+    assert(dispatch_read_indices[2] == -103 && dispatch_read_indices[3] == -104 && dispatch_read_indices[4] == -105);
+    assert(controller.count() == 1 && spawn_apply_calls == 1);
+    auto* spawned_first = controller.enemies.begin().get()->node_value();
+    assert(spawned_first->spawn_parameters.position.x == -11.5f);
+    assert(spawned_first->spawn_parameters.position.y == 22.5f);
+    assert(spawned_first->spawn_parameters.flags_18 == 1u);
+    assert(spawned_first->spawn_parameters.flags_1c.bits == 0u);
+    assert(spawned_first->spawn_parameters.health == 500);
+    assert(spawned_first->spawn_parameters.field_0c == 0x1234);
+    assert(spawned_first->spawn_parameters.field_10 == 0x5678);
+    assert(spawned_first->spawn_parameters.variables.field_00 == 0x11112222u);
+    assert(spawned_first->spawn_parameters.variables.field_04 == 0x33334444u);
+    assert(spawned_first->spawn_parameters.field_50.get() == 0x12345678u);
+    assert(spawned_first->parent() == &enemy);
+    assert(spawned_first->context == &session.contexts[0] && spawned_first->state.entity == spawned_first);
+
+    // Native case six skips creation while selected(0) resolves a live Enemy.
+    // Clearing the selected handle makes the same opcode-312 branch enter the
+    // production spawn Boss, covering the real selected-slot guard as well.
+    controller.set_selected(0, &enemy);
+    set_spawn_packet(312, 3.25f, 4.5f, 600, 0x2222, 0x3333);
+    assert(enemy.state.execute_opcode() == 0);
+    assert(controller.count() == 1 && spawn_apply_calls == 1);
+    controller.set_selected(0, nullptr);
+
+    // Case 312 is absolute rather than motion-relative, sets the spawn flag,
+    // then the mirrored bit toggles it back off while negating only X.
+    enemy.state.flags.word_08 = 0;
+    set_spawn_packet(312, 3.25f, 4.5f, 600, 0x2222, 0x3333);
+    assert(enemy.state.execute_opcode() == 0);
+    assert(controller.count() == 2 && spawn_apply_calls == 2);
+    auto* spawned_second = controller.enemies.begin().get()->node_value();
+    assert(spawned_second != spawned_first);
+    assert(spawned_second->spawn_parameters.position.x == -3.25f);
+    assert(spawned_second->spawn_parameters.position.y == 4.5f);
+    assert(spawned_second->spawn_parameters.flags_18 == 0u);
+    assert(spawned_second->spawn_parameters.health == 600);
+    assert(spawned_second->spawn_parameters.field_0c == 0x2222);
+    assert(spawned_second->spawn_parameters.field_10 == 0x3333);
+
+    // Exercise every remaining native spawn opcode through the same natural
+    // parameter Boss. The relative set is 300/309/311/321/304; 301/305 are
+    // absolute. The mirror bit negates X and XORs the per-opcode flag.
+    auto verify_spawn_variant = [&](std::int16_t opcode, float expected_x,
+                                    float expected_y, std::uint32_t expected_flag) {
+        const auto count_before = controller.count();
+        const auto apply_before = spawn_apply_calls;
+        set_spawn_packet(opcode, 3.25f, 4.5f, 700, 0x4444, 0x5555);
+        assert(enemy.state.execute_opcode() == 0);
+        assert(controller.count() == count_before + 1);
+        assert(spawn_apply_calls == apply_before + 1);
+        auto* const spawned = controller.enemies.begin().get()->node_value();
+        assert(spawned->spawn_parameters.position.x == expected_x);
+        assert(spawned->spawn_parameters.position.y == expected_y);
+        assert(spawned->spawn_parameters.flags_18 == expected_flag);
+        assert(spawned->spawn_parameters.health == 700);
+        assert(spawned->spawn_parameters.field_0c == 0x4444);
+        assert(spawned->spawn_parameters.field_10 == 0x5555);
+        spawned->controller_link.detach();
+        process_allocator->release_object(spawned);
+        controller.field_124 = static_cast<std::uint32_t>(count_before);
+    };
+    verify_spawn_variant(301, -3.25f, 4.5f, 1u);
+    verify_spawn_variant(304, -13.25f, 24.5f, 0u);
+    verify_spawn_variant(305, -3.25f, 4.5f, 0u);
+    verify_spawn_variant(309, -13.25f, 24.5f, 1u);
+    verify_spawn_variant(311, -13.25f, 24.5f, 0u);
+    verify_spawn_variant(321, -13.25f, 24.5f, 1u);
+
+    // An exception on the second integer default occurs before the identity
+    // read and before EnemyController::create; the live child count is stable.
+    const auto spawn_count_before_exception = controller.count();
+    const auto spawn_apply_before_exception = spawn_apply_calls;
+    dispatch_integer_read_calls = dispatch_float_read_calls = 0;
+    dispatch_integer_read_indices = {};
+    dispatch_integer_throw_at = 2;
+    dispatch_integer_read_hook = &observe_integer_read;
+    set_spawn_packet(301, 1.0f, 2.0f, -103, -104, -105, 0x38u);
+    bool spawn_operand_threw = false;
+    try { enemy.state.spawn_from_opcode(); }
+    catch (int value) { spawn_operand_threw = value == 609; }
+    dispatch_integer_read_hook = nullptr;
+    dispatch_integer_throw_at = 0;
+    assert(spawn_operand_threw);
+    assert(dispatch_integer_read_calls == 2);
+    assert(dispatch_integer_read_indices[0] == -103 && dispatch_integer_read_indices[1] == -104);
+    assert(controller.count() == spawn_count_before_exception);
+    assert(spawn_apply_calls == spawn_apply_before_exception);
+
+    spawned_second->controller_link.detach();
+    spawned_first->controller_link.detach();
+    spawned_first->parent_link.detach();
+    process_allocator->release_object(spawned_second);
+    process_allocator->release_object(spawned_first);
+    controller.field_124 = 0;
+
     dispatch_test_lasers_alternate->~LaserController();
     dispatch_test_lasers->~LaserController();
     dispatch_test_bullets_alternate->~BulletController();
     dispatch_test_bullets->~BulletController();
 
-    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
+    std::cout << "PASS root dispatch: Enemy bullet rectangle cancel 712 (real AnimationHandle resolve/rotation and 707B BulletController cancel boss), Enemy queue copy 614 (full typed record assignment, shared metadata ownership, destination/source PMR growth and second-operand exception order), Enemy bullet plus Laser radial cancel 616 (real 320B BulletController and 288B LaserController cancel_near Bosses, live Context/position retargeting), Enemy player angle 617 (two live Context/Player position reads, atan2 and VM destination writeback), Enemy shared queued polar 618 (operand order, ensure-only record, polar Vector3 XY transform and Z preservation), Enemy shared queued parameters 620 (ensure-only shared record, std::pair extraction, ordered X/Y writes and NaN-compatible threshold), Enemy queued metadata radial offset 619 (writable-shot COW, ordered pair extraction and throw-visible clone), Enemy queued-record decrement 633 (writable COW and signed post-decrement clamp), Enemy opcode 632 borrowed script pointer (two indexes before COW, real PMR growth and packet-owned pointer), Enemy opcode spawn 300/301/304/305/309/311/312/321 (whole 653B production Boss, selected-slot guard, live EnemyController::create, relative/mirrored position, flags, counters, parent link and operand order), Enemy callback-table Bullet clear 629 (205/86-instruction rotated-area/all-bullet Bosses, real AnimationHandle, Bullet PMR list, rectangle-circle leaf and Player scale side effects), Enemy score popup 630 (real Session::add_score, Context +0x1C queue, 255B exact enqueue Boss and retargeted Context), Enemy paired capped radial cancel 627/628 (real 401B Bullet and 288B Laser Bosses, 99,999 limit and live Context/position retargeting), Enemy mesh 621 (real allocator/owner release, positive-radius RenderMesh factory and operand-failure order), Laser 702/703/711/713 (real parameter temporaries, writable-shot COW and late Context selection), shot commands 609/610/611/612 (real writable-shot COW and PMR command vector), script select 800, selected position writeback 801, phase-selected script restarts 802, movement 400/404/424/448, animation flags 502/503, ScreenInf opcode 517 and dialogue cleanup 518 (real Bullet cancel-all traversal), global-owner opcodes 524/575, front gauge/title 527/534/548, selected-Enemy position 324, laser reset 539, bit flag 552, membership 549, fog 551, controller setters 553/554, animation/sound 555, reserved opcode 569, pattern 506-510/556/567/568/572, bounds/health/controller/state 500-559/563/564/566, controller selection/clear 520/525/545/565/573, timer/mode/time 538/539/540/541/542/574, card/health 523/536/537/561/562, sound queue enqueue plus dialogue 516/518/519, dynamic parameter copies 529/530/570/571 and special 560 return\n";
 }
