@@ -17449,6 +17449,19 @@ relocations = [
   { offset = 0x16, type = "REL32", symbol = "?set@Timer@th20@@QAEXM@Z", target = 0x004841F0 },
 ]
 
+# CORE/RECON-1260: original 39B Bullet+0x4D8 float-forwarding wrapper.
+[units.bullet_timer_4d8]
+source = "src/BulletTimer4D8.cpp"
+object = "build/gpt-web-enemy-629-canonical/BulletTimer4D8.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Bullet::set_timer_4d8"]
+symbol = "?set_timer_4d8@Bullet@th20@@QAEXM@Z"
+target_address = 0x0049CAE0
+size = 39
+relocations = [
+  { offset = 0x1C, type = "REL32", symbol = "??4Timer@th20@@QAEXM@Z", target = 0x0047C5F0 },
+]
+
 # CORE/EXACT-240: native entire 267B Bullet command0 speed interpolation,
 # all eleven original native call/data relocation destinations anchored.
 [units.bullet_advance_command0]

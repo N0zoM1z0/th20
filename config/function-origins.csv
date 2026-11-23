@@ -2765,7 +2765,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0049CA70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CAA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CAC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0049CAE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0049CAE0,unknown,Bullet,review,medium,"CORE/RECON-1260; docs/BULLET_TIMER_4D8_SETTER_EXACT.md; complete 39-byte native wrapper forwards float to Timer::operator=(float) on Bullet+0x4D8; independent calls from both opcode-629 callbacks establish receiver and storage role. Original method spelling is inferred; authored/compiler origin remains pending."
 0x0049CB10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CB30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0049CB60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

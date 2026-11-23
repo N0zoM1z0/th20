@@ -2765,7 +2765,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0049CA70,44,0x0049CA9B,FUN_0049ca70,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0049CAA0,26,0x0049CAB9,FUN_0049caa0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0049CAC0,26,0x0049CAD9,FUN_0049cac0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0049CAE0,39,0x0049CB06,FUN_0049cae0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0049CAE0,39,0x0049CB06,FUN_0049cae0,th20::Bullet::set_timer_4d8,Bullet,matching,100.00,__thiscall,?set_timer_4d8@Bullet@th20@@QAEXM@Z,false,src/BulletTimer4D8.cpp,CORE/RECON-1260; docs/BULLET_TIMER_4D8_SETTER_EXACT.md,unknown,"Complete native 39-byte Bullet+0x4D8 float-forwarding wrapper; one original E8 to Timer::operator=(float) and two independent Enemy opcode-629 callback callers."
 0x0049CB10,26,0x0049CB29,FUN_0049cb10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0049CB30,41,0x0049CB58,FUN_0049cb30,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0049CB60,41,0x0049CB88,FUN_0049cb60,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

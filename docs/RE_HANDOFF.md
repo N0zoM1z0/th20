@@ -35,9 +35,9 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
-## Latest checkpoints — Enemy ECL opcodes 616, 617, 618, 619, 620, 627/628, 632 and 633
+## Latest checkpoints — Enemy ECL opcodes 616, 617, 618, 619, 620, 627/628, 629/630, 632 and 633
 
-Enemy ECL opcodes 616, 617, 618, 619, 620, 627, 628, 632 and 633 are now integrated into the
+Enemy ECL opcodes 616, 617, 618, 619, 620, 627, 628, 629, 630, 632 and 633 are now integrated into the
 maintained root host and focused verifiers. Their production/test/verifier
 changes are checkpointed and retained:
 
@@ -47,6 +47,10 @@ changes are checkpointed and retained:
 - `src/EnemyStateScriptPointerOpcode.cpp`
 - `src/EnemyStateBulletLaserCancelOpcode.cpp`
 - `src/BulletLimitedCancellation.cpp`
+- `src/EnemyStateBulletClearOpcode.cpp`
+- `src/EnemyStateScorePopupOpcode.cpp`
+- `src/BulletTimer4D8.cpp`
+- `src/SessionScore.cpp`
 - `tests/enemy_state_dispatch_root.cpp`
 - `scripts/verify-enemy-bullet-laser-cancel-opcode-source.py`
 - `scripts/verify-enemy-player-angle-opcode-source.py`
@@ -97,6 +101,29 @@ a float exception preserves the clone but leaves the metadata field unchanged.
 See the opcode-619 source frontier
 (ENEMY_41967_619_WRITABLE_METADATA_RADIAL_OFFSET_SOURCE_FRONTIER.md).
 
+Native opcode 629 is the **46-byte / 10-instruction** callback-table branch
+at `0x00490B4D`, selector index 147. Its native table at `0x0056FE8C` selects
+the 768B animation-rectangle Bullet callback or the 291B all-Bullet reset
+callback. Both complete callbacks are now natural C++ `EnemyState` members,
+with real AnimationHandle resolution, rotated `geometry::rectangle_circle`,
+active Bullet iterator, Bullet Timer/color/field setters, Context/Player
+position reads and Player movement-scale writeback. The original 6.0f and
+10.0f globals are mapped; root tests exercise both callbacks, no state/field
+filter, overlap/no-overlap and exception ordering. See
+[the opcode-629 callback frontier](ENEMY_41967_629_BULLET_CLEAR_CALLBACK_SOURCE_FRONTIER.md).
+
+Native opcode 630 is the **109-byte / 24-instruction / 5-E8** score-popup
+branch at `0x0048C24A`, selector index 148. It uses real Session score
+accounting, the Context +0x1C ItemRewardPopupQueue owner, live Enemy position
+and the strict-exact 255B popup enqueue Boss. Root tests cover queue payload,
+score, Context retargeting and operand exception-before-side-effects. See
+[the opcode-630 source frontier](ENEMY_41967_630_SCORE_POPUP_SOURCE_FRONTIER.md).
+
+`Bullet::set_timer_4d8` is now a separate **39-byte strict-exact** leaf at
+`0x0049CAE0`: all 35 non-relocation bytes match and the single REL32 at
+`+0x1C` targets exact `Timer::operator=(float)` at `0x0047C5F0`. See
+[BULLET_TIMER_4D8_SETTER_EXACT.md](BULLET_TIMER_4D8_SETTER_EXACT.md).
+
 Native opcode 633 is the 163-byte / 41-instruction / 6-E8 queued-record
 decrement at 0x0049378E, selector index 151. It retains writable_shot and
 both ordered pair extractions, performs wrapping uint32 decrement of record
@@ -128,8 +155,8 @@ The false-returning root-test stubs for the shared, writable queued-parameter
 and script-pointer helpers are removed. The production helpers are included
 in HOST_SOURCES and the locked-profile COFF compile list; their native opcode
 verifiers are invoked by the maintained root verifier. The focused root host
-passes under ASan/UBSan, and the root verifier compiles **50 locked-profile
-i386 COFF source units** and 114 focused host sources. See the dedicated
+passes under ASan/UBSan, and the root verifier compiles **58 locked-profile
+i386 COFF source units** and 124 focused host sources. See the dedicated
 [opcode-620 source frontier](ENEMY_41967_620_SHARED_QUEUED_VECTOR_SOURCE_FRONTIER.md).
 
 This is still an inline fragment only. No standalone function unit or
@@ -169,6 +196,11 @@ Recent committed case families exercised by the maintained root include:
   growth and exact EclInstruction+0x1C pointer identity, plus second-index exception.
 - **627/628:** two 182B capped Bullet/Laser cancellation branches; real 401B limited
   Bullet and 288B Laser Bosses, 99,999 cap/effects arguments and live Context retargeting.
+- **629:** 46B callback-table case plus 768B and 291B native callback Bosses;
+  real AnimationHandle/geometry/Bullet iterator/Timer/color/Player paths and both
+  callback modes execute under ASan/UBSan.
+- **630:** 109B score-popup case; real Session score, Context +0x1C popup queue,
+  live Enemy position and strict-exact 255B enqueue Boss.
 - **621:** 346B mesh-owner lifecycle; real allocator templates and
   EnemyMeshOwner destructor. Renderer-dependent RenderMesh ctor/dtor and
   allocator startup remain host fixtures.
@@ -187,9 +219,9 @@ Recent committed case families exercised by the maintained root include:
   timer/mode, Card/health, animation spawn, membership, fog, bit flags,
   sound/gauge/title and selected-position cases.
 
-The maintained root verifier currently compiles **50 locked-profile i386
-COFF units** and runs 114 focused host source units under ASan/UBSan, including
-opcodes 616, 617, 618, 619, 620, 627, 628, 632 and 633. The exact per-case boundaries and host limitations are documented in the
+The maintained root verifier currently compiles **58 locked-profile i386
+COFF units** and runs 124 focused host source units under ASan/UBSan, including
+opcodes 616, 617, 618, 619, 620, 627, 628, 629, 630, 632 and 633. The exact per-case boundaries and host limitations are documented in the
 [dispatcher frontier](ENEMY_STATE_EXECUTE_OPCODE_41967_PARTIAL_SOURCE_FRONTIER.md)
 and the focused case notes linked from the [evidence index](EVIDENCE_INDEX.md).
 

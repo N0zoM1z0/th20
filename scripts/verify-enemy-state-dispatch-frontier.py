@@ -886,6 +886,13 @@ def main() -> None:
     assert 'PASS native EnemyState callback 0x00488E80: 291B / 86 x86 / 17 ordered direct calls' in bullet_clear_audit.stdout
     print(bullet_clear_audit.stdout,end='')
 
+    bullet_timer_audit=subprocess.run(
+        [str(ROOT/'scripts/repo-python'),str(ROOT/'scripts/verify-bullet-timer-4d8-source.py')],
+        cwd=ROOT,check=True,text=True,capture_output=True)
+    assert 'PASS original Bullet::set_timer_4d8: 39B / 14 x86 / one E8 to Timer::operator=(float)' in bullet_timer_audit.stdout
+    assert 'PASS all 35 non-relocation bytes match the locked PE' in bullet_timer_audit.stdout
+    print(bullet_timer_audit.stdout,end='')
+
     bullet_clear_object=ROOT/'build/gpt-web-enemy-629-canonical/EnemyStateBulletClearOpcode.obj'
     bullet_clear_dump=subprocess.run(
         ['objdump','-dr',str(bullet_clear_object)],cwd=ROOT,check=True,text=True,capture_output=True).stdout
@@ -962,7 +969,15 @@ def main() -> None:
     bullet_clear_dispatch=bullet_clear_dump.split(bullet_clear_dispatch_marker,1)[1].split('Disassembly of section',1)[0]
     assert '?integer_argument@EnemyState@th20' in bullet_clear_dispatch
     assert re.search(r'call\s+\*',bullet_clear_dispatch)
-    print('PASS natural C++ opcode-629 COFF: real AnimationHandle, geometry, intrusive Bullet list, Timer/color setters and indirect member callback table')
+    bullet_timer_object=ROOT/'build/gpt-web-enemy-629-canonical/BulletTimer4D8.obj'
+    bullet_timer_dump=subprocess.run(
+        ['objdump','-dr',str(bullet_timer_object)],cwd=ROOT,check=True,text=True,capture_output=True).stdout
+    bullet_timer_marker='<?set_timer_4d8@Bullet@th20@@QAEXM@Z>:'
+    assert bullet_timer_marker in bullet_timer_dump
+    bullet_timer_function=bullet_timer_dump.split(bullet_timer_marker,1)[1].split('Disassembly of section',1)[0]
+    bullet_timer_calls=re.findall(r'DISP32\s+([^\r\n]+)',bullet_timer_function)
+    assert len(bullet_timer_calls)==1 and '??4Timer@th20@@QAEXM@Z' in bullet_timer_calls[0],bullet_timer_calls
+    print('PASS natural C++ opcode-629 COFF: real AnimationHandle, geometry, intrusive Bullet list, Timer/color setters, exact Timer leaf and indirect member callback table')
 
     score_popup_object=ROOT/'build/gpt-web-enemy-630-canonical/EnemyStateScorePopupOpcode.obj'
     score_popup_dump=subprocess.run(
