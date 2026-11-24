@@ -5,6 +5,7 @@
 #include "Viewport.hpp"
 #include <cstddef>
 #include <cstdint>
+#include <type_traits>
 
 namespace th20 {
 class AnimationFile;
@@ -100,6 +101,7 @@ struct StageResourcePrimitiveHeader {
     StageResourcePrimitiveHeader* advance(std::int32_t size);
 };
 static_assert(sizeof(StageResourcePrimitiveHeader) == 8);
+static_assert(std::is_standard_layout_v<StageResourcePrimitiveHeader>);
 static_assert(offsetof(StageResourcePrimitiveHeader, type) == 0x00);
 static_assert(offsetof(StageResourcePrimitiveHeader, size) == 0x02);
 static_assert(offsetof(StageResourcePrimitiveHeader, script_index) == 0x04);
@@ -112,6 +114,8 @@ struct StageResourcePrimitiveTransform {
     float scale_y;
 };
 static_assert(sizeof(StageResourcePrimitiveTransform) == 0x1c);
+static_assert(std::is_standard_layout_v<StageResourcePrimitiveTransform>);
+static_assert(offsetof(StageResourcePrimitiveTransform, header) == 0x00);
 static_assert(offsetof(StageResourcePrimitiveTransform, position) == 0x08);
 static_assert(offsetof(StageResourcePrimitiveTransform, scale_x) == 0x14);
 static_assert(offsetof(StageResourcePrimitiveTransform, scale_y) == 0x18);
