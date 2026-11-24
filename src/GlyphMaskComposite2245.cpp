@@ -42,7 +42,7 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
             }
         }
         // One immutable stencil base serves every row and neighbor test.
-        const auto* stencil=reinterpret_cast<const std::uint32_t*>(original);
+        const auto* stencil=reinterpret_cast<const PackedColorChannels*>(original);
         PackedColor opaque(color);
         const std::int32_t row_words=pixel_stride_4156c0()/4;
         // The native outline color flips only the packed alpha byte in place.
@@ -62,13 +62,13 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                     const std::int32_t delta_x=off[0];
                     const std::int32_t delta_y=off[1];
                         if (((x-delta_x>=0 && y-delta_y>=0) &&
-                             (stencil[(y-delta_y)*row_words+x-delta_x]>>24)!=0xff) ||
+                             stencil[(y-delta_y)*row_words+x-delta_x].alpha!=0xff) ||
                             ((x+delta_x<canvas_width_415800() && y-delta_y>=0) &&
-                             (stencil[(y-delta_y)*row_words+x+delta_x]>>24)!=0xff) ||
+                             stencil[(y-delta_y)*row_words+x+delta_x].alpha!=0xff) ||
                             ((x-delta_x>=0 && y+delta_y<rows) &&
-                             (stencil[(y+delta_y)*row_words+x-delta_x]>>24)!=0xff) ||
+                             stencil[(y+delta_y)*row_words+x-delta_x].alpha!=0xff) ||
                             ((x+delta_x<canvas_width_415800() && y+delta_y<rows) &&
-                             (stencil[(y+delta_y)*row_words+x+delta_x]>>24)!=0xff)) {
+                             stencil[(y+delta_y)*row_words+x+delta_x].alpha!=0xff)) {
                             touches_outline=true;
                             break;
                         }
