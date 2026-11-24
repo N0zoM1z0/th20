@@ -299,7 +299,7 @@ source-present but NONEXACT.
 
 1. Continue only `AnimationPoolOwner::draw(Animation*)` at `0x00443880`
    until its complete 5,993B body and original relocations replay strict
-   exact. The current source reaches **4,834/5,376** ordinary bytes,
+   exact. The current source reaches **4,835/5,376** ordinary bytes,
    **114/123** physical E8 sites and **27/32** exact data site/target pairs.
    The open frontier is eight mode35/36 call-site deltas and the two SSE
    register operands, the first-getter x87 spill, and the final mode46 renderer

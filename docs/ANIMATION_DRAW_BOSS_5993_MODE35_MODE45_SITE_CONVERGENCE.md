@@ -19,7 +19,7 @@ retains a value-equivalent half-height role swap to recover the native
 register-register `addss`; Mode46 now restores the native scale-half-before-
 getter and width-half-at-argument evaluation order. This is ordinary C++,
 not a byte patch or a dummy local. The current source raises whole-function
-ordinary-byte agreement from **4,801 to 4,834**, physical E8 positions from
+ordinary-byte agreement from **4,801 to 4,835**, physical E8 positions from
 **113/123 to 114/123**, and exact body relocation site/target pairs from
 **26/32 to 27/32**. The detailed native/compiled frontier
 and rejected probes are in
@@ -71,7 +71,7 @@ there are no synthetic byte-index tables or hand-authored padding.
 | Absolute E8 opcode offset-delta sum | 516 | **44** | 0 |
 | Original in-body HIGHLOW target-role histogram | 32/32 | **32/32** | 32/32 |
 | Original in-body HIGHLOW site+role positions | 23/32 | **27/32** | 32/32 |
-| All complete ordinary bytes with actual COFF fields masked | 3,819/5,376 | **4,834/5,376** | 5,376/5,376 |
+| All complete ordinary bytes with actual COFF fields masked | 3,819/5,376 | **4,835/5,376** | 5,376/5,376 |
 
 The ordinary byte denominator masks exactly **the compiler's actual
 235 four-byte relocation fields** (123 E8 +32 in-body data +80 table
@@ -89,7 +89,7 @@ now **requires** all 123 native calls in their original target order,
 first 81 consecutive E8 sites, **114/123** exact native E8 offsets,
 absolute offset deviation **44**, complete 80-pointer table partitions,
 32/32 data roles including **27 exact site/target pairs**, and
-**4,834/5,376** ordinary bytes. It checks all 49 game modes and the
+**4,835/5,376** ordinary bytes. It checks all 49 game modes and the
 correct source/ABI details for the 18 real rendering children.
 The previous version's 86/23/3,819 expectations were superseded,
 not silently accepted as a looser baseline.

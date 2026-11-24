@@ -2,7 +2,7 @@
 snapshot the full maintained 5,993B/1,501-instruction C++ source matched
 **113/123 original E8 physical sites, 26/32 original in-body HIGHLOW sites
 and 4,801/5,376 comparable ordinary bytes**. The current mainline has since
-advanced to **114/123**, **27/32** and **4,834/5,376**, respectively, while
+advanced to **114/123**, **27/32** and **4,835/5,376**, respectively, while
 retaining the 49+31 pointer tables, 80 genuine compiler data relocations and
 original 0x204 frame. The Boss remains **NONEXACT**. See
 [CORE/RECON-1112 native-site convergence](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md). The historical

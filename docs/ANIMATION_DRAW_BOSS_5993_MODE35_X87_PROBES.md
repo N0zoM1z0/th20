@@ -2,7 +2,7 @@
 spill at mode35/36 is still unresolved. Mode45's value-equivalent half-height
 role swap and mode46's restored native evaluation order now give the maintained
 complete 5,993B candidate **114/123 original E8 physical sites, 27/32 body
-data locations and 4,834/5,376 ordinary bytes**. This supersedes the earlier
+data locations and 4,835/5,376 ordinary bytes**. This supersedes the earlier
 snapshot below;
 see [the current source/native role proof](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md).
 The prior 86/123 and experimental 85/123 snapshots below remain historical.

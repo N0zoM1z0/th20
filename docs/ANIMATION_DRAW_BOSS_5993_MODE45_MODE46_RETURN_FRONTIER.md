@@ -4,7 +4,7 @@ The maintained `AnimationPoolOwner::draw(Animation*)` at `0x00443880` remains
 SOURCE-PRESENT/NONEXACT. Its current production body is 5,993B/1,501
 instructions with a 0x204 frame and 6,316B complete code+table contribution.
 The current whole-source metrics are **114/123** original E8 physical sites,
-**27/32** exact in-body relocation site/target pairs and **4,834/5,376**
+**27/32** exact in-body relocation site/target pairs and **4,835/5,376**
 ordinary bytes. This report records the native mode45/46 lifetimes, the
 value-equivalent C++ role swap now maintained in source, and rejected
 alternatives; it does not claim exactness.
@@ -142,7 +142,7 @@ register-register form. SSE intrinsic attempts materialize 16-byte vector
 temporaries and expand the function beyond 6,100B. These remain isolated
 experiments; production stays at **5,993B/1,501 instructions**, frame
 `0x204`, **114/123** E8 positions, **27/32** data sites and
-**4,834/5,376** ordinary bytes.
+**4,835/5,376** ordinary bytes.
 
 ## Getter ABI: Ghidra `float10` is not an MSVC `long double` source type
 
@@ -173,7 +173,7 @@ the exact getter nor its declaration is changed.
 
 The current maintained full-body object has the established 5,993B/1,501
 instruction baseline, **114/123** native E8 instruction offsets, **27/32**
-exact in-body relocation positions and **4,834/5,376** ordinary-byte matches.
+exact in-body relocation positions and **4,835/5,376** ordinary-byte matches.
 Its remaining mode35/36 arithmetic difference is precise: native mode35 loads
 the spilled half-height with `movss xmm1, [ebp-0x14c]` before `addss xmm0,
 xmm1`; native mode36 similarly loads `[ebp-0x168]` into XMM1 before
@@ -204,7 +204,7 @@ full body 5,993B/1,501 instructions, but inserts a non-native `xorps` plus
 `subss` sign-negation sequence and moves that renderer call three bytes late.
 It is not accepted. The value-equivalent role-swap is a useful register-form
 proof, not a production improvement: the isolated full-body comparison remains
-well below the maintained source's current 4,834/5,376 ordinary-byte and
+well below the maintained source's current 4,835/5,376 ordinary-byte and
 114/123 E8-site baseline because other local ownership and mode45/46 layout
 still differ.
 Both probes remain private under `.analysis/` and `build/`.
@@ -270,7 +270,7 @@ pre-getter half feeds width. Both first-result stores remain at
 5,989B/1,500 instructions. The first 89/123 E8 positions now align, but
 the mode36 renderer call is still four bytes early; the later calls remain
 displaced. This is not promoted because it loses to the maintained source's
-114/123 E8 positions and 4,834/5,376 ordinary bytes, and still depends on
+114/123 E8 positions and 4,835/5,376 ordinary bytes, and still depends on
 an unread first-result local whose source ownership is unproven.
 
 The
