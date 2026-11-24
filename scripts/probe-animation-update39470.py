@@ -125,6 +125,7 @@ def compile_candidate(original_targets):
  assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_560 = this->integer_value((&instruction->first_operand)[0]);' in text
  assert 'local_590 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();\n        if ((base.flags.word_04 >> 0x12 & 1) != 0)' in text
  assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_574 = this->integer_value((&instruction->first_operand)[0]);' in text
+ assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_fc = this->integer_value((&instruction->first_operand)[0]);' in text
  assert 'native_animation_opcode_dispatch_435284[0x27c]' in text
  assert 'switch(native_animation_opcode_dispatch_435284[local_e0])' in text
  for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
@@ -171,6 +172,7 @@ def compile_candidate(original_targets):
  assert native_calls[19]==0x4d1 and candidate_calls[19]==0x4d5
  assert native_calls[24]==0x60d and candidate_calls[24]==0x613
  assert native_calls[25]==0x676 and candidate_calls[25]==0x670
+ assert native_calls[31]==0x7f1 and candidate_calls[31]==0x7e1
  matched_call_sites=sum(a==b for a,b in zip(native_calls,candidate_calls))
  call_offset_delta=sum(abs(a-b) for a,b in zip(native_calls,candidate_calls))
  candidate_sequence=candidate_call_target_sequence(relocations)

@@ -35,7 +35,7 @@ redundant explicit case: the original 161st jump-table entry is exactly the
 same `0x0042B8D3` default branch as the out-of-range route. This removes one
 compiler switch entry and four bytes from each of the code/table contributions
 without changing the 505-call target multiset. The candidate now has **16/505**
-exact physical E8 offsets and aggregate E8-offset distance **53,816 bytes**;
+exact physical E8 offsets and aggregate E8-offset distance **53,822 bytes**;
 all 505 original call targets and the three child-spawn/writeback subsequences
 remain verified.
 The opcode `0x72` child-spawn operand branch now tests the flagged integer
@@ -53,6 +53,10 @@ Opcode `0x7C` now uses the same ordering: previous-file lookup first, `JE` to
 mode-2, and `JE` to the raw operand path. Its previous-file E8 is at +0x613
 (native +0x60D), and its integer conversion is at +0x670 (native +0x676),
 reducing the whole-Boss offset distance another 56 bytes to **53,816 bytes**.
+Opcode `0x74` now emits the original `JE`-to-raw / fall-through-to-integer
+conversion branch rather than the inverse `JNE` layout. Its integer-conversion
+call is at +0x7E1 versus native +0x7F1; this is a control-flow ordering match,
+not a claim that its physical call offset is closer.
 
 The affected File/operand closure strictly replayed **21/21 units in 8 cold
 objects**, including the 165/244/301/835B operand leaves, 338B script loader
