@@ -71,6 +71,38 @@ zero return. It removes the duplicate `jmp +2; xor eax,eax` tail, but leaves a
 hypothesis, not an accepted source change: the two mode-specific SSE operand
 lifetimes still need to be reconstructed in ordinary C++.
 
+## Mode35/36: shared half-height is the real native dataflow
+
+A separate full-body probe isolated the two earlier nested modes. Their native
+stack ownership is:
+
+| Mode | First getter return | Color 494 | Color 490 | Count | Scale half | Second getter return | Adjusted scale |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 35 | `[ebp-0x160]` | `[ebp-0x150]` | `[ebp-0x154]` | `[ebp-0x158]` | `[ebp-0x14c]` | `[ebp-0x148]` | `[ebp-0x15c]` |
+| 36 | `[ebp-0x160]` | `[ebp-0x16c]` | `[ebp-0x170]` | `[ebp-0x174]` | `[ebp-0x168]` | `[ebp-0x164]` | `[ebp-0x178]` |
+
+The first getter return is stored in the same `[ebp-0x160]` slot in both modes
+and is not read later in the body. The second getter return is converted from
+x87 to a scalar local. The scale half is computed **before** that second getter
+and is reused by the adjusted-scale arithmetic; the renderer width is a
+separate, later `height / 2.0f` computation. In mode35 the adjusted scale is
+`second_return + scale_half`; in mode36 it is `second_return - scale_half`.
+
+This corrected a previous probe's semantic inversion, which had computed the
+width half early and recomputed the scale half after the getter. The natural
+C++ half-reuse probe restores the native local-slot assignments for both modes
+and the separate later width division. It compiles to 5,985B/1,499
+instructions, however: MSVC emits `addss xmm0, [scale_half]` and
+`subss xmm0, [scale_half]` instead of the native `movss xmm1, [scale_half]`
+followed by register-register `addss`/`subss`. Each arithmetic sequence is
+four bytes shorter, so the mode35 renderer is four bytes early and the mode36
+renderer eight bytes early. This is a useful semantic convergence, not an
+accepted exact candidate.
+
+The first getter's `fstp [ebp-0x160]` remains a separate unresolved source
+question: it is present twice in the native body and has no in-body read. No
+unused variable is added merely to manufacture it.
+
 ## Rejected code-generation shortcuts
 
 Further isolated probes did not produce the native register-register form:
@@ -98,7 +130,7 @@ x87 stores; their original source ownership remains unresolved.
 The isolated probes used the locked MSVC x86 profile and did not edit
 `src/AnimationDrawBoss.cpp`, shared headers, canonical objects, match units or
 the target. No full cold replay was run. The next step remains to derive the
-mode45/46 register-register SSE lifetimes and receiver/spill ordering from
-natural source semantics, then revisit the mode35/36 x87 stores without
+mode35/36 register-register SSE form and the mode45/46 receiver/spill ordering
+from natural source semantics, then revisit the mode35/36 x87 stores without
 inventing a dead temporary. The only active target remains the 5,993B Draw
 Boss; no function switch is authorized before its complete strict exact replay.
