@@ -64,6 +64,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
             }
 
             object.flags |= StageResourceObjectRecord::passed_viewport_cull_mask;
+            // The serialized primitive stream begins immediately after the 0x30-byte object.
             auto* primitive = reinterpret_cast<StageResourcePrimitiveTransform*>(
                 reinterpret_cast<std::byte*>(&object) + sizeof(object));
             while (primitive->header.type >= 0) {
