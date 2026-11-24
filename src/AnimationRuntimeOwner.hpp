@@ -2,6 +2,7 @@
 #include "NativeAnimationResetHooksBase.hpp"
 
 #include <cstdint>
+#include <type_traits>
 
 namespace th20 {
 class Animation;
@@ -35,5 +36,8 @@ struct AnimationPoolOwner : NativeAnimationResetHooks {
     void interrupt_handle(std::uint32_t index, std::int32_t event);
     void set_handle_position(std::uint32_t index, const Vector3& position);
 };
+static_assert(std::is_empty_v<NativeAnimationResetHooks>);
+static_assert(std::is_base_of_v<NativeAnimationResetHooks, AnimationPoolOwner>);
+static_assert(sizeof(AnimationPoolOwner) == 1);
 extern AnimationPoolOwner* current_animation_pool;
 } // namespace th20
