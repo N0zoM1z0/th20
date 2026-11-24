@@ -1,5 +1,6 @@
 #define wmain unused_native_cpu_compare_main
 #include "../_reference/Touhou20/tests/native_cpu_compare.cpp"
+#include <d3dx9math.h>
 #undef wmain
 
 #include "StageResource.hpp"
@@ -11,6 +12,8 @@
 #include "NativeViewIndexOwner.hpp"
 #include "AnimationRuntimeOwner.hpp"
 #include "NativeAnimationResetHooksView.hpp"
+#include "NativeGraphicsModeAction.hpp"
+#include "Worker.hpp"
 #include "RenderMesh.hpp"
 #include "ScalarMath.hpp"
 #include "StageResourceObjectVisibility.hpp"
@@ -147,9 +150,40 @@ extern "C" th20::Vector3* __stdcall stage_test_d3dx_vec3_transform_coord(
     return output;
 }
 
+// Source-side D3DX calls share the exact same CPU test seam as the original
+// PE import slots patched below; this keeps the test focused on owner logic.
+extern "C" D3DXMATRIX* WINAPI D3DXMatrixRotationY(
+    D3DXMATRIX* output, FLOAT angle) {
+    return reinterpret_cast<D3DXMATRIX*>(
+        stage_test_d3dx_matrix_rotation_y(
+            reinterpret_cast<th20::Matrix4*>(output), angle));
+}
+extern "C" D3DXVECTOR3* WINAPI D3DXVec3TransformCoord(
+    D3DXVECTOR3* output, const D3DXVECTOR3* input,
+    const D3DXMATRIX* matrix) {
+    return reinterpret_cast<D3DXVECTOR3*>(
+        stage_test_d3dx_vec3_transform_coord(
+            reinterpret_cast<th20::Vector3*>(output),
+            reinterpret_cast<const th20::Vector3*>(input),
+            reinterpret_cast<const th20::Matrix4*>(matrix)));
+}
+
 namespace th20 {
+// The focused PE oracle supplies aligned scratch storage for native D3DX calls.
+template<class T>
+struct NativeDrawScratch {
+    alignas(T) std::byte storage[sizeof(T)];
+    T* get_first();
+};
+template<class T>
+T* NativeDrawScratch<T>::get_first() {
+    return reinterpret_cast<T*>(storage);
+}
+template D3DXVECTOR3* NativeDrawScratch<D3DXVECTOR3>::get_first();
+template D3DXMATRIX* NativeDrawScratch<D3DXMATRIX>::get_first();
 NativeViewIndexOwner test_view_index_owner{};
 ViewportState source_camera_viewport{};
+Graphics process_graphics{};
 NativeViewIndexOwner* native_view_index_owner_5c0028 = &test_view_index_owner;
 AnimationPoolOwner* current_animation_pool =
     reinterpret_cast<AnimationPoolOwner*>(&test_view_index_owner);
@@ -170,6 +204,12 @@ std::int32_t AnimationPoolOwner::draw(Animation*) {
 }
 
 void AnimationPoolOwner::flush_draws() {}
+
+std::int32_t __fastcall graphics_enable_fog(Graphics*) { return 0; }
+std::int32_t __fastcall graphics_disable_fog(Graphics*) { return 0; }
+std::int32_t __fastcall graphics_enable_depth_writes(Graphics*) { return 0; }
+std::int32_t __fastcall graphics_disable_depth_writes(Graphics*) { return 0; }
+void NativeGraphicsModeAction::select_view_477520(int) {}
 
 void stage_resource_select_viewport(std::int32_t) {}
 void stage_resource_set_clip(std::int32_t) {}
@@ -193,6 +233,7 @@ void RenderMesh::initialize(float x, float y, float width, float height) {
 }
 void stage_vm_publish_camera(const ViewportState& camera) {
     source_camera_viewport = camera;
+    process_graphics.viewports[3] = camera;
 }
 
 AnimationBase::AnimationBase() noexcept {}
@@ -212,11 +253,9 @@ void Animation::stop() {
     base.flags.byte_02 &= 0xfeu;
 }
 AnimationHandle::AnimationHandle() noexcept : value(0) {}
-TransformMatrix::TransformMatrix() {}
-ViewportState::ViewportState()
-    : field_of_view(0), field_58(0), field_5c(0), viewport{}, field_f8(0),
-      offset_x(0), offset_y(0), adjusted_viewport{} {}
-
+Graphics::~Graphics() {}
+Worker::Worker() noexcept {}
+Worker::~Worker() {}
 void stage_vm_assign_animation(StageBackgroundScriptState&, std::int32_t,
                                std::int32_t) { outside_scope(); }
 void stage_vm_stop_animation(Animation& animation) { animation.stop(); }
@@ -1095,6 +1134,7 @@ int wmain(int argc, wchar_t** argv) {
                                     0.0f, 0.0f};
                 camera.viewport = {0, 0, 640, 480, 0.0f, 1.0f};
                 th20::source_camera_viewport = camera;
+                th20::process_graphics.viewports[3] = camera;
                 std::memcpy(reinterpret_cast<void*>(mapped_image_base + 0x1c53fc),
                             &camera, sizeof(camera));
 
@@ -1145,7 +1185,6 @@ int wmain(int argc, wchar_t** argv) {
                                 pool_storage + page_offsets[page], 0x1000);
                     mismatch = mismatch || pool_actual[page] != pool_expected[page];
                 }
-
                 ++checks;
                 ++groups["stage_resource_object_draw_474880"];
                 if (mismatch) {
