@@ -27,23 +27,24 @@ static_assert(offsetof(StageResourceFileHeader, animation_count) == 0x02);
 static_assert(offsetof(StageResourceFileHeader, instance_offset) == 0x04);
 static_assert(offsetof(StageResourceFileHeader, animation_name) == 0x10);
 
-// Typed views of the native object parameter block. The third float is
-// the object-space Y rotation consumed by the layer draw routine.
+// Typed view of the native object parameter block. The update path advances
+// rotation_y by rotation_y_velocity; the culler consumes the center and full
+// extent vectors at object offsets +0x18 and +0x24 respectively.
 struct StageResourceObjectParameters {
     float field_00;
-    float field_04;
+    float rotation_y_velocity;
     float rotation_y;
     float field_0c;
     float field_10;
-    float field_14;
-    float field_18;
-    float field_1c;
-    float field_20;
-    float field_24;
-    float field_28;
+    Vector3 bounds_center;
+    Vector3 bounds_extent;
 };
+static_assert(sizeof(Vector3) == 0x0c);
 static_assert(sizeof(StageResourceObjectParameters) == 0x2c);
+static_assert(offsetof(StageResourceObjectParameters, rotation_y_velocity) == 0x04);
 static_assert(offsetof(StageResourceObjectParameters, rotation_y) == 0x08);
+static_assert(offsetof(StageResourceObjectParameters, bounds_center) == 0x14);
+static_assert(offsetof(StageResourceObjectParameters, bounds_extent) == 0x20);
 
 // Object update uses bit 0 for active animations; the draw pass sets bit 1
 // when the instance passes viewport culling.

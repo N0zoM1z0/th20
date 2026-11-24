@@ -1138,13 +1138,10 @@ int wmain(int argc, wchar_t** argv) {
                     fixtures[index].object.parameters[0] =
                         index == 0 && test % 7 == 0 ?
                             std::bit_cast<float>(1u) : 0.0f;
-                    fixtures[index].object.parameters[5] =
-                        index == 1 ? 0.25f : -0.15f;
-                    fixtures[index].object.parameters[6] = 0.0f;
-                    fixtures[index].object.parameters[7] = 0.5f;
-                    fixtures[index].object.parameters[8] = 0.35f;
-                    fixtures[index].object.parameters[9] = 0.3f;
-                    fixtures[index].object.parameters[10] = 0.25f;
+                    fixtures[index].object.typed_parameters.bounds_center = {
+                        index == 1 ? 0.25f : -0.15f, 0.0f, 0.5f};
+                    fixtures[index].object.typed_parameters.bounds_extent = {
+                        0.35f, 0.3f, 0.25f};
                     fixtures[index].object.parameters[2] =
                         index == 0 && test % 4 != 0 ?
                             (test & 1u ? 0.35f : -0.6f) : 0.0f;
