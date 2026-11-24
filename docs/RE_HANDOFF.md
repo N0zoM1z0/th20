@@ -297,12 +297,17 @@ source-present but NONEXACT.
 
 ## Continuation order
 
-1. Continue the remaining large Enemy dispatcher cases outside the now-routed
-   622–633 cluster. Prioritize the unhandled 300/500-series and other broad
-   parent branches; investigate each branch and its real leaf dependencies together.
-2. Continue convergence of the 41,967B Enemy root and the open FrontInf,
-   Bullet and Animation Bosses. Do not substitute trivial setters for Boss
-   work; preserve natural C++ control flow and real ownership.
+1. Continue only `AnimationPoolOwner::draw(Animation*)` at `0x00443880`
+   until its complete 5,993B body and original relocations replay strict
+   exact. The current open frontier is mode45/46 SSE temporary/register
+   lifetimes and the mode35/36 x87 stores; see
+   [the focused mode45/46 frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md)
+   and [the full-body convergence report](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md).
+   Do not switch to another function before this Boss is exact.
+2. Only after that exact replay, resume the remaining large Enemy dispatcher
+   cases and the open FrontInf, Bullet and Animation Bosses. Preserve natural
+   C++ control flow and real ownership; do not substitute trivial setters for
+   Boss work.
 
 For source changes, replay only affected units and changed shared-header
 consumers. Do not run a full cold replay for routine progress. Preserve
