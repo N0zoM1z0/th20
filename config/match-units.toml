@@ -12428,8 +12428,8 @@ relocations = [
 ]
 
 [units.animation_set_packed_color]
-source = "src/Animation.cpp"
-object = "build/core163-canonical/Animation.obj"
+source = "src/AnimationPackedColor.cpp"
+object = "build/core163-canonical/AnimationPackedColor.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::set_packed_color"]
 symbol = "?set_packed_color@Animation@th20@@QAEXI@Z"
