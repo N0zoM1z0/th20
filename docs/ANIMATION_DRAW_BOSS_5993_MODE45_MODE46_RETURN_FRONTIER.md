@@ -198,6 +198,14 @@ Further isolated probes did not produce the native register-register form:
 - A `__vectorcall` arithmetic helper is not inlined under the locked `/Ob0`
   profile; it introduces two extra E8 calls and retains the memory-operand
   arithmetic.
+- Unary-plus and scalar-cast spellings, pointer aliases, and volatile half
+  locals still select direct-memory `addss`/`subss`. `std::ignore` and
+  temporary-reference bindings for the first getter add calls or stack traffic
+  rather than reproducing the native `fstp` stores.
+- For mode46 adjusted scale, `0.0f - (half_for_scale - inherited_scale)`
+  replaces the direct-memory subtraction with `subss` plus `xorps`/`subss`,
+  but expands the body to 5,997B/1,499 instructions and leaves the mode46
+  renderer call three bytes late. It is not an exact replacement.
 
 These probes stay private under `.analysis/` and `build/`; none changes the
 maintained source or the locked compiler profile.
