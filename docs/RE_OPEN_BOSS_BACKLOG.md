@@ -186,9 +186,9 @@ canonically accepted.
 - **Animation VM update** `0x0042B5D0`, **39,470B**. The complete 161-opcode
   semantic C++ body is now source-present in `src/AnimationUpdate39470.cpp`;
   the typed `AnmInstruction` header/variable-operand model preserves all 505
-  original call targets. Current 39,768B COFF candidate remains NONEXACT
+  original call targets. Current 39,760B COFF candidate remains NONEXACT
   (16/505 E8 offsets coincide, first fourteen consecutive sites aligned; aggregate
-  E8 offset distance 54,560; no exact parent credit). Continue converging the whole-body instruction, relocation
+  E8 offset distance 53,966; no exact parent credit). Continue converging the whole-body instruction, relocation
   and stack layout, not just the leaves.
   [Native VM report](ANIMATION_UPDATE_VM_RECONSTRUCTION.md).
 

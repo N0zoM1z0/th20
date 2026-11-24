@@ -8,12 +8,12 @@ fixed header: signed opcode at `+0`, unsigned byte advance at `+2`, signed
 frame at `+4`, and operand flags at `+6`. `first_operand` at `+8` anchors the
 variable-width operand stream; the byte-advance field, not `sizeof`, advances
 the script PC. The main VM cursor and case-3 scan cursor use this typed record.
-All 161 opcode labels and the full 505-call target multiset remain present.
+The 160 explicit case labels plus the default sentinel cover all 161 native dispatch entries; the full 505-call target multiset remains present.
 
-The current focused candidate is **39,768B COFF contribution**: **39,124B
-code plus the 644B 161-entry compiler switch table**, 8,457 code instructions,
-frame `0x7F8`, 505 E8 calls and 215 DIR32 relocations (162 switch-label plus
-53 external data/constructor/cookie references). The code is 346 bytes shorter
+The current focused candidate is **39,760B COFF contribution**: **39,120B
+code plus the 640B 160-entry compiler switch table**, 8,457 code instructions,
+frame `0x7F8`, 505 E8 calls and 214 DIR32 relocations (161 switch-label plus
+53 external data/constructor/cookie references). The code is 350 bytes shorter
 than the original 39,470B body. Modeling the native controller gate through
 the two-bit `AnimationModeBits::mode` and expressing its frozen-controller
 exit directly restores the original byte-register sequence. Reversing the
@@ -30,9 +30,14 @@ base rather than forming a negative array index. It is source-defined as native
 `.rdata` in `src/AnimationOpcodeDispatchTable.cpp`; its dedicated probe compares
 all 636 COFF bytes and the external ABI symbol against the original PE.
 SHA-256: `a030f37522ea5b860c9a06ab56c02978832b477fd4e7c6f94957fbadc7cab34d`.
-The candidate now has **16/505** exact physical E8 offsets and aggregate E8-offset distance
-**54,560 bytes**; all 505 original call targets and the three child-spawn/
-writeback subsequences remain verified.
+The source models the native `0xA0` sentinel as the switch `default`, not a
+redundant explicit case: the original 161st jump-table entry is exactly the
+same `0x0042B8D3` default branch as the out-of-range route. This removes one
+compiler switch entry and four bytes from each of the code/table contributions
+without changing the 505-call target multiset. The candidate now has **16/505**
+exact physical E8 offsets and aggregate E8-offset distance **53,966 bytes**;
+all 505 original call targets and the three child-spawn/writeback subsequences
+remain verified.
 
 The affected File/operand closure strictly replayed **21/21 units in 8 cold
 objects**, including the 165/244/301/835B operand leaves, 338B script loader

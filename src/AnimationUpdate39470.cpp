@@ -107,7 +107,7 @@ switchD_0042b8cc_caseD_a0:
                     /* WARNING: Could not find normalized switch variable to match jumptable */
       // local_e0 is the checked opcode+1 index; this keeps -1 on the sentinel.
       switch(native_animation_opcode_dispatch_435284[local_e0]) {
-      case 0xa0: {
+      default: {
         goto switchD_0042b8cc_caseD_a0;
       }
       case 0: {

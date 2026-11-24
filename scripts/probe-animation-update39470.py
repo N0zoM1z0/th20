@@ -28,14 +28,14 @@ DISPATCH_TABLE_SIZE=0x27c
 DISPATCH_TABLE_SHA256='a030f37522ea5b860c9a06ab56c02978832b477fd4e7c6f94957fbadc7cab34d'
 SYMBOL='?update@Animation@th20@@QAEHXZ'
 ORIGINAL_CALL_TARGET_SEQUENCE=[]
-CANDIDATE_SIZE=39768
-CANDIDATE_CODE_SIZE=39124
+CANDIDATE_SIZE=39760
+CANDIDATE_CODE_SIZE=39120
 CANDIDATE_INSTRUCTIONS=8457
 CANDIDATE_STACK_FRAME=0x7f8
-CANDIDATE_DIR32=215
-CANDIDATE_LOCAL_LABEL_DIR32=162
+CANDIDATE_DIR32=214
+CANDIDATE_LOCAL_LABEL_DIR32=161
 CANDIDATE_EXTERNAL_DIR32=53
-CANDIDATE_JUMP_TABLE_ENTRIES=161
+CANDIDATE_JUMP_TABLE_ENTRIES=160
 CANDIDATE_CALLS=505
 SECURITY_COOKIE=0x005429EE
 SPECIAL_CALL_TARGETS={
@@ -61,6 +61,10 @@ def verify_original():
  dispatch_table=pe.raw_at(image,base,sections,DISPATCH_TABLE_ADDRESS,DISPATCH_TABLE_SIZE)
  assert hashlib.sha256(dispatch_table).hexdigest()==DISPATCH_TABLE_SHA256
  assert dispatch_table[0]==0 and dispatch_table[1]==0xa0 and dispatch_table[-1]==0x9f
+ assert max(dispatch_table)==0xa0 and dispatch_table.count(0xa0)==475
+ native_switch_table=pe.raw_at(image,base,sections,0x00435000,161*4)
+ native_switch_entries=struct.unpack('<161I',native_switch_table)
+ assert native_switch_entries[0xa0]==0x0042b8d3 and native_switch_entries[-1]==0x0042b8d3
  print(f'PASS original opcode sentinel table: {DISPATCH_TABLE_SIZE}B at 0x{DISPATCH_TABLE_ADDRESS:08X}, SHA-256 {DISPATCH_TABLE_SHA256}')
  print(f'PASS original Boss boundary/hash: {ORIGINAL_SIZE}B, {len(ins)} instructions, {len(calls)} E8, {len(highlow)} PE HIGHLOW')
  return targets
@@ -95,7 +99,8 @@ def compile_candidate(original_targets):
  source=ROOT/'src/AnimationUpdate39470.cpp';text=source.read_text()
  assert 'DAT_' not in text,'raw decompiler global names remain in the VM source'
  cases=set(int(x,0) for x in re.findall(r'^\s*case\s+(0x[0-9a-fA-F]+|\d+)\s*:',text,re.M))
- assert len(cases)==161,len(cases)
+ assert len(cases)==160,len(cases)
+ assert 'default: {' in text and 'case 0xa0:' not in text
  instruction_header=(ROOT/'src/AnmInstruction.hpp').read_text()
  assert 'struct AnmInstruction' in instruction_header
  assert 'offsetof(AnmInstruction, opcode) == 0' in instruction_header
@@ -192,7 +197,7 @@ def compile_candidate(original_targets):
   '?native_vector_5c5540@th20@@3UVector3@1@B':1,
  }
  assert all(external_dir32[symbol]==count for symbol,count in expected_owner_relocations.items()),external_dir32
- print(f'PASS source compile and opcode coverage: {len(cases)} case labels')
+ print(f'PASS source compile and opcode coverage: {len(cases)} explicit cases + default sentinel (native 0xA0 maps to 0x0042B8D3)')
  print(f'PASS lexical lifetime stack frame: 0x{candidate_frame:x}')
  print(f'PASS all {len(calls)} candidate E8 targets exactly match the original 505-call target multiset')
  print(f'CALL-SITE FRONTIER: {matched_call_sites}/505 physical E8 offsets match; absolute offset delta {call_offset_delta}')
