@@ -77,9 +77,12 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                     if (animation->base.flags.bytes_00.animation_mode >= 4) {
                         D3DXVECTOR3 local_position;
                         D3DXMATRIX rotation;
-                        local_position.x = reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->position.x;
-                        local_position.y = reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->position.y;
-                        local_position.z = reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->position.z;
+                        local_position.x =
+                            reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->position.x;
+                        local_position.y =
+                            reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->position.y;
+                        local_position.z =
+                            reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->position.z;
 
                         if (object.parameters.rotation_y !=
                             native_zero_56e0e8) {
@@ -101,12 +104,16 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                         animation->vector_5bc.z =
                             local_position.z + instance->position.z;
 
-                        if (reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->scale_x != native_zero_56e0e8) {
-                            animation->set_scale_x(reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->scale_x /
+                        if (reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->scale_x !=
+                            native_zero_56e0e8) {
+                            animation->set_scale_x(
+                                reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->scale_x /
                                 animation->sprite_data()->extent_4c);
                         }
-                        if (reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->scale_y != native_zero_56e0e8) {
-                            animation->set_scale_y(reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->scale_y /
+                        if (reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->scale_y !=
+                            native_zero_56e0e8) {
+                            animation->set_scale_y(
+                                reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->scale_y /
                                 animation->sprite_data()->extent_48);
                         }
                     }
