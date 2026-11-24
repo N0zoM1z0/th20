@@ -215,11 +215,11 @@ switchD_0042b8cc_caseD_a0:
         AnimationFile* local_5a4;
         std::uint32_t local_100;
         local_5a4 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-        if ((instruction->operand_flags & 1U) == 0) {
-          local_100 = (&instruction->first_operand)[0];
+        if ((instruction->operand_flags & 1U) != 0) {
+          local_100 = this->integer_value((&instruction->first_operand)[0]);
         }
         else {
-          local_100 = this->integer_value((&instruction->first_operand)[0]);
+          local_100 = (&instruction->first_operand)[0];
         }
         local_5a4->spawn_child(local_100,this,4);
         break;
