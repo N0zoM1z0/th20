@@ -64,8 +64,8 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
             }
 
             object.flags |= StageResourceObjectRecord::passed_viewport_cull_mask;
-            auto* primitive =
-                reinterpret_cast<StageResourceObjectPrimitiveStream*>(&object)->primitives;
+            auto* primitive = reinterpret_cast<StageResourcePrimitiveTransform*>(
+                reinterpret_cast<std::byte*>(&object) + sizeof(object));
             while (primitive->header.type >= 0) {
                 Animation* animation = primitive_animations +
                     primitive->header.animation_index;
