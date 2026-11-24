@@ -1146,15 +1146,27 @@ int wmain(int argc, wchar_t** argv) {
                         index == 1 ? 0.25f : -0.15f, 0.0f, 0.5f};
                     fixtures[index].object.parameters.bounds_extent = {
                         0.35f, 0.3f, 0.25f};
+                    constexpr std::array<float, 8> object_rotations{
+                        0.0f, -0.0f, 0.35f, -0.6f,
+                        std::numeric_limits<float>::quiet_NaN(),
+                        std::numeric_limits<float>::infinity(),
+                        -std::numeric_limits<float>::infinity(),
+                        std::numeric_limits<float>::denorm_min()};
                     fixtures[index].object.parameters.rotation_y =
-                        index == 0 && test % 4 != 0 ?
-                            (test & 1u ? 0.35f : -0.6f) : 0.0f;
+                        index == 0 ? object_rotations[test & 7u] : 0.0f;
                     table[index] = &fixtures[index].object;
                 }
 
+                constexpr std::array<float, 8> primitive_scales{
+                    0.0f, -0.0f, 1.0f, -1.0f,
+                    std::numeric_limits<float>::quiet_NaN(),
+                    std::numeric_limits<float>::infinity(),
+                    -std::numeric_limits<float>::infinity(),
+                    std::numeric_limits<float>::denorm_min()};
                 write_primitive(fixtures[0], 0, 0, 28, 0,
                                 {0.25f, 0.1f, 0.05f},
-                                test & 1u ? 12.0f : 0.0f, 20.0f);
+                                primitive_scales[test & 7u],
+                                primitive_scales[(test + 3u) & 7u]);
                 constexpr std::array<std::int16_t, 4> unknown_primitive_kinds{
                     1, 2, 7, 0x7fff};
                 constexpr std::array<std::int16_t, 4> unknown_primitive_sizes{
@@ -1497,7 +1509,7 @@ int wmain(int argc, wchar_t** argv) {
             comma = true;
             report << th20::json_string(label) << ':' << count;
         }
-        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases), Animation flag-clear leaf 0x472A10 (128 cases), and StageResourceObjectRecord viewport culling boss 0x473B20 (1024 cases with two independently implemented D3DX import test seams); AnimationPool stage-draw reset boss 0x4750A0 (128 sparse-memory cases across three committed pages); Animation Y-rotation getter/setter and X/Y scale setters 0x474D40/0x4504C0/0x4504F0/0x4777F0/0x4777C0 (raw payload comparisons); angle normalization 0x438540 (128 raw-float cases); inline Animation layer helper 0x474780 and StageResource object-layer draw boss 0x474880 (128 cases across matching signed layers 8/9/-1 and unmatched layers 7/-128/127/0, with four cull-distance thresholds (zero, nominal, expanded and maximum finite), unknown positive primitive kinds 1/2/7/0x7fff, 8/12/16/20-byte record advances and negative sentinels -1/-2/INT16_MIN, comparing the complete native/source clip, fog, depth-write, viewport, AnimationPool draw and flush trace from the inline-animation prelude through final cleanup); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
+        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases), Animation flag-clear leaf 0x472A10 (128 cases), and StageResourceObjectRecord viewport culling boss 0x473B20 (1024 cases with two independently implemented D3DX import test seams); AnimationPool stage-draw reset boss 0x4750A0 (128 sparse-memory cases across three committed pages); Animation Y-rotation getter/setter and X/Y scale setters 0x474D40/0x4504C0/0x4504F0/0x4777F0/0x4777C0 (raw payload comparisons); angle normalization 0x438540 (128 raw-float cases); inline Animation layer helper 0x474780 and StageResource object-layer draw boss 0x474880 (128 cases across matching signed layers 8/9/-1 and unmatched layers 7/-128/127/0, with four cull-distance thresholds (zero, nominal, expanded and maximum finite), unknown positive primitive kinds 1/2/7/0x7fff, 8/12/16/20-byte record advances and negative sentinels -1/-2/INT16_MIN, animation-mode boundaries 0/3/4/5/7/8/9/23/24/25/127/255, object rotations and primitive scales spanning signed zero, finite signs, NaN, infinities and the smallest subnormal, comparing the complete native/source clip, fog, depth-write, viewport, AnimationPool draw and flush trace from the inline-animation prelude through final cleanup); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
         for (unsigned index = 0; index < failures.size(); ++index) {
             if (index) report << ',';
             report << th20::json_string(failures[index]);
