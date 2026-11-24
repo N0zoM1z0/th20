@@ -1213,8 +1213,12 @@ int wmain(int argc, wchar_t** argv) {
             };
 
             auto& sprite = th20::stage_test_sprite_data;
-            sprite.extent_48 = 32.0f;
-            sprite.extent_4c = 64.0f;
+            constexpr std::array<float, 8> sprite_extents{
+                32.0f, -32.0f, 0.0f, -0.0f,
+                std::numeric_limits<float>::quiet_NaN(),
+                std::numeric_limits<float>::infinity(),
+                -std::numeric_limits<float>::infinity(),
+                std::numeric_limits<float>::denorm_min()};
             auto* previous_pool = th20::current_animation_pool;
             auto* native_pool_slot =
                 reinterpret_cast<void**>(mapped_image_base + 0x1c0028);
@@ -1226,6 +1230,8 @@ int wmain(int argc, wchar_t** argv) {
             const float saved_native_zero = *native_zero;
             *native_zero = 0.0f;
             for (unsigned test = 0; test < 128; ++test) {
+                sprite.extent_48 = sprite_extents[test & 7u];
+                sprite.extent_4c = sprite_extents[(test + 3u) & 7u];
                 alignas(th20::StageResourceOwner)
                     std::uint8_t owner_storage[sizeof(th20::StageResourceOwner)]{};
                 auto& owner = *::new (owner_storage) th20::StageResourceOwner{};
@@ -1509,7 +1515,7 @@ int wmain(int argc, wchar_t** argv) {
             comma = true;
             report << th20::json_string(label) << ':' << count;
         }
-        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases), Animation flag-clear leaf 0x472A10 (128 cases), and StageResourceObjectRecord viewport culling boss 0x473B20 (1024 cases with two independently implemented D3DX import test seams); AnimationPool stage-draw reset boss 0x4750A0 (128 sparse-memory cases across three committed pages); Animation Y-rotation getter/setter and X/Y scale setters 0x474D40/0x4504C0/0x4504F0/0x4777F0/0x4777C0 (raw payload comparisons); angle normalization 0x438540 (128 raw-float cases); inline Animation layer helper 0x474780 and StageResource object-layer draw boss 0x474880 (128 cases across matching signed layers 8/9/-1 and unmatched layers 7/-128/127/0, with four cull-distance thresholds (zero, nominal, expanded and maximum finite), unknown positive primitive kinds 1/2/7/0x7fff, 8/12/16/20-byte record advances and negative sentinels -1/-2/INT16_MIN, animation-mode boundaries 0/3/4/5/7/8/9/23/24/25/127/255, object rotations and primitive scales spanning signed zero, finite signs, NaN, infinities and the smallest subnormal, comparing the complete native/source clip, fog, depth-write, viewport, AnimationPool draw and flush trace from the inline-animation prelude through final cleanup); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
+        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases), Animation flag-clear leaf 0x472A10 (128 cases), and StageResourceObjectRecord viewport culling boss 0x473B20 (1024 cases with two independently implemented D3DX import test seams); AnimationPool stage-draw reset boss 0x4750A0 (128 sparse-memory cases across three committed pages); Animation Y-rotation getter/setter and X/Y scale setters 0x474D40/0x4504C0/0x4504F0/0x4777F0/0x4777C0 (raw payload comparisons); angle normalization 0x438540 (128 raw-float cases); inline Animation layer helper 0x474780 and StageResource object-layer draw boss 0x474880 (128 cases across matching signed layers 8/9/-1 and unmatched layers 7/-128/127/0, with four cull-distance thresholds (zero, nominal, expanded and maximum finite), unknown positive primitive kinds 1/2/7/0x7fff, 8/12/16/20-byte record advances and negative sentinels -1/-2/INT16_MIN, animation-mode boundaries 0/3/4/5/7/8/9/23/24/25/127/255, object rotations, primitive scales and SpriteData extents spanning signed zero, finite signs, NaN, infinities, zero denominators and the smallest subnormal, comparing the complete native/source clip, fog, depth-write, viewport, AnimationPool draw and flush trace from the inline-animation prelude through final cleanup); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
         for (unsigned index = 0; index < failures.size(); ++index) {
             if (index) report << ',';
             report << th20::json_string(failures[index]);
