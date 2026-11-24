@@ -227,6 +227,11 @@ Further isolated probes did not produce the native register-register form:
 
 - `volatile` and `register` declarations leave the arithmetic as a direct
   memory operand; MSVC 19.44 warns that `register` is unsupported.
+- `std::atomic_signal_fence(std::memory_order_seq_cst)` is not a zero-code
+  compiler barrier in this locked `/Od` probe: MSVC emits a `push 5; call;
+  add esp, 4` helper sequence at each adjusted-scale site, adding two extra
+  E8 calls and moving the original call order. It does not force XMM1 and is
+  rejected as both non-native and semantically unrelated.
 - `/fp:strict` and `/fp:fast` leave the same instruction forms and call-site
   positions.
 - `_mm_load_ss`/`_mm_add_ss` source expressions under `/Od` materialize
