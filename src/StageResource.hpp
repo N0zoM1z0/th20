@@ -31,7 +31,7 @@ static_assert(offsetof(StageResourceFileHeader, animation_name) == 0x10);
 // rotation_y by rotation_y_velocity; the culler consumes the center and full
 // extent vectors at object offsets +0x18 and +0x24 respectively.
 struct StageResourceObjectParameters {
-    float field_00;
+    std::uint32_t projected_bounds_bypass;
     float rotation_y_velocity;
     float rotation_y;
     float field_0c;
@@ -41,6 +41,7 @@ struct StageResourceObjectParameters {
 };
 static_assert(sizeof(Vector3) == 0x0c);
 static_assert(sizeof(StageResourceObjectParameters) == 0x2c);
+static_assert(offsetof(StageResourceObjectParameters, projected_bounds_bypass) == 0x00);
 static_assert(offsetof(StageResourceObjectParameters, rotation_y_velocity) == 0x04);
 static_assert(offsetof(StageResourceObjectParameters, rotation_y) == 0x08);
 static_assert(offsetof(StageResourceObjectParameters, bounds_center) == 0x14);
