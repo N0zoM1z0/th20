@@ -1,13 +1,13 @@
 # 5,993B Animation Draw Boss: mode45/46 temporary and return frontier
 
 The maintained `AnimationPoolOwner::draw(Animation*)` at `0x00443880` remains
-SOURCE-PRESENT/NONEXACT. Its current production baseline is still the
-5,993B/1,501-instruction candidate documented in
-[the whole-source convergence report](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md):
-113/123 original E8 sites, 26/32 body relocation sites and 4,801/5,376
-ordinary bytes agree. This note records a newer read-only native investigation
-and isolated C++ source probes for the final two nested modes. Production
-source and acceptance records are unchanged.
+SOURCE-PRESENT/NONEXACT. Its current production body is 5,993B/1,501
+instructions with a 0x204 frame and 6,316B complete code+table contribution.
+The current whole-source metrics are **114/123** original E8 physical sites,
+**27/32** exact in-body relocation site/target pairs and **4,834/5,376**
+ordinary bytes. This report records the native mode45/46 lifetimes, the
+value-equivalent C++ role swap now maintained in source, and rejected
+alternatives; it does not claim exactness.
 
 ## Native mode45 and mode46 lifetimes
 
@@ -49,10 +49,15 @@ subss xmm0, xmm1
 movss [ebp-0x200], xmm0
 ```
 
-The maintained C++ expression forms currently compile the second operand as
-a direct memory operand (`addss xmm0, [half]` / `subss xmm0, [half]`). Each is
-four bytes shorter than its native register-register form. The difference is
-not a missing call, a changed mathematical operation or a missing table entry.
+Mode45's maintained C++ source uses a value-equivalent role swap: the first
+half-height is retained as the real width operand, while the adjusted-scale
+expression recomputes the same `height / native_two` after the inherited-scale
+getter. This produces the native register-register `addss xmm0, xmm1` and
+aligns mode45 call positions. Mode46 has now been restored to the native
+scale-half-before-getter / width-half-at-argument order. Its `subss` remains a
+direct-memory operand (`subss xmm0, [half]`) rather than the native
+register-register form, so the final mode46 renderer call remains four bytes
+early. No dummy local or volatile qualifier is used.
 
 ## Bounded source probes
 
@@ -131,8 +136,8 @@ the exact getter nor its declaration is changed.
 ## Mode35/36 operand-register frontier
 
 The current maintained full-body object has the established 5,993B/1,501
-instruction baseline, **113/123** native E8 instruction offsets, **26/32**
-exact in-body relocation positions and **4,801/5,376** ordinary-byte matches.
+instruction baseline, **114/123** native E8 instruction offsets, **27/32**
+exact in-body relocation positions and **4,834/5,376** ordinary-byte matches.
 Its remaining mode35/36 arithmetic difference is precise: native mode35 loads
 the spilled half-height with `movss xmm1, [ebp-0x14c]` before `addss xmm0,
 xmm1`; native mode36 similarly loads `[ebp-0x168]` into XMM1 before
@@ -149,38 +154,35 @@ the surrounding native call order and stack ownership. MSVC 19.44 warns that
 they are not natural or useful replacements. These experiments remain ignored
 under `.analysis/` and `build/`.
 
-A new *value-equivalent role-swap* probe does recover the native register-register
-`addss` and `subss` forms while retaining the two independent half-height
-divisions in the same instruction order. It computes the first half into a
-`half_for_width` local before the getter, then computes `height / native_two`
-again in the adjusted-scale expression after the getter. The first result is
-used for the renderer width and the second for adjusted scale; since both are
-the same local-height division, the values are identical. This source form
-produces the native mode35 and mode36 register-register arithmetic and keeps
-all mode35/36 E8 offsets aligned through the second getter. However, the mode36
-renderer call remains four bytes early: the width expression is still emitted
-as a direct-memory subtraction instead of the native divide/load/register
-subtract. The full isolated body is 5,989B/1,500 instructions, with the mode36
-renderer E8 at candidate `+0x1194` versus native `0x00444A18` (`+0x1198`).
+Mode45's maintained *value-equivalent role swap* computes the first half
+into a `half_for_width` local before the getter, then computes
+`height / native_two` again in the adjusted-scale expression after the getter.
+The first result feeds renderer width and the second feeds adjusted scale.
+Mode46 no longer uses this rewrite: it keeps the scale half before the getter
+and computes the width half at the call site, matching the original native
+expression order. The remaining mode46 subtraction is four bytes shorter
+because MSVC selects a direct-memory operand; the renderer E8 is candidate
+`+0x174d` versus native `+0x1751`.
 
 A follow-up natural expression `0.0f - (half_for_width - width)` makes the
 full body 5,993B/1,501 instructions, but inserts a non-native `xorps` plus
 `subss` sign-negation sequence and moves that renderer call three bytes late.
 It is not accepted. The value-equivalent role-swap is a useful register-form
 proof, not a production improvement: the isolated full-body comparison remains
-well below the maintained source's 4,801/5,376 ordinary-byte and 113/123 E8
-site baseline because other local ownership and mode45/46 layout still differ.
+well below the maintained source's current 4,834/5,376 ordinary-byte and
+114/123 E8-site baseline because other local ownership and mode45/46 layout
+still differ.
 Both probes remain private under `.analysis/` and `build/`.
 
 The remaining mode36 width subtraction was separately probed with volatile and
 reference aliases, copy-then-subtract, compound assignment, operand reversal,
 `width + (-half)`, `width + (0.0f - half)`, and `width - (half * 1.0f)`. None
-produces the native `movss xmm1, [half]` / `subss xmm1, xmm0` sequence with the
-correct call offset. `0.0f - (half - width)` uses register-register subtraction
-by zeroing XMM1 first, but it adds a non-native `xorps`/`subss` pair and leaves
-the mode36 renderer call three bytes late. `__forceinline` identity/negation
-helpers also remain real E8 calls under `/Ob0`; they do not inline away. These
-are rejected compiler-shaping routes, not production source changes.
+produces the native width divide/subtract sequence with the correct final
+renderer call offset. `0.0f - (half - width)` uses register-register subtraction
+by zeroing XMM1 first, but adds a non-native `xorps`/`subss` pair and leaves the
+renderer call three bytes late. `__forceinline` identity/negation helpers also
+remain real E8 calls under `/Ob0`; they do not inline away. These are rejected
+compiler-shaping routes, not production source changes.
 
 ## Rejected code-generation shortcuts
 
@@ -207,11 +209,13 @@ that slot. The probe therefore does not add an unused local just to force those
 x87 stores; their original source ownership remains unresolved.
 
 The isolated probes used the locked MSVC x86 profile and did not edit
-`src/AnimationDrawBoss.cpp`, shared headers, canonical objects, match units or
-the target. No full cold replay was run. The next step remains to derive the
-mode35/36 register-register SSE form and the mode45/46 receiver/spill ordering
-from natural source semantics, then revisit the first getter's native x87 spill
-ownership without inventing a dead temporary. The exact 93B getter and its
-`float` declaration remain unchanged. The only active target remains the
-5,993B Draw Boss; no function switch is authorized before its complete strict
-exact replay.
+shared headers, canonical objects, match units or the target. No full cold
+replay was run. The next step remains the eight mode35/36 E8-site deltas and
+the two register-register SSE operands, followed by the first getter's native
+x87 spill ownership. A switch-scope `first_scale_result` probe did recover
+`fstp [ebp-0x160]` in both modes without changing the 0x204 frame, but its
+5,985B body, 84/123 E8 positions, 23/32 data sites and 3,710/5,368 ordinary
+bytes make it worse than the maintained source, so it was not promoted. The
+exact 93B getter and its `float` declaration remain unchanged. The only active
+target remains the 5,993B Draw Boss; no function switch is authorized before
+its complete strict exact replay.

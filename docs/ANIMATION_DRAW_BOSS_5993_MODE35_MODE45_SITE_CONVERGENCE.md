@@ -1,4 +1,4 @@
-# CORE/RECON-1112 — 5,993B Animation Draw Boss: mode35 width/mode45 color lifetime source convergence
+# CORE/RECON-1112 — 5,993B Animation Draw Boss: nested-mode source convergence
 
 **Current status: SOURCE-PRESENT, NONEXACT.** The immutable Japanese TH20
 Steamless v1.00a PE (SHA-256
@@ -13,11 +13,25 @@ backend ABI evidence remains in the independent original-only
 [`verify-animation-draw-boss-native.py`](../scripts/verify-animation-draw-boss-native.py)
 and [`verify-animation-draw-boss-abi.py`](../scripts/verify-animation-draw-boss-abi.py).
 
-This checkpoint changes the *full maintained game-source function*,
-[`src/AnimationDrawBoss.cpp`](../src/AnimationDrawBoss.cpp), in only
-**three local hunks**, not by extracting a shorter subset of instructions
-or patching binary bytes. Both changes preserve the original observable
-call sequence and the actual values passed to the renderer:
+The current maintained full function is still **5,993B/1,501 i386**, with
+its `0x204` frame and 6,316B real code+table COFF contribution. Mode45
+retains a value-equivalent half-height role swap to recover the native
+register-register `addss`; Mode46 now restores the native scale-half-before-
+getter and width-half-at-argument evaluation order. This is ordinary C++,
+not a byte patch or a dummy local. The current source raises whole-function
+ordinary-byte agreement from **4,801 to 4,834**, physical E8 positions from
+**113/123 to 114/123**, and exact body relocation site/target pairs from
+**26/32 to 27/32**. The detailed native/compiled frontier
+and rejected probes are in
+[the focused mode45/46 report](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md).
+
+The maintained function changes remain ordinary C++ source; no binary bytes,
+manual opcodes, or padding are introduced. The value-preserving source changes
+preserve all 123 original E8 target roles and the actual renderer argument
+values. Mode45 deliberately swaps which of two identical half-height
+calculations feeds width versus adjusted scale to recover native SSE register
+form and later call positions. Mode46 has been returned to native evaluation
+order; the locked compiler still chooses a shorter direct-memory subtraction:
 
 1. **Mode 35 actual width argument:** A `const float shape_width`
    now owns the genuine `width + (height / native_two)` value used for
@@ -27,12 +41,14 @@ call sequence and the actual values passed to the renderer:
    colors, draw count, second scale getter, and two distinct height-halving
    operations. The new used C++ width local alters `/Od` evaluation and
    stack-space lifetime without adding an unused register-shaping value.
-2. **Mode 45 actual color/count arguments:** The second packed-color
-   getter is called and stored before the first packed-color getter,
-   followed by a saved real draw count, *before* evaluating the native
-   scale/width arguments to `draw_shape_43df30`. This matches the
-   independently decoded original call order and color argument roles.
-   There is no invented helper or change to the renderer receiver ABI.
+2. **Mode 45/46 actual argument values and lifetimes:** Both packed-color
+   getters and the real draw count are saved before the renderer call. Mode45
+   uses the value-equivalent half-height role swap and now emits the native
+   register-register `addss`. Mode46 instead computes its scale half before
+   the getter and recomputes the width half at the renderer argument site,
+   matching native source order; MSVC emits a direct-memory `subss` that is
+   four bytes shorter than the native register-register form. There is no
+   invented helper or change to the renderer receiver ABI.
 
 ## Whole original and whole candidate evidence
 
@@ -51,56 +67,56 @@ there are no synthetic byte-index tables or hand-authored padding.
 | Original-code instruction heads | 1,501 | **1,501** | 1,501 |
 | After-`ret` contribution (alignment/tables) | 323B | **323B** | 323B |
 | Original E8 role targets and their order | 123/123 | **123/123** | 123/123 |
-| Original E8 *physical instruction offsets* | 86/123 | **113/123** | 123/123 |
-| Absolute E8 opcode offset-delta sum | 516 | **65** | 0 |
+| Original E8 *physical instruction offsets* | 86/123 | **114/123** | 123/123 |
+| Absolute E8 opcode offset-delta sum | 516 | **44** | 0 |
 | Original in-body HIGHLOW target-role histogram | 32/32 | **32/32** | 32/32 |
-| Original in-body HIGHLOW site+role positions | 23/32 | **26/32** | 32/32 |
-| All complete ordinary bytes with actual COFF fields masked | 3,819/5,376 | **4,801/5,376** | 5,376/5,376 |
+| Original in-body HIGHLOW site+role positions | 23/32 | **27/32** | 32/32 |
+| All complete ordinary bytes with actual COFF fields masked | 3,819/5,376 | **4,834/5,376** | 5,376/5,376 |
 
 The ordinary byte denominator masks exactly **the compiler's actual
 235 four-byte relocation fields** (123 E8 +32 in-body data +80 table
 entries); original bytes are not patched or recompiled. The physical E8
 callee roles come independently from the immutable PE, not from matching
 object offsets or fabricated target data. The resulting nonrelocation
-agreement rises by **982 bytes** and full-body reloc site agreement
-improves while keeping native code size and the 49+31 switch-pointer
-positions *unchanged*.
+agreement rises by **1,016 bytes** from the older 3,819-byte checkpoint and
+by **34 bytes** from the immediately previous 4,801-byte source. E8 position
+agreement rises by one and data site/target agreement by one while preserving
+the native code size and both 49+31 switch-pointer alias partitions.
 
 The re-run whole-source original-role script
 [`verify-animation-draw-boss-source-roles.py`](../scripts/verify-animation-draw-boss-source-roles.py)
 now **requires** all 123 native calls in their original target order,
-first 81 consecutive E8 sites, **113/123** exact native E8 offsets,
-absolute offset deviation **65**, complete 80-pointer table partitions,
-32/32 data roles including **26 exact site/target pairs**, and
-**4,801/5,376** ordinary bytes. It checks all 49 game modes and the
+first 81 consecutive E8 sites, **114/123** exact native E8 offsets,
+absolute offset deviation **44**, complete 80-pointer table partitions,
+32/32 data roles including **27 exact site/target pairs**, and
+**4,834/5,376** ordinary bytes. It checks all 49 game modes and the
 correct source/ABI details for the 18 real rendering children.
 The previous version's 86/23/3,819 expectations were superseded,
 not silently accepted as a looser baseline.
 
 ## Remaining real native differences
 
-There are still **ten original E8 positions that differ**. Eight are
-in and near modes 35/36 (the first inherited-scale getter's x87 return
-is `fstp [ebp-0x160]` in original mode35 and `fstp [ebp-0x160]` in native
-mode36, but the natural C++ unused return is discarded with `fstp st(0)`),
-and two are later in the mode45/46 region. Six original in-body HIGHLOW
-field locations still differ. The original mode45 computes and spills
-`height/2.0f` *before* the second inherited-scale call and uses a
-separate XMM operand; the candidate still reorders that evaluation and
-some subsequent local stack slots. Although 113 call positions match,
-**575 ordinary bytes remain different** and the parent has **no
-canonical match-unit / no source-exact game credit**.
+There are still **nine original E8 positions that differ**: eight in and
+around modes35/36 and one at the final mode46 renderer call. Five original
+in-body HIGHLOW site/target positions still differ; all five remaining native
+sites are `native_two` references whose candidate instruction offsets moved.
+Mode45's role swap emits the native register-register SSE addition. Mode46
+now recomputes its width half-height at the native argument site, but its
+adjusted-scale subtraction remains the shorter direct-memory form; the final
+mode46 renderer call is still four bytes early. The parent has
+**no canonical match-unit / no source-exact game credit**; **542 ordinary
+bytes remain different**.
 
-A separate local experiment that saved both mode35 and mode36 widths
-made the code **6,025B/1,505 instructions**, not the original. Other
-used C++ variants (`float adjusted_scale`, a separately named second
-scale, mode45/46 half-height temporaries, and alternate color/count
-lifetimes) were compiled as *full* functions under ignored `.analysis/`
-and `build/`; most either increased code bytes or lost original E8
-alignment. The best mode45 color/count candidate alone restores the
-whole original 5,993B footprint. Trials did not introduce a dead first
-scale float merely to trick the compiler into storing an unused x87
-return; its source ownership is still unproven.
+A separate mode35/36 switch-scope local probe now reproduces both native
+`fstp [ebp-0x160]` stores with the correct `0x204` frame and adjusted-scale
+stack slots. It is **not promoted**: the full body falls to 5,985B/1,499
+instructions, only 84/123 E8 positions and 23/32 data sites align, and
+ordinary-byte agreement falls to 3,710/5,368. A case-local unused scalar
+instead grows the frame to `0x208` and spills at `[ebp-0x208]`. SSE intrinsic
+`_mm_store_ss` probes materialize 16-byte temporaries and grow the body beyond
+6,100B. The maintained source therefore keeps the first getter expression
+as a discarded call until a natural source lifetime reproduces the native
+spill without sacrificing whole-function convergence.
 
 Reproduce the full, **noncanonical** comparison without all-source
 cold replay:

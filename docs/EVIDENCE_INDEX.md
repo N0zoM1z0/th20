@@ -40,8 +40,8 @@ Recheck the live CSV/TOML before relying on these dated counts.
 - **5,993B Animation Draw dispatcher (still NONEXACT):**
   [current full-size mode35/45 source convergence](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md)
   preserves all 123 original E8 call roles, 32 native body HIGHLOW roles,
-  the 0x204 stack and both native 49+31 pointer tables; now **113/123**
-  E8 sites, **26/32** body data sites and **4,801/5,376** comparable
+  the 0x204 stack and both native 49+31 pointer tables; now **114/123**
+  E8 sites, **27/32** body data sites and **4,834/5,376** comparable
   native bytes match. The whole x87/SSE/branch output is not yet exact.
 - **Two large Renderer update Bosses:**
   [508B +511B WHOLE STRICT EXACT](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md),
