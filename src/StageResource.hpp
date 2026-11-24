@@ -55,10 +55,7 @@ struct StageResourceObjectRecord {
     static constexpr std::int8_t passed_viewport_cull_mask = 0x02;
 
     std::uint16_t identifier;
-    union {
-        std::uint8_t layer;
-        std::int8_t signed_layer;
-    };
+    std::int8_t layer;
     std::int8_t flags;
     StageResourceObjectParameters parameters;
 
@@ -68,7 +65,7 @@ struct StageResourceObjectRecord {
                                      const ViewportState& viewport) const;
 };
 static_assert(sizeof(StageResourceObjectRecord) == 0x30);
-static_assert(offsetof(StageResourceObjectRecord, signed_layer) == 0x02);
+static_assert(offsetof(StageResourceObjectRecord, layer) == 0x02);
 static_assert(offsetof(StageResourceObjectRecord, flags) == 0x03);
 static_assert(offsetof(StageResourceObjectRecord, parameters) == 0x04);
 

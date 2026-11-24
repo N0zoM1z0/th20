@@ -776,7 +776,7 @@ int wmain(int argc, wchar_t** argv) {
             for (unsigned index = 0; index < records.size(); ++index) {
                 object_table[index] = &records[index].object;
                 records[index].object.identifier = static_cast<std::uint16_t>(index + 10);
-                records[index].object.layer = static_cast<std::uint8_t>(random());
+                records[index].object.layer = static_cast<std::int8_t>(random());
                 records[index].object.flags = static_cast<std::int8_t>(random());
                 auto& parameters = records[index].object.parameters;
                 parameters.projected_bounds_bypass =
@@ -1134,7 +1134,7 @@ int wmain(int argc, wchar_t** argv) {
                     fixtures[index].object.identifier =
                         static_cast<std::uint16_t>(index + 1);
                     fixtures[index].object.layer =
-                        static_cast<std::uint8_t>(index == 2 ? 9 : 8);
+                        static_cast<std::int8_t>(index == 2 ? 9 : 8);
                     fixtures[index].object.flags =
                         static_cast<std::uint8_t>(random());
                     fixtures[index].object.parameters.projected_bounds_bypass =
