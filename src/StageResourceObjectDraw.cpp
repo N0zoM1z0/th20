@@ -27,10 +27,9 @@ StageResourcePrimitiveTransform* __cdecl advance_stage_resource_primitive(
 }
 
 std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
-    auto* instance = static_cast<StageResourceInstanceRecord*>(instances);
+    auto* instance = instance_records;
     std::uint32_t depth_write_state = 1;
-    StageBackgroundScriptState* script = &script_state;
-    script->draw_inline_animations_for_layer(layer);
+    script_state.draw_inline_animations_for_layer(layer);
 
     current_animation_pool->flush_draws();
     graphics_enable_fog(&process_graphics);
@@ -41,7 +40,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
 
     while (instance->object_index >= 0) {
         StageResourceObjectRecord& object =
-            *static_cast<StageResourceObjectRecord**>(objects)[instance->object_index];
+            *object_table[instance->object_index];
         if (object.signed_layer != layer)
             goto next_instance;
 
@@ -65,65 +64,66 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                 Animation* animation = primitive_animations +
                     primitive->header.animation_index;
                 switch (primitive->header.type) {
-                case 0:
-                float original_rotation;
-                original_rotation = animation->rotation_y_value();
-                if (animation->base.flags.bytes_00.animation_mode >= 4) {
-                    D3DXVECTOR3 local_position;
-                    D3DXMATRIX rotation;
-                    local_position.x = primitive->position_x;
-                    local_position.y = primitive->position_y;
-                    local_position.z = primitive->position_z;
+                case 0: {
+                    float original_rotation;
+                    original_rotation = animation->rotation_y_value();
+                    if (animation->base.flags.bytes_00.animation_mode >= 4) {
+                        D3DXVECTOR3 local_position;
+                        D3DXMATRIX rotation;
+                        local_position.x = primitive->position_x;
+                        local_position.y = primitive->position_y;
+                        local_position.z = primitive->position_z;
 
-                    if (object.typed_parameters.rotation_y !=
-                        native_zero_56e0e8) {
-                        D3DXVECTOR3 transformed_position;
-                        matrix_identity(reinterpret_cast<Matrix4*>(&rotation));
-                        D3DXMatrixRotationY(&rotation,
-                            object.typed_parameters.rotation_y);
-                        D3DXVec3TransformCoord(&transformed_position,
-                                               &local_position, &rotation);
-                        local_position = transformed_position;
-                        animation->set_rotation_y_forward(normalize_angle(
-                            original_rotation + object.typed_parameters.rotation_y));
+                        if (object.typed_parameters.rotation_y !=
+                            native_zero_56e0e8) {
+                            D3DXVECTOR3 transformed_position;
+                            matrix_identity(reinterpret_cast<Matrix4*>(&rotation));
+                            D3DXMatrixRotationY(&rotation,
+                                object.typed_parameters.rotation_y);
+                            D3DXVec3TransformCoord(&transformed_position,
+                                                   &local_position, &rotation);
+                            local_position = transformed_position;
+                            animation->set_rotation_y_forward(normalize_angle(
+                                original_rotation + object.typed_parameters.rotation_y));
+                        }
+
+                        animation->vector_5bc.x =
+                            local_position.x + instance->position.x;
+                        animation->vector_5bc.y =
+                            local_position.y + instance->position.y;
+                        animation->vector_5bc.z =
+                            local_position.z + instance->position.z;
+
+                        if (primitive->scale_x != native_zero_56e0e8) {
+                            animation->set_scale_x(primitive->scale_x /
+                                animation->sprite_data()->extent_4c);
+                        }
+                        if (primitive->scale_y != native_zero_56e0e8) {
+                            animation->set_scale_y(primitive->scale_y /
+                                animation->sprite_data()->extent_48);
+                        }
                     }
 
-                    animation->vector_5bc.x =
-                        local_position.x + instance->position.x;
-                    animation->vector_5bc.y =
-                        local_position.y + instance->position.y;
-                    animation->vector_5bc.z =
-                        local_position.z + instance->position.z;
-
-                    if (primitive->scale_x != native_zero_56e0e8) {
-                        animation->set_scale_x(primitive->scale_x /
-                            animation->sprite_data()->extent_4c);
+                    if (animation->base.flags.bytes_00.animation_mode == 8 ||
+                        animation->base.flags.bytes_00.animation_mode == 24) {
+                        graphics_enable_fog(&process_graphics);
+                    } else {
+                        graphics_disable_fog(&process_graphics);
                     }
-                    if (primitive->scale_y != native_zero_56e0e8) {
-                        animation->set_scale_y(primitive->scale_y /
-                            animation->sprite_data()->extent_48);
+
+                    if (animation->base.flags.bits_04.depth_write_disabled != 0) {
+                        graphics_disable_depth_writes(&process_graphics);
+                        depth_write_state = 0;
+                    } else {
+                        graphics_enable_depth_writes(&process_graphics);
+                        depth_write_state = 1;
                     }
-                }
 
-                if (animation->base.flags.bytes_00.animation_mode == 8 ||
-                    animation->base.flags.bytes_00.animation_mode == 24) {
-                    graphics_enable_fog(&process_graphics);
-                } else {
-                    graphics_disable_fog(&process_graphics);
-                }
-
-                if (animation->base.flags.bits_04.depth_write_disabled != 0) {
-                    graphics_disable_depth_writes(&process_graphics);
-                    depth_write_state = 0;
-                } else {
-                    graphics_enable_depth_writes(&process_graphics);
-                    depth_write_state = 1;
-                }
-
-                current_animation_pool->draw(animation);
-                animation->set_rotation_y_forward(original_rotation);
-                ++render_counts.primitive_draws;
+                    current_animation_pool->draw(animation);
+                    animation->set_rotation_y_forward(original_rotation);
+                    ++render_counts.primitive_draws;
                     break;
+                }
                 default:
                     goto advance_primitive;
                 }

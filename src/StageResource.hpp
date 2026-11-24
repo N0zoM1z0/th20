@@ -72,6 +72,7 @@ static_assert(sizeof(StageResourceObjectRecord) == 0x30);
 static_assert(offsetof(StageResourceObjectRecord, signed_layer) == 0x02);
 static_assert(offsetof(StageResourceObjectRecord, flags) == 0x03);
 static_assert(offsetof(StageResourceObjectRecord, parameters) == 0x04);
+static_assert(offsetof(StageResourceObjectRecord, typed_parameters) == 0x04);
 
 // The instance visibility bit shares its native short with retained flags.
 struct StageResourceInstanceFlagBits {
@@ -189,8 +190,14 @@ struct StageResourceOwner {
     StageBackgroundScriptState script_state;
     Animation* primitive_animations;
     const StageResourceFileHeader* file;
-    void* objects;
-    void* instances;
+    union {
+        void* objects;
+        StageResourceObjectRecord** object_table;
+    };
+    union {
+        void* instances;
+        StageResourceInstanceRecord* instance_records;
+    };
     const StageResourceInstructionHeader* instructions;
     AnimationFile* animation_file_value;
     union {
@@ -246,7 +253,9 @@ static_assert(offsetof(StageResourceOwner, script_state) == 0x010);
 static_assert(offsetof(StageResourceOwner, primitive_animations) == 0x3320);
 static_assert(offsetof(StageResourceOwner, file) == 0x3324);
 static_assert(offsetof(StageResourceOwner, objects) == 0x3328);
+static_assert(offsetof(StageResourceOwner, object_table) == 0x3328);
 static_assert(offsetof(StageResourceOwner, instances) == 0x332c);
+static_assert(offsetof(StageResourceOwner, instance_records) == 0x332c);
 static_assert(offsetof(StageResourceOwner, instructions) == 0x3330);
 static_assert(offsetof(StageResourceOwner, animation_file_value) == 0x3334);
 static_assert(offsetof(StageResourceOwner, rendered) == 0x3338);
