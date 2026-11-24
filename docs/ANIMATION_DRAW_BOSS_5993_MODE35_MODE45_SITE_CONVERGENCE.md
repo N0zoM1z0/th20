@@ -16,9 +16,10 @@ and [`verify-animation-draw-boss-abi.py`](../scripts/verify-animation-draw-boss-
 The current maintained full function is still **5,993B/1,501 i386**, with
 its `0x204` frame and 6,316B real code+table COFF contribution. Mode45
 retains a value-equivalent half-height role swap to recover the native
-register-register `addss`; Mode46 now restores the native scale-half-before-
-getter and width-half-at-argument evaluation order. This is ordinary C++,
-not a byte patch or a dummy local. The current source raises whole-function
+register-register `addss`; Mode46 now uses the same value-equivalent role swap
+to recover the native register-register `subss`. The remaining mode46 width
+subtraction is still four bytes shorter than native. This is ordinary C++,
+not a byte patch or padding. The current source raises whole-function
 ordinary-byte agreement from **4,801 to 4,835**, physical E8 positions from
 **113/123 to 114/123**, and exact body relocation site/target pairs from
 **26/32 to 27/32**. The detailed native/compiled frontier
@@ -100,10 +101,10 @@ There are still **nine original E8 positions that differ**: eight in and
 around modes35/36 and one at the final mode46 renderer call. Five original
 in-body HIGHLOW site/target positions still differ; all five remaining native
 sites are `native_two` references whose candidate instruction offsets moved.
-Mode45's role swap emits the native register-register SSE addition. Mode46
-now recomputes its width half-height at the native argument site, but its
-adjusted-scale subtraction remains the shorter direct-memory form; the final
-mode46 renderer call is still four bytes early. The parent has
+Mode45's role swap emits the native register-register SSE addition. Mode46's
+role swap now emits the native register-register adjusted-scale subtraction;
+its width subtraction remains the shorter direct-memory form, leaving the
+final mode46 renderer call four bytes early. The parent has
 **no canonical match-unit / no source-exact game credit**; **542 ordinary
 bytes remain different**.
 
@@ -114,9 +115,22 @@ instructions, only 84/123 E8 positions and 23/32 data sites align, and
 ordinary-byte agreement falls to 3,710/5,368. A case-local unused scalar
 instead grows the frame to `0x208` and spills at `[ebp-0x208]`. SSE intrinsic
 `_mm_store_ss` probes materialize 16-byte temporaries and grow the body beyond
-6,100B. The maintained source therefore keeps the first getter expression
-as a discarded call until a natural source lifetime reproduces the native
-spill without sacrificing whole-function convergence.
+6,100B.
+
+The native Ghidra pseudocode confirms that the first mode35 (`0x23`) and
+mode36 (`0x24`) inherited-scale getter calls are standalone expression
+statements; the second getter result is the one assigned to the scale used by
+the renderer. Thus the native first-return store has no decompiler-visible
+consumer, despite the real `fstp [ebp-0x160]` at both call sites. A natural
+`float first_scale_result` local assigned in both cases reproduces those two
+stores and keeps the `0x204` frame, but loses whole-function convergence as
+measured above. A second probe combines that local with the half-height role
+swap: it recovers register-register `addss`/`subss` and both first-return
+stores, but is still only 5,989B/1,500 instructions with 89/123 E8 positions;
+the mode36 renderer remains four bytes early. Neither probe is promoted. The
+maintained source therefore keeps the first getter expression as a discarded
+call until a natural source lifetime reproduces the native spill without
+sacrificing whole-function convergence.
 
 Reproduce the full, **noncanonical** comparison without all-source
 cold replay:
