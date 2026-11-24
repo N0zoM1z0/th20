@@ -42,7 +42,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
     while (instance->object_index >= 0) {
         StageResourceObjectRecord& object =
             *static_cast<StageResourceObjectRecord**>(objects)[instance->object_index];
-        if (static_cast<std::int8_t>(object.layer) != layer)
+        if (object.signed_layer != layer)
             goto next_instance;
 
         {

@@ -50,7 +50,10 @@ static_assert(offsetof(StageResourceObjectParameters, rotation_y) == 0x08);
 // and advance by their signed byte-size field until a negative type sentinel.
 struct StageResourceObjectRecord {
     std::uint16_t identifier;
-    std::uint8_t layer;
+    union {
+        std::uint8_t layer;
+        std::int8_t signed_layer;
+    };
     union {
         std::uint8_t flags;
         std::int8_t signed_flags;
@@ -66,6 +69,7 @@ struct StageResourceObjectRecord {
                                      const ViewportState& viewport) const;
 };
 static_assert(sizeof(StageResourceObjectRecord) == 0x30);
+static_assert(offsetof(StageResourceObjectRecord, signed_layer) == 0x02);
 static_assert(offsetof(StageResourceObjectRecord, flags) == 0x03);
 static_assert(offsetof(StageResourceObjectRecord, parameters) == 0x04);
 
