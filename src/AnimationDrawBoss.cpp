@@ -291,8 +291,9 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30((position.x),(position.y),width,animation_inherited_aux_scale_x(animation),height,angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
     case 45: {
-        // Original evaluates these three real draw arguments before the
-        // inherited scale and height-half expressions; source order matters.
+        // Colors and draw count precede both half-height calculations. Keep
+        // the width half as its own real argument value, then recompute the
+        // identical scale half after the getter for the native SSE register form.
         const auto secondary_color=animation_draw_color_494(animation);
         const auto primary_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;
@@ -304,8 +305,8 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         break;
     }
     case 46: {
-        // Original color/count calls are evaluated before the inherited
-        // scale; the width expression is evaluated when passed to renderer.
+        // Preserve the native scale-half-before-getter order; compute the
+        // independent width half at the renderer argument site.
         const auto secondary_color=animation_draw_color_494(animation);
         const auto primary_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;
