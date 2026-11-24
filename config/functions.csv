@@ -2023,7 +2023,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004710C0,46,0x004710ED,FUN_004710c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004710F0,57,0x00471128,FUN_004710f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00471130,47,0x0047115E,FUN_00471130,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00471160,11,0x0047116A,FUN_00471160,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00471160,11,0x0047116A,FUN_00471160,th20::advance_stage_resource_primitive,StageResource,reconstructed,100.00,__cdecl,"StageResourcePrimitiveHeader* __cdecl advance_stage_resource_primitive(StageResourcePrimitiveHeader*, std::int32_t)",false,src/StageResourceObjectDraw.cpp,CORE/RECON-1306; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md,authored,"Natural C++ cdecl helper advances a StageResourcePrimitiveHeader cursor by its signed record size. Its 11-byte contribution exactly matches the original PE; called by StageResourceOwner::draw_objects_for_layer."
 0x00471170,38,0x00471195,_Find_unchecked<>,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004711A0,105,0x00471208,FUN_004711a0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00471210,103,0x00471276,FUN_00471210,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
