@@ -198,6 +198,34 @@ def verify() -> None:
                      for ins in native_calls)
     assert len(native_calls) == 123 and len(called) == 43
 
+    # Modes 35 and 36 both perform two real calls to the inherited-scale
+    # getter. The first x87 result is explicitly rounded/stored to the same
+    # dead-in-body local slot; the second result and the already-spilled
+    # half-height feed a register-register scalar SSE operation. Keep this
+    # unusual native sequence pinned so source probes cannot conflate the
+    # first discarded return with the second arithmetic operand.
+    native_body = raw_at(image, base, sections, HEAD, BODY_SIZE)
+    mode35_first = bytes.fromhex("e833100000 d99da0feffff")
+    mode35_adjust = bytes.fromhex(
+        "e8e50f0000 d99db8feffff "
+        "f30f1085b8feffff f30f108db4feffff f30f58c1")
+    mode36_first = bytes.fromhex("e8460f0000 d99da0feffff")
+    mode36_adjust = bytes.fromhex(
+        "e8f80e0000 d99d9cfeffff "
+        "f30f10859cfeffff f30f108d98feffff f30f5cc1")
+    for offset, expected in ((0x0FC8, mode35_first),
+                             (0x1016, mode35_adjust),
+                             (0x10B5, mode36_first),
+                             (0x1103, mode36_adjust)):
+        assert native_body[offset:offset + len(expected)] == expected, hex(offset)
+    for offset in (0x0FC8, 0x1016, 0x10B5, 0x1103):
+        call = instructions[next(i for i, ins in enumerate(instructions)
+                                 if ins.address == HEAD + offset)]
+        target = (call.address + 5 + struct.unpack_from("<i", call.bytes, 1)[0]) & 0xFFFFFFFF
+        assert call.mnemonic == "call" and target == 0x00445880
+    print("PASS native mode35/36 getter order: both first x87 returns store to [ebp-0x160]; "
+          "second returns load with half-height into XMM0/XMM1 for addss/subss")
+
     original_body_relocs = {address for address in relocs if HEAD <= address < HEAD + BODY_SIZE}
     assert len(original_body_relocs) == 32
     # The main and nested jump operands themselves are two separate original
