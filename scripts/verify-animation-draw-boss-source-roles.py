@@ -117,6 +117,14 @@ def main():
     assert "animation->retirement_state != 0" in text
     assert "offsetof(Animation, retirement_state) == 0x570" in text
 
+    # Mode46's native dataflow is asymmetric: the pre-getter half-height is
+    # retained for adjusted scale, while width recomputes its half after the
+    # getter. Guard this source-level ownership separately from byte scoring.
+    assert "const float half_for_scale=height/native_two;" in text
+    assert "const float inherited_scale=animation_inherited_aux_scale_x(animation);" in text
+    assert "const float adjusted_scale=inherited_scale-half_for_scale;" in text
+    assert "width-(height/native_two),adjusted_scale,height" in text
+
     with (ROOT / "config/animation-draw-boss-mode-e8.csv").open(newline="") as f:
         routes = list(csv.DictReader(f))
     assert len(routes) == 49
@@ -295,6 +303,7 @@ def main():
     print(f"PASS first 81 consecutive E8 instruction sites and {matched_call_sites}/123 complete original E8 physical positions (all 123 targets in order)")
     print(f"PASS 32/32 native PE in-body HIGHLOW roles, {matched_data_sites}/32 exact site/target pairs")
     print("PASS mode6 native thiscall and two original eight-parameter draw helper receiver/stack roles are in source")
+    print("PASS mode46 pre-getter scale half and post-getter width half ownership")
     print(f"PASS candidate code {code_end}B/{len(code)} x86 with native stack frame 0x204; complete COFF {len(compiled)}B including 3B alignment+80 true pointer fields")
     print(f"NONEXACT parent: only {comparable_bytes}/5376 nonrelocation bytes equal; remaining nested-case local life and relocation offsets differ; zero game exact credit")
 
