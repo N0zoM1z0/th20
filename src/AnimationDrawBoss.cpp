@@ -309,10 +309,10 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         const auto secondary_color=animation_draw_color_494(animation);
         const auto primary_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;
-        const float half_for_width=height/native_two;
-        const float adjusted_scale=animation_inherited_aux_scale_x(animation)-(height/native_two);
+        const float half_for_scale=height/native_two;
+        const float adjusted_scale=animation_inherited_aux_scale_x(animation)-half_for_scale;
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30(
-            position.x,position.y,width-half_for_width,adjusted_scale,height,
+            position.x,position.y,width-(height/native_two),adjusted_scale,height,
             angle,quad_count,primary_color,secondary_color);
         break;
     }

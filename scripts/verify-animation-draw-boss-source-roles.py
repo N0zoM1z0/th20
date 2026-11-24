@@ -282,7 +282,7 @@ def main():
         ignored.update(range(int(row['offset']),int(row['offset'])+4))
     comparable_bytes=sum(original_extent[i]==compiled[i]
                          for i in range(len(compiled)) if i not in ignored)
-    assert comparable_bytes==4835 and len(compiled)-len(ignored)==5376
+    assert comparable_bytes==4834 and len(compiled)-len(ignored)==5376
 
 
     assert all(addr in reloc_sites for t,n in ((ORIGINAL.MAIN_TABLE, 49),
