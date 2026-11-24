@@ -8,6 +8,7 @@
 
 namespace th20 {
 class AnimationFile;
+struct Graphics;
 struct StageResourceOwner;
 
 // The instruction stream is variable length: time/opcode/size form the
@@ -44,6 +45,16 @@ static_assert(sizeof(StageResourceObjectRecord) == 0x30);
 static_assert(offsetof(StageResourceObjectRecord, flags) == 0x03);
 static_assert(offsetof(StageResourceObjectRecord, parameters) == 0x04);
 
+// Per-instance object placement list. The signed object index is the
+// terminating sentinel; each record is exactly two shorts plus a Vector3.
+struct StageResourceInstanceRecord {
+    std::int16_t object_index;
+    std::int16_t flags;
+    Vector3 position;
+};
+static_assert(sizeof(StageResourceInstanceRecord) == 0x10);
+static_assert(offsetof(StageResourceInstanceRecord, position) == 0x04);
+
 struct StageResourcePrimitiveHeader {
     std::int16_t type;
     std::int16_t size;
@@ -52,6 +63,25 @@ struct StageResourcePrimitiveHeader {
 };
 static_assert(sizeof(StageResourcePrimitiveHeader) == 8);
 static_assert(offsetof(StageResourcePrimitiveHeader, animation_index) == 0x06);
+
+struct StageResourcePrimitiveTransform {
+    StageResourcePrimitiveHeader header;
+    float position_x;
+    float position_y;
+    float position_z;
+    float scale_x;
+    float scale_y;
+};
+static_assert(offsetof(StageResourcePrimitiveTransform, position_x) == 0x08);
+static_assert(offsetof(StageResourcePrimitiveTransform, scale_x) == 0x14);
+static_assert(offsetof(StageResourcePrimitiveTransform, scale_y) == 0x18);
+
+struct StageResourceRenderCounts {
+    std::uint32_t visible_objects;
+    std::uint32_t culled_objects;
+    std::uint32_t primitive_draws;
+};
+static_assert(sizeof(StageResourceRenderCounts) == 0x0c);
 
 struct StageResourceInstructionHeader {
     std::int32_t time;
@@ -95,6 +125,7 @@ struct StageBackgroundFogOwner {
     void __fastcall execute_script();
     void update_camera_motion(const float* rate);
     void __fastcall update_meshes();
+    void draw_inline_animations_for_layer(std::int32_t layer);
 };
 using StageBackgroundScriptState = StageBackgroundFogOwner;
 
@@ -110,7 +141,10 @@ struct StageResourceOwner {
     void* instances;
     const StageResourceInstructionHeader* instructions;
     AnimationFile* animation_file_value;
-    std::uint32_t rendered[3];
+    union {
+        std::uint32_t rendered[3];
+        StageResourceRenderCounts render_counts;
+    };
     std::uint32_t state_flags;
     Timer fade_timer;
     std::int32_t stage_id;
@@ -127,6 +161,7 @@ struct StageResourceOwner {
     void set_primary_rotation_flag(std::uint32_t value);
     std::int32_t __fastcall update_objects();
     std::int32_t __fastcall update();
+    std::int32_t draw_objects_for_layer(std::int32_t layer);
 };
 
 extern StageResourceOwner* process_stage_resource;
@@ -160,6 +195,7 @@ static_assert(offsetof(StageResourceOwner, instances) == 0x332c);
 static_assert(offsetof(StageResourceOwner, instructions) == 0x3330);
 static_assert(offsetof(StageResourceOwner, animation_file_value) == 0x3334);
 static_assert(offsetof(StageResourceOwner, rendered) == 0x3338);
+static_assert(offsetof(StageResourceOwner, render_counts) == 0x3338);
 static_assert(offsetof(StageResourceOwner, state_flags) == 0x3344);
 static_assert(offsetof(StageResourceOwner, fade_timer) == 0x3348);
 static_assert(offsetof(StageResourceOwner, stage_id) == 0x3358);

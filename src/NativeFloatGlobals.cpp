@@ -18,4 +18,6 @@ extern const float native_cull_screen_margin_56d7bc = 8.0f;
 extern const float native_screen_height_128_56cd98 = 128.0f;
 extern const float native_screen_rect_inner_width_384_56cda4 = 384.0f;
 extern const float native_screen_height_448_56d7c0 = 448.0f;
+extern const float native_viewport_near_56f280 = 30.0f;
+extern const float native_viewport_far_571e9c = 8000.0f;
 } // namespace th20

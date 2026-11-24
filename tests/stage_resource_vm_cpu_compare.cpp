@@ -3,6 +3,8 @@
 #undef wmain
 
 #include "StageResource.hpp"
+#include "AnimationFile.hpp"
+#include "StageResourceDrawAdapters.hpp"
 #include "StageResourceScriptAdapters.hpp"
 #include "ClockScalar.hpp"
 #include "NativeCardHudAnimationView.hpp"
@@ -113,12 +115,71 @@ extern "C" th20::Vector3* __stdcall stage_test_d3dx_vec3_project_array(
     return output;
 }
 
+extern "C" th20::Matrix4* __stdcall stage_test_d3dx_matrix_rotation_y(
+    th20::Matrix4* output, float angle) {
+    for (unsigned row = 0; row < 4; ++row)
+        for (unsigned column = 0; column < 4; ++column)
+            output->elements[row][column] = row == column ? 1.0f : 0.0f;
+    const float cosine = std::cos(angle);
+    const float sine = std::sin(angle);
+    output->elements[0][0] = cosine;
+    output->elements[0][2] = -sine;
+    output->elements[2][0] = sine;
+    output->elements[2][2] = cosine;
+    return output;
+}
+
+extern "C" th20::Vector3* __stdcall stage_test_d3dx_vec3_transform_coord(
+    th20::Vector3* output, const th20::Vector3* input,
+    const th20::Matrix4* matrix) {
+    const auto& m = matrix->elements;
+    const float x = input->x * m[0][0] + input->y * m[1][0] +
+                    input->z * m[2][0] + m[3][0];
+    const float y = input->x * m[0][1] + input->y * m[1][1] +
+                    input->z * m[2][1] + m[3][1];
+    const float z = input->x * m[0][2] + input->y * m[1][2] +
+                    input->z * m[2][2] + m[3][2];
+    const float w = input->x * m[0][3] + input->y * m[1][3] +
+                    input->z * m[2][3] + m[3][3];
+    output->x = x / w;
+    output->y = y / w;
+    output->z = z / w;
+    return output;
+}
+
 namespace th20 {
 NativeViewIndexOwner test_view_index_owner{};
 ViewportState source_camera_viewport{};
 NativeViewIndexOwner* native_view_index_owner_5c0028 = &test_view_index_owner;
 AnimationPoolOwner* current_animation_pool =
     reinterpret_cast<AnimationPoolOwner*>(&test_view_index_owner);
+SpriteData stage_test_sprite_data{};
+
+SpriteData::SpriteData() noexcept
+    : file_id(0), texture_index(0), texture_id(0), left(0), top(0), right(0),
+      bottom(0), extent_1c(0), extent_20(0), field_24(0), field_28(0),
+      field_2c(0), field_30(0), field_34(0), u0(0), v0(0), u1(0), v1(0),
+      extent_48(32.0f), extent_4c(64.0f), scale_50(1.0f), scale_54(1.0f) {}
+
+SpriteData* Animation::sprite_data() {
+    return &stage_test_sprite_data;
+}
+
+std::int32_t AnimationPoolOwner::draw(Animation*) {
+    return 0;
+}
+
+void AnimationPoolOwner::flush_draws() {}
+
+void stage_resource_select_viewport(std::int32_t) {}
+void stage_resource_set_clip(std::int32_t) {}
+void stage_resource_enable_fog() {}
+void stage_resource_disable_fog() {}
+void stage_resource_enable_depth_writes() {}
+void stage_resource_disable_depth_writes() {}
+const ViewportState& stage_resource_viewport(std::int32_t) {
+    return source_camera_viewport;
+}
 
 void NativeViewIndexOwner::set_view_index(std::int32_t value) {
     view_index_6c4 = value;
@@ -194,6 +255,36 @@ int wmain(int argc, wchar_t** argv) {
             reinterpret_cast<void*>(&stage_test_d3dx_vec3_project_array);
         *reinterpret_cast<void**>(mapped_image_base + 0x16c30c) =
             reinterpret_cast<void*>(&stage_test_d3dx_matrix_translation);
+        *reinterpret_cast<void**>(mapped_image_base + 0x16c318) =
+            reinterpret_cast<void*>(&stage_test_d3dx_vec3_transform_coord);
+        *reinterpret_cast<void**>(mapped_image_base + 0x16c31c) =
+            reinterpret_cast<void*>(&stage_test_d3dx_matrix_rotation_y);
+        auto patch_return = [&](std::uint32_t address, std::uint8_t stack_bytes) {
+            auto* code = reinterpret_cast<std::uint8_t*>(
+                mapped_image_base + address - 0x400000);
+            if (stack_bytes == 0) {
+                code[0] = 0xC3;
+            } else {
+                code[0] = 0xC2;
+                code[1] = stack_bytes;
+                code[2] = 0;
+            }
+        };
+        patch_return(0x00443880, 4); // AnimationPoolOwner::draw
+        patch_return(0x0044C570, 4); // inline Animation draw forwarder
+        patch_return(0x0041DCE0, 4); // Graphics clip/viewport state
+        patch_return(0x00477520, 4); // Graphics viewport preparation
+        patch_return(0x004DDA60, 0); // fog disable
+        patch_return(0x004DDAC0, 0); // fog enable
+        patch_return(0x004DDF80, 0); // depth-write disable
+        patch_return(0x004DDFE0, 0); // depth-write enable
+        auto* sprite_lookup = reinterpret_cast<std::uint8_t*>(
+            mapped_image_base + 0x00437CD0 - 0x00400000);
+        const auto sprite_address = reinterpret_cast<std::uint32_t>(
+            &th20::stage_test_sprite_data);
+        sprite_lookup[0] = 0xB8;
+        std::memcpy(sprite_lookup + 1, &sprite_address, sizeof(sprite_address));
+        sprite_lookup[5] = 0xC3;
         auto* native_zero = reinterpret_cast<float*>(mapped_image_base + 0x16e0e8);
         const float native_zero_original = *native_zero;
         *native_zero = 200.0f;
@@ -840,6 +931,238 @@ int wmain(int argc, wchar_t** argv) {
             VirtualFree(storage, 0, MEM_RELEASE);
         }
 
+        {
+            struct ObjectFixture {
+                th20::StageResourceObjectRecord object;
+                std::uint8_t primitive_stream[96];
+            };
+            static_assert(offsetof(ObjectFixture, primitive_stream) == 0x30);
+
+            constexpr std::size_t sparse_extent = 0x07D42000u;
+            constexpr std::array<std::size_t, 3> page_offsets{
+                0u, 0x06000E00u, 0x07D40E00u};
+            auto* pool_storage = static_cast<std::uint8_t*>(
+                VirtualAlloc(nullptr, sparse_extent, MEM_RESERVE, PAGE_NOACCESS));
+            if (!pool_storage)
+                throw std::runtime_error("cannot reserve sparse AnimationPool object-draw fixture");
+            for (const auto offset : page_offsets) {
+                if (!VirtualAlloc(pool_storage + offset, 0x1000,
+                                  MEM_COMMIT, PAGE_READWRITE)) {
+                    VirtualFree(pool_storage, 0, MEM_RELEASE);
+                    throw std::runtime_error("cannot commit sparse AnimationPool object-draw page");
+                }
+            }
+
+            auto write_primitive = [](ObjectFixture& fixture, std::size_t offset,
+                                      std::int16_t type, std::int16_t size,
+                                      std::int16_t animation_index,
+                                      const th20::Vector3& position,
+                                      float scale_x, float scale_y) {
+                auto* header = reinterpret_cast<th20::StageResourcePrimitiveHeader*>(
+                    fixture.primitive_stream + offset);
+                header->type = type;
+                header->size = size;
+                header->script_index = 0;
+                header->animation_index = animation_index;
+                if (type == 0) {
+                    auto* values = reinterpret_cast<float*>(
+                        fixture.primitive_stream + offset + sizeof(*header));
+                    values[0] = position.x;
+                    values[1] = position.y;
+                    values[2] = position.z;
+                    values[3] = scale_x;
+                    values[4] = scale_y;
+                }
+            };
+            auto initialize_fixture = [&](th20::StageResourceOwner& owner,
+                                          std::array<ObjectFixture, 3>& fixtures,
+                                          std::array<th20::StageResourceObjectRecord*, 3>& table,
+                                          std::array<th20::StageResourceInstanceRecord, 5>& instances,
+                                          std::array<th20::Animation, 8>& animations,
+                                          unsigned test) {
+                owner.primitive_animations = animations.data();
+                owner.objects = table.data();
+                owner.instances = instances.data();
+                owner.rendered[0] = 3 + test;
+                owner.rendered[1] = 5 + test * 2;
+                owner.rendered[2] = 7 + test * 3;
+                owner.script_state.fields_3294[8] =
+                    std::bit_cast<std::uint32_t>(5000.0f);
+
+                for (unsigned index = 0; index < 8; ++index) {
+                    owner.script_state.fields_3294[index] =
+                        index < 2 || index == 3 ? 8u : 9u;
+                    auto& inline_animation = owner.script_state.animations[index];
+                    inline_animation.base.flags.bytes_00.animation_mode =
+                        index & 1u ? 24u : 8u;
+                    inline_animation.base.flags.word_04 = index & 1u ? 0x10u : 0u;
+                    inline_animation.base.vector_38.y =
+                        static_cast<float>(index) * 0.125f;
+                }
+
+                for (unsigned index = 0; index < animations.size(); ++index) {
+                    auto* bytes = reinterpret_cast<std::uint8_t*>(&animations[index]);
+                    for (unsigned byte = 0; byte < sizeof(animations[index]); ++byte)
+                        bytes[byte] = static_cast<std::uint8_t>(random());
+                    animations[index].base.flags.bytes_00.animation_mode =
+                        std::array<std::uint8_t, 8>{4, 8, 24, 3, 5, 8, 24, 4}[index];
+                    animations[index].base.flags.word_04 =
+                        index & 1u ? 0x10u : 0x20u;
+                    animations[index].base.vector_38.y =
+                        static_cast<float>(static_cast<int>(index) - 3) * 0.17f;
+                }
+
+                for (unsigned index = 0; index < fixtures.size(); ++index) {
+                    fixtures[index] = {};
+                    fixtures[index].object.identifier =
+                        static_cast<std::uint16_t>(index + 1);
+                    fixtures[index].object.layer =
+                        static_cast<std::uint8_t>(index == 2 ? 9 : 8);
+                    fixtures[index].object.flags =
+                        static_cast<std::uint8_t>(random());
+                    fixtures[index].object.parameters[0] =
+                        index == 0 && test % 7 == 0 ?
+                            std::bit_cast<float>(1u) : 0.0f;
+                    fixtures[index].object.parameters[5] =
+                        index == 1 ? 0.25f : -0.15f;
+                    fixtures[index].object.parameters[6] = 0.0f;
+                    fixtures[index].object.parameters[7] = 0.5f;
+                    fixtures[index].object.parameters[8] = 0.35f;
+                    fixtures[index].object.parameters[9] = 0.3f;
+                    fixtures[index].object.parameters[10] = 0.25f;
+                    fixtures[index].object.parameters[2] =
+                        index == 0 && test % 4 != 0 ?
+                            (test & 1u ? 0.35f : -0.6f) : 0.0f;
+                    table[index] = &fixtures[index].object;
+                }
+
+                write_primitive(fixtures[0], 0, 0, 28, 0,
+                                {0.25f, 0.1f, 0.05f},
+                                test & 1u ? 12.0f : 0.0f, 20.0f);
+                write_primitive(fixtures[0], 28, 1, 8, 7, {}, 0.0f, 0.0f);
+                write_primitive(fixtures[0], 36, 0, 28,
+                                test % 3 == 0 ? 3 : 1,
+                                {-0.2f, 0.05f, 0.1f}, 0.0f, 0.0f);
+                write_primitive(fixtures[0], 64, -1, 0, 0, {}, 0.0f, 0.0f);
+
+                write_primitive(fixtures[1], 0, 0, 28, 2,
+                                {0.1f, 0.0f, 0.0f}, 8.0f, 10.0f);
+                write_primitive(fixtures[1], 28, -1, 0, 0, {}, 0.0f, 0.0f);
+
+                write_primitive(fixtures[2], 0, 0, 28, 4,
+                                {0.0f, 0.1f, 0.0f}, 4.0f, 5.0f);
+                write_primitive(fixtures[2], 28, -1, 0, 0, {}, 0.0f, 0.0f);
+
+                instances[0] = {0, static_cast<std::int16_t>(random()),
+                                {0.05f, 0.0f, 0.0f}};
+                instances[1] = {1, static_cast<std::int16_t>(random()),
+                                {test & 1u ? 100.0f : 0.0f, 0.0f, 0.0f}};
+                instances[2] = {2, static_cast<std::int16_t>(random()),
+                                {0.0f, 0.0f, 0.0f}};
+                instances[3] = {0, static_cast<std::int16_t>(random()),
+                                {-0.1f, 0.0f, 0.0f}};
+                instances[4] = {-1, 0, {}};
+            };
+
+            auto& sprite = th20::stage_test_sprite_data;
+            sprite.extent_48 = 32.0f;
+            sprite.extent_4c = 64.0f;
+            auto* previous_pool = th20::current_animation_pool;
+            auto* native_pool_slot =
+                reinterpret_cast<void**>(mapped_image_base + 0x1c0028);
+            void* previous_native_pool = *native_pool_slot;
+            *native_pool_slot = pool_storage;
+            th20::current_animation_pool =
+                reinterpret_cast<th20::AnimationPoolOwner*>(pool_storage);
+
+            const float saved_native_zero = *native_zero;
+            *native_zero = 0.0f;
+            for (unsigned test = 0; test < 64; ++test) {
+                alignas(th20::StageResourceOwner)
+                    std::uint8_t owner_storage[sizeof(th20::StageResourceOwner)]{};
+                auto& owner = *::new (owner_storage) th20::StageResourceOwner{};
+                std::array<ObjectFixture, 3> fixtures{};
+                std::array<th20::StageResourceObjectRecord*, 3> table{};
+                std::array<th20::StageResourceInstanceRecord, 5> instances{};
+                std::array<th20::Animation, 8> animations{};
+                initialize_fixture(owner, fixtures, table, instances, animations, test);
+
+                th20::ViewportState camera{};
+                th20::matrix_identity(reinterpret_cast<th20::Matrix4*>(&camera.view));
+                th20::matrix_identity(reinterpret_cast<th20::Matrix4*>(&camera.projection));
+                camera.vector_00 = {};
+                camera.vector_3c = {static_cast<float>(static_cast<int>(test % 7) - 3) * 0.01f,
+                                    0.0f, 0.0f};
+                camera.viewport = {0, 0, 640, 480, 0.0f, 1.0f};
+                th20::source_camera_viewport = camera;
+                std::memcpy(reinterpret_cast<void*>(mapped_image_base + 0x1c53fc),
+                            &camera, sizeof(camera));
+
+                std::array<std::array<std::uint8_t, 0x1000>, 3> pool_before{},
+                    pool_expected{}, pool_actual{};
+                for (std::size_t page = 0; page < page_offsets.size(); ++page) {
+                    for (auto& byte : pool_before[page])
+                        byte = static_cast<std::uint8_t>(random());
+                    std::memcpy(pool_storage + page_offsets[page],
+                                pool_before[page].data(), 0x1000);
+                }
+                *reinterpret_cast<std::uint32_t*>(pool_storage + 0x6000E70) = 0;
+
+                std::array<std::uint8_t, sizeof(owner)> owner_before{}, owner_expected{};
+                std::array<std::uint8_t, sizeof(animations)> animation_before{},
+                    animation_expected{};
+                std::memcpy(owner_before.data(), &owner, sizeof(owner));
+                std::memcpy(animation_before.data(), animations.data(),
+                            animation_before.size());
+
+                FloatingEnvironment::prepare();
+                const std::int32_t layer = test & 1u ? 8 : 9;
+                cpu<std::int32_t>(0x00474880, &owner, layer);
+                std::memcpy(owner_expected.data(), &owner, sizeof(owner));
+                std::memcpy(animation_expected.data(), animations.data(),
+                            animation_expected.size());
+                for (std::size_t page = 0; page < page_offsets.size(); ++page)
+                    std::memcpy(pool_expected[page].data(),
+                                pool_storage + page_offsets[page], 0x1000);
+
+                std::memcpy(&owner, owner_before.data(), sizeof(owner));
+                std::memcpy(animations.data(), animation_before.data(),
+                            animation_before.size());
+                for (std::size_t page = 0; page < page_offsets.size(); ++page)
+                    std::memcpy(pool_storage + page_offsets[page],
+                                pool_before[page].data(), 0x1000);
+                *reinterpret_cast<std::uint32_t*>(pool_storage + 0x6000E70) = 0;
+
+                FloatingEnvironment::prepare();
+                owner.draw_objects_for_layer(layer);
+
+                bool mismatch = std::memcmp(&owner, owner_expected.data(),
+                                            sizeof(owner)) != 0 ||
+                    std::memcmp(animations.data(), animation_expected.data(),
+                                animation_expected.size()) != 0;
+                for (std::size_t page = 0; page < page_offsets.size(); ++page) {
+                    std::memcpy(pool_actual[page].data(),
+                                pool_storage + page_offsets[page], 0x1000);
+                    mismatch = mismatch || pool_actual[page] != pool_expected[page];
+                }
+
+                ++checks;
+                ++groups["stage_resource_object_draw_474880"];
+                if (mismatch) {
+                    ++failed;
+                    if (failures.size() < 30) {
+                        failures.push_back("stage_resource_object_draw_474880 test" +
+                                           std::to_string(test));
+                        std::cerr << failures.back() << '\n';
+                    }
+                }
+            }
+            *native_zero = saved_native_zero;
+            th20::current_animation_pool = previous_pool;
+            *native_pool_slot = previous_native_pool;
+            VirtualFree(pool_storage, 0, MEM_RELEASE);
+        }
+
         for (unsigned test = 0; test < 128; ++test) {
             alignas(th20::Animation) std::array<std::uint8_t, sizeof(th20::Animation)> storage{};
             auto* animation = ::new (storage.data()) th20::Animation();
@@ -1017,7 +1340,7 @@ int wmain(int argc, wchar_t** argv) {
             comma = true;
             report << th20::json_string(label) << ':' << count;
         }
-        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases), Animation flag-clear leaf 0x472A10 (128 cases), and StageResourceObjectRecord viewport culling boss 0x473B20 (1024 cases with two independently implemented D3DX import test seams); AnimationPool stage-draw reset boss 0x4750A0 (128 sparse-memory cases across three committed pages); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
+        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases), Animation flag-clear leaf 0x472A10 (128 cases), and StageResourceObjectRecord viewport culling boss 0x473B20 (1024 cases with two independently implemented D3DX import test seams); AnimationPool stage-draw reset boss 0x4750A0 (128 sparse-memory cases across three committed pages); Animation Y-rotation getter/setter and X/Y scale setters 0x474D40/0x4504C0/0x4504F0/0x4777F0/0x4777C0 (raw payload comparisons); angle normalization 0x438540 (128 raw-float cases); inline Animation layer helper 0x474780 and StageResource object-layer draw boss 0x474880 (64 cases across layers 8 and 9, with D3D9 state and Animation draw submission stubbed); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
         for (unsigned index = 0; index < failures.size(); ++index) {
             if (index) report << ',';
             report << th20::json_string(failures[index]);

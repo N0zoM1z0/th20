@@ -14,6 +14,8 @@ struct NativeGraphicsModeAction : Graphics {
     void set_render_state_4d9db0(int mode,int value);
     void recompute_current_4da1f0(ViewportState* state,NativeViewport* adjusted);
     void prepare_device_4da120(ViewportState* state);
+    void recompute_view_4d9f60(ViewportState* state);
+    void select_view_477520(int index);
 };
 static_assert(sizeof(NativeGraphicsModeAction)==sizeof(Graphics));
 }

@@ -15,6 +15,7 @@ struct NativeAnimationResetHooks : AnimationPoolOwner {
     void common_init_475170();
     void reset_draw_cache_475120();
     void invalidate_draw_owner_475150();
+    void set_draw_mode_477770(std::uint8_t mode);
     void reset_after_stage_draw_4750a0();
 };
 }

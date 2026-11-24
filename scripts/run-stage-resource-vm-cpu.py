@@ -6,6 +6,7 @@ import hashlib
 import importlib.util
 import json
 import subprocess
+import shutil
 import sys
 from pathlib import Path
 
@@ -37,6 +38,7 @@ def main() -> int:
         "/DTH20_NATIVE_CORE_SHA256=\"unused\"",
         "/I" + module.wine_path(ROOT / "_reference/Touhou20/include"),
         "/I" + module.wine_path(ROOT / "_reference/Touhou20/native_recovered"),
+        "/I" + module.wine_path(ROOT / ".tools/dxsdk-d3dx/include"),
     ]
     sources = [
         ROOT / "tests/stage_resource_vm_cpu_compare.cpp",
@@ -53,6 +55,7 @@ def main() -> int:
         ROOT / "src/AnimationIsActive.cpp",
         ROOT / "src/AnimationObjectDrawLeaves.cpp",
         ROOT / "src/StageResourceObjectVisibility.cpp",
+        ROOT / "src/StageResourceObjectDraw.cpp",
         ROOT / "src/AnimationClearFlag02.cpp",
         ROOT / "src/Matrix4Identity.cpp",
         ROOT / "src/StageResourceUpdate.cpp",
@@ -87,12 +90,15 @@ def main() -> int:
     env = module.compiler_environment()
     executable = output_dir / "stage-resource-vm-cpu-compare.exe"
     report = output_dir / "stage-resource-vm-cpu-report.json"
+    shutil.copy2(ROOT / ".tools/dxsdk-d3dx/build/native/release/bin/x86/D3DX9_43.dll",
+                 output_dir / "D3DX9_43.dll")
     wine = module.shared_command("wine")
     link = [
         *wine, str(vc / "bin/HostX64/x86/link.exe"), "/NOLOGO", "/MACHINE:X86",
         "/SUBSYSTEM:CONSOLE", "/INCREMENTAL:NO", "/OPT:REF", "/OPT:ICF",
         "/BASE:0x10000000", "/DYNAMICBASE:NO", "/OUT:" + module.wine_path(executable),
         *[module.wine_path(path) for path in objects], "kernel32.lib", "bcrypt.lib",
+        module.wine_path(ROOT / ".tools/dxsdk-d3dx/build/native/release/lib/x86/d3dx9.lib"),
     ]
     result = subprocess.run(link, env=env, cwd=ROOT, capture_output=True, text=True, timeout=180)
     if result.returncode:
@@ -125,6 +131,9 @@ def main() -> int:
         ROOT / "src/StageResourceUpdateAdapters.cpp",
         ROOT / "src/AnimationRuntimeOwner.hpp",
         ROOT / "src/NativeAnimationResetHooksView.hpp",
+        ROOT / "src/NativeGraphicsModeAction.hpp",
+        ROOT / "src/Graphics.hpp",
+        ROOT / "src/StageResourceDrawAdapters.hpp",
         ROOT / "src/StageResourceObjectVisibility.hpp",
         ROOT / "src/Angle.hpp",
         ROOT / "src/Vector3.hpp",

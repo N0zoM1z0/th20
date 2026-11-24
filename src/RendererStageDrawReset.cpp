@@ -22,6 +22,11 @@ void NativeAnimationResetHooks::invalidate_draw_owner_475150() {
     *reinterpret_cast<std::uint8_t*>(this) = 0xFF;
 }
 
+void NativeAnimationResetHooks::set_draw_mode_477770(std::uint8_t mode) {
+    *reinterpret_cast<std::uint8_t*>(reinterpret_cast<std::uint8_t*>(this) +
+                                     0x6000E10) = mode;
+}
+
 void NativeAnimationResetHooks::reset_after_stage_draw_4750a0() {
     restart_state_41db80();
     reset_sprite_cache_424080();
