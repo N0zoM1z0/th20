@@ -32527,7 +32527,7 @@ relocations = [
   { offset = 0x3A8, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
   { offset = 0x3AD, type = "REL32", symbol = "?draw@AnimationPoolOwner@th20@@QAEHPAVAnimation@2@@Z", target = 0x00443880 },
   { offset = 0x3C3, type = "REL32", symbol = "?set_rotation_y_forward@Animation@th20@@QAEXM@Z", target = 0x004504C0 },
-  { offset = 0x3E9, type = "REL32", symbol = "?advance_stage_resource_primitive@th20@@YAPAUStageResourcePrimitiveTransform@1@PAU21@H@Z", target = 0x00471160 },
+  { offset = 0x3E9, type = "REL32", symbol = "?advance_stage_resource_primitive@th20@@YAPAUStageResourcePrimitiveHeader@1@PAU21@H@Z", target = 0x00471160 },
   { offset = 0x42E, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
   { offset = 0x433, type = "REL32", symbol = "?graphics_disable_depth_writes@th20@@YIHPAUGraphics@1@@Z", target = 0x004DDF80 },
   { offset = 0x439, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
@@ -32543,7 +32543,7 @@ source = "src/StageResourceObjectDraw.cpp"
 object = "build/gpt-web-stage-resource/StageResourceObjectDraw.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::advance_stage_resource_primitive"]
-symbol = "?advance_stage_resource_primitive@th20@@YAPAUStageResourcePrimitiveTransform@1@PAU21@H@Z"
+symbol = "?advance_stage_resource_primitive@th20@@YAPAUStageResourcePrimitiveHeader@1@PAU21@H@Z"
 target_address = 0x00471160
 size = 11
 relocations = [

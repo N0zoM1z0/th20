@@ -18,9 +18,9 @@ std::int32_t __fastcall graphics_enable_fog(Graphics* graphics);
 std::int32_t __fastcall graphics_disable_fog(Graphics* graphics);
 std::int32_t __fastcall graphics_enable_depth_writes(Graphics* graphics);
 std::int32_t __fastcall graphics_disable_depth_writes(Graphics* graphics);
-StageResourcePrimitiveTransform* __cdecl advance_stage_resource_primitive(
-    StageResourcePrimitiveTransform* primitive, std::int32_t size) {
-    return reinterpret_cast<StageResourcePrimitiveTransform*>(
+StageResourcePrimitiveHeader* __cdecl advance_stage_resource_primitive(
+    StageResourcePrimitiveHeader* primitive, std::int32_t size) {
+    return reinterpret_cast<StageResourcePrimitiveHeader*>(
         reinterpret_cast<std::byte*>(primitive) + size);
 }
 
@@ -61,25 +61,25 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
 
             object.flags |= StageResourceObjectRecord::passed_viewport_cull_mask;
             // The serialized primitive stream begins immediately after the 0x30-byte object.
-            auto* primitive = reinterpret_cast<StageResourcePrimitiveTransform*>(
+            auto* primitive = reinterpret_cast<StageResourcePrimitiveHeader*>(
                 reinterpret_cast<std::byte*>(&object) + sizeof(object));
-            while (primitive->header.type >= 0) {
+            while (primitive->type >= 0) {
                 // The native computes this signed stride even for unknown positive
                 // record kinds; use integer address arithmetic, not out-of-range
                 // Animation* pointer arithmetic, before the type dispatch.
                 Animation* animation = reinterpret_cast<Animation*>(
                     reinterpret_cast<std::uintptr_t>(primitive_animations) +
-                    static_cast<std::intptr_t>(primitive->header.animation_index) *
+                    static_cast<std::intptr_t>(primitive->animation_index) *
                     static_cast<std::intptr_t>(sizeof(Animation)));
-                switch (static_cast<StageResourcePrimitiveKind>(primitive->header.type)) {
+                switch (static_cast<StageResourcePrimitiveKind>(primitive->type)) {
                 case StageResourcePrimitiveKind::animation_transform: {
                     const float original_rotation = animation->rotation_y_value();
                     if (animation->base.flags.bytes_00.animation_mode >= 4) {
                         D3DXVECTOR3 local_position;
                         D3DXMATRIX rotation;
-                        local_position.x = primitive->position.x;
-                        local_position.y = primitive->position.y;
-                        local_position.z = primitive->position.z;
+                        local_position.x = reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->position.x;
+                        local_position.y = reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->position.y;
+                        local_position.z = reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->position.z;
 
                         if (object.parameters.rotation_y !=
                             native_zero_56e0e8) {
@@ -101,12 +101,12 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                         animation->vector_5bc.z =
                             local_position.z + instance->position.z;
 
-                        if (primitive->scale_x != native_zero_56e0e8) {
-                            animation->set_scale_x(primitive->scale_x /
+                        if (reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->scale_x != native_zero_56e0e8) {
+                            animation->set_scale_x(reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->scale_x /
                                 animation->sprite_data()->extent_4c);
                         }
-                        if (primitive->scale_y != native_zero_56e0e8) {
-                            animation->set_scale_y(primitive->scale_y /
+                        if (reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->scale_y != native_zero_56e0e8) {
+                            animation->set_scale_y(reinterpret_cast<StageResourcePrimitiveTransform*>(primitive)->scale_y /
                                 animation->sprite_data()->extent_48);
                         }
                     }
@@ -135,7 +135,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                     break;
                 }
                 primitive = advance_stage_resource_primitive(
-                    primitive, primitive->header.size);
+                    primitive, primitive->size);
             }
 
             instance->visibility.visible = 1;
