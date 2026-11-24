@@ -10,15 +10,19 @@ variable-width operand stream; the byte-advance field, not `sizeof`, advances
 the script PC. The main VM cursor and case-3 scan cursor use this typed record.
 All 161 opcode labels and the full 505-call target multiset remain present.
 
-The current focused candidate is **39,764B COFF contribution**: **39,120B
-code plus the 644B 161-entry compiler switch table**, 8,453 code instructions,
+The current focused candidate is **39,776B COFF contribution**: **39,132B
+code plus the 644B 161-entry compiler switch table**, 8,459 code instructions,
 frame `0x7F8`, 505 E8 calls and 215 DIR32 relocations (162 switch-label plus
-53 external data/constructor/cookie references). The code is 350 bytes shorter
-than the original 39,470B body. Splitting the original frame/flag early-outs
-into explicit natural C++ control-flow tests moves the first call-site mismatch
-from E8 index 7 to index 10: the first ten consecutive E8 positions now align,
-with **12/505** physical E8 offsets matching overall. All 505 original call
-targets and the three child-spawn/writeback subsequences remain verified.
+53 external data/constructor/cookie references). The code is 338 bytes shorter
+than the original 39,470B body. Modeling the native controller gate through
+the two-bit `AnimationModeBits::mode` and expressing its frozen-controller
+exit directly restores the original byte-register sequence. Reversing the
+frame comparison into a ready-to-dispatch branch, with the out-of-time path
+falling through to the shared motion/interpolation epilogue, moves the first
+call-site mismatch from E8 index 7 to index 14: **the first 14 consecutive
+E8 positions now align**, with **16/505** physical E8 offsets matching overall.
+All 505 original call targets and the three child-spawn/writeback subsequences
+remain verified.
 
 The affected File/operand closure strictly replayed **21/21 units in 8 cold
 objects**, including the 165/244/301/835B operand leaves, 338B script loader

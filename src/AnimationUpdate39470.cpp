@@ -83,8 +83,9 @@ std::int32_t Animation::update() {
           reinterpret_cast<std::uintptr_t>(local_774->script(local_770)) + base.field_28);
       goto LAB_0042de0b;
     }
-    if ((((base.flags.byte_08 & 3) != 1) || (current_game_controller == 0)) ||
-       (current_game_controller->animation_frozen() == 0)) {
+    if (base.flags.bits_08.mode == 1 && current_game_controller != nullptr &&
+        current_game_controller->animation_frozen() != 0) goto LAB_00434fb5;
+    {
       AnimationFile* local_77c;
       int local_778;
       std::uint32_t local_e0;
@@ -93,7 +94,9 @@ LAB_0042b831:
       local_778 = base.field_24;
       instruction = reinterpret_cast<AnmInstruction*>(
           reinterpret_cast<std::uintptr_t>(local_77c->script(local_778)) + base.field_28);
-      if (static_cast<std::int32_t>(timer_4c8) < instruction->frame) goto LAB_00434dce;
+      if (instruction->frame <= static_cast<std::int32_t>(timer_4c8)) goto LAB_vm_frame_ready;
+      goto LAB_00434dce;
+LAB_vm_frame_ready:
       local_e0 = (int)instruction->opcode + 1;
       if (0x27b < local_e0) {
 switchD_0042b8cc_caseD_a0:
