@@ -25,8 +25,8 @@ ORIGINAL_CALLS=505
 ORIGINAL_HIGHLOW=55
 SYMBOL='?update@Animation@th20@@QAEHXZ'
 ORIGINAL_CALL_TARGET_SEQUENCE=[]
-CANDIDATE_SIZE=39776
-CANDIDATE_CODE_SIZE=39132
+CANDIDATE_SIZE=39772
+CANDIDATE_CODE_SIZE=39128
 CANDIDATE_INSTRUCTIONS=8459
 CANDIDATE_STACK_FRAME=0x7f8
 CANDIDATE_DIR32=215
@@ -107,6 +107,7 @@ def compile_candidate(original_targets):
  assert 'if (instruction->frame <= static_cast<std::int32_t>(timer_4c8)) goto LAB_vm_frame_ready;' in text
  assert 'goto LAB_00434dce;\nLAB_vm_frame_ready:' in text
  assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_554 = this->integer_value((&instruction->first_operand)[0]);' in text
+ assert 'base.flags.bits_02.bit_10 = 0;' in text
  for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
   assert forbidden not in text,forbidden
  obj=ROOT/'build/gptweb-animation-vm-boss/AnimationUpdate39470.obj';obj.parent.mkdir(parents=True,exist_ok=True)

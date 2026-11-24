@@ -109,7 +109,7 @@ switchD_0042b8cc_caseD_a0:
         goto switchD_0042b8cc_caseD_a0;
       }
       case 0: {
-        base.flags.byte_02 = base.flags.byte_02 & 0xfe;
+        base.flags.bits_02.bit_10 = 0;
         base.field_28 = 0xffffffff;
         goto LAB_00434fd1;
       }
