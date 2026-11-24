@@ -33,7 +33,10 @@ static_assert(offsetof(StageResourceFileHeader, animation_name) == 0x10);
 struct StageResourceObjectRecord {
     std::uint16_t identifier;
     std::uint8_t layer;
-    std::uint8_t flags;
+    union {
+        std::uint8_t flags;
+        std::int8_t signed_flags;
+    };
     float parameters[11];
 
     // Original 0x473B20 object-space distance and projected-bounds culler.

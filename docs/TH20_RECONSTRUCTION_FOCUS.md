@@ -15,7 +15,7 @@ Do not select or begin reconstructing another function until this function has a
 
 The boss is restored as natural C++: the inline-animation prelude, render-state transitions, instance/object traversal, viewport culling, object-space Y rotation, sprite-relative scale, animation-pool submissions, instance visibility bit, and render counters are all represented directly in source.
 
-The primitive stream advance is a separate natural C++ cdecl helper at 0x00471160, returning primitive plus signed size. Its 11-byte contribution is independently replayed exactly and its call relocation is included in the boss comparison. The instance visibility bit is represented as a one-bit C++ bitfield sharing the native 16-bit flags word.
+The primitive stream advance is a separate natural C++ cdecl helper at 0x00471160, returning primitive plus signed size. Its 11-byte contribution is independently replayed exactly and its call relocation is included in the boss comparison. The instance visibility bit is represented as a one-bit C++ bitfield sharing the native 16-bit flags word. The object flag byte now has explicit signed and unsigned C++ union views: the draw boss uses the signed view required by the native MOVSX/OR sequence, while other object logic retains its unsigned flag view. This removes the raw byte-offset write without changing the 0x30-byte record layout or any generated target byte.
 
 ## Local verification
 
