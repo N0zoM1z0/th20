@@ -130,11 +130,16 @@ MSVC emits `fstp st(0)`, not the native m32 stores. A switch-scope
 `first_scale_result` assignment does reproduce both `[ebp-0x160]` stores and
 the native `0x204` frame, but its full-body probe falls to **5,985B/1,499
 instructions**, **84/123** E8 positions, **23/32** data sites and
-**3,710/5,368** ordinary bytes. Combining the local with the newer mode35
-width temporary instead produces a **6,001B/1,501-instruction** body with a
-`0x208` frame, only **84/123** E8 positions and **23/32** data sites, and
-**3,760/5,384** ordinary bytes. Neither is promoted. A case-local initialized
-scalar stores to a new `[ebp-0x208]` slot and also expands the frame.
+**3,710/5,368** ordinary bytes. This probe also reproduces the native local
+slot map: mode35 color/count/half/second-return/adjusted values occupy
+`-0x150/-0x154/-0x158/-0x14c/-0x148/-0x15c`; mode36 uses
+`-0x16c/-0x170/-0x174/-0x168/-0x164/-0x178`. Its remaining two adjusted-scale
+operations still use direct-memory `addss`/`subss`, four bytes shorter apiece.
+Combining the local with the newer mode35 width temporary instead produces a
+**6,001B/1,501-instruction** body with a `0x208` frame, only **84/123** E8
+positions and **23/32** data sites, and **3,760/5,384** ordinary bytes.
+Neither is promoted. A case-local initialized scalar stores to a new
+`[ebp-0x208]` slot and also expands the frame.
 
 Volatile half-height locals still select direct-memory arithmetic. Pointer
 aliases produce `addss xmm0, [edx]` / `subss xmm0, [eax]`, not the native
