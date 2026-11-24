@@ -1,16 +1,16 @@
 **CURRENT SOURCE UPDATE (2026-11-24):** The complete source now compiles to
-**2,124B/563-i386**, retaining all **37/37 E8 target roles**, **9/9 live
+**2,118B/561-i386**, retaining all **37/37 E8 target roles**, **9/9 live
 stride calls**, and all four genuine folded `std::array<int32_t,2>` index
 calls. A direct `pixel_stride*rows` length expression restores the original
-first three physical E8 sites; the BGRA32 path now keeps its source stencil
-pointer alive across the row loop and toggles the packed BGRA alpha byte in
-place via the four-byte `PackedColorChannels` union view. The current candidate
-has **3/37 physical E8 sites**, **4/5 PE HIGHLOW site/target pairs**, and
-aggregate E8 offset distance **1,003**. It remains SOURCE-PRESENT/NONEXACT
-against the original **2,245B/612-i386** parent; no game-authored parent bytes
-are credited. Scoped replay after the shared `PackedColor` layout change passed
-**24/24** previously exact PMR/color descendants. Older source totals below
-are historical.
+first three physical E8 sites; the BGRA32 path keeps its source stencil pointer
+alive across the row loop and writes the four-byte `PackedColorChannels` view
+only on the outline branch, while the ordinary branch preserves the live
+destination alpha byte. The current candidate has **4/37 physical E8 sites**,
+**4/5 PE HIGHLOW site/target pairs**, and aggregate E8 offset distance **965**.
+It remains SOURCE-PRESENT/NONEXACT against the original **2,245B/612-i386**
+parent; no game-authored parent bytes are credited. Scoped replay after the
+shared `PackedColor` layout change passed **24/24** previously exact PMR/color
+descendants. Older source totals below are historical.
 
 # CORE/RECON-1080 — native two-word glyph offsets are array-indexed values; exact 15-unit PMR ABI migration
 

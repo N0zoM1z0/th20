@@ -46,7 +46,7 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
         PackedColor opaque(color);
         const std::int32_t row_words=pixel_stride_4156c0()/4;
         // The native outline color flips only the packed alpha byte in place.
-        opaque.channels.alpha ^= 0xffu;
+        opaque.channels.alpha = static_cast<std::uint8_t>(opaque.channels.alpha ^ 0xffu);
         std::int32_t row_advance=0;
         // Native update edge reads the live stride before the row test.
         for (std::int32_t y=0;y<rows;
@@ -74,12 +74,12 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                         }
                     }
                     if (touches_outline) {
-                        *dest=opaque.value;
+                        *reinterpret_cast<PackedColorChannels*>(dest)=opaque.channels;
                     } else {
                         auto* channels=reinterpret_cast<std::uint8_t*>(dest);
-                        channels[0]=static_cast<std::uint8_t>(opaque.value);
-                        channels[1]=static_cast<std::uint8_t>(opaque.value>>8);
-                        channels[2]=static_cast<std::uint8_t>(opaque.value>>16);
+                        channels[0]=opaque.channels.blue;
+                        channels[1]=opaque.channels.green;
+                        channels[2]=opaque.channels.red;
                     }
                 }
             }
