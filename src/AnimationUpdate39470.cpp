@@ -39,7 +39,8 @@ extern const Vector3 native_zero_position;
 extern const float native_zero, native_one, native_two, native_four;
 extern const float native_half, native_pi, native_negative_one;
 extern const Vector3 native_vector_5c5540;
-extern const std::uint8_t native_animation_opcode_dispatch_435285[];
+// The 636-byte native map includes a sentinel for signed opcode -1 at index 0.
+extern const std::uint8_t native_animation_opcode_dispatch_435284[0x27c];
 
 // Every original VM helper call below is expressed through a maintained C++
 // owner. No numeric-address call adapters or generic call views remain.
@@ -104,7 +105,8 @@ switchD_0042b8cc_caseD_a0:
       }
                     /* WARNING (jumptable): Sanity check requires truncation of jumptable */
                     /* WARNING: Could not find normalized switch variable to match jumptable */
-      switch(native_animation_opcode_dispatch_435285[instruction->opcode]) {
+      // local_e0 is the checked opcode+1 index; this keeps -1 on the sentinel.
+      switch(native_animation_opcode_dispatch_435284[local_e0]) {
       case 0xa0: {
         goto switchD_0042b8cc_caseD_a0;
       }

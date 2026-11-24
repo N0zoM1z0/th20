@@ -10,10 +10,10 @@ variable-width operand stream; the byte-advance field, not `sizeof`, advances
 the script PC. The main VM cursor and case-3 scan cursor use this typed record.
 All 161 opcode labels and the full 505-call target multiset remain present.
 
-The current focused candidate is **39,772B COFF contribution**: **39,128B
-code plus the 644B 161-entry compiler switch table**, 8,459 code instructions,
+The current focused candidate is **39,768B COFF contribution**: **39,124B
+code plus the 644B 161-entry compiler switch table**, 8,457 code instructions,
 frame `0x7F8`, 505 E8 calls and 215 DIR32 relocations (162 switch-label plus
-53 external data/constructor/cookie references). The code is 342 bytes shorter
+53 external data/constructor/cookie references). The code is 346 bytes shorter
 than the original 39,470B body. Modeling the native controller gate through
 the two-bit `AnimationModeBits::mode` and expressing its frozen-controller
 exit directly restores the original byte-register sequence. Reversing the
@@ -21,11 +21,16 @@ frame comparison into a ready-to-dispatch branch, with the out-of-time path
 falling through to the shared motion/interpolation epilogue, moves the first
 call-site mismatch from E8 index 7 to index 14: **the first 14 consecutive
 E8 positions now align**. Expressing opcode 0's flag clear through the
-one-bit `AnimationFlagByte02::bit_10` view trims a further four code bytes and
-reduces the aggregate E8-offset distance to **55,043 bytes**; the resulting
-candidate has **14/505** exact physical E8 offsets (the first 14 remain aligned).
-All 505 original call targets and the three child-spawn/writeback subsequences
-remain verified.
+one-bit `AnimationFlagByte02::bit_10` view and indexing the native opcode map
+through its real `0x00435284` sentinel base with the already-checked
+`opcode + 1` cursor trims another four code bytes and two instruction heads.
+The 636-byte table begins with the signed-opcode `-1` sentinel at index zero;
+the range-checked `opcode + 1` cursor now indexes from the true `0x00435284`
+base rather than forming a negative array index. Its original bytes are SHA-pinned
+by the focused probe (`a030f37522ea5b860c9a06ab56c02978832b477fd4e7c6f94957fbadc7cab34d`).
+The candidate now has **16/505** exact physical E8 offsets and aggregate E8-offset distance
+**54,560 bytes**; all 505 original call targets and the three child-spawn/
+writeback subsequences remain verified.
 
 The affected File/operand closure strictly replayed **21/21 units in 8 cold
 objects**, including the 165/244/301/835B operand leaves, 338B script loader
@@ -66,7 +71,7 @@ color/geometry helpers. The process-global clock, polygon random stream,
 current GameController pointer, zero Vector3 and native float constants now
 use their existing typed owners rather than decompiler `DAT_` names. The
 opcode dispatch byte table and the remaining global Vector3 are explicitly
-typed address-owned data views (`native_animation_opcode_dispatch_435285`
+typed address-owned data views (`native_animation_opcode_dispatch_435284`
 and `native_vector_5c5540`). The original +0x18 animation-file lookup now calls the already
 reconstructed whole-exact `NativeAnimationLegacyFileView::previous_file_437470`
 member instead of a numeric borrowed-call adapter; its sibling +0x1C getter

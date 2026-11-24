@@ -23,11 +23,14 @@ ORIGINAL_SHA='044f8246c167aaaf50c00a46a86baa1898e70af55ca5715bcc2450289ba83b87'
 ORIGINAL_INSTRUCTIONS=8559
 ORIGINAL_CALLS=505
 ORIGINAL_HIGHLOW=55
+DISPATCH_TABLE_ADDRESS=0x00435284
+DISPATCH_TABLE_SIZE=0x27c
+DISPATCH_TABLE_SHA256='a030f37522ea5b860c9a06ab56c02978832b477fd4e7c6f94957fbadc7cab34d'
 SYMBOL='?update@Animation@th20@@QAEHXZ'
 ORIGINAL_CALL_TARGET_SEQUENCE=[]
-CANDIDATE_SIZE=39772
-CANDIDATE_CODE_SIZE=39128
-CANDIDATE_INSTRUCTIONS=8459
+CANDIDATE_SIZE=39768
+CANDIDATE_CODE_SIZE=39124
+CANDIDATE_INSTRUCTIONS=8457
 CANDIDATE_STACK_FRAME=0x7f8
 CANDIDATE_DIR32=215
 CANDIDATE_LOCAL_LABEL_DIR32=162
@@ -55,6 +58,10 @@ def verify_original():
  global ORIGINAL_CALL_TARGET_SEQUENCE
  ORIGINAL_CALL_TARGET_SEQUENCE=[(x.address+5+struct.unpack_from('<i',x.bytes,1)[0])&0xffffffff for x in calls]
  targets=collections.Counter(ORIGINAL_CALL_TARGET_SEQUENCE)
+ dispatch_table=pe.raw_at(image,base,sections,DISPATCH_TABLE_ADDRESS,DISPATCH_TABLE_SIZE)
+ assert hashlib.sha256(dispatch_table).hexdigest()==DISPATCH_TABLE_SHA256
+ assert dispatch_table[0]==0 and dispatch_table[1]==0xa0 and dispatch_table[-1]==0x9f
+ print(f'PASS original opcode sentinel table: {DISPATCH_TABLE_SIZE}B at 0x{DISPATCH_TABLE_ADDRESS:08X}, SHA-256 {DISPATCH_TABLE_SHA256}')
  print(f'PASS original Boss boundary/hash: {ORIGINAL_SIZE}B, {len(ins)} instructions, {len(calls)} E8, {len(highlow)} PE HIGHLOW')
  return targets
 
@@ -108,6 +115,8 @@ def compile_candidate(original_targets):
  assert 'goto LAB_00434dce;\nLAB_vm_frame_ready:' in text
  assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_554 = this->integer_value((&instruction->first_operand)[0]);' in text
  assert 'base.flags.bits_02.bit_10 = 0;' in text
+ assert 'native_animation_opcode_dispatch_435284[0x27c]' in text
+ assert 'switch(native_animation_opcode_dispatch_435284[local_e0])' in text
  for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
   assert forbidden not in text,forbidden
  obj=ROOT/'build/gptweb-animation-vm-boss/AnimationUpdate39470.obj';obj.parent.mkdir(parents=True,exist_ok=True)
@@ -179,7 +188,7 @@ def compile_candidate(original_targets):
   '?native_two@th20@@3MB':2,
   '?native_one@th20@@3MB':1,
   '?native_zero@th20@@3MB':1,
-  '?native_animation_opcode_dispatch_435285@th20@@3QBEB':1,
+  '?native_animation_opcode_dispatch_435284@th20@@3QBEB':1,
   '?native_vector_5c5540@th20@@3UVector3@1@B':1,
  }
  assert all(external_dir32[symbol]==count for symbol,count in expected_owner_relocations.items()),external_dir32
