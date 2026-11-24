@@ -1,5 +1,14 @@
 # Animation motion, interpolation and parent binding
 
+**2026-11-24 status correction:** The original 39,470B `Animation::update`
+VM is no longer source-absent. It has a maintained C++ implementation in
+`src/AnimationUpdate39470.cpp` and is **SOURCE-PRESENT, NONEXACT**. The current
+instruction-header model and targeted compiler evidence are documented in
+[`ANIMATION_UPDATE_VM_RECONSTRUCTION.md`](ANIMATION_UPDATE_VM_RECONSTRUCTION.md).
+Do not treat the historical “no production source” statements below as the
+current repository state.
+
+
 **Current origin/exactness status:** CORE/EXACT-507 independently audited all
 original E8 and PE HIGHLOW fields, cold rebuilt the three actual native
 Animation providers, and accepted 17 whole game-authored methods (5,527B).

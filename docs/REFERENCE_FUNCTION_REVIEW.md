@@ -748,7 +748,12 @@ Eight natural shared-owner contributions are newly canonical exact:
 All target extents and call anchors precede probing. The held query retains
 actual thiscall/full uint32/RET4 and shared std::array indexing; the free nullable
 reference helper remains nonexact. Timer operator spelling is inferred and all
-six Timer origins remain pending. Integer += is maintained as a natural dependency
+six Timer origins remain pending. The 17-byte `Timer::operator int` body at
+`0x0040FF90` is byte-identical to the original and has no relocations; the
+focused `Timer.cpp` cold replay passes all 21/21 configured units. Its source
+and byte identity are verified, but its original spelling and authored/shared
+origin remain pending, so it does not add authored exact coverage. Integer +=
+is maintained as a natural dependency
 but emits 33 bytes against 31 native bytes, including an extra XORPS; no shortened
 comparison or shaping is accepted. Subtraction uses defined modulo negation.
 Existing Timer/input contributions retain one body/profile per source. Complete
