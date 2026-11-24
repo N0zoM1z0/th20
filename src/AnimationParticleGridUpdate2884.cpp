@@ -58,29 +58,25 @@ int NativeParticleGridGroup::update() {
             {
                 EffectInfo* effects = particle_effect_info_for_session_437520(effect_index);
                 auto* file = reinterpret_cast<NativeParticleSpawnFileView*>(effects->animation_file(0));
-                AnimationHandle handle=file->spawn_45d210("effect",0x95,nullptr,0.0f,effect_index);
-                colors_08[emission_index+0]=handle;
+                colors_08[emission_index+0]=file->spawn_45d210("effect",0x95,nullptr,0.0f,effect_index);
             }
             // Physical original particle handle creation 2/4.
             {
                 EffectInfo* effects = particle_effect_info_for_session_437520(effect_index);
                 auto* file = reinterpret_cast<NativeParticleSpawnFileView*>(effects->animation_file(0));
-                AnimationHandle handle=file->spawn_45d210("effect",0x95,nullptr,0.0f,effect_index);
-                colors_08[emission_index+1]=handle;
+                colors_08[emission_index+1]=file->spawn_45d210("effect",0x95,nullptr,0.0f,effect_index);
             }
             // Physical original particle handle creation 3/4.
             {
                 EffectInfo* effects = particle_effect_info_for_session_437520(effect_index);
                 auto* file = reinterpret_cast<NativeParticleSpawnFileView*>(effects->animation_file(0));
-                AnimationHandle handle=file->spawn_45d210("effect",0x95,nullptr,0.0f,effect_index);
-                colors_08[emission_index+2]=handle;
+                colors_08[emission_index+2]=file->spawn_45d210("effect",0x95,nullptr,0.0f,effect_index);
             }
             // Physical original particle handle creation 4/4.
             {
                 EffectInfo* effects = particle_effect_info_for_session_437520(effect_index);
                 auto* file = reinterpret_cast<NativeParticleSpawnFileView*>(effects->animation_file(0));
-                AnimationHandle handle=file->spawn_45d210("effect",0x96,nullptr,0.0f,effect_index);
-                colors_08[emission_index+3]=handle;
+                colors_08[emission_index+3]=file->spawn_45d210("effect",0x96,nullptr,0.0f,effect_index);
             }
             union { std::uint32_t word; AnimationColorChannels channels; } initial_color;
             initial_color.word = reinterpret_cast<NativeParticleAnimationAccess*>(owner)->color_ref_45d0e0();

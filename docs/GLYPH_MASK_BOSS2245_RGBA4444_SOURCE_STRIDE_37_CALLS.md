@@ -90,12 +90,19 @@ source checkpoint now records four natural lifetime/dataflow corrections:
   distance 927. The current typed-stencil candidate retains those same
   physical-site/role counts and improves ordinary byte agreement; its E8
   offset distance is 945.
+- The RGBA4444 path now uses direct native-style early-exit control flow:
+  the first non-opaque neighbor writes the packed outline value and jumps
+  past the non-outline alpha-preserving write. This removes the per-pixel
+  `touches_outline` flag and post-loop test while preserving the same four
+  neighbor reads and pixel result. The candidate is now **2,088B/549 i386**
+  with **296/1,920 ordinary overlap bytes**; E8 target roles remain 37/37,
+  physical alignment remains 7/37, and absolute E8 offset distance is 1,039.
 
 
 | Entire function evidence | First source | Earlier full-role source | Current source | Original |
 | --- | ---: | ---: | ---: | ---: |
-| Complete code bytes | 2,061 | 2,141 | **2,106** | 2,245 |
-| Complete i386 instruction count | 545 | 565 | **555** | 612 |
+| Complete code bytes | 2,061 | 2,141 | **2,088** | 2,245 |
+| Complete i386 instruction count | 545 | 565 | **549** | 612 |
 | Physical E8 / compiled REL32 count | 36 | 37 | **37** | 37 |
 | Physical HIGHLOW / compiled DIR32 | 5 | 5 | **5** | 5 |
 | Native stride / candidate stride E8 | 9 / 8 | 9 / 9 | **9 / 9** | 9 / 9 |
@@ -103,14 +110,14 @@ source checkpoint now records four natural lifetime/dataflow corrections:
 | E8 opcode positions exactly aligned | 1 | 2 | **7** | 37 |
 | PE HIGHLOW site/target pairs aligned | 2 | 2 | **4** | 5 |
 | Folded two-int32 array-index calls | 4 | 4 | **4** | 4 |
-| Aggregate absolute E8 offset distance | — | 1,196 | **945** | 0 |
+| Aggregate absolute E8 offset distance | — | 1,196 | **1,039** | 0 |
 
 Both the native PE's *real* physical target destinations and the
 candidate COFF symbol prefix roles are checked in **all 37** positions,
 including `+0x5E7`. Every candidate REL32 is a genuine E8 operand.
 All five original PE HIGHLOW roles are separately checked against the
-actual candidate DIR32 symbols. The 555/612 instruction difference,
-remaining 139B original code-size gap, differing stack slots/EH state,
+actual candidate DIR32 symbols. The 549/612 instruction difference,
+remaining 157B original code-size gap, differing stack slots/EH state,
 and most physical call/data locations mean the parent is **not exact**;
 matching a full call-role census does **not** grant 2,245B game bytes.
 
@@ -129,5 +136,5 @@ replayed: **24/24** previously accepted PMR/color generic descendants
 remained strict whole-native exact. The separately original-exact folded
 22B array helper does **not** receive duplicate credit; there was **no
 full or unfiltered cold replay**. Next: recover the remaining 16-bit stencil
-iterator/pointer-stack lifetime and the original 139B/57-instruction
+iterator/pointer-stack lifetime and the original 157B/63-instruction
 compiler-control-flow gap, without losing any of the 37 call roles.

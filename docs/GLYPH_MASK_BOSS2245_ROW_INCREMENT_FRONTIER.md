@@ -17,7 +17,7 @@ Both `verify-glyph-mask-offset-array2-native.py` and
 `verify-glyph-mask-boss-live-pixels-native.py` now attest this full candidate
 against the pinned original.
 
-**CURRENT SOURCE UPDATE (2026-11-24):** The complete source now compiles to
+**PREVIOUS SOURCE UPDATE (2026-11-24):** The complete source now compiles to
 **2,106B/555-i386**, retaining all **37/37 E8 target roles**, **9/9 live
 stride calls**, and all four genuine folded `std::array<int32_t,2>` index
 calls. A direct `pixel_stride*rows` length expression restores the original

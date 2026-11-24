@@ -1,3 +1,20 @@
+**CORE/RECON-1112 CURRENT SOURCE UPDATE (2026-11-25):** The four
+particle-emitter branches now assign the real `spawn_45d210(...)` return
+value directly into `colors_08[emission_index + n]`, rather than materializing
+an additional named `AnimationHandle` local and then copying it. This is a
+natural C++ return-value/assignment expression; it retains all four distinct
+script IDs and the original Session → EffectInfo → AnimationFile → spawn
+resource chain. The full function now compiles to **2,856B/756 i386**
+(down 20B/four instructions from 2,876B/760). All **99/99 original E8
+target roles** and **25/25 original PE HIGHLOW data-target roles** remain
+identical and in order. Physical E8-site alignment improves from **8/99 to
+14/99**; total absolute E8 offset delta falls from **1,463 to 712**, and the
+first-20 delta falls from **92 to 87**. The native **0x19C** frame and ESI
+age-across-call lifetime remain. The complete 2,884B/768-i386 game Boss is
+still **SOURCE-PRESENT/NONEXACT**; no parent exactness credit is claimed.
+The maintained one-object probe and independent original-role verifier both
+pass for the complete 2,856B candidate.
+
 # CORE/RECON-1111 — 2,884B particle Update: ESI/age, polar and shared-child lifetime convergence
 
 The genuine TH20 Japanese Steamless v1.00a particle-grid virtual Update is

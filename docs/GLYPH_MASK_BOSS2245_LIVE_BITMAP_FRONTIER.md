@@ -17,7 +17,7 @@ Both `verify-glyph-mask-offset-array2-native.py` and
 `verify-glyph-mask-boss-live-pixels-native.py` now attest this full candidate
 against the pinned original.
 
-**CURRENT SOURCE UPDATE (2026-11-24):** The complete source now compiles to
+**PREVIOUS SOURCE UPDATE (2026-11-24):** The complete source now compiles to
 **2,106B/555-i386**, retaining all **37/37 E8 target roles**, **9/9 live
 stride calls**, and all four genuine folded `std::array<int32_t,2>` index
 calls. A direct `pixel_stride*rows` length expression restores the original
@@ -33,7 +33,7 @@ game-authored parent bytes are credited. Scoped replay after the shared
 `PackedColor` layout change passed **24/24** previously exact PMR/color
 descendants. Older source totals below are historical.
 
-**CORE/RECON-1080 CURRENT SOURCE UPDATE:** The native 8B glyph-offset object now uses a real [two-int32 indexed `std::array` instead of the historical plain struct](GLYPH_MASK_OFFSET_ARRAY2_NATIVE_TYPE.md). The complete current source parent is **2,061B/545 i386, 36 E8/5 DIR32** (original whole **2,245B/612 i386, 37 E8/5 HIGHLOW**). Four native folded index calls are present, and the 15 earlier PMR/color strict units still replay exact with the corrected vector template type. Earlier 2,041B/1,987B snapshots below are historical.
+**CORE/RECON-1080 HISTORICAL UPDATE:** The native 8B glyph-offset object now uses a real [two-int32 indexed `std::array` instead of the historical plain struct](GLYPH_MASK_OFFSET_ARRAY2_NATIVE_TYPE.md). The complete current source parent is **2,061B/545 i386, 36 E8/5 DIR32** (original whole **2,245B/612 i386, 37 E8/5 HIGHLOW**). Four native folded index calls are present, and the 15 earlier PMR/color strict units still replay exact with the corrected vector template type. Earlier 2,041B/1,987B snapshots below are historical.
 
 # CORE/RECON-1079 — corrected live bitmap and stride ownership in 2,245B GDI glyph-mask Boss
 

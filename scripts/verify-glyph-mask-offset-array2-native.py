@@ -183,7 +183,7 @@ def verify(candidate):
  print('PASS immutable original whole 2245B/612 game Boss, 37 native E8/5 PE HIGHLOW and both complete pixel-format branches')
  print('PASS original four folded array-index E8 at +0x29E/+0x2B0/+0x666/+0x678, existing 22B array helper whole structural 22/22 (no duplicate credit)')
  print('PASS complete natural 2088B/549-i386 source: 296/1920 ordinary overlap bytes: all 37 E8/5 DIR32 roles, nine live-stride getter calls, including per-pixel RGBA4444 source at native +0x5E7')
- print('PASS 37/37 candidate E8 target roles in original order, typed BGRA destination/stencil alpha-byte views, y-first native short-circuit order, both pixel-format stencil lifetimes; 7/37 E8 and 4/5 PE HIGHLOW sites aligned')
+ print('PASS 37/37 candidate E8 target roles in original order, typed BGRA destination/stencil alpha-byte views, y-first native short-circuit order, direct RGBA4444 early-exit/write topology; 7/37 E8 and 4/5 PE HIGHLOW sites aligned')
  print('PASS all 24 previously accepted PMR/color generic source descendants remain whole native exact')
  print('SOURCE-PRESENT NONEXACT: entire 2088B candidate vs original 2245B parent, no new game-authored code credit')
 if __name__=='__main__':
