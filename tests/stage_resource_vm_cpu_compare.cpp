@@ -1180,15 +1180,21 @@ int wmain(int argc, wchar_t** argv) {
                                 {0.0f, 0.1f, 0.0f}, 4.0f, 5.0f);
                 write_primitive(fixtures[2], 28, -1, 0, 0, {}, 0.0f, 0.0f);
 
-                instances[0] = {0, static_cast<std::int16_t>(random()),
+                auto random_visibility = [&]() {
+                    const auto flags = static_cast<std::uint16_t>(random());
+                    return th20::StageResourceInstanceFlagBits{
+                        static_cast<std::uint16_t>(flags & 1u),
+                        static_cast<std::uint16_t>(flags >> 1)};
+                };
+                instances[0] = {0, random_visibility(),
                                 {0.05f, 0.0f, 0.0f}};
-                instances[1] = {1, static_cast<std::int16_t>(random()),
+                instances[1] = {1, random_visibility(),
                                 {test & 1u ? 100.0f : 0.0f, 0.0f, 0.0f}};
-                instances[2] = {2, static_cast<std::int16_t>(random()),
+                instances[2] = {2, random_visibility(),
                                 {0.0f, 0.0f, 0.0f}};
-                instances[3] = {0, static_cast<std::int16_t>(random()),
+                instances[3] = {0, random_visibility(),
                                 {-0.1f, 0.0f, 0.0f}};
-                instances[4] = {-1, 0, {}};
+                instances[4] = {-1, {}, {}};
             };
 
             auto& sprite = th20::stage_test_sprite_data;

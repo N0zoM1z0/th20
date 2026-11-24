@@ -83,13 +83,11 @@ static_assert(sizeof(StageResourceInstanceFlagBits) == 2);
 // terminating sentinel; each record is exactly two shorts plus a Vector3.
 struct StageResourceInstanceRecord {
     std::int16_t object_index;
-    union {
-        std::int16_t flags;
-        StageResourceInstanceFlagBits flag_bits;
-    };
+    StageResourceInstanceFlagBits visibility;
     Vector3 position;
 };
 static_assert(sizeof(StageResourceInstanceRecord) == 0x10);
+static_assert(offsetof(StageResourceInstanceRecord, visibility) == 0x02);
 static_assert(offsetof(StageResourceInstanceRecord, position) == 0x04);
 
 enum class StageResourcePrimitiveKind : std::int16_t {

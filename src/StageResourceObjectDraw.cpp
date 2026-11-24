@@ -59,7 +59,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                     script_state.scalars.cull_distance_squared,
                     process_graphics.viewports[3]) != 0) {
                 ++render_counts.culled_objects;
-                instance->flag_bits.visible = 0;
+                instance->visibility.visible = 0;
                 goto next_instance;
             }
 
@@ -136,7 +136,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                     primitive, primitive->header.size);
             }
 
-            instance->flag_bits.visible = 1;
+            instance->visibility.visible = 1;
             ++render_counts.visible_objects;
         }
 
