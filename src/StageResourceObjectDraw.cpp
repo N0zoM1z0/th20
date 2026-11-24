@@ -27,9 +27,14 @@ StageResourcePrimitiveTransform* __cdecl advance_stage_resource_primitive(
 }
 
 std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
+    enum class DepthWriteState : std::int32_t {
+        disabled = 0,
+        enabled = 1,
+    };
+
     auto* instance = instance_records;
     // The original /Od body writes this local at each depth transition but never reads it.
-    std::int32_t depth_write_state = 1;
+    DepthWriteState depth_write_state = DepthWriteState::enabled;
     script_state.draw_inline_animations_for_layer(layer);
 
     current_animation_pool->flush_draws();
@@ -114,10 +119,10 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
 
                     if (animation->base.flags.bits_04.depth_write_disabled != 0) {
                         graphics_disable_depth_writes(&process_graphics);
-                        depth_write_state = 0;
+                        depth_write_state = DepthWriteState::disabled;
                     } else {
                         graphics_enable_depth_writes(&process_graphics);
-                        depth_write_state = 1;
+                        depth_write_state = DepthWriteState::enabled;
                     }
 
                     current_animation_pool->draw(animation);
