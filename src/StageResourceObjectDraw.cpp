@@ -21,7 +21,10 @@ std::int32_t __fastcall graphics_disable_fog(Graphics* graphics);
 std::int32_t __fastcall graphics_enable_depth_writes(Graphics* graphics);
 std::int32_t __fastcall graphics_disable_depth_writes(Graphics* graphics);
 StageResourcePrimitiveTransform* __cdecl advance_stage_resource_primitive(
-    StageResourcePrimitiveTransform* primitive, std::int32_t size);
+    StageResourcePrimitiveTransform* primitive, std::int32_t size) {
+    return reinterpret_cast<StageResourcePrimitiveTransform*>(
+        reinterpret_cast<std::byte*>(primitive) + size);
+}
 
 std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
     struct DrawCursor {
@@ -46,53 +49,60 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
             goto next_instance;
 
         {
-        const Vector3 instance_offset(cursor.instance->position.x,
-                                      cursor.instance->position.y,
-                                      cursor.instance->position.z);
-        if (object.is_outside_viewport(
-                instance_offset,
-                *reinterpret_cast<const float*>(
-                    reinterpret_cast<const std::uint8_t*>(this) + 0x32c4),
-                process_graphics.viewports[3]) != 0) {
-            ++render_counts.culled_objects;
-            cursor.instance->flags &= static_cast<std::int16_t>(~1);
-            goto next_instance;
-        }
+            const Vector3 instance_offset(cursor.instance->position.x,
+                                          cursor.instance->position.y,
+                                          cursor.instance->position.z);
+            if (object.is_outside_viewport(
+                    instance_offset,
+                    *reinterpret_cast<const float*>(
+                        reinterpret_cast<const std::uint8_t*>(this) + 0x32c4),
+                    process_graphics.viewports[3]) != 0) {
+                ++render_counts.culled_objects;
+                *reinterpret_cast<std::uint16_t*>(
+                    reinterpret_cast<std::byte*>(cursor.instance) + 2) &= 0xfffeu;
+                goto next_instance;
+            }
 
-        object.flags |= 2u;
-        cursor.primitive = reinterpret_cast<StageResourcePrimitiveTransform*>(
-            reinterpret_cast<std::byte*>(&object) + sizeof(object));
-        while (cursor.primitive->header.type >= 0) {
-            Animation* animation = primitive_animations +
-                cursor.primitive->header.animation_index;
-            const std::int32_t primitive_type = cursor.primitive->header.type;
-            if (primitive_type == 0) {
-                const float original_rotation = animation->rotation_y_value();
-
+            *reinterpret_cast<std::int8_t*>(
+                reinterpret_cast<std::byte*>(&object) + 3) |= 2;
+            cursor.primitive = reinterpret_cast<StageResourcePrimitiveTransform*>(
+                reinterpret_cast<std::byte*>(&object) + sizeof(object));
+            while (cursor.primitive->header.type >= 0) {
+                Animation* animation = primitive_animations +
+                    cursor.primitive->header.animation_index;
+                switch (cursor.primitive->header.type) {
+                case 0:
+                float original_rotation;
+                original_rotation = animation->rotation_y_value();
                 if (animation->base.flags.bytes_00.animation_mode >= 4) {
                     D3DXVECTOR3 local_position;
                     local_position.x = cursor.primitive->position_x;
                     local_position.y = cursor.primitive->position_y;
                     local_position.z = cursor.primitive->position_z;
 
-                    if (object.parameters[2] != native_zero_56e0e8) {
+                    if (*reinterpret_cast<const float*>(
+                            reinterpret_cast<const std::byte*>(&object) + 0x0c) !=
+                        native_zero_56e0e8) {
                         D3DXMATRIX rotation;
                         D3DXVECTOR3 transformed_position;
                         matrix_identity(reinterpret_cast<Matrix4*>(&rotation));
-                        D3DXMatrixRotationY(&rotation, object.parameters[2]);
+                        D3DXMatrixRotationY(&rotation,
+                            *reinterpret_cast<const float*>(
+                                reinterpret_cast<const std::byte*>(&object) + 0x0c));
                         D3DXVec3TransformCoord(&transformed_position,
                                                &local_position, &rotation);
                         local_position = transformed_position;
                         animation->set_rotation_y_forward(normalize_angle(
-                            original_rotation + object.parameters[2]));
+                            original_rotation + *reinterpret_cast<const float*>(
+                                reinterpret_cast<const std::byte*>(&object) + 0x0c)));
                     }
 
                     animation->vector_5bc.x =
-                        local_position.x + instance_offset.x;
+                        local_position.x + cursor.instance->position.x;
                     animation->vector_5bc.y =
-                        local_position.y + instance_offset.y;
+                        local_position.y + cursor.instance->position.y;
                     animation->vector_5bc.z =
-                        local_position.z + instance_offset.z;
+                        local_position.z + cursor.instance->position.z;
 
                     if (cursor.primitive->scale_x != native_zero_56e0e8) {
                         animation->set_scale_x(cursor.primitive->scale_x /
@@ -122,14 +132,20 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                 current_animation_pool->draw(animation);
                 animation->set_rotation_y_forward(original_rotation);
                 ++render_counts.primitive_draws;
+                    break;
+                default:
+                    goto advance_primitive;
+                }
+advance_primitive:
+                cursor.primitive = advance_stage_resource_primitive(
+                    cursor.primitive, cursor.primitive->header.size);
             }
-            cursor.primitive = advance_stage_resource_primitive(
-                cursor.primitive, cursor.primitive->header.size);
+
+            *reinterpret_cast<std::uint16_t*>(
+                reinterpret_cast<std::byte*>(cursor.instance) + 2) |= 1u;
+            ++render_counts.visible_objects;
         }
 
-        cursor.instance->flags |= 1;
-        ++render_counts.visible_objects;
-        }
 next_instance:
         ++cursor.instance;
     }

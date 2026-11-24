@@ -60,6 +60,7 @@ struct StageResourcePrimitiveHeader {
     std::int16_t size;
     std::int16_t script_index;
     std::int16_t animation_index;
+    StageResourcePrimitiveHeader* advance(std::int32_t size);
 };
 static_assert(sizeof(StageResourcePrimitiveHeader) == 8);
 static_assert(offsetof(StageResourcePrimitiveHeader, animation_index) == 0x06);
