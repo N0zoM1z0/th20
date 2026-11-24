@@ -117,6 +117,14 @@ def main():
     assert "animation->retirement_state != 0" in text
     assert "offsetof(Animation, retirement_state) == 0x570" in text
 
+    # Mode45 intentionally reverses the two equal half-height calculations
+    # to keep native register-register ADDSS and its renderer call position.
+    # The original PE instead uses the pre-getter half for adjusted scale and
+    # recomputes width's half after the getter; this is value-equivalent only.
+    assert "const float half_for_width = height / native_two;" in text
+    assert "const float adjusted_scale = animation_inherited_aux_scale_x(animation) + (height/native_two);" in text
+    assert "width+half_for_width,adjusted_scale,height" in text
+
     # Mode46's native dataflow is asymmetric: the pre-getter half-height is
     # retained for adjusted scale, while width recomputes its half after the
     # getter. Guard this source-level ownership separately from byte scoring.
@@ -303,7 +311,7 @@ def main():
     print(f"PASS first 81 consecutive E8 instruction sites and {matched_call_sites}/123 complete original E8 physical positions (all 123 targets in order)")
     print(f"PASS 32/32 native PE in-body HIGHLOW roles, {matched_data_sites}/32 exact site/target pairs")
     print("PASS mode6 native thiscall and two original eight-parameter draw helper receiver/stack roles are in source")
-    print("PASS mode46 pre-getter scale half and post-getter width half ownership")
+    print("PASS mode45 value-equivalent half-height role swap and mode46 native ownership")
     print(f"PASS candidate code {code_end}B/{len(code)} x86 with native stack frame 0x204; complete COFF {len(compiled)}B including 3B alignment+80 true pointer fields")
     print(f"NONEXACT parent: only {comparable_bytes}/5376 nonrelocation bytes equal; remaining nested-case local life and relocation offsets differ; zero game exact credit")
 

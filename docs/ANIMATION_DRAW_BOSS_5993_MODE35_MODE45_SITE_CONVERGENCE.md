@@ -14,13 +14,17 @@ backend ABI evidence remains in the independent original-only
 and [`verify-animation-draw-boss-abi.py`](../scripts/verify-animation-draw-boss-abi.py).
 
 The current maintained full function is still **5,993B/1,501 i386**, with
-its `0x204` frame and 6,316B real code+table COFF contribution. Mode45 still computes its width half before the getter and recomputes the
-adjusted-scale half after the getter, while native mode45 reuses one saved
-half-height for both. Mode46 has been corrected to native source-level
-ownership: its saved pre-getter half feeds adjusted scale and its width half
-is recomputed after the getter. MSVC still chooses the shorter direct-memory
-adjusted-scale subtraction, leaving the final mode46 renderer call four bytes
-early. This is ordinary C++,
+its `0x204` frame and 6,316B real code+table COFF contribution. Mode45 uses a
+value-equivalent role swap: the pre-getter half feeds width and the post-getter
+half feeds adjusted scale. Native mode45 instead uses the pre-getter half for
+adjusted scale and recomputes the width half after the getter. The maintained
+swap preserves the native register-register `addss` and renderer call position,
+but moves the second `native_two` relocation from the native width site to the
+adjusted-scale expression. Mode46 follows native half-height ownership: its
+pre-getter half feeds adjusted scale and its width half is recomputed after the
+getter. MSVC still chooses the shorter direct-memory adjusted-scale
+subtraction, leaving the final mode46 renderer call four bytes early. This is
+ordinary C++,
 not a byte patch or padding. The mode46 ownership correction keeps the native 5,993B/1,501-instruction
 extent, **114/123** physical E8 positions and **27/32** exact body relocation
 site/target pairs. Its current ordinary-byte agreement is **4,834/5,376**,

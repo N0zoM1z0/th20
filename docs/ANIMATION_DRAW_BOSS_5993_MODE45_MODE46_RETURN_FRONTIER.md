@@ -7,7 +7,8 @@ The current whole-source metrics are **114/123** original E8 physical sites,
 **27/32** exact in-body relocation site/target pairs and **4,834/5,376**
 ordinary bytes. The latest source correction restores native mode46 half-height
 ownership; the remaining code-generation frontier is the mode46 adjusted-scale
-register operand, mode45 half reuse, and the earlier mode35/36 call deltas.
+register operand, mode45 half-height operand ownership/relocation position,
+and the earlier mode35/36 call deltas.
 This report does not claim exactness.
 
 ## Native mode45 and mode46 lifetimes
@@ -27,7 +28,8 @@ Mode45 first reads both packed colors and the draw count. It then computes
 and calls the inherited-scale getter at `+0x15dd`. The returned x87 value is
 spilled, reloaded to XMM0, and added to a separately reloaded half-height in
 XMM1. The adjusted value is stored before the renderer arguments are pushed.
-The same saved half-height is loaded again for the width argument.
+The width argument independently recomputes `height / 2.0f` after the
+getter; it does not reuse the saved scale half-height.
 
 Mode46 follows the corresponding sequence: packed colors and count, a fresh
 half-height division, receiver load and half-height spill, inherited-scale call
@@ -51,10 +53,14 @@ subss xmm0, xmm1
 movss [ebp-0x200], xmm0
 ```
 
-The maintained mode45 C++ still computes the half-height for width before the
-getter and recomputes it for adjusted scale after the getter. The values are
-equivalent, but native mode45 reuses the pre-getter half-height for both
-arguments; that local-lifetime/code-generation difference remains open.
+The maintained mode45 C++ deliberately uses a value-equivalent role swap:
+its pre-getter half-height feeds width, and its post-getter half-height feeds
+adjusted scale. Native mode45 does the opposite: the pre-getter half-height
+feeds adjusted scale, while width independently recomputes the half-height
+after the getter. The role swap retains native register-register `addss` and
+the renderer call position, but moves the second `native_two` relocation from
+the native width calculation to the adjusted-scale calculation. It is a
+measured source/code-generation tradeoff, not the native temporary ownership.
 
 Mode46 has now been corrected to native source-level ownership: its pre-getter
 half-height feeds adjusted scale, and the width expression independently
@@ -69,13 +75,14 @@ native register-register form. The whole-parent ordinary-byte score is
 
 ## Bounded source probes
 
-A natural-C++ variant with mode45's used half-height and adjusted-scale locals
-owned by the nested switch restores the native inherited-scale call position
-at `+0x15dd`. The complete isolated function then compiles to 5,989B/1,500
-instructions, four bytes short, and only 109/123 E8 sites align: the mode45
-renderer and subsequent mode46 calls remain displaced by the missing
-register-register arithmetic bytes. This is not an improvement over the
-maintained 5,993B baseline and was not promoted.
+A native-source-order mode45 probe keeps the pre-getter half for adjusted
+scale and recomputes the width half after the getter. MSVC then selects the
+shorter memory-source `addss`, producing a 5,989B/1,500-instruction body,
+109/123 E8 positions and 4,688/5,372 ordinary-byte matches. The maintained
+value-equivalent role swap retains 5,993B/1,501 instructions, 114/123 E8
+positions and 4,834/5,376 ordinary-byte matches, so the source-order probe was
+not promoted. Its result confirms the tradeoff is caused by the scalar SSE
+operand form rather than a missing getter or renderer call.
 
 A second isolated variant removes the redundant `return 0` immediately after
 the nested switch and naturally falls through to the existing outer-switch
@@ -162,7 +169,7 @@ in ordinary C++. It keeps the `0x204` frame, but the full parent is only
 **5,989B/1,500 instructions**, **89/123** E8 sites, **24/32** data sites and
 **3,794/5,372** ordinary bytes. The extra local changes too much of the
 parent's stack and relocation layout; this is not promoted over the maintained
-**4,835/5,376** baseline.
+**4,834/5,376** baseline.
 
 A separate mode36-only role swap on the maintained source keeps the native
 5,993B/1,501-instruction body and **114/123** E8 sites, and aligns the final
@@ -207,7 +214,7 @@ the exact getter nor its declaration is changed.
 
 The current maintained full-body object has the established 5,993B/1,501
 instruction baseline, **114/123** native E8 instruction offsets, **27/32**
-exact in-body relocation positions and **4,835/5,376** ordinary-byte matches.
+exact in-body relocation positions and **4,834/5,376** ordinary-byte matches.
 Its remaining mode35/36 arithmetic difference is precise: native mode35 loads
 the spilled half-height with `movss xmm1, [ebp-0x14c]` before `addss xmm0,
 xmm1`; native mode36 similarly loads `[ebp-0x168]` into XMM1 before
