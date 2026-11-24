@@ -26,8 +26,10 @@ through its real `0x00435284` sentinel base with the already-checked
 `opcode + 1` cursor trims another four code bytes and two instruction heads.
 The 636-byte table begins with the signed-opcode `-1` sentinel at index zero;
 the range-checked `opcode + 1` cursor now indexes from the true `0x00435284`
-base rather than forming a negative array index. Its original bytes are SHA-pinned
-by the focused probe (`a030f37522ea5b860c9a06ab56c02978832b477fd4e7c6f94957fbadc7cab34d`).
+base rather than forming a negative array index. It is source-defined as native
+`.rdata` in `src/AnimationOpcodeDispatchTable.cpp`; its dedicated probe compares
+all 636 COFF bytes and the external ABI symbol against the original PE.
+SHA-256: `a030f37522ea5b860c9a06ab56c02978832b477fd4e7c6f94957fbadc7cab34d`.
 The candidate now has **16/505** exact physical E8 offsets and aggregate E8-offset distance
 **54,560 bytes**; all 505 original call targets and the three child-spawn/
 writeback subsequences remain verified.
