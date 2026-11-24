@@ -51,8 +51,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                                           instance->position.z);
             if (object.is_outside_viewport(
                     instance_offset,
-                    *reinterpret_cast<const float*>(
-                        reinterpret_cast<const std::uint8_t*>(this) + 0x32c4),
+                    script_state.scalars.cull_distance_squared,
                     process_graphics.viewports[3]) != 0) {
                 ++render_counts.culled_objects;
                 instance->flag_bits.visible = 0;

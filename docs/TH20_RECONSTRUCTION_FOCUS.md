@@ -15,12 +15,12 @@ Do not select or begin reconstructing another function until this function has a
 
 The boss is restored as natural C++: the inline-animation prelude, render-state transitions, instance/object traversal, viewport culling, object-space Y rotation, sprite-relative scale, animation-pool submissions, instance visibility bit, and render counters are all represented directly in source.
 
-The primitive stream advance is a separate natural C++ cdecl helper at 0x00471160, returning primitive plus signed size. Its 11-byte contribution is independently replayed exactly and its call relocation is included in the boss comparison. The instance visibility bit is represented as a one-bit C++ bitfield sharing the native 16-bit flags word. The object flag byte now has explicit signed and unsigned C++ union views: the draw boss uses the signed view required by the native MOVSX/OR sequence, while other object logic retains its unsigned flag view. This removes the raw byte-offset write without changing the 0x30-byte record layout or any generated target byte.
+The primitive stream advance is a separate natural C++ cdecl helper at 0x00471160, returning primitive plus signed size. Its 11-byte contribution is independently replayed exactly and its call relocation is included in the boss comparison. The instance visibility bit is represented as a one-bit C++ bitfield sharing the native 16-bit flags word. The object flag byte now has explicit signed and unsigned C++ union views: the draw boss uses the signed view required by the native MOVSX/OR sequence, while other object logic retains its unsigned flag view. The script state's formerly raw owner+0x32c4 cull-distance read is now a standard C++ typed overlay at StageBackgroundScriptScalars::cull_distance_squared, statically anchored at script-state+0x32b4 (owner+0x32c4). The 17-word storage view remains available to existing VM code, and the typed overlay preserves layout and exact codegen.
 
 ## Local verification
 
 - Pinned MSVC 19.44.35211 i386 COFF build.
-- stage_resource_object_draw_layer: 1119/1119 bytes exact, 48/48 native relocations, no first differences. Pinned COFF object SHA-256: 3d258f8b34cb161b7b0a46bcd566948ebc914279ce49c21cb3476301cb8136b4.
+- stage_resource_object_draw_layer: 1119/1119 bytes exact, 48/48 native relocations, no first differences. Pinned COFF object SHA-256: fafe759d22646c28553cd4ca392420f1efe4fe1abc58734eb8ea601d2332ff43.
 - stage_resource_primitive_advance: 11/11 bytes exact, no relocations.
 - Original PE vs maintained C++ StageResource CPU oracle: 47,750 checks, 0 failures. The test harness routes source-side D3DX calls through the same deterministic test seams used for the native PE import slots.
 

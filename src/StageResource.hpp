@@ -109,6 +109,16 @@ static_assert(offsetof(StageResourceInstructionHeader, opcode) == 0x4);
 static_assert(offsetof(StageResourceInstructionHeader, size) == 0x6);
 static_assert(offsetof(StageResourceInstructionHeader, arguments) == 0x8);
 
+// Typed overlay for the script-state scalar slots. The cull radius squared
+// is independently consumed as a float by the native object-layer draw path.
+struct StageBackgroundScriptScalars {
+    std::uint32_t fields_before_cull_distance[8];
+    float cull_distance_squared;
+    std::uint32_t fields_after_cull_distance[8];
+};
+static_assert(sizeof(StageBackgroundScriptScalars) == 0x44);
+static_assert(offsetof(StageBackgroundScriptScalars, cull_distance_squared) == 0x20);
+
 // Native ScriptState is the 0x3310-byte subobject at Background+0x10.
 // Its historical class/type spelling is still unresolved; this view names
 // only fields independently anchored by the original VM and Fog routines.
@@ -127,7 +137,10 @@ struct StageBackgroundFogOwner {
     ViewportState camera;
     StageResourceOwner* owner;
     Animation animations[8];
-    std::uint32_t fields_3294[17];
+    union {
+        std::uint32_t fields_3294[17];
+        StageBackgroundScriptScalars scalars;
+    };
     Timer mesh_timers[2];
     float mesh_phase_x[2];
     float mesh_phase_y[2];
@@ -195,6 +208,9 @@ static_assert(offsetof(StageBackgroundScriptState, owner) == 0x370);
 #if defined(_M_IX86)
 static_assert(offsetof(StageBackgroundScriptState, animations) == 0x374);
 static_assert(offsetof(StageBackgroundScriptState, fields_3294) == 0x3294);
+static_assert(offsetof(StageBackgroundScriptState, scalars) +
+              offsetof(StageBackgroundScriptScalars, cull_distance_squared) ==
+              0x32b4);
 static_assert(offsetof(StageBackgroundScriptState, mesh_timers) == 0x32d8);
 static_assert(offsetof(StageBackgroundScriptState, mesh_phase_x) == 0x32f8);
 static_assert(offsetof(StageBackgroundScriptState, mesh_phase_y) == 0x3300);
