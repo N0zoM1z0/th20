@@ -28,4 +28,4 @@ These are local strict-COFF and semantic-oracle results. They do not, by themsel
 
 ## Remaining acceptance gate
 
-The registered Factory adapter currently exposes only the imported boundary claim for 0x00474880; it has not imported source-present or codegen-exact claims for this function. Submit and obtain the fresh Factory-controlled replay receipt, then verify both receipt_verdict=pass and acceptance_decision=accepted. Keep this focus lock in place until that happens.
+The registered Factory adapter currently exposes only the imported boundary claim for 0x00474880; it has not imported source-present or codegen-exact claims for this function. A replay submission using that boundary claim was attempted, but Factory returned that repository th20 is not registered with the configured replay worker. Until an operator registers the repository and a fresh Factory-controlled replay returns receipt_verdict=pass plus acceptance_decision=accepted, keep this focus lock in place. The local strict replay and CPU differential results above remain valid but are not Factory acceptance.
