@@ -1,35 +1,37 @@
 # Animation::update — 39,470-byte VM Boss source reconstruction
 
+## 2026-11-24 current source checkpoint: typed variable-length instruction header
+
+The 39,470B native boss is **SOURCE-PRESENT, NONEXACT** in
+`src/AnimationUpdate39470.cpp`. `src/AnmInstruction.hpp` models the native
+fixed header: signed opcode at `+0`, unsigned byte advance at `+2`, signed
+frame at `+4`, and operand flags at `+6`. `first_operand` at `+8` anchors the
+variable-width operand stream; the byte-advance field, not `sizeof`, advances
+the script PC. The main VM cursor and case-3 scan cursor use this typed record.
+All 161 opcode labels and the full 505-call target multiset remain present.
+
+The current focused candidate is **39,764B COFF contribution**: **39,120B
+code plus the 644B 161-entry compiler switch table**, 8,453 code instructions,
+frame `0x7F8`, 505 E8 calls and 215 DIR32 relocations (162 switch-label plus
+53 external data/constructor/cookie references). The code is 350 bytes shorter
+than the original 39,470B body. Splitting the original frame/flag early-outs
+into explicit natural C++ control-flow tests moves the first call-site mismatch
+from E8 index 7 to index 10: the first ten consecutive E8 positions now align,
+with **12/505** physical E8 offsets matching overall. All 505 original call
+targets and the three child-spawn/writeback subsequences remain verified.
+
+The affected File/operand closure strictly replayed **21/21 units in 8 cold
+objects**, including the 165/244/301/835B operand leaves, 338B script loader
+and 619B child-update helper. The eight VM leaf bodies independently verify
+**305/305 bytes** with zero ordinary-byte differences. The original body has
+55 PE HIGHLOW fields. This is source and ABI progress, not exactness: no
+39,470B exact unit or game-byte credit is claimed.
+
 Target: Japanese TH20 v1.00a Steamless, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 The complete original function is `0x0042B5D0..0x00434FFD`, **39,470 bytes**.
 Its immutable PE body SHA-256 is
 `044f8246c167aaaf50c00a46a86baa1898e70af55ca5715bcc2450289ba83b87`.
-
-**2026-11-24 current source update — typed variable-length instruction record.**
-The maintained `AnimationFile::script` result and the VM's main and case-3
-scan cursors now use `AnmInstruction`. Its native fixed header is eight bytes:
-`opcode` at `+0`, unsigned `byte_advance` at `+2`, signed `frame` at `+4`, and
-`operand_flags` at `+6`. `first_operand` at `+8` anchors the variable-width
-operand stream; records advance by the native `byte_advance`, never by
-`sizeof(AnmInstruction)` (12 bytes including that first operand anchor).
-All 161 switch labels and the full 505-call target multiset remain present.
-
-The focused current candidate is **39,752B COFF contribution**: **39,108B
-code plus the 644B 161-entry compiler switch table**, 8,449 code instructions,
-frame `0x7F8`, 505 E8 calls and 215 DIR32 relocations (162 switch-label plus
-53 external data/constructor/cookie references). The code is 362 bytes shorter
-than the original 39,470B body; the complete COFF contribution includes its
-644B compiler switch table. The probe confirms the 505 original call targets
-and the three child-spawn/writeback call subsequences, but only **7/505** E8
-instruction offsets physically coincide (absolute offset delta 53,051).
-The original body has 55 PE HIGHLOW fields. The affected File/operand closure
-also strictly replayed **21/21 units in 8 cold objects**, including the complete
-165/244/301/835B operand leaves, the 338B script loader and the 619B child-update
-helper. The eight VM leaf bodies independently verify **305/305 bytes** with
-zero ordinary-byte differences. This is typed-source progress, not exactness:
-no 39,470B exact unit or game-byte credit is claimed.
-
 
 ## Recovered dispatcher structure
 

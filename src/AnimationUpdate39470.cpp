@@ -69,8 +69,10 @@ std::int32_t Animation::update() {
   if (field_5dc != nullptr && this->field_5dc(this) != 0) {
     goto LAB_00434fd1;
   }
-  if ((-1 < base.field_28) && ((base.flags.word_04 >> 0x19 & 1) == 0)
-     ) {
+  // Preserve the two native early-out gates as distinct control-flow tests.
+  if (base.field_28 < 0) goto LAB_00434fb5;
+  if ((base.flags.word_04 >> 0x19 & 1) != 0) goto LAB_00434fb5;
+  {
     timer_4d8++;
     if (base.field_438 != 0) {
       AnimationFile* local_774;

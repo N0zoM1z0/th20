@@ -25,9 +25,9 @@ ORIGINAL_CALLS=505
 ORIGINAL_HIGHLOW=55
 SYMBOL='?update@Animation@th20@@QAEHXZ'
 ORIGINAL_CALL_TARGET_SEQUENCE=[]
-CANDIDATE_SIZE=39752
-CANDIDATE_CODE_SIZE=39108
-CANDIDATE_INSTRUCTIONS=8449
+CANDIDATE_SIZE=39764
+CANDIDATE_CODE_SIZE=39120
+CANDIDATE_INSTRUCTIONS=8453
 CANDIDATE_STACK_FRAME=0x7f8
 CANDIDATE_DIR32=215
 CANDIDATE_LOCAL_LABEL_DIR32=162
@@ -98,7 +98,11 @@ def compile_candidate(original_targets):
  assert 'offsetof(AnmInstruction, first_operand) == 8' in instruction_header
  assert 'sizeof(AnmInstruction) == 12' in instruction_header
  assert re.search(r'AnmInstruction\s*\*\s*instruction',text)
- assert 'instruction->byte_advance' in text
+ assert re.search(r'AnmInstruction\s*\*\s*scan_instruction',text)
+ assert 'instruction->opcode' in text and 'instruction->frame' in text
+ assert 'instruction->operand_flags' in text and 'instruction->byte_advance' in text
+ assert 'if (base.field_28 < 0) goto LAB_00434fb5;' in text
+ assert 'if ((base.flags.word_04 >> 0x19 & 1) != 0) goto LAB_00434fb5;' in text
  for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
   assert forbidden not in text,forbidden
  obj=ROOT/'build/gptweb-animation-vm-boss/AnimationUpdate39470.obj';obj.parent.mkdir(parents=True,exist_ok=True)
