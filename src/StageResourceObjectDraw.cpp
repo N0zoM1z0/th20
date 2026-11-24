@@ -41,8 +41,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
     graphics_enable_fog(&process_graphics);
     reinterpret_cast<NativeGraphicsModeAction&>(process_graphics)
         .select_view_477520(3);
-    reinterpret_cast<NativeAnimationResetHooks*>(current_animation_pool)
-        ->set_draw_mode_477770(1);
+    current_animation_pool->set_draw_mode_477770(1);
 
     while (instance->object_index >= 0) {
         StageResourceObjectRecord& object =
@@ -147,8 +146,7 @@ next_instance:
     }
 
     graphics_disable_depth_writes(&process_graphics);
-    reinterpret_cast<NativeAnimationResetHooks*>(current_animation_pool)
-        ->reset_after_stage_draw_4750a0();
+    current_animation_pool->reset_after_stage_draw_4750a0();
     current_animation_pool->flush_draws();
     return 0;
 }

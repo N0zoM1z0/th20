@@ -1,4 +1,6 @@
 #pragma once
+#include "NativeAnimationResetHooksBase.hpp"
+
 #include <cstdint>
 
 namespace th20 {
@@ -10,7 +12,7 @@ class AnimationFile;
 // unresolved; its pointer is published by native startup at 0x005C0028.
 // Keep one definition across separate native callers rather than inventing
 // different classes with coincidentally equivalent calling conventions.
-struct AnimationPoolOwner {
+struct AnimationPoolOwner : NativeAnimationResetHooks {
     std::int32_t release_animation(Animation* animation);
     void select_draw_layer(std::int32_t layer, std::int32_t view_index);
     std::int32_t draw(Animation* animation);
