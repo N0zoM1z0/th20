@@ -106,6 +106,7 @@ def compile_candidate(original_targets):
  assert 'current_game_controller->animation_frozen() != 0) goto LAB_00434fb5;' in text
  assert 'if (instruction->frame <= static_cast<std::int32_t>(timer_4c8)) goto LAB_vm_frame_ready;' in text
  assert 'goto LAB_00434dce;\nLAB_vm_frame_ready:' in text
+ assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_554 = this->integer_value((&instruction->first_operand)[0]);' in text
  for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
   assert forbidden not in text,forbidden
  obj=ROOT/'build/gptweb-animation-vm-boss/AnimationUpdate39470.obj';obj.parent.mkdir(parents=True,exist_ok=True)

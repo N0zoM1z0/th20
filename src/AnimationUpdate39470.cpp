@@ -119,11 +119,11 @@ switchD_0042b8cc_caseD_a0:
       }
       case 0x68: {
         std::uint32_t local_554;
-        if ((instruction->operand_flags & 1U) == 0) {
-          local_554 = (&instruction->first_operand)[0];
+        if ((instruction->operand_flags & 1U) != 0) {
+          local_554 = this->integer_value((&instruction->first_operand)[0]);
         }
         else {
-          local_554 = this->integer_value((&instruction->first_operand)[0]);
+          local_554 = (&instruction->first_operand)[0];
         }
         base.flags.word_04 =
              base.flags.word_04 & 0xfffffeff | (local_554 & 1) << 8;
