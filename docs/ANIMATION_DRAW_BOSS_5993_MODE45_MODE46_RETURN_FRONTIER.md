@@ -215,7 +215,20 @@ the two register-register SSE operands, followed by the first getter's native
 x87 spill ownership. A switch-scope `first_scale_result` probe did recover
 `fstp [ebp-0x160]` in both modes without changing the 0x204 frame, but its
 5,985B body, 84/123 E8 positions, 23/32 data sites and 3,710/5,368 ordinary
-bytes make it worse than the maintained source, so it was not promoted. The
+bytes make it worse than the maintained source, so it was not promoted.
+
+A follow-up combined that first-result capture with the value-equivalent
+half-height role swap in both modes. It restores register-register `addss`
+and `subss` by recomputing the half-height after each getter, while the
+pre-getter half feeds width. Both first-result stores remain at
+`[ebp-0x160]`, the frame remains `0x204`, and the whole function is
+5,989B/1,500 instructions. The first 89/123 E8 positions now align, but
+the mode36 renderer call is still four bytes early; the later calls remain
+displaced. This is not promoted because it loses to the maintained source's
+114/123 E8 positions and 4,834/5,376 ordinary bytes, and still depends on
+an unread first-result local whose source ownership is unproven.
+
+The
 exact 93B getter and its `float` declaration remain unchanged. The only active
 target remains the 5,993B Draw Boss; no function switch is authorized before
 its complete strict exact replay.
