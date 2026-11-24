@@ -299,11 +299,13 @@ source-present but NONEXACT.
 
 1. Continue only `AnimationPoolOwner::draw(Animation*)` at `0x00443880`
    until its complete 5,993B body and original relocations replay strict
-   exact. The current source reaches **4,835/5,376** ordinary bytes,
+   exact. The current source reaches **4,834/5,376** ordinary bytes,
    **114/123** physical E8 sites and **27/32** exact data site/target pairs.
-   The open frontier is eight mode35/36 call-site deltas and their two
-   adjusted-scale SSE register operands, the first-getter x87 spill, and the
-   mode46 width subtraction (the final renderer call is four bytes early). The inherited-scale getter's exact 93B `float` ABI is closed;
+   The open frontier is eight mode35/36 call-site deltas and their adjusted-scale
+   SSE register operands, the first-getter x87 spill, mode45's saved-half reuse,
+   and mode46's adjusted-scale SSE register operand (the final renderer call is
+   four bytes early). Mode46's half-height ownership and width recomputation
+   now follow the original order. The inherited-scale getter's exact 93B `float` ABI is closed;
    Ghidra's `float10` does not justify MSVC `long double`. See
    [the focused mode45/46 frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md)
    and [the full-body convergence report](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md).

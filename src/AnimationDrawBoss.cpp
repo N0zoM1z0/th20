@@ -305,17 +305,17 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         break;
     }
     case 46: {
-        // Both native half-height calculations are pure and value-identical.
-        // Give the pre-getter result to width and recompute the scale half
-        // after the getter; this preserves values and yields register SSE
-        // subtraction instead of the shorter direct-memory form.
+        // Native mode46 retains the pre-getter half-height for the inherited
+        // scale subtraction, then independently recomputes the width half
+        // after the getter. Keep those two source expressions in that order.
         const auto secondary_color=animation_draw_color_494(animation);
         const auto primary_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;
-        const float half_for_width=height/native_two;
-        const float adjusted_scale=animation_inherited_aux_scale_x(animation)-(height/native_two);
+        const float half_for_scale=height/native_two;
+        const float inherited_scale=animation_inherited_aux_scale_x(animation);
+        const float adjusted_scale=inherited_scale-half_for_scale;
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30(
-            position.x,position.y,width-half_for_width,adjusted_scale,height,
+            position.x,position.y,width-(height/native_two),adjusted_scale,height,
             angle,quad_count,primary_color,secondary_color);
         break;
     }

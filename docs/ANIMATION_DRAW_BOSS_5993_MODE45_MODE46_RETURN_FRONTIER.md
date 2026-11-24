@@ -4,15 +4,18 @@ The maintained `AnimationPoolOwner::draw(Animation*)` at `0x00443880` remains
 SOURCE-PRESENT/NONEXACT. Its current production body is 5,993B/1,501
 instructions with a 0x204 frame and 6,316B complete code+table contribution.
 The current whole-source metrics are **114/123** original E8 physical sites,
-**27/32** exact in-body relocation site/target pairs and **4,835/5,376**
-ordinary bytes. This report records the native mode45/46 lifetimes, the
-value-equivalent C++ role swap now maintained in source, and rejected
-alternatives; it does not claim exactness.
+**27/32** exact in-body relocation site/target pairs and **4,834/5,376**
+ordinary bytes. The latest source correction restores native mode46 half-height
+ownership; the remaining code-generation frontier is the mode46 adjusted-scale
+register operand, mode45 half reuse, and the earlier mode35/36 call deltas.
+This report does not claim exactness.
 
 ## Native mode45 and mode46 lifetimes
 
 The original PE keeps distinct half-height, inherited-scale and adjusted-scale
-locals for each mode. These are not one shared precomputed half-height:
+locals for each mode. Mode45 reuses one saved half-height for both adjusted
+scale and width; mode46 reuses the saved half for adjusted scale and recomputes
+the width half after the getter:
 
 | Mode | Half-height | Inherited scale | Adjusted scale | Native draw call |
 | --- | --- | --- | --- | --- |
@@ -24,13 +27,12 @@ Mode45 first reads both packed colors and the draw count. It then computes
 and calls the inherited-scale getter at `+0x15dd`. The returned x87 value is
 spilled, reloaded to XMM0, and added to a separately reloaded half-height in
 XMM1. The adjusted value is stored before the renderer arguments are pushed.
-A second independent `height / 2.0f` computes the width argument.
+The same saved half-height is loaded again for the width argument.
 
 Mode46 follows the corresponding sequence: packed colors and count, a fresh
 half-height division, receiver load and half-height spill, inherited-scale call
 at `+0x16bc`, x87 spill, then XMM0/XMM1 subtraction and adjusted-scale spill.
-Its width argument performs another independent half-height division. The
-native renderer call is at `+0x1751`, followed by the common return/cookie path.
+Its width argument performs another independent half-height division after the getter. The native renderer call is at `+0x1751`, followed by the common return/cookie path.
 
 The two arithmetic sequences that matter for the remaining four-byte deltas
 are:
@@ -49,18 +51,21 @@ subss xmm0, xmm1
 movss [ebp-0x200], xmm0
 ```
 
-Mode45's maintained C++ source uses a value-equivalent role swap: the first
-half-height is retained as the real width operand, while the adjusted-scale
-expression recomputes the same `height / native_two` after the inherited-scale
-getter. This produces the native register-register `addss xmm0, xmm1` and
-aligns mode45 call positions. Mode46 now uses the same value-equivalent
-arrangement: its pre-getter half-height feeds width, while adjusted scale
-recomputes the identical half after the getter. This recovers a
-register-register `subss xmm0, xmm1` for adjusted scale. The remaining mode46
-width subtraction is still the shorter direct-memory form, so the final mode46
-renderer call remains four bytes early. Both changes preserve the two
-independent half-height calculations and all actual renderer argument values;
-no dummy local, volatile qualifier, opcode or padding is used.
+The maintained mode45 C++ still computes the half-height for width before the
+getter and recomputes it for adjusted scale after the getter. The values are
+equivalent, but native mode45 reuses the pre-getter half-height for both
+arguments; that local-lifetime/code-generation difference remains open.
+
+Mode46 has now been corrected to native source-level ownership: its pre-getter
+half-height feeds adjusted scale, and the width expression independently
+recomputes `height / native_two` after the getter. The compiled body retains
+5,993B/1,501 instructions, 114/123 E8 positions and 27/32 exact data-site
+pairs. MSVC still emits the adjusted-scale subtraction as the shorter
+`subss xmm0, [half]` instead of native `movss xmm1, [half]; subss xmm0, xmm1`;
+that four-byte instruction delta leaves the final mode46 renderer call at
+`+0x174d` rather than native `+0x1751`. The width subtraction now follows the
+native register-register form. The whole-parent ordinary-byte score is
+4,834/5,376. No opcode or padding is introduced.
 
 ## Bounded source probes
 
@@ -147,7 +152,7 @@ register-register form. SSE intrinsic attempts materialize 16-byte vector
 temporaries and expand the function beyond 6,100B. These remain isolated
 experiments; production stays at **5,993B/1,501 instructions**, frame
 `0x204`, **114/123** E8 positions, **27/32** data sites and
-**4,835/5,376** ordinary bytes.
+**4,834/5,376** ordinary bytes.
 
 ## Whole-parent cost of recovering the first spills and SSE register forms
 
@@ -219,21 +224,25 @@ the surrounding native call order and stack ownership. MSVC 19.44 warns that
 they are not natural or useful replacements. These experiments remain ignored
 under `.analysis/` and `build/`.
 
-Mode45 and mode46 now use the same maintained *value-equivalent role swap*.
-Each computes the first half into a `half_for_width` local before the getter,
-then computes `height / native_two` again in the adjusted-scale expression
-after the getter. The first result feeds renderer width and the second feeds
-adjusted scale. Both adjusted-scale operations now use the native
-register-register SSE form (`addss` in mode45 and `subss` in mode46). Mode46's
-width expression still selects a shorter direct-memory subtraction; its
-renderer E8 is candidate `+0x174d` versus native `+0x1751`.
+Mode45 still uses a value-equivalent role swap: its pre-getter half feeds
+width and a second `height / native_two` calculation after the getter feeds
+adjusted scale. The adjusted-scale operation has the native register-register
+`addss` form, but the native code reuses the saved half-height instead of
+recomputing it. That lifetime difference remains open.
+
+Mode46 now follows native source-level ownership: its pre-getter half feeds
+adjusted scale and its width expression recomputes `height / native_two` after
+the getter. The compiler emits the adjusted-scale subtraction as a shorter
+direct-memory `subss`; the final renderer E8 remains candidate `+0x174d` versus
+native `+0x1751`. The width subtraction now has the native register-register
+form.
 
 A follow-up natural expression `0.0f - (half_for_width - width)` makes the
 full body 5,993B/1,501 instructions, but inserts a non-native `xorps` plus
 `subss` sign-negation sequence and moves that renderer call three bytes late.
 It is not accepted. The value-equivalent role-swap is a useful register-form
 proof, not a production improvement: the isolated full-body comparison remains
-well below the maintained source's current 4,835/5,376 ordinary-byte and
+well below the maintained source's current 4,834/5,376 ordinary-byte and
 114/123 E8-site baseline because other local ownership and mode45/46 layout
 still differ.
 Both probes remain private under `.analysis/` and `build/`.
@@ -290,7 +299,7 @@ x87 stores; their original source ownership remains unresolved.
 The isolated probes used the locked MSVC x86 profile and did not edit
 shared headers, canonical objects, match units or the target. No full cold
 replay was run. The next step remains the mode35/36 E8-site deltas, both
-register-register adjusted-scale operands, the mode46 width operand and the
+register-register adjusted-scale operands, the mode45 half-height reuse and the
 first getter's native x87 spill ownership. A switch-scope `first_scale_result` probe did recover
 `fstp [ebp-0x160]` in both modes without changing the 0x204 frame, but its
 5,985B body, 84/123 E8 positions, 23/32 data sites and 3,710/5,368 ordinary
@@ -304,7 +313,7 @@ pre-getter half feeds width. Both first-result stores remain at
 5,989B/1,500 instructions. The first 89/123 E8 positions now align, but
 the mode36 renderer call is still four bytes early; the later calls remain
 displaced. This is not promoted because it loses to the maintained source's
-114/123 E8 positions and 4,835/5,376 ordinary bytes, and still depends on
+114/123 E8 positions and 4,834/5,376 ordinary bytes, and still depends on
 an unread first-result local whose source ownership is unproven.
 
 The
