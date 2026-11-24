@@ -64,8 +64,13 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
             auto* primitive = reinterpret_cast<StageResourcePrimitiveTransform*>(
                 reinterpret_cast<std::byte*>(&object) + sizeof(object));
             while (primitive->header.type >= 0) {
-                Animation* animation = primitive_animations +
-                    primitive->header.animation_index;
+                // The native computes this signed stride even for unknown positive
+                // record kinds; use integer address arithmetic, not out-of-range
+                // Animation* pointer arithmetic, before the type dispatch.
+                Animation* animation = reinterpret_cast<Animation*>(
+                    reinterpret_cast<std::uintptr_t>(primitive_animations) +
+                    static_cast<std::intptr_t>(primitive->header.animation_index) *
+                    static_cast<std::intptr_t>(sizeof(Animation)));
                 switch (static_cast<StageResourcePrimitiveKind>(primitive->header.type)) {
                 case StageResourcePrimitiveKind::animation_transform: {
                     const float original_rotation = animation->rotation_y_value();
