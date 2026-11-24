@@ -1,5 +1,6 @@
 #pragma once
 #include "AnimationHandle.hpp"
+#include "AnmInstruction.hpp"
 #include "Vector3.hpp"
 #include <atomic>
 #include <cstddef>
@@ -8,7 +9,6 @@
 struct IDirect3DTexture9;
 namespace th20 {
 class Animation;
-struct AnmInstruction;
 struct AnmHeader;
 struct TextureRecordFlags { std::uint32_t bits; };
 // GPU and external-image retirement belongs to Renderer/File clearing.

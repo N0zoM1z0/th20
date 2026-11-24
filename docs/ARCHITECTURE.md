@@ -50,8 +50,10 @@ See [source ownership](SOURCE_MAP.md) for maintained files and focused evidence.
 
 ## Whole-function frontier
 
-The original **39,470-byte Animation VM at 0x0042B5D0** and separate
-**41,967-byte Enemy opcode dispatcher at 0x0048C010** remain open.
+The original **39,470-byte Animation VM at 0x0042B5D0** is now source-present
+as a complete semantic C++ body but remains NONEXACT; its 161-opcode/505-call
+frontier is documented in `ANIMATION_UPDATE_VM_RECONSTRUCTION.md`. The
+separate **41,967-byte Enemy opcode dispatcher at 0x0048C010** remains open.
 The 12,140B Bullet command parent at 0x0047DCF0 is also source-absent
 NONEXACT, despite **208/210 native original E8 occurrences** now mapping
 to wholly strict-exact game-callee sources; the other two direct calls are

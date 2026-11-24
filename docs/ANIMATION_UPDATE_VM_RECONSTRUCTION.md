@@ -6,6 +6,31 @@ The complete original function is `0x0042B5D0..0x00434FFD`, **39,470 bytes**.
 Its immutable PE body SHA-256 is
 `044f8246c167aaaf50c00a46a86baa1898e70af55ca5715bcc2450289ba83b87`.
 
+**2026-11-24 current source update — typed variable-length instruction record.**
+The maintained `AnimationFile::script` result and the VM's main and case-3
+scan cursors now use `AnmInstruction`. Its native fixed header is eight bytes:
+`opcode` at `+0`, unsigned `byte_advance` at `+2`, signed `frame` at `+4`, and
+`operand_flags` at `+6`. `first_operand` at `+8` anchors the variable-width
+operand stream; records advance by the native `byte_advance`, never by
+`sizeof(AnmInstruction)` (12 bytes including that first operand anchor).
+All 161 switch labels and the full 505-call target multiset remain present.
+
+The focused current candidate is **39,752B COFF contribution**: **39,108B
+code plus the 644B 161-entry compiler switch table**, 8,449 code instructions,
+frame `0x7F8`, 505 E8 calls and 215 DIR32 relocations (162 switch-label plus
+53 external data/constructor/cookie references). The code is 362 bytes shorter
+than the original 39,470B body; the complete COFF contribution includes its
+644B compiler switch table. The probe confirms the 505 original call targets
+and the three child-spawn/writeback call subsequences, but only **7/505** E8
+instruction offsets physically coincide (absolute offset delta 53,051).
+The original body has 55 PE HIGHLOW fields. The affected File/operand closure
+also strictly replayed **21/21 units in 8 cold objects**, including the complete
+165/244/301/835B operand leaves, the 338B script loader and the 619B child-update
+helper. The eight VM leaf bodies independently verify **305/305 bytes** with
+zero ordinary-byte differences. This is typed-source progress, not exactness:
+no 39,470B exact unit or game-byte credit is claimed.
+
+
 ## Recovered dispatcher structure
 
 - 8,559/8,559 i386 instructions cover the full original body.
@@ -59,17 +84,12 @@ operator-new shim.
 
 ## Exactness status — deliberately not claimed
 
-The current candidate COFF contribution is **37,152 bytes**: **36,508 bytes
-of code plus a 644-byte, 161-entry compiler-generated switch table**. The
-code portion decodes to 7,920 instruction heads and 505 E8 calls, compared
-with the original 39,470-byte body / 8,559 instruction heads / 505 E8 calls.
-The current candidate has 505 REL32 call relocations and **215 DIR32
-relocations**: 162 compiler switch-label entries and 53 external
-data/constructor/security-cookie references. The original PE body has 55
-physical HIGHLOW fields. The 53 external references are now pinned by symbol
-and multiplicity in the focused probe; their count is closer to the original
-physical data-relocation count, but their sites and roles are not claimed to
-be exact.
+The current candidate metrics are recorded in the **typed variable-length
+instruction update** at the top of this report. The detailed compiler-history
+paragraphs below preserve earlier source checkpoints (including the former
+37,152B contribution) and are historical snapshots, not current metrics.
+The latest focused probe pins the 53 external DIR32 references by symbol and
+multiplicity; their sites and roles are not claimed to be exact.
 
 The source now uses the original exact typed owners for the +0x18 file lookup,
 all seven color/fade/vector-configuration operations, the eight screen-

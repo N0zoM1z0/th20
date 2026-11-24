@@ -289,8 +289,7 @@ opcodes 616, 617, 618, 619, 620, 627, 628, 629, 630, 632 and 633. The exact per-
 and the focused case notes linked from the [evidence index](EVIDENCE_INDEX.md).
 
 Other major open Bosses remain in the [backlog](RE_OPEN_BOSS_BACKLOG.md),
-including the 12,140B Bullet extended-command dispatcher, 39,470B Animation
-VM update, 5,993B Animation Draw Boss, 2,245B Glyph mask compositor,
+including the 12,140B Bullet extended-command dispatcher, 39,470B Animation VM update (source-present, NONEXACT), 5,993B Animation Draw Boss, 2,245B Glyph mask compositor,
 2,227B Glyph text core, 1,896B Card Start and the 626B FrontInf command parent
 (currently 622/626B). The 1,954B Window D3D9 reset-state Boss is also
 source-present but NONEXACT.

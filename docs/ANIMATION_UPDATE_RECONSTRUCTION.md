@@ -65,10 +65,13 @@ with no stack arguments. Ordinary and already-stopped exits clear full EAX;
 the deletion exit writes full EAX=1. An independent complete 508-byte owner
 consumer at `0x00449870` calls it and tests full EAX before removing the Animation.
 This establishes the genuine `int32_t Animation::update()` interface, rather
-than a narrowed return or a fabricated void body. The 39,470-byte interpreter
-body remains undefined in production; declaring its observed ABI is separate
-from reconstructing it. Its epilogue invokes the complete motion and interpolation
-functions, followed by the still-open 5,388-byte geometry update at 435C80.
+than a narrowed return or a fabricated void body. The 39,470-byte interpreter now has a complete maintained semantic C++ source
+in `AnimationUpdate39470.cpp`, including all 161 opcode labels and the original
+505-call target multiset. It remains NONEXACT: the typed instruction-record
+frontier and current native comparison are tracked separately in
+[the VM reconstruction report](ANIMATION_UPDATE_VM_RECONSTRUCTION.md). Its
+epilogue invokes the complete motion and interpolation functions, followed by
+the still-open 5,388-byte geometry update at 435C80.
 Function-only interpreter evidence can omit switch cases even without truncation.
 
 ## Preserved behavior

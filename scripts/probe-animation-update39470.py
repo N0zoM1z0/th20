@@ -25,9 +25,9 @@ ORIGINAL_CALLS=505
 ORIGINAL_HIGHLOW=55
 SYMBOL='?update@Animation@th20@@QAEHXZ'
 ORIGINAL_CALL_TARGET_SEQUENCE=[]
-CANDIDATE_SIZE=37152
-CANDIDATE_CODE_SIZE=36508
-CANDIDATE_INSTRUCTIONS=7920
+CANDIDATE_SIZE=39752
+CANDIDATE_CODE_SIZE=39108
+CANDIDATE_INSTRUCTIONS=8449
 CANDIDATE_STACK_FRAME=0x7f8
 CANDIDATE_DIR32=215
 CANDIDATE_LOCAL_LABEL_DIR32=162
@@ -89,6 +89,16 @@ def compile_candidate(original_targets):
  assert 'DAT_' not in text,'raw decompiler global names remain in the VM source'
  cases=set(int(x,0) for x in re.findall(r'^\s*case\s+(0x[0-9a-fA-F]+|\d+)\s*:',text,re.M))
  assert len(cases)==161,len(cases)
+ instruction_header=(ROOT/'src/AnmInstruction.hpp').read_text()
+ assert 'struct AnmInstruction' in instruction_header
+ assert 'offsetof(AnmInstruction, opcode) == 0' in instruction_header
+ assert 'offsetof(AnmInstruction, byte_advance) == 2' in instruction_header
+ assert 'offsetof(AnmInstruction, frame) == 4' in instruction_header
+ assert 'offsetof(AnmInstruction, operand_flags) == 6' in instruction_header
+ assert 'offsetof(AnmInstruction, first_operand) == 8' in instruction_header
+ assert 'sizeof(AnmInstruction) == 12' in instruction_header
+ assert re.search(r'AnmInstruction\s*\*\s*instruction',text)
+ assert 'instruction->byte_advance' in text
  for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
   assert forbidden not in text,forbidden
  obj=ROOT/'build/gptweb-animation-vm-boss/AnimationUpdate39470.obj';obj.parent.mkdir(parents=True,exist_ok=True)
@@ -125,6 +135,11 @@ def compile_candidate(original_targets):
  assert len(body)==CANDIDATE_SIZE and len(code)==CANDIDATE_CODE_SIZE and len(ins)==CANDIDATE_INSTRUCTIONS and len(calls)==CANDIDATE_CALLS,(len(body),len(code),len(ins),len(calls))
  assert len(rel32)==CANDIDATE_CALLS,(len(rel32),CANDIDATE_CALLS)
  assert sum(x.size for x in ins)==len(code)
+ native_calls=[x.address-ADDRESS for x in Cs(CS_ARCH_X86,CS_MODE_32).disasm(pe.raw_at(image,base,sections,ADDRESS,ORIGINAL_SIZE),ADDRESS) if x.size==5 and x.bytes[0]==0xE8]
+ candidate_calls=[x.address for x in calls]  # candidate disassembly is based at code offset zero
+ assert len(native_calls)==len(candidate_calls)==505
+ matched_call_sites=sum(a==b for a,b in zip(native_calls,candidate_calls))
+ call_offset_delta=sum(abs(a-b) for a,b in zip(native_calls,candidate_calls))
  candidate_sequence=candidate_call_target_sequence(relocations)
  candidate_targets=collections.Counter(candidate_sequence)
  assert candidate_targets==original_targets,('call target multiset mismatch',original_targets-candidate_targets,candidate_targets-original_targets)
@@ -162,10 +177,11 @@ def compile_candidate(original_targets):
  print(f'PASS source compile and opcode coverage: {len(cases)} case labels')
  print(f'PASS lexical lifetime stack frame: 0x{candidate_frame:x}')
  print(f'PASS all {len(calls)} candidate E8 targets exactly match the original 505-call target multiset')
+ print(f'CALL-SITE FRONTIER: {matched_call_sites}/505 physical E8 offsets match; absolute offset delta {call_offset_delta}')
  print('PASS original child-spawn ordering: 2 resolve+two-float writebacks and 1 child-update+Vector3 transform sequence')
  print(f'NONEXACT contribution: {len(body)}B = {len(code)}B code + {jump_table_size}B {CANDIDATE_JUMP_TABLE_ENTRIES}-entry switch table')
  print(f'Code decode: {len(ins)} instructions, {len(calls)} E8, {len(dir32_relocations)} DIR32 ({label_dir32} local-label + {sum(external_dir32.values())} external data/constructor/cookie relocations)')
- print(f'Contribution delta: {len(body)-ORIGINAL_SIZE:+}B total; {len(code)-ORIGINAL_SIZE:+}B code before the switch table; original has {ORIGINAL_HIGHLOW} HIGHLOW fields; no exactness claim')
+ print(f'Code-length delta vs original executable body: {len(code)-ORIGINAL_SIZE:+}B; original has {ORIGINAL_HIGHLOW} HIGHLOW fields; no exactness claim')
 
 def main():
  original_targets=verify_original();compile_candidate(original_targets)

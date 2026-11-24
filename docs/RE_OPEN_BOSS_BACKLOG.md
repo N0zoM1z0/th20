@@ -183,9 +183,13 @@ canonically accepted.
   still 622/626 and the 156B Dialogue allocator remains NONEXACT. The root remains
   incomplete/NONEXACT; continue restoring the other inline case families and converge
   the complete original 41,967B body, stack, calls and switch data.
-- **Animation VM update** `0x0042B5D0`, **39,470B**. Core animation
-  execution/update remains source-absent; accepted per-mode renderer
-  children do not prove this parent. [Architecture/source map](SOURCE_MAP.md).
+- **Animation VM update** `0x0042B5D0`, **39,470B**. The complete 161-opcode
+  semantic C++ body is now source-present in `src/AnimationUpdate39470.cpp`;
+  the typed `AnmInstruction` header/variable-operand model preserves all 505
+  original call targets. Current 39,752B COFF candidate remains NONEXACT
+  (7/505 E8 offsets coincide; no exact parent credit). Continue converging
+  the whole-body instruction, relocation and stack layout, not just the leaves.
+  [Native VM report](ANIMATION_UPDATE_VM_RECONSTRUCTION.md).
 
 ## C. Smaller outstanding ABI and ownership frontiers
 
