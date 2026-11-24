@@ -45,10 +45,22 @@ struct StageResourceObjectParameters {
 static_assert(sizeof(StageResourceObjectParameters) == 0x2c);
 static_assert(offsetof(StageResourceObjectParameters, rotation_y) == 0x08);
 
+// Object update uses bit 0 for active animations; the draw pass sets bit 1
+// when the instance passes viewport culling.
+struct StageResourceObjectFlagBits {
+    std::uint8_t has_active_animations : 1;
+    std::uint8_t passed_viewport_cull : 1;
+    std::uint8_t retained_02_07 : 6;
+};
+static_assert(sizeof(StageResourceObjectFlagBits) == 1);
+
 // Native resource object and its variable-length primitive table. Object
 // records are 0x30 bytes; primitive records begin immediately after the object
 // and advance by their signed byte-size field until a negative type sentinel.
 struct StageResourceObjectRecord {
+    static constexpr std::int8_t has_active_animations_mask = 0x01;
+    static constexpr std::int8_t passed_viewport_cull_mask = 0x02;
+
     std::uint16_t identifier;
     union {
         std::uint8_t layer;
@@ -57,6 +69,7 @@ struct StageResourceObjectRecord {
     union {
         std::uint8_t flags;
         std::int8_t signed_flags;
+        StageResourceObjectFlagBits flag_bits;
     };
     union {
         float parameters[11];
@@ -71,6 +84,7 @@ struct StageResourceObjectRecord {
 static_assert(sizeof(StageResourceObjectRecord) == 0x30);
 static_assert(offsetof(StageResourceObjectRecord, signed_layer) == 0x02);
 static_assert(offsetof(StageResourceObjectRecord, flags) == 0x03);
+static_assert(offsetof(StageResourceObjectRecord, flag_bits) == 0x03);
 static_assert(offsetof(StageResourceObjectRecord, parameters) == 0x04);
 static_assert(offsetof(StageResourceObjectRecord, typed_parameters) == 0x04);
 

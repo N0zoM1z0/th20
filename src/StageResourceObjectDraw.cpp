@@ -28,6 +28,7 @@ StageResourcePrimitiveTransform* __cdecl advance_stage_resource_primitive(
 
 std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
     auto* instance = instance_records;
+    // The original /Od body writes this local at each depth transition but never reads it.
     std::int32_t depth_write_state = 1;
     script_state.draw_inline_animations_for_layer(layer);
 
@@ -57,7 +58,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                 goto next_instance;
             }
 
-            object.signed_flags |= 2;
+            object.signed_flags |= StageResourceObjectRecord::passed_viewport_cull_mask;
             auto* primitive =
                 reinterpret_cast<StageResourceObjectPrimitiveStream*>(&object)->primitives;
             while (primitive->header.type >= 0) {
