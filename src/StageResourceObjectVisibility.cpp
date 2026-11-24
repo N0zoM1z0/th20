@@ -4,7 +4,6 @@
 #include <array>
 #include <cstddef>
 #include <cstdint>
-#include <bit>
 #include <cstring>
 
 namespace th20 {
@@ -73,10 +72,10 @@ std::int32_t StageResourceObjectRecord::is_outside_viewport(
     const ViewportState& viewport) const {
     // Native object parameters +0x18 and +0x24 are two consecutive Vector3
     // values: object-space center and full bounds extent.
-    const Vector3 position{parameters[5], parameters[6], parameters[7]};
-    const Vector3 half_extent{parameters[8] / 2.0f,
-                              parameters[9] / 2.0f,
-                              parameters[10] / 2.0f};
+    const Vector3 position = parameters.bounds_center;
+    const Vector3 half_extent{parameters.bounds_extent.x / 2.0f,
+                              parameters.bounds_extent.y / 2.0f,
+                              parameters.bounds_extent.z / 2.0f};
     const Vector3 relative = position + instance_offset -
                              (viewport.vector_00 + viewport.vector_3c);
     const float distance_squared = relative.x * relative.x +
@@ -84,9 +83,9 @@ std::int32_t StageResourceObjectRecord::is_outside_viewport(
                                    relative.z * relative.z;
     if (!(distance_squared <= max_distance_squared))
         return 1;
-    // The original gate reads the raw DWORD at object+4, not an Animation
-    // timer: any nonzero first object parameter bypasses projected bounds.
-    if (std::bit_cast<std::uint32_t>(parameters[0]) != 0)
+    // The original gate reads the raw DWORD at object+4: any nonzero value
+    // bypasses projected bounds.
+    if (parameters.projected_bounds_bypass != 0)
         return 0;
 
     const float x = position.x;

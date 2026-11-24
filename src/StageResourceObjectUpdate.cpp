@@ -26,9 +26,9 @@ std::int32_t StageResourceOwner::update_objects() {
             if (active_animations == 0)
                 object.flags &= 0xfeu;
         }
-        if (object.parameters[1] != 0.0f && (state_flags & 16u) == 0) {
-            object.parameters[2] = normalize_angle(
-                object.parameters[2] + object.parameters[1]);
+        if (object.parameters.rotation_y_velocity != 0.0f && (state_flags & 16u) == 0) {
+            object.parameters.rotation_y = normalize_angle(
+                object.parameters.rotation_y + object.parameters.rotation_y_velocity);
         }
     }
     return 0;

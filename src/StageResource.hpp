@@ -73,10 +73,7 @@ struct StageResourceObjectRecord {
         std::int8_t signed_flags;
         StageResourceObjectFlagBits flag_bits;
     };
-    union {
-        float parameters[11];
-        StageResourceObjectParameters typed_parameters;
-    };
+    StageResourceObjectParameters parameters;
 
     // Original 0x473B20 object-space distance and projected-bounds culler.
     std::int32_t is_outside_viewport(const Vector3& instance_offset,
@@ -88,7 +85,6 @@ static_assert(offsetof(StageResourceObjectRecord, signed_layer) == 0x02);
 static_assert(offsetof(StageResourceObjectRecord, flags) == 0x03);
 static_assert(offsetof(StageResourceObjectRecord, flag_bits) == 0x03);
 static_assert(offsetof(StageResourceObjectRecord, parameters) == 0x04);
-static_assert(offsetof(StageResourceObjectRecord, typed_parameters) == 0x04);
 
 // The instance visibility bit shares its native short with retained flags.
 struct StageResourceInstanceFlagBits {

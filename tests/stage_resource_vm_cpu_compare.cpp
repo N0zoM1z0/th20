@@ -778,16 +778,21 @@ int wmain(int argc, wchar_t** argv) {
                 records[index].object.identifier = static_cast<std::uint16_t>(index + 10);
                 records[index].object.layer = static_cast<std::uint8_t>(random());
                 records[index].object.flags = static_cast<std::uint8_t>(random());
-                for (float& parameter : records[index].object.parameters)
-                    parameter = finite();
-                records[index].object.parameters[1] =
+                auto& parameters = records[index].object.parameters;
+                parameters.projected_bounds_bypass =
+                    std::bit_cast<std::uint32_t>(finite());
+                parameters.rotation_y_velocity =
                     std::array<float, 8>{0.0f, -0.0f, 0.125f, -0.75f,
                                          3.1415927f, -3.1415927f, 19.0f,
                                          std::bit_cast<float>(0x7fc00000u)}[test % 8];
-                records[index].object.parameters[2] =
+                parameters.rotation_y =
                     std::array<float, 8>{0.0f, 3.0f, -3.0f, 100.0f,
                                          -100.0f, 6.2831855f, 1.0f,
                                          std::bit_cast<float>(0x7fc00000u)}[(test + index) % 8];
+                parameters.field_0c = finite();
+                parameters.field_10 = finite();
+                parameters.bounds_center = {finite(), finite(), finite()};
+                parameters.bounds_extent = {finite(), finite(), finite()};
                 std::memset(records[index].primitive_data, 0,
                             sizeof(records[index].primitive_data));
             }
@@ -960,13 +965,10 @@ int wmain(int argc, wchar_t** argv) {
                 max_distance_squared = test % 3 ? 100.0f : 0.5f;
                 bypass_bounds = test % 5 == 0 ? 1 : 0;
             }
-            object.parameters[0] = static_cast<float>(bypass_bounds);
-            object.parameters[5] = position.x;
-            object.parameters[6] = position.y;
-            object.parameters[7] = position.z;
-            object.parameters[8] = extent.x;
-            object.parameters[9] = extent.y;
-            object.parameters[10] = extent.z;
+            object.parameters.projected_bounds_bypass =
+                static_cast<std::uint32_t>(bypass_bounds);
+            object.parameters.bounds_center = position;
+            object.parameters.bounds_extent = extent;
 
             // The surrounding VM oracle uses 200 in this shared global to
             // suppress unrelated geometry paths; restore the PE's real zero
@@ -1135,13 +1137,13 @@ int wmain(int argc, wchar_t** argv) {
                         static_cast<std::uint8_t>(index == 2 ? 9 : 8);
                     fixtures[index].object.flags =
                         static_cast<std::uint8_t>(random());
-                    fixtures[index].object.typed_parameters.projected_bounds_bypass =
+                    fixtures[index].object.parameters.projected_bounds_bypass =
                         index == 0 && test % 7 == 0 ? 1u : 0u;
-                    fixtures[index].object.typed_parameters.bounds_center = {
+                    fixtures[index].object.parameters.bounds_center = {
                         index == 1 ? 0.25f : -0.15f, 0.0f, 0.5f};
-                    fixtures[index].object.typed_parameters.bounds_extent = {
+                    fixtures[index].object.parameters.bounds_extent = {
                         0.35f, 0.3f, 0.25f};
-                    fixtures[index].object.typed_parameters.rotation_y =
+                    fixtures[index].object.parameters.rotation_y =
                         index == 0 && test % 4 != 0 ?
                             (test & 1u ? 0.35f : -0.6f) : 0.0f;
                     table[index] = &fixtures[index].object;
