@@ -1354,3 +1354,11 @@ int wmain(int argc, wchar_t** argv) {
         return 2;
     }
 }
+
+
+namespace th20 {
+StageResourcePrimitiveHeader* StageResourcePrimitiveHeader::advance(std::int32_t size) {
+    return reinterpret_cast<StageResourcePrimitiveHeader*>(
+        reinterpret_cast<std::byte*>(this) + size);
+}
+} // namespace th20
