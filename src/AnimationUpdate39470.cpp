@@ -176,18 +176,18 @@ switchD_0042b8cc_caseD_a0:
         std::uint32_t local_574;
         std::uint32_t local_570;
         Animation* local_f4;
-        if ((base.flags.word_04 >> 0x12 & 1) == 0) {
-          local_570 = 2;
-        }
-        else {
+        local_590 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
+        if ((base.flags.word_04 >> 0x12 & 1) != 0) {
           local_570 = 6;
         }
-        local_590 = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-        if ((instruction->operand_flags & 1U) == 0) {
-          local_574 = (&instruction->first_operand)[0];
+        else {
+          local_570 = 2;
+        }
+        if ((instruction->operand_flags & 1U) != 0) {
+          local_574 = this->integer_value((&instruction->first_operand)[0]);
         }
         else {
-          local_574 = this->integer_value((&instruction->first_operand)[0]);
+          local_574 = (&instruction->first_operand)[0];
         }
         local_f4 = local_590->spawn_child(local_574,this,local_570).resolve();
         local_f4->base.vector_484.x = (instruction->operand_flags & 2U) == 0
