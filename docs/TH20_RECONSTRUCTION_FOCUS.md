@@ -22,7 +22,7 @@ The primitive stream advance is a separate natural C++ cdecl helper at 0x0047116
 - Pinned MSVC 19.44.35211 i386 COFF build.
 - stage_resource_object_draw_layer: 1119/1119 bytes exact, 48/48 native relocations, no first differences.
 - stage_resource_primitive_advance: 11/11 bytes exact, no relocations.
-- Original PE vs maintained C++ StageResource CPU oracle: 47,814 checks, 0 failures. The 64 object-layer cases compare the complete native/source render-call trace from the inline-animation prelude through final cleanup: clip selection, fog and depth-write transitions, viewport selection, inline and primitive AnimationPool draw submissions, and queue flush ordering. Native PE call targets and source wrappers use trace-capturing test seams. D3DX calls use the same deterministic test seams for both sides.
+- Original PE vs maintained C++ StageResource CPU oracle: 47,942 checks, 0 failures. The 128 object-layer cases compare the complete native/source render-call trace from the inline-animation prelude through final cleanup: clip selection, fog and depth-write transitions, viewport selection, inline and primitive AnimationPool draw submissions, and queue flush ordering across four cull-distance thresholds (zero, nominal, expanded and maximum finite). Native PE call targets and source wrappers use trace-capturing test seams. D3DX calls use the same deterministic test seams for both sides.
 
 These are local strict-COFF and semantic-oracle results. They do not, by themselves, establish Factory acceptance.
 
