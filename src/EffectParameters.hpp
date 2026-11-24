@@ -6,9 +6,19 @@
 
 namespace th20 {
 
-// Actual four-byte packed color value; original type spelling remains unknown.
+// Native four-byte BGRA word. The channel view exposes the actual byte
+// order used by the glyph compositor without changing the packed ABI.
+struct PackedColorChannels {
+    std::uint8_t blue, green, red, alpha;
+};
+static_assert(sizeof(PackedColorChannels) == 4);
+static_assert(offsetof(PackedColorChannels, alpha) == 3);
+
 struct PackedColor {
-    std::uint32_t value;
+    union {
+        std::uint32_t value;
+        PackedColorChannels channels;
+    };
     PackedColor();
     explicit PackedColor(std::uint32_t value);
     std::uint32_t operator=(std::uint32_t input);
@@ -44,6 +54,8 @@ struct EffectRequest {
 };
 
 static_assert(sizeof(PackedColor) == 4);
+static_assert(offsetof(PackedColor, value) == 0);
+static_assert(offsetof(PackedColor, channels) == 0);
 static_assert(sizeof(SelectionPulse) == 8);
 static_assert(offsetof(SelectionPulse, radius) == 4);
 static_assert(sizeof(EffectParameters) == 56);

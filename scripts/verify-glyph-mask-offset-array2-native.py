@@ -49,17 +49,24 @@ def verify(candidate):
  assert (fi[-1].mnemonic,fi[-1].op_str)==('ret','4')
  assert any(i.mnemonic=='lea' and i.op_str=='eax, [ecx + eax*4]' for i in fi)
  obj=ROOT/candidate
+ source=(ROOT/'src/GlyphMaskComposite2245.cpp').read_text()
+ color_header=(ROOT/'src/EffectParameters.hpp').read_text()
+ assert 'const std::int32_t length=pixel_stride_4156c0()*rows;' in source
+ assert source.count('const auto* stencil=reinterpret_cast<const std::uint32_t*>(original);')==1
+ assert 'opaque.channels.alpha ^= 0xffu;' in source and '*dest=opaque.value;' in source
+ assert 'struct PackedColorChannels' in color_header and 'PackedColorChannels channels;' in color_header
+ assert 'offsetof(PackedColorChannels, alpha) == 3' in color_header
  symbols=subprocess.run(['strings',str(obj)],capture_output=True,text=True,check=True).stdout.splitlines()
  assert ARRAY_SYM in symbols
  index_cmp=cm.compare(obj,ARRAY_SYM,INDEX,22)
  assert index_cmp['result']=='structural-exact'
  assert index_cmp['matched_comparable_bytes']==index_cmp['comparable_bytes']==22
  assert not index_cmp['relocations']
- # This is a complete NONEXACT 2141B/565-i386 source, not a prefix
+ # This is a complete NONEXACT 2124B/563-i386 source, not a prefix
  # compared to the original 2245B/612-i386 parent extent.
- body,rel=cm.object_function(obj,SYM,2141)
+ body,rel=cm.object_function(obj,SYM,2124)
  ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(body),0))
- assert len(body)==2141 and len(ci)==565 and len(rel)==42
+ assert len(body)==2124 and len(ci)==563 and len(rel)==42
  assert (ci[-1].mnemonic,ci[-1].op_str)==('ret','0x14')
  assert ci[-1].address+ci[-1].size==len(body)
  cr=[r for r in rel if r['type']=='REL32']
@@ -69,6 +76,11 @@ def verify(candidate):
  # Each COFF REL32 belongs to a real E8 opcode in the entire body.
  real_calls=[i.address for i in ci if i.size==5 and i.bytes[0]==0xe8]
  assert len(real_calls)==37
+ # Native and candidate invert the packed BGRA alpha byte in place;
+ # the hoisted stencil pointer is a real branch-lifetime local.
+ assert original[0x1AB:0x1B8]==bytes.fromhex('0fb655eb81f2ff0000008855eb')
+ assert body[0x199:0x1A6]==bytes.fromhex('0fb655eb81f2ff0000008855eb')
+ assert body[0x16D:0x179]==bytes.fromhex('8b4584898564ffffff8b4d14')
  assert [x['offset']-1 for x in cr]==real_calls
  # The original has 37 real physical E8 destinations, nine of which
  # read the live stride. The corrected RGBA4444 per-pixel source pointer
@@ -80,12 +92,12 @@ def verify(candidate):
  assert original_stride==[0x32,0x197,0x1D7,0x5A6,0x5E7,0x69B,0x6FA,0x752,0x7B4]
  candidate_stride=[x['offset']-1 for x in cr
                    if 'pixel_stride_4156c0' in x['symbol']]
- assert candidate_stride==[0x32,0x197,0x1CA,0x5BD,0x607,0x6BC,0x70D,0x757,0x7A7]
+ assert candidate_stride==[0x32,0x185,0x1C5,0x5AC,0x5F6,0x6AB,0x6FC,0x746,0x796]
  assert len(candidate_stride)==len(original_stride)==9
  # Genuine folded std::array<int32_t,2>::operator[] emits the same four
  # real index helper calls across the two native pixel-format branches.
  sites=[x['offset'] for x in rel if x['symbol']==ARRAY_SYM]
- assert sites==[0x2B5,0x2C7,0x688,0x69A],sites
+ assert sites==[0x2A7,0x2B9,0x677,0x689],sites
  # Independent native PE E8 destinations are compared against the actual
  # locked-MSVC C++ COFF symbol roles for EVERY physical call in order.
  # Do not infer the original targets from candidate relocation operands.
@@ -123,14 +135,14 @@ def verify(candidate):
   dest=[value for prefix,value in highlow.items()
         if r['symbol'].startswith(prefix)]
   assert len(dest)==1 and dest[0]==actual[o],(hex(o),r['symbol'],dest)
- assert [x['offset'] for x in dr]==[0x06,0x18,0x63,0x69,0x836]
- assert sum(x['offset']==o for x,o in zip(dr,sorted(actual)))==2
+ assert [x['offset'] for x in dr]==[0x06,0x18,0x57,0x5D,0x825]
+ assert sum(x['offset']==o for x,o in zip(dr,sorted(actual)))==4
  assert sum('bitmap_pixels_4156a0' in x['symbol'] for x in rel)==1
  assert sum('pixel_stride_4156c0' in x['symbol'] for x in rel)==9
  assert sum('??A?$array@H$01@' in x['symbol'] for x in rel)==4
- # Only +0x32 and +0x197 currently align as physical call sites; the
- # original logical role graph is stronger than this still-NONEXACT layout.
- assert sum(a==b for a,b in zip(sorted(native_calls),real_calls))==2
+ # The direct length expression restores the original first three
+ # physical calls; the whole parent remains NONEXACT.
+ assert sum(a==b for a,b in zip(sorted(native_calls),real_calls))==3
  # All previously accepted physical native code remains exactly matched
  # under the new real template/type ABI, including the 165B allocator boss.
  import tomllib
@@ -152,10 +164,10 @@ def verify(candidate):
   assert result['result']=='exact' and result['matched_bytes']==result['size']
  print('PASS immutable original whole 2245B/612 game Boss, 37 native E8/5 PE HIGHLOW and both complete pixel-format branches')
  print('PASS original four folded array-index E8 at +0x29E/+0x2B0/+0x666/+0x678, existing 22B array helper whole structural 22/22 (no duplicate credit)')
- print('PASS complete natural 2141B/565-i386 source: all 37 E8/5 DIR32 roles, nine live-stride getter calls, including per-pixel RGBA4444 source at native +0x5E7')
- print('PASS 37/37 candidate E8 target roles in original order, both 32-bit and 16-bit row/source pointer lifetimes; 2/37 E8 physical sites aligned')
+ print('PASS complete natural 2124B/563-i386 source: all 37 E8/5 DIR32 roles, nine live-stride getter calls, including per-pixel RGBA4444 source at native +0x5E7')
+ print('PASS 37/37 candidate E8 target roles in original order, both pixel-format stencil lifetimes; 3/37 E8 and 4/5 PE HIGHLOW physical sites aligned')
  print('PASS all 24 previously accepted PMR/color generic source descendants remain whole native exact')
- print('SOURCE-PRESENT NONEXACT: entire 2141B candidate vs original 2245B parent, no new game-authored code credit')
+ print('SOURCE-PRESENT NONEXACT: entire 2124B candidate vs original 2245B parent, no new game-authored code credit')
 if __name__=='__main__':
  import argparse
  a=argparse.ArgumentParser();a.add_argument('--candidate-object',required=True,type=Path)

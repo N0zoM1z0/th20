@@ -21,10 +21,8 @@ struct NativeGlyphColor4444 {
 bool NativeGlyphCanvasView::composite_glyph_mask_416420(
     std::int32_t rows,std::int32_t start,std::int32_t end,
     std::uint32_t color,float radius) {
-    // The original makes a separately owned copy of the current bitmap
-    // before applying any alpha changes to the live mapped DIB memory.
-    const std::int32_t row_stride=pixel_stride_4156c0();
-    const std::int32_t length=row_stride*rows;
+    // Snapshot the original DIB extent before changing any live pixel data.
+    const std::int32_t length=pixel_stride_4156c0()*rows;
     auto* pixels=bitmap_pixels_4156a0();
     auto* original=process_allocator->allocate_array<std::uint8_t>(
         "D:\\cygwin\\home\\zun\\prog\\th20\\src\\core\\grpfont.cpp:615 u_char",length);
@@ -43,9 +41,12 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                 }
             }
         }
-        const PackedColor opaque(color);
-        const std::uint32_t outlined=opaque.value^0xff000000u;
+        // One immutable stencil base serves every row and neighbor test.
+        const auto* stencil=reinterpret_cast<const std::uint32_t*>(original);
+        PackedColor opaque(color);
         const std::int32_t row_words=pixel_stride_4156c0()/4;
+        // The native outline color flips only the packed alpha byte in place.
+        opaque.channels.alpha ^= 0xffu;
         std::int32_t row_advance=0;
         // Native update edge reads the live stride before the row test.
         for (std::int32_t y=0;y<rows;
@@ -54,7 +55,6 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                 pixels+row_advance+start*4);
             for (std::int32_t x=start;x<end;++x,++dest) {
                 if (reinterpret_cast<const std::uint8_t*>(dest)[3]!=0) {
-                    const auto* stencil=reinterpret_cast<const std::uint32_t*>(original);
                     bool touches_outline=false;
                     for (const GlyphMaskOffset& off:offsets) {
                     // The original has two genuine E8 calls per vector
@@ -74,7 +74,7 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                         }
                     }
                     if (touches_outline) {
-                        *dest=outlined;
+                        *dest=opaque.value;
                     } else {
                         auto* channels=reinterpret_cast<std::uint8_t*>(dest);
                         channels[0]=static_cast<std::uint8_t>(opaque.value);

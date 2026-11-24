@@ -1,13 +1,16 @@
-**CURRENT SOURCE UPDATE (2026-11-11):** The RGBA4444 per-pixel
-source address now includes the original live stride getter at native
-`+0x5E7` and uses a mutable stencil scratch for guarded neighbor reads.
-The complete maintained source now compiles to **2,141B/565-i386** with
-**37/37 E8 callee roles in original order**, **9/9 live stride calls**,
-5 DIR32 roles and four genuine array-index helper calls; it remains
-**NONEXACT** against the immutable 2,245B/612-i386 original. All **24/24**
-exact source descendants survived a scoped one-object cold replay.
-See [current full-role proof](GLYPH_MASK_BOSS2245_RGBA4444_SOURCE_STRIDE_37_CALLS.md).
-Older source totals below are historical.
+**CURRENT SOURCE UPDATE (2026-11-24):** The complete source now compiles to
+**2,124B/563-i386**, retaining all **37/37 E8 target roles**, **9/9 live
+stride calls**, and all four genuine folded `std::array<int32_t,2>` index
+calls. A direct `pixel_stride*rows` length expression restores the original
+first three physical E8 sites; the BGRA32 path now keeps its source stencil
+pointer alive across the row loop and toggles the packed BGRA alpha byte in
+place via the four-byte `PackedColorChannels` union view. The current candidate
+has **3/37 physical E8 sites**, **4/5 PE HIGHLOW site/target pairs**, and
+aggregate E8 offset distance **1,003**. It remains SOURCE-PRESENT/NONEXACT
+against the original **2,245B/612-i386** parent; no game-authored parent bytes
+are credited. Scoped replay after the shared `PackedColor` layout change passed
+**24/24** previously exact PMR/color descendants. Older source totals below
+are historical.
 
 **CORE/RECON-1080 CURRENT SOURCE UPDATE:** The native 8B glyph-offset object now uses a real [two-int32 indexed `std::array` instead of the historical plain struct](GLYPH_MASK_OFFSET_ARRAY2_NATIVE_TYPE.md). The complete current source parent is **2,061B/545 i386, 36 E8/5 DIR32** (original whole **2,245B/612 i386, 37 E8/5 HIGHLOW**). Four native folded index calls are present, and the 15 earlier PMR/color strict units still replay exact with the corrected vector template type. Earlier 2,041B/1,987B snapshots below are historical.
 
