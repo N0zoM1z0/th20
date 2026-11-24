@@ -28,9 +28,9 @@ DISPATCH_TABLE_SIZE=0x27c
 DISPATCH_TABLE_SHA256='a030f37522ea5b860c9a06ab56c02978832b477fd4e7c6f94957fbadc7cab34d'
 SYMBOL='?update@Animation@th20@@QAEHXZ'
 ORIGINAL_CALL_TARGET_SEQUENCE=[]
-CANDIDATE_SIZE=39760
-CANDIDATE_CODE_SIZE=39120
-CANDIDATE_INSTRUCTIONS=8457
+CANDIDATE_SIZE=39764
+CANDIDATE_CODE_SIZE=39124
+CANDIDATE_INSTRUCTIONS=8458
 CANDIDATE_STACK_FRAME=0x7f8
 CANDIDATE_DIR32=214
 CANDIDATE_LOCAL_LABEL_DIR32=161
@@ -128,6 +128,7 @@ def compile_candidate(original_targets):
  assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_fc = this->integer_value((&instruction->first_operand)[0]);' in text
  assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_100 = this->integer_value((&instruction->first_operand)[0]);' in text
  assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_104 = this->integer_value((&instruction->first_operand)[0]);' in text
+ assert 'AnimationHandle local_handle = local_5b4->spawn_child_and_update(local_108,this,0);\n        local_114 = local_handle.resolve();' in text
  assert 'native_animation_opcode_dispatch_435284[0x27c]' in text
  assert 'switch(native_animation_opcode_dispatch_435284[local_e0])' in text
  for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
@@ -166,9 +167,14 @@ def compile_candidate(original_targets):
  assert len(body)==CANDIDATE_SIZE and len(code)==CANDIDATE_CODE_SIZE and len(ins)==CANDIDATE_INSTRUCTIONS and len(calls)==CANDIDATE_CALLS,(len(body),len(code),len(ins),len(calls))
  assert len(rel32)==CANDIDATE_CALLS,(len(rel32),CANDIDATE_CALLS)
  assert sum(x.size for x in ins)==len(code)
- native_calls=[x.address-ADDRESS for x in Cs(CS_ARCH_X86,CS_MODE_32).disasm(pe.raw_at(image,base,sections,ADDRESS,ORIGINAL_SIZE),ADDRESS) if x.size==5 and x.bytes[0]==0xE8]
+ original_body=pe.raw_at(image,base,sections,ADDRESS,ORIGINAL_SIZE)
+ native_calls=[x.address-ADDRESS for x in Cs(CS_ARCH_X86,CS_MODE_32).disasm(original_body,ADDRESS) if x.size==5 and x.bytes[0]==0xE8]
  candidate_calls=[x.address for x in calls]  # candidate disassembly is based at code offset zero
  assert len(native_calls)==len(candidate_calls)==505
+ assert native_calls[41]==0xA1F and native_calls[42]==0xA27
+ assert candidate_calls[41]==0x9EB and candidate_calls[42]==0x9F3
+ assert original_body[0xA24:0xA27]==bytes.fromhex('8d4d80')  # original resolves through the returned handle's stack address
+ assert code[0x9F0:0x9F3]==bytes.fromhex('8d4d90')  # C++ local AnimationHandle resolves through its own address
  assert code[0x849:0x84e]==bytes.fromhex('83e1017426')  # opcode 0x73: native JE-to-raw / integer fallthrough
  assert code[0x8cf:0x8d4]==bytes.fromhex('83e2017426')  # opcode 0x75: native JE-to-raw / integer fallthrough
  assert native_calls[16]==0x415 and candidate_calls[16]==0x425

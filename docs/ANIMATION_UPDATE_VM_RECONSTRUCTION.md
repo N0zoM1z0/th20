@@ -10,10 +10,10 @@ variable-width operand stream; the byte-advance field, not `sizeof`, advances
 the script PC. The main VM cursor and case-3 scan cursor use this typed record.
 The 160 explicit case labels plus the default sentinel cover all 161 native dispatch entries; the full 505-call target multiset remains present.
 
-The current focused candidate is **39,760B COFF contribution**: **39,120B
-code plus the 640B 160-entry compiler switch table**, 8,457 code instructions,
+The current focused candidate is **39,764B COFF contribution**: **39,124B
+code plus the 640B 160-entry compiler switch table**, 8,458 code instructions,
 frame `0x7F8`, 505 E8 calls and 214 DIR32 relocations (161 switch-label plus
-53 external data/constructor/cookie references). The code is 350 bytes shorter
+53 external data/constructor/cookie references). The code is 346 bytes shorter
 than the original 39,470B body. Modeling the native controller gate through
 the two-bit `AnimationModeBits::mode` and expressing its frozen-controller
 exit directly restores the original byte-register sequence. Reversing the
@@ -34,8 +34,8 @@ The source models the native `0xA0` sentinel as the switch `default`, not a
 redundant explicit case: the original 161st jump-table entry is exactly the
 same `0x0042B8D3` default branch as the out-of-range route. This removes one
 compiler switch entry and four bytes from each of the code/table contributions
-without changing the 505-call target multiset. The candidate now has **16/505**
-exact physical E8 offsets and aggregate E8-offset distance **53,874 bytes**;
+without changing the 505-call target multiset. The candidate now has **19/505**
+exact physical E8 offsets and aggregate E8-offset distance **53,958 bytes**;
 all 505 original call targets and the three child-spawn/writeback subsequences
 remain verified.
 The opcode `0x72` child-spawn operand branch now tests the flagged integer
@@ -67,6 +67,17 @@ Opcode `0x75` now follows the same original branch order. The probe pins its
 and the raw-operand path taken by `JE`. All 505 native call targets still
 match; this second control-flow correction moves aggregate E8 offset distance
 another 26 bytes to **53,874**, not a physical-site improvement.
+Opcode `0x78` now materializes the returned `AnimationHandle` as a named
+local before calling `resolve()`. This restores the original C++ object
+lifetime: native code passes a stack result slot to `spawn_child_and_update`,
+then calls `AnimationHandle::resolve` with that same slot address. The prior
+prvalue `.resolve()` expression let MSVC reuse EAX as the receiver instead.
+The candidate now emits its own local-handle `LEA`/resolve pair and the original
+spawn-update/resolve call subsequence. The whole contribution grows by 4B to
+39,764B, the physical E8 matches rise from 16 to 19, and the aggregate offset
+distance is now **53,958 bytes**. This is a semantic/lifetime recovery, not a
+claim of improved aggregate call-site convergence; all 505 original targets
+and the child-update-plus-vector-transform sequence remain verified.
 
 The affected File/operand closure strictly replayed **21/21 units in 8 cold
 objects**, including the 165/244/301/835B operand leaves, 338B script loader

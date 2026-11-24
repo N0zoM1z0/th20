@@ -256,7 +256,8 @@ switchD_0042b8cc_caseD_a0:
         else {
           local_108 = this->integer_value((&instruction->first_operand)[0]);
         }
-        local_114 = local_5b4->spawn_child_and_update(local_108,this,0).resolve();
+        AnimationHandle local_handle = local_5b4->spawn_child_and_update(local_108,this,0);
+        local_114 = local_handle.resolve();
         Vector3 local_a8{
             (instruction->operand_flags & 2U) == 0 ? (reinterpret_cast<float*>(&instruction->first_operand)[1]) : this->float_value((reinterpret_cast<float*>(&instruction->first_operand)[1])),
             (instruction->operand_flags & 4U) == 0 ? (reinterpret_cast<float*>(&instruction->first_operand)[2]) : this->float_value((reinterpret_cast<float*>(&instruction->first_operand)[2])),
