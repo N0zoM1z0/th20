@@ -63,7 +63,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                 goto next_instance;
             }
 
-            object.signed_flags |= StageResourceObjectRecord::passed_viewport_cull_mask;
+            object.flags |= StageResourceObjectRecord::passed_viewport_cull_mask;
             auto* primitive =
                 reinterpret_cast<StageResourceObjectPrimitiveStream*>(&object)->primitives;
             while (primitive->header.type >= 0) {

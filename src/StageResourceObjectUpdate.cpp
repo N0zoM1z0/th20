@@ -11,7 +11,7 @@ std::int32_t StageResourceOwner::update_objects() {
     for (std::int32_t object_index = 0; object_index < file->object_count;
          ++object_index) {
         StageResourceObjectRecord& object = *object_table[object_index];
-        if (object.flags & 1u) {
+        if ((object.flags & StageResourceObjectRecord::has_active_animations_mask) != 0) {
             std::int32_t active_animations = 0;
             auto* primitive = reinterpret_cast<StageResourcePrimitiveHeader*>(
                 reinterpret_cast<std::byte*>(&object) + sizeof(object));
@@ -24,7 +24,7 @@ std::int32_t StageResourceOwner::update_objects() {
                     reinterpret_cast<std::byte*>(primitive) + primitive->size);
             }
             if (active_animations == 0)
-                object.flags &= 0xfeu;
+                object.flags &= static_cast<std::int8_t>(~StageResourceObjectRecord::has_active_animations_mask);
         }
         if (object.parameters.rotation_y_velocity != 0.0f && (state_flags & 16u) == 0) {
             object.parameters.rotation_y = normalize_angle(

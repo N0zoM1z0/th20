@@ -777,7 +777,7 @@ int wmain(int argc, wchar_t** argv) {
                 object_table[index] = &records[index].object;
                 records[index].object.identifier = static_cast<std::uint16_t>(index + 10);
                 records[index].object.layer = static_cast<std::uint8_t>(random());
-                records[index].object.flags = static_cast<std::uint8_t>(random());
+                records[index].object.flags = static_cast<std::int8_t>(random());
                 auto& parameters = records[index].object.parameters;
                 parameters.projected_bounds_bypass =
                     std::bit_cast<std::uint32_t>(finite());
@@ -801,11 +801,11 @@ int wmain(int argc, wchar_t** argv) {
                 std::memcpy(records[object_index].primitive_data + offset,
                             &primitive, sizeof(primitive));
             };
-            records[0].object.flags |= 1u;
+            records[0].object.flags |= th20::StageResourceObjectRecord::has_active_animations_mask;
             write_primitive(0, 0, {0, 12, 4, 0});
             write_primitive(0, 12, {1, 8, 5, 1});
             write_primitive(0, 20, {-1, 0, 0, 0});
-            records[1].object.flags |= 1u;
+            records[1].object.flags |= th20::StageResourceObjectRecord::has_active_animations_mask;
             write_primitive(1, 0, {0, 16, 6, 2});
             write_primitive(1, 16, {-1, 0, 0, 0});
             write_primitive(2, 0, {-1, 0, 0, 0});
