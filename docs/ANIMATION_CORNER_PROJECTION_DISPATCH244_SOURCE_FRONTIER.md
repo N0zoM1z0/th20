@@ -55,22 +55,27 @@ probe in `scripts/probe-animation-corner-projection-dispatch244.py`.
 
 ## Exactness boundary
 
-Pinned MSVC x86 C++20 currently emits a **192B whole COFF contribution**:
-**176B/65-i386 executable code plus a real 16B compiler switch table**.
+Pinned MSVC x86 C++20 now emits a **244B whole COFF contribution**:
+**228B/76-i386 executable code plus a real 16B compiler switch table**.
 The original function body is 244B/79-i386, with its switch table outside
-the function extent. The candidate retains all three original projector
-callee roles, all three `current_animation_pool` absolute references, the
-four-way switch and `ret 4`, but its call sites are displaced. It is therefore
-**SOURCE-PRESENT, NONEXACT**. No strict match unit, `matches.csv` entry or
-original authored-byte credit is added. The 68B executable-codegen gap is
-explicitly open; no ASM, padding, fake calls or synthetic data are used.
-The member-owner refactor retains the same 192B/176B+16B compiler
-contribution, three projector call roles and three `current_animation_pool`
-references. Its focused dispatcher probe passes; the enclosing VM probe also
-retains 161 opcode cases and all 505 original call-target multiplicities. The
-changed `Animation.cpp` owner/header closure was strict-replayed 38/38 units
-in one cold object; no full-project cold replay was run.
+the function extent. The source now uses one explicit dispatch scratch union:
+the mode word is dead after the switch selects an arm, so that same word holds
+the 12-byte `Vector3` stride used to form the four contiguous corner pointers.
+This is ordinary C++ object/byte-pointer arithmetic, not padding or assembly.
 
-The enclosing **39,470B** Animation VM remains source-absent/NONEXACT.
-This dispatch child and its exact projector/normalizer descendants do not
-close or credit any bytes of that parent.
+The candidate retains all three original projector callee roles, all three
+`current_animation_pool` absolute references, the four-way switch and `ret 4`.
+Its call sites are at `+0x62/+0x9C/+0xD6`, versus original `+0x63/+0xA7/+0xE8`;
+the 228B code remains 16 bytes shorter and has three fewer instructions.
+It is therefore still **SOURCE-PRESENT, NONEXACT**. No strict match unit,
+`matches.csv` entry or original authored-byte credit is added. The focused
+probe pins the complete candidate extent, 76 instruction heads, three call
+roles, all owner/data relocations, and the compiler switch table. No ASM,
+padding, fake calls or synthetic data are used. The enclosing VM probe also
+retains 161 opcode cases and all 505 original call-target multiplicities.
+The changed `Animation.cpp` owner/header closure was strict-replayed 38/38
+units in one cold object; no full-project cold replay was run.
+
+The enclosing **39,470B** Animation VM is now source-present/NONEXACT in
+`src/AnimationUpdate39470.cpp`; this dispatch child and its exact projector/
+normalizer descendants do not close or credit bytes of that parent.
