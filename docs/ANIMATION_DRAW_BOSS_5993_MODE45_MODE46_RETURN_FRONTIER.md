@@ -231,6 +231,31 @@ the surrounding native call order and stack ownership. MSVC 19.44 warns that
 they are not natural or useful replacements. These experiments remain ignored
 under `.analysis/` and `build/`.
 
+## First getter x87 spill and branch-local lifetime
+
+The native mode35 and mode36 paths both store the first inherited-scale getter's
+x87 return to `[ebp-0x160]` with `fstp m32`. That slot is not read later; the
+current source evaluates the same getter for its side effects and emits
+`fstp st(0)`. This is a real dead-store/code-generation difference, not a
+missing getter call.
+
+A shared first-result local plus native late width expressions can recover
+`fstp [ebp-0x160]` in both paths and restore the native mode35/36 color/count,
+half-height and adjusted-scale local slots. It still compiles to only
+**5,985B/1,499 instructions**, **84/123** E8 positions and **3,720/5,368**
+ordinary bytes. A scoped case-label variant has the same score. Adding the
+value-equivalent mode35/36 half-height role swaps grows the body to
+**5,989B/1,501 instructions**, aligns **89/123** E8 sites and reaches
+**3,795/5,372** ordinary bytes, but later case layout and branch positions still
+regress substantially. None is promoted over the maintained **5,993B** source.
+
+Short-lived `volatile` locals in `do`/`for`/`if` statements do force x87 memory
+stores, but MSVC allocates them at `[ebp-0x20c]` / `[ebp-0x208]`, adds control
+flow, and expands the body to **6,013–6,041B** with only **81/123** E8 sites.
+These are not natural reconstructions and are rejected. The first getter spill
+remains open; do not add an unread dummy local, volatile storage, helper call,
+opcode, or padding to claim progress.
+
 Mode45 still uses a value-equivalent role swap: its pre-getter half feeds
 width and a second `height / native_two` calculation after the getter feeds
 adjusted scale. Native mode45 does the opposite: the saved pre-getter half

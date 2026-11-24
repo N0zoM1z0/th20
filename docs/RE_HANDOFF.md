@@ -305,7 +305,9 @@ source-present but NONEXACT.
    SSE register operands, the first-getter x87 spill, mode45's half-height operand ownership/relocation position,
    and mode46's adjusted-scale SSE register operand (the final renderer call is
    four bytes early). Mode46's half-height ownership and width recomputation
-   now follow the original order. The inherited-scale getter's exact 93B `float` ABI is closed;
+   now follow the original order. Mode35/36's first getter still emits
+   `fstp st(0)` instead of the native dead-store spill to `[ebp-0x160]`; local
+   spill probes distort later case layout and are not promoted. The inherited-scale getter's exact 93B `float` ABI is closed;
    Ghidra's `float10` does not justify MSVC `long double`. See
    [the focused mode45/46 frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md)
    and [the full-body convergence report](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md).
