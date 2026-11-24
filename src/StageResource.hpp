@@ -45,11 +45,21 @@ static_assert(sizeof(StageResourceObjectRecord) == 0x30);
 static_assert(offsetof(StageResourceObjectRecord, flags) == 0x03);
 static_assert(offsetof(StageResourceObjectRecord, parameters) == 0x04);
 
+// The instance visibility bit shares its native short with retained flags.
+struct StageResourceInstanceFlagBits {
+    std::uint16_t visible : 1;
+    std::uint16_t retained : 15;
+};
+static_assert(sizeof(StageResourceInstanceFlagBits) == 2);
+
 // Per-instance object placement list. The signed object index is the
 // terminating sentinel; each record is exactly two shorts plus a Vector3.
 struct StageResourceInstanceRecord {
     std::int16_t object_index;
-    std::int16_t flags;
+    union {
+        std::int16_t flags;
+        StageResourceInstanceFlagBits flag_bits;
+    };
     Vector3 position;
 };
 static_assert(sizeof(StageResourceInstanceRecord) == 0x10);

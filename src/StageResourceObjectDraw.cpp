@@ -29,7 +29,8 @@ StageResourcePrimitiveTransform* __cdecl advance_stage_resource_primitive(
 std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
     auto* instance = static_cast<StageResourceInstanceRecord*>(instances);
     std::uint32_t depth_write_state = 1;
-    script_state.draw_inline_animations_for_layer(layer);
+    StageBackgroundScriptState* script = &script_state;
+    script->draw_inline_animations_for_layer(layer);
 
     current_animation_pool->flush_draws();
     graphics_enable_fog(&process_graphics);
@@ -54,9 +55,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                         reinterpret_cast<const std::uint8_t*>(this) + 0x32c4),
                     process_graphics.viewports[3]) != 0) {
                 ++render_counts.culled_objects;
-                auto* flags = reinterpret_cast<volatile std::uint16_t*>(
-                    reinterpret_cast<std::byte*>(instance) + 2);
-                *flags = static_cast<std::uint16_t>(0xfffeu & *flags);
+                instance->flag_bits.visible = 0;
                 goto next_instance;
             }
 
@@ -71,7 +70,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                 case 0:
                 float original_rotation;
                 original_rotation = animation->rotation_y_value();
-                if (animation->base.flags.bytes_00.animation_mode >= 4) {
+                if (static_cast<std::int32_t>(animation->base.flags.bytes_00.animation_mode) >= 4) {
                     D3DXVECTOR3 local_position;
                     D3DXMATRIX rotation;
                     local_position.x = primitive->position_x;
@@ -138,9 +137,7 @@ advance_primitive:
                     primitive, primitive->header.size);
             }
 
-            auto* flags = reinterpret_cast<volatile std::uint16_t*>(
-                reinterpret_cast<std::byte*>(instance) + 2);
-            *flags = static_cast<std::uint16_t>(*flags | 1u);
+            instance->flag_bits.visible = 1;
             ++render_counts.visible_objects;
         }
 

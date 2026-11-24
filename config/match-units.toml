@@ -32476,3 +32476,75 @@ relocations = [
   { offset = 0x4D, type = "REL32", symbol = "?set_vm_event_477450@NativeHudAnimationView@th20@@QAEXH@Z", target = 0x00477450 },
   { offset = 0x93, type = "REL32", symbol = "?set_vm_event_477450@NativeHudAnimationView@th20@@QAEXH@Z", target = 0x00477450 },
 ]
+
+# CORE/RECON-1306: original StageResource object-layer draw boss; all bytes and native relocations.
+[units.stage_resource_object_draw_layer]
+source = "src/StageResourceObjectDraw.cpp"
+object = "build/gpt-web-stage-resource/StageResourceObjectDraw.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::StageResourceOwner::draw_objects_for_layer"]
+symbol = "?draw_objects_for_layer@StageResourceOwner@th20@@QAEHH@Z"
+target_address = 0x00474880
+size = 1119
+relocations = [
+  { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x40, type = "REL32", symbol = "?draw_inline_animations_for_layer@StageBackgroundFogOwner@th20@@QAEXH@Z", target = 0x00474780 },
+  { offset = 0x46, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x4B, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+  { offset = 0x50, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x55, type = "REL32", symbol = "?graphics_enable_fog@th20@@YIHPAUGraphics@1@@Z", target = 0x004DDAC0 },
+  { offset = 0x5C, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x61, type = "REL32", symbol = "?select_view_477520@NativeGraphicsModeAction@th20@@QAEXH@Z", target = 0x00477520 },
+  { offset = 0x69, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x6E, type = "REL32", symbol = "?set_draw_mode_477770@NativeAnimationResetHooks@th20@@QAEXE@Z", target = 0x00477770 },
+  { offset = 0xDA, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0xE9, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x107, type = "REL32", symbol = "?is_outside_viewport@StageResourceObjectRecord@th20@@QBEHABUVector3@2@MABUViewportState@2@@Z", target = 0x00473B20 },
+  { offset = 0x19F, type = "REL32", symbol = "?rotation_y_value@Animation@th20@@QBEMXZ", target = 0x00474D40 },
+  { offset = 0x1C0, type = "REL32", symbol = "??0D3DXVECTOR3@@QAE@XZ", target = 0x0040BDA0 },
+  { offset = 0x1C8, type = "REL32", symbol = "??0D3DXMATRIX@@QAE@XZ", target = 0x0040BDA0 },
+  { offset = 0x1FE, type = "DIR32", symbol = "?native_zero_56e0e8@th20@@3MB", target = 0x0056E0E8 },
+  { offset = 0x20C, type = "REL32", symbol = "??0D3DXVECTOR3@@QAE@XZ", target = 0x0040BDA0 },
+  { offset = 0x215, type = "REL32", symbol = "?matrix_identity@th20@@YAPAUMatrix4@1@PAU21@@Z", target = 0x00472840 },
+  { offset = 0x22F, type = "REL32", symbol = "_D3DXMatrixRotationY@8", target = 0x0054068A },
+  { offset = 0x240, type = "REL32", symbol = "_D3DXVec3TransformCoord@12", target = 0x005406A8 },
+  { offset = 0x26D, type = "REL32", symbol = "?normalize_angle@th20@@YAMM@Z", target = 0x00438540 },
+  { offset = 0x278, type = "REL32", symbol = "?set_rotation_y_forward@Animation@th20@@QAEXM@Z", target = 0x004504C0 },
+  { offset = 0x2D0, type = "DIR32", symbol = "?native_zero_56e0e8@th20@@3MB", target = 0x0056E0E8 },
+  { offset = 0x2DE, type = "REL32", symbol = "?sprite_data@Animation@th20@@QAEPAUSpriteData@2@XZ", target = 0x00437CD0 },
+  { offset = 0x2F9, type = "REL32", symbol = "?set_scale_x@Animation@th20@@QAEXM@Z", target = 0x004777F0 },
+  { offset = 0x309, type = "DIR32", symbol = "?native_zero_56e0e8@th20@@3MB", target = 0x0056E0E8 },
+  { offset = 0x317, type = "REL32", symbol = "?sprite_data@Animation@th20@@QAEPAUSpriteData@2@XZ", target = 0x00437CD0 },
+  { offset = 0x332, type = "REL32", symbol = "?set_scale_y@Animation@th20@@QAEXM@Z", target = 0x004777C0 },
+  { offset = 0x356, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x35B, type = "REL32", symbol = "?graphics_enable_fog@th20@@YIHPAUGraphics@1@@Z", target = 0x004DDAC0 },
+  { offset = 0x363, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x368, type = "REL32", symbol = "?graphics_disable_fog@th20@@YIHPAUGraphics@1@@Z", target = 0x004DDA60 },
+  { offset = 0x37F, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x384, type = "REL32", symbol = "?graphics_disable_depth_writes@th20@@YIHPAUGraphics@1@@Z", target = 0x004DDF80 },
+  { offset = 0x392, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x397, type = "REL32", symbol = "?graphics_enable_depth_writes@th20@@YIHPAUGraphics@1@@Z", target = 0x004DDFE0 },
+  { offset = 0x3A8, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x3AD, type = "REL32", symbol = "?draw@AnimationPoolOwner@th20@@QAEHPAVAnimation@2@@Z", target = 0x00443880 },
+  { offset = 0x3C3, type = "REL32", symbol = "?set_rotation_y_forward@Animation@th20@@QAEXM@Z", target = 0x004504C0 },
+  { offset = 0x3E9, type = "REL32", symbol = "?advance_stage_resource_primitive@th20@@YAPAUStageResourcePrimitiveTransform@1@PAU21@H@Z", target = 0x00471160 },
+  { offset = 0x42E, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x433, type = "REL32", symbol = "?graphics_disable_depth_writes@th20@@YIHPAUGraphics@1@@Z", target = 0x004DDF80 },
+  { offset = 0x439, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x43E, type = "REL32", symbol = "?reset_after_stage_draw_4750a0@NativeAnimationResetHooks@th20@@QAEXXZ", target = 0x004750A0 },
+  { offset = 0x444, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0x449, type = "REL32", symbol = "?flush_draws@AnimationPoolOwner@th20@@QAEXXZ", target = 0x004455C0 },
+  { offset = 0x455, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# CORE/RECON-1306: 11-byte primitive-record pointer-advance leaf called by the object-layer boss.
+[units.stage_resource_primitive_advance]
+source = "src/StageResourceObjectDraw.cpp"
+object = "build/gpt-web-stage-resource/StageResourceObjectDraw.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::advance_stage_resource_primitive"]
+symbol = "?advance_stage_resource_primitive@th20@@YAPAUStageResourcePrimitiveTransform@1@PAU21@H@Z"
+target_address = 0x00471160
+size = 11
+relocations = [
+]
