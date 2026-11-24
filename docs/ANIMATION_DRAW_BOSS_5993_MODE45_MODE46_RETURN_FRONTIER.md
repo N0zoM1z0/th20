@@ -53,11 +53,14 @@ Mode45's maintained C++ source uses a value-equivalent role swap: the first
 half-height is retained as the real width operand, while the adjusted-scale
 expression recomputes the same `height / native_two` after the inherited-scale
 getter. This produces the native register-register `addss xmm0, xmm1` and
-aligns mode45 call positions. Mode46 has now been restored to the native
-scale-half-before-getter / width-half-at-argument order. Its `subss` remains a
-direct-memory operand (`subss xmm0, [half]`) rather than the native
-register-register form, so the final mode46 renderer call remains four bytes
-early. No dummy local or volatile qualifier is used.
+aligns mode45 call positions. Mode46 now uses the same value-equivalent
+arrangement: its pre-getter half-height feeds width, while adjusted scale
+recomputes the identical half after the getter. This recovers a
+register-register `subss xmm0, xmm1` for adjusted scale. The remaining mode46
+width subtraction is still the shorter direct-memory form, so the final mode46
+renderer call remains four bytes early. Both changes preserve the two
+independent half-height calculations and all actual renderer argument values;
+no dummy local, volatile qualifier, opcode or padding is used.
 
 ## Bounded source probes
 
@@ -106,7 +109,40 @@ accepted exact candidate.
 
 The first getter's `fstp [ebp-0x160]` remains a separate unresolved source
 question: it is present twice in the native body and has no in-body read. No
-unused variable is added merely to manufacture it.
+unused variable is added merely to manufacture it. The native verifier now
+pins both getter-call/store pairs and the second-return XMM0/XMM1 arithmetic
+windows, so later source probes cannot mistake the first discarded result for
+the second value consumed by adjusted scale.
+
+## First getter return: native m32 spill versus discarded x87 result
+
+The immutable native body calls the inherited-scale getter at `+0x0fc8` and
+`+0x10b5`; each first call is immediately followed by
+`fstp dword ptr [ebp-0x160]`. A full-body operand search finds no read of that
+slot. The second getter calls at `+0x1016` and `+0x1103` instead spill to
+`[ebp-0x148]` and `[ebp-0x164]`. Each second result is loaded into XMM0, the
+precomputed half-height into XMM1, and consumed by register-register `addss`
+or `subss`. `scripts/verify-animation-draw-boss-native.py` now asserts these
+four exact byte windows and confirms that all four calls target `0x445880`.
+
+The maintained source still spells the first calls as discarded expressions;
+MSVC emits `fstp st(0)`, not the native m32 stores. A switch-scope
+`first_scale_result` assignment does reproduce both `[ebp-0x160]` stores and
+the native `0x204` frame, but its full-body probe falls to **5,985B/1,499
+instructions**, **84/123** E8 positions, **23/32** data sites and
+**3,710/5,368** ordinary bytes. Combining the local with the newer mode35
+width temporary instead produces a **6,001B/1,501-instruction** body with a
+`0x208` frame, only **84/123** E8 positions and **23/32** data sites, and
+**3,760/5,384** ordinary bytes. Neither is promoted. A case-local initialized
+scalar stores to a new `[ebp-0x208]` slot and also expands the frame.
+
+Volatile half-height locals still select direct-memory arithmetic. Pointer
+aliases produce `addss xmm0, [edx]` / `subss xmm0, [eax]`, not the native
+register-register form. SSE intrinsic attempts materialize 16-byte vector
+temporaries and expand the function beyond 6,100B. These remain isolated
+experiments; production stays at **5,993B/1,501 instructions**, frame
+`0x204`, **114/123** E8 positions, **27/32** data sites and
+**4,834/5,376** ordinary bytes.
 
 ## Getter ABI: Ghidra `float10` is not an MSVC `long double` source type
 
@@ -154,15 +190,14 @@ the surrounding native call order and stack ownership. MSVC 19.44 warns that
 they are not natural or useful replacements. These experiments remain ignored
 under `.analysis/` and `build/`.
 
-Mode45's maintained *value-equivalent role swap* computes the first half
-into a `half_for_width` local before the getter, then computes
-`height / native_two` again in the adjusted-scale expression after the getter.
-The first result feeds renderer width and the second feeds adjusted scale.
-Mode46 no longer uses this rewrite: it keeps the scale half before the getter
-and computes the width half at the call site, matching the original native
-expression order. The remaining mode46 subtraction is four bytes shorter
-because MSVC selects a direct-memory operand; the renderer E8 is candidate
-`+0x174d` versus native `+0x1751`.
+Mode45 and mode46 now use the same maintained *value-equivalent role swap*.
+Each computes the first half into a `half_for_width` local before the getter,
+then computes `height / native_two` again in the adjusted-scale expression
+after the getter. The first result feeds renderer width and the second feeds
+adjusted scale. Both adjusted-scale operations now use the native
+register-register SSE form (`addss` in mode45 and `subss` in mode46). Mode46's
+width expression still selects a shorter direct-memory subtraction; its
+renderer E8 is candidate `+0x174d` versus native `+0x1751`.
 
 A follow-up natural expression `0.0f - (half_for_width - width)` makes the
 full body 5,993B/1,501 instructions, but inserts a non-native `xorps` plus
@@ -174,15 +209,17 @@ well below the maintained source's current 4,834/5,376 ordinary-byte and
 still differ.
 Both probes remain private under `.analysis/` and `build/`.
 
-The remaining mode36 width subtraction was separately probed with volatile and
-reference aliases, copy-then-subtract, compound assignment, operand reversal,
-`width + (-half)`, `width + (0.0f - half)`, and `width - (half * 1.0f)`. None
-produces the native width divide/subtract sequence with the correct final
-renderer call offset. `0.0f - (half - width)` uses register-register subtraction
-by zeroing XMM1 first, but adds a non-native `xorps`/`subss` pair and leaves the
-renderer call three bytes late. `__forceinline` identity/negation helpers also
-remain real E8 calls under `/Ob0`; they do not inline away. These are rejected
-compiler-shaping routes, not production source changes.
+The earlier mode36 width-operand probes tested volatile and reference aliases,
+copy-then-subtract, compound assignment, operand reversal, `width + (-half)`,
+`width + (0.0f - half)`, and `width - (half * 1.0f)`. The maintained source now
+uses the native register-register width expression in mode36; the remaining
+mode36 arithmetic mismatch is its adjusted-scale subtraction, which MSVC still
+emits with a direct-memory second operand. `0.0f - (half - width)` used a
+register-register form by zeroing XMM1 first, but added a non-native
+`xorps`/`subss` pair and left the renderer call three bytes late.
+`__forceinline` identity/negation helpers also remain real E8 calls under
+`/Ob0`; they do not inline away. These are rejected compiler-shaping routes,
+not production source changes.
 
 ## Rejected code-generation shortcuts
 
@@ -218,9 +255,9 @@ x87 stores; their original source ownership remains unresolved.
 
 The isolated probes used the locked MSVC x86 profile and did not edit
 shared headers, canonical objects, match units or the target. No full cold
-replay was run. The next step remains the eight mode35/36 E8-site deltas and
-the two register-register SSE operands, followed by the first getter's native
-x87 spill ownership. A switch-scope `first_scale_result` probe did recover
+replay was run. The next step remains the mode35/36 E8-site deltas, both
+register-register adjusted-scale operands, the mode46 width operand and the
+first getter's native x87 spill ownership. A switch-scope `first_scale_result` probe did recover
 `fstp [ebp-0x160]` in both modes without changing the 0x204 frame, but its
 5,985B body, 84/123 E8 positions, 23/32 data sites and 3,710/5,368 ordinary
 bytes make it worse than the maintained source, so it was not promoted.
