@@ -71,6 +71,24 @@ zero return. It removes the duplicate `jmp +2; xor eax,eax` tail, but leaves a
 hypothesis, not an accepted source change: the two mode-specific SSE operand
 lifetimes still need to be reconstructed in ordinary C++.
 
+## Rejected code-generation shortcuts
+
+Further isolated probes did not produce the native register-register form:
+
+- `volatile` and `register` declarations leave the arithmetic as a direct
+  memory operand; MSVC 19.44 warns that `register` is unsupported.
+- `/fp:strict` and `/fp:fast` leave the same instruction forms and call-site
+  positions.
+- `_mm_load_ss`/`_mm_add_ss` source expressions under `/Od` materialize
+  128-bit temporaries and spill them, expanding the COFF contribution beyond
+  6,400B instead of recovering the four-byte native sequence.
+- A `__vectorcall` arithmetic helper is not inlined under the locked `/Ob0`
+  profile; it introduces two extra E8 calls and retains the memory-operand
+  arithmetic.
+
+These probes stay private under `.analysis/` and `build/`; none changes the
+maintained source or the locked compiler profile.
+
 Read-only Ghidra operand search across the full 5,993B body found exactly two
 references to `[ebp-0x160]`: the first inherited-scale calls in modes35 and36
 store there at `+0x0fcd` and `+0x10ba`. No decoded instruction in the body reads
