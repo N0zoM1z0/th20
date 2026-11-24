@@ -1,10 +1,12 @@
 #pragma once
 #include "Configuration.hpp"
 #include "Viewport.hpp"
+#include "NativeGraphicsModeActionBase.hpp"
 #include "GraphicsApi.hpp"
 #include "AnimationHandle.hpp"
 #include "TaskInfo.hpp"
 #include "Worker.hpp"
+#include <type_traits>
 namespace th20 {
 class AnimationFile;
 struct GraphicsFlags {
@@ -14,7 +16,7 @@ struct GraphicsFlags {
 };
 // Complete native owner: two matrices, three presentation records, six
 // viewports and two actual Workers. Unknown scalar roles retain offsets.
-struct Graphics {
+struct Graphics : NativeGraphicsModeAction {
     void* object_00;
     graphics_api::Direct3D* direct3d;
     graphics_api::Device* device;
@@ -74,6 +76,8 @@ struct Graphics {
 extern Graphics process_graphics;
 extern const graphics_api::TextureFormat texture_api_formats[9];
 std::uint32_t select_texture_format(std::uint32_t format);
+static_assert(std::is_empty_v<NativeGraphicsModeAction>);
+static_assert(std::is_base_of_v<NativeGraphicsModeAction, Graphics>);
 #if defined(_M_IX86)
 static_assert(sizeof(Graphics)==0xde8);
 static_assert(offsetof(Graphics,configuration)==0x1c8);

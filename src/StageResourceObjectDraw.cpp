@@ -5,7 +5,6 @@
 #include "Angle.hpp"
 #include "Graphics.hpp"
 #include "Matrix4.hpp"
-#include "NativeGraphicsModeAction.hpp"
 #include "NativeAnimationResetHooksView.hpp"
 
 #include <d3dx9math.h>
@@ -39,8 +38,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
 
     current_animation_pool->flush_draws();
     graphics_enable_fog(&process_graphics);
-    reinterpret_cast<NativeGraphicsModeAction&>(process_graphics)
-        .select_view_477520(3);
+    process_graphics.select_view_477520(3);
     current_animation_pool->set_draw_mode_477770(1);
 
     while (instance->object_index >= 0) {

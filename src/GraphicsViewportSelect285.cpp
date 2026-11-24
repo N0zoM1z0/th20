@@ -27,9 +27,9 @@ void NativeGraphicsModeAction::recompute_view_4d9f60(ViewportState* state) {
             static_cast<float>(state->viewport.height),
         native_viewport_near_56f280, native_viewport_far_571e9c);
 
-    device->SetTransform(D3DTS_VIEW,
+    static_cast<Graphics*>(this)->device->SetTransform(D3DTS_VIEW,
         reinterpret_cast<const D3DMATRIX*>(&state->view));
-    device->SetTransform(D3DTS_PROJECTION,
+    static_cast<Graphics*>(this)->device->SetTransform(D3DTS_PROJECTION,
         reinterpret_cast<const D3DMATRIX*>(&state->projection));
 
     const Vector3 camera_up = state->vector_18;
@@ -42,20 +42,20 @@ void NativeGraphicsModeAction::recompute_view_4d9f60(ViewportState* state) {
 }
 
 void NativeGraphicsModeAction::select_view_477520(int index) {
-    current_viewport = &viewports[index];
-    recompute_current_4da1f0(current_viewport, &current_viewport->viewport);
-    recompute_view_4d9f60(current_viewport);
-    device->SetViewport(
-        reinterpret_cast<const D3DVIEWPORT9*>(&current_viewport->adjusted_viewport));
+    static_cast<Graphics*>(this)->current_viewport = &static_cast<Graphics*>(this)->viewports[index];
+    recompute_current_4da1f0(static_cast<Graphics*>(this)->current_viewport, &static_cast<Graphics*>(this)->current_viewport->viewport);
+    recompute_view_4d9f60(static_cast<Graphics*>(this)->current_viewport);
+    static_cast<Graphics*>(this)->device->SetViewport(
+        reinterpret_cast<const D3DVIEWPORT9*>(&static_cast<Graphics*>(this)->current_viewport->adjusted_viewport));
 
     auto* pool = reinterpret_cast<std::uint8_t*>(current_animation_pool);
     *reinterpret_cast<float*>(pool + 0xD0) =
-        static_cast<float>(current_viewport->offset_x);
+        static_cast<float>(static_cast<Graphics*>(this)->current_viewport->offset_x);
     *reinterpret_cast<float*>(pool + 0xD4) =
-        static_cast<float>(current_viewport->offset_y);
-    std::memcpy(pool + 0xC8, &current_viewport->points[2].x, sizeof(float));
-    std::memcpy(pool + 0xCC, &current_viewport->points[2].y, sizeof(float));
-    field_b04 = 0;
+        static_cast<float>(static_cast<Graphics*>(this)->current_viewport->offset_y);
+    std::memcpy(pool + 0xC8, &static_cast<Graphics*>(this)->current_viewport->points[2].x, sizeof(float));
+    std::memcpy(pool + 0xCC, &static_cast<Graphics*>(this)->current_viewport->points[2].y, sizeof(float));
+    static_cast<Graphics*>(this)->field_b04 = 0;
 }
 
 } // namespace th20
