@@ -291,9 +291,10 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30((position.x),(position.y),width,animation_inherited_aux_scale_x(animation),height,angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
     case 45: {
-        // Colors and draw count precede both half-height calculations. Keep
-        // the width half as its own real argument value, then recompute the
-        // identical scale half after the getter for the native SSE register form.
+        // Native mode45 computes the scale half before the getter and the
+        // width half after it. This value-equivalent source role swap keeps
+        // width's half before the getter and recomputes scale's half after,
+        // preserving the native register-register addss and E8 call positions.
         const auto secondary_color=animation_draw_color_494(animation);
         const auto primary_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;

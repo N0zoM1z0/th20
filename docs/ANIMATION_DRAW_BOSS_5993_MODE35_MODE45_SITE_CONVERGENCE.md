@@ -31,7 +31,8 @@ and rejected probes are in
 The maintained function changes remain ordinary C++ source; no binary bytes,
 manual opcodes, or padding are introduced. The value-preserving source changes
 preserve all 123 original E8 target roles and the actual renderer argument
-values. Mode45's saved-half reuse remains unresolved. Mode46 has been returned to
+values. Mode45's half-height operand ownership remains value-equivalent but reversed
+relative to the native division sites. Mode46 has been returned to
 native evaluation order; the locked compiler still chooses a shorter
 direct-memory adjusted-scale subtraction:
 
@@ -46,11 +47,13 @@ direct-memory adjusted-scale subtraction:
 2. **Mode 45/46 actual argument values and lifetimes:** Both packed-color
    getters and the real draw count are saved before the renderer call. Mode45
    retains the pre-getter half for width and recomputes an equivalent half for
-   adjusted scale; native mode45 reuses the first saved half for both. Its
-   register-register `addss` form matches, but the local lifetime does not.
-   Mode46 now retains its pre-getter half for adjusted scale and recomputes the
-   width half after the getter, matching native source order. MSVC emits a
-   direct-memory adjusted-scale `subss` that is four bytes shorter than native.
+   adjusted scale; native mode45 uses the pre-getter half for adjusted scale
+   and recomputes the width half after the getter. The value-equivalent source
+   role swap keeps register-register `addss` and E8 call positions, but moves
+   the second absolute `native_two` relocation. Mode46 now retains its
+   pre-getter half for adjusted scale and recomputes the width half after the
+   getter, matching native source order. MSVC emits a direct-memory
+   adjusted-scale `subss` that is four bytes shorter than native.
    There is no invented helper or change to the renderer receiver ABI.
 
 ## Whole original and whole candidate evidence

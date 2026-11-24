@@ -13,9 +13,9 @@ This report does not claim exactness.
 ## Native mode45 and mode46 lifetimes
 
 The original PE keeps distinct half-height, inherited-scale and adjusted-scale
-locals for each mode. Mode45 reuses one saved half-height for both adjusted
-scale and width; mode46 reuses the saved half for adjusted scale and recomputes
-the width half after the getter:
+locals for each mode. Both modes compute a half-height before the inherited-
+scale getter for adjusted scale, then independently recompute the width half
+after the getter:
 
 | Mode | Half-height | Inherited scale | Adjusted scale | Native draw call |
 | --- | --- | --- | --- | --- |
@@ -226,9 +226,14 @@ under `.analysis/` and `build/`.
 
 Mode45 still uses a value-equivalent role swap: its pre-getter half feeds
 width and a second `height / native_two` calculation after the getter feeds
-adjusted scale. The adjusted-scale operation has the native register-register
-`addss` form, but the native code reuses the saved half-height instead of
-recomputing it. That lifetime difference remains open.
+adjusted scale. Native mode45 does the opposite: the saved pre-getter half
+feeds adjusted scale, and the width half is recomputed after the getter. The
+maintained expression keeps the native register-register `addss` form and E8
+call positions, but moves the second absolute `native_two` relocation from
+the native width site `+0x1646` to the candidate adjusted-scale site `+0x15f9`.
+A probe using native mode45 half ownership compiled to 5,989B/1,500
+instructions, only 109/123 E8 positions and 4,685/5,369 ordinary bytes, so it
+was not promoted.
 
 Mode46 now follows native source-level ownership: its pre-getter half feeds
 adjusted scale and its width expression recomputes `height / native_two` after
@@ -299,7 +304,7 @@ x87 stores; their original source ownership remains unresolved.
 The isolated probes used the locked MSVC x86 profile and did not edit
 shared headers, canonical objects, match units or the target. No full cold
 replay was run. The next step remains the mode35/36 E8-site deltas, both
-register-register adjusted-scale operands, the mode45 half-height reuse and the
+register-register adjusted-scale operands, the mode45 half-height operand ownership and the
 first getter's native x87 spill ownership. A switch-scope `first_scale_result` probe did recover
 `fstp [ebp-0x160]` in both modes without changing the 0x204 frame, but its
 5,985B body, 84/123 E8 positions, 23/32 data sites and 3,710/5,368 ordinary
