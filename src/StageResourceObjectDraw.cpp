@@ -5,7 +5,6 @@
 #include "Angle.hpp"
 #include "Graphics.hpp"
 #include "Matrix4.hpp"
-#include "NativeAnimationResetHooksView.hpp"
 
 #include <d3dx9math.h>
 #include <cstddef>
