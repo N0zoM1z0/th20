@@ -135,11 +135,11 @@ switchD_0042b8cc_caseD_a0:
         AnimationFile* local_57c;
         std::uint32_t local_558;
         local_57c = reinterpret_cast<NativeAnimationLegacyFileView*>(this)->previous_file_437470();
-        if ((instruction->operand_flags & 1U) == 0) {
-          local_558 = (&instruction->first_operand)[0];
+        if ((instruction->operand_flags & 1U) != 0) {
+          local_558 = this->integer_value((&instruction->first_operand)[0]);
         }
         else {
-          local_558 = this->integer_value((&instruction->first_operand)[0]);
+          local_558 = (&instruction->first_operand)[0];
         }
         local_57c->spawn_child(local_558,this,0);
         break;

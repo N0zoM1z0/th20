@@ -120,6 +120,7 @@ def compile_candidate(original_targets):
  assert 'goto LAB_00434dce;\nLAB_vm_frame_ready:' in text
  assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_554 = this->integer_value((&instruction->first_operand)[0]);' in text
  assert 'base.flags.bits_02.bit_10 = 0;' in text
+ assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_558 = this->integer_value((&instruction->first_operand)[0]);' in text
  assert 'native_animation_opcode_dispatch_435284[0x27c]' in text
  assert 'switch(native_animation_opcode_dispatch_435284[local_e0])' in text
  for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
@@ -161,6 +162,7 @@ def compile_candidate(original_targets):
  native_calls=[x.address-ADDRESS for x in Cs(CS_ARCH_X86,CS_MODE_32).disasm(pe.raw_at(image,base,sections,ADDRESS,ORIGINAL_SIZE),ADDRESS) if x.size==5 and x.bytes[0]==0xE8]
  candidate_calls=[x.address for x in calls]  # candidate disassembly is based at code offset zero
  assert len(native_calls)==len(candidate_calls)==505
+ assert native_calls[16]==0x415 and candidate_calls[16]==0x425
  matched_call_sites=sum(a==b for a,b in zip(native_calls,candidate_calls))
  call_offset_delta=sum(abs(a-b) for a,b in zip(native_calls,candidate_calls))
  candidate_sequence=candidate_call_target_sequence(relocations)
