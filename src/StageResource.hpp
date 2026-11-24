@@ -116,12 +116,25 @@ static_assert(offsetof(StageResourcePrimitiveTransform, position_x) == 0x08);
 static_assert(offsetof(StageResourcePrimitiveTransform, scale_x) == 0x14);
 static_assert(offsetof(StageResourcePrimitiveTransform, scale_y) == 0x18);
 
+// A resource object is immediately followed by its variable-length primitive
+// stream. This view names the first record without changing the 0x30-byte
+// standalone object record used by the object table and update routines.
+struct StageResourceObjectPrimitiveStream {
+    StageResourceObjectRecord object;
+    StageResourcePrimitiveTransform primitives[1];
+};
+static_assert(offsetof(StageResourceObjectPrimitiveStream, primitives) == 0x30);
+static_assert(sizeof(StageResourceObjectPrimitiveStream) == 0x4c);
+
 struct StageResourceRenderCounts {
     std::uint32_t visible_objects;
     std::uint32_t culled_objects;
     std::uint32_t primitive_draws;
 };
 static_assert(sizeof(StageResourceRenderCounts) == 0x0c);
+static_assert(offsetof(StageResourceRenderCounts, visible_objects) == 0x00);
+static_assert(offsetof(StageResourceRenderCounts, culled_objects) == 0x04);
+static_assert(offsetof(StageResourceRenderCounts, primitive_draws) == 0x08);
 
 struct StageResourceInstructionHeader {
     std::int32_t time;

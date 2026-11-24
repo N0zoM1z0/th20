@@ -58,8 +58,8 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
             }
 
             object.signed_flags |= 2;
-            auto* primitive = reinterpret_cast<StageResourcePrimitiveTransform*>(
-                reinterpret_cast<std::byte*>(&object) + sizeof(object));
+            auto* primitive =
+                reinterpret_cast<StageResourceObjectPrimitiveStream*>(&object)->primitives;
             while (primitive->header.type >= 0) {
                 Animation* animation = primitive_animations +
                     primitive->header.animation_index;
