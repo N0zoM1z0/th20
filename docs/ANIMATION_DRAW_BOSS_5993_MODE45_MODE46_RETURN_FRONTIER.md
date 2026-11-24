@@ -149,6 +149,29 @@ the surrounding native call order and stack ownership. MSVC 19.44 warns that
 they are not natural or useful replacements. These experiments remain ignored
 under `.analysis/` and `build/`.
 
+A new *value-equivalent role-swap* probe does recover the native register-register
+`addss` and `subss` forms while retaining the two independent half-height
+divisions in the same instruction order. It computes the first half into a
+`half_for_width` local before the getter, then computes `height / native_two`
+again in the adjusted-scale expression after the getter. The first result is
+used for the renderer width and the second for adjusted scale; since both are
+the same local-height division, the values are identical. This source form
+produces the native mode35 and mode36 register-register arithmetic and keeps
+all mode35/36 E8 offsets aligned through the second getter. However, the mode36
+renderer call remains four bytes early: the width expression is still emitted
+as a direct-memory subtraction instead of the native divide/load/register
+subtract. The full isolated body is 5,989B/1,500 instructions, with the mode36
+renderer E8 at candidate `+0x1194` versus native `0x00444A18` (`+0x1198`).
+
+A follow-up natural expression `0.0f - (half_for_width - width)` makes the
+full body 5,993B/1,501 instructions, but inserts a non-native `xorps` plus
+`subss` sign-negation sequence and moves that renderer call three bytes late.
+It is not accepted. The value-equivalent role-swap is a useful register-form
+proof, not a production improvement: the isolated full-body comparison remains
+well below the maintained source's 4,801/5,376 ordinary-byte and 113/123 E8
+site baseline because other local ownership and mode45/46 layout still differ.
+Both probes remain private under `.analysis/` and `build/`.
+
 ## Rejected code-generation shortcuts
 
 Further isolated probes did not produce the native register-register form:
