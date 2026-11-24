@@ -75,20 +75,17 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                     local_position.y = primitive->position_y;
                     local_position.z = primitive->position_z;
 
-                    if (*reinterpret_cast<const float*>(
-                            reinterpret_cast<const std::byte*>(&object) + 0x0c) !=
+                    if (object.typed_parameters.rotation_y !=
                         native_zero_56e0e8) {
                         D3DXVECTOR3 transformed_position;
                         matrix_identity(reinterpret_cast<Matrix4*>(&rotation));
                         D3DXMatrixRotationY(&rotation,
-                            *reinterpret_cast<const float*>(
-                                reinterpret_cast<const std::byte*>(&object) + 0x0c));
+                            object.typed_parameters.rotation_y);
                         D3DXVec3TransformCoord(&transformed_position,
                                                &local_position, &rotation);
                         local_position = transformed_position;
                         animation->set_rotation_y_forward(normalize_angle(
-                            original_rotation + *reinterpret_cast<const float*>(
-                                reinterpret_cast<const std::byte*>(&object) + 0x0c)));
+                            original_rotation + object.typed_parameters.rotation_y));
                     }
 
                     animation->vector_5bc.x =

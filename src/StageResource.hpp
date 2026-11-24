@@ -27,6 +27,24 @@ static_assert(offsetof(StageResourceFileHeader, animation_count) == 0x02);
 static_assert(offsetof(StageResourceFileHeader, instance_offset) == 0x04);
 static_assert(offsetof(StageResourceFileHeader, animation_name) == 0x10);
 
+// Typed views of the native object parameter block. The third float is
+// the object-space Y rotation consumed by the layer draw routine.
+struct StageResourceObjectParameters {
+    float field_00;
+    float field_04;
+    float rotation_y;
+    float field_0c;
+    float field_10;
+    float field_14;
+    float field_18;
+    float field_1c;
+    float field_20;
+    float field_24;
+    float field_28;
+};
+static_assert(sizeof(StageResourceObjectParameters) == 0x2c);
+static_assert(offsetof(StageResourceObjectParameters, rotation_y) == 0x08);
+
 // Native resource object and its variable-length primitive table. Object
 // records are 0x30 bytes; primitive records begin immediately after the object
 // and advance by their signed byte-size field until a negative type sentinel.
@@ -37,7 +55,10 @@ struct StageResourceObjectRecord {
         std::uint8_t flags;
         std::int8_t signed_flags;
     };
-    float parameters[11];
+    union {
+        float parameters[11];
+        StageResourceObjectParameters typed_parameters;
+    };
 
     // Original 0x473B20 object-space distance and projected-bounds culler.
     std::int32_t is_outside_viewport(const Vector3& instance_offset,
