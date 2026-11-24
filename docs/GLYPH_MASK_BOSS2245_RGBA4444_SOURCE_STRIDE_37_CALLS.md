@@ -56,6 +56,10 @@ source checkpoint made three natural lifetime/dataflow corrections:
   folded array-index calls. The outline path flips the packed alpha byte and
   assigns the four-byte BGRA channel aggregate; the non-outline path writes
   only B/G/R and preserves destination alpha.
+- Both stencil-offset generators now preserve the original short-circuit
+  operand order: test `delta_y != 0` before `delta_x != 0`. The predicates are
+  equivalent, but this recovers the native branch evaluation order in both
+  pixel-format paths without changing code size, call roles, or runtime data.
 - The full candidate now has **7/37 physical E8 sites** and **4/5 PE HIGHLOW
   site/target pairs** aligned; aggregate absolute E8 offset distance falls
   from **1,196 to 927**. The 37 target roles, nine live-stride calls and four

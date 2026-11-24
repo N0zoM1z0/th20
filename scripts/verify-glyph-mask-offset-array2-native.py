@@ -57,6 +57,7 @@ def verify(candidate):
  assert '*reinterpret_cast<PackedColorChannels*>(dest)=opaque.channels;' in source
  assert 'channels[0]=opaque.channels.blue;' in source
  assert 'reinterpret_cast<const PackedColorChannels*>(dest)->alpha!=0' in source
+ assert source.count('(delta_y!=0 || delta_x!=0)')==2
  assert 'struct PackedColorChannels' in color_header and 'PackedColorChannels channels;' in color_header
  assert 'offsetof(PackedColorChannels, alpha) == 3' in color_header
  symbols=subprocess.run(['strings',str(obj)],capture_output=True,text=True,check=True).stdout.splitlines()
@@ -81,6 +82,7 @@ def verify(candidate):
  assert len(real_calls)==37
  assert real_calls[0:3]==[0x32,0x44,0x61]
  assert real_calls[10:14]==[0x24B,0x25C,0x29E,0x2B0]
+ # The native short-circuit tests the outer y displacement before x.
  # Native and candidate invert the packed BGRA alpha byte in place;
  # the hoisted stencil pointer is a real branch-lifetime local.
  assert original[0x1AB:0x1B8]==bytes.fromhex('0fb655eb81f2ff0000008855eb')
@@ -170,7 +172,7 @@ def verify(candidate):
  print('PASS immutable original whole 2245B/612 game Boss, 37 native E8/5 PE HIGHLOW and both complete pixel-format branches')
  print('PASS original four folded array-index E8 at +0x29E/+0x2B0/+0x666/+0x678, existing 22B array helper whole structural 22/22 (no duplicate credit)')
  print('PASS complete natural 2110B/559-i386 source: all 37 E8/5 DIR32 roles, nine live-stride getter calls, including per-pixel RGBA4444 source at native +0x5E7')
- print('PASS 37/37 candidate E8 target roles in original order, typed BGRA pixel-alpha view, both pixel-format stencil lifetimes; 7/37 E8 and 4/5 PE HIGHLOW sites aligned')
+ print('PASS 37/37 candidate E8 target roles in original order, typed BGRA pixel-alpha view, y-first native short-circuit order, both pixel-format stencil lifetimes; 7/37 E8 and 4/5 PE HIGHLOW sites aligned')
  print('PASS all 24 previously accepted PMR/color generic source descendants remain whole native exact')
  print('SOURCE-PRESENT NONEXACT: entire 2110B candidate vs original 2245B parent, no new game-authored code credit')
 if __name__=='__main__':

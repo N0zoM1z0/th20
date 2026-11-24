@@ -35,7 +35,7 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
         for (std::int32_t delta_y=0;delta_y<static_cast<std::int32_t>(radius_squared);++delta_y) {
             for (std::int32_t delta_x=0;delta_x<static_cast<std::int32_t>(radius_squared);++delta_x) {
                 if (static_cast<float>(delta_x*delta_x+delta_y*delta_y)<radius_squared &&
-                    (delta_x!=0 || delta_y!=0)) {
+                    (delta_y!=0 || delta_x!=0)) {
                     const GlyphMaskOffset displacement{delta_x,delta_y};
                     offsets.emplace_back(displacement);
                 }
@@ -90,7 +90,7 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
         for (std::int32_t delta_y=0;delta_y<static_cast<std::int32_t>(radius_squared);++delta_y) {
             for (std::int32_t delta_x=0;delta_x<static_cast<std::int32_t>(radius_squared);++delta_x) {
                 if (static_cast<float>(delta_x*delta_x+delta_y*delta_y)<radius_squared &&
-                    (delta_x!=0 || delta_y!=0)) {
+                    (delta_y!=0 || delta_x!=0)) {
                     const GlyphMaskOffset displacement{delta_x,delta_y};
                     offsets.emplace_back(displacement);
                 }
