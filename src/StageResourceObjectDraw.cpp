@@ -68,7 +68,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                 case 0:
                 float original_rotation;
                 original_rotation = animation->rotation_y_value();
-                if (static_cast<std::int32_t>(animation->base.flags.bytes_00.animation_mode) >= 4) {
+                if (animation->base.flags.bytes_00.animation_mode >= 4) {
                     D3DXVECTOR3 local_position;
                     D3DXMATRIX rotation;
                     local_position.x = primitive->position_x;
@@ -112,7 +112,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                     graphics_disable_fog(&process_graphics);
                 }
 
-                if (((animation->base.flags.word_04 >> 4) & 1u) != 0) {
+                if (animation->base.flags.bits_04.depth_write_disabled != 0) {
                     graphics_disable_depth_writes(&process_graphics);
                     depth_write_state = 0;
                 } else {

@@ -43,10 +43,13 @@ struct AnimationModeBits {
     std::uint8_t other_6_7 : 2;
 };
 struct AnimationWord04Bits {
-    std::uint32_t low : 24;
+    std::uint32_t other_00_03 : 4;
+    std::uint32_t depth_write_disabled : 1;
+    std::uint32_t other_05_23 : 19;
     std::uint32_t bit_24 : 1;
     std::uint32_t high : 7;
 };
+static_assert(sizeof(AnimationWord04Bits) == 4);
 struct AnimationFlagByte02 {
     // Raw byte alias preserves the native flag-byte operations while keeping
     // the independently observed bit names available to other owners.
