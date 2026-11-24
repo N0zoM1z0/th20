@@ -20,7 +20,7 @@ The primitive stream advance is a separate natural C++ cdecl helper at 0x0047116
 ## Local verification
 
 - Pinned MSVC 19.44.35211 i386 COFF build.
-- stage_resource_object_draw_layer: 1119/1119 bytes exact, 48/48 native relocations, no first differences. Pinned COFF object SHA-256: cfae8426e8b4b95f375fa73cf66f7431918137be7945a3192e1a58744d856173.
+- stage_resource_object_draw_layer: 1119/1119 bytes exact, 48/48 native relocations, no first differences. Pinned COFF object SHA-256: 3d258f8b34cb161b7b0a46bcd566948ebc914279ce49c21cb3476301cb8136b4.
 - stage_resource_primitive_advance: 11/11 bytes exact, no relocations.
 - Original PE vs maintained C++ StageResource CPU oracle: 47,750 checks, 0 failures. The test harness routes source-side D3DX calls through the same deterministic test seams used for the native PE import slots.
 
