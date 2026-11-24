@@ -1121,8 +1121,10 @@ int wmain(int argc, wchar_t** argv) {
                     auto* bytes = reinterpret_cast<std::uint8_t*>(&animations[index]);
                     for (unsigned byte = 0; byte < sizeof(animations[index]); ++byte)
                         bytes[byte] = static_cast<std::uint8_t>(random());
+                    constexpr std::array<std::uint8_t, 12> animation_modes{
+                        0, 3, 4, 5, 7, 8, 9, 23, 24, 25, 127, 255};
                     animations[index].base.flags.bytes_00.animation_mode =
-                        std::array<std::uint8_t, 8>{4, 8, 24, 3, 5, 8, 24, 4}[index];
+                        animation_modes[(test + index) % animation_modes.size()];
                     animations[index].base.flags.word_04 =
                         index & 1u ? 0x10u : 0x20u;
                     animations[index].base.vector_38.y =
