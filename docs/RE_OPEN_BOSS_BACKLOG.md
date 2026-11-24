@@ -188,7 +188,7 @@ canonically accepted.
   the typed `AnmInstruction` header/variable-operand model preserves all 505
   original call targets. Current 39,760B COFF candidate remains NONEXACT
   (16/505 E8 offsets coincide, first fourteen consecutive sites aligned; aggregate
-  E8 offset distance 53,940; no exact parent credit). Continue converging the whole-body instruction, relocation
+  E8 offset distance 53,872; no exact parent credit). Continue converging the whole-body instruction, relocation
   and stack layout, not just the leaves.
   [Native VM report](ANIMATION_UPDATE_VM_RECONSTRUCTION.md).
 
