@@ -116,10 +116,7 @@ enum class StageResourcePrimitiveKind : std::int16_t {
 static_assert(sizeof(StageResourcePrimitiveKind) == 2);
 
 struct StageResourcePrimitiveHeader {
-    union {
-        std::int16_t type;
-        StageResourcePrimitiveKind kind;
-    };
+    std::int16_t type;
     std::int16_t size;
     std::int16_t script_index;
     std::int16_t animation_index;
@@ -127,7 +124,6 @@ struct StageResourcePrimitiveHeader {
 };
 static_assert(sizeof(StageResourcePrimitiveHeader) == 8);
 static_assert(offsetof(StageResourcePrimitiveHeader, type) == 0x00);
-static_assert(offsetof(StageResourcePrimitiveHeader, kind) == 0x00);
 static_assert(offsetof(StageResourcePrimitiveHeader, size) == 0x02);
 static_assert(offsetof(StageResourcePrimitiveHeader, script_index) == 0x04);
 static_assert(offsetof(StageResourcePrimitiveHeader, animation_index) == 0x06);
