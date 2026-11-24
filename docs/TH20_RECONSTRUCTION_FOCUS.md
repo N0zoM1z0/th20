@@ -20,7 +20,7 @@ The primitive stream advance is a separate natural C++ cdecl helper at 0x0047116
 ## Local verification
 
 - Pinned MSVC 19.44.35211 i386 COFF build.
-- stage_resource_object_draw_layer: 1119/1119 bytes exact after replaying all 48 native relocations.
+- stage_resource_object_draw_layer: 1119/1119 bytes exact, 48/48 native relocations, no first differences. Pinned COFF object SHA-256: 0e6c8d940f7c62fe5b70c4252d712618c0a7159570b4fb5ec38850ef7f0235f3.
 - stage_resource_primitive_advance: 11/11 bytes exact, no relocations.
 - Original PE vs maintained C++ StageResource CPU oracle: 47,750 checks, 0 failures. The test harness routes source-side D3DX calls through the same deterministic test seams used for the native PE import slots.
 
@@ -28,4 +28,4 @@ These are local strict-COFF and semantic-oracle results. They do not, by themsel
 
 ## Remaining acceptance gate
 
-The registered Factory adapter currently exposes only the imported boundary claim for 0x00474880; it has not imported source-present or codegen-exact claims for this function. A replay submission using that boundary claim was attempted, but Factory returned that repository th20 is not registered with the configured replay worker. Until an operator registers the repository and a fresh Factory-controlled replay returns receipt_verdict=pass plus acceptance_decision=accepted, keep this focus lock in place. The local strict replay and CPU differential results above remain valid but are not Factory acceptance.
+The registered Factory adapter currently exposes only the imported boundary claim for 0x00474880; it has not imported source-present or codegen-exact claims for this function. A replay submission using that boundary claim was attempted, but Factory returned that repository th20 is not registered with the configured replay worker. The Factory authority currently binds replay submission only to th04, th08, th09, th095, th10 and th105; the exposed tool set has no worker-registration operation. Until the Factory operator registers th20 and a fresh Factory-controlled replay returns receipt_verdict=pass plus acceptance_decision=accepted, keep this focus lock in place. The local strict replay and CPU differential results above remain valid but are not Factory acceptance.
