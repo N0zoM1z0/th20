@@ -108,14 +108,26 @@ struct StageResourceInstanceRecord {
 static_assert(sizeof(StageResourceInstanceRecord) == 0x10);
 static_assert(offsetof(StageResourceInstanceRecord, position) == 0x04);
 
+enum class StageResourcePrimitiveKind : std::int16_t {
+    animation_transform = 0,
+};
+static_assert(sizeof(StageResourcePrimitiveKind) == 2);
+
 struct StageResourcePrimitiveHeader {
-    std::int16_t type;
+    union {
+        std::int16_t type;
+        StageResourcePrimitiveKind kind;
+    };
     std::int16_t size;
     std::int16_t script_index;
     std::int16_t animation_index;
     StageResourcePrimitiveHeader* advance(std::int32_t size);
 };
 static_assert(sizeof(StageResourcePrimitiveHeader) == 8);
+static_assert(offsetof(StageResourcePrimitiveHeader, type) == 0x00);
+static_assert(offsetof(StageResourcePrimitiveHeader, kind) == 0x00);
+static_assert(offsetof(StageResourcePrimitiveHeader, size) == 0x02);
+static_assert(offsetof(StageResourcePrimitiveHeader, script_index) == 0x04);
 static_assert(offsetof(StageResourcePrimitiveHeader, animation_index) == 0x06);
 
 struct StageResourcePrimitiveTransform {

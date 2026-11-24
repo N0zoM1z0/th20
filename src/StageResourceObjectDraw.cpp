@@ -64,8 +64,8 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
             while (primitive->header.type >= 0) {
                 Animation* animation = primitive_animations +
                     primitive->header.animation_index;
-                switch (primitive->header.type) {
-                case 0: {
+                switch (primitive->header.kind) {
+                case StageResourcePrimitiveKind::animation_transform: {
                     float original_rotation;
                     original_rotation = animation->rotation_y_value();
                     if (animation->base.flags.bytes_00.animation_mode >= 4) {
