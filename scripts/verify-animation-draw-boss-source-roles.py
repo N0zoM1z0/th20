@@ -4,7 +4,7 @@
 The pinned-MSVC C++ emits a full 5993B/1501-x86 executable body and two
 original 49+31-pointer switch tables, preserving native case aliasing and
 exact physical table alignment. All 123 E8 call roles agree in native order;
-113 physical call positions match (81 consecutive), and 26/32 original PE
+114 physical call positions match (81 consecutive), and 27/32 original PE
 body data relocation offsets/targets coincide. The native 0x204 frame is
 matched, but real instruction/branch/relocation bytes still differ:
 this remains SOURCE-PRESENT, NONEXACT, not a canonical match unit.
@@ -189,7 +189,7 @@ def main():
         if native_calls[address] != source_calls[address]
     ]
     # The first 81 E8 instruction offsets and all 123 physical target roles
-    # agree; 113 of the 123 physical E8 positions agree across the entire
+    # agree; 114 of the 123 physical E8 positions agree across the entire
     # original code, including the compiler cookie. This is NOT full exact.
     physical_calls=[(inst.address-HEAD,
            (inst.address+5+struct.unpack_from('<i',inst.bytes,1)[0])&0xffffffff)
@@ -201,9 +201,9 @@ def main():
     assert physical_calls[:81]==candidate_calls[:81]
     assert physical_calls!=candidate_calls
     matched_call_sites=sum(a==b for a,b in zip(physical_calls,candidate_calls))
-    assert matched_call_sites==113
+    assert matched_call_sites==114
     assert physical_calls[-1]==candidate_calls[-1]  # real compiler cookie
-    assert sum(abs(a[0]-b[0]) for a,b in zip(physical_calls,candidate_calls))==65
+    assert sum(abs(a[0]-b[0]) for a,b in zip(physical_calls,candidate_calls))==44
 
 
     assert chosen_render_targets <= set(source_calls), chosen_render_targets - set(source_calls)
@@ -271,7 +271,7 @@ def main():
             target='table_main' if row['offset']<0x400 else 'table_nested'
         current_site_roles[row['offset']]=target
     matched_data_sites=len(set(native_site_roles.items())&set(current_site_roles.items()))
-    assert matched_data_sites==26 and len(native_site_roles)==len(current_site_roles)==32
+    assert matched_data_sites==27 and len(native_site_roles)==len(current_site_roles)==32
 
     # Compare code and after-RET data as a provisional strict-replay
     # diagnostic: no relocation targets are solved from original bytes.
@@ -282,7 +282,7 @@ def main():
         ignored.update(range(int(row['offset']),int(row['offset'])+4))
     comparable_bytes=sum(original_extent[i]==compiled[i]
                          for i in range(len(compiled)) if i not in ignored)
-    assert comparable_bytes==4801 and len(compiled)-len(ignored)==5376
+    assert comparable_bytes==4835 and len(compiled)-len(ignored)==5376
 
 
     assert all(addr in reloc_sites for t,n in ((ORIGINAL.MAIN_TABLE, 49),

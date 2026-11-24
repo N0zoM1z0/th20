@@ -4,8 +4,8 @@
 // relocation target roles are independently known. Current source compiles
 // to both real switch pointer partitions and the native 5993B/1501-x86
 // body length, 0x204 frame, all 123 call roles in physical order (81-site
-// exact prefix; 113 physical E8 sites total), and all 32 original data roles
-// (26 absolute relocation sites aligned). The other bytes still differ:
+// exact prefix; 114 physical E8 sites total), and all 32 original data roles
+// (27 absolute relocation sites aligned). The other bytes still differ:
 // same size and instruction count do NOT imply native exactness.
 #include "Animation.hpp"
 #include "AnimationCallback.hpp"
@@ -296,8 +296,10 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         const auto secondary_color=animation_draw_color_494(animation);
         const auto primary_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;
+        const float half_for_width = height / native_two;
+        const float adjusted_scale = animation_inherited_aux_scale_x(animation) + (height/native_two);
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30(
-            position.x,position.y,width+(height/native_two),animation_inherited_aux_scale_x(animation)+(height/native_two),height,
+            position.x,position.y,width+half_for_width,adjusted_scale,height,
             angle,quad_count,primary_color,secondary_color);
         break;
     }
@@ -307,10 +309,10 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         const auto secondary_color=animation_draw_color_494(animation);
         const auto primary_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;
-        const float half_for_scale=height/native_two;
-        const float adjusted_scale=animation_inherited_aux_scale_x(animation)-half_for_scale;
+        const float half_for_width=height/native_two;
+        const float adjusted_scale=animation_inherited_aux_scale_x(animation)-(height/native_two);
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30(
-            position.x,position.y,width-(height/native_two),adjusted_scale,height,
+            position.x,position.y,width-half_for_width,adjusted_scale,height,
             angle,quad_count,primary_color,secondary_color);
         break;
     }
