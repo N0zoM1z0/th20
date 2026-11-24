@@ -112,13 +112,12 @@ static_assert(offsetof(StageResourcePrimitiveHeader, animation_index) == 0x06);
 
 struct StageResourcePrimitiveTransform {
     StageResourcePrimitiveHeader header;
-    float position_x;
-    float position_y;
-    float position_z;
+    Vector3 position;
     float scale_x;
     float scale_y;
 };
-static_assert(offsetof(StageResourcePrimitiveTransform, position_x) == 0x08);
+static_assert(sizeof(StageResourcePrimitiveTransform) == 0x1c);
+static_assert(offsetof(StageResourcePrimitiveTransform, position) == 0x08);
 static_assert(offsetof(StageResourcePrimitiveTransform, scale_x) == 0x14);
 static_assert(offsetof(StageResourcePrimitiveTransform, scale_y) == 0x18);
 

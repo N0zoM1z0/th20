@@ -71,14 +71,13 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                     primitive->header.animation_index;
                 switch (static_cast<StageResourcePrimitiveKind>(primitive->header.type)) {
                 case StageResourcePrimitiveKind::animation_transform: {
-                    float original_rotation;
-                    original_rotation = animation->rotation_y_value();
+                    const float original_rotation = animation->rotation_y_value();
                     if (animation->base.flags.bytes_00.animation_mode >= 4) {
                         D3DXVECTOR3 local_position;
                         D3DXMATRIX rotation;
-                        local_position.x = primitive->position_x;
-                        local_position.y = primitive->position_y;
-                        local_position.z = primitive->position_z;
+                        local_position.x = primitive->position.x;
+                        local_position.y = primitive->position.y;
+                        local_position.z = primitive->position.z;
 
                         if (object.parameters.rotation_y !=
                             native_zero_56e0e8) {
