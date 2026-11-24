@@ -113,7 +113,6 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                 // neighbor's source address for its alpha-nibble test.
                 // Multiplication precedes signed division, as in the PE.
                 const std::uint16_t* stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y*pixel_stride_4156c0())/2)+x];
-                bool touches_outline=false;
                 for (const GlyphMaskOffset& off:offsets) {
                     // The original has two genuine E8 calls per vector
                     // element to the folded 22B array-index helper.
@@ -127,16 +126,14 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                          ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+x-delta_x]), ((*stencil>>12)!=0xf))) ||
                         ((x+delta_x<canvas_width_415800() && y+delta_y<rows) &&
                          ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+x+delta_x]), ((*stencil>>12)!=0xf)))) {
-                        touches_outline=true;
-                        break;
+                        *dest=packed_color.packed;
+                        goto rgba4444_pixel_done;
                     }
                 }
-                if (touches_outline) {
-                    *dest=packed_color.packed;
-                } else {
-                    // The original retains the destination alpha nibble.
-                    *dest=static_cast<std::uint16_t>((*dest&0xf000)|(packed_color.packed&0x0fff));
-                }
+                // Exhausting the stencil range preserves the destination alpha.
+                *dest=static_cast<std::uint16_t>((*dest&0xf000)|(packed_color.packed&0x0fff));
+                rgba4444_pixel_done:
+                ;
             }
         }
     }

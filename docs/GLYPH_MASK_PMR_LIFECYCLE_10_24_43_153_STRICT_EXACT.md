@@ -1,3 +1,22 @@
+**CORE/RECON-1082 CURRENT SOURCE UPDATE (2026-11-25):** The RGBA4444
+neighbor loop now follows the native early-exit/write topology directly in
+ordinary C++: an outline hit writes the packed color and jumps past the
+non-outline alpha-preserving write. This removes the per-pixel
+`touches_outline` flag and its post-loop branch without inline assembly,
+manual bytes or synthetic calls. The complete maintained source now emits
+**2,088B/549 i386, 37 E8/5 DIR32** (down 18B/six instructions from the
+2,106B/555 candidate). The candidate preserves **37/37 original E8 target
+roles**, **9/9 live stride getter roles**, **4/4 folded array-index roles**,
+and **5/5 PE data-target roles**. It matches **296/1,920 ordinary
+non-relocation bytes**; **7/37 physical E8 sites** and **4/5 PE HIGHLOW
+site/target pairs** align, with aggregate E8 offset distance **1,039**.
+The whole 2,245B/612-i386 game Boss remains **SOURCE-PRESENT/NONEXACT**;
+no parent exactness credit is claimed. The source-scoped replay rebuilt one
+object and preserved **24/24** previously exact PMR/color descendants.
+Both `verify-glyph-mask-offset-array2-native.py` and
+`verify-glyph-mask-boss-live-pixels-native.py` now attest this full candidate
+against the pinned original.
+
 **CORE/RECON-1080 CURRENT SOURCE UPDATE:** The native 8B glyph-offset object now uses a real [two-int32 indexed `std::array` instead of the historical plain struct](GLYPH_MASK_OFFSET_ARRAY2_NATIVE_TYPE.md). The complete current source parent is **2,061B/545 i386, 36 E8/5 DIR32** (original whole **2,245B/612 i386, 37 E8/5 HIGHLOW**). Four native folded index calls are present, and the 15 earlier PMR/color strict units still replay exact with the corrected vector template type. Earlier 2,041B/1,987B snapshots below are historical.
 
 # CORE/RECON-1054 — four whole-native PMR vector lifecycle heads, 230 strict-exact bytes
