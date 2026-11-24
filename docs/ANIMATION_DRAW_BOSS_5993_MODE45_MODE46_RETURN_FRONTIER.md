@@ -149,6 +149,30 @@ experiments; production stays at **5,993B/1,501 instructions**, frame
 `0x204`, **114/123** E8 positions, **27/32** data sites and
 **4,835/5,376** ordinary bytes.
 
+## Whole-parent cost of recovering the first spills and SSE register forms
+
+A combined first-result/half-height role-swap probe reproduces both native
+`fstp [ebp-0x160]` stores and both register-register adjusted-scale operations
+in ordinary C++. It keeps the `0x204` frame, but the full parent is only
+**5,989B/1,500 instructions**, **89/123** E8 sites, **24/32** data sites and
+**3,794/5,372** ordinary bytes. The extra local changes too much of the
+parent's stack and relocation layout; this is not promoted over the maintained
+**4,835/5,376** baseline.
+
+A separate mode36-only role swap on the maintained source keeps the native
+5,993B/1,501-instruction body and **114/123** E8 sites, and aligns the final
+mode46 renderer call. However, ordinary-byte agreement falls to
+**4,765/5,376** and data-site agreement to **26/32**. It is also rejected:
+local call-boundary recovery is not worth the larger whole-parent regression.
+
+Further attempts to materialize the first return without a named local were
+not successful. `static_cast<volatile float>(getter())` is optimized back to
+`fstp st(0)`. Short-lived case-block objects spill at `[ebp-0x20c]`; a local
+inserted between the mode35 and mode36 labels spills at `[ebp-0x208]` and
+expands the frame. `_ReadWriteBarrier()` inserts NOPs but leaves the
+register-memory arithmetic unchanged. No such compiler-shaping probe is
+promoted.
+
 ## Getter ABI: Ghidra `float10` is not an MSVC `long double` source type
 
 A fresh native decompile of `0x00445880` identifies the inherited auxiliary
