@@ -172,6 +172,16 @@ well below the maintained source's 4,801/5,376 ordinary-byte and 113/123 E8
 site baseline because other local ownership and mode45/46 layout still differ.
 Both probes remain private under `.analysis/` and `build/`.
 
+The remaining mode36 width subtraction was separately probed with volatile and
+reference aliases, copy-then-subtract, compound assignment, operand reversal,
+`width + (-half)`, `width + (0.0f - half)`, and `width - (half * 1.0f)`. None
+produces the native `movss xmm1, [half]` / `subss xmm1, xmm0` sequence with the
+correct call offset. `0.0f - (half - width)` uses register-register subtraction
+by zeroing XMM1 first, but it adds a non-native `xorps`/`subss` pair and leaves
+the mode36 renderer call three bytes late. `__forceinline` identity/negation
+helpers also remain real E8 calls under `/Ob0`; they do not inline away. These
+are rejected compiler-shaping routes, not production source changes.
+
 ## Rejected code-generation shortcuts
 
 Further isolated probes did not produce the native register-register form:
