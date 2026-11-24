@@ -127,6 +127,7 @@ def compile_candidate(original_targets):
  assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_574 = this->integer_value((&instruction->first_operand)[0]);' in text
  assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_fc = this->integer_value((&instruction->first_operand)[0]);' in text
  assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_100 = this->integer_value((&instruction->first_operand)[0]);' in text
+ assert 'if ((instruction->operand_flags & 1U) != 0) {\n          local_104 = this->integer_value((&instruction->first_operand)[0]);' in text
  assert 'native_animation_opcode_dispatch_435284[0x27c]' in text
  assert 'switch(native_animation_opcode_dispatch_435284[local_e0])' in text
  for forbidden in ('__asm','__declspec(naked)','_emit','__nop'):
@@ -169,6 +170,7 @@ def compile_candidate(original_targets):
  candidate_calls=[x.address for x in calls]  # candidate disassembly is based at code offset zero
  assert len(native_calls)==len(candidate_calls)==505
  assert code[0x849:0x84e]==bytes.fromhex('83e1017426')  # opcode 0x73: native JE-to-raw / integer fallthrough
+ assert code[0x8cf:0x8d4]==bytes.fromhex('83e2017426')  # opcode 0x75: native JE-to-raw / integer fallthrough
  assert native_calls[16]==0x415 and candidate_calls[16]==0x425
  assert native_calls[18]==0x468 and candidate_calls[18]==0x478
  assert native_calls[19]==0x4d1 and candidate_calls[19]==0x4d5
