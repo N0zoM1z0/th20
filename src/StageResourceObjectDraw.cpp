@@ -28,7 +28,7 @@ StageResourcePrimitiveTransform* __cdecl advance_stage_resource_primitive(
 
 std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
     auto* instance = instance_records;
-    std::uint32_t depth_write_state = 1;
+    std::int32_t depth_write_state = 1;
     script_state.draw_inline_animations_for_layer(layer);
 
     current_animation_pool->flush_draws();
@@ -125,9 +125,8 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
                     break;
                 }
                 default:
-                    goto advance_primitive;
+                    break;
                 }
-advance_primitive:
                 primitive = advance_stage_resource_primitive(
                     primitive, primitive->header.size);
             }
