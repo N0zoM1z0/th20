@@ -54,7 +54,7 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
             auto* dest=reinterpret_cast<std::uint32_t*>(
                 pixels+row_advance+start*4);
             for (std::int32_t x=start;x<end;++x,++dest) {
-                if (reinterpret_cast<const std::uint8_t*>(dest)[3]!=0) {
+                if (reinterpret_cast<const PackedColorChannels*>(dest)->alpha!=0) {
                     bool touches_outline=false;
                     for (const GlyphMaskOffset& off:offsets) {
                     // The original has two genuine E8 calls per vector

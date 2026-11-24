@@ -1,15 +1,17 @@
 **CURRENT SOURCE UPDATE (2026-11-24):** The complete source now compiles to
-**2,118B/561-i386**, retaining all **37/37 E8 target roles**, **9/9 live
+**2,110B/559-i386**, retaining all **37/37 E8 target roles**, **9/9 live
 stride calls**, and all four genuine folded `std::array<int32_t,2>` index
 calls. A direct `pixel_stride*rows` length expression restores the original
-first three physical E8 sites; the BGRA32 path keeps its source stencil pointer
-alive across the row loop and writes the four-byte `PackedColorChannels` view
-only on the outline branch, while the ordinary branch preserves the live
-destination alpha byte. The current candidate has **4/37 physical E8 sites**,
-**4/5 PE HIGHLOW site/target pairs**, and aggregate E8 offset distance **965**.
-It remains SOURCE-PRESENT/NONEXACT against the original **2,245B/612-i386**
-parent; no game-authored parent bytes are credited. Scoped replay after the
-shared `PackedColor` layout change passed **24/24** previously exact PMR/color
+first three physical E8 sites; the typed `PackedColorChannels::alpha` read
+restores the original pixel-alpha load and aligns the vector begin/end and both
+first-branch array-index E8 sites. The BGRA32 path keeps its stencil pointer
+alive across the row loop and writes the four-byte channel aggregate only on
+the outline branch, preserving destination alpha on the non-outline branch.
+The current candidate has **7/37 physical E8 sites**, **4/5 PE HIGHLOW
+site/target pairs**, and aggregate E8 offset distance **927**. It remains
+SOURCE-PRESENT/NONEXACT against the original **2,245B/612-i386** parent; no
+game-authored parent bytes are credited. Scoped replay after the shared
+`PackedColor` layout change passed **24/24** previously exact PMR/color
 descendants. Older source totals below are historical.
 
 **CORE/RECON-1080 CURRENT SOURCE UPDATE:** The native 8B glyph-offset object now uses a real [two-int32 indexed `std::array` instead of the historical plain struct](GLYPH_MASK_OFFSET_ARRAY2_NATIVE_TYPE.md). The complete current source parent is **2,061B/545 i386, 36 E8/5 DIR32** (original whole **2,245B/612 i386, 37 E8/5 HIGHLOW**). Four native folded index calls are present, and the 15 earlier PMR/color strict units still replay exact with the corrected vector template type. Earlier 2,041B/1,987B snapshots below are historical.

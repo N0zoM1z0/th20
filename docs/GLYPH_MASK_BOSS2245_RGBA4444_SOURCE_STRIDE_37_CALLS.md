@@ -50,35 +50,37 @@ source checkpoint made three natural lifetime/dataflow corrections:
   restoring the original first three physical E8 sites (`+0x32`, `+0x44`,
   `+0x61`).
 - The BGRA32 path hoists the original-buffer stencil pointer once before its
-  row loop. `PackedColor` now has an ABI-preserving four-byte BGRA channel
-  view, and the outline path toggles `opaque.channels.alpha` in place rather
-  than computing a separate 32-bit `outlined` value. The candidate's
-  `movzx/xor/mov` alpha-byte sequence matches the native sequence exactly.
-- The full candidate now has **4/37 physical E8 sites** and **4/5 PE HIGHLOW
+  row loop. Its live pixel-alpha test now uses the typed
+  `PackedColorChannels::alpha` byte view, naturally restoring the original
+  `movzx [pixel+3]` access and aligning the vector begin/end calls plus both
+  folded array-index calls. The outline path flips the packed alpha byte and
+  assigns the four-byte BGRA channel aggregate; the non-outline path writes
+  only B/G/R and preserves destination alpha.
+- The full candidate now has **7/37 physical E8 sites** and **4/5 PE HIGHLOW
   site/target pairs** aligned; aggregate absolute E8 offset distance falls
-  from **1,196 to 965**. The 37 target roles, nine live-stride calls and four
+  from **1,196 to 927**. The 37 target roles, nine live-stride calls and four
   folded array-index calls remain intact.
 
 
 | Entire function evidence | First source | Earlier full-role source | Current source | Original |
 | --- | ---: | ---: | ---: | ---: |
-| Complete code bytes | 2,061 | 2,141 | **2,118** | 2,245 |
-| Complete i386 instruction count | 545 | 565 | **561** | 612 |
+| Complete code bytes | 2,061 | 2,141 | **2,110** | 2,245 |
+| Complete i386 instruction count | 545 | 565 | **559** | 612 |
 | Physical E8 / compiled REL32 count | 36 | 37 | **37** | 37 |
 | Physical HIGHLOW / compiled DIR32 | 5 | 5 | **5** | 5 |
 | Native stride / candidate stride E8 | 9 / 8 | 9 / 9 | **9 / 9** | 9 / 9 |
 | Original-target call roles in order | 23-role prefix | 37/37 | **37/37** | 37/37 |
-| E8 opcode positions exactly aligned | 1 | 2 | **4** | 37 |
+| E8 opcode positions exactly aligned | 1 | 2 | **7** | 37 |
 | PE HIGHLOW site/target pairs aligned | 2 | 2 | **4** | 5 |
 | Folded two-int32 array-index calls | 4 | 4 | **4** | 4 |
-| Aggregate absolute E8 offset distance | — | 1,196 | **965** | 0 |
+| Aggregate absolute E8 offset distance | — | 1,196 | **927** | 0 |
 
 Both the native PE's *real* physical target destinations and the
 candidate COFF symbol prefix roles are checked in **all 37** positions,
 including `+0x5E7`. Every candidate REL32 is a genuine E8 operand.
 All five original PE HIGHLOW roles are separately checked against the
-actual candidate DIR32 symbols. The 561/612 instruction difference,
-remaining 127B original code-size gap, differing stack slots/EH state,
+actual candidate DIR32 symbols. The 559/612 instruction difference,
+remaining 135B original code-size gap, differing stack slots/EH state,
 and most physical call/data locations mean the parent is **not exact**;
 matching a full call-role census does **not** grant 2,245B game bytes.
 
@@ -97,5 +99,5 @@ replayed: **24/24** previously accepted PMR/color generic descendants
 remained strict whole-native exact. The separately original-exact folded
 22B array helper does **not** receive duplicate credit; there was **no
 full or unfiltered cold replay**. Next: recover the remaining 16-bit stencil
-iterator/pointer-stack lifetime and the original 127B/51-instruction
+iterator/pointer-stack lifetime and the original 135B/53-instruction
 compiler-control-flow gap, without losing any of the 37 call roles.
