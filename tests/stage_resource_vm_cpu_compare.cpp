@@ -249,13 +249,26 @@ extern "C" void __fastcall stage_test_native_select_view(
     NativeGraphicsModeAction*, void*, int index) {
     record_stage_draw_state(6, static_cast<std::uint32_t>(index));
 }
+extern "C" void __fastcall stage_test_native_inline_animation_draw(
+    Animation* animation, void*) {
+    record_stage_draw_state(7, static_cast<std::uint32_t>(
+        reinterpret_cast<std::uintptr_t>(animation)));
+}
+extern "C" void __fastcall stage_test_native_set_clip(
+    NativeGraphicsModeAction*, void*, int index) {
+    record_stage_draw_state(8, static_cast<std::uint32_t>(index));
+}
 
-void stage_resource_select_viewport(std::int32_t) {}
-void stage_resource_set_clip(std::int32_t) {}
-void stage_resource_enable_fog() {}
-void stage_resource_disable_fog() {}
-void stage_resource_enable_depth_writes() {}
-void stage_resource_disable_depth_writes() {}
+void stage_resource_select_viewport(std::int32_t index) {
+    record_stage_draw_state(6, static_cast<std::uint32_t>(index));
+}
+void stage_resource_set_clip(std::int32_t index) {
+    record_stage_draw_state(8, static_cast<std::uint32_t>(index));
+}
+void stage_resource_enable_fog() { record_stage_draw_state(2); }
+void stage_resource_disable_fog() { record_stage_draw_state(3); }
+void stage_resource_enable_depth_writes() { record_stage_draw_state(4); }
+void stage_resource_disable_depth_writes() { record_stage_draw_state(5); }
 const ViewportState& stage_resource_viewport(std::int32_t) {
     return source_camera_viewport;
 }
@@ -362,8 +375,10 @@ int wmain(int argc, wchar_t** argv) {
                    reinterpret_cast<const void*>(&th20::stage_test_native_animation_pool_draw));
         patch_jump(0x004455C0,
                    reinterpret_cast<const void*>(&th20::stage_test_native_animation_pool_flush));
-        patch_return(0x0044C570, 4); // inline Animation draw forwarder
-        patch_return(0x0041DCE0, 4); // Graphics clip/viewport state
+        patch_jump(0x0044C570,
+                   reinterpret_cast<const void*>(&th20::stage_test_native_inline_animation_draw));
+        patch_jump(0x0041DCE0,
+                   reinterpret_cast<const void*>(&th20::stage_test_native_set_clip));
         patch_jump(0x00477520,
                    reinterpret_cast<const void*>(&th20::stage_test_native_select_view));
         patch_jump(0x004DDA60,
@@ -1217,17 +1232,6 @@ int wmain(int argc, wchar_t** argv) {
                 stage_draw_state_trace.clear();
                 cpu<std::int32_t>(0x00474880, &owner, layer);
                 const auto native_draw_state_trace = stage_draw_state_trace;
-                const auto draw_trace_suffix = [](const std::vector<std::uint32_t>& trace) {
-                    for (std::size_t index = 0; index + 5 < trace.size(); index += 2) {
-                        if (trace[index] == 1 && trace[index + 2] == 2 &&
-                            trace[index + 4] == 6)
-                            return std::vector<std::uint32_t>(
-                                trace.begin() + static_cast<std::ptrdiff_t>(index),
-                                trace.end());
-                    }
-                    return std::vector<std::uint32_t>{};
-                };
-                const auto native_boss_trace = draw_trace_suffix(native_draw_state_trace);
                 std::memcpy(owner_expected.data(), &owner, sizeof(owner));
                 std::memcpy(animation_expected.data(), animations.data(),
                             animation_expected.size());
@@ -1247,9 +1251,8 @@ int wmain(int argc, wchar_t** argv) {
                 stage_draw_state_trace.clear();
                 owner.draw_objects_for_layer(layer);
                 const auto source_draw_state_trace = stage_draw_state_trace;
-                const auto source_boss_trace = draw_trace_suffix(source_draw_state_trace);
-                const bool draw_state_trace_mismatch = native_boss_trace.empty() ||
-                    source_boss_trace != native_boss_trace;
+                const bool draw_state_trace_mismatch =
+                    source_draw_state_trace != native_draw_state_trace;
                 ++checks;
                 ++groups["stage_resource_object_draw_state_trace"];
                 if (draw_state_trace_mismatch) {
@@ -1277,10 +1280,10 @@ int wmain(int argc, wchar_t** argv) {
                     if (failures.size() < 30) {
                         failures.push_back("stage_resource_object_draw_474880 test" +
                                            std::to_string(test));
-                        if (source_boss_trace != native_boss_trace)
-                            std::cerr << "draw boss trace mismatch native="
-                                      << native_boss_trace.size()
-                                      << " source=" << source_boss_trace.size() << '\\n';
+                        if (draw_state_trace_mismatch)
+                            std::cerr << "full draw trace mismatch native="
+                                      << native_draw_state_trace.size()
+                                      << " source=" << source_draw_state_trace.size() << '\\n';
                         std::cerr << failures.back() << '\n';
                     }
                 }
@@ -1468,7 +1471,7 @@ int wmain(int argc, wchar_t** argv) {
             comma = true;
             report << th20::json_string(label) << ':' << count;
         }
-        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases), Animation flag-clear leaf 0x472A10 (128 cases), and StageResourceObjectRecord viewport culling boss 0x473B20 (1024 cases with two independently implemented D3DX import test seams); AnimationPool stage-draw reset boss 0x4750A0 (128 sparse-memory cases across three committed pages); Animation Y-rotation getter/setter and X/Y scale setters 0x474D40/0x4504C0/0x4504F0/0x4777F0/0x4777C0 (raw payload comparisons); angle normalization 0x438540 (128 raw-float cases); inline Animation layer helper 0x474780 and StageResource object-layer draw boss 0x474880 (64 cases across layers 8 and 9, comparing D3D9 state and AnimationPool draw/flush trace order through native/source test seams); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
+        report << "},\n  \"scope\":\"Original 0x4751B0 versus maintained StageBackgroundScriptState; original parent update 0x472100 with fade/flag gates, Graphics::viewports[3] publication, empty object table in the parent fixture, and eight Animation early returns; original mesh boss 0x4722E0 over two live 3x3 grids in both mesh modes with phase/amplitude/alpha/interior-Z/Timer updates (native RenderMesh::initialize deliberately suppressed); original object boss 0x4739E0 over 12 variable-size primitive fixtures (8/12/16-byte advances, negative sentinels, Animation::is_active, object-flag clearing and rotation lock); Matrix4 identity leaf 0x472840 (128 cases), Animation flag-clear leaf 0x472A10 (128 cases), and StageResourceObjectRecord viewport culling boss 0x473B20 (1024 cases with two independently implemented D3DX import test seams); AnimationPool stage-draw reset boss 0x4750A0 (128 sparse-memory cases across three committed pages); Animation Y-rotation getter/setter and X/Y scale setters 0x474D40/0x4504C0/0x4504F0/0x4777F0/0x4777C0 (raw payload comparisons); angle normalization 0x438540 (128 raw-float cases); inline Animation layer helper 0x474780 and StageResource object-layer draw boss 0x474880 (64 cases across layers 8 and 9, comparing the complete native/source clip, fog, depth-write, viewport, AnimationPool draw and flush trace from the inline-animation prelude through final cleanup); camera modes 0..15; future-time interpolation; opcodes 1..22; unknown opcodes 23 and -1; opcode17 checks null-mesh reset with native allocation suppressed; opcode19 checks event writes and primitive/eight-inline traversal with Animation::update early-return gated; positive ANM binding, RenderMesh initialization/allocation/destruction, nontrivial Animation::update paths and full stage rendering remain outside this oracle\",\n  \"failure_examples\":[";
         for (unsigned index = 0; index < failures.size(); ++index) {
             if (index) report << ',';
             report << th20::json_string(failures[index]);
