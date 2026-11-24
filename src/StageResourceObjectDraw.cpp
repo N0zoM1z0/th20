@@ -141,6 +141,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
             ++render_counts.visible_objects;
         }
 
+// Native shared edge for layer mismatch and viewport-cull exits.
 next_instance:
         ++instance;
     }
