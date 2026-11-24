@@ -299,8 +299,10 @@ source-present but NONEXACT.
 
 1. Continue only `AnimationPoolOwner::draw(Animation*)` at `0x00443880`
    until its complete 5,993B body and original relocations replay strict
-   exact. The current open frontier is mode45/46 SSE temporary/register
-   lifetimes and the mode35/36 x87 stores; see
+   exact. The current open frontier is mode35/36 SSE register operands and
+   first-getter x87 spill ownership, plus mode45/46 temporary/register
+   lifetimes. The inherited-scale getter's exact 93B `float` ABI is closed;
+   Ghidra's `float10` does not justify MSVC `long double`. See
    [the focused mode45/46 frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md)
    and [the full-body convergence report](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md).
    Do not switch to another function before this Boss is exact.

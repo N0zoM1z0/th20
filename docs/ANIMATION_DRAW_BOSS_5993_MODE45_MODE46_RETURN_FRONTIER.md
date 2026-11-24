@@ -103,6 +103,52 @@ The first getter's `fstp [ebp-0x160]` remains a separate unresolved source
 question: it is present twice in the native body and has no in-body read. No
 unused variable is added merely to manufacture it.
 
+## Getter ABI: Ghidra `float10` is not an MSVC `long double` source type
+
+A fresh native decompile of `0x00445880` identifies the inherited auxiliary
+scale getter as `float10 __fastcall`. It initializes a parent factor from the
+original `1.0f` at `0x0056C8CC`; when `Animation+0x558` is non-null and flag
+`Animation+0x49C` bit 12 is clear, it recursively obtains the parent's scale,
+converts that result to `float`, and multiplies it by the current object's
+`Animation+0x58` x-scale. The final multiplication is returned in x87 ST0.
+
+This `float10` is the decompiler's extended x87 value type, not evidence that
+the source declaration should be changed to MSVC `long double`. The maintained
+`float __fastcall animation_inherited_aux_scale_x(Animation*)` implementation
+is independently exact at **93/93 native bytes**, including its recursive
+call, original `1.0f` relocation and x87 return. The Draw Boss caller's native
+mode35/36 sequence stores that x87 return with `fstp m32` before loading it
+into XMM0. The current C++ `float` declaration therefore remains the supported
+source-level ABI model.
+
+An isolated full-function probe changed only that declaration to `long double`
+and explicitly cast the result back to `float`. Under MSVC 19.44, `long double`
+is 64-bit: the candidate instead emits `fstp m64`, `movsd`, `cvtss2sd`,
+`addsd`/`subsd`, and `cvtsd2ss`. It grows to a 6,005B code body and does not
+match the original single-precision path. This hypothesis is rejected; neither
+the exact getter nor its declaration is changed.
+
+## Mode35/36 operand-register frontier
+
+The current maintained full-body object has the established 5,993B/1,501
+instruction baseline, **113/123** native E8 instruction offsets, **26/32**
+exact in-body relocation positions and **4,801/5,376** ordinary-byte matches.
+Its remaining mode35/36 arithmetic difference is precise: native mode35 loads
+the spilled half-height with `movss xmm1, [ebp-0x14c]` before `addss xmm0,
+xmm1`; native mode36 similarly loads `[ebp-0x168]` into XMM1 before
+`subss xmm0, xmm1`. The corresponding natural-C++ half-reuse probe instead
+uses `addss xmm0, [half]` and `subss xmm0, [half]`. Each direct-memory form
+is four bytes shorter than the native register-register form.
+
+Additional full-function trials with `volatile`, pointer/reference aliases,
+aggregate/array storage, reversed operands, compound assignment, function-scope
+locals and `register` did not recover the native register loads while preserving
+the surrounding native call order and stack ownership. MSVC 19.44 warns that
+`register` is no longer supported. SSE intrinsic variants materialize and spill
+16-byte temporaries (the one-vector-local probe reaches a 6,181B code body);
+they are not natural or useful replacements. These experiments remain ignored
+under `.analysis/` and `build/`.
+
 ## Rejected code-generation shortcuts
 
 Further isolated probes did not produce the native register-register form:
@@ -131,6 +177,8 @@ The isolated probes used the locked MSVC x86 profile and did not edit
 `src/AnimationDrawBoss.cpp`, shared headers, canonical objects, match units or
 the target. No full cold replay was run. The next step remains to derive the
 mode35/36 register-register SSE form and the mode45/46 receiver/spill ordering
-from natural source semantics, then revisit the mode35/36 x87 stores without
-inventing a dead temporary. The only active target remains the 5,993B Draw
-Boss; no function switch is authorized before its complete strict exact replay.
+from natural source semantics, then revisit the first getter's native x87 spill
+ownership without inventing a dead temporary. The exact 93B getter and its
+`float` declaration remain unchanged. The only active target remains the
+5,993B Draw Boss; no function switch is authorized before its complete strict
+exact replay.
