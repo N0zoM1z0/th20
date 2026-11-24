@@ -24,11 +24,14 @@ std::int32_t StageResourceOwner::update_objects() {
                     reinterpret_cast<std::byte*>(primitive) + primitive->size);
             }
             if (active_animations == 0)
-                object.flags &= static_cast<std::int8_t>(\n                    ~StageResourceObjectRecord::has_active_animations_mask);
+                object.flags &= static_cast<std::int8_t>(
+                    ~StageResourceObjectRecord::has_active_animations_mask);
         }
-        if (object.parameters.rotation_y_velocity != 0.0f &&\n            (state_flags & 16u) == 0) {
+        if (object.parameters.rotation_y_velocity != 0.0f &&
+            (state_flags & 16u) == 0) {
             object.parameters.rotation_y = normalize_angle(
-                object.parameters.rotation_y +\n                object.parameters.rotation_y_velocity);
+                object.parameters.rotation_y +
+                object.parameters.rotation_y_velocity);
         }
     }
     return 0;
