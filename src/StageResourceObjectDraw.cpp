@@ -32,7 +32,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
         enabled = 1,
     };
 
-    auto* instance = instance_records;
+    auto* instance = instances;
     // The original /Od body writes this local at each depth transition but never reads it.
     DepthWriteState depth_write_state = DepthWriteState::enabled;
     script_state.draw_inline_animations_for_layer(layer);
@@ -46,7 +46,7 @@ std::int32_t StageResourceOwner::draw_objects_for_layer(std::int32_t layer) {
 
     while (instance->object_index >= 0) {
         StageResourceObjectRecord& object =
-            *object_table[instance->object_index];
+            *objects[instance->object_index];
         if (object.signed_layer != layer)
             goto next_instance;
 

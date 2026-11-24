@@ -231,14 +231,8 @@ struct StageResourceOwner {
     StageBackgroundScriptState script_state;
     Animation* primitive_animations;
     const StageResourceFileHeader* file;
-    union {
-        void* objects;
-        StageResourceObjectRecord** object_table;
-    };
-    union {
-        void* instances;
-        StageResourceInstanceRecord* instance_records;
-    };
+    StageResourceObjectRecord** objects;
+    StageResourceInstanceRecord* instances;
     const StageResourceInstructionHeader* instructions;
     AnimationFile* animation_file_value;
     union {
@@ -294,9 +288,7 @@ static_assert(offsetof(StageResourceOwner, script_state) == 0x010);
 static_assert(offsetof(StageResourceOwner, primitive_animations) == 0x3320);
 static_assert(offsetof(StageResourceOwner, file) == 0x3324);
 static_assert(offsetof(StageResourceOwner, objects) == 0x3328);
-static_assert(offsetof(StageResourceOwner, object_table) == 0x3328);
 static_assert(offsetof(StageResourceOwner, instances) == 0x332c);
-static_assert(offsetof(StageResourceOwner, instance_records) == 0x332c);
 static_assert(offsetof(StageResourceOwner, instructions) == 0x3330);
 static_assert(offsetof(StageResourceOwner, animation_file_value) == 0x3334);
 static_assert(offsetof(StageResourceOwner, rendered) == 0x3338);
