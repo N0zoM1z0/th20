@@ -482,3 +482,15 @@ also produces the same 85/123 result. This confirms the native write-only
 spill can be represented by an actual shared C++ local at the correct stack
 slot, but the remaining nested-case lifetime/call layout is substantially
 worse. The probe is rejected; production source remains unchanged.
+
+Follow-up qualifiers on that same shared outer local (volatile and
+[[maybe_unused]]) are codegen-identical: 5,981B/1,499 instructions,
+3,726/5,364 ordinary bytes, 84/123 E8 positions and 23/32 HIGHLOW sites.
+Trying to share its storage with another real float did not preserve the
+switch graph. A two-member union of first_result/shape_width compiled to
+6,001B/1,503 instructions, 1,903/5,384 ordinary bytes, 45/123 E8 and
+14/32 HIGHLOW sites. A two-float outer struct pairing first_result with
+adjusted_scale compiled to 5,975B/1,499 instructions, 1,389/5,356 ordinary
+bytes, 28/123 E8 and 14/32 HIGHLOW sites. Field order did not change either
+result. The standalone shared float is the only tested natural representation
+that recovers both native write-only stores; none preserves the parent graph.
