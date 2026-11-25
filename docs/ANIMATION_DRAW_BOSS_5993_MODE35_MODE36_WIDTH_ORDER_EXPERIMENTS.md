@@ -779,3 +779,28 @@ Only the predeclared assignment reproduces the maintained metrics; it is not
 an improvement. No variant gives the native register-register add/subtract
 while preserving the scale-half-before-getter dataflow. Production source and
 its strict source-role assertions remain unchanged.
+
+## 2026-11-25 follow-up: fresh 14-call residual map and mode45 local controls
+
+The maintained 5,989B/1,501-instruction source was recompiled independently
+with the locked MSVC x86 profile. It remains **109/123 E8 positions**,
+**68B** total absolute E8 displacement, **26/32** body HIGHLOW site/target
+pairs and **4,694/5,372** ordinary bytes. The 14 mismatches, including the
+native/candidate offsets and target roles, are recorded in
+[the current whole-parent convergence note](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md).
+All 123 call targets still match in order.
+
+The native mode35/36 first getter results are stored to `[ebp-0x160]` at
+`+0x0FCD` and `+0x10BA`; no instruction in the complete function reads this
+slot. We keep the original standalone calls as discarded expressions rather
+than introduce an unused C++ local. The native second getter results are
+consumed; the remaining mode35/36 arithmetic gap is register-register
+`addss`/`subss` versus the maintained candidate's memory-source form.
+
+Two natural mode45 controls were compiled separately. Naming the inherited
+scale result explicitly is codegen-identical. Naming the post-getter width
+half and adjusted width in both mode45/46 grows the body to 6,049B/1,508
+instructions and increases total E8 offset delta to 260B, with no additional
+matching E8 positions. Both remain private probes; production source is
+unchanged. The value-equivalent 114/123 mode45/46 half-role swap remains
+rejected.

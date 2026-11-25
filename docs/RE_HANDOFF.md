@@ -45,6 +45,17 @@ and 1,486B rotated projector remain independently exact. Historical source
 provenance for the 244B dispatcher remains unknown. See
 [the dispatcher proof](ANIMATION_CORNER_PROJECTION_DISPATCH244_SOURCE_FRONTIER.md).
 
+## Active Boss — Animation main Draw
+
+The 5,993B `AnimationPoolOwner::draw` at `0x00443880` remains SOURCE-PRESENT,
+NONEXACT. The maintained 5,989B/1,501-i386 C++ candidate preserves all 123
+ordered E8 target roles and both native switch tables; 109/123 physical E8
+positions and 26/32 body HIGHLOW site/target pairs match. Fourteen E8 offsets
+remain in modes35/36 and 45/46. The two native first-result x87 stores are
+write-only, so no dead local is added to the source. See the
+[current residual map](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md)
+and [mode35/36 experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md).
+
 ## Latest checkpoint — StageResource selector and Enemy opcodes 622–626/631
 
 The maintained partial Enemy root now executes opcodes 622–626/631 through

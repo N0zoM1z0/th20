@@ -93,18 +93,16 @@ direct-memory adjusted-scale subtraction:
    adjusted-scale `subss` that is four bytes shorter than native.
    There is no invented helper or change to the renderer receiver ABI.
 
-## Whole original and whole candidate evidence
+## Historical rejected mode45/46 role-swap candidate (not maintained source)
 
 The pinned MSVC 19.44 i386 `/std:c++20 /Od /Ob0 /GS /Gy /Zl
-/arch:SSE2 /fp:precise /sdl /EHsc` compiles the revised single-source
-function to **5,993B/1,502 instructions** (the original is 1,501), retaining exactly the real
-`sub esp, 0x204` frame and a full **6,316B COFF contribution**: the genuine
-3B alignment and **80 actual compiler-generated DIR32 case pointers**
-appear at the original offsets. Alias partitions for all 49 main/31
-nested target pointers are equal to the physical original native tables;
-there are no synthetic byte-index tables or hand-authored padding.
+/arch:SSE2 /fp:precise /sdl /EHsc` compiled this historical value-equivalent
+mode45/46 role-swap probe to **5,993B/1,502 instructions** (the original is
+1,501), retaining the `0x204` frame and full **6,316B COFF contribution**.
+Its 3B alignment and 80 compiler-generated DIR32 case pointers were real,
+but its source half-height roles were reversed and the candidate was rejected.
 
-| Whole-function metric | Previous maintained source | This source | Original |
+| Historical probe metric | Older source snapshot | Rejected role-swap probe | Original |
 | --- | ---: | ---: | ---: |
 | Executable code bytes | 5,993 | **5,993** | 5,993 |
 | Original-code instruction heads | 1,501 | **1,502** | 1,501 |
@@ -126,30 +124,19 @@ value-equivalent mode46 probe, not the maintained source. E8 position agreement 
 remains **27/32** through this mode46 source correction, preserving the native
 code size and both 49+31 switch-pointer alias partitions.
 
-The re-run whole-source original-role script
-[`verify-animation-draw-boss-source-roles.py`](../scripts/verify-animation-draw-boss-source-roles.py)
-now **requires** all 123 native calls in their original target order,
-first 81 consecutive E8 sites, **114/123** exact native E8 offsets,
-absolute offset deviation **44**, complete 80-pointer table partitions,
-32/32 data roles including **27 exact site/target pairs**, and
-**4,840/5,376** ordinary bytes. It checks all 49 game modes and the
-correct source/ABI details for the 18 real rendering children.
-The previous version's 86/23/3,819 expectations were superseded,
-not silently accepted as a looser baseline.
+The historical role-swap probe was measured at 114/123 E8 positions, 27/32
+body HIGHLOW site/target pairs and 4,840/5,376 ordinary bytes. The maintained
+source-role verifier now checks the current **109/123**, **26/32** and
+**4,694/5,372** baseline instead; it still requires all 123 call targets in
+original order, the complete 80-pointer table partitions, all 49 game modes
+and the source/ABI roles of the 18 real rendering children.
 
-## Remaining real native differences
+## Historical residual summary before the mode45 correction (superseded)
 
-There are still **nine original E8 positions that differ**: eight in and
-around modes35/36 and one at the final mode46 renderer call. Five original
-in-body HIGHLOW site/target positions still differ; all five remaining native
-sites are `native_two` references whose candidate instruction offsets moved.
-Mode45 still recomputes its adjusted-scale half after the getter instead of
-reusing the native saved half. Mode46 now reuses the pre-getter half for
-adjusted scale and recomputes the width half after the getter; the compiler's
-direct-memory adjusted-scale subtraction is four bytes shorter than native,
-leaving the final mode46 renderer call four bytes early. The parent has
-**no canonical match-unit / no source-exact game credit**; **536 ordinary
-bytes remain different**.
+This nine-call summary described the rejected role-swapped probe. It is
+superseded by the 14-call maintained-source map in the final 2026-11-25
+follow-up below. The mode45 half-role reversal described here is not present
+in production source.
 
 A separate mode35/36 switch-scope local probe now reproduces both native
 `fstp [ebp-0x160]` stores with the correct `0x204` frame and adjusted-scale
@@ -184,10 +171,9 @@ scripts/repo-python scripts/verify-animation-draw-boss-abi.py
 scripts/repo-python scripts/verify-animation-draw-boss-native.py
 ```
 
-No existing exact source, type layout, public header or canonical unit
-is modified by this checkpoint; the one changed parent remains **NONEXACT**.
-The accepted **774 game-authored exact heads /265,580 bytes** from the
-previous checkpoint are unchanged. See the previous dated
+The Draw Boss parent still has no canonical match-unit and remains
+**NONEXACT**. The separate 244B corner projection dispatcher is now a strict
+exact unit; it does not grant byte credit to this parent. See the previous dated
 [5,993B frame/table frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md)
 and [mode35 x87 spill experiments](ANIMATION_DRAW_BOSS_5993_MODE35_X87_PROBES.md)
 for the original baseline and rejected variants.
@@ -212,3 +198,49 @@ semantic mismatch. The remaining mode45 compiler difference is its
 memory-source addss; the native reloads the saved half into XMM1 before
 register-register addss. Mode46 has the analogous memory-source subtraction.
 No opcode or padding was introduced.
+
+## 2026-11-25 fresh maintained-source residual map
+
+A new source-derived compile of the maintained `src/AnimationDrawBoss.cpp`
+with the locked MSVC x86 profile reconfirms **5,989B / 1,501 instructions**,
+**109/123** E8 positions, **68B** summed absolute E8 displacement,
+**26/32** body HIGHLOW site/target pairs and **4,694/5,372** ordinary bytes.
+All 123 REL32 call symbols remain in the exact original target order. The
+14 physical call-position differences are:
+
+| Native offset | Maintained offset | Native target | Area |
+| ---: | ---: | ---: | --- |
+| `+0x0FD6` | `+0x0FD2` | `0x004456C0` | mode35 color494 |
+| `+0x0FE4` | `+0x0FE0` | `0x004456E0` | mode35 color490 |
+| `+0x1016` | `+0x1012` | `0x00445880` | mode35 second inherited-scale getter |
+| `+0x10A7` | `+0x10AF` | `0x0043C780` | mode35 renderer |
+| `+0x10B5` | `+0x10BD` | `0x00445880` | mode36 first inherited-scale getter |
+| `+0x10C3` | `+0x10C7` | `0x004456C0` | mode36 color494 |
+| `+0x10D1` | `+0x10D5` | `0x004456E0` | mode36 color490 |
+| `+0x1103` | `+0x1107` | `0x00445880` | mode36 second inherited-scale getter |
+| `+0x166E` | `+0x166A` | `0x0043DF30` | mode45/46 renderer branch |
+| `+0x167C` | `+0x1678` | `0x004456C0` | mode45/46 color494 |
+| `+0x168A` | `+0x1686` | `0x004456E0` | mode45/46 color490 |
+| `+0x16BC` | `+0x16B8` | `0x00445880` | mode45/46 inherited-scale getter |
+| `+0x1751` | `+0x1749` | `0x0043DF30` | final renderer call |
+| `+0x175E` | `+0x175A` | `0x005429EE` | security-cookie check |
+
+The mode35/36 native first getter calls store their x87 results at
+`[ebp-0x160]` (`+0x0FCD` and `+0x10BA`). A complete decoded-body operand scan
+finds no read of that slot. The maintained source therefore preserves the
+standalone getter calls without inventing a dead local solely to reproduce the
+stores. The native second getter results are consumed by the adjusted-scale
+expressions; MSVC's maintained candidate uses memory-source SSE add/subtract
+where the original reloads the saved half into XMM1 and uses register-register
+arithmetic.
+
+A mode45-only explicit `inherited_scale` local is codegen-identical to the
+maintained source. A second natural C++ probe named the post-getter width-half
+values in modes45/46; it grew to 6,049B/1,508 instructions and increased the
+E8 offset-delta sum to 260B, with no additional call-position matches. Neither
+probe is promoted. The earlier 114/123 candidate also remains rejected because
+it swaps the native mode45/46 scale-half and width-half roles.
+
+The separate 244B `Animation::project_corners` dispatcher is now strict exact
+as its own 260B code-plus-table unit; that leaf result does not change the
+5,993B Draw parent status or its residual call map.
