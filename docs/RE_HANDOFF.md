@@ -366,6 +366,16 @@ source-present but NONEXACT.
    locals, and scalar `__forceinline`/`__vectorcall` helpers also failed to
    preserve the native frame and E8 graph. No parent source or exact credit
    changed.
+   Candidate-only disassembly now confirms the exact split: the role-swapped
+   `current_spill_direct` candidate emits both native-slot spills and both
+   register-register adjusted-scale ops, but has 89/123 E8 and 140 bytes of
+   total call displacement; the native-order spill candidate emits both
+   spills but memory-source arithmetic, 84/123 E8 and 296 bytes of displacement.
+   `scripts/report-animation-draw-boss-candidate.py` reports candidate-side
+   instructions separately from native instructions; use it for future probes.
+   Register/volatile qualifiers, predeclaration order, shared-half reuse and
+   standard function-object wrappers did not close the gap. See the appended
+   candidate-only audit in the width-order ledger.
 
    Ghidra's `float10` does not justify MSVC `long double`. See
    [the focused mode45/46 frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md)

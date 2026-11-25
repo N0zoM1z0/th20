@@ -151,3 +151,57 @@ case tails.
 
 No source variant improves the maintained parent's combined evidence. The
 production source, canonical objects and exactness registry remain unchanged.
+
+## 2026-11-25 follow-up: candidate-only disassembly audit
+
+Added `scripts/report-animation-draw-boss-candidate.py` to decode the native PE
+and each candidate COFF body independently. It reports the full contribution
+score, actual decoded E8 offsets and total absolute E8 displacement, in-body
+HIGHLOW-site overlap, and mode35/36 spill/arithmetic forms taken **only from
+the candidate instruction list**. This avoids a recurring false positive in
+plain `grep` over `dump-draw-boss-object-windows.py`, whose output contains both
+`-- NATIVE --` and `-- CANDIDATE --` sections.
+
+The candidate-only audit confirms the exact tradeoff:
+
+| Candidate | Code / x86 | Ordinary bytes | E8 | Abs. E8 displacement | HIGHLOW sites | First spill | Adjusted-scale register forms |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| Maintained source | 5,993B / 1,502 | 4,840/5,376 | 114/123 | 44 | 27/32 | 0 | 0/2 |
+| Width-before-half | 5,993B / 1,502 | 4,844/5,376 | 114/123 | 62 | 27/32 | 0 | 0/2 |
+| `current_spill_direct` | 5,989B / 1,501 | 3,801/5,372 | 89/123 | 140 | 24/32 | 2/2 | 2/2 |
+| `current_spill_native3536` | 5,985B / 1,500 | 3,726/5,368 | 84/123 | 296 | 23/32 | 2/2 | 0/2 |
+| `named_inline_width` | 5,985B / 1,500 | 3,726/5,368 | 84/123 | 296 | 23/32 | 2/2 | 0/2 |
+| `register_half_spill` | 6,001B / 1,502 | 3,753/5,384 | 84/123 | 328 | 23/32 | 0/2 at native slot | 0/2 |
+| `shared_half_spill` | 5,965B / 1,497 | 1,871/5,356 | 45/123 | 1,442 | 14/32 | 0/2 at native slot | 0/2 |
+| `stdplus` | 6,009B / 1,512 | 1,217/5,384 | 28/123 | 4,238 | 14/32 | 1/2 | 0/2 |
+
+`current_spill_direct` really does emit the two candidate-side stores to
+`[ebp-0x160]` and the two candidate-side register-register operations: mode35
+`addss xmm0,xmm1` at `+0x1036`, mode36 `subss xmm0,xmm1` at `+0x1123`. It is
+not native-order source, however: it computes the half used for width before
+the second getter, and computes the half used for adjusted-scale after that
+getter. The native does the opposite ownership. This is why the candidate
+matches its first 88 E8 sites but loses the native mode36 renderer position
+and has only 89/123 E8 sites overall.
+
+`current_spill_native3536` is the converse. It preserves the native source
+order (scale half before getter, width half after adjusted scale) and emits
+both first-result stores, but the candidate-side adjusted-scale operations
+are memory-source `addss xmm0,[half]` / `subss xmm0,[half]`. Its mode36 first
+spill is four bytes early (`+0x10B6`, not native `+0x10BA`), and its body is
+eight bytes short. Thus the native-order and register-register requirements
+remain mutually unresolved under the tested natural scalar C++ forms.
+
+The `register` storage-class experiment emitted MSVC warning C5033 and did
+not alter candidate operand selection; its function-scope spill moved to
+`[ebp-0x164]`, not the native `[ebp-0x160]`. `volatile` locals likewise kept
+memory operands and were not promoted. Predeclaring the half/inherited/adjusted
+locals in all three orders produced the same 5,985B/84-E8 result. A shared
+half local used for both adjusted scale and width collapsed the contribution
+to 5,965B/45 E8. `std::plus<float>`/`std::minus<float>` emitted extra out-of-line
+calls (125 candidate E8) and collapsed alignment to 28/123. `/O1` and `/O2`
+probes did not retain the native complete function boundary/call graph.
+
+The candidate-only report is now the required check for future spill/register
+experiments. No candidate is promoted; the production C++ and canonical
+objects remain unchanged.
