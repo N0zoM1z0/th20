@@ -39,7 +39,15 @@ assert "base.variables.field_04" not in geometry
 assert "base.variables.field_18" not in geometry
 assert "base.variables.field_1c" not in geometry
 assert "sizeof(AnmVariables) == 64" in variables
+animation_header = (ROOT / "src/Animation.hpp").read_text()
+assert "float texture_offset_u;" in animation_header
+assert "float texture_offset_v;" in animation_header
+assert "offsetof(AnimationBase, texture_offset_u) == 0x78" in animation_header
+assert "offsetof(AnimationBase, texture_offset_v) == 0x7c" in animation_header
+assert "base.texture_offset_u" in geometry
+assert "base.texture_offset_v" in geometry
+assert "base.field_78" not in geometry and "base.field_7c" not in geometry
 
 print("PASS mode-specific ANM variable roles: modes24/25, 37/38, 39-41, 47 and 48")
 print("PASS all aliases retain original offsets and 64B storage")
-print("PASS exact Animation::update_geometry source has no anonymous +0x10/+0x14 reads")
+print("PASS exact Animation::update_geometry source has no anonymous geometry variable/UV offsets")

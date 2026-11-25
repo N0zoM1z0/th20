@@ -63,15 +63,15 @@ void Animation::update_geometry() {
         else if (base.flags.scale_mode == 2) { first_radius = (window_state.scale * 0.5f) * first_radius; second_radius = (window_state.scale * 0.5f) * second_radius; }
         for (std::int32_t i=0;i<count-1;++i) {
             vertex->reciprocal_w=1.0f;vertex->color=first_color;
-            vertex->u=base.vectors_378[0].x+base.field_78;vertex->v=uv+base.field_7c;
+            vertex->u=base.vectors_378[0].x+base.texture_offset_u;vertex->v=uv+base.texture_offset_v;
             polar(vertex->position,angle,first_radius);vertex->position.z=0.0f;vertex->position+=center;++vertex;
             vertex->reciprocal_w=1.0f;vertex->color=second_color;
-            vertex->u=base.vectors_378[1].x+base.field_78;vertex->v=uv+base.field_7c;
+            vertex->u=base.vectors_378[1].x+base.texture_offset_u;vertex->v=uv+base.texture_offset_v;
             polar(vertex->position,angle,second_radius);vertex->position.z=0.0f;vertex->position+=center;++vertex;
             uv+=uv_step;angle=add_angles(angle,step);
         }
-        vertex[0]=static_cast<SpriteTexturedVertex*>(geometry)[0];vertex[0].v=uv+base.field_7c;
-        vertex[1]=static_cast<SpriteTexturedVertex*>(geometry)[1];vertex[1].v=uv+base.field_7c;
+        vertex[0]=static_cast<SpriteTexturedVertex*>(geometry)[0];vertex[0].v=uv+base.texture_offset_v;
+        vertex[1]=static_cast<SpriteTexturedVertex*>(geometry)[1];vertex[1].v=uv+base.texture_offset_v;
         break;
     }
     case 47: {
@@ -95,14 +95,14 @@ void Animation::update_geometry() {
         if(base.flags.scale_mode==1) {first_radius*=window_state.scale;second_radius*=window_state.scale;}
         else if(base.flags.scale_mode==2) {first_radius=(window_state.scale*0.5f)*first_radius;second_radius=(window_state.scale*0.5f)*second_radius;}
         for(std::int32_t i=0;i<count-1;++i) {
-            vertex->color=first_color;vertex->u=base.vectors_378[0].x+base.field_78;vertex->v=uv+base.field_7c;
+            vertex->color=first_color;vertex->u=base.vectors_378[0].x+base.texture_offset_u;vertex->v=uv+base.texture_offset_v;
             polar(vertex->position,angle,first_radius);vertex->position.z=0;vertex->position+=center;++vertex;
-            vertex->color=second_color;vertex->u=base.vectors_378[1].x+base.field_78;vertex->v=uv+base.field_7c;
+            vertex->color=second_color;vertex->u=base.vectors_378[1].x+base.texture_offset_u;vertex->v=uv+base.texture_offset_v;
             polar(vertex->position,angle,second_radius);vertex->position.z=0;vertex->position+=center;++vertex;
             uv+=uv_step;angle=add_angles(angle,step);
         }
-        vertex[0]=static_cast<SpriteWorldTexturedVertex*>(geometry)[0];vertex[0].v=uv+base.field_7c;
-        vertex[1]=static_cast<SpriteWorldTexturedVertex*>(geometry)[1];vertex[1].v=uv+base.field_7c;
+        vertex[0]=static_cast<SpriteWorldTexturedVertex*>(geometry)[0];vertex[0].v=uv+base.texture_offset_v;
+        vertex[1]=static_cast<SpriteWorldTexturedVertex*>(geometry)[1];vertex[1].v=uv+base.texture_offset_v;
         break;
     }
     case 48: {
@@ -115,10 +115,10 @@ void Animation::update_geometry() {
         if(base.flags.scale_mode==1)radius*=window_state.scale;
         else if(base.flags.scale_mode==2)radius=(window_state.scale*0.5f)*radius;
         vertices[0].color=first_color;vertices[1].color=second_color;vertices[2].color=second_color;
-        vertices[0].u=(base.vectors_378[1].x-base.vectors_378[0].x)/2.0f+base.vectors_378[0].x+base.field_78;
-        vertices[0].v=base.vectors_378[0].y+base.field_7c;
-        vertices[1].u=base.vectors_378[2].x+base.field_78;vertices[1].v=base.vectors_378[2].y+base.field_7c;
-        vertices[2].u=base.vectors_378[3].x+base.field_78;vertices[2].v=base.vectors_378[3].y+base.field_7c;
+        vertices[0].u=(base.vectors_378[1].x-base.vectors_378[0].x)/2.0f+base.vectors_378[0].x+base.texture_offset_u;
+        vertices[0].v=base.vectors_378[0].y+base.texture_offset_v;
+        vertices[1].u=base.vectors_378[2].x+base.texture_offset_u;vertices[1].v=base.vectors_378[2].y+base.texture_offset_v;
+        vertices[2].u=base.vectors_378[3].x+base.texture_offset_u;vertices[2].v=base.vectors_378[3].y+base.texture_offset_v;
         polar(vertices[0].position,-pi/2.0f,radius);
         polar(vertices[1].position,-pi/2.0f+(pi*2.0f)/3.0f*2.0f,radius);
         polar(vertices[2].position,-pi/2.0f+(pi*2.0f)/3.0f,radius);
@@ -150,10 +150,10 @@ void Animation::update_geometry() {
         else if(base.flags.scale_mode==2) {first_radius=(window_state.scale*0.5f)*first_radius;second_radius=(window_state.scale*0.5f)*second_radius;}
         for(std::int32_t i=0;i<count;++i) {
             vertex->reciprocal_w=1.0f;vertex->color=color;
-            vertex->u=base.vectors_378[0].x+base.field_78;vertex->v=uv+base.field_7c;
+            vertex->u=base.vectors_378[0].x+base.texture_offset_u;vertex->v=uv+base.texture_offset_v;
             polar(vertex->position,angle,first_radius);vertex->position.z=0;vertex->position+=center;++vertex;
             vertex->reciprocal_w=1.0f;vertex->color=color;
-            vertex->u=base.vectors_378[1].x+base.field_78;vertex->v=uv+base.field_7c;
+            vertex->u=base.vectors_378[1].x+base.texture_offset_u;vertex->v=uv+base.texture_offset_v;
             polar(vertex->position,angle,second_radius);vertex->position.z=0;vertex->position+=center;++vertex;
             uv+=uv_step;angle=add_angles(angle,step);
         }
@@ -178,10 +178,10 @@ void Animation::update_geometry() {
         }
         for(std::int32_t i=0;i<count;++i) {
             polar(point,angle,first_radius);
-            vertex->color=color;vertex->u=base.vectors_378[0].x+base.field_78;vertex->v=uv+base.field_7c;
+            vertex->color=color;vertex->u=base.vectors_378[0].x+base.texture_offset_u;vertex->v=uv+base.texture_offset_v;
             vertex->position.x=point.x;vertex->position.y=half_height;vertex->position.z=point.y;++vertex;
             polar(point,angle,second_radius);
-            vertex->color=color;vertex->u=base.vectors_378[1].x+base.field_78;vertex->v=uv+base.field_7c;
+            vertex->color=color;vertex->u=base.vectors_378[1].x+base.texture_offset_u;vertex->v=uv+base.texture_offset_v;
             vertex->position.x=point.x;vertex->position.y=-half_height;vertex->position.z=point.y;++vertex;
             uv+=uv_step;angle=add_angles(angle,step);
         }

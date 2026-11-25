@@ -310,7 +310,9 @@ source-present but NONEXACT.
    The exact 5,388B Animation geometry boss now also names the shared geometry
    UV span and mode24/25 angular span, half-height, base radius and center angle,
    alongside mode47 ring thickness/center-radius and mode48 triangle radius;
-   its 5,452B canonical relocated replay remains exact. The parent-only
+   its 5,452B canonical relocated replay remains exact. Geometry UV offsets
+   at AnimationBase+0x78/+0x7c are now named `texture_offset_u/v` without
+   changing the 0x4c0 AnimationBase layout. The parent-only
    lexical semantic-debt scan is now zero (heuristic only).
    Mode46's half-height ownership and width recomputation now follow the
    original order. Mode35/36's second inherited-scale result is now named

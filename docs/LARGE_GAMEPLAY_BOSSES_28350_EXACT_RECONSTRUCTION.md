@@ -58,7 +58,9 @@ mode47 uses ring thickness/center-radius; and mode48 uses triangle radius.
 The aliases preserve the original 64-byte storage and offsets. The changed
 `AnimationGeometry.cpp` was rebuilt alone and its complete 5,388-byte body plus
 64 relocation fields replayed strict exact against the original 5,452-byte
-contribution.
+contribution. The AnimationBase `+0x78/+0x7c` fields are now named
+`texture_offset_u/texture_offset_v` at their actual geometry use sites; the
+0x4c0 AnimationBase and 64B ANM variable layouts remain unchanged.
 
 **Easing dispatcher:** The game-owned 4,154-byte easing switch is
 called by Animation/interpolation/Enemy/ECL routines. Its actual

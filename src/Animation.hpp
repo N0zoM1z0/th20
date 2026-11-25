@@ -122,7 +122,14 @@ struct AnimationBase {
     std::int32_t field_10, field_14, field_18, field_1c, field_20, field_24, field_28;
     Vector3 vector_2c, vector_38, vector_44;
     Vector2 vector_50, vector_58, vector_60, vector_68, vector_70;
-    float field_78, field_7c;
+    union {
+        float field_78;
+        float texture_offset_u;
+    };
+    union {
+        float field_7c;
+        float texture_offset_v;
+    };
     Vector3 vector_80;
     VectorInterpolation interpolation_8c;
     IntegerTripleInterpolation interpolation_e0;
@@ -285,6 +292,8 @@ struct AnimationPool {
 };
 static_assert(offsetof(AnimationFlags, field_0d) == 0x0d);
 static_assert(sizeof(AnimationBase) == 0x4c0);
+static_assert(offsetof(AnimationBase, texture_offset_u) == 0x78);
+static_assert(offsetof(AnimationBase, texture_offset_v) == 0x7c);
 static_assert(offsetof(AnimationBase, variables) == 0x444);
 static_assert(offsetof(AnimationBase, flags) == 0x498);
 #if defined(_M_IX86)
