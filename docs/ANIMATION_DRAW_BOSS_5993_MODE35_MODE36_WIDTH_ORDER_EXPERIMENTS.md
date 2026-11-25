@@ -231,3 +231,87 @@ boundary and had 34/123 E8. These are rejected, not compiler-shaping progress.
 sources also destroyed the 5,993B boundary and call graph (O1 had no matching
 return boundary; O2 reduced the body to roughly 4.2KB). The maintained profile
 remains `/Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc`.
+
+
+## 2026-11-25 follow-up: restore native mode45/46 source order
+
+The previously maintained mode45 role swap was value-equivalent for ordinary
+finite floats but did not preserve the original evaluation order. It computed
+`height / 2` for width before the inherited-scale getter and recomputed the
+scale half after the getter. The native PE does the reverse. The production
+source has now been corrected to compute `half_for_scale` before the getter,
+use it for adjusted scale, and independently recompute the width half after
+adjusted scale. Mode46 already used that original order and remains unchanged.
+
+The focused source-role compile now measures **5,989B / 1,501 x86**,
+**4,694/5,372** ordinary bytes, **109/123** E8 positions, **68B** total
+absolute E8 displacement and **26/32** exact HIGHLOW sites. This is below the
+former mode45 role-swap candidate (4,840/5,376; 114/123; 44B; 27/32), but
+faithful C++ evaluation order takes precedence over a value-equivalent
+compiler-shaping reorder. No padding or synthetic instruction was added.
+
+The native verifier now pins these distinct mode-specific windows:
+
+| Mode | Adjusted-scale | Width calculation |
+| --- | --- | --- |
+| 35 | `+0x1016`: x87 return then `addss xmm0,xmm1` | `+0x1068`: `height / 2`, then width add |
+| 36 | `+0x1103`: x87 return then `subss xmm0,xmm1` | `+0x1155`: width in XMM1 then `subss xmm1,xmm0` |
+| 45 | `+0x15DD`: x87 return then `addss xmm0,xmm1` | `+0x163D`: `height / 2`, then width add |
+| 46 | `+0x16BC`: x87 return then `subss xmm0,xmm1` | `+0x171C`: width in XMM1 then `subss xmm1,xmm0` |
+
+The old verifier called `+0x171C` `mode36_width`; that was a naming bug.
+Mode36 width is at `+0x1155`, and `+0x171C` is mode46. Both native and
+source-role focused verifiers now pass with all four modes pinned.
+
+The candidate-only report now uses the actual `ret 4` instruction to locate
+the candidate code boundary, caps ordinary-byte scoring at the 6,316B native
+COFF contribution, and reports adjusted-scale and width arithmetic for all
+four modes separately. This also makes longer intrinsic experiments
+measurable without accidentally counting adjacent PE bytes as part of the
+original function.
+
+A mode46 role-swap probe did obtain a register-register subtraction, but it
+reversed the destination (`subss xmm1,xmm0` at `+0x16DC`) and moved the width
+half before the getter. Its candidate was **5,989B**, **4,786/5,372**
+ordinary bytes, **113/123** E8, **48B** total displacement and **27/32**
+HIGHLOW sites. The native-order `subss xmm0,xmm1` was not recovered. A
+mode46 dual-half predeclaration candidate was 6,005B/112 E8; direct-return
+was 5,992B/109 E8. Adding `+0`, multiplying/dividing the half by one, adding
+a negative half, or negating the reverse subtraction all stayed at 109 E8
+or worse and did not produce the native register operand order. These probes
+are rejected; the source-accurate mode46 expression remains maintained.
+
+### Mode45 native-order expression battery
+
+With the production source already using the original mode45 order, five
+additional C++ variants were compiled from the same parent:
+
+| Variant | Code | Ordinary bytes | E8 | Abs. E8 displacement | HIGHLOW sites |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Maintained inline getter + half local | 5,989B | 4,694/5,372 | 109/123 | 68 | 26/32 |
+| Named getter, reverse `half + inherited` | 5,989B | 4,693/5,372 | 109/123 | 68 | 26/32 |
+| Named getter, forward `inherited + half` | 5,989B | 4,694/5,372 | 109/123 | 68 | 26/32 |
+| Mutable compound add, either operand order | 5,999B | 1,994/5,380 | 45/123 | 474 | 14/32 |
+| Width temporary declared after adjusted scale | 6,005B | 4,690/5,388 | 109/123 | 108 | 26/32 |
+
+Naming the getter result and reversing the addition changed at most one ordinary
+byte and did not recover a register-register ADDSS or any physical E8 site.
+Mutable compound assignments collapsed the parent call/table layout. A named
+width temporary after adjusted scale added 16 bytes and increased total E8
+displacement by 40B. The maintained natural expression remains the best
+native-order mode45 candidate; the older 114/123 role swap is not restored.
+
+### Mode46 native-order versus role-swap subtraction
+
+The candidate-only report now distinguishes the mode46 adjusted-scale window
+from its width window and reports both register subtraction directions. The
+maintained mode46 path still uses a memory-source `subss` for adjusted scale.
+A role swap (width half before getter, scale half recomputed after) produces a
+register-register `subss xmm1,xmm0` at `+0x16DC`, but this is the reverse
+register destination from native `subss xmm0,xmm1` and moves the physical E8
+census to 113/123. It scores 5,989B, 4,786/5,372 ordinary bytes, 48B total E8
+displacement and 27/32 HIGHLOW sites; it is rejected. The native-order
+mode46 dual-half predeclaration candidate is 6,005B/113 E8; direct-return is
+5,992B/109 E8. The `+0`, `*1`, `/1`, negative-half and negated-reverse scalar
+expression forms are 5,996–6,001B with 109 E8 and no native-order register
+subtraction. Keep the original source order.

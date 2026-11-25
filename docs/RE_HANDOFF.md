@@ -298,12 +298,17 @@ source-present but NONEXACT.
 
 1. Continue only `AnimationPoolOwner::draw(Animation*)` at `0x00443880`
    until its complete 5,993B body and original relocations replay strict
-   exact. The current source reaches **4,840/5,376** ordinary bytes,
-   **114/123** physical E8 sites and **27/32** exact data site/target pairs.
-   The open frontier is eight mode35/36 call-site deltas and their adjusted-scale
-   SSE register operands, the first-getter x87 spill, mode45's half-height operand ownership/relocation position,
-   and mode46's adjusted-scale SSE register operand (the final renderer call is
-   four bytes early). The parent-angle bit-12 extraction now matches the
+   exact. The current source preserves native mode45/46 scale-half and
+   post-adjustment width-half evaluation order and reaches **4,694/5,372**
+   ordinary bytes, **109/123** physical E8 sites and **26/32** exact data
+   site/target pairs. The former value-equivalent mode45 role swap reached
+   4,840/5,376, 114/123 and 27/32, but did not preserve native source order.
+   The open frontier is the mode35/36 first-getter x87 spill, their adjusted-scale
+   XMM1 reloads and remaining call-site deltas, plus mode45/46 adjusted-scale
+   XMM1 reloads and the four-byte contribution/dispatch-table displacement
+   introduced by restoring mode45's original evaluation order. Mode45's
+   half-height ownership is now source-correct; only its emitted memory-source
+   addss differs from native register-register addss. The parent-angle bit-12 extraction now matches the
    original six-byte SHR/AND sequence. Modes37/38 and 39-41 now use
    offset-preserving `rounded_shape_radius`, `ring_center_radius` and
    `ring_thickness` aliases, with the 64B `AnmVariables` layout unchanged.
@@ -332,8 +337,16 @@ source-present but NONEXACT.
    base destruction and the eight-byte scalar deleting path. The original
    five-slot vtable and its `SprtFuncBaseInf` RTTI distinction are pinned by
    `scripts/verify-animation-callback-leaves-native.py`.
-   Mode46's half-height ownership and width recomputation now follow the
-   original order. Mode35/36's second inherited-scale result is now named
+   Modes45/46 now both preserve original source evaluation order: scale
+   half-height before the inherited-scale getter, then a separate width-half
+   calculation after adjusted scale. This intentionally rejects the previous
+   mode45 role swap, which improved byte/E8 metrics but computed width half
+   before the getter and scale half after it. The native verifier now pins
+   mode35/36 first-return spills and adjusted-scale register operands, plus
+   mode35/36/45/46 width windows and mode45/46 adjusted-scale windows. The
+   former `mode36_width` label at `+0x171C` was corrected: that window is
+   mode46; mode36 width is at `+0x1155`. Both focused verifiers pass.
+   Mode35/36's second inherited-scale result is now named
    `inherited_scale` and feeds the real adjusted-scale argument. The first
    getter remains a separate discarded call in the decompilation, while the
    native body stores both first returns to the write-only `[ebp-0x160]` slot.
@@ -352,8 +365,10 @@ source-present but NONEXACT.
    A new 16-way mode35 width-temporary placement battery found a 4-byte
    ordinary-byte score rise (4,844/5,376) at unchanged 114/123 E8 positions,
    but it moves the second mode35 getter +22 bytes and increases total E8
-   displacement 44→62; it is rejected. A mode45 native-half ownership battery
-   also remains below the maintained candidate (109/123 E8). A detailed
+   displacement 44→62; it is rejected. Restoring native mode45 evaluation
+   order is now the maintained source even though it drops to 109/123 E8,
+   4,694/5,372 ordinary bytes and 26/32 data sites; do not reintroduce the
+   value-equivalent role swap to inflate the byte score. A detailed
    source-only tradeoff ledger is in
    [mode35/36 width-order experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md).
    The native verifier now also pins the post-adjustment mode35/36 width
@@ -367,7 +382,7 @@ source-present but NONEXACT.
    preserve the native frame and E8 graph. No parent source or exact credit
    changed.
    Candidate-only disassembly now confirms the exact split: the role-swapped
-   `current_spill_direct` candidate emits both native-slot spills and both
+   `current_spill_direct` experiment emits both native-slot spills and both
    register-register adjusted-scale ops, but has 89/123 E8 and 140 bytes of
    total call displacement; the native-order spill candidate emits both
    spills but memory-source arithmetic, 84/123 E8 and 296 bytes of displacement.
@@ -376,6 +391,15 @@ source-present but NONEXACT.
    Register/volatile qualifiers, predeclaration order, shared-half reuse and
    standard function-object wrappers did not close the gap. See the appended
    candidate-only audit in the width-order ledger.
+
+   A mode45 native-order expression battery (named/reversed addition,
+   compound assignment and post-adjustment width temporaries) did not improve
+   the 5,989B/109-E8 maintained candidate. A mode46 role swap can produce
+   register-register subtraction only as `subss xmm1,xmm0`, not native
+   `subss xmm0,xmm1`, while dropping to 113/123 E8; arithmetic identity forms
+   and dual-half locals are also worse. The current mode45/46 source order is
+   retained. Full metrics are in the appended mode45/46 sections of the width
+   experiment ledger.
 
    Ghidra's `float10` does not justify MSVC `long double`. See
    [the focused mode45/46 frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md)
@@ -424,3 +448,59 @@ or whole-parent exactness test. Use replay-exact-units.py --source only for
 actual source changes and their captured include-closure consumers. Commit
 stable checkpoints with the required gpt-web: prefix. Preserve and inspect
 all dirty/untracked work before making changes.
+
+
+## 2026-11-25 follow-up: native mode45/46 ownership and candidate-only mode map
+
+The maintained `src/AnimationDrawBoss.cpp` now uses the original mode45
+evaluation order instead of the earlier value-equivalent role swap:
+
+- Compute `half_for_scale = height / 2` before the inherited-scale getter.
+- Compute `adjusted_scale = getter + half_for_scale`.
+- Recompute `height / 2` for the width argument only after adjusted scale.
+
+Mode46 retains its original asymmetric subtraction order as well: scale half
+before the getter, adjusted scale after the getter, width half recomputed after
+adjusted scale. The source-role verifier checks both blocks independently.
+The current candidate is **5,989B / 1,501 x86**, **4,694/5,372** ordinary
+bytes, **109/123** E8 positions, **68B** total absolute E8 displacement and
+**26/32** exact HIGHLOW sites. This is a deliberate semantic correction, not
+a byte-score improvement. The previous mode45 role swap scored
+4,840/5,376, 114/123, 44B and 27/32, but moved the width-half calculation
+before the getter and recomputed the scale half afterwards. It is not the
+maintained source anymore.
+
+The native verifier now pins all relevant arithmetic windows by actual mode:
+
+| Mode | Native scale window | Native width window |
+| --- | --- | --- |
+| 35 | `+0x1016` register `addss xmm0,xmm1` | `+0x1068` width add |
+| 36 | `+0x1103` register `subss xmm0,xmm1` | `+0x1155` width `subss xmm1,xmm0` |
+| 45 | `+0x15DD` register `addss xmm0,xmm1` | `+0x163D` width add |
+| 46 | `+0x16BC` register `subss xmm0,xmm1` | `+0x171C` width `subss xmm1,xmm0` |
+
+The former verifier called the `+0x171C` window `mode36_width`; it is
+mode46. Mode36's width calculation is the distinct `+0x1155` window. The
+focused native PE and source-role verifiers both pass after correcting this
+mislabel and pinning the missing windows.
+
+The candidate-only report was extended to decode the first actual `ret 4`,
+score the same 6,316B COFF contribution for every probe (including longer
+experiments), and separate mode35/36/45/46 adjusted-scale operations from
+their width operations. It now distinguishes mode46 native-order
+`subss xmm0,xmm1` from a reversed-destination `subss xmm1,xmm0`. The
+maintained candidate currently has memory-source adjusted-scale arithmetic
+in modes35/36/45/46; mode45's previous register-register add came only from
+the rejected role swap.
+
+A mode46 role-swap probe (width half before getter, scale half recomputed
+after) did produce a register-register subtraction, but with reversed
+destination `subss xmm1,xmm0` at `+0x16DC`, a 5,989B body, 113/123 E8,
+4,786/5,372 ordinary bytes, 48B total E8 displacement and 27/32 HIGHLOW
+sites. It is rejected because it changes
+the native source order and loses a physical E8 position. Dual-half
+predeclarations, post-getter reuse, direct-return, and `+0`, `*1`, `/1`,
+negative-half and negated-reverse expression forms did not improve the
+maintained candidate; their bodies ranged from 5,992B to 6,005B and had
+109–113/123 E8 positions. No ASM, padding or production-only compiler
+shaping was introduced.
