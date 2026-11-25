@@ -804,3 +804,42 @@ instructions and increases total E8 offset delta to 260B, with no additional
 matching E8 positions. Both remain private probes; production source is
 unchanged. The value-equivalent 114/123 mode45/46 half-role swap remains
 rejected.
+
+
+## 2026-11-25 follow-up: reproduce the 94-site spill candidate and reject helper forcing
+
+The previously documented 94/123 candidate was reconstructed from the
+maintained source and freshly compiled under the locked `/Od /Ob0` profile.
+It reproduces **5,993B/1,501 instructions**, **94/123 E8 positions**,
+**116B** absolute E8 displacement, **27/32** HIGHLOW sites and
+**4,023/5,372** ordinary bytes. Its two first-result stores are exactly at
+`+0x0FCD` and `+0x10BA` (`[ebp-0x160]`).
+
+The source is not a valid promotion: it declares a function-scope
+`first_inherited_scale`, computes `half_for_width` before the second getter,
+then recomputes `height/native_two` after the getter for adjusted scale. Mode36
+uses `width + (-1.0f * half_for_width)`. This assigns the pre-getter half to
+width rather than scale, contrary to the native mode35/36 dataflow. The
+first-result local also materializes a value that the original decoded body
+never reads. The 94-site result is retained only as a reproducible compiler
+frontier; production keeps the discarded first getter calls and native
+scale-half-before-getter ordering.
+
+Three natural helper forms attempted to request the native register-register
+adjusted-scale arithmetic without changing the scalar formulas: a pair of
+`__forceinline` C++ helpers, the same helpers with `__vectorcall`, and a
+capture-by-reference lambda. Under the required `/Ob0` profile none is a
+useful inline abstraction; each adds two E8 instructions instead of the
+original 123-call graph. Their complete candidate results were:
+
+| Form | Code | x86 heads | E8 positions | HIGHLOW sites | Ordinary bytes |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `__forceinline` helper | 6,025B | 1,513 | 81/123 | 22/32 | 3,706/5,400 |
+| `__vectorcall` helper | 5,999B | 1,503 | 81/123 | 22/32 | 3,636/5,372 |
+| lambda call | 6,041B | 1,517 | 45/123 | 14/32 | 1,885/5,416 |
+
+All three are rejected. They do not produce the required XMM1 load plus
+register-register add/subtract, and their call graph/layout is worse than the
+maintained source. The production parent remains **5,989B/1,501 instructions,
+109/123 E8 positions, 68B total E8 displacement, 26/32 HIGHLOW sites and
+4,694/5,372 ordinary bytes**, SOURCE-PRESENT/NONEXACT.
