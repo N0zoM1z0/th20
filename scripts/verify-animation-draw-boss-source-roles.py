@@ -143,6 +143,11 @@ def main():
     # The original PE instead uses the pre-getter half for adjusted scale and
     # recomputes width's half after the getter; this is value-equivalent only.
     assert "const float half_for_width = height / native_two;" in text
+    # The second mode35/36 getter result is a real value consumed by the
+    # adjusted scale; only the first native getter result is discarded.
+    assert text.count("const float inherited_scale=animation_inherited_aux_scale_x(animation);") == 2
+    assert "const float adjusted_scale=inherited_scale+aux_half;" in text
+    assert "const float adjusted_scale=inherited_scale-aux_half;" in text
     assert "const float adjusted_scale = animation_inherited_aux_scale_x(animation) + (height/native_two);" in text
     assert "width+half_for_width,adjusted_scale,height" in text
 

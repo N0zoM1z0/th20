@@ -228,7 +228,8 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         const auto first_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;
         const float aux_half=height/native_two;
-        const float adjusted_scale=animation_inherited_aux_scale_x(animation)+aux_half;
+        const float inherited_scale=animation_inherited_aux_scale_x(animation);
+        const float adjusted_scale=inherited_scale+aux_half;
         // A genuinely used width argument: its separate lifetime aligns
         // downstream native E8 sites without a dummy compiler-shaping local.
         const float shape_width=width+(height/native_two);
@@ -245,7 +246,8 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         const auto first_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;
         const float aux_half=height/native_two;
-        const float adjusted_scale=animation_inherited_aux_scale_x(animation)-aux_half;
+        const float inherited_scale=animation_inherited_aux_scale_x(animation);
+        const float adjusted_scale=inherited_scale-aux_half;
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43c780(
             position.x,position.y,adjusted_scale,width-(height/native_two),height,
             angle,quad_count,first_color,second_color);
