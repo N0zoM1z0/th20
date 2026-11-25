@@ -40,7 +40,7 @@ PARENT = 0x00416420
 PARENT_SIZE = 2245
 PARENT_SHA = "06b62972af7ef2644b5a17d032b4124525d9b6aab0a5097f740ec777d14a40ad"
 PARENT_INSERT_SITES = (0x165, 0x4DD)
-CANDIDATE_PARENT_INSERT_SITES = (0x160, 0x51E)
+CANDIDATE_PARENT_INSERT_SITES = (0x17C, 0x53A)
 SYMBOL_PREFIXES = {
     "move": "??$move@ABV?$array@H$01@std@@@std@@",
     "wrapper": "??$emplace_back@ABV?$array@H$01@std@@",
@@ -237,7 +237,7 @@ def verify_candidate(obj: Path, image, base, sections, native):
     # The game-owned parent still calls the real C++ emplace_back specialization
     # at both original sites. This does not award parent exactness.
     parent_symbol = next(s for s in strings if s.startswith("?composite_glyph_mask_416420@NativeGlyphCanvasView@th20@@"))
-    parent, parent_relocs = candidate_body(obj, parent_symbol, 2128)
+    parent, parent_relocs = candidate_body(obj, parent_symbol, 2221)
     parent_ins = disassemble(parent)
     assert len(call_sites(parent_ins, 0)) == 37
     emplace_fields = {int(r["offset"]) - 1 for r in parent_relocs
@@ -250,7 +250,7 @@ def verify_candidate(obj: Path, image, base, sections, native):
     print("PASS candidate std::move<GlyphMaskOffset&> forwarding leaf is byte-exact")
     print("RESIDUAL: 10B C++20 _Get_unwrapped vs native 9B; 31B allocator wrapper calls current 69B polymorphic_allocator::construct vs native 78B helper; 31B __autoclassinit2 call-site lowering differs")
     print("PASS candidate 34B/14-i386 emplace wrapper retains both original E8 sites; only native +0x1C NOP is absent")
-    print("PASS 2,128B parent routes both BGRA/ARGB insertion calls through the specialized wrapper at candidate +0x160/+0x51E; original sites are +0x165/+0x4DD, parent remains NONEXACT")
+    print("PASS 2,221B parent routes both BGRA/ARGB insertion calls through the specialized wrapper at candidate +0x17C/+0x53A; original sites are +0x165/+0x4DD, parent remains NONEXACT")
 
 if __name__ == "__main__":
     candidate = None

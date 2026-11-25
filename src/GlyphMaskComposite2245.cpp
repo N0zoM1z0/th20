@@ -4,7 +4,7 @@
 // restores the 108B/140B/488B/200B bodies and the nested 92B/31B helper
 // shapes outside real relocation fields. The 35B wrapper is 34B with the
 // original compiler-emitted trailing NOP absent; the complete game
-// compositor remains NONEXACT.
+// compositor remains NONEXACT (current full parent: 2,221B/584 i386).
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphMaskOffsets.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -303,8 +303,15 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                         goto rgba4444_pixel_done;
                     }
                 }
-                // Exhausting the stencil range preserves the destination alpha.
-                *dest=static_cast<std::uint16_t>((*dest&0xf000)|(packed_color.packed&0x0fff));
+                // The native non-outline path updates the packed RGB nibbles
+                // separately, preserving the destination alpha nibble. Keep
+                // the original red/green/blue assignment order.
+                reinterpret_cast<NativeGlyphAlpha4444*>(dest)->red =
+                    reinterpret_cast<const NativeGlyphAlpha4444*>(&packed_color.packed)->red;
+                reinterpret_cast<NativeGlyphAlpha4444*>(dest)->green =
+                    reinterpret_cast<const NativeGlyphAlpha4444*>(&packed_color.packed)->green;
+                reinterpret_cast<NativeGlyphAlpha4444*>(dest)->blue =
+                    reinterpret_cast<const NativeGlyphAlpha4444*>(&packed_color.packed)->blue;
                 rgba4444_pixel_done:
                 ;
             }

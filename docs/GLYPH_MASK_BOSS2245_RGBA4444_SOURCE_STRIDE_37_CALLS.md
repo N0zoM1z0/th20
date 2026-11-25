@@ -1,19 +1,17 @@
-**CORE/RECON-1083 CURRENT SOURCE UPDATE (2026-11-25):** The RGBA4444
-source now preserves the original grouped address expression
-`row_offset + (x +/- delta_x)` rather than relying on left-associative
-`row_offset + x +/- delta_x`. A two-byte `NativeGlyphAlpha4444` bitfield view
-restores the four native 16-bit alpha-nibble extraction sequences (`mov` word,
-`shr 12`, `and 0xf`) in natural C++. The complete maintained source now emits
-**2,128B/561 i386, 37 E8/5 DIR32**. It preserves **37/37 original E8 target
-roles**, **9/9 live stride getter roles**, **4/4 folded array-index roles**,
-and **5/5 PE data-target roles**. It matches **292/1,960 ordinary
-non-relocation bytes**; **7/37 physical E8 sites** and **4/5 PE HIGHLOW
-site/target pairs** align, with aggregate E8 offset distance **819** (down
-220 from the previous 1,039). The original 2,245B/612-i386 game Boss remains
-**SOURCE-PRESENT/NONEXACT**, with a 117B/51-instruction gap; no parent
-exactness credit is claimed. A sequential-four-`if` source variant was also
-compiled and rejected (2,143B/565, 3/37 physical E8 sites, 1,075 aggregate
-offset delta). The source-scoped replay rebuilt one object and preserved
+**CORE/RECON-1084 CURRENT SOURCE UPDATE (2026-11-25):** The RGBA4444
+source now preserves the original grouped neighbor-address expression and
+updates the non-outline destination's red, green and blue nibbles separately
+in native red/green/blue order, retaining the destination alpha nibble. The
+complete natural C++ candidate emits **2,221B/584 i386, 37 E8/5 DIR32**. It
+preserves **37/37 original E8 target roles**, **9/9 live stride getter roles**,
+**4/4 folded array-index roles**, and **5/5 PE data-target roles**. It matches
+**202/2,053 ordinary non-relocation bytes**; **3/37 physical E8 sites** and
+**4/5 PE HIGHLOW site/target pairs** align, with aggregate E8 offset distance
+**815**. The original 2,245B/612-i386 game Boss remains
+**SOURCE-PRESENT/NONEXACT**, with a **24B/28-instruction gap**; no parent
+exactness credit is claimed. Both PMR insertion calls still route through the
+maintained C++ wrapper at candidate `+0x17C/+0x53A` versus original
+`+0x165/+0x4DD`. The source-scoped replay rebuilt one object and preserved
 **24/24** previously exact PMR/color descendants. Both
 `verify-glyph-mask-offset-array2-native.py` and
 `verify-glyph-mask-boss-live-pixels-native.py` attest the current candidate
@@ -98,29 +96,29 @@ source checkpoint now records four natural lifetime/dataflow corrections:
   `touches_outline` flag and post-loop test while preserving the same four
   neighbor reads and pixel result. The prior candidate was **2,088B/549 i386** with 296/1,920 ordinary
   overlap bytes. The current grouped-address/bitfield candidate is
-  **2,128B/561 i386**, 292/1,960 ordinary overlap bytes, 37/37 E8 target
-  roles, 7/37 physical E8 sites and 819 aggregate E8 offset distance.
+  **2,221B/584 i386**, 202/2,053 ordinary overlap bytes, 37/37 E8 target
+  roles, 3/37 physical E8 sites and 815 aggregate E8 offset distance.
 
 
 | Entire function evidence | First source | Earlier full-role source | Current source | Original |
 | --- | ---: | ---: | ---: | ---: |
-| Complete code bytes | 2,061 | 2,141 | **2,128** | 2,245 |
-| Complete i386 instruction count | 545 | 565 | **561** | 612 |
+| Complete code bytes | 2,061 | 2,141 | **2,221** | 2,245 |
+| Complete i386 instruction count | 545 | 565 | **584** | 612 |
 | Physical E8 / compiled REL32 count | 36 | 37 | **37** | 37 |
 | Physical HIGHLOW / compiled DIR32 | 5 | 5 | **5** | 5 |
 | Native stride / candidate stride E8 | 9 / 8 | 9 / 9 | **9 / 9** | 9 / 9 |
 | Original-target call roles in order | 23-role prefix | 37/37 | **37/37** | 37/37 |
-| E8 opcode positions exactly aligned | 1 | 2 | **7** | 37 |
+| E8 opcode positions exactly aligned | 1 | 2 | **3** | 37 |
 | PE HIGHLOW site/target pairs aligned | 2 | 2 | **4** | 5 |
 | Folded two-int32 array-index calls | 4 | 4 | **4** | 4 |
-| Aggregate absolute E8 offset distance | — | 1,196 | **819** | 0 |
+| Aggregate absolute E8 offset distance | — | 1,196 | **815** | 0 |
 
 Both the native PE's *real* physical target destinations and the
 candidate COFF symbol prefix roles are checked in **all 37** positions,
 including `+0x5E7`. Every candidate REL32 is a genuine E8 operand.
 All five original PE HIGHLOW roles are separately checked against the
-actual candidate DIR32 symbols. The 561/612 instruction difference,
-remaining 117B original code-size gap, differing stack slots/EH state,
+actual candidate DIR32 symbols. The 584/612 instruction difference,
+remaining 24B original code-size gap, differing stack slots/EH state,
 and most physical call/data locations mean the parent is **not exact**;
 matching a full call-role census does **not** grant 2,245B game bytes.
 
@@ -139,7 +137,7 @@ replayed: **24/24** previously accepted PMR/color generic descendants
 remained strict whole-native exact. The separately original-exact folded
 22B array helper does **not** receive duplicate credit; there was **no
 full or unfiltered cold replay**. Next: recover the remaining 16-bit stencil
-iterator/pointer-stack lifetime and the original 117B/51-instruction
+iterator/pointer-stack lifetime and the original 24B/28-instruction
 compiler-control-flow gap, without losing any of the 37 call roles.
 
 ## 2026-11-25 follow-up: native RGBA4444 operand grouping and 16-bit alpha extraction
@@ -159,13 +157,13 @@ expresses that source-level field read directly and reproduces those four
 instruction sequences. This is a real packed-pixel representation, not a
 compiler-only temporary or instruction shim.
 
-The new complete candidate is **2,128B/561 i386**, with all **37/37 E8 target
+The current complete candidate is **2,221B/584 i386**, with all **37/37 E8 target
 roles**, all nine stride calls, four folded array-index calls and all five PE
-data-target roles. It has **7/37** native E8 positions, **4/5** physical
-HIGHLOW site/target pairs, **292/1,960** ordinary overlap bytes and **819B**
-aggregate absolute E8 offset distance. The previous 2,088B candidate was
-1,039B away; this is a 220B reduction. The remaining whole-function gap is
-117B/51 instructions.
+data-target roles. It has **3/37** native E8 positions, **4/5** physical
+HIGHLOW site/target pairs, **202/2,053** ordinary overlap bytes and **815B**
+aggregate absolute E8 offset distance. The destination bitfield write order is
+now red/green/blue, matching the original channel update order. The remaining
+whole-function gap is **24B/28 instructions**.
 
 A sequential four-`if` translation of the native Ghidra control flow was also
 compiled. It grew to 2,143B/565 instructions, fell to 3/37 aligned E8 sites
@@ -186,7 +184,8 @@ inline opcodes or padding are involved.
 
 | Probe | Code / i386 heads | E8 sites | E8 offset delta | Ordinary bytes |
 | --- | ---: | ---: | ---: | ---: |
-| Current packed-word source | **2,128B / 561** | **7/37** | **819** | **292/1,960** |
+| Prior packed-word source (historical) | 2,128B / 561 | 7/37 | 819 | 292/1,960 |
+| Current red/green/blue destination writes | **2,221B / 584** | **3/37** | **815** | **202/2,053** |
 | Four source-channel bitfield assignments only | 2,193B / 573 | 7/37 | 1,158 | 269/2,025 |
 | Three destination-channel bitfield assignments only | 2,216B / 584 | 3/37 | 830 | 207/2,048 |
 | Both source and destination bitfields | 2,286B / 596 | 3/37 | 1,680 | 174/2,077 |
@@ -197,12 +196,10 @@ physical call/data layout: source-channel bitfields shift the live-stride
 frontier, while destination bitfields move the cleanup and return path without
 recovering the original instruction boundaries. The combined representation
 is 41B larger than the original 2,245B body and still has 16 fewer i386
-instruction heads. The maintained packed-word expression therefore remains
-the better whole-function C++ reconstruction: it keeps 7/37 physical E8
-sites, 4/5 PE HIGHLOW site/target pairs, 819 aggregate E8 offset distance and
-292 ordinary overlap bytes. These bitfield variants are retained as
-reproducible probes only; no source promotion or authored-byte credit is
-claimed.
+instruction heads. The earlier packed-word source and blue/green/red bitfield ordering are
+historical probes. The maintained red/green/blue destination-write source is
+now the current whole-function C++ reconstruction; no parent exactness or
+authored-byte credit is claimed.
 
 ## 2026-11-25 follow-up: PMR insertion/growth chain source recovery
 
@@ -218,9 +215,25 @@ native E8 position. Their target identities still differ at the old 78B
 allocator-construction leaf.
 
 The targeted source cold replay rebuilt one object and retained 24/24 exact
-PMR/color descendants. The parent remains 2,128B/561 versus native 2,245B/612,
-with 37/37 E8 target roles, 7/37 aligned physical E8 sites, 292/1,960 ordinary
-overlap bytes and 819 aggregate E8 offset distance. No whole-parent exactness
+PMR/color descendants. The parent is now 2,221B/584 versus native 2,245B/612,
+with 37/37 E8 target roles, 3/37 aligned physical E8 sites, 202/2,053 ordinary
+overlap bytes and 815 aggregate E8 offset distance. No whole-parent exactness
 or game-authored byte credit is claimed. See
 [the five-parent PMR frontier](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md)
 and [the complete insertion verifier](../scripts/verify-glyph-mask-emplace35-native.py).
+
+
+## 2026-11-25 follow-up: restore native RGBA4444 destination nibble write order
+
+The previous destination-bitfield probe wrote blue/green/red and emitted a
+2,216B body. The maintained source now writes **red, green, blue**, matching
+the original 16-bit sequence at native `+0x7F2..+0x862`: each 4-bit field is
+updated separately while the destination alpha nibble is preserved. This is
+a natural C++ `NativeGlyphAlpha4444` view, not inline assembly or padding.
+
+The complete candidate is now **2,221B/584 i386** (native **2,245B/612**),
+with 37/37 call-target roles, nine live stride calls, four array-index calls,
+all five data-target roles, 3/37 physical E8 sites, 4/5 PE HIGHLOW sites,
+202/2,053 ordinary overlap bytes and 815 aggregate E8 offset distance. The
+remaining gap is 24B/28 instructions. Targeted source replay preserved
+24/24 exact PMR/color descendants; the Boss remains NONEXACT.

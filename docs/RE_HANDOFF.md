@@ -46,7 +46,7 @@ with the native `+0x1C` NOP omitted. The 200B/65 uninitialized-move parent,
 bytes and native E8 positions. The 31B bridge still reaches a 69B current-STL
 allocator constructor instead of the original 78B leaf. Targeted cold replay
 rebuilt only the compositor and retained 24/24 exact PMR/color descendants. The 2,245B compositor remains NONEXACT at
-2,128B/561; see the [PMR five-parent frontier](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md)
+2,221B/584; see the [PMR five-parent frontier](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md)
 and [complete chain verifier](../scripts/verify-glyph-mask-emplace35-native.py).
 
 ## Latest checkpoint — Animation corner projection dispatcher

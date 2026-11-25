@@ -9,22 +9,20 @@ the newer 69B allocator constructor rather than the original 78B leaf.
 Targeted replay preserves 24/24 accepted PMR/color descendants. The full 2,245B compositor remains NONEXACT;
 see [the five-parent frontier](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md).
 
-**CORE/RECON-1083 CURRENT SOURCE UPDATE (2026-11-25):** The RGBA4444
-source now preserves the original grouped address expression
-`row_offset + (x +/- delta_x)` rather than relying on left-associative
-`row_offset + x +/- delta_x`. A two-byte `NativeGlyphAlpha4444` bitfield view
-restores the four native 16-bit alpha-nibble extraction sequences (`mov` word,
-`shr 12`, `and 0xf`) in natural C++. The complete maintained source now emits
-**2,128B/561 i386, 37 E8/5 DIR32**. It preserves **37/37 original E8 target
-roles**, **9/9 live stride getter roles**, **4/4 folded array-index roles**,
-and **5/5 PE data-target roles**. It matches **292/1,960 ordinary
-non-relocation bytes**; **7/37 physical E8 sites** and **4/5 PE HIGHLOW
-site/target pairs** align, with aggregate E8 offset distance **819** (down
-220 from the previous 1,039). The original 2,245B/612-i386 game Boss remains
-**SOURCE-PRESENT/NONEXACT**, with a 117B/51-instruction gap; no parent
-exactness credit is claimed. A sequential-four-`if` source variant was also
-compiled and rejected (2,143B/565, 3/37 physical E8 sites, 1,075 aggregate
-offset delta). The source-scoped replay rebuilt one object and preserved
+**CORE/RECON-1084 CURRENT SOURCE UPDATE (2026-11-25):** The RGBA4444
+source now preserves the original grouped neighbor-address expression and
+updates the non-outline destination's red, green and blue nibbles separately
+in native red/green/blue order, retaining the destination alpha nibble. The
+complete natural C++ candidate emits **2,221B/584 i386, 37 E8/5 DIR32**. It
+preserves **37/37 original E8 target roles**, **9/9 live stride getter roles**,
+**4/4 folded array-index roles**, and **5/5 PE data-target roles**. It matches
+**202/2,053 ordinary non-relocation bytes**; **3/37 physical E8 sites** and
+**4/5 PE HIGHLOW site/target pairs** align, with aggregate E8 offset distance
+**815**. The original 2,245B/612-i386 game Boss remains
+**SOURCE-PRESENT/NONEXACT**, with a **24B/28-instruction gap**; no parent
+exactness credit is claimed. Both PMR insertion calls still route through the
+maintained C++ wrapper at candidate `+0x17C/+0x53A` versus original
+`+0x165/+0x4DD`. The source-scoped replay rebuilt one object and preserved
 **24/24** previously exact PMR/color descendants. Both
 `verify-glyph-mask-offset-array2-native.py` and
 `verify-glyph-mask-boss-live-pixels-native.py` attest the current candidate

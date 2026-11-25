@@ -182,7 +182,7 @@ source candidate with nine original E8 positions and two absolute relocation
 fields. The body is NONEXACT only because the original relocation targets are
 not all retained.
 The two game-parent calls are still shifted from native `+0x165/+0x4DD` to
-candidate `+0x160/+0x51E`; the 2,245B compositor is still NONEXACT. No parent
+candidate `+0x17C/+0x53A`; the 2,245B compositor is still NONEXACT. No parent
 exactness or game-authored exact-byte credit is claimed.
 
 The new `verify-glyph-mask-emplace35-native.py --candidate-object ...`

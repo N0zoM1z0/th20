@@ -156,9 +156,10 @@ The independent `verify-glyph-mask-emplace35-native.py --candidate-object`
 checks the complete 8B/34B/108B/140B/488B bodies, all call sites and both
 parent insertion edges. A targeted `replay-exact-units.py --source
 src/GlyphMaskComposite2245.cpp` rebuild retained 24/24 existing exact
-PMR/color descendants. The compositor remains 2,128B/561-i386 with
-37/37 E8 target roles, 7/37 aligned E8 positions, 292/1,960 ordinary bytes
-and 819 aggregate E8 offset distance.
+PMR/color descendants. The compositor remains 2,221B/584-i386 with
+37/37 E8 target roles, 3/37 aligned E8 positions, 202/2,053 ordinary bytes
+and 815 aggregate E8 offset distance. The two game-parent insertion calls
+now land at candidate +0x17C/+0x53A (native +0x165/+0x4DD).
 
 ## 2026-11-25 follow-up: restore the uninitialized-move pointer forwarding call
 
