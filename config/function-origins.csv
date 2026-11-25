@@ -2069,7 +2069,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00474D40,unknown,Animation,review,pending,"CORE/RECON-1305; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; returns the Animation Y-rotation float at +0x3C. The one-load accessor may be game-authored or compiler/library-generated; origin remains open."
 0x00474D60,unknown,EnemyDispatchState,review,unknown,CORE/EXACT-148; docs/ENEMY_DISPATCH_STATE_RECONSTRUCTION.md; Complete25-byte Session forwarding query reaches actual PlayerTable+88 and its independently reviewed mutating field1F4 clamp. Source/exactness do not establish origin.
 0x00474D80,unknown,EnemyDispatchState,review,unknown,"CORE/EXACT-148; docs/ENEMY_DISPATCH_STATE_RECONSTRUCTION.md; Complete73-byte PlayerTable query clamps signed field1F4 to0..999, writes it back and returns it. Existing independent integer-clamp anchor0x471170 is reused. Source/exactness do not establish origin."
-0x00474DD0,"unknown","Animation",review,"unknown","CORE/RECON-1301; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; 42-byte Animation state predicate is semantically reconstructed as Animation::is_active; authored-versus-compiler origin is intentionally unresolved"
+0x00474DD0,unknown,Animation,review,unknown,"CORE/RECON-1301; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; scripts/verify-animation-is-active-native.py; strict 42B replay establishes signed predicate semantics, not original class/method identity or authored origin"
 0x00474E00,authored,Player,authored,high,CORE/EXACT-308; docs/PLAYER_RESET_MODE_EXACT_RECONSTRUCTION.md; typed original Session and Player state accessors
 0x00474E20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00474E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

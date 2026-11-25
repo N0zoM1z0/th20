@@ -318,7 +318,9 @@ source-present but NONEXACT.
    exact, including the 34B `copy_base` wrapper and four callback/lifecycle
    helpers; original template/allocation callers are verified in
    `docs/ANIMATION_BINDING_LEAF_FUNCTIONS_EXACT.md`.
-   The 452B `matrix_identity` helper now also has a strict canonical replay
+   The adjacent 42B `Animation::is_active` signed predicate now also strictly
+   replays 42/42B; its original method identity and authored/accessor origin
+   remain unknown. The 452B `matrix_identity` helper now also has a strict canonical replay
    including all four DIR32 references to the original `1.0f` constant; its
    natural C++ source uses the original explicit store order. Its generic
    utility origin remains unknown. The adjacent `Animation::clear_flag_02`
