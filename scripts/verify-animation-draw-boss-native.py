@@ -250,6 +250,26 @@ def verify() -> None:
     print("PASS native mode35/36 first-return spills and register-register scale ops; "
           "mode35/36/45/46 width and mode45/46 scale XMM operand order")
 
+    # Mode28 forwards AnimationFlags+0x4A8/+0x4AC as the final two cdecl
+    # arguments of the already-exact 1,601B triangle renderer. The first is
+    # horizontal anchor, the second vertical anchor; cdecl pushes vertical
+    # first and horizontal second. This pins the semantic field mapping from
+    # the parent independently of the child's matching source parameter names.
+    mode28_anchor_loads = bytes.fromhex(
+        "8b91ac040000 899504ffffff "
+        "8b4508 8b88a8040000 898d00ffffff")
+    mode28_anchor_pushes = bytes.fromhex(
+        "8b9504ffffff 52 8b8500ffffff 50")
+    assert native_body[0x0CE6:0x0D01] == mode28_anchor_loads
+    assert native_body[0x0D1D:0x0D2B] == mode28_anchor_pushes
+    mode28_call = instructions[next(i for i, ins in enumerate(instructions)
+                                     if ins.address == HEAD + 0x0D73)]
+    mode28_target = (mode28_call.address + 5 +
+                     struct.unpack_from("<i", mode28_call.bytes, 1)[0]) & 0xFFFFFFFF
+    assert mode28_call.mnemonic == "call" and mode28_target == 0x0043E2C0
+    print("PASS native mode28 anchor ABI: Animation+0x4A8 horizontal, +0x4AC vertical, "
+          "cdecl push order and 0x43E2C0 triangle child")
+
     original_body_relocs = {address for address in relocs if HEAD <= address < HEAD + BODY_SIZE}
     assert len(original_body_relocs) == 32
     # The main and nested jump operands themselves are two separate original

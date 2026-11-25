@@ -203,6 +203,9 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
                                      (animation->base.variables.ring_center_radius) - (animation->base.variables.ring_thickness) / native_two,(animation->base.variables.ring_thickness),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
     case 28:
+        // word_10/word_14 are the horizontal/vertical 0..2 anchor indices.
+        // The native caller pushes vertical (+0x4AC) before horizontal (+0x4A8)
+        // for this cdecl child, whose last two source parameters are named.
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43e2c0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_494(animation),(animation->base.flags.word_10),(animation->base.flags.word_14));
         break;
     case 17:

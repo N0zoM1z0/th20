@@ -108,6 +108,11 @@ def main():
     assert Counter(case_labels) == expected_case_labels, Counter(case_labels)-expected_case_labels
     assert text.count("switch (animation->base.flags.bytes_00.animation_mode)") == 2
     assert "draw_complex_mode6(animation)" in text
+    mode28 = text.rsplit("case 28:", 1)[1].split("case 17:", 1)[0]
+    assert "draw_shape_43e2c0" in mode28
+    assert "animation->base.flags.word_10" in mode28
+    assert "animation->base.flags.word_14" in mode28
+    assert "horizontal/vertical 0..2 anchor indices" in mode28
     assert "->bind_native_texture_state(animation)" in text
     # One real renderer ABI declaration is now shared with the independently
     # strict 753B mode7 child, not duplicated in this noncanonical parent.
