@@ -300,6 +300,14 @@ Mutable compound assignments collapsed the parent call/table layout. A named
 width temporary after adjusted scale added 16 bytes and increased total E8
 displacement by 40B. The maintained natural expression remains the best
 native-order mode45 candidate; the older 114/123 role swap is not restored.
+A separate mutable-local qualifier matrix changed half_for_scale,
+inherited_scale and adjusted_scale from const to mutable independently and in
+combination, including a named mutable inherited_scale for mode45. All eight
+variants were byte-for-byte identical at the parent metric level:
+5,989B/1,501 instructions, 4,694/5,372 ordinary bytes, 109/123 E8 positions,
+68B total absolute E8 displacement and 26/32 exact HIGHLOW sites. Every
+candidate still used memory-source adjusted-scale arithmetic in modes45/46.
+Const qualification is therefore not the reason MSVC folds these operands.
 
 ### Mode46 native-order versus role-swap subtraction
 
