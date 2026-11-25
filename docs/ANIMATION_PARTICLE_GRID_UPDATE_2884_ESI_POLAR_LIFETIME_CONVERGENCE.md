@@ -24,7 +24,7 @@ together with its six-slot native vtable, all 99 physical E8 site/target
 pairs, 25 actual PE HIGHLOW fields and 12 trailing `INT3` bytes. The
 full maintained C++ source is
 [`AnimationParticleGridUpdate2884.cpp`](../src/AnimationParticleGridUpdate2884.cpp).
-The current source compiles to **2,876B/760 i386** after the 2026-11-20
+The pre-RECON-1112 checkpoint compiled to **2,876B/760 i386** after the 2026-11-20
 shared-child lifetime recovery; **this parent remains SOURCE-PRESENT,
 NONEXACT**.
 
@@ -91,32 +91,35 @@ candidate relocation counts.
 
 | Measured property | 2,969B source | 2,924B checkpoint | Current checkpoint | Original native |
 | --- | ---: | ---: | ---: | ---: |
-| Whole compiler code bytes | 2,969 | 2,924 | **2,876** | 2,884 |
-| Whole i386 instructions | 763 | 760 | **760** | 768 |
+| Whole compiler code bytes | 2,969 | 2,924 | **2,856** | 2,884 |
+| Whole i386 instructions | 763 | 760 | **756** | 768 |
 | E8 / COFF REL32 calls | 99 | 99 | **99** | 99 |
 | PE HIGHLOW / COFF DIR32 | 25 | 25 | **25** | 25 |
-| E8 opcode offsets exactly aligned | 0 /99 | 6 /99 | **8 /99** | 99 /99 |
-| Sum of absolute differences between corresponding E8 offsets | 7,558 | 3,639 | **1,463** | 0 |
-| First 20 E8 offset absolute-difference sum | 659 | 119 | **92** | 0 |
+| E8 opcode offsets exactly aligned | 0 /99 | 6 /99 | **14 /99** | 99 /99 |
+| Sum of absolute differences between corresponding E8 offsets | 7,558 | 3,639 | **712** | 0 |
+| First 20 E8 offset absolute-difference sum | 659 | 119 | **87** | 0 |
 | Local stack frame | — | 0x1AC | **0x19C** | 0x19C |
 | Original ESI push/age-across-call lifetime | No | Yes | **Yes** | Yes |
 
 The previous 2,969B candidate source is retained as
 `.analysis/gptweb-particle-owner-probes/EffectChainSpawnSlot.cpp`; its
 noncanonical compiled object was removed during storage cleanup. Rebuild it
-with `scripts/compile-probe.py` if needed. The current 2,876B candidate is
-reproducible from the maintained single-source probe. The shared
-child-pointer lifetime removes **48B** from the 2,924B checkpoint, brings
-the local stack frame to the native **0x19C**, raises physical E8-site
-alignment from six to eight, and cuts total E8 displacement from 3,639 to
-**1,463** (first 20 sites: 92). The candidate is now **8B smaller and eight
-instructions shorter** than the original; these bytes are *not* accepted as
-original code, and code length alone has no matching credit. A more
+with `scripts/compile-probe.py` if needed. The pre-RECON-1112 2,876B candidate is a historical checkpoint; the
+maintained single-source probe now reproduces the **2,856B/756** candidate.
+The shared child-pointer lifetime first removed **48B** from the 2,924B
+checkpoint and restored the native **0x19C** frame, aligning eight E8 sites
+with total offset delta **1,463**. RECON-1112 then changed all four named
+`AnimationHandle` temporaries into direct `colors_08[index] = spawn(...)`
+assignments: this removes a further **20B/four instructions**, improves
+alignment from **8/99 to 14/99**, and cuts total E8 offset delta from
+**1,463 to 712** (first 20 sites: 87). The current candidate is **28B and
+12 instructions shorter** than the original; these bytes are *not* accepted
+as original code, and code length alone has no matching credit. A more
 aggressive const-reference center probe compiled to 2,856B/758, but was
 rejected: the native explicitly materializes a 12-byte Vector3 snapshot
 before copying it to the three group fields, so the maintained source keeps
 the value copy and changes only the independently evidenced child-pointer
-lifetime.
+lifetime plus the direct spawn-result assignments.
 
 ## New independent original-role checker
 
@@ -135,9 +138,10 @@ fake relocation, or grants a strict match.
 
 This role checker now runs automatically after the existing
 [`probe-animation-particle-grid-update2884.py`](../scripts/probe-animation-particle-grid-update2884.py)
-compiles the *one* real maintained function. The 2026-11-20 source now
-reports 2,876B/760 i386, 8/99 physical E8 sites aligned, and an exact
-0x19C local frame while preserving every original call/data role:
+compiles the *one* real maintained function. The 2026-11-20 source
+checkpoint reported 2,876B/760 i386 and 8/99 physical E8 sites aligned;
+the current source reports 2,856B/756 i386 and 14/99 aligned, preserving
+every original call/data role and the exact 0x19C local frame:
 
 ```sh
 nice -n 15 scripts/repo-python scripts/probe-animation-particle-grid-update2884.py

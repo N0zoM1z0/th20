@@ -106,6 +106,15 @@ def main():
         default=Path('build/gptweb-particle2884-probe/ParticleUpdate2884Research.obj'))
     ns=args.parse_args()
     original_rules.verify()
+    # Preserve the native spawn-result lifetime as one direct C++ assignment:
+    # materializing a named AnimationHandle in each branch adds copies and
+    # moves all later physical call sites away from the original.
+    source=(ROOT/'src/AnimationParticleGridUpdate2884.cpp').read_text()
+    for index,script in enumerate(('0x95','0x95','0x95','0x96')):
+        expression=(f'colors_08[emission_index+{index}]=file->spawn_45d210('
+                    f'"effect",{script},nullptr,0.0f,effect_index);')
+        assert source.count(expression)==1,(index,expression)
+    assert 'AnimationHandle handle=file->spawn_45d210' not in source
     image,_=pe.verified_target()
     base,sections=pe.parse_sections(image)
     original=pe.raw_at(image,base,sections,HEAD,ORIGINAL_SIZE)

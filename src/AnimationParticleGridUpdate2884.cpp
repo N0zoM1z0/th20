@@ -1,7 +1,7 @@
 // Original 2,884B particle-grid virtual Update at 0x0045C360.
 // Full game-owned C++ logic, SOURCE-PRESENT NONEXACT. The original has
 // 768 i386 instructions, 99 E8 calls and 25 PE HIGHLOW fields; current
-// pinned-MSVC 2876B/760-instruction body preserves 99 REL32/25 DIR32.
+// pinned-MSVC 2856B/756-instruction body preserves 99 REL32/25 DIR32.
 // Four emitter child updates and the 200-slot loop reuse one Animation*
 // local, matching the original [EBP-0x54] pointer lifetime.
 // The native early ESI lifetime is recovered by comparing the actual child age
