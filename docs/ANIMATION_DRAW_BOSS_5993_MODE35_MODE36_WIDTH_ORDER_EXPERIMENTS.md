@@ -205,3 +205,29 @@ probes did not retain the native complete function boundary/call graph.
 The candidate-only report is now the required check for future spill/register
 experiments. No candidate is promoted; the production C++ and canonical
 objects remain unchanged.
+
+## Additional operand-materialization probes after the candidate-only audit
+
+A final scalar-expression battery tried case-top predeclaration permutations
+for `aux_half`, `inherited_scale` and `adjusted_scale`; all three declaration
+orders produced the same **5,985B / 84/123 E8** native-order spill candidate
+with memory-source adjusted-scale arithmetic. The obsolete C++ `register`
+storage-class keyword emitted MSVC C5033, did not force a register load, and
+moved the first-result temporary to `[ebp-0x164]` instead of the native
+`[ebp-0x160]`. `volatile` scalar locals likewise did not force XMM1 and are
+not accepted as a source explanation.
+
+Using one shared half-height local for both adjusted-scale and width changed
+the parent to **5,965B / 45/123 E8**, **1,871/5,356** ordinary bytes and
+14/32 exact HIGHLOW sites. `std::plus<float>` / `std::minus<float>` functors
+were emitted as out-of-line helper calls: the object had 125 E8 instructions,
+only 28/123 native physical positions, and a 6,009B function. Bit-cast and
+`memcpy` round-trips around the half-height introduced extra temporaries and
+out-of-line helper code: the bit-cast candidate grew to 6,069B with 28/123
+E8, while the memcpy variant did not retain a recognizable complete function
+boundary and had 34/123 E8. These are rejected, not compiler-shaping progress.
+
+`/O1` and `/O2` applied to both the direct-role-swap and native-order spill
+sources also destroyed the 5,993B boundary and call graph (O1 had no matching
+return boundary; O2 reduced the body to roughly 4.2KB). The maintained profile
+remains `/Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc`.
