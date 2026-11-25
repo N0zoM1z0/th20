@@ -313,7 +313,11 @@ source-present but NONEXACT.
    its 5,452B canonical relocated replay remains exact. Geometry UV offsets
    at AnimationBase+0x78/+0x7c are now named `texture_offset_u/v` without
    changing the 0x4c0 AnimationBase layout. The parent-only
-   lexical semantic-debt scan is now zero (heuristic only).
+   lexical semantic-debt scan is now zero (heuristic only). Five small
+   AnimationBinding leaves are now independently native-attested and strictly
+   exact, including the 34B `copy_base` wrapper and four callback/lifecycle
+   helpers; original template/allocation callers are verified in
+   `docs/ANIMATION_BINDING_LEAF_FUNCTIONS_EXACT.md`.
    Mode46's half-height ownership and width recomputation now follow the
    original order. Mode35/36's second inherited-scale result is now named
    `inherited_scale` and feeds the real adjusted-scale argument. The first
