@@ -41,7 +41,8 @@ Recheck the live CSV/TOML before relying on these dated counts.
   [current full-size mode35/45 source convergence](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md)
   preserves all 123 original E8 call roles, 32 native body HIGHLOW roles,
   the 0x204 stack and both native 49+31 pointer tables. The current source
-  preserves native mode45/46 half-height evaluation order and emits a
+  preserves native mode45/46 half-height evaluation order, names the recovered
+  +0x4A8/+0x4AC horizontal/vertical anchors and emits a
   5,989B/1,501-instruction body: **109/123** E8 sites, **26/32** body
   data sites and **4,694/5,372** comparable non-relocation bytes match.
   The whole x87/SSE/branch output is not yet exact.

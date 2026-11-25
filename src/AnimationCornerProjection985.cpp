@@ -13,8 +13,8 @@ extern const float native_half;
 
 void NativeAnimationCornerProjector::project_corners_43eb40(
         Animation* animation, Vector3* a, Vector3* b, Vector3* c, Vector3* d) {
-    const float* x_offsets=native_quad_axis_layout[0].corners[animation->base.flags.word_10];
-    const float* y_offsets=native_quad_axis_layout[1].corners[animation->base.flags.word_14];
+    const float* x_offsets=native_quad_axis_layout[0].corners[animation->base.flags.horizontal_anchor];
+    const float* y_offsets=native_quad_axis_layout[1].corners[animation->base.flags.vertical_anchor];
     SpriteData* const sprite=animation->sprite_data();
     const float offset_x=sprite->field_24-animation->base.vector_80.x;
     const float offset_y=sprite->field_28-animation->base.vector_80.y;

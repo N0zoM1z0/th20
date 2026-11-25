@@ -59,7 +59,7 @@ std::int32_t AnimationDrawDetailedOwner::prepare_simple_mode7(Animation* animati
     // assigns fixed anchor coordinates for each state and clears all Z
     // lanes even though no later PE read of these locals is observed.
     Vector3 corners[4];
-    switch (animation->base.flags.word_10) {
+    switch (animation->base.flags.horizontal_anchor) {
     default:
     case 1:
         corners[2].x=0.0f; corners[0].x=0.0f;
@@ -74,7 +74,7 @@ std::int32_t AnimationDrawDetailedOwner::prepare_simple_mode7(Animation* animati
         corners[3].x=0.0f; corners[1].x=0.0f;
         break;
     }
-    switch (animation->base.flags.word_14) {
+    switch (animation->base.flags.vertical_anchor) {
     default:
     case 1:
         corners[1].y=0.0f; corners[0].y=0.0f;

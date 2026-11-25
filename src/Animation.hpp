@@ -106,13 +106,20 @@ struct AnimationFlags {
         std::uint8_t scale_mode : 8;
     };
     std::uint8_t field_0d, field_0e, field_0f;
-    std::uint32_t word_10, word_14, word_18, word_1c;
+    // Horizontal/vertical corner anchors are independent 32-bit script words.
+    // The word_* aliases preserve raw-layout users while semantic consumers
+    // use the recovered names from the native corner and triangle paths.
+    union { std::uint32_t horizontal_anchor; std::uint32_t word_10; };
+    union { std::uint32_t vertical_anchor; std::uint32_t word_14; };
+    std::uint32_t word_18, word_1c;
 };
 static_assert(sizeof(AnimationFlags) == 0x20);
 static_assert(offsetof(AnimationFlags, byte_02) == 2);
 static_assert(offsetof(AnimationFlags, byte_09) == 9);
 static_assert(offsetof(AnimationFlags, field_0a) == 10);
 static_assert(offsetof(AnimationFlags, byte_0b) == 11);
+static_assert(offsetof(AnimationFlags, horizontal_anchor) == 0x10);
+static_assert(offsetof(AnimationFlags, vertical_anchor) == 0x14);
 // Native immutable identity value at 0056E068; production data definition
 // and its original global initialization contract remain pending.
 extern const Matrix4 identity_matrix;

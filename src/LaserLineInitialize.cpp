@@ -43,8 +43,8 @@ std::int32_t LaserLineInf::initialize_laser(const void* input) {
     animation_0.update();
     set_animation_flag_byte_01_one(&animation_0);
     animation_0.base.flags.bytes_00.animation_mode=1;
-    animation_0.base.flags.word_10=0;
-    animation_0.base.flags.word_14=2;
+    animation_0.base.flags.horizontal_anchor=0;
+    animation_0.base.flags.vertical_anchor=2;
     animation_0.base.flags.bits_0b.viewport_placement_mode=1;
 
     file=context->laser_controller()->file;

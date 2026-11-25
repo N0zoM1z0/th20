@@ -353,6 +353,16 @@ source-present but NONEXACT.
    replayed 1/1; its final parameters are named horizontal_anchor and
    vertical_anchor. The native verifier pins the parent loads, cdecl push
    order and child target; the source-role verifier checks the source args.
+   AnimationFlags now exposes horizontal_anchor/vertical_anchor
+   union aliases at +0x10/+0x14 while preserving the original word_10/
+   word_14 raw aliases and 0x20-byte layout. Mode6/7/8 setup/rendering,
+   both 985B/1,486B corner projectors, the 0x5D script operand producer and
+   both laser initializers now use the recovered semantic names. The five
+   exact draw/corner consumers were individually cold-replayed: 1,378/1,378,
+   1,996/1,996, 4,372/4,372, 985/985 and 1,486/1,486. The large update and
+   two laser initializer translation units also compile as i386 objects;
+   their functions are not being claimed exact. The source-role verifier now
+   pins the field aliases, offsets, layout and semantic consumer set.
    Mode35/36's second inherited-scale result is now named
    `inherited_scale` and feeds the real adjusted-scale argument. The first
    getter remains a separate discarded call in the decompilation, while the

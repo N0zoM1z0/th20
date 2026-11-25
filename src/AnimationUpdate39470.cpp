@@ -944,8 +944,10 @@ LAB_0042df8e:
         break;
       }
       case 0x5d: {
-        base.flags.word_10 = (std::uint32_t)(std::uint16_t)reinterpret_cast<std::uint16_t*>(&instruction->first_operand)[0];
-        base.flags.word_14 = (std::uint32_t)(std::uint16_t)reinterpret_cast<std::uint16_t*>(&instruction->first_operand)[1];
+        // The two packed 16-bit operands update the horizontal/vertical
+        // corner-anchor indices consumed by the native draw/corner paths.
+        base.flags.horizontal_anchor = (std::uint32_t)(std::uint16_t)reinterpret_cast<std::uint16_t*>(&instruction->first_operand)[0];
+        base.flags.vertical_anchor = (std::uint32_t)(std::uint16_t)reinterpret_cast<std::uint16_t*>(&instruction->first_operand)[1];
         break;
       }
       case 0x61: {
