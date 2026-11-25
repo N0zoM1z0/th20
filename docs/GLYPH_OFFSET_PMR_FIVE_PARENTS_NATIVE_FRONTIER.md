@@ -36,7 +36,7 @@ pinned canonical source frontiers under MSVC 19.44 i386 C++20
 | `0x00416330` `emplace_back(const&)` | **35B/15 i386, 2 E8/0 HIGHLOW** | **34B/14, 2 E8/0 DIR32** | Both native E8 positions and all non-relocation bytes match; native trailing NOP at `+0x1C` is absent |
 | `0x00413370` `_Emplace_one_at_back` | **108B/40, 4 E8/0 HIGHLOW** | **108B/40, 4 E8/0 DIR32** | Every non-relocation byte and all four E8 positions match |
 | `0x004133E0` `_Emplace_reallocate` | **488B/170, 14 E8/2 HIGHLOW** | **488B/170, 14 E8/2 DIR32** | Every non-relocation byte and all fourteen E8 positions match; both absolute fields are at the native HIGHLOW offsets |
-| `0x00413920` `_Uninitialized_move` | **200B/65, 9 E8/2 HIGHLOW** | **191B/62, 8 E8/2 DIR32** | One additional native forwarded pointer/action; EH owner still real |
+| `0x00413920` `_Uninitialized_move` | **200B/65, 9 E8/2 HIGHLOW** | **200B/65, 9 E8/2 DIR32** | One additional native forwarded pointer/action; EH owner still real |
 | `0x004132E0` `_Emplace_back_with_unused_capacity` | **140B/52, 5 E8/0 HIGHLOW** | **140B/52, 5 E8/0 DIR32** | Every non-relocation byte and all five E8 positions match |
 
 The `std::array<int32_t,2>` type is important: its original 8B
@@ -155,3 +155,24 @@ src/GlyphMaskComposite2245.cpp` rebuild retained 24/24 existing exact
 PMR/color descendants. The compositor remains 2,128B/561-i386 with
 37/37 E8 target roles, 7/37 aligned E8 positions, 292/1,960 ordinary bytes
 and 819 aggregate E8 offset distance.
+
+## 2026-11-25 follow-up: restore the uninitialized-move pointer forwarding call
+
+The maintained glyph source now explicitly instantiates the natural
+`std::move<GlyphMaskOffset*&>` pointer-lvalue forwarding specialization with
+`__declspec(noinline)`. This preserves the real loop operation in the original
+200B `_Uninitialized_move` parent: load the current raw iterator pointer,
+forward that pointer through the shared 8B move leaf, then pass the returned
+pointer to `_Uninitialized_backout_al::_Emplace_back`.
+
+The complete current candidate has advanced from **191B/62 i386, 8 E8** to
+**200B/65 i386, 9 E8, 2 DIR32**, matching the original 200B/65 instruction
+count and restoring the missing loop E8. The candidate's non-relocation
+ordinary overlap is **100/150 bytes**; the prologue/local stack layout and
+several subsequent instruction offsets still differ. This remains
+**SOURCE-PRESENT/NONEXACT**, with no parent or generic STL byte credit.
+The other current PMR parent frontiers remain: 35B wrapper 34B/14 (native
+35B/15, one NOP absent), `_Emplace_one_at_back` 108B/40, no-growth 140B/52,
+and reallocation 488B/170. Their natural C++ candidates preserve all native
+E8 counts; 108B/140B/488B non-relocation code bytes match, while relocation
+site types/targets remain a separate exactness requirement.

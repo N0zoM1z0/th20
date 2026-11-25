@@ -22,6 +22,70 @@
 // 35B public wrapper remains NONEXACT because this compiler omits its NOP.
 template __declspec(noinline) const th20::GlyphMaskOffset&&
 std::move<const th20::GlyphMaskOffset&>(const th20::GlyphMaskOffset&) noexcept;
+template __declspec(noinline) th20::GlyphMaskOffset&&
+std::move<th20::GlyphMaskOffset&>(th20::GlyphMaskOffset&) noexcept;
+// The original 200B uninitialized-move loop forwards its raw current
+// iterator through the same out-of-line pointer-lvalue move helper.
+template __declspec(noinline) th20::GlyphMaskOffset*&&
+std::move<th20::GlyphMaskOffset*&>(th20::GlyphMaskOffset*&) noexcept;
+
+namespace th20 {
+using GlyphMaskAllocator = std::pmr::polymorphic_allocator<GlyphMaskOffset>;
+__declspec(noinline) void glyph_uninitialized_move_construct(
+    GlyphMaskAllocator& allocator, GlyphMaskOffset& destination, GlyphMaskOffset& source) {
+    allocator.construct(&destination, std::move(source));
+}
+} // namespace th20
+
+namespace std {
+template <>
+class _Uninitialized_backout_al<th20::GlyphMaskAllocator> {
+    using _Alloc = th20::GlyphMaskAllocator;
+    using pointer = th20::GlyphMaskOffset*;
+public:
+    __declspec(noinline) _Uninitialized_backout_al(pointer destination, _Alloc& allocator)
+        : _First(destination), _Last(destination), _Al(allocator) {}
+    _Uninitialized_backout_al(const _Uninitialized_backout_al&) = delete;
+    _Uninitialized_backout_al& operator=(const _Uninitialized_backout_al&) = delete;
+    __declspec(noinline) ~_Uninitialized_backout_al() {
+        _STD _Destroy_range(_First, _Last, _Al);
+    }
+    template <class... _Types>
+    __declspec(noinline) void _Emplace_back(_Types&&... values) {
+        allocator_traits<_Alloc>::construct(_Al, _STD _Unfancy(_Last), _STD forward<_Types>(values)...);
+        ++_Last;
+    }
+    __declspec(noinline) void _Emplace_back_deref_move(th20::GlyphMaskOffset&& source) {
+        th20::GlyphMaskOffset&& moved_source = _STD move(source);
+        th20::GlyphMaskOffset&& moved_destination = _STD move(*_Last);
+        _Alloc& allocator = _Al;
+        th20::glyph_uninitialized_move_construct(allocator, moved_destination, moved_source);
+        _Last += 1;
+    }
+    constexpr __declspec(noinline) pointer _Release() {
+        _First = _Last;
+        return _Last;
+    }
+private:
+    pointer _First;
+    pointer _Last;
+    _Alloc& _Al;
+};
+
+template <>
+_CONSTEXPR20 __declspec(noinline) _Alloc_ptr_t<th20::GlyphMaskAllocator>
+_Uninitialized_move<th20::GlyphMaskOffset*, th20::GlyphMaskAllocator>(
+    th20::GlyphMaskOffset* first, th20::GlyphMaskOffset* last,
+    _Alloc_ptr_t<th20::GlyphMaskAllocator> destination, th20::GlyphMaskAllocator& allocator) {
+    auto unwrapped_first = _STD _Get_unwrapped(first);
+    const auto unwrapped_last = _STD _Get_unwrapped(last);
+    _Uninitialized_backout_al<th20::GlyphMaskAllocator> backout{destination, allocator};
+    for (; unwrapped_first != unwrapped_last; ++unwrapped_first) {
+        backout._Emplace_back_deref_move(_STD move(*unwrapped_first));
+    }
+    return backout._Release();
+}
+} // namespace std
 
 namespace std {
 template <>

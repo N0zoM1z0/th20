@@ -17,7 +17,7 @@ SPECS={
  'emplace_back':(0x00416330,35,15,'bd26f62ba6f30fe4d6e5845561e0cc2ecdd80da8bc771cdcdd260e25109343b4',2,0,34,14,2,0,'??$emplace_back@ABV?$array@'),
  'one_at_back':(0x00413370,108,40,'2ad1446dee98794f9578c474b883145c2296ff1adcb2def8d653e3d365e5e04b',4,0,108,40,4,0,'??$_Emplace_one_at_back@ABV?$array@'),
  'reallocate':(0x004133E0,488,170,'5e5ecf3d3ff27b00fd364a728acb23dcae883c179f8e5d3e1fdde93788697b57',14,2,488,170,14,2,'??$_Emplace_reallocate@ABV?$array@'),
- 'uninitialized_move':(0x00413920,200,65,'ec0f652bfa6eaf3ee4ac165bd3088e80e924fc7b8747e74ba133d3041febca65',9,2,191,62,8,2,'??$_Uninitialized_move@PAV?$array@'),
+ 'uninitialized_move':(0x00413920,200,65,'ec0f652bfa6eaf3ee4ac165bd3088e80e924fc7b8747e74ba133d3041febca65',9,2,200,65,9,2,'??$_Uninitialized_move@PAV?$array@'),
  'non_growth':(0x004132E0,140,52,'1f514d2135b7b78ef041cc44ba21003fe295a2033b33a1a78eb8e40862bc37f2',5,0,140,52,5,0,'??$_Emplace_back_with_unused_capacity@ABV?$array@'),
 }
 PARENT=0x00416420

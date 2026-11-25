@@ -189,3 +189,12 @@ positions, normalized code bytes, the two reallocation HIGHLOW fields and
 both parent insertion edges. A source-scoped cold replay rebuilt only
 `GlyphMaskComposite2245.cpp` and retained **24/24** existing exact PMR/color
 children.
+
+## 2026-11-25 follow-up: restore the 200B uninitialized-move loop call
+
+The enclosing PMR growth chain now emits the original 200B/65-instruction
+`_Uninitialized_move` extent and all nine E8 instructions. An explicit
+noinline `std::move<GlyphMaskOffset*&>` instantiation restores the pointer
+forwarding operation before `_Uninitialized_backout_al::_Emplace_back`.
+The full body remains NONEXACT (100/150 ordinary overlap bytes); this is a
+real C++ template lowering improvement, not an instruction or padding shim.
