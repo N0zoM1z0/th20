@@ -565,3 +565,14 @@ The four DrawAccess leaves (two 20B color getters, 26B enabled predicate,
 93B inherited-scale getter) were rebuilt together after their include closure
 changed and passed strict canonical replay 4/4. Their exact child status does
 not imply parent exactness.
+
+2026-11-25 follow-up: the recursive inherited auxiliary-scale leaf at
+`0x00445880` was independently replayed again and remains exact at 93/93B.
+A function-scope first-result local in the large parent emits both native
+write-only `[ebp-0x160]` stores and preserves the first 89 E8 positions, but
+mode36's post-getter adjusted-scale arithmetic remains a memory-source
+`subss` instead of the native register-register form. The closest candidate
+puts the next renderer call four bytes early; volatile/copy/compound local
+forms and shared-half reuse do not close the gap. See
+`ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md`; production
+remains the 5,989B/109-E8 candidate, NONEXACT.

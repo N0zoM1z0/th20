@@ -502,3 +502,50 @@ adjusted_scale compiled to 5,975B/1,499 instructions, 1,389/5,356 ordinary
 bytes, 28/123 E8 and 14/32 HIGHLOW sites. Field order did not change either
 result. The standalone shared float is the only tested natural representation
 that recovers both native write-only stores; none preserves the parent graph.
+
+
+## 2026-11-25 follow-up: first-result stores versus mode36 register allocation
+
+The four `AnimationDrawAccess.cpp` children were replayed again as one affected
+source only. All four remain strict exact matches: packed color +0x490 (20/20B),
+packed color +0x494 (20/20B), draw-enabled bit +0x49A (26/26B), and recursive
+inherited auxiliary scale +0x58 (93/93B). In particular, the large parent's
+recursive scale getter is already a byte-exact 93B leaf; the remaining first-
+result issue is in the 5,993B parent's caller-side temporary/lifetime code.
+
+A function-scope `first_inherited_scale` assigned by both mode35 and mode36
+continues to be the only tested natural scalar form that emits the two native
+write-only x87 stores at `[ebp-0x160]` and preserves the first 89 E8 positions.
+The best call-site frontier in this battery is:
+
+| Candidate | Code / x86 | Ordinary bytes | E8 sites | HIGHLOW | Total E8 displacement |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Function-scope first result, reverse-zero width | 5,996B / 1,502 | 3,824/5,376 | 89/123 | 24/32 | 115B |
+| Mode36 pre-getter scale half, inline post-getter width half | 5,989B / 1,500 | 3,806/5,372 | 89/123 | 24/32 | 161B |
+| Mode36 two distinct scale/width halves | 6,001B / 1,501 | 3,855/5,384 | 89/123 | 24/32 | 273B |
+
+All three keep the first 89 call positions exact through native `+0x1103`.
+The reverse-zero-width form places call 89 at candidate `+0x119B` versus
+native `+0x1198` (+3B). The pre-getter-scale-half/inline-width form places it at
+`+0x1194` (-4B). The two-half form places it at `+0x11A0` (+8B). The inline
+width version matches the maintained 5,989B code extent but has a worse E8
+frontier and is not a promotion candidate.
+
+The remaining four-byte displacement was isolated to the mode36 adjusted
+scale expression. Native code at `+0x1103` calls inherited scale, stores its
+result at `[ebp-0x164]`, loads that result into XMM0, explicitly loads the
+precomputed half-height at `[ebp-0x168]` into XMM1, and performs
+`subss xmm0,xmm1` at `+0x111E`. The closest first-result C++ candidate instead
+emits the single memory-source `subss xmm0,[ebp-0x168]` at `+0x1116`; the
+subsequent renderer argument sequence is otherwise the same shape, but begins
+four bytes early. The compiler's volatile-half, named-copy, compound
+assignment, half-seed, and shared-half C++ variants did not produce the
+required separate XMM1 load while preserving the switch graph. Reusing the
+same half local for both adjusted scale and width collapsed the candidate to
+45/123 E8 and 14/32 HIGHLOW sites. These remain exploratory probes only.
+
+The native-only parent verifier and candidate-only report both pass. The
+maintained parent remains unchanged at 5,989B / 1,501 instructions,
+4,694/5,372 ordinary bytes, 109/123 E8 positions, 68B total E8 displacement,
+and 26/32 exact HIGHLOW sites. No assembly, inline opcode, synthetic padding,
+or compiler-only substitute is introduced.
