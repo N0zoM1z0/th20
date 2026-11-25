@@ -337,7 +337,11 @@ source-present but NONEXACT.
    `inherited_scale` and feeds the real adjusted-scale argument. The first
    getter remains a separate discarded call and still emits `fstp st(0)`
    instead of the native dead-store spill to `[ebp-0x160]`; local spill probes
-   distort later case layout and are not promoted. The inherited-scale getter's exact 93B `float` ABI is closed;
+   distort later case layout and are not promoted. A focused mode36 declaration
+   battery, `/Zi`/`/Z7` debug-info builds, scalar SSE-load intrinsics and bit-cast
+   experiments did not recover the native XMM1 load without breaking the call
+   census or natural source profile; see the appended mode36 probe report. The
+   inherited-scale getter's exact 93B `float` ABI is closed;
    Ghidra's `float10` does not justify MSVC `long double`. See
    [the focused mode45/46 frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md)
    and [the full-body convergence report](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md).
