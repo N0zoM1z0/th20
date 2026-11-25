@@ -442,3 +442,56 @@ These focused trials do not alter the parent source, canonical objects,
 manifest, or full replay state. The first-getter write-only local and mode36
 register operand remain unresolved; no fake local, assembly, intrinsic,
 volatile storage, or padding is accepted as progress.
+
+## 2026-11-25 follow-up: original write-only spill and late mode36 argument
+
+A fresh native decompile/context pass of `0x00443880`, cross-checked against
+the original PE instruction stream, confirms the first mode35 and mode36
+`animation_inherited_aux_scale_x` calls are standalone expressions in the
+recovered control flow, while the native machine code writes their x87 return
+to the same write-only local `[ebp-0x160]` at `+0x0FCD` and `+0x10BA`.
+A full decoded-body operand scan finds no subsequent read of that slot. The
+source-level identity of this apparently dead local is still unknown.
+
+A current-source-derived scalar C++ probe now models it as one function-scope
+`[[maybe_unused]] float first_inherited_scale`, assigned by the first getter
+in each case. It produces both original `fstp m32 [ebp-0x160]` stores. Keeping
+the current mode45/46 source unchanged, the probe also restores the mode35
+`addss xmm0,xmm1` and mode36 `subss xmm0,xmm1` register-register forms by
+computing a real half-height local for the width argument before the second
+getter and independently recomputing the same half-height for adjusted scale
+after it. This is a value-equivalent ordering of a pure read/division against
+the recursive getter; it is a compiler probe, not yet an accepted source edit.
+
+| Candidate | Code | Ordinary bytes | E8 positions | Native spill / SSE forms |
+| --- | ---: | ---: | ---: | --- |
+| Maintained source | 5,993B | 4,840/5,376 | 114/123 | neither first spill; mode46 memory subtraction |
+| Current-source spill probe | 5,989B | 3,801/5,372 | 89/123 | both spills; register add and subtract |
+| Spill + double-roundtrip width probe | 5,997B | 3,930/5,380 | 90/123 | both spills; register add and subtract; rejected |
+
+The current-source spill probe preserves the first **88** physical E8 sites,
+including the mode35/36 getter and renderer calls through `+0x1103`. Starting
+with the mode36 renderer call at native `+0x1198`, every later physical E8 is
+four bytes early. The precise remaining difference is the final mode36 width
+argument:
+
+- Native recomputes `height / 2` after adjusted-scale, then loads `width` into
+  XMM1 and subtracts the new half in XMM0 (`subss xmm1,xmm0`).
+- The 5,989B probe reuses the earlier half local for width and emits a shorter
+  direct-memory subtraction (`subss xmm0,[half_for_width]`).
+
+That reuse removes four bytes before the renderer call and explains the
+uniform `-4` tail call displacement. Replacing it with the native post-getter
+width recomputation restores the expression order, but the locked compiler
+still uses the memory form for the adjusted-scale subtraction when that
+expression consumes the saved half local. The source battery varied mutable,
+assigned, copied, referenced and volatile scalar locals; none yielded the
+native XMM1 load. Scalar SSE intrinsic forms materially changed stack/register
+allocation and contribution shape. They are not promoted.
+
+A double float-to-double-to-float round trip adds the four-byte displacement
+back and raises the raw E8-position count to 90/123, but it is not a native
+operation and is not accepted as a reconstruction. It also leaves the full
+body four bytes too long. No current probe improves on the maintained source's
+4,840/5,376 ordinary-byte and 114/123 E8-position evidence while preserving
+all source-level semantics, so `src/AnimationDrawBoss.cpp` remains unchanged.

@@ -335,9 +335,14 @@ source-present but NONEXACT.
    Mode46's half-height ownership and width recomputation now follow the
    original order. Mode35/36's second inherited-scale result is now named
    `inherited_scale` and feeds the real adjusted-scale argument. The first
-   getter remains a separate discarded call and still emits `fstp st(0)`
-   instead of the native dead-store spill to `[ebp-0x160]`; local spill probes
-   distort later case layout and are not promoted. A focused mode36 declaration
+   getter remains a separate discarded call in the decompilation, while the
+   native body stores both first returns to the write-only `[ebp-0x160]` slot.
+   A current-source-derived scalar probe recovers both spills and both
+   register-register adjusted-scale operations, but drops to 89/123 E8 sites
+   and is four bytes short at the mode36 renderer call because it reuses the
+   earlier half-height for width. The native path recomputes the width half
+   after adjusted-scale; preserving that order currently reverts to the
+   memory-operand subtraction. No source change is promoted. A focused mode36 declaration
    battery, `/Zi`/`/Z7` debug-info builds, scalar SSE-load intrinsics and bit-cast
    experiments did not recover the native XMM1 load without breaking the call
    census or natural source profile; see the appended mode36 probe report. The
