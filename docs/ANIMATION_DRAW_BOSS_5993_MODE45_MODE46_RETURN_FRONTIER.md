@@ -399,3 +399,46 @@ Do not accept the 4,844-byte candidate solely for its higher ordinary-byte
 score. Keep the maintained 4,840-byte source until a candidate also preserves
 the native E8 sequence positions, stack ownership, floating evaluation order,
 and original PE relocation roles using ordinary C++.
+
+## 2026-11-25 follow-up: mode36 register-load and spill probes
+
+A second focused battery kept the mode36 getter order and the separate width
+recomputation intact while moving declarations/assignments for
+`aux_half`, `inherited_scale` and `adjusted_scale` around the case block. The
+following natural C++ variants all compile back to the same maintained
+**5,993B / 4,840-of-5,376 ordinary-byte / 114-of-123 E8-position** result;
+none causes MSVC to materialize the native `movss xmm1, [ebp-0x168]` before
+`subss xmm0, xmm1`:
+
+- declare `adjusted_scale` before the color getters, assign after the second
+  inherited-scale call;
+- declare `inherited_scale` before the color getters, assign after the half;
+- declare `aux_half` before the color getters and assign at the native
+  half-height evaluation point;
+- declare both half and adjusted temporaries before the getters;
+- declare half before the getter but assign it after the getter;
+- seed a mutable adjusted-scale local from the getter and apply `-=`.
+
+A separate width-half local, whether declared before the case operations or
+computed after adjusted scale, breaks the original 81-site exact E8 prefix and
+reduces the candidate to 81/123 E8 positions. Reusing `aux_half` for width
+instead of the native second division changes more of the nested switch and
+is rejected. These are real value locals, not padding, but they do not improve
+the reconstruction.
+
+The source was also compiled with `/Zi` and `/Z7` diagnostics added to the
+locked profile. Both produce the unchanged **5,993B / 4,840 / 114-of-123**
+body and retain `fstp st(0)` for the first mode35/36 getter results; debug-info
+selection does not explain the native dead-store spill.
+
+`std::bit_cast<float>(std::bit_cast<std::uint32_t>(aux_half))` is a bit-preserving
+C++ spelling, but under `/Od` it creates extra calls/temporaries and loses the
+native call census. Scalar `_mm_load_ss`/`_mm_cvtss_f32` variants likewise
+materialize vector temporaries, produce 6,372B+ contributions and no useful
+native call alignment. They are not promoted: the source remains ordinary
+scalar C++ and the locked compiler profile is unchanged.
+
+These focused trials do not alter the parent source, canonical objects,
+manifest, or full replay state. The first-getter write-only local and mode36
+register operand remain unresolved; no fake local, assembly, intrinsic,
+volatile storage, or padding is accepted as progress.
