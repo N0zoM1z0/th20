@@ -411,6 +411,16 @@ tested in three declaration positions; all three compiled identically to the
 maintained 5,989B/109-E8 candidate (4,691/5,372 ordinary bytes), with no
 native spill or SSE register form. These source forms did not improve on the
 current production expression.
+The mode35 width-local experiment was extended to explicit assignment
+statements, with the mutable width local declared after the first getter, after
+the draw count, or immediately before the scale-half local, then assigned only
+after adjusted scale. All three natural declaration/assignment placements
+compiled identically to the maintained 5,989B/1,501-instruction candidate:
+4,694/5,372 ordinary bytes, 109/123 E8 positions, 68B total absolute E8
+displacement and 26/32 exact HIGHLOW sites. None recovered the native
+first-result spill or register-register scale operation; the inline expression
+and explicit assignment statement are codegen-equivalent under the pinned
+profile.
 
 The current parent remains 5,989B/1,501 instructions, 109/123 E8 positions,
 68B total absolute E8 displacement and 26/32 exact HIGHLOW site/target pairs.
