@@ -356,6 +356,12 @@ source-present but NONEXACT.
    also remains below the maintained candidate (109/123 E8). A detailed
    source-only tradeoff ledger is in
    [mode35/36 width-order experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md).
+   The native verifier now also pins the post-adjustment mode35/36 width
+   calculations and their XMM operand order; the source-role verifier checks
+   the corresponding C++ evaluation order. Both focused verifiers pass.
+   Direct renderer-argument and mixed mode35/36 ownership trials were worse
+   (83–89/123 E8; 3,675–3,800 ordinary bytes); see the appended matrix in the
+   width-order experiment ledger. No source variant is promoted.
    First-result locals kept with the existing case temporaries, reused width
    locals, and scalar `__forceinline`/`__vectorcall` helpers also failed to
    preserve the native frame and E8 graph. No parent source or exact credit
