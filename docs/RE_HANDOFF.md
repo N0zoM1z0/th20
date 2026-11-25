@@ -629,3 +629,16 @@ also reduces the maintained build to 1,500 heads, so it is not promoted.
 `src/AnimationDrawBoss.cpp` remains unchanged at 5,989B/1,501, 109/123 E8,
 68B displacement, 26/32 HIGHLOW and NONEXACT. See the mode35/36 experiment
 ledger for exact mismatch offsets and candidate metrics.
+
+2026-11-25 targeted replay checkpoint: reran
+`scripts/verify-animation-draw-boss-native.py` and
+`scripts/verify-animation-draw-boss-source-roles.py`; both pass on the
+maintained parent. The native verifier reconfirmed 5,993B/1,501 x86, 123 E8,
+43 callees, 32 body HIGHLOW, both original switch tables (49+31 pointers),
+and the exact four child call targets. The source-role verifier reconfirmed
+the 5,989B/1,501 production object, 109/123 E8 positions, 26/32 HIGHLOW,
+and the source-ordered mode35/36/45/46 arithmetic. Then ran only
+`scripts/replay-exact-units.py --source src/AnimationDrawAccess.cpp`: all four
+leaf functions replayed exact (20B, 20B, 26B, 93B) from one rebuilt object.
+No full cold replay was run; production sources and exact child sources are
+unchanged.
