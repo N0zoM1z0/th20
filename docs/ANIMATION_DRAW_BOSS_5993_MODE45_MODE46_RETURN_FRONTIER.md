@@ -357,3 +357,45 @@ The
 exact 93B getter and its `float` declaration remain unchanged. The only active
 target remains the 5,993B Draw Boss; no function switch is authorized before
 its complete strict exact replay.
+
+## 2026-11-25 follow-up: width-half candidate rejected on native call order
+
+The maintained source was rebuilt under the locked profile and rescored at
+**5,993B code, 4,840/5,376 ordinary bytes, 114/123 physical E8 positions**,
+with the existing 0x204 stack frame and 27/32 in-body HIGHLOW site/target
+pairs. This is the current source baseline; older 4,834/5,376 receipts above
+refer to an earlier source snapshot.
+
+A fresh `mode35` declaration-order probe computes `shape_width` before
+`aux_half` and then inlines the second inherited-scale getter into the adjusted
+scale expression. It raises the raw ordinary-byte score to **4,844/5,376**
+without changing the 5,993B body length or the count of physical E8 calls.
+However, it moves the second mode35 getter from native `+0x1016` to candidate
+`+0x102c` (22 bytes late) because both `/2` expressions now precede that call.
+It also changes the native half-height evaluation order. The apparent four-byte
+score improvement is therefore rejected; it is not a better reconstruction of
+the original call/evaluation sequence and is not copied into `src/`.
+
+Other current-source probes with mutable/volatile half locals, top-level
+volatile return qualifiers, volatile casts, shared-result locals, pointer
+aliases, aggregate scale pairs and SSE intrinsic temporaries either retain the
+same codegen, move the call sequence, grow the contribution, or spill at
+unrelated stack offsets. The mode46-native-expression-order variant scores
+below the maintained baseline. No production Draw Boss source change is
+accepted in this follow-up.
+
+The current blockers remain sharply localized:
+
+- mode35/36 first inherited-scale result: native `fstp m32 [ebp-0x160]`,
+  maintained source `fstp st(0)`; the native slot has no later read in the body.
+- mode35/36 adjusted-scale and half-height local lifetimes: native adjusted
+  result at `-0x15c`, with distinct half-height slots; current locals occupy
+  different stack roles.
+- mode46 adjusted-scale: native reloads the half into XMM1 and emits
+  `subss xmm0, xmm1`; maintained source uses the shorter direct-memory
+  `subss xmm0, [half]`, leaving its renderer call four bytes early.
+
+Do not accept the 4,844-byte candidate solely for its higher ordinary-byte
+score. Keep the maintained 4,840-byte source until a candidate also preserves
+the native E8 sequence positions, stack ownership, floating evaluation order,
+and original PE relocation roles using ordinary C++.
