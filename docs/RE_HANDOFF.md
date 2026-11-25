@@ -356,7 +356,10 @@ source-present but NONEXACT.
    also remains below the maintained candidate (109/123 E8). A detailed
    source-only tradeoff ledger is in
    [mode35/36 width-order experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md).
-   No parent source or exact credit changed.
+   First-result locals kept with the existing case temporaries, reused width
+   locals, and scalar `__forceinline`/`__vectorcall` helpers also failed to
+   preserve the native frame and E8 graph. No parent source or exact credit
+   changed.
 
    Ghidra's `float10` does not justify MSVC `long double`. See
    [the focused mode45/46 frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md)

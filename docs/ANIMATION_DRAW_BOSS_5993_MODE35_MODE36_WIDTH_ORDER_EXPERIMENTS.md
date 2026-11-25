@@ -80,6 +80,19 @@ census. No first-return probe is promoted.
   the width argument made the compiler read `[ebp-0x160]`, unlike the native
   write-only spill, and lost the parent call census. This is not the native
   lifetime.
+- Keeping the current mode35/36 locals and adding a function-scope first
+  result store without simplifying those locals produced **6,001B /84/123
+  E8**; declaring the same local after position setup or scale setup produced
+  the same result. The first-return local alone therefore does not explain the
+  native frame/call layout.
+- Reusing a real `shape_width` local for the first getter result and then
+  overwriting it with the width argument did not help: the compiler emitted a
+  later read of `[ebp-0x160]`, while the original has no read of that slot, and
+  the candidate lost the complete function boundary/call census.
+- `__forceinline` scalar add/subtract helpers were not inlined under `/Ob0`.
+  Adding `__vectorcall` and trying `/Ob1` changed the COFF contribution to
+  6,017B/84 E8 positions or removed the expected function boundary; neither
+  emitted the original XMM1 load. These helper/ABI routes are rejected.
 
 The next useful avenue remains a natural C++ local/temporary lifetime that
 simultaneously accounts for the write-only first-result spill, keeps the
