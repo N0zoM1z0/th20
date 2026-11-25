@@ -110,31 +110,27 @@ def main():
     assert "draw_complex_mode6(animation)" in text
     mode28 = text.rsplit("case 28:", 1)[1].split("case 17:", 1)[0]
     assert "draw_shape_43e2c0" in mode28
-    assert "TH20_HORIZONTAL_ANCHOR(animation->base.flags)" in mode28
-    assert "TH20_VERTICAL_ANCHOR(animation->base.flags)" in mode28
-    assert "horizontal/vertical 0..2 anchor words" in mode28
-    # Keep semantic anchor access narrow: avoid changing the shared
-    # Animation.hpp include closure for hundreds of unrelated exact units.
+    assert "animation->base.flags.horizontal_anchor" in mode28
+    assert "animation->base.flags.vertical_anchor" in mode28
+    assert "horizontal/vertical 0..2 anchor indices" in mode28
+    # The original +0x4A8/+0x4AC words are now represented as semantic
+    # horizontal/vertical anchors without changing the packed 0x20 layout.
     flags=(ROOT / "src/Animation.hpp").read_text()
-    access=(ROOT / "src/AnimationAnchorAccess.hpp").read_text()
-    assert "std::uint32_t word_10, word_14, word_18, word_1c;" in flags
-    assert "#define TH20_HORIZONTAL_ANCHOR(flags) ((flags).word_10)" in access
-    assert "#define TH20_VERTICAL_ANCHOR(flags) ((flags).word_14)" in access
-    assert "offsetof(th20::AnimationFlags, word_10) == 0x10" in access
-    assert "offsetof(th20::AnimationFlags, word_14) == 0x14" in access
+    assert "union { std::uint32_t horizontal_anchor; std::uint32_t word_10; };" in flags
+    assert "union { std::uint32_t vertical_anchor; std::uint32_t word_14; };" in flags
+    assert "offsetof(AnimationFlags, horizontal_anchor) == 0x10" in flags
+    assert "offsetof(AnimationFlags, vertical_anchor) == 0x14" in flags
     assert "static_assert(sizeof(AnimationFlags) == 0x20)" in flags
     semantic_consumers = (
-        "AnimationDrawBoss.cpp", "AnimationDrawMode6Setup.cpp",
-        "AnimationDrawMode7Setup.cpp", "AnimationDrawMode8.cpp",
-        "AnimationCornerProjection985.cpp", "AnimationCornerRotated1486.cpp",
-        "AnimationUpdate39470.cpp", "LaserInfiniteInitialize.cpp",
-        "LaserLineInitialize.cpp",
+        "AnimationDrawMode6Setup.cpp", "AnimationDrawMode7Setup.cpp",
+        "AnimationDrawMode8.cpp", "AnimationCornerProjection985.cpp",
+        "AnimationCornerRotated1486.cpp", "AnimationUpdate39470.cpp",
+        "LaserInfiniteInitialize.cpp", "LaserLineInitialize.cpp",
     )
     for filename in semantic_consumers:
         source=(ROOT / "src" / filename).read_text()
         assert "word_10" not in source and "word_14" not in source, filename
-        assert "TH20_HORIZONTAL_ANCHOR" in source
-        assert "TH20_VERTICAL_ANCHOR" in source
+        assert "horizontal_anchor" in source and "vertical_anchor" in source, filename
     assert "->bind_native_texture_state(animation)" in text
     # One real renderer ABI declaration is now shared with the independently
     # strict 753B mode7 child, not duplicated in this noncanonical parent.

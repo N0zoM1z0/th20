@@ -15,7 +15,6 @@
 #include "WindowState.hpp"
 #include <cstddef>
 #include <cstdint>
-#include "AnimationAnchorAccess.hpp"
 
 namespace th20 {
 std::uint32_t __fastcall animation_draw_color_490(Animation*);
@@ -166,24 +165,24 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
 
     switch (animation->base.flags.bytes_00.animation_mode) {
     case 26: {
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43cd40((position.x),(position.y),width,angle,animation_draw_color_490(animation),(animation->base.flags.bits_09.color_mode ? animation_draw_color_494(animation) : animation_draw_color_490(animation)),(TH20_HORIZONTAL_ANCHOR(animation->base.flags)),(TH20_VERTICAL_ANCHOR(animation->base.flags)));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43cd40((position.x),(position.y),width,angle,animation_draw_color_490(animation),(animation->base.flags.bits_09.color_mode ? animation_draw_color_494(animation) : animation_draw_color_490(animation)),(animation->base.flags.horizontal_anchor),(animation->base.flags.vertical_anchor));
         break;
     }
     case 16:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_rect_439a00((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_490(animation),(TH20_HORIZONTAL_ANCHOR(animation->base.flags)),(TH20_VERTICAL_ANCHOR(animation->base.flags)));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_rect_439a00((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_490(animation),(animation->base.flags.horizontal_anchor),(animation->base.flags.vertical_anchor));
         break;
     case 27: {
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43b0e0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),(animation->base.flags.bits_09.color_mode ? animation_draw_color_494(animation) : animation_draw_color_490(animation)),(TH20_HORIZONTAL_ANCHOR(animation->base.flags)),(TH20_VERTICAL_ANCHOR(animation->base.flags)));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43b0e0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),(animation->base.flags.bits_09.color_mode ? animation_draw_color_494(animation) : animation_draw_color_490(animation)),(animation->base.flags.horizontal_anchor),(animation->base.flags.vertical_anchor));
         break;
     }
     case 20:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_rect_439a00((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_494(animation),(TH20_HORIZONTAL_ANCHOR(animation->base.flags)),(TH20_VERTICAL_ANCHOR(animation->base.flags)));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_rect_439a00((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_494(animation),(animation->base.flags.horizontal_anchor),(animation->base.flags.vertical_anchor));
         break;
     case 21:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43a1c0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_490(animation),(TH20_HORIZONTAL_ANCHOR(animation->base.flags)),(TH20_VERTICAL_ANCHOR(animation->base.flags)));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43a1c0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_490(animation),(animation->base.flags.horizontal_anchor),(animation->base.flags.vertical_anchor));
         break;
     case 22:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43a1c0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_494(animation),(TH20_HORIZONTAL_ANCHOR(animation->base.flags)),(TH20_VERTICAL_ANCHOR(animation->base.flags)));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43a1c0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_494(animation),(animation->base.flags.horizontal_anchor),(animation->base.flags.vertical_anchor));
         break;
     case 37:
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43a2b0((position.x),(position.y),width,height,(animation->base.variables.rounded_shape_radius),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
@@ -204,10 +203,10 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
                                      (animation->base.variables.ring_center_radius) - (animation->base.variables.ring_thickness) / native_two,(animation->base.variables.ring_thickness),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
     case 28:
-        // The accessors name the raw +0x10/+0x14 horizontal/vertical 0..2 anchor words.
+        // horizontal_anchor/vertical_anchor are the horizontal/vertical 0..2 anchor indices.
         // The native caller pushes vertical (+0x4AC) before horizontal (+0x4A8)
         // for this cdecl child, whose last two source parameters are named.
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43e2c0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_494(animation),(TH20_HORIZONTAL_ANCHOR(animation->base.flags)),(TH20_VERTICAL_ANCHOR(animation->base.flags)));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43e2c0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_494(animation),(animation->base.flags.horizontal_anchor),(animation->base.flags.vertical_anchor));
         break;
     case 17:
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43b960((position.x),(position.y),width,angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));

@@ -411,3 +411,27 @@ The current parent remains 5,989B/1,501 instructions, 109/123 E8 positions,
 No local, struct, array, reference, volatile qualifier, opcode or padding is
 added to production source. The first-result x87 slot and register-operand
 frontier remain open.
+
+
+## 2026-11-25 follow-up: recover the two script anchor-word roles
+
+The two raw Animation flags at offsets +0x10/+0x14 are now named by their
+actual uses: horizontal and vertical 0..2 corner-anchor indices. The native
+mode28 parent sequence loads Animation+0x4AC first (vertical), then +0x4A8
+(horizontal), and pushes them in cdecl reverse-argument order for the
+1,601B triangle child at +0x0D73. The child signature already names its final
+parameters horizontal_anchor and vertical_anchor; the mode6/mode7 setup
+children use the same indices to select X/Y corner arrays, mode8 forms the
+3x3 corner index as vertical*3+horizontal, and the animation update opcode
+0x5D writes the two consecutive 16-bit operands into those slots.
+
+The semantic names are layout-preserving union aliases in Animation.hpp;
+the original word_10/word_14 names remain available to raw-layout consumers.
+Five affected exact leaf units were cold-replayed and remain byte-exact:
+985/985, 1,486/1,486, 1,378/1,378, 1,996/1,996 and 4,347/4,347 coverage
+bytes (4,372/4,372 compared bytes). The 39,470B update source and both laser
+initialization sources compile with the semantic field names. A typed
+__forceinline reference accessor was tested and rejected because the strict
+1,378B mode6 setup replay grew to a 1,399B COFF contribution; direct union
+aliases preserve the exact native codegen. The large 5,993B Draw Boss parent
+retains its same 5,989B/1,501-instruction, 109/123-E8 NONEXACT profile.

@@ -9,7 +9,6 @@
 #include "ScalarMath.hpp"
 #include "Vector2.hpp"
 #include <cstdint>
-#include "AnimationAnchorAccess.hpp"
 namespace th20 {
 void __cdecl animation_shape_xy(Vector2&,float,float,float,float,float,float);
 extern const float native_half;
@@ -21,8 +20,8 @@ void NativeAnimationCornerProjector::project_rotated_corners_43ef20(
     {
     const float sine=scalar_math::sine(static_cast<float>(angle));
     const float cosine=scalar_math::cosine(static_cast<float>(angle));
-    const float* x_offsets=native_quad_axis_layout[0].corners[TH20_HORIZONTAL_ANCHOR(animation->base.flags)];
-    const float* y_offsets=native_quad_axis_layout[1].corners[TH20_VERTICAL_ANCHOR(animation->base.flags)];
+    const float* x_offsets=native_quad_axis_layout[0].corners[animation->base.flags.horizontal_anchor];
+    const float* y_offsets=native_quad_axis_layout[1].corners[animation->base.flags.vertical_anchor];
     const float offset_x=sprite->field_24-animation->base.vector_80.x;
     const float offset_y=sprite->field_28-animation->base.vector_80.y;
     float scale_x=animation->base.vector_50.x*animation->base.vector_58.x;

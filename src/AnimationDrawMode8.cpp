@@ -12,7 +12,6 @@
 #include "SpriteVertices.hpp"
 #include <d3dx9math.h>
 #include <cstdint>
-#include "AnimationAnchorAccess.hpp"
 
 namespace th20 {
 std::uint32_t __fastcall animation_draw_enabled(Animation*);
@@ -150,7 +149,7 @@ std::int32_t AnimationDrawDetailedOwner::draw_simple_mode8(Animation* animation)
         (*reinterpret_cast<std::uint8_t*>(reinterpret_cast<std::uint8_t*>(this)+0x6000E0E))=2;
     }
     reinterpret_cast<AnimationQuadSubmitOwner*>(this)->select_render_color_mode(1);
-    const std::int32_t corner_index=TH20_VERTICAL_ANCHOR(animation->base.flags)*3+TH20_HORIZONTAL_ANCHOR(animation->base.flags);
+    const std::int32_t corner_index=animation->base.flags.vertical_anchor*3+animation->base.flags.horizontal_anchor;
     process_graphics.get_device()->DrawPrimitive(D3DPT_TRIANGLESTRIP,
         corner_index*4,2);
     return 0;

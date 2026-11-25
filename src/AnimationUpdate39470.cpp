@@ -23,7 +23,6 @@
 #include "Timer.hpp"
 #include "AnimationFile.hpp"
 #include <cstdint>
-#include "AnimationAnchorAccess.hpp"
 
 namespace th20 {
 using NativeVmEntryCallback=AnimationEntryCallback;
@@ -947,8 +946,8 @@ LAB_0042df8e:
       case 0x5d: {
         // The two packed 16-bit operands update the horizontal/vertical
         // corner-anchor indices consumed by the native draw/corner paths.
-        TH20_HORIZONTAL_ANCHOR(base.flags) = (std::uint32_t)(std::uint16_t)reinterpret_cast<std::uint16_t*>(&instruction->first_operand)[0];
-        TH20_VERTICAL_ANCHOR(base.flags) = (std::uint32_t)(std::uint16_t)reinterpret_cast<std::uint16_t*>(&instruction->first_operand)[1];
+        base.flags.horizontal_anchor = (std::uint32_t)(std::uint16_t)reinterpret_cast<std::uint16_t*>(&instruction->first_operand)[0];
+        base.flags.vertical_anchor = (std::uint32_t)(std::uint16_t)reinterpret_cast<std::uint16_t*>(&instruction->first_operand)[1];
         break;
       }
       case 0x61: {
