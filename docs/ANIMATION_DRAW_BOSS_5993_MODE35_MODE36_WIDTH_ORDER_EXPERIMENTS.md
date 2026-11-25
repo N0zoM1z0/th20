@@ -549,3 +549,30 @@ maintained parent remains unchanged at 5,989B / 1,501 instructions,
 4,694/5,372 ordinary bytes, 109/123 E8 positions, 68B total E8 displacement,
 and 26/32 exact HIGHLOW sites. No assembly, inline opcode, synthetic padding,
 or compiler-only substitute is introduced.
+
+
+## 2026-11-25 follow-up: isolate the exact four-byte mode36 XMM operand gap
+
+The best first-result candidate's mode36 block was compared instruction by
+instruction with the original call window. Through the second inherited-scale
+call at `+0x1103`, all call positions still match. The candidate then emits
+`subss xmm0,dword ptr [ebp-0x168]` as one 8B memory-source instruction. Native
+code instead emits `movss xmm1,dword ptr [ebp-0x168]` (8B) followed by
+`subss xmm0,xmm1` (4B). All subsequent width/argument stores retain the same
+shape; the candidate's renderer call is exactly four bytes early at `+0x1194`
+versus native `+0x1198`. This pins the residual call drift to one native
+register-register subtraction versus the candidate's memory-source form,
+not a missing call or switch-table change.
+
+A small isolated pinned-MSVC `/Od /Ob0 /arch:SSE2 /fp:precise` scalar probe
+confirmed that ordinary argument subtraction, named const/mutable locals,
+volatile RHS locals, copied RHS locals, and half-seed assignment all lower to
+`subss xmm0,[memory]`. A one-operation `_mm_load_ss` / `_mm_sub_ss` candidate
+was then tried in the full parent. It did request the register form, but the
+real parent contribution expanded to 6,112B / 1,525 instructions, 0/123 E8,
+164/5,492 ordinary bytes and 0/32 HIGHLOW sites. The intrinsic is rejected;
+no SIMD intrinsic is added to production source.
+
+The current first-result candidate therefore remains a diagnostic at 89/123
+E8, not a replacement for the maintained 109/123-E8 source. The exact
+register-operand form remains open under natural scalar C++ only.

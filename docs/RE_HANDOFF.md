@@ -576,3 +576,12 @@ puts the next renderer call four bytes early; volatile/copy/compound local
 forms and shared-half reuse do not close the gap. See
 `ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md`; production
 remains the 5,989B/109-E8 candidate, NONEXACT.
+
+The latest mode36 comparison isolates the first-result candidate's remaining
+four-byte call drift: native code loads the stored half-height into XMM1 then
+uses register-register `subss xmm0,xmm1`; the closest natural scalar C++ form
+uses a single memory-source `subss xmm0,[local]`. Ordinary scalar/volatile
+local forms keep the memory operand, while a one-operation SSE intrinsic
+breaks the full parent call graph (0/123 E8) and is rejected. The current
+5,989B/109-E8 production source remains unchanged. Exact instruction details
+and scoped metrics are in the mode35/36 width-order experiment ledger.
