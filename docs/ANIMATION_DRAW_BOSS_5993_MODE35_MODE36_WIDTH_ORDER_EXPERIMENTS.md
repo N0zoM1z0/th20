@@ -338,7 +338,13 @@ change switch/table code generation too severely and are rejected.
 
 No function-scope, case-scope, or nested-switch-scope scalar lifetime
 reproduced both native first-return spills while retaining the original 123-E8
-parent graph. The production source remains the native-order 5,989B candidate.
+parent graph. Four nested-switch declaration placements (after position,
+angle, width or height) were retested with the same two case-local assignments;
+all four were identical at 5,997B/85 E8, 3,855/5,380 ordinary bytes and
+24/32 HIGHLOW sites, with no candidate store to the native [ebp-0x160] slot.
+The native-only verifier now confirms that slot has exactly two x87 fstp
+writes (+0x0FCD and +0x10BA) and no reads anywhere in the 5,993B body. The
+production source remains the native-order 5,989B candidate.
 
 
 ## 2026-11-25 follow-up: isolated mode45 SSE-load intrinsics rejected

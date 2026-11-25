@@ -11,7 +11,8 @@ from pathlib import Path
 import struct
 import sys
 
-from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+from capstone import Cs, CS_ARCH_X86, CS_MODE_32, CS_OP_MEM
+from capstone.x86_const import X86_REG_EBP
 from project import verified_target
 
 HEAD = 0x00443880
@@ -249,6 +250,21 @@ def verify() -> None:
         assert call.mnemonic == "call" and target == 0x00445880
     print("PASS native mode35/36 first-return spills and register-register scale ops; "
           "mode35/36/45/46 width and mode45/46 scale XMM operand order")
+
+    # Both first getter returns are rounded to the same local slot. The slot
+    # has exactly two native writes and no reads anywhere in the parent body;
+    # it is a write-only compiler-visible temporary, not an adjusted-scale
+    # input. Preserve that distinction when testing natural C++ lifetimes.
+    slot_decoder = Cs(CS_ARCH_X86, CS_MODE_32)
+    slot_decoder.detail = True
+    first_result_slot_accesses = []
+    for ins in slot_decoder.disasm(native_body, HEAD):
+        for operand in ins.operands:
+            if (operand.type == CS_OP_MEM and operand.mem.base == X86_REG_EBP
+                    and operand.mem.index == 0 and operand.mem.disp == -0x160):
+                first_result_slot_accesses.append((ins.address - HEAD, ins.mnemonic))
+    assert first_result_slot_accesses == [(0x0FCD, "fstp"), (0x10BA, "fstp")], first_result_slot_accesses
+    print("PASS native first getter temporary: exactly two x87 stores to [ebp-0x160], no reads")
 
     # Mode28 forwards AnimationFlags+0x4A8/+0x4AC as the final two cdecl
     # arguments of the already-exact 1,601B triangle renderer. The first is
