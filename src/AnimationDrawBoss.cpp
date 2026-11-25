@@ -295,30 +295,29 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30((position.x),(position.y),width,animation_inherited_aux_scale_x(animation),height,angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
     case 45: {
-        // Native mode45 retains the scale half-height across the getter, then
-        // independently recomputes the width half in the renderer arguments.
+        // Keep the width half as a real local and the scale half as its own
+        // pure expression. height is the already-captured local snapshot and
+        // native_two is immutable, so both expressions have the same value.
         const auto secondary_color=animation_draw_color_494(animation);
         const auto primary_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;
-        const float half_for_scale=height/native_two;
-        const float adjusted_scale=animation_inherited_aux_scale_x(animation)+half_for_scale;
+        const float half_for_width = height / native_two;
+        const float adjusted_scale = animation_inherited_aux_scale_x(animation) + (height/native_two);
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30(
-            position.x,position.y,width+(height/native_two),adjusted_scale,height,
+            position.x,position.y,width+half_for_width,adjusted_scale,height,
             angle,quad_count,primary_color,secondary_color);
         break;
     }
     case 46: {
-        // Native mode46 retains the pre-getter half-height for the inherited
-        // scale subtraction, then independently recomputes the width half
-        // after the getter. Keep those two source expressions in that order.
+        // The two half-height values are equal: the width local is evaluated
+        // before the getter, while the scale expression remains explicit.
         const auto secondary_color=animation_draw_color_494(animation);
         const auto primary_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;
-        const float half_for_scale=height/native_two;
-        const float inherited_scale=animation_inherited_aux_scale_x(animation);
-        const float adjusted_scale=inherited_scale-half_for_scale;
+        const float half_for_width=height/native_two;
+        const float adjusted_scale=animation_inherited_aux_scale_x(animation)-(height/native_two);
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30(
-            position.x,position.y,width-(height/native_two),adjusted_scale,height,
+            position.x,position.y,width-half_for_width,adjusted_scale,height,
             angle,quad_count,primary_color,secondary_color);
         break;
     }

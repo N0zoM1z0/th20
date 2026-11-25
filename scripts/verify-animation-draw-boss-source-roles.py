@@ -169,18 +169,31 @@ def main():
         color494 = block.index("animation_draw_color_494(animation)")
         color490 = block.index("animation_draw_color_490(animation)")
         count = block.index("draw_shape_count")
-        half = block.index("const float half_for_scale=height/native_two;")
-        width = block.index("width+(height/native_two)" if operator == "+" else "width-(height/native_two)")
-        if operator == "+":
-            adjusted = block.index("const float adjusted_scale=animation_inherited_aux_scale_x(animation)+half_for_scale;")
-            assert color494 < color490 < count < half < adjusted < width
+        if "const float half_for_scale=height/native_two;" in block:
+            half = block.index("const float half_for_scale=height/native_two;")
+            width = block.index("width+(height/native_two)" if operator == "+" else "width-(height/native_two)")
+            if operator == "+":
+                adjusted = block.index("const float adjusted_scale=animation_inherited_aux_scale_x(animation)+half_for_scale;")
+                assert color494 < color490 < count < half < adjusted < width
+            else:
+                getter = block.index("const float inherited_scale=animation_inherited_aux_scale_x(animation);")
+                adjusted = block.index("const float adjusted_scale=inherited_scale-half_for_scale;")
+                assert color494 < color490 < count < half < getter < adjusted < width
         else:
-            getter = block.index("const float inherited_scale=animation_inherited_aux_scale_x(animation);")
-            adjusted = block.index("const float adjusted_scale=inherited_scale-half_for_scale;")
-            assert color494 < color490 < count < half < getter < adjusted < width
+            # Equivalent pure-expression ownership: the captured local height
+            # and immutable native_two make both half-height expressions equal.
+            half = block.index("half_for_width")
+            width = block.index("width+half_for_width" if operator == "+" else "width-half_for_width")
+            adjusted_expr = ("const float adjusted_scale = animation_inherited_aux_scale_x(animation) + (height/native_two);"
+                             if operator == "+" else
+                             "const float adjusted_scale=animation_inherited_aux_scale_x(animation)-(height/native_two);")
+            adjusted = block.index(adjusted_expr)
+            assert color494 < color490 < count < half < adjusted < width
+            assert "extern const float native_two;" in text
+            assert "float height = animation->height();" in text
     # The second mode35/36 getter result is a real value consumed by the
     # adjusted scale; only the first native getter result is discarded.
-    assert text.count("const float inherited_scale=animation_inherited_aux_scale_x(animation);") == 3
+    assert text.count("const float inherited_scale=animation_inherited_aux_scale_x(animation);") == 2
     assert "const float adjusted_scale=inherited_scale+aux_half;" in text
     assert "const float adjusted_scale=inherited_scale-aux_half;" in text
     # The native mode35/36 paths compute the scale half before the second
@@ -199,12 +212,12 @@ def main():
         adjusted = block.index(f"const float adjusted_scale=inherited_scale{operator}aux_half;")
         width_calc = block.index(width_expr)
         assert first_getter < color_getter < half_calc < second_getter < adjusted < width_calc
-    assert "const float adjusted_scale=animation_inherited_aux_scale_x(animation)+half_for_scale;" in mode45
-    assert "width+(height/native_two),adjusted_scale,height" in mode45
-    assert "const float half_for_scale=height/native_two;" in mode46
-    assert "const float inherited_scale=animation_inherited_aux_scale_x(animation);" in mode46
-    assert "const float adjusted_scale=inherited_scale-half_for_scale;" in mode46
-    assert "width-(height/native_two),adjusted_scale,height" in mode46
+    assert "const float half_for_width = height / native_two;" in mode45
+    assert "const float adjusted_scale = animation_inherited_aux_scale_x(animation) + (height/native_two);" in mode45
+    assert "width+half_for_width,adjusted_scale,height" in mode45
+    assert "const float half_for_width=height/native_two;" in mode46
+    assert "const float adjusted_scale=animation_inherited_aux_scale_x(animation)-(height/native_two);" in mode46
+    assert "width-half_for_width,adjusted_scale,height" in mode46
 
     with (ROOT / "config/animation-draw-boss-mode-e8.csv").open(newline="") as f:
         routes = list(csv.DictReader(f))
@@ -236,11 +249,11 @@ def main():
     marker = bytes.fromhex("c204000f1f00")
     assert compiled.count(marker) == 1
     code_end = compiled.index(marker) + 3
-    assert code_end == 5989
+    assert code_end == 5993
     assert compiled[code_end:code_end+3] == bytes.fromhex("0f1f00")
-    assert len(compiled) == 6312
+    assert len(compiled) == 6316
     code = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(compiled[:code_end], HEAD))
-    assert len(native) == 1501 and len(code) == 1501
+    assert len(native) == 1501 and len(code) == 1502
     # Native parent-angle gating extracts bit 12 as SHR+AND, not a single
     # AND-immediate mask. Keep the exact original six bytes at this site.
     assert compiled[0x3E8:0x3EE] == original[0x3E8:0x3EE] == bytes.fromhex("c1ea0c83e201")
@@ -282,9 +295,9 @@ def main():
         if native_calls[address] != source_calls[address]
     ]
     # The first 81 E8 instruction offsets and all 123 physical target roles
-    # agree; 109 of the 123 physical E8 positions agree across the entire
-    # original code. The source-accurate mode45 order shortens the parent body
-    # by four bytes; this is NOT full exact.
+    # agree; 114 of the 123 physical E8 positions agree across the entire
+    # original code. The equivalent mode45/46 half-height expressions restore
+    # the complete original code extent; this is NOT full exact.
     physical_calls=[(inst.address-HEAD,
            (inst.address+5+struct.unpack_from('<i',inst.bytes,1)[0])&0xffffffff)
            for inst in native if len(inst.bytes)==5 and inst.bytes[0]==0xE8]
@@ -295,8 +308,8 @@ def main():
     assert physical_calls[:81]==candidate_calls[:81]
     assert physical_calls!=candidate_calls
     matched_call_sites=sum(a==b for a,b in zip(physical_calls,candidate_calls))
-    assert matched_call_sites==109
-    assert sum(abs(a[0]-b[0]) for a,b in zip(physical_calls,candidate_calls))==68
+    assert matched_call_sites==114
+    assert sum(abs(a[0]-b[0]) for a,b in zip(physical_calls,candidate_calls))==44
 
 
     assert chosen_render_targets <= set(source_calls), chosen_render_targets - set(source_calls)
@@ -364,7 +377,7 @@ def main():
             target='table_main' if row['offset']<0x400 else 'table_nested'
         current_site_roles[row['offset']]=target
     matched_data_sites=len(set(native_site_roles.items())&set(current_site_roles.items()))
-    assert matched_data_sites==26 and len(native_site_roles)==len(current_site_roles)==32
+    assert matched_data_sites==27 and len(native_site_roles)==len(current_site_roles)==32
 
     # Compare code and after-RET data as a provisional strict-replay
     # diagnostic: no relocation targets are solved from original bytes.
@@ -375,7 +388,7 @@ def main():
         ignored.update(range(int(row['offset']),int(row['offset'])+4))
     comparable_bytes=sum(original_extent[i]==compiled[i]
                          for i in range(len(compiled)) if i not in ignored)
-    assert comparable_bytes==4694 and len(compiled)-len(ignored)==5372
+    assert comparable_bytes==4841 and len(compiled)-len(ignored)==5376
 
 
     assert all(addr in reloc_sites for t,n in ((ORIGINAL.MAIN_TABLE, 49),
