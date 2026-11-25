@@ -576,3 +576,53 @@ no SIMD intrinsic is added to production source.
 The current first-result candidate therefore remains a diagnostic at 89/123
 E8, not a replacement for the maintained 109/123-E8 source. The exact
 register-operand form remains open under natural scalar C++ only.
+
+
+## 2026-11-25 follow-up: isolated mode35/36 first-result candidate reaches 94 E8 sites
+
+A repository-local sweep decoded 1,204 existing `AnimationDrawBoss*.obj`
+probe artifacts and found 362 candidates with at least one store to the native
+write-only `[ebp-0x160]` slot. The best historical 90/123 E8 variants were not
+valid improvements: their source also changed mode45/46 half-height ownership
+and therefore reintroduced the previously rejected role swap. Those variants
+were not promoted.
+
+A fresh candidate was generated from the maintained source with mode45/46
+left byte-for-byte source-identical. Only mode35/36 were changed: a shared
+function-scope `first_inherited_scale` receives each first getter result;
+the two modes compute a `half_for_width` before the second getter, recompute
+`height/2` in the adjusted-scale expression after the getter, and mode36
+expresses its width as `width + (-1.0f * half_for_width)`. This is ordinary
+C++ and has the same finite-float argument values because the inherited-scale
+helper reads but does not mutate the already-captured local height. It is a
+codegen experiment, not yet the preferred semantic/source reconstruction.
+
+The pinned candidate report is:
+
+| Metric | Candidate | Maintained source |
+| --- | ---: | ---: |
+| Code extent | 5,993B | 5,989B |
+| x86 instruction heads | 1,501 | 1,501 |
+| Ordinary bytes | 4,023/5,372 | 4,694/5,372 |
+| E8 positions | **94/123** | 109/123 |
+| Total absolute E8 displacement | 116B | 68B |
+| Exact HIGHLOW sites | **27/32** | 26/32 |
+| First-result stores to `[ebp-0x160]` | 2/2 at +0x0FCD/+0x10BA | 0/2 |
+
+All 123 candidate REL32 calls resolve to source symbols, and their complete
+symbol sequence is identical to the maintained candidate's 123-call sequence;
+no target was inserted, deleted or reordered. Relative to native call offsets,
+the first 89 positions match; calls 89–116 are four bytes late, calls 117–120
+realign, and the final security-cookie call is four bytes early. The candidate
+therefore improves the first-result/register-operand experiment without
+changing the physical call-target roles.
+
+The candidate does emit register-register `addss` and `subss` in the adjusted
+scale expressions, and both native first-result stores are at their exact
+sites. It does not reproduce the complete native arithmetic windows: mode35's
+register add is displaced, mode36 recomputes its scale half after the getter
+instead of loading the pre-getter local, and mode36 width uses multiply-by
+negative-one plus add rather than native `subss xmm1,xmm0`. Ordinary-byte
+agreement is also substantially below production. It remains a probe only;
+`src/AnimationDrawBoss.cpp` is unchanged and the production parent remains
+5,989B/1,501 instructions, 109/123 E8 and 26/32 HIGHLOW, NONEXACT.

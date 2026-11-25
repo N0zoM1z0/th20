@@ -585,3 +585,13 @@ local forms keep the memory operand, while a one-operation SSE intrinsic
 breaks the full parent call graph (0/123 E8) and is rejected. The current
 5,989B/109-E8 production source remains unchanged. Exact instruction details
 and scoped metrics are in the mode35/36 width-order experiment ledger.
+
+2026-11-25 follow-up: a fresh mode35/36-only C++ probe, with mode45/46 source
+left unchanged, now reaches 94/123 E8 positions and 27/32 HIGHLOW sites while
+emitting both native `[ebp-0x160]` first-result stores at +0x0FCD/+0x10BA.
+The candidate is 5,993B/1,501 x86 with 4,023/5,372 ordinary bytes and 116B
+total absolute E8 displacement. All 123 REL32 target symbols remain in the
+same sequence as the maintained parent. It still has a four-byte call drift
+across modes36–44, and mode36 width is multiply-negative-plus-add rather than
+the native reverse-destination subtract. Do not promote it: the maintained
+5,989B/109-E8 parent remains unchanged. See the mode35/36 experiment ledger.
