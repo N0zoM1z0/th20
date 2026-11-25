@@ -43,6 +43,52 @@ result, then publishes the event at AnimationBase+438. A null callback still
 publishes the event. Tests cover callbacks which change this field during the
 call, so the observed ordering is checked rather than assumed.
 
+## Strict original native callback leaves
+
+The five small maintained callback operations now also have independent
+original-PE attestations and strict canonical source replay:
+
+| Maintained source role | Original entry | Native body | Strict replay |
+| --- | ---: | ---: | ---: |
+| `Animation::interrupt` | `0x004388F0` | 79B / 26 x86 instructions | 79/79 |
+| `AnimationCallback::AnimationCallback` | `0x00446B60` | 57B / 20 x86 instructions | 57/57 |
+| `AnimationCallback::~AnimationCallback` | `0x00446BA0` | 20B / 9 x86 instructions | 20/20 |
+| `AnimationCallback::scalar_deleting_destructor` | `0x00446BC0` | 46B / 18 x86 instructions | 46/46 |
+| `Animation::set_callback` | `0x00446BF0` | 28B / 11 x86 instructions | 28/28 |
+
+The original five-entry vtable at `0x0056E1AC` is independently decoded as
+`{0x446BC0, 0x412540, 0x412540, 0x412540, 0x414B50}`. All five maintained
+bodies strictly replay, but only the two `Animation` member functions are
+promoted to authored exact coverage: the callback-owner constructor, destructor
+and deleting wrapper remain source-present byte-exact semantic aliases with
+no authored match credit until the original `SprtFuncBaseInf` class identity is
+reconstructed. The callback constructor
+publishes that vtable, initializes the Animation pointer at callback `+4`,
+and calls the real `Animation::set_callback` with its own address. The
+base destructor restores the same vtable. The scalar deleting destructor
+calls the base destructor and releases exactly eight bytes only when flag bit
+zero is set. The RTTI name is `SprtFuncBaseInf`; `AnimationCallback` remains a
+maintained semantic alias, not a claim that the original source used that
+identifier.
+
+The two `Animation` member functions have separate game-owner evidence:
+`set_callback` stores the callback at `Animation+0x568` and returns the
+incoming pointer; `interrupt` dispatches the original virtual slot `+0x10`
+from a snapshot of the callback, then writes the event to `AnimationBase+0x438`
+even when the callback is null. Their original source identifier spellings
+remain descriptive reconstructions. The callback-owner constructor/destructor
+and deleting wrapper are byte-exact, but their original class-name identity is
+kept explicitly unresolved.
+
+Focused reproduction:
+
+```sh
+scripts/repo-python scripts/verify-animation-callback-leaves-native.py
+for unit in animation_interrupt animation_set_callback animation_callback_ctor animation_callback_dtor animation_callback_scalar_delete; do
+  scripts/repo-python scripts/compare-coff-function.py --unit "$unit" --json
+ done
+```
+
 ## C callbacks and signed script selection
 
 The VM has one call through +5DC and three through +5E0. Together with the

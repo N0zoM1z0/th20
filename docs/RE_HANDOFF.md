@@ -318,6 +318,11 @@ source-present but NONEXACT.
    exact, including the 34B `copy_base` wrapper and four callback/lifecycle
    helpers; original template/allocation callers are verified in
    `docs/ANIMATION_BINDING_LEAF_FUNCTIONS_EXACT.md`.
+   The callback family also gained five strict native leaf replays (230B):
+   `Animation::interrupt`, `Animation::set_callback`, callback construction,
+   base destruction and the eight-byte scalar deleting path. The original
+   five-slot vtable and its `SprtFuncBaseInf` RTTI distinction are pinned by
+   `scripts/verify-animation-callback-leaves-native.py`.
    Mode46's half-height ownership and width recomputation now follow the
    original order. Mode35/36's second inherited-scale result is now named
    `inherited_scale` and feeds the real adjusted-scale argument. The first

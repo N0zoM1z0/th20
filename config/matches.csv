@@ -949,3 +949,5 @@ address,name,size,status,match_percent,unit,evidence
 0x00438A30,th20::Animation::set_field_5e0,25,matching,100.00,animation_set_field_5e0,docs/ANIMATION_BINDING_LEAF_FUNCTIONS_EXACT.md; original [this+0x5e0] callback store and strict 25/25 replay
 0x00438A50,th20::Animation::set_field_5dc,25,matching,100.00,animation_set_field_5dc,docs/ANIMATION_BINDING_LEAF_FUNCTIONS_EXACT.md; original [this+0x5dc] callback store and strict 25/25 replay
 0x004371F0,th20::Animation::copy_base,34,matching,100.00,animation_copy_base,docs/ANIMATION_BINDING_LEAF_FUNCTIONS_EXACT.md; original 0x4c0-byte AnimationBase memcpy wrapper called by template loader
+0x004388F0,th20::Animation::interrupt,79,matching,100.00,animation_interrupt,docs/ANIMATION_CALLBACK_RECONSTRUCTION.md; original virtual callback +0x10 and AnimationBase+0x438 event publication
+0x00446BF0,th20::Animation::set_callback,28,matching,100.00,animation_set_callback,docs/ANIMATION_CALLBACK_RECONSTRUCTION.md; original Animation+0x568 callback publication and pointer return
