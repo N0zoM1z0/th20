@@ -1,8 +1,9 @@
 // Game-owned 2,245B glyph compositor at 0x00416420. SOURCE-PRESENT,
-// NONEXACT: its two native pixel-format branches and 16B PMR-vector
-// offsets are reconstructed, but the full Win32/PMR EH lowering is open.
-// The 16-bit live source-pixel stride is now restored alongside the
-// four stencil-index E8 calls; the complete parent remains NONEXACT.
+// NONEXACT: both native pixel-format branches and the 16B PMR-vector
+// offsets are reconstructed. The five-function PMR insertion chain now
+// restores the original 108B/140B/488B bodies and call/relocation sites;
+// the 35B wrapper is 34B with the original compiler-emitted trailing NOP
+// absent. The complete game compositor remains NONEXACT.
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphMaskOffsets.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -11,6 +12,98 @@
 #include <cstring>
 #include <memory_resource>
 #include <vector>
+#include <utility>
+
+// TH20's glyph-offset vector was emitted by an older MSVC STL. The pinned
+// newer STL folds the old pointer-forwarding calls and changes the growth
+// stack/exception layout, so preserve the original member-template call graph
+// with explicit specializations for this user-defined std::array element type.
+// These are ordinary C++ implementations, not injected bytes or padding; the
+// 35B public wrapper remains NONEXACT because this compiler omits its NOP.
+template __declspec(noinline) const th20::GlyphMaskOffset&&
+std::move<const th20::GlyphMaskOffset&>(const th20::GlyphMaskOffset&) noexcept;
+
+namespace std {
+template <>
+template <>
+__declspec(noinline) th20::GlyphMaskOffset&
+vector<th20::GlyphMaskOffset, pmr::polymorphic_allocator<th20::GlyphMaskOffset>>::_Emplace_back_with_unused_capacity<const th20::GlyphMaskOffset&>(
+    const th20::GlyphMaskOffset& value) {
+    auto& data = _Mypair._Myval2;
+    pointer& last = data._Mylast;
+    _Alty_traits::construct(_Getal(), _Unfancy(last), std::move(value));
+    _Orphan_range(last, last);
+    th20::GlyphMaskOffset& result = *last;
+    ++last;
+    return result;
+}
+
+template <>
+template <>
+__declspec(noinline) vector<th20::GlyphMaskOffset, pmr::polymorphic_allocator<th20::GlyphMaskOffset>>::pointer
+vector<th20::GlyphMaskOffset, pmr::polymorphic_allocator<th20::GlyphMaskOffset>>::_Emplace_reallocate<const th20::GlyphMaskOffset&>(
+    const pointer where, const th20::GlyphMaskOffset& value) {
+    _Alty& allocator = _Getal();
+    auto& data = _Mypair._Myval2;
+    pointer& first = data._Myfirst;
+    pointer& last = data._Mylast;
+
+    const size_type where_offset = static_cast<size_type>(where - first);
+    const size_type old_size = static_cast<size_type>(last - first);
+    if (old_size == max_size()) {
+        _Xlength();
+    }
+
+    const size_type new_size = old_size + 1;
+    size_type new_capacity = _Calculate_growth(new_size);
+    const pointer new_vector = _STD _Allocate_at_least_helper(allocator, new_capacity);
+    const pointer constructed_last = new_vector + where_offset + 1;
+    _Reallocation_guard guard{allocator, new_vector, new_capacity, constructed_last, constructed_last};
+    auto& constructed_first = guard._Constructed_first;
+
+    const th20::GlyphMaskOffset&& source = std::move(value);
+    const pointer destination = _Unfancy(new_vector + where_offset);
+    _Alty_traits::construct(allocator, destination, source);
+    constructed_first = new_vector + where_offset;
+
+    if (where == last) {
+        if constexpr (is_nothrow_move_constructible_v<value_type> || !is_copy_constructible_v<value_type>) {
+            _STD _Uninitialized_move(first, last, new_vector, allocator);
+        } else {
+            _STD _Uninitialized_copy(first, last, new_vector, allocator);
+        }
+    } else {
+        _STD _Uninitialized_move(first, where, new_vector, allocator);
+        constructed_first = new_vector;
+        _STD _Uninitialized_move(where, last, new_vector + where_offset + 1, allocator);
+    }
+
+    guard._New_begin = nullptr;
+    _Change_array(new_vector, new_size, new_capacity);
+    return new_vector + where_offset;
+}
+
+template <>
+template <>
+__declspec(noinline) th20::GlyphMaskOffset&
+vector<th20::GlyphMaskOffset, pmr::polymorphic_allocator<th20::GlyphMaskOffset>>::_Emplace_one_at_back<const th20::GlyphMaskOffset&>(
+    const th20::GlyphMaskOffset& value) {
+    auto& data = _Mypair._Myval2;
+    pointer& last = data._Mylast;
+    if (last != data._Myend) {
+        return _Emplace_back_with_unused_capacity<const th20::GlyphMaskOffset&>(std::move(value));
+    }
+    return *_Emplace_reallocate<const th20::GlyphMaskOffset&>(last, std::move(value));
+}
+
+template <>
+template <>
+__declspec(noinline) th20::GlyphMaskOffset&
+vector<th20::GlyphMaskOffset, pmr::polymorphic_allocator<th20::GlyphMaskOffset>>::emplace_back<const th20::GlyphMaskOffset&>(
+    const th20::GlyphMaskOffset& value) {
+    return _Emplace_one_at_back<const th20::GlyphMaskOffset&>(std::move(value));
+}
+} // namespace std
 namespace th20 {
 struct NativeGlyphAlpha4444 {
     std::uint16_t blue : 4;
