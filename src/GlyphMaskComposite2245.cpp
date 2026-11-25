@@ -4,7 +4,7 @@
 // restores the 108B/140B/488B/200B bodies and the nested 92B/31B helper
 // shapes outside real relocation fields. The 35B wrapper is 34B with the
 // original compiler-emitted trailing NOP absent; the complete game
-// compositor remains NONEXACT (current full parent: 2,221B/584 i386).
+// compositor remains NONEXACT (current full parent: 2,177B/581 i386).
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphMaskOffsets.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -21,6 +21,9 @@
 // with explicit specializations for this user-defined std::array element type.
 // These are ordinary C++ implementations, not injected bytes or padding; the
 // 35B public wrapper remains NONEXACT because this compiler omits its NOP.
+// The main Boss uses a two-case pixel-format dispatch, constructs each PMR
+// stencil only after computing radius_squared, and takes the BGRA outline
+// edge directly from each of the four ordered neighbor tests.
 template __declspec(noinline) const th20::GlyphMaskOffset&&
 std::move<const th20::GlyphMaskOffset&>(const th20::GlyphMaskOffset&) noexcept;
 template __declspec(noinline) th20::GlyphMaskOffset&&
@@ -200,11 +203,11 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
     auto* original=process_allocator->allocate_array<std::uint8_t>(
         "D:\\cygwin\\home\\zun\\prog\\th20\\src\\core\\grpfont.cpp:615 u_char",length);
     std::memcpy(original,pixels,length);
-    const auto pixel_format=*reinterpret_cast<const std::int32_t*>(
-        reinterpret_cast<const std::uint8_t*>(this)+0x100);
-    if (pixel_format==0x15) {
-        GlyphMaskOffsets offsets;
+    switch (*reinterpret_cast<const std::int32_t*>(
+        reinterpret_cast<const std::uint8_t*>(this)+0x100)) {
+    case 0x15: {
         const float radius_squared=radius*radius;
+        GlyphMaskOffsets offsets;
         for (std::int32_t delta_y=0;delta_y<static_cast<std::int32_t>(radius_squared);++delta_y) {
             for (std::int32_t delta_x=0;delta_x<static_cast<std::int32_t>(radius_squared);++delta_x) {
                 if (static_cast<float>(delta_x*delta_x+delta_y*delta_y)<radius_squared &&
@@ -228,38 +231,43 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                 pixels+row_advance+start*4);
             for (std::int32_t x=start;x<end;++x,++dest) {
                 if (reinterpret_cast<const PackedColorChannels*>(dest)->alpha!=0) {
-                    bool touches_outline=false;
                     for (const GlyphMaskOffset& off:offsets) {
                     // The original has two genuine E8 calls per vector
                     // element to the folded 22B array-index helper.
                     const std::int32_t delta_x=off[0];
                     const std::int32_t delta_y=off[1];
-                        if (((x-delta_x>=0 && y-delta_y>=0) &&
-                             stencil[(y-delta_y)*row_words+x-delta_x].alpha!=0xff) ||
-                            ((x+delta_x<canvas_width_415800() && y-delta_y>=0) &&
-                             stencil[(y-delta_y)*row_words+x+delta_x].alpha!=0xff) ||
-                            ((x-delta_x>=0 && y+delta_y<rows) &&
-                             stencil[(y+delta_y)*row_words+x-delta_x].alpha!=0xff) ||
-                            ((x+delta_x<canvas_width_415800() && y+delta_y<rows) &&
-                             stencil[(y+delta_y)*row_words+x+delta_x].alpha!=0xff)) {
-                            touches_outline=true;
-                            break;
+                        if (x-delta_x>=0 && y-delta_y>=0 &&
+                            stencil[(y-delta_y)*row_words+x-delta_x].alpha!=0xff) {
+                            goto bgra32_outline;
+                        }
+                        if (x+delta_x<canvas_width_415800() && y-delta_y>=0 &&
+                            stencil[(y-delta_y)*row_words+x+delta_x].alpha!=0xff) {
+                            goto bgra32_outline;
+                        }
+                        if (x-delta_x>=0 && y+delta_y<rows &&
+                            stencil[(y+delta_y)*row_words+x-delta_x].alpha!=0xff) {
+                            goto bgra32_outline;
+                        }
+                        if (x+delta_x<canvas_width_415800() && y+delta_y<rows &&
+                            stencil[(y+delta_y)*row_words+x+delta_x].alpha!=0xff) {
+                            goto bgra32_outline;
                         }
                     }
-                    if (touches_outline) {
-                        *reinterpret_cast<PackedColorChannels*>(dest)=opaque.channels;
-                    } else {
-                        auto* channels=reinterpret_cast<std::uint8_t*>(dest);
-                        channels[0]=opaque.channels.blue;
-                        channels[1]=opaque.channels.green;
-                        channels[2]=opaque.channels.red;
-                    }
+                    reinterpret_cast<std::uint8_t*>(dest)[0]=opaque.channels.blue;
+                    reinterpret_cast<std::uint8_t*>(dest)[1]=opaque.channels.green;
+                    reinterpret_cast<std::uint8_t*>(dest)[2]=opaque.channels.red;
+                    goto bgra32_pixel_done;
+                    bgra32_outline:
+                    *reinterpret_cast<PackedColorChannels*>(dest)=opaque.channels;
                 }
+                bgra32_pixel_done:
+                ;
             }
         }
-    } else if (pixel_format==0x1a) {
-        GlyphMaskOffsets offsets;
+    } break;
+    case 0x1a: {
         const float radius_squared=radius*radius;
+        GlyphMaskOffsets offsets;
         for (std::int32_t delta_y=0;delta_y<static_cast<std::int32_t>(radius_squared);++delta_y) {
             for (std::int32_t delta_x=0;delta_x<static_cast<std::int32_t>(radius_squared);++delta_x) {
                 if (static_cast<float>(delta_x*delta_x+delta_y*delta_y)<radius_squared &&
@@ -316,6 +324,9 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                 ;
             }
         }
+    } break;
+    default:
+        break;
     }
     process_allocator->release_array(original);
     return true;
