@@ -427,6 +427,14 @@ source-present but NONEXACT.
    adjusted-scale argument local was worse (45/123). Assignment-at-argument
    variants compiled back to the maintained candidate. See the appended
    scoped/aggregate lifetime section; no candidate is promoted.
+   One new shared function-scope first-result local placed after common
+   renderer setup does recover both mode35/36 fstp m32 stores to [ebp-0x160]
+   (mode35 at +0x0FCD exactly; mode36 at +0x10B6, four bytes early), but its
+   inline-width candidate is only 5,981B/1,499 instructions, 84/123 E8,
+   3,726/5,364 ordinary bytes and 23/32 data sites. Restoring the current
+   width local loses the native spill slot again. This is a useful stack-slot
+   explanation, not a promoted candidate; the maintained parent remains
+   5,989B/109 E8.
    A mode45 native-order expression battery (named/reversed addition,
    compound assignment and post-adjustment width temporaries) did not improve
    the 5,989B/109-E8 maintained candidate. A mode46 role swap can produce

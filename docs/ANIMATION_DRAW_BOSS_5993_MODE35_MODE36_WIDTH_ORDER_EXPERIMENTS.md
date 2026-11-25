@@ -439,3 +439,30 @@ because the strict 1,378B mode6 setup replay grew to a 1,399B COFF contribution;
 direct union aliases preserve the exact native codegen. The large 5,993B Draw
 Boss parent retains its same 5,989B/1,501-instruction, 109/123-E8 NONEXACT
 profile.
+
+
+## 2026-11-25 follow-up: shared first-result local after common setup
+
+A new placement battery moved one shared float first-result local out of the
+function entry and into the enclosing 16..46 renderer block, after the common
+position/angle/width/height and texture/scale setup but before the nested mode
+switch. Both mode35 and mode36 assign their first inherited-scale getter to
+this same source local. Under the locked compiler this is the first natural
+source placement that emits both candidate-side fstp stores to the native
+[ebp-0x160] slot:
+
+| Mode | Candidate store | Native store | Result |
+| --- | ---: | ---: | --- |
+| 35 | +0x0FCD | +0x0FCD | exact site |
+| 36 | +0x10B6 | +0x10BA | 4B early |
+
+The full candidate is nevertheless only 5,981B/1,499 instructions,
+3,726/5,364 ordinary bytes, 84/123 E8 positions, 320B total absolute E8
+displacement and 23/32 exact HIGHLOW sites. It uses the inline mode35 width
+expression; restoring the separate mode35 width local moves the shared
+first-result value away from [ebp-0x160] and returns the candidate to 85/123
+E8. Declaring width and first-result locals at function scope in either order
+also produces the same 85/123 result. This confirms the native write-only
+spill can be represented by an actual shared C++ local at the correct stack
+slot, but the remaining nested-case lifetime/call layout is substantially
+worse. The probe is rejected; production source remains unchanged.
