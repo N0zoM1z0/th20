@@ -340,6 +340,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   see [source ownership](SOURCE_MAP.md).
 - **5,993B Animation Draw — SOURCE-PRESENT, NONEXACT:**
   [mode35/36 original Ghidra expression order, write-only x87 spill and register-operand evidence](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_GHIDRA_DECOMP.md),
+  [mode35/36 width-order, first-return local and compiler-profile experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md),
   [mode45/46 temporary lifetimes and common-return frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md),
   [mode35/36 x87 return-spill, SSE operand and full-body compiler probes](ANIMATION_DRAW_BOSS_5993_MODE35_X87_PROBES.md);
   [earlier native x87/stack frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md)

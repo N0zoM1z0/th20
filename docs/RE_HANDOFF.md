@@ -349,6 +349,15 @@ source-present but NONEXACT.
    native XMM1 load without breaking the call
    census or natural source profile; see the appended mode36 probe report. The
    inherited-scale getter's exact 93B `float` ABI is closed;
+   A new 16-way mode35 width-temporary placement battery found a 4-byte
+   ordinary-byte score rise (4,844/5,376) at unchanged 114/123 E8 positions,
+   but it moves the second mode35 getter +22 bytes and increases total E8
+   displacement 44→62; it is rejected. A mode45 native-half ownership battery
+   also remains below the maintained candidate (109/123 E8). A detailed
+   source-only tradeoff ledger is in
+   [mode35/36 width-order experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md).
+   No parent source or exact credit changed.
+
    Ghidra's `float10` does not justify MSVC `long double`. See
    [the focused mode45/46 frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md)
    and [the full-body convergence report](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md).
