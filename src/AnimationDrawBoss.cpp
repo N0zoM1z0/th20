@@ -1,12 +1,12 @@
 // Full 49-mode / two-stage Animation draw dispatcher reconstructed from the
 // immutable 5,993-byte original at 0x00443880. SOURCE-PRESENT NONEXACT:
 // original 123 E8 calls, 49+31 genuine pointer tables and 32 in-body PE
-// relocation target roles are independently known. Current source compiles
-// to both real switch pointer partitions and the native 5993B code extent,
-// 0x204 frame, all 123 call roles in physical order (81-site exact prefix;
-// 114 physical E8 sites total), and all 32 original data roles (27 absolute
-// relocation sites aligned). The candidate has 1502 instruction heads vs
-// 1501 native; matching extent and tables do NOT imply native exactness.
+// relocation target roles are independently known. Current native-order C++
+// compiles to a 5989B/1501-head body with the original 0x204 frame and both
+// pointer partitions. All 123 call targets remain in original order; the first
+// 81 physical call sites match and the full body matches 109/123 E8 positions.
+// It also matches 26/32 body HIGHLOW site/target pairs and 4694/5372 ordinary
+// bytes. This parent remains NONEXACT; matching call roles/tables is not exact.
 #include "Animation.hpp"
 #include "AnimationCallback.hpp"
 #include "AnimationDrawDetailedOwner.hpp"

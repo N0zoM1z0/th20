@@ -435,6 +435,11 @@ source-present but NONEXACT.
    width local loses the native spill slot again. This is a useful stack-slot
    explanation, not a promoted candidate; the maintained parent remains
    5,989B/109 E8.
+   The native-only verifier now proves [ebp-0x160] is write-only across the
+   complete body: exactly two fstp writes at +0x0FCD/+0x10BA and no reads.
+   Four additional nested-switch declaration placements all produce the same
+   5,997B/85-E8 candidate with no store to that slot; see the appended lifetime
+   probe. The maintained source is unchanged.
    A mode45 native-order expression battery (named/reversed addition,
    compound assignment and post-adjustment width temporaries) did not improve
    the 5,989B/109-E8 maintained candidate. A mode46 role swap can produce
