@@ -626,3 +626,37 @@ negative-one plus add rather than native `subss xmm1,xmm0`. Ordinary-byte
 agreement is also substantially below production. It remains a probe only;
 `src/AnimationDrawBoss.cpp` is unchanged and the production parent remains
 5,989B/1,501 instructions, 109/123 E8 and 26/32 HIGHLOW, NONEXACT.
+
+
+## 2026-11-25 follow-up: 94-site candidate local-scope and width-expression controls
+
+The 94/123 isolated candidate was rebuilt with its shared first-result local
+moved to five distinct common setup positions (after position, angle, width,
+height, or texture binding). All five produced identical output: 5,993B code,
+1,501 x86 heads, 4,023/5,372 ordinary bytes, 94/123 E8, 116B absolute E8
+displacement, 27/32 HIGHLOW and the same two `[ebp-0x160]` stores. Moving the
+same local into the nested switch before cases 31, 33, 34 or 35 was also
+codegen-identical. Declaring the half/color/count locals before the first
+getter and assigning them in native call order was likewise identical. The
+remaining local-slot difference is not sensitive to those declaration
+boundaries under the pinned compiler.
+
+The shared half local was then reused for both adjusted scale and width,
+including direct, copied, mutable, compound-assignment, seed-and-overwrite,
+volatile and const-volatile forms. These variants lose the first-result slot
+and collapse to 45/123 E8 (or 77/123 for a named width temporary), 14–17/32
+HIGHLOW sites. A short-lived nested-block local around the first getter also
+does not produce the native spill; its best form is 86/123 E8 with no
+`[ebp-0x160]` store. The function/switch-scope local is still required for the
+two native write-only spills.
+
+A mode36 width-expression battery on the 94-site source tested direct
+subtraction, unary negation, multiplication by negative half, negative-height
+multiplication, division by negative two, and compound assignment. Only
+`width + (-1.0f * half_for_width)` preserves the 94/123 E8 profile and the
+5,993B/1,501-head extent. `width-half_for_width` and
+`width + (-half_for_width)` return to 89/123; `width + (-height*0.5f)` and
+`width + (height/-native_two)` reach 89–90/123 with worse displacement or
+HIGHLOW coverage. The 94-site expression remains a diagnostic candidate,
+not production source: it is value-equivalent but not the native width
+instruction sequence.

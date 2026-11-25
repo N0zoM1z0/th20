@@ -595,3 +595,14 @@ same sequence as the maintained parent. It still has a four-byte call drift
 across modes36–44, and mode36 width is multiply-negative-plus-add rather than
 the native reverse-destination subtract. Do not promote it: the maintained
 5,989B/109-E8 parent remains unchanged. See the mode35/36 experiment ledger.
+
+The 94-site mode35/36 probe has now been stress-tested against local declaration
+placement, nested-switch scope boundaries, shared-half liveness and width
+expression forms. Five common-setup declaration positions and four nested
+switch declaration positions are codegen-identical; the first-result local's
+slot placement is stable. Reusing the half local for scale and width collapses
+the switch graph (45–77/123 E8), and a short-lived block local does not emit
+the native spill. Only the multiply-by-negative-one width spelling retains
+94/123 E8/5,993B, while direct subtraction returns to 89/123. The candidate
+remains non-production because its width instruction sequence is not native.
+See the appended local-scope/width-form ledger section.
