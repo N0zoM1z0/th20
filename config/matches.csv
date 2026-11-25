@@ -944,3 +944,7 @@ address,name,size,status,match_percent,unit,evidence
 0x005119E0,th20::StoneEnemyRecord::StoneEnemyRecord,76,matching,100.00,stone_enemy_record_ctor,docs/STONE_ENEMY_RECORD_RECONSTRUCTION.md; one fresh canonical COFF object
 0x00512F60,th20::StoneEnemyController::add_record,69,matching,100.00,stone_enemy_controller_add_record,docs/STONE_ENEMY_RECORD_RECONSTRUCTION.md; one fresh canonical COFF object
 0x00477480,th20::StageResourceOwner::interrupt_animations,160,matching,100.00,stage_resource_interrupt_animations,CORE/RECON-1301; docs/STAGE_RESOURCE_SCRIPT_VM_8572_SOURCE_FRONTIER.md; complete 160-byte body and both original REL32 destinations strictly replayed
+0x00429E30,th20::Animation::clear_pending_fields,32,matching,100.00,animation_clear_pending_fields,docs/ANIMATION_BINDING_LEAF_FUNCTIONS_EXACT.md; original native two-setter clear order and strict 32/32 replay
+0x00429E50,th20::Animation::clear_field_570,24,matching,100.00,animation_clear_field_570,docs/ANIMATION_BINDING_LEAF_FUNCTIONS_EXACT.md; original Animation+0x570 zero store and strict 24/24 replay
+0x00438A30,th20::Animation::set_field_5e0,25,matching,100.00,animation_set_field_5e0,docs/ANIMATION_BINDING_LEAF_FUNCTIONS_EXACT.md; original [this+0x5e0] callback store and strict 25/25 replay
+0x00438A50,th20::Animation::set_field_5dc,25,matching,100.00,animation_set_field_5dc,docs/ANIMATION_BINDING_LEAF_FUNCTIONS_EXACT.md; original [this+0x5dc] callback store and strict 25/25 replay
