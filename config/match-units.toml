@@ -13125,6 +13125,21 @@ relocations = [
   { offset = 221, type = "REL32", symbol = "?next_value@?$IntrusiveLink@VAnimation@th20@@@th20@@QAEPAV12@XZ", target = 0x0040FF90 },
 ]
 
+[units.matrix_identity]
+source = "src/Matrix4Identity.cpp"
+object = "build/core163-canonical/Matrix4Identity.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::matrix_identity"]
+symbol = "?matrix_identity@th20@@YAPAUMatrix4@1@PAU21@@Z"
+target_address = 0x00472840
+size = 452
+relocations = [
+  { offset = 344, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 374, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 406, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 438, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+]
+
 [units.animation_clear_flag_02]
 source = "src/AnimationClearFlag02.cpp"
 object = "build/core163-canonical/AnimationClearFlag02.obj"
