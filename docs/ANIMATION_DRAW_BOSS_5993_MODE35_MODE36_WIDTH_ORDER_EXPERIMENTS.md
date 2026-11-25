@@ -660,3 +660,30 @@ multiplication, division by negative two, and compound assignment. Only
 HIGHLOW coverage. The 94-site expression remains a diagnostic candidate,
 not production source: it is value-equivalent but not the native width
 instruction sequence.
+
+
+## 2026-11-25 follow-up: production mode36 arithmetic and pointer-alias probes
+
+The maintained 109/123-E8 production source was separately tested with
+mode36 adjusted-scale spellings `inherited_scale + (-aux_half)` and
+`inherited_scale + (-1.0f * aux_half)`, plus width spellings using negative
+half, zero-minus-reversed subtraction, and recomputed half. These forms scored
+81–86/123 E8, 22–25/32 HIGHLOW and 5,992–6,016B code; none improves production.
+The current `inherited_scale - aux_half` and `width - height/2` source remains
+unchanged.
+
+A pointer-alias attempt tried to force the precomputed mode36 half into a
+separate XMM register without intrinsics: const, mutable, volatile and
+const-volatile `float*` aliases to the actual local. The const-pointer form
+collapsed to 28/123 E8 and 14/32 HIGHLOW (6,003B code); mutable and volatile
+forms either failed the pinned compile or did not complete the matrix. These
+are rejected as unnatural and ineffective.
+
+On the 94-site candidate, moving the first-result local to five common setup
+positions or four nested-switch boundaries is codegen-identical. Declaring
+all half/color/count locals before the first getter and assigning them in
+native call order is also identical. Short-lived nested-block result locals
+produce no native spill. Sharing the half local between scale and width
+collapses to 45–77/123 E8 and loses the native first-result stores. The
+current candidate's function/switch-scope first-result lifetime is therefore
+stable, but the exact mode36 precomputed-half register load remains unresolved.

@@ -606,3 +606,14 @@ the native spill. Only the multiply-by-negative-one width spelling retains
 94/123 E8/5,993B, while direct subtraction returns to 89/123. The candidate
 remains non-production because its width instruction sequence is not native.
 See the appended local-scope/width-form ledger section.
+
+Additional focused probes after the 94-site checkpoint did not improve the
+production 109/123-E8 source. Mode36 arithmetic rewrites score 81–86/123 E8;
+pointer aliases to force the half local into a second XMM register collapse
+to 28/123 E8 or fail the pinned compile. On the 94-site candidate, moving the
+first-result local across common setup and nested-switch declaration points,
+predeclaring half/color/count locals, and short-lived block scopes do not
+improve its stack-slot/call frontier. Sharing the half local for scale and
+width loses the first-result stores and collapses the call graph. Keep the
+current production source unchanged; detailed measurements are in the
+mode35/36 experiment ledger.
