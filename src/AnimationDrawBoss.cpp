@@ -151,7 +151,7 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
     float height = animation->height();
     animation->position(position);
     if (animation->parent_55c &&
-        (animation->base.flags.word_04 & (1u << 12)) == 0) {
+        ((animation->base.flags.word_04 >> 12) & 1u) == 0) {
         angle += animation->parent_55c->rotation_z_value();
     }
     reinterpret_cast<AnimationQuadSubmitOwner*>(this)->bind_native_texture_state(animation);

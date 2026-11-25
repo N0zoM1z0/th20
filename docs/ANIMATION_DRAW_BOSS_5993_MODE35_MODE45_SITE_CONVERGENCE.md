@@ -13,7 +13,7 @@ backend ABI evidence remains in the independent original-only
 [`verify-animation-draw-boss-native.py`](../scripts/verify-animation-draw-boss-native.py)
 and [`verify-animation-draw-boss-abi.py`](../scripts/verify-animation-draw-boss-abi.py).
 
-The current maintained full function is still **5,993B/1,501 i386**, with
+The current maintained full function is **5,993B/1,502 candidate i386 instructions** (the immutable native body is 1,501), with
 its `0x204` frame and 6,316B real code+table COFF contribution. Mode45 uses a
 value-equivalent role swap: the pre-getter half feeds width and the post-getter
 half feeds adjusted scale. Native mode45 instead uses the pre-getter half for
@@ -25,15 +25,18 @@ pre-getter half feeds adjusted scale and its width half is recomputed after the
 getter. MSVC still chooses the shorter direct-memory adjusted-scale
 subtraction, leaving the final mode46 renderer call four bytes early. This is
 ordinary C++,
-not a byte patch or padding. The mode46 ownership correction keeps the native 5,993B/1,501-instruction
-extent, **114/123** physical E8 positions and **27/32** exact body relocation
-site/target pairs. Its current ordinary-byte agreement is **4,834/5,376**,
-one byte below the immediately preceding 4,835-byte value-equivalent source. The detailed native/compiled frontier
+not a byte patch or padding. The mode46 ownership correction keeps the native 5,993B code extent, **114/123** physical E8 positions and **27/32** exact body relocation
+site/target pairs. A subsequent source-level bit-extraction correction now yields **4,840/5,376** ordinary-byte agreement. The detailed native/compiled frontier
 and rejected probes are in
 [the focused mode45/46 report](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md).
 
 The maintained function changes remain ordinary C++ source; no binary bytes,
-manual opcodes, or padding are introduced. The value-preserving source changes
+manual opcodes, or padding are introduced. The parent-angle flag test now uses
+`((word_04 >> 12) & 1u) == 0`, reproducing the original `shr edx, 0xc; and edx, 1`
+sequence at function offset `0x3E8` byte-for-byte. The prior mask expression
+compiled to a six-byte `and edx, 0x1000`; the corrected expression adds one
+instruction head but preserves the 5,993B code extent and raises ordinary-byte
+agreement from 4,834 to 4,840. The value-preserving source changes
 preserve all 123 original E8 target roles and the actual renderer argument
 values. Mode45's half-height operand ownership remains value-equivalent but reversed
 relative to the native division sites. Mode46 has been returned to
@@ -64,7 +67,7 @@ direct-memory adjusted-scale subtraction:
 
 The pinned MSVC 19.44 i386 `/std:c++20 /Od /Ob0 /GS /Gy /Zl
 /arch:SSE2 /fp:precise /sdl /EHsc` compiles the revised single-source
-function to **5,993B/1,501 instructions**, retaining exactly the real
+function to **5,993B/1,502 instructions** (the original is 1,501), retaining exactly the real
 `sub esp, 0x204` frame and a full **6,316B COFF contribution**: the genuine
 3B alignment and **80 actual compiler-generated DIR32 case pointers**
 appear at the original offsets. Alias partitions for all 49 main/31
@@ -74,22 +77,22 @@ there are no synthetic byte-index tables or hand-authored padding.
 | Whole-function metric | Previous maintained source | This source | Original |
 | --- | ---: | ---: | ---: |
 | Executable code bytes | 5,993 | **5,993** | 5,993 |
-| Original-code instruction heads | 1,501 | **1,501** | 1,501 |
+| Original-code instruction heads | 1,501 | **1,502** | 1,501 |
 | After-`ret` contribution (alignment/tables) | 323B | **323B** | 323B |
 | Original E8 role targets and their order | 123/123 | **123/123** | 123/123 |
 | Original E8 *physical instruction offsets* | 86/123 | **114/123** | 123/123 |
 | Absolute E8 opcode offset-delta sum | 516 | **44** | 0 |
 | Original in-body HIGHLOW target-role histogram | 32/32 | **32/32** | 32/32 |
 | Original in-body HIGHLOW site+role positions | 23/32 | **27/32** | 32/32 |
-| All complete ordinary bytes with actual COFF fields masked | 3,819/5,376 | **4,834/5,376** | 5,376/5,376 |
+| All complete ordinary bytes with actual COFF fields masked | 3,819/5,376 | **4,840/5,376** | 5,376/5,376 |
 
 The ordinary byte denominator masks exactly **the compiler's actual
 235 four-byte relocation fields** (123 E8 +32 in-body data +80 table
 entries); original bytes are not patched or recompiled. The physical E8
 callee roles come independently from the immutable PE, not from matching
-object offsets or fabricated target data. The current nonrelocation agreement remains **1,015 bytes** above the older
-3,819-byte checkpoint. The prior 4,835-byte score described the value-equivalent
-mode46 source before the native ownership correction. E8 position agreement remains **114/123** and data site/target agreement
+object offsets or fabricated target data. The current nonrelocation agreement is **1,021 bytes** above the older
+3,819-byte checkpoint. The prior 4,835-byte score described a historical
+value-equivalent mode46 probe, not the maintained source. E8 position agreement remains **114/123** and data site/target agreement
 remains **27/32** through this mode46 source correction, preserving the native
 code size and both 49+31 switch-pointer alias partitions.
 
@@ -99,7 +102,7 @@ now **requires** all 123 native calls in their original target order,
 first 81 consecutive E8 sites, **114/123** exact native E8 offsets,
 absolute offset deviation **44**, complete 80-pointer table partitions,
 32/32 data roles including **27 exact site/target pairs**, and
-**4,834/5,376** ordinary bytes. It checks all 49 game modes and the
+**4,840/5,376** ordinary bytes. It checks all 49 game modes and the
 correct source/ABI details for the 18 real rendering children.
 The previous version's 86/23/3,819 expectations were superseded,
 not silently accepted as a looser baseline.
@@ -115,7 +118,7 @@ reusing the native saved half. Mode46 now reuses the pre-getter half for
 adjusted scale and recomputes the width half after the getter; the compiler's
 direct-memory adjusted-scale subtraction is four bytes shorter than native,
 leaving the final mode46 renderer call four bytes early. The parent has
-**no canonical match-unit / no source-exact game credit**; **542 ordinary
+**no canonical match-unit / no source-exact game credit**; **536 ordinary
 bytes remain different**.
 
 A separate mode35/36 switch-scope local probe now reproduces both native

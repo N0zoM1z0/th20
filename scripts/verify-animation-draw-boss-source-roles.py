@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Independently attest full 5,993B Animation Draw Boss source/PE roles.
 
-The pinned-MSVC C++ emits a full 5993B/1501-x86 executable body and two
-original 49+31-pointer switch tables, preserving native case aliasing and
-exact physical table alignment. All 123 E8 call roles agree in native order;
-114 physical call positions match (81 consecutive), and 27/32 original PE
-body data relocation offsets/targets coincide. The native 0x204 frame is
-matched, but real instruction/branch/relocation bytes still differ:
-this remains SOURCE-PRESENT, NONEXACT, not a canonical match unit.
+The immutable original body is 5993B/1501-x86 instructions. The maintained
+pinned-MSVC C++ candidate is still 5993B with the native 0x204 frame, but now
+has 1502 instructions because a source-level bit extraction restores the
+original SHR/AND byte sequence. Both original 49+31-pointer switch tables
+preserve native case aliasing and physical alignment. All 123 E8 call roles
+agree in native order; 114 physical call positions match (81 consecutive),
+and 27/32 original PE body data relocation offsets/targets coincide. Real
+instruction/branch/relocation differences remain: this is SOURCE-PRESENT,
+NONEXACT, not a canonical match unit.
 """
 from collections import Counter
 import csv
@@ -167,7 +169,10 @@ def main():
     assert compiled[code_end:code_end+3] == bytes.fromhex("0f1f00")
     assert len(compiled) == 6316
     code = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(compiled[:code_end], HEAD))
-    assert len(code)==len(native)==1501
+    assert len(native) == 1501 and len(code) == 1502
+    # Native parent-angle gating extracts bit 12 as SHR+AND, not a single
+    # AND-immediate mask. Keep the exact original six bytes at this site.
+    assert compiled[0x3E8:0x3EE] == original[0x3E8:0x3EE] == bytes.fromhex("c1ea0c83e201")
     assert code[2].mnemonic=="sub" and code[2].op_str=="esp, 0x204"
     assert native[2].mnemonic=="sub" and native[2].op_str=="esp, 0x204"
     assert code[-1].address+code[-1].size == HEAD+code_end
@@ -298,7 +303,7 @@ def main():
         ignored.update(range(int(row['offset']),int(row['offset'])+4))
     comparable_bytes=sum(original_extent[i]==compiled[i]
                          for i in range(len(compiled)) if i not in ignored)
-    assert comparable_bytes==4834 and len(compiled)-len(ignored)==5376
+    assert comparable_bytes==4840 and len(compiled)-len(ignored)==5376
 
 
     assert all(addr in reloc_sites for t,n in ((ORIGINAL.MAIN_TABLE, 49),

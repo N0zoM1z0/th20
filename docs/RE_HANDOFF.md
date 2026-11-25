@@ -298,13 +298,14 @@ source-present but NONEXACT.
 
 1. Continue only `AnimationPoolOwner::draw(Animation*)` at `0x00443880`
    until its complete 5,993B body and original relocations replay strict
-   exact. The current source reaches **4,834/5,376** ordinary bytes,
+   exact. The current source reaches **4,840/5,376** ordinary bytes,
    **114/123** physical E8 sites and **27/32** exact data site/target pairs.
    The open frontier is eight mode35/36 call-site deltas and their adjusted-scale
    SSE register operands, the first-getter x87 spill, mode45's half-height operand ownership/relocation position,
    and mode46's adjusted-scale SSE register operand (the final renderer call is
-   four bytes early). Mode46's half-height ownership and width recomputation
-   now follow the original order. Mode35/36's first getter still emits
+   four bytes early). The parent-angle bit-12 extraction now matches the
+   original six-byte SHR/AND sequence. Mode46's half-height ownership and
+   width recomputation now follow the original order. Mode35/36's first getter still emits
    `fstp st(0)` instead of the native dead-store spill to `[ebp-0x160]`; local
    spill probes distort later case layout and are not promoted. The inherited-scale getter's exact 93B `float` ABI is closed;
    Ghidra's `float10` does not justify MSVC `long double`. See
