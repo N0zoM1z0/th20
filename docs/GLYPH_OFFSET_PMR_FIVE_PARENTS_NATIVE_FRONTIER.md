@@ -85,3 +85,47 @@ scripts/repo-python scripts/verify-glyph-vector-growth488-native.py \
 nice -n 15 scripts/repo-python scripts/replay-exact-units.py \
   --source src/GlyphMaskComposite2245.cpp
 ```
+
+## 2026-11-25 follow-up: decode the forwarding leaf and test explicit C++ move boundaries
+
+Read-only native Ghidra context for `0x00416330` resolves its actual operation:
+
+```cpp
+uVar1 = move<>(param_1);
+FUN_00413370(this, uVar1);
+```
+
+The 35B member therefore has a real two-edge chain: `std::move<>` at
+`+0x0B` to the shared 8B `0x0040B280` forwarding leaf, then the 108B
+`_Emplace_one_at_back` backend at `+0x17`. The shared 8B head is already
+accepted as a common reference-forwarding primitive (including distinct
+`std::move`, `std::forward`, `std::addressof` and `_Unfancy` uses); it receives
+no duplicate authored-byte credit here. The exact template specialization
+used by this old `move<>` call is not proven from the Ghidra prototype alone.
+
+Several ordinary C++ source paths were rebuilt under the pinned profile:
+
+- `offsets.emplace_back(std::move(displacement))` selects the rvalue-reference
+  vector specialization, but still emits a complete **33B/13-i386** wrapper
+  with one E8 to the modern `_Emplace_one_at_back` template. It does not add
+  the native out-of-line `move<>` E8.
+- Explicit `__declspec(noinline)` instantiations of both
+  `std::move<GlyphMaskOffset&>` and `std::move<const GlyphMaskOffset&>` do not
+  force the modern vector template to retain a separate call. The complete
+  wrapper remains 33B/13 with one E8.
+- A separate natural free forwarding function
+  `append_glyph_mask_offset(GlyphMaskOffsets&, const GlyphMaskOffset&)`
+  emits **26B/11-i386** with two E8, but its ABI is `__cdecl` with two stack
+  arguments and its second target is the modern 33B `emplace_back` wrapper,
+  not the original 108B backend.
+- A temporary derived-vector member wrapper emits **25B/11-i386** with one
+  E8 to the modern vector template. Its changed container type also expands
+  the whole compositor to **2,276B/589-i386**, 47 E8 and only 4/37 aligned
+  positions. It is rejected and never enters maintained headers.
+
+The native member's `__thiscall` receiver/one-argument ABI, explicit
+`std::move<>` call and direct backend edge are still not reproduced by the
+current standard-library source. No wrapper is promoted, no original leaf is
+credited, and `src/GlyphMaskComposite2245.cpp` remains unchanged by these
+experiments. The complete 35B helper and all five PMR parents remain
+SOURCE-PRESENT/NONEXACT.
