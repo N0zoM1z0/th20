@@ -12,6 +12,14 @@
 #include <memory_resource>
 #include <vector>
 namespace th20 {
+struct NativeGlyphAlpha4444 {
+    std::uint16_t blue : 4;
+    std::uint16_t green : 4;
+    std::uint16_t red : 4;
+    std::uint16_t alpha : 4;
+};
+static_assert(sizeof(NativeGlyphAlpha4444)==2);
+
 // Native original 16-bit color word is default-constructed before
 // alpha/RGB nibbles are subsequently assigned on the true ARGB4444 path.
 struct NativeGlyphColor4444 {
@@ -119,13 +127,13 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                     const std::int32_t delta_x=off[0];
                     const std::int32_t delta_y=off[1];
                     if (((x-delta_x>=0 && y-delta_y>=0) &&
-                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y-delta_y)*pixel_stride_4156c0()/2)+x-delta_x]), ((*stencil>>12)!=0xf))) ||
+                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y-delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)]), (reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf))) ||
                         ((x+delta_x<canvas_width_415800() && y-delta_y>=0) &&
-                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y-delta_y)*pixel_stride_4156c0()/2)+x+delta_x]), ((*stencil>>12)!=0xf))) ||
+                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y-delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)]), (reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf))) ||
                         ((x-delta_x>=0 && y+delta_y<rows) &&
-                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+x-delta_x]), ((*stencil>>12)!=0xf))) ||
+                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)]), (reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf))) ||
                         ((x+delta_x<canvas_width_415800() && y+delta_y<rows) &&
-                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+x+delta_x]), ((*stencil>>12)!=0xf)))) {
+                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)]), (reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf)))) {
                         *dest=packed_color.packed;
                         goto rgba4444_pixel_done;
                     }

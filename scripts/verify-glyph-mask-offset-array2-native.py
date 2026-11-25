@@ -53,6 +53,14 @@ def verify(candidate):
  color_header=(ROOT/'src/EffectParameters.hpp').read_text()
  assert 'const std::int32_t length=pixel_stride_4156c0()*rows;' in source
  assert source.count('const auto* stencil=reinterpret_cast<const PackedColorChannels*>(original);')==1
+ assert 'struct NativeGlyphAlpha4444' in source
+ assert 'std::uint16_t alpha : 4;' in source
+ assert 'static_assert(sizeof(NativeGlyphAlpha4444)==2);' in source
+ assert source.count('reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf')==4
+ assert '((y-delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)' in source
+ assert '((y-delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)' in source
+ assert '((y+delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)' in source
+ assert '((y+delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)' in source
  assert source.count('.alpha!=0xff')==4
  assert 'opaque.channels.alpha = static_cast<std::uint8_t>(opaque.channels.alpha ^ 0xffu);' in source
  assert '*reinterpret_cast<PackedColorChannels*>(dest)=opaque.channels;' in source
@@ -73,17 +81,20 @@ def verify(candidate):
  assert index_cmp['result']=='structural-exact'
  assert index_cmp['matched_comparable_bytes']==index_cmp['comparable_bytes']==22
  assert not index_cmp['relocations']
- # This is a complete NONEXACT 2088B/549-i386 source, not a prefix
+ # This is a complete NONEXACT 2128B/561-i386 source, not a prefix
  # compared to the original 2245B/612-i386 parent extent.
- body,rel=cm.object_function(obj,SYM,2088)
+ body,rel=cm.object_function(obj,SYM,2128)
  ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(body),0))
- assert len(body)==2088 and len(ci)==549 and len(rel)==42
+ assert len(body)==2128 and len(ci)==561 and len(rel)==42
  mask={i for x in rel for i in range(x['offset'],x['offset']+4)}
  compared=[i for i in range(min(len(original),len(body))) if i not in mask]
  ordinary_matches=sum(original[i]==body[i] for i in compared)
- assert (ordinary_matches,len(compared))==(296,1920)
+ assert (ordinary_matches,len(compared))==(292,1960)
  assert (ci[-1].mnemonic,ci[-1].op_str)==('ret','0x14')
  assert ci[-1].address+ci[-1].size==len(body)
+ rgba_instructions=[i for i in ci if 0x600<=i.address<0x800]
+ assert sum(i.mnemonic=='shr' and i.op_str.endswith('0xc') for i in rgba_instructions)==4
+ assert sum(i.mnemonic=='and' and i.op_str.endswith('0xf') for i in rgba_instructions)==4
  cr=[r for r in rel if r['type']=='REL32']
  dr=[r for r in rel if r['type']=='DIR32']
  assert len(cr)==37 and len(dr)==5
@@ -110,7 +121,7 @@ def verify(candidate):
  assert original_stride==[0x32,0x197,0x1D7,0x5A6,0x5E7,0x69B,0x6FA,0x752,0x7B4]
  candidate_stride=[x['offset']-1 for x in cr
                    if 'pixel_stride_4156c0' in x['symbol']]
- assert candidate_stride==[0x32,0x185,0x1C5,0x59A,0x5E4,0x695,0x6E6,0x730,0x780]
+ assert candidate_stride==[0x32,0x185,0x1C5,0x59A,0x5E4,0x695,0x6F0,0x744,0x79E]
  assert len(candidate_stride)==len(original_stride)==9
  # Genuine folded std::array<int32_t,2>::operator[] emits the same four
  # real index helper calls across the two native pixel-format branches.
@@ -153,7 +164,7 @@ def verify(candidate):
   dest=[value for prefix,value in highlow.items()
         if r['symbol'].startswith(prefix)]
   assert len(dest)==1 and dest[0]==actual[o],(hex(o),r['symbol'],dest)
- assert [x['offset'] for x in dr]==[0x06,0x18,0x57,0x5D,0x801]
+ assert [x['offset'] for x in dr]==[0x06,0x18,0x57,0x5D,0x829]
  assert sum(x['offset']==o for x,o in zip(dr,sorted(actual)))==4
  assert sum('bitmap_pixels_4156a0' in x['symbol'] for x in rel)==1
  assert sum('pixel_stride_4156c0' in x['symbol'] for x in rel)==9
@@ -182,10 +193,10 @@ def verify(candidate):
   assert result['result']=='exact' and result['matched_bytes']==result['size']
  print('PASS immutable original whole 2245B/612 game Boss, 37 native E8/5 PE HIGHLOW and both complete pixel-format branches')
  print('PASS original four folded array-index E8 at +0x29E/+0x2B0/+0x666/+0x678, existing 22B array helper whole structural 22/22 (no duplicate credit)')
- print('PASS complete natural 2088B/549-i386 source: 296/1920 ordinary overlap bytes: all 37 E8/5 DIR32 roles, nine live-stride getter calls, including per-pixel RGBA4444 source at native +0x5E7')
- print('PASS 37/37 candidate E8 target roles in original order, typed BGRA destination/stencil alpha-byte views, y-first native short-circuit order, direct RGBA4444 early-exit/write topology; 7/37 E8 and 4/5 PE HIGHLOW sites aligned')
+ print('PASS complete natural 2128B/561-i386 source: 292/1960 ordinary overlap bytes: all 37 E8/5 DIR32 roles, nine live-stride getter calls, including per-pixel RGBA4444 source at native +0x5E7')
+ print('PASS 37/37 candidate E8 target roles in original order, native grouped (x +/- delta_x) addressing, four 16-bit alpha bitfield reads, typed BGRA alpha-byte views and direct RGBA4444 early-exit/write topology; 7/37 E8 and 4/5 PE HIGHLOW sites aligned')
  print('PASS all 24 previously accepted PMR/color generic source descendants remain whole native exact')
- print('SOURCE-PRESENT NONEXACT: entire 2088B candidate vs original 2245B parent, no new game-authored code credit')
+ print('SOURCE-PRESENT NONEXACT: entire 2128B candidate vs original 2245B parent, 819 aggregate E8 offset delta, no new game-authored code credit')
 if __name__=='__main__':
  import argparse
  a=argparse.ArgumentParser();a.add_argument('--candidate-object',required=True,type=Path)

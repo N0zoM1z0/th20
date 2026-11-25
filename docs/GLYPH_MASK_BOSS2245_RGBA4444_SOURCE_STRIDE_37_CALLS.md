@@ -1,20 +1,22 @@
-**CORE/RECON-1082 CURRENT SOURCE UPDATE (2026-11-25):** The RGBA4444
-neighbor loop now follows the native early-exit/write topology directly in
-ordinary C++: an outline hit writes the packed color and jumps past the
-non-outline alpha-preserving write. This removes the per-pixel
-`touches_outline` flag and its post-loop branch without inline assembly,
-manual bytes or synthetic calls. The complete maintained source now emits
-**2,088B/549 i386, 37 E8/5 DIR32** (down 18B/six instructions from the
-2,106B/555 candidate). The candidate preserves **37/37 original E8 target
+**CORE/RECON-1083 CURRENT SOURCE UPDATE (2026-11-25):** The RGBA4444
+source now preserves the original grouped address expression
+`row_offset + (x +/- delta_x)` rather than relying on left-associative
+`row_offset + x +/- delta_x`. A two-byte `NativeGlyphAlpha4444` bitfield view
+restores the four native 16-bit alpha-nibble extraction sequences (`mov` word,
+`shr 12`, `and 0xf`) in natural C++. The complete maintained source now emits
+**2,128B/561 i386, 37 E8/5 DIR32**. It preserves **37/37 original E8 target
 roles**, **9/9 live stride getter roles**, **4/4 folded array-index roles**,
-and **5/5 PE data-target roles**. It matches **296/1,920 ordinary
+and **5/5 PE data-target roles**. It matches **292/1,960 ordinary
 non-relocation bytes**; **7/37 physical E8 sites** and **4/5 PE HIGHLOW
-site/target pairs** align, with aggregate E8 offset distance **1,039**.
-The whole 2,245B/612-i386 game Boss remains **SOURCE-PRESENT/NONEXACT**;
-no parent exactness credit is claimed. The source-scoped replay rebuilt one
-object and preserved **24/24** previously exact PMR/color descendants.
-Both `verify-glyph-mask-offset-array2-native.py` and
-`verify-glyph-mask-boss-live-pixels-native.py` now attest this full candidate
+site/target pairs** align, with aggregate E8 offset distance **819** (down
+220 from the previous 1,039). The original 2,245B/612-i386 game Boss remains
+**SOURCE-PRESENT/NONEXACT**, with a 117B/51-instruction gap; no parent
+exactness credit is claimed. A sequential-four-`if` source variant was also
+compiled and rejected (2,143B/565, 3/37 physical E8 sites, 1,075 aggregate
+offset delta). The source-scoped replay rebuilt one object and preserved
+**24/24** previously exact PMR/color descendants. Both
+`verify-glyph-mask-offset-array2-native.py` and
+`verify-glyph-mask-boss-live-pixels-native.py` attest the current candidate
 against the pinned original.
 
 # Glyph Mask 2,245B Boss — real RGBA4444 source pixel stride and full E8 graph
@@ -94,15 +96,16 @@ source checkpoint now records four natural lifetime/dataflow corrections:
   the first non-opaque neighbor writes the packed outline value and jumps
   past the non-outline alpha-preserving write. This removes the per-pixel
   `touches_outline` flag and post-loop test while preserving the same four
-  neighbor reads and pixel result. The candidate is now **2,088B/549 i386**
-  with **296/1,920 ordinary overlap bytes**; E8 target roles remain 37/37,
-  physical alignment remains 7/37, and absolute E8 offset distance is 1,039.
+  neighbor reads and pixel result. The prior candidate was **2,088B/549 i386** with 296/1,920 ordinary
+  overlap bytes. The current grouped-address/bitfield candidate is
+  **2,128B/561 i386**, 292/1,960 ordinary overlap bytes, 37/37 E8 target
+  roles, 7/37 physical E8 sites and 819 aggregate E8 offset distance.
 
 
 | Entire function evidence | First source | Earlier full-role source | Current source | Original |
 | --- | ---: | ---: | ---: | ---: |
-| Complete code bytes | 2,061 | 2,141 | **2,088** | 2,245 |
-| Complete i386 instruction count | 545 | 565 | **549** | 612 |
+| Complete code bytes | 2,061 | 2,141 | **2,128** | 2,245 |
+| Complete i386 instruction count | 545 | 565 | **561** | 612 |
 | Physical E8 / compiled REL32 count | 36 | 37 | **37** | 37 |
 | Physical HIGHLOW / compiled DIR32 | 5 | 5 | **5** | 5 |
 | Native stride / candidate stride E8 | 9 / 8 | 9 / 9 | **9 / 9** | 9 / 9 |
@@ -110,14 +113,14 @@ source checkpoint now records four natural lifetime/dataflow corrections:
 | E8 opcode positions exactly aligned | 1 | 2 | **7** | 37 |
 | PE HIGHLOW site/target pairs aligned | 2 | 2 | **4** | 5 |
 | Folded two-int32 array-index calls | 4 | 4 | **4** | 4 |
-| Aggregate absolute E8 offset distance | — | 1,196 | **1,039** | 0 |
+| Aggregate absolute E8 offset distance | — | 1,196 | **819** | 0 |
 
 Both the native PE's *real* physical target destinations and the
 candidate COFF symbol prefix roles are checked in **all 37** positions,
 including `+0x5E7`. Every candidate REL32 is a genuine E8 operand.
 All five original PE HIGHLOW roles are separately checked against the
-actual candidate DIR32 symbols. The 549/612 instruction difference,
-remaining 157B original code-size gap, differing stack slots/EH state,
+actual candidate DIR32 symbols. The 561/612 instruction difference,
+remaining 117B original code-size gap, differing stack slots/EH state,
 and most physical call/data locations mean the parent is **not exact**;
 matching a full call-role census does **not** grant 2,245B game bytes.
 
@@ -136,5 +139,37 @@ replayed: **24/24** previously accepted PMR/color generic descendants
 remained strict whole-native exact. The separately original-exact folded
 22B array helper does **not** receive duplicate credit; there was **no
 full or unfiltered cold replay**. Next: recover the remaining 16-bit stencil
-iterator/pointer-stack lifetime and the original 157B/63-instruction
+iterator/pointer-stack lifetime and the original 117B/51-instruction
 compiler-control-flow gap, without losing any of the 37 call roles.
+
+## 2026-11-25 follow-up: native RGBA4444 operand grouping and 16-bit alpha extraction
+
+The original Ghidra expression computes each neighbor address as
+`(stride * y) / 2 + (x +/- delta_x)`. The earlier C++ source wrote the same
+mathematical result with left-associative `+ x +/- delta_x`, which emitted
+separate add/sub instructions and shifted the subsequent stride calls. All
+four expressions now retain the original horizontal grouping. The resulting
+source compiles the neighbor address as a grouped horizontal operand before
+adding it to the half-stride row offset.
+
+The original four alpha tests load a 16-bit word and use 16-bit `shr 12` and
+`and 0xf` before comparing the high nibble. A two-byte
+`NativeGlyphAlpha4444` bitfield view (blue/green/red/alpha, four bits each)
+expresses that source-level field read directly and reproduces those four
+instruction sequences. This is a real packed-pixel representation, not a
+compiler-only temporary or instruction shim.
+
+The new complete candidate is **2,128B/561 i386**, with all **37/37 E8 target
+roles**, all nine stride calls, four folded array-index calls and all five PE
+data-target roles. It has **7/37** native E8 positions, **4/5** physical
+HIGHLOW site/target pairs, **292/1,960** ordinary overlap bytes and **819B**
+aggregate absolute E8 offset distance. The previous 2,088B candidate was
+1,039B away; this is a 220B reduction. The remaining whole-function gap is
+117B/51 instructions.
+
+A sequential four-`if` translation of the native Ghidra control flow was also
+compiled. It grew to 2,143B/565 instructions, fell to 3/37 aligned E8 sites
+and regressed to 1,075B aggregate E8 offset distance, so the existing
+short-circuit expression remains the better natural-C++ reconstruction.
+The two native operand and bitfield changes are maintained; the parent is
+still SOURCE-PRESENT/NONEXACT.
