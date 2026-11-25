@@ -148,6 +148,22 @@ def main():
     assert text.count("const float inherited_scale=animation_inherited_aux_scale_x(animation);") == 3
     assert "const float adjusted_scale=inherited_scale+aux_half;" in text
     assert "const float adjusted_scale=inherited_scale-aux_half;" in text
+    # The native mode35/36 paths compute the scale half before the second
+    # getter, then recompute width's half only after adjusted-scale. Preserve
+    # this source-level order rather than the tempting value-equivalent swap.
+    mode35 = text.split("case 35: {", 1)[1].split("case 36: {", 1)[0]
+    mode36 = text.split("case 36: {", 1)[1].split("case 18:", 1)[0]
+    for block, operator, width_expr in (
+        (mode35, "+", "const float shape_width=width+(height/native_two);"),
+        (mode36, "-", "width-(height/native_two)"),
+    ):
+        first_getter = block.index("animation_inherited_aux_scale_x(animation);")
+        color_getter = block.index("animation_draw_color_494(animation)")
+        half_calc = block.index("const float aux_half=height/native_two;")
+        second_getter = block.index("const float inherited_scale=animation_inherited_aux_scale_x(animation);")
+        adjusted = block.index(f"const float adjusted_scale=inherited_scale{operator}aux_half;")
+        width_calc = block.index(width_expr)
+        assert first_getter < color_getter < half_calc < second_getter < adjusted < width_calc
     assert "const float adjusted_scale = animation_inherited_aux_scale_x(animation) + (height/native_two);" in text
     assert "width+half_for_width,adjusted_scale,height" in text
 
