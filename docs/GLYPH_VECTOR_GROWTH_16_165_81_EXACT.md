@@ -53,8 +53,11 @@ are newly covered. They are compiler/standard-library template bodies
 The 488B growth body now matches all native non-relocation bytes and E8
 positions, as do the 108B/140B insertion helpers. The 35B public wrapper
 remains a 34B/14-i386 candidate with the native trailing NOP absent; the
-200B uninitialized-move helper remains 191B/62. The five-parent PMR chain and
-2,245B game compositor therefore remain separate NONEXACT functions. No
+200B/65 uninitialized-move parent now matches all non-relocation bytes and
+native E8 positions, as do its 92B/34 backout and 31B/14 allocator bridge
+helpers. Their old allocator-construction target identities remain different.
+The five-parent PMR chain and 2,245B game compositor therefore remain separate
+NONEXACT functions. No
 already accepted 153B vector `_Tidy`, PMR allocator or previously exact
 native method is double-counted.
 
@@ -104,5 +107,6 @@ relocation types are not all the original PE targets. The three independently
 accepted 16B/165B/81B children remain exact and distinct. The full insertion
 chain verifier also checks the 108B/40 and 140B/52 bodies, the exact 8B
 forwarding leaf, and the 34B public wrapper (native NOP omitted). The 200B
-uninitialized-move function remains 191B/62 and the 2,245B game parent remains
-NONEXACT.
+uninitialized-move function now matches its complete 200B/65 native code
+shape outside relocation fields; the 92B/34 and 31B/14 nested helpers do too.
+The 2,245B game parent remains NONEXACT.

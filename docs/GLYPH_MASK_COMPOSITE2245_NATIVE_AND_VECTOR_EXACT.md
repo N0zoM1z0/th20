@@ -2,9 +2,11 @@
 uses explicit natural C++ specializations for the old MSVC PMR vector members.
 The 8B move leaf is byte-exact; 108B/40, 140B/52 and 488B/170 insertion/growth
 bodies match all native E8 positions and every non-relocation byte. The 35B
-public wrapper is 34B/14 with the native `+0x1C` NOP omitted; the 200B
-uninitialized-move helper remains 191B/62. Targeted replay preserves 24/24
-accepted PMR/color descendants. The full 2,245B compositor remains NONEXACT;
+public wrapper is 34B/14 with the native `+0x1C` NOP omitted. The 200B/65
+uninitialized-move, 92B/34 backout and 31B/14 allocator bridge bodies now
+match all non-relocation bytes and E8 positions. The 31B bridge still calls
+the newer 69B allocator constructor rather than the original 78B leaf.
+Targeted replay preserves 24/24 accepted PMR/color descendants. The full 2,245B compositor remains NONEXACT;
 see [the five-parent frontier](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md).
 
 **CORE/RECON-1083 CURRENT SOURCE UPDATE (2026-11-25):** The RGBA4444

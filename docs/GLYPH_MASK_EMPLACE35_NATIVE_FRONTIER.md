@@ -1,4 +1,4 @@
-**CORE/RECON-1082 CURRENT STATUS:** The maintained C++ source now specializes the actual `std::pmr::vector<std::array<int32_t,2>>` member templates. It emits a 34B/14-i386 `emplace_back` wrapper with both native E8 positions (only the original +0x1C NOP is absent), an exact 8B shared `std::move` leaf, and 108B/40, 140B/52 and 488B/170 backend bodies whose every non-relocation byte and E8 position matches native. The 488B body also retains both original HIGHLOW sites as COFF DIR32 relocations. The 200B `_Uninitialized_move` remains 191B/62-i386 and NONEXACT; the 2,245B game compositor remains NONEXACT. The targeted source replay preserves 24/24 accepted PMR/color descendants. See the complete five-parent frontier below.
+**CORE/RECON-1082 CURRENT STATUS:** The maintained C++ source now specializes the actual `std::pmr::vector<std::array<int32_t,2>>` member templates. It emits a 34B/14-i386 `emplace_back` wrapper with both native E8 positions (only the original +0x1C NOP is absent), an exact 8B shared `std::move` leaf, and 108B/40, 140B/52 and 488B/170 backend bodies whose every non-relocation byte and E8 position matches native. The 488B body also retains both original HIGHLOW sites as COFF DIR32 relocations. The 200B/65 `_Uninitialized_move`, 92B/34 backout member and 31B/14 allocator bridge now match all non-relocation bytes and native E8 positions; they remain NONEXACT because their target identities differ. The 2,245B game compositor remains NONEXACT. The targeted source replay preserves 24/24 accepted PMR/color descendants. See the complete five-parent frontier below.
 
 
 # CORE/RECON-1055 — original 35B glyph-mask offset insertion, genuine native 2-call ABI frontier
@@ -177,8 +177,10 @@ The 488B body has all fourteen original E8 positions, including the two
 forwarding operations at `+0xE6/+0xFB` and the three uninitialized-move calls.
 
 The public wrapper is deliberately **not** called exact: the pinned compiler
-omits the native one-byte NOP at `+0x1C`. The separate 200B
-`_Uninitialized_move` parent also remains a 191B/62-i386 source frontier.
+omits the native one-byte NOP at `+0x1C`. The separate 200B `_Uninitialized_move` parent is now a complete 200B/65
+source candidate with nine original E8 positions and two absolute relocation
+fields. The body is NONEXACT only because the original relocation targets are
+not all retained.
 The two game-parent calls are still shifted from native `+0x165/+0x4DD` to
 candidate `+0x160/+0x51E`; the 2,245B compositor is still NONEXACT. No parent
 exactness or game-authored exact-byte credit is claimed.
@@ -196,8 +198,10 @@ The enclosing PMR growth chain now emits the original 200B/65-instruction
 `_Uninitialized_move` extent and all nine E8 instructions. An explicit
 noinline `std::move<GlyphMaskOffset*&>` instantiation restores the pointer
 forwarding operation before `_Uninitialized_backout_al::_Emplace_back`.
-The full body remains NONEXACT (100/150 ordinary overlap bytes); this is a
-real C++ template lowering improvement, not an instruction or padding shim.
+The full 200-byte body now matches every non-relocation byte and all nine
+native E8 positions after resolving the two original absolute fields. This is
+a real C++ template lowering improvement, not an instruction or padding shim;
+whole-function exactness remains withheld because relocation targets differ.
 
 
 ## 2026-11-25 follow-up: complete 200B parent and nested backout source

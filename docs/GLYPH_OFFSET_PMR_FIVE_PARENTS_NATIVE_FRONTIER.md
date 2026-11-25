@@ -144,9 +144,13 @@ occupy the exact original PE HIGHLOW sites `+0x06/+0x15`. The 8B shared
 
 The public 35B wrapper is now 34B/14 heads with both original E8 sites and
 all non-relocation bytes matching after removing the native `+0x1C` NOP. The
-NOP is not synthesized. The 200B `_Uninitialized_move` remains 191B/62 heads,
-8 E8/2 DIR32 versus native 200B/65, 9 E8/2 HIGHLOW. Consequently the whole
-five-parent chain and 2,245B game compositor remain SOURCE-PRESENT/NONEXACT.
+NOP is not synthesized. The 200B `_Uninitialized_move` is now 200B/65 with
+9 E8/2 DIR32 versus native 200B/65, 9 E8/2 HIGHLOW; after normalizing only
+those real relocation fields and E8 displacements, all 200 code bytes match.
+The 92B backout member and 31B allocator bridge also match every
+non-relocation byte and all original E8 positions. The whole five-parent
+chain and 2,245B game compositor remain SOURCE-PRESENT/NONEXACT because
+callee/relocation identities and the 35B wrapper NOP are not fully restored.
 
 The independent `verify-glyph-mask-emplace35-native.py --candidate-object`
 checks the complete 8B/34B/108B/140B/488B bodies, all call sites and both
@@ -165,12 +169,13 @@ The maintained glyph source now explicitly instantiates the natural
 forward that pointer through the shared 8B move leaf, then pass the returned
 pointer to `_Uninitialized_backout_al::_Emplace_back`.
 
-The complete current candidate has advanced from **191B/62 i386, 8 E8** to
-**200B/65 i386, 9 E8, 2 DIR32**, matching the original 200B/65 instruction
-count and restoring the missing loop E8. The candidate's non-relocation
-ordinary overlap is **100/150 bytes**; the prologue/local stack layout and
-several subsequent instruction offsets still differ. This remains
-**SOURCE-PRESENT/NONEXACT**, with no parent or generic STL byte credit.
+The complete current candidate is **200B/65 i386, 9 E8, 2 DIR32** and
+matches the original 200B/65 body byte-for-byte after normalizing only its
+real E8 displacement and absolute relocation fields. The 92B backout member
+and 31B allocator bridge are likewise complete in length/instruction count
+and match all non-relocation bytes and call offsets. These remain
+**SOURCE-PRESENT/NONEXACT** because target identities/relocation types differ;
+there is no parent or generic STL byte credit.
 The other current PMR parent frontiers remain: 35B wrapper 34B/14 (native
 35B/15, one NOP absent), `_Emplace_one_at_back` 108B/40, no-growth 140B/52,
 and reallocation 488B/170. Their natural C++ candidates preserve all native
@@ -216,9 +221,11 @@ Boss remains NONEXACT.
 The 140B and 488B parents now route their element construction through
 the same natural 31B move-construction wrapper at their original E8
 positions. Their full 140B/52-i386 and 488B/170-i386 bodies remain
-byte-identical outside real relocation fields. The 24 previously accepted
-PMR/color child units still pass the source-scoped replay; no full cold
-replay was run.
+byte-identical outside real relocation fields. An explicit instantiation of
+the backout `_Emplace_back<const GlyphMaskOffset&>` allocator-traits path
+also retains the existing 22B `Normal_allocator_traits::construct` exact
+child. All 24 previously accepted PMR/color child units pass the
+source-scoped replay; no full cold replay was run.
 
 Targeted checks:
 

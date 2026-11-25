@@ -1,9 +1,10 @@
 // Game-owned 2,245B glyph compositor at 0x00416420. SOURCE-PRESENT,
 // NONEXACT: both native pixel-format branches and the 16B PMR-vector
-// offsets are reconstructed. The five-function PMR insertion chain now
-// restores the original 108B/140B/488B bodies and call/relocation sites;
-// the 35B wrapper is 34B with the original compiler-emitted trailing NOP
-// absent. The complete game compositor remains NONEXACT.
+// offsets are reconstructed. The PMR insertion/growth/backout chain now
+// restores the 108B/140B/488B/200B bodies and the nested 92B/31B helper
+// shapes outside real relocation fields. The 35B wrapper is 34B with the
+// original compiler-emitted trailing NOP absent; the complete game
+// compositor remains NONEXACT.
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphMaskOffsets.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -32,7 +33,7 @@ std::move<th20::GlyphMaskOffset*&>(th20::GlyphMaskOffset*&) noexcept;
 namespace th20 {
 using GlyphMaskAllocator = std::pmr::polymorphic_allocator<GlyphMaskOffset>;
 __declspec(noinline) void glyph_uninitialized_move_construct(
-    GlyphMaskAllocator& allocator, GlyphMaskOffset& destination, GlyphMaskOffset& source) {
+    GlyphMaskAllocator& allocator, GlyphMaskOffset& destination, const GlyphMaskOffset& source) {
     allocator.construct(&destination, std::move(source));
 }
 } // namespace th20
@@ -52,7 +53,7 @@ public:
     }
     template <class... _Types>
     __declspec(noinline) void _Emplace_back(_Types&&... values) {
-        allocator_traits<_Alloc>::construct(_Al, _STD _Unfancy(_Last), _STD forward<_Types>(values)...);
+        _Normal_allocator_traits<_Alloc>::construct(_Al, _STD _Unfancy(_Last), _STD forward<_Types>(values)...);
         ++_Last;
     }
     __declspec(noinline) void _Emplace_back_deref_move(th20::GlyphMaskOffset&& source) {
@@ -71,6 +72,13 @@ private:
     pointer _Last;
     _Alloc& _Al;
 };
+
+// Keep the older backout's const-reference allocator-traits path available:
+// this is a genuine native 22B child and is independent of the newer
+// polymorphic_allocator::construct wrapper used by the move-backout bridge.
+template __declspec(noinline) void
+_Uninitialized_backout_al<th20::GlyphMaskAllocator>::_Emplace_back<const th20::GlyphMaskOffset&>(
+    const th20::GlyphMaskOffset&);
 
 template <>
 _CONSTEXPR20 __declspec(noinline) _Alloc_ptr_t<th20::GlyphMaskAllocator>
@@ -95,7 +103,7 @@ vector<th20::GlyphMaskOffset, pmr::polymorphic_allocator<th20::GlyphMaskOffset>>
     const th20::GlyphMaskOffset& value) {
     auto& data = _Mypair._Myval2;
     pointer& last = data._Mylast;
-    th20::glyph_uninitialized_move_construct(_Getal(), _Unfancy(last), std::move(value));
+    th20::glyph_uninitialized_move_construct(_Getal(), *_Unfancy(last), std::move(value));
     _Orphan_range(last, last);
     th20::GlyphMaskOffset& result = *last;
     ++last;
@@ -127,7 +135,7 @@ vector<th20::GlyphMaskOffset, pmr::polymorphic_allocator<th20::GlyphMaskOffset>>
 
     const th20::GlyphMaskOffset&& source = std::move(value);
     const pointer destination = _Unfancy(new_vector + where_offset);
-    th20::glyph_uninitialized_move_construct(allocator, destination, source);
+    th20::glyph_uninitialized_move_construct(allocator, *destination, source);
     constructed_first = new_vector + where_offset;
 
     if (where == last) {

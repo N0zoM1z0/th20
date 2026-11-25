@@ -41,9 +41,11 @@ complete.
 natural C++ member-template specializations. The 8B shared `std::move` leaf
 is byte-exact; the complete 108B/40, 140B/52 and 488B/170 bodies match all
 non-relocation bytes and original E8 positions. The 35B wrapper is 34B/14
-with the native `+0x1C` NOP omitted, and the 200B uninitialized-move helper
-remains 191B/62. Targeted cold replay rebuilt only the compositor and retained
-24/24 exact PMR/color descendants. The 2,245B compositor remains NONEXACT at
+with the native `+0x1C` NOP omitted. The 200B/65 uninitialized-move parent,
+92B/34 backout member and 31B/14 allocator bridge match all non-relocation
+bytes and native E8 positions. The 31B bridge still reaches a 69B current-STL
+allocator constructor instead of the original 78B leaf. Targeted cold replay
+rebuilt only the compositor and retained 24/24 exact PMR/color descendants. The 2,245B compositor remains NONEXACT at
 2,128B/561; see the [PMR five-parent frontier](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md)
 and [complete chain verifier](../scripts/verify-glyph-mask-emplace35-native.py).
 

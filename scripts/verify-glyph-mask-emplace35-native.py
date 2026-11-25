@@ -231,7 +231,7 @@ def verify_candidate(obj: Path, image, base, sections, native):
     backout_relocs = {int(r["offset"]) - 1: r["symbol"] for r in relocs["backout_emplace"]}
     assert "glyph_uninitialized_move_construct" in backout_relocs[0x3F]
     allocator_relocs = {int(r["offset"]) - 1: r["symbol"] for r in relocs["allocator_move_construct"]}
-    assert "move@AAV" in allocator_relocs[0x07]
+    assert "move@ABV" in allocator_relocs[0x07]
     assert "polymorphic_allocator" in allocator_relocs[0x17] and "construct" in allocator_relocs[0x17]
 
     # The game-owned parent still calls the real C++ emplace_back specialization

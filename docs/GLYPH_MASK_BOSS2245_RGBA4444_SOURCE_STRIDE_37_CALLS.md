@@ -212,7 +212,10 @@ byte-exact; the 108B/40, 140B/52 and 488B/170 helper bodies match every
 non-relocation byte and every original E8 position. The 488B helper also
 preserves both native HIGHLOW field positions as COFF DIR32 relocations. The
 35B public wrapper is a 34B/14 candidate with both native E8 sites and one
-native NOP omitted; the 200B uninitialized-move helper remains 191B/62.
+native NOP omitted; the 200B/65 uninitialized-move body, 92B/34 backout
+member and 31B/14 allocator bridge now match every non-relocation byte and
+native E8 position. Their target identities still differ at the old 78B
+allocator-construction leaf.
 
 The targeted source cold replay rebuilt one object and retained 24/24 exact
 PMR/color descendants. The parent remains 2,128B/561 versus native 2,245B/612,
