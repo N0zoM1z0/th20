@@ -4,7 +4,7 @@
 // restores the 108B/140B/488B/200B bodies and the nested 92B/31B helper
 // shapes outside real relocation fields. The 35B wrapper is 34B with the
 // original compiler-emitted trailing NOP absent; the complete game
-// compositor remains NONEXACT (current full parent: 2,186B/585 i386).
+// compositor remains NONEXACT (current full parent: 2,224B/591 i386).
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphMaskOffsets.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -22,8 +22,8 @@
 // These are ordinary C++ implementations, not injected bytes or padding; the
 // 35B public wrapper remains NONEXACT because this compiler omits its NOP.
 // The main Boss uses a two-case pixel-format dispatch, constructs each PMR
-// stencil only after computing radius_squared, and takes both BGRA32 and
-// RGBA4444 outline edges directly from their four ordered neighbor tests.
+// stencil only after computing radius_squared, and takes both BGRA32 and RGBA4444 outline edges directly from their
+// four ordered neighbor tests.
 template __declspec(noinline) const th20::GlyphMaskOffset&&
 std::move<const th20::GlyphMaskOffset&>(const th20::GlyphMaskOffset&) noexcept;
 template __declspec(noinline) th20::GlyphMaskOffset&&
@@ -191,7 +191,10 @@ static_assert(sizeof(NativeGlyphAlpha4444)==2);
 // Native original 16-bit color word is default-constructed before
 // alpha/RGB nibbles are subsequently assigned on the true ARGB4444 path.
 struct NativeGlyphColor4444 {
-    std::uint16_t packed;
+    union {
+        std::uint16_t packed;
+        NativeGlyphAlpha4444 channels;
+    };
     NativeGlyphColor4444() : packed(0) {}
 };
 bool NativeGlyphCanvasView::composite_glyph_mask_416420(
@@ -253,9 +256,9 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                             goto bgra32_outline;
                         }
                     }
-                    reinterpret_cast<std::uint8_t*>(dest)[0]=opaque.channels.blue;
-                    reinterpret_cast<std::uint8_t*>(dest)[1]=opaque.channels.green;
-                    reinterpret_cast<std::uint8_t*>(dest)[2]=opaque.channels.red;
+                    reinterpret_cast<PackedColorChannels*>(dest)->red=opaque.channels.red;
+                    reinterpret_cast<PackedColorChannels*>(dest)->green=opaque.channels.green;
+                    reinterpret_cast<PackedColorChannels*>(dest)->blue=opaque.channels.blue;
                     goto bgra32_pixel_done;
                     bgra32_outline:
                     *reinterpret_cast<PackedColorChannels*>(dest)=opaque.channels;
@@ -279,11 +282,10 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
         }
         const PackedColor unpacked(color);
         NativeGlyphColor4444 packed_color;
-        packed_color.packed=static_cast<std::uint16_t>(
-              ((unpacked.value>>4)&0xf)
-             |(((unpacked.value>>12)&0xf)<<4)
-             |(((unpacked.value>>20)&0xf)<<8)
-             |((((unpacked.value>>28)&0xf)^0xf)<<12));
+        packed_color.channels.red=static_cast<std::uint16_t>(unpacked.channels.red>>4);
+        packed_color.channels.green=static_cast<std::uint16_t>(unpacked.channels.green>>4);
+        packed_color.channels.blue=static_cast<std::uint16_t>(unpacked.channels.blue>>4);
+        packed_color.channels.alpha=static_cast<std::uint16_t>((unpacked.channels.alpha>>4)^0xf);
         for (std::int32_t y=0;y<rows;++y) {
             auto* dest=reinterpret_cast<std::uint16_t*>(
                 pixels+y*pixel_stride_4156c0()+start*2);
