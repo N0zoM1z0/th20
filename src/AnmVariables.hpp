@@ -23,11 +23,16 @@ struct AnmVariables {
     union {
         float field_10;
         float rounded_shape_radius;
-        float ring_center_radius;
+        float ring_center_radius;             // Draw modes 39-41
+        float mode24_25_angular_span;
+        float mode47_ring_thickness;
+        float mode48_triangle_radius;
     };
     union {
         float field_14;
-        float ring_thickness;
+        float ring_thickness;                 // Draw modes 39-41
+        float mode24_25_half_height;
+        float mode47_ring_center_radius;
     };
     float field_18, field_1c, field_20, field_24;
     union {
@@ -49,6 +54,11 @@ static_assert(offsetof(AnmVariables, field_10) == 16);
 static_assert(offsetof(AnmVariables, rounded_shape_radius) == 16);
 static_assert(offsetof(AnmVariables, ring_center_radius) == 16);
 static_assert(offsetof(AnmVariables, ring_thickness) == 20);
+static_assert(offsetof(AnmVariables, mode24_25_angular_span) == 16);
+static_assert(offsetof(AnmVariables, mode47_ring_thickness) == 16);
+static_assert(offsetof(AnmVariables, mode48_triangle_radius) == 16);
+static_assert(offsetof(AnmVariables, mode24_25_half_height) == 20);
+static_assert(offsetof(AnmVariables, mode47_ring_center_radius) == 20);
 static_assert(offsetof(AnmVariables, field_28) == 0x28);
 static_assert(offsetof(AnmVariables, particle_grid_angle_offset) == 0x28);
 static_assert(offsetof(AnmVariables, field_2c) == 44);

@@ -50,6 +50,15 @@ contribution is **5,452 bytes**: the extra **24-byte pointer table
 and 40-byte selector table** are retained and strictly compared,
 not omitted after the last return.
 
+The shared `AnmVariables` slots at `+0x10/+0x14` now have mode-specific
+source aliases rather than being treated as universal meanings: modes24/25
+use angular span/half-height, modes37/38 use rounded-shape radius, modes39-41
+use ring center-radius/thickness, mode47 uses ring thickness/center-radius,
+and mode48 uses triangle radius. The aliases preserve the original 64-byte
+storage and offsets. The changed `AnimationGeometry.cpp` was rebuilt alone and
+its complete 5,388-byte body plus 64 relocation fields replayed strict exact
+against the original 5,452-byte contribution.
+
 **Easing dispatcher:** The game-owned 4,154-byte easing switch is
 called by Animation/interpolation/Enemy/ECL routines. Its actual
 contribution is **4,284 bytes** because of **two alignment bytes and
