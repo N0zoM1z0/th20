@@ -292,17 +292,15 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30((position.x),(position.y),width,animation_inherited_aux_scale_x(animation),height,angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
     case 45: {
-        // Native mode45 computes the scale half before the getter and the
-        // width half after it. This value-equivalent source role swap keeps
-        // width's half before the getter and recomputes scale's half after,
-        // preserving the native register-register addss and E8 call positions.
+        // Native mode45 retains the scale half-height across the getter, then
+        // independently recomputes the width half in the renderer arguments.
         const auto secondary_color=animation_draw_color_494(animation);
         const auto primary_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;
-        const float half_for_width = height / native_two;
-        const float adjusted_scale = animation_inherited_aux_scale_x(animation) + (height/native_two);
+        const float half_for_scale=height/native_two;
+        const float adjusted_scale=animation_inherited_aux_scale_x(animation)+half_for_scale;
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43df30(
-            position.x,position.y,width+half_for_width,adjusted_scale,height,
+            position.x,position.y,width+(height/native_two),adjusted_scale,height,
             angle,quad_count,primary_color,secondary_color);
         break;
     }

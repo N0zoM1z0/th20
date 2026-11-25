@@ -215,27 +215,40 @@ def verify() -> None:
         "f30f10859cfeffff f30f108d98feffff f30f5cc1")
     # The width half is a separate post-adjustment calculation in each mode;
     # do not let a value-equivalent half-height role swap masquerade as the
-    # original evaluation order. Mode35 adds width in XMM0; mode36 loads width
-    # into XMM1 and subtracts the newly computed half-height.
+    # original evaluation order. Mode35/45 add width in XMM0; mode36/46 load
+    # width in XMM1 and subtract the newly computed half-height.
     mode35_width = bytes.fromhex(
         "f30f1045e8 f30f5e05d0c85600 f30f5845e4")
     mode36_width = bytes.fromhex(
+        "f30f1045e8 f30f5e05d0c85600 f30f104de4 f30f5cc8")
+    mode45_adjust = bytes.fromhex(
+        "e81e0a0000 d99d2cfeffff "
+        "f30f10852cfeffff f30f108d28feffff f30f58c1")
+    mode45_width = bytes.fromhex(
+        "f30f1045e8 f30f5e05d0c85600 f30f5845e4")
+    mode46_adjust = bytes.fromhex(
+        "e83f090000 d99d14feffff "
+        "f30f108514feffff f30f108d10feffff f30f5cc1")
+    mode46_width = bytes.fromhex(
         "f30f1045e8 f30f5e05d0c85600 f30f104de4 f30f5cc8")
     for offset, expected in ((0x0FC8, mode35_first),
                              (0x1016, mode35_adjust),
                              (0x1068, mode35_width),
                              (0x10B5, mode36_first),
                              (0x1103, mode36_adjust),
-                             (0x171C, mode36_width)):
+                             (0x1155, mode36_width),
+                             (0x15DD, mode45_adjust),
+                             (0x163D, mode45_width),
+                             (0x16BC, mode46_adjust),
+                             (0x171C, mode46_width)):
         assert native_body[offset:offset + len(expected)] == expected, hex(offset)
     for offset in (0x0FC8, 0x1016, 0x10B5, 0x1103):
         call = instructions[next(i for i, ins in enumerate(instructions)
                                  if ins.address == HEAD + offset)]
         target = (call.address + 5 + struct.unpack_from("<i", call.bytes, 1)[0]) & 0xFFFFFFFF
         assert call.mnemonic == "call" and target == 0x00445880
-    print("PASS native mode35/36 order: first x87 returns store to [ebp-0x160]; "
-          "second returns feed register-register addss/subss; width halves are "
-          "recomputed afterwards with the original XMM operand order")
+    print("PASS native mode35/36 first-return spills and register-register scale ops; "
+          "mode35/36/45/46 width and mode45/46 scale XMM operand order")
 
     original_body_relocs = {address for address in relocs if HEAD <= address < HEAD + BODY_SIZE}
     assert len(original_body_relocs) == 32

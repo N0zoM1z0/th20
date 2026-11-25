@@ -2,14 +2,13 @@
 """Independently attest full 5,993B Animation Draw Boss source/PE roles.
 
 The immutable original body is 5993B/1501-x86 instructions. The maintained
-pinned-MSVC C++ candidate is still 5993B with the native 0x204 frame, but now
-has 1502 instructions because a source-level bit extraction restores the
-original SHR/AND byte sequence. Both original 49+31-pointer switch tables
-preserve native case aliasing and physical alignment. All 123 E8 call roles
-agree in native order; 114 physical call positions match (81 consecutive),
-and 27/32 original PE body data relocation offsets/targets coincide. Real
-instruction/branch/relocation differences remain: this is SOURCE-PRESENT,
-NONEXACT, not a canonical match unit.
+pinned-MSVC C++ candidate currently emits 5989B/1501 instructions with the
+native 0x204 frame. Both original 49+31-pointer switch tables preserve native
+case aliasing, but the table block follows the shorter source body. All 123
+E8 call roles agree in native order; 109 physical call positions match (81
+consecutive), and 26/32 original PE body data relocation offsets/targets
+coincide. Real instruction/branch/relocation differences remain: this is
+SOURCE-PRESENT, NONEXACT, not a canonical match unit.
 """
 from collections import Counter
 import csv
@@ -138,11 +137,24 @@ def main():
     assert "variables.field_10" not in text and "variables.field_14" not in text
     assert "field_570" not in text
 
-    # Mode45 intentionally reverses the two equal half-height calculations
-    # to keep native register-register ADDSS and its renderer call position.
-    # The original PE instead uses the pre-getter half for adjusted scale and
-    # recomputes width's half after the getter; this is value-equivalent only.
-    assert "const float half_for_width = height / native_two;" in text
+    # Mode45/46 both preserve the original dataflow: calculate scale half
+    # before the getter, consume it after the getter, then independently
+    # calculate the width half in the renderer argument list.
+    mode45 = text.split("case 45: {", 1)[1].split("case 46: {", 1)[0]
+    mode46 = text.rsplit("case 46: {", 1)[1].split("default:", 1)[0]
+    for block, operator in ((mode45, "+"), (mode46, "-")):
+        color494 = block.index("animation_draw_color_494(animation)")
+        color490 = block.index("animation_draw_color_490(animation)")
+        count = block.index("draw_shape_count")
+        half = block.index("const float half_for_scale=height/native_two;")
+        width = block.index("width+(height/native_two)" if operator == "+" else "width-(height/native_two)")
+        if operator == "+":
+            adjusted = block.index("const float adjusted_scale=animation_inherited_aux_scale_x(animation)+half_for_scale;")
+            assert color494 < color490 < count < half < adjusted < width
+        else:
+            getter = block.index("const float inherited_scale=animation_inherited_aux_scale_x(animation);")
+            adjusted = block.index("const float adjusted_scale=inherited_scale-half_for_scale;")
+            assert color494 < color490 < count < half < getter < adjusted < width
     # The second mode35/36 getter result is a real value consumed by the
     # adjusted scale; only the first native getter result is discarded.
     assert text.count("const float inherited_scale=animation_inherited_aux_scale_x(animation);") == 3
@@ -164,16 +176,12 @@ def main():
         adjusted = block.index(f"const float adjusted_scale=inherited_scale{operator}aux_half;")
         width_calc = block.index(width_expr)
         assert first_getter < color_getter < half_calc < second_getter < adjusted < width_calc
-    assert "const float adjusted_scale = animation_inherited_aux_scale_x(animation) + (height/native_two);" in text
-    assert "width+half_for_width,adjusted_scale,height" in text
-
-    # Mode46's native dataflow is asymmetric: the pre-getter half-height is
-    # retained for adjusted scale, while width recomputes its half after the
-    # getter. Guard this source-level ownership separately from byte scoring.
-    assert "const float half_for_scale=height/native_two;" in text
-    assert "const float inherited_scale=animation_inherited_aux_scale_x(animation);" in text
-    assert "const float adjusted_scale=inherited_scale-half_for_scale;" in text
-    assert "width-(height/native_two),adjusted_scale,height" in text
+    assert "const float adjusted_scale=animation_inherited_aux_scale_x(animation)+half_for_scale;" in mode45
+    assert "width+(height/native_two),adjusted_scale,height" in mode45
+    assert "const float half_for_scale=height/native_two;" in mode46
+    assert "const float inherited_scale=animation_inherited_aux_scale_x(animation);" in mode46
+    assert "const float adjusted_scale=inherited_scale-half_for_scale;" in mode46
+    assert "width-(height/native_two),adjusted_scale,height" in mode46
 
     with (ROOT / "config/animation-draw-boss-mode-e8.csv").open(newline="") as f:
         routes = list(csv.DictReader(f))
@@ -205,11 +213,11 @@ def main():
     marker = bytes.fromhex("c204000f1f00")
     assert compiled.count(marker) == 1
     code_end = compiled.index(marker) + 3
-    assert code_end == SIZE == 5993
+    assert code_end == 5989
     assert compiled[code_end:code_end+3] == bytes.fromhex("0f1f00")
-    assert len(compiled) == 6316
+    assert len(compiled) == 6312
     code = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(compiled[:code_end], HEAD))
-    assert len(native) == 1501 and len(code) == 1502
+    assert len(native) == 1501 and len(code) == 1501
     # Native parent-angle gating extracts bit 12 as SHR+AND, not a single
     # AND-immediate mask. Keep the exact original six bytes at this site.
     assert compiled[0x3E8:0x3EE] == original[0x3E8:0x3EE] == bytes.fromhex("c1ea0c83e201")
@@ -218,8 +226,9 @@ def main():
     assert code[-1].address+code[-1].size == HEAD+code_end
     assert code[-1].mnemonic=="ret" and code[-1].op_str=="4"
     assert len(compiled)-code_end == 3+49*4+31*4
-    assert ORIGINAL.MAIN_TABLE-HEAD == code_end+3
-    assert ORIGINAL.SUB_TABLE-HEAD == code_end+3+49*4
+    candidate_main_table_offset=code_end+3
+    candidate_nested_table_offset=candidate_main_table_offset+49*4
+    assert candidate_nested_table_offset+31*4 == len(compiled)
     table_relocs=sorted((r for r in relocations if r["type"]=="DIR32" and
                         r["offset"]>=code_end), key=lambda r:r["offset"])
     assert len(table_relocs)==80
@@ -250,8 +259,9 @@ def main():
         if native_calls[address] != source_calls[address]
     ]
     # The first 81 E8 instruction offsets and all 123 physical target roles
-    # agree; 114 of the 123 physical E8 positions agree across the entire
-    # original code, including the compiler cookie. This is NOT full exact.
+    # agree; 109 of the 123 physical E8 positions agree across the entire
+    # original code. The source-accurate mode45 order shortens the parent body
+    # by four bytes; this is NOT full exact.
     physical_calls=[(inst.address-HEAD,
            (inst.address+5+struct.unpack_from('<i',inst.bytes,1)[0])&0xffffffff)
            for inst in native if len(inst.bytes)==5 and inst.bytes[0]==0xE8]
@@ -262,9 +272,8 @@ def main():
     assert physical_calls[:81]==candidate_calls[:81]
     assert physical_calls!=candidate_calls
     matched_call_sites=sum(a==b for a,b in zip(physical_calls,candidate_calls))
-    assert matched_call_sites==114
-    assert physical_calls[-1]==candidate_calls[-1]  # real compiler cookie
-    assert sum(abs(a[0]-b[0]) for a,b in zip(physical_calls,candidate_calls))==44
+    assert matched_call_sites==109
+    assert sum(abs(a[0]-b[0]) for a,b in zip(physical_calls,candidate_calls))==68
 
 
     assert chosen_render_targets <= set(source_calls), chosen_render_targets - set(source_calls)
@@ -332,7 +341,7 @@ def main():
             target='table_main' if row['offset']<0x400 else 'table_nested'
         current_site_roles[row['offset']]=target
     matched_data_sites=len(set(native_site_roles.items())&set(current_site_roles.items()))
-    assert matched_data_sites==27 and len(native_site_roles)==len(current_site_roles)==32
+    assert matched_data_sites==26 and len(native_site_roles)==len(current_site_roles)==32
 
     # Compare code and after-RET data as a provisional strict-replay
     # diagnostic: no relocation targets are solved from original bytes.
@@ -343,7 +352,7 @@ def main():
         ignored.update(range(int(row['offset']),int(row['offset'])+4))
     comparable_bytes=sum(original_extent[i]==compiled[i]
                          for i in range(len(compiled)) if i not in ignored)
-    assert comparable_bytes==4840 and len(compiled)-len(ignored)==5376
+    assert comparable_bytes==4694 and len(compiled)-len(ignored)==5372
 
 
     assert all(addr in reloc_sites for t,n in ((ORIGINAL.MAIN_TABLE, 49),
@@ -356,9 +365,9 @@ def main():
     print(f"PASS first 81 consecutive E8 instruction sites and {matched_call_sites}/123 complete original E8 physical positions (all 123 targets in order)")
     print(f"PASS 32/32 native PE in-body HIGHLOW roles, {matched_data_sites}/32 exact site/target pairs")
     print("PASS mode6 native thiscall and two original eight-parameter draw helper receiver/stack roles are in source")
-    print("PASS mode45 value-equivalent half-height role swap and mode46 native ownership")
+    print("PASS mode45/46 original pre-getter scale-half and post-adjustment width-half source ownership")
     print(f"PASS candidate code {code_end}B/{len(code)} x86 with native stack frame 0x204; complete COFF {len(compiled)}B including 3B alignment+80 true pointer fields")
-    print(f"NONEXACT parent: only {comparable_bytes}/5376 nonrelocation bytes equal; remaining nested-case local life and relocation offsets differ; zero game exact credit")
+    print(f"NONEXACT parent: only {comparable_bytes}/{len(compiled)-len(ignored)} nonrelocation bytes equal; remaining nested-case local life and relocation offsets differ; zero game exact credit")
 
 
 if __name__ == "__main__":

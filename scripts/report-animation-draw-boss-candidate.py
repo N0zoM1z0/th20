@@ -62,22 +62,30 @@ def main() -> int:
 
     for path in args.objects:
         body, relocs = candidate_body(path)
-        marker_at = body.find(END_MARKER)
-        if marker_at < 0:
-            raise ValueError(f"{path}: no complete native-style ret/padding boundary")
-        code_end = marker_at + 3
-        if code_end > SIZE + 64:
+        decoded_body = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(bytes(body), HEAD))
+        ret4 = next((ins for ins in decoded_body
+                     if ins.bytes[:3] == bytes.fromhex("c20400")), None)
+        if ret4 is None:
+            raise ValueError(f"{path}: no complete ret 4 function boundary")
+        code_end = ret4.address - HEAD + ret4.size
+        if code_end > SIZE + 512:
             raise ValueError(f"{path}: implausible code boundary {code_end}")
 
+        # The established ordinary-byte metric compares the complete native
+        # COFF contribution: 5,993B code plus 3B alignment and 80 real switch
+        # table pointers (6,316B total). Longer experimental contributions are
+        # decoded/reported, but scoring remains capped at that same boundary.
+        contribution_extent = 6316
+        score_extent = min(len(body), contribution_extent)
         ignored = set()
         for relocation in relocs:
             offset = int(relocation["offset"])
-            if offset < len(body):
-                ignored.update(range(offset, min(len(body), offset + 4)))
-        original_contribution = COFF.pe_bytes_at(image, HEAD, len(body))
-        comparable = len(body) - len(ignored)
+            if offset < score_extent:
+                ignored.update(range(offset, min(score_extent, offset + 4)))
+        original_contribution = COFF.pe_bytes_at(image, HEAD, score_extent)
+        comparable = score_extent - len(ignored)
         ordinary = sum(original_contribution[i] == body[i]
-                       for i in range(len(body)) if i not in ignored)
+                       for i in range(score_extent) if i not in ignored)
 
         code = bytes(body[:code_end])
         instructions = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(code, HEAD))
@@ -105,6 +113,36 @@ def main() -> int:
         mode36_memory_sub = [ins.address - HEAD for ins in instructions
                              if 0x10B2 <= ins.address - HEAD < 0x1198
                              and ins.mnemonic == "subss" and ins.op_str.startswith("xmm0, dword ptr")]
+        # Native mode45/46 are separate later cases in the same large switch.
+        # Keep these ranges distinct from mode35/36: mode45 uses ADDSS and
+        # mode46 uses SUBSS, each with a separately recomputed width half.
+        mode45_add = [ins.address - HEAD for ins in instructions
+                      if 0x15D5 <= ins.address - HEAD < 0x1604
+                      and ins.mnemonic == "addss" and ins.op_str == "xmm0, xmm1"]
+        mode46_sub = [ins.address - HEAD for ins in instructions
+                      if 0x16BC <= ins.address - HEAD < 0x16E3
+                      and ins.mnemonic == "subss" and ins.op_str == "xmm0, xmm1"]
+        mode46_reverse_sub = [ins.address - HEAD for ins in instructions
+                              if 0x16BC <= ins.address - HEAD < 0x16E3
+                              and ins.mnemonic == "subss" and ins.op_str == "xmm1, xmm0"]
+        mode45_memory_add = [ins.address - HEAD for ins in instructions
+                             if 0x15D5 <= ins.address - HEAD < 0x1604
+                             and ins.mnemonic == "addss" and ins.op_str.startswith("xmm0, dword ptr")]
+        mode46_memory_sub = [ins.address - HEAD for ins in instructions
+                             if 0x16BC <= ins.address - HEAD < 0x16E3
+                             and ins.mnemonic == "subss" and ins.op_str.startswith("xmm0, dword ptr")]
+        mode35_width_add = [ins.address - HEAD for ins in instructions
+                            if 0x1068 <= ins.address - HEAD < 0x107A
+                            and ins.mnemonic == "addss" and ins.op_str.startswith("xmm0, dword ptr")]
+        mode36_width_sub = [ins.address - HEAD for ins in instructions
+                            if 0x1155 <= ins.address - HEAD < 0x116B
+                            and ins.mnemonic == "subss" and ins.op_str == "xmm1, xmm0"]
+        mode45_width_add = [ins.address - HEAD for ins in instructions
+                            if 0x163D <= ins.address - HEAD < 0x1650
+                            and ins.mnemonic == "addss" and ins.op_str.startswith("xmm0, dword ptr")]
+        mode46_width_sub = [ins.address - HEAD for ins in instructions
+                            if 0x171C <= ins.address - HEAD < 0x1732
+                            and ins.mnemonic == "subss" and ins.op_str == "xmm1, xmm0"]
 
         print(f"{path.name}: contribution={len(body)}B code={code_end}B "
               f"x86={len(instructions)} ordinary={ordinary}/{comparable} "
@@ -113,6 +151,13 @@ def main() -> int:
         print(f"  candidate-only mode35/36: first-result-spills={len(first_spills)} {first_spills}; "
               f"register-add={mode35_add}; register-sub={mode36_sub}; "
               f"memory-add={mode35_memory_add}; memory-sub={mode36_memory_sub}")
+        print(f"  candidate-only mode35/36/45/46: "
+              f"mode35-width-add={mode35_width_add}; mode36-width-sub={mode36_width_sub}; "
+              f"mode45-width-add={mode45_width_add}; mode46-width-sub={mode46_width_sub}")
+        print(f"  candidate-only mode45/46 scale: mode45-register-add={mode45_add}; "
+              f"mode46-native-order-register-sub={mode46_sub}; "
+              f"mode46-reversed-register-sub={mode46_reverse_sub}; "
+              f"memory-add={mode45_memory_add}; memory-sub={mode46_memory_sub}")
         if len(candidate_calls) != len(native_calls):
             print(f"  WARNING: candidate E8 instruction count {len(candidate_calls)} != native {len(native_calls)}")
         if code_end != SIZE:
