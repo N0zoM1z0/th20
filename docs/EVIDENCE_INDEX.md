@@ -833,6 +833,7 @@ Compiler scores labelled "current" in historical entries below mean
 ## Whole original 985B quad projection and two independent 455B colored vertex methods now strict exact
 
 - [CORE/RECON-874/875/876 — entire original 985B/233-x86 corner projector plus native 455B/129-x86 TRIANGLEFAN and 455B/129-x86 LINESTRIP renderers](ANIMATION_CORNER_PROJECTION_985_VERTEX_DRAW_455_STRICT_EXACT.md) — independently locked PE verifies **all 14 genuine E8 site/target pairs and 19 real HIGHLOW field/targets**, original 96B **2-axis ×3-mode ×4-corner** table at `0x56E140`, and multiple actual game caller E8s. Original projection mode indexes are 16B strides; correcting the earlier float-scalar indexing restores two native SHL4 instructions. Three natural C++ sources now strictly match **985/985 +455/455 +455/455 original relocated bytes**, crediting three unique game originals/+1,895 disjoint `.text` bytes. Live **628 game exact /231,537 code bytes**, **1,274 mapped /1,275 strict units /293 objects**. 5,993B main Draw remains NONEXACT, header include-closure replay only and no full cold replay.
+- [244B Animation corner projection dispatcher — strict exact](ANIMATION_CORNER_PROJECTION_DISPATCH244_SOURCE_FRONTIER.md) — original 244B/79-i386 body and 16B switch table, all 11 relocations, full 260B strict canonical replay.
 
 ## Whole 375B POINTLIST, 809B alternating TRIANGLEFAN and 583B alternating LINESTRIP renderers strict exact
 

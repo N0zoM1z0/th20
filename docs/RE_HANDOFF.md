@@ -35,6 +35,16 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
+## Latest checkpoint — Animation corner projection dispatcher
+
+The original 244B `Animation::project_corners` dispatcher at `0x00445770` is
+now strict exact. The canonical comparison covers its 244B/79-i386 body and
+its original 16B switch table: all 260 relocated bytes, three E8 calls, four
+body HIGHLOW fields and four table targets match. The 985B normal projector
+and 1,486B rotated projector remain independently exact. Historical source
+provenance for the 244B dispatcher remains unknown. See
+[the dispatcher proof](ANIMATION_CORNER_PROJECTION_DISPATCH244_SOURCE_FRONTIER.md).
+
 ## Latest checkpoint — StageResource selector and Enemy opcodes 622–626/631
 
 The maintained partial Enemy root now executes opcodes 622–626/631 through
