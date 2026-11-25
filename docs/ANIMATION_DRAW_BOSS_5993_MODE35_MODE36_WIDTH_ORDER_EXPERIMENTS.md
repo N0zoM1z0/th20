@@ -427,11 +427,15 @@ children use the same indices to select X/Y corner arrays, mode8 forms the
 
 The semantic names are layout-preserving union aliases in Animation.hpp;
 the original word_10/word_14 names remain available to raw-layout consumers.
-Five affected exact leaf units were cold-replayed and remain byte-exact:
-985/985, 1,486/1,486, 1,378/1,378, 1,996/1,996 and 4,347/4,347 coverage
-bytes (4,372/4,372 compared bytes). The 39,470B update source and both laser
-initialization sources compile with the semantic field names. A typed
-__forceinline reference accessor was tested and rejected because the strict
-1,378B mode6 setup replay grew to a 1,399B COFF contribution; direct union
-aliases preserve the exact native codegen. The large 5,993B Draw Boss parent
-retains its same 5,989B/1,501-instruction, 109/123-E8 NONEXACT profile.
+The five anchor-specific exact leaf units were cold-replayed and remain
+byte-exact: 985/985, 1,486/1,486, 1,378/1,378, 1,996/1,996 and 4,347/4,347
+coverage bytes (4,372/4,372 compared bytes). The complete affected
+include-closure batch replayed 33/33 exact units across 11 source objects,
+including seven AnimationBinding units, nine AnimationCallback units, four
+DrawAccess leaves and the 5,388B AnimationGeometry boss. The 39,470B update
+source and both laser initialization sources compile with the semantic field
+names. A typed __forceinline reference accessor was tested and rejected
+because the strict 1,378B mode6 setup replay grew to a 1,399B COFF contribution;
+direct union aliases preserve the exact native codegen. The large 5,993B Draw
+Boss parent retains its same 5,989B/1,501-instruction, 109/123-E8 NONEXACT
+profile.

@@ -358,11 +358,14 @@ source-present but NONEXACT.
    with static offsets +0x10/+0x14 and the unchanged 0x20-byte structure.
    Mode6/7/8 setup/rendering, both 985B/1,486B corner projectors, the 0x5D
    script operand producer and both laser initializers use the semantic names.
-   The five affected exact leaves were cold-replayed 1/1 each: 985/985,
-   1,486/1,486, 1,378/1,378, 1,996/1,996 and 4,347/4,347 coverage bytes
-   (4,372/4,372 compared bytes). The 39,470B update source and both laser
-   initializer sources also compile as i386 objects; those owners are not
-   claimed exact. A typed __forceinline reference accessor was tested and
+   The five anchor-specific exact leaves were cold-replayed 1/1 each:
+   985/985, 1,486/1,486, 1,378/1,378, 1,996/1,996 and 4,347/4,347 coverage
+   bytes (4,372/4,372 compared bytes). The complete affected include-closure
+   batch replayed 33/33 exact units across 11 source objects, including seven
+   AnimationBinding units, nine AnimationCallback units, four DrawAccess
+   leaves and the 5,388B AnimationGeometry boss. The 39,470B update source and
+   both laser initializer sources also compile as i386 objects; those owners
+   are not claimed exact. A typed __forceinline reference accessor was tested and
    rejected because it changed the exact 1,378B mode6 setup contribution to
    1,399B; direct union field aliases preserve the original codegen. The
    source-role verifier pins the alias names, offsets, layout and consumers.
