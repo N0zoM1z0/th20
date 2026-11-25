@@ -753,3 +753,29 @@ switch/stack layout dramatically. None improves the maintained 5,989B,
 1,501-head, 109/123-E8, 26/32-HIGHLOW parent. The source-role verifier's
 mode35/36 order assertions remain unchanged; no candidate source was
 promoted.
+
+
+## 2026-11-25 follow-up: mode35/36 scalar local types and adjusted-scale forms
+
+A focused mode35/36-only matrix changed the local scalar qualifiers/types
+while preserving the native getter/color/count/half/getter/adjusted/width
+source order. Mutable, volatile, const-volatile and `register` half locals;
+mutable/volatile inherited-scale locals; and `height*0.5f` or
+`height/2.0f` spellings all compiled identically to the maintained parent:
+5,989B code, 1,501 x86 heads, 109/123 E8, 68B total E8 displacement,
+26/32 HIGHLOW and 4,694/5,372 ordinary bytes. These source-level type and
+literal changes do not move the first-result or XMM operand frontier.
+
+Four adjusted-scale assignment forms were also compiled in both modes:
+
+| Form | Code | x86 | E8 | HIGHLOW |
+| --- | ---: | ---: | ---: | ---: |
+| mutable `adjusted_scale` plus `+=`/`-=` | 6,009B | 1,505 | 45/123 | 14/32 |
+| predeclared then assigned expression | 5,989B | 1,501 | 109/123 | 26/32 |
+| half-seeded mutable accumulator | 6,009B | 1,505 | 45/123 | 14/32 |
+| commuted add / negated-half subtract | 5,996B | 1,502 | 81/123 | 22/32 |
+
+Only the predeclared assignment reproduces the maintained metrics; it is not
+an improvement. No variant gives the native register-register add/subtract
+while preserving the scale-half-before-getter dataflow. Production source and
+its strict source-role assertions remain unchanged.
