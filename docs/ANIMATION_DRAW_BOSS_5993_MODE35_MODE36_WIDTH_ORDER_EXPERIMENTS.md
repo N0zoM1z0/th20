@@ -368,3 +368,46 @@ passed 4/4: animation_draw_color_490_20 (20B), animation_draw_color_494_20
 (20B), animation_draw_enabled_26 (26B), and animation_draw_inherited_aux_scale_93
 (93B). This confirms the big parent's getter/color callees remain independently
 exact; it does not grant exactness to the 5,993B parent.
+
+
+## 2026-11-25 follow-up: scoped/aggregate first-result and argument-lifetime probes
+
+A second, current-source-derived battery tried to make the native mode35/36
+write-only first getter result a real C++ temporary without hoisting all
+locals. Each mode was tested with a nested-scope value, const lvalue
+reference, const rvalue reference, volatile value, one-field aggregate and
+one-element array. Each was paired with either the current mode35 width local
+or the inline width expression.
+
+None preserved the parent call graph. The nested-scope variants with the
+current width local ranged from 5,981B to 5,999B and retained only 84/123 E8
+positions; the inline-width variants likewise remained at 84/123 or worse.
+The one candidate reporting an fstp to [ebp-0x160] did so for a later mode36
+getter, not for the first mode35/36 return. The candidate-only disassembly
+therefore does not count it as recovery of the two original first-return
+stores.
+
+A structured-local battery grouped the actual mode35/mode36 temporary values
+into structs in native stack order and reverse order. Full mode structs,
+compact two-float first-result/adjusted-scale pairs, and the paired mode35+36
+forms all changed switch layout substantially: 84–86/123 E8 positions,
+23–24/32 HIGHLOW sites, and 3,713–3,829 ordinary bytes. No candidate emitted
+the required first-result spill at the native call site or either native
+register-register adjusted-scale operation. These aggregate representations
+are rejected as compiler-layout shaping, not promoted C++ reconstruction.
+
+A further attempt reused an actual renderer argument local for the first
+getter return, then overwrote it with the final width/adjusted-scale value.
+Mode35 width reuse and adjusted-scale reuse both collapsed the candidate to
+45/123 E8; adding the same reuse to mode36 was worse. Declaring a real width
+local and assigning it inside the renderer argument expression was also
+tested in three declaration positions; all three compiled identically to the
+maintained 5,989B/109-E8 candidate (4,691/5,372 ordinary bytes), with no
+native spill or SSE register form. These source forms did not improve on the
+current production expression.
+
+The current parent remains 5,989B/1,501 instructions, 109/123 E8 positions,
+68B total absolute E8 displacement and 26/32 exact HIGHLOW site/target pairs.
+No local, struct, array, reference, volatile qualifier, opcode or padding is
+added to production source. The first-result x87 slot and register-operand
+frontier remain open.

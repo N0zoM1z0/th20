@@ -344,8 +344,15 @@ source-present but NONEXACT.
    before the getter and scale half after it. The native verifier now pins
    mode35/36 first-return spills and adjusted-scale register operands, plus
    mode35/36/45/46 width windows and mode45/46 adjusted-scale windows. The
-   former `mode36_width` label at `+0x171C` was corrected: that window is
-   mode46; mode36 width is at `+0x1155`. Both focused verifiers pass.
+   The former mode36_width label at +0x171C was corrected: that window is
+   mode46; mode36 width is at +0x1155. Both focused verifiers pass.
+   Mode28's raw Animation flags at +0x4A8/+0x4AC are now identified as the
+   horizontal/vertical 0..2 anchor indices: the original parent loads +0x4AC
+   first, then +0x4A8, and pushes vertical before horizontal for the cdecl
+   draw_shape_43e2c0 call at +0x0D73. The exact 1,601B triangle child was
+   replayed 1/1; its final parameters are named horizontal_anchor and
+   vertical_anchor. The native verifier pins the parent loads, cdecl push
+   order and child target; the source-role verifier checks the source args.
    Mode35/36's second inherited-scale result is now named
    `inherited_scale` and feeds the real adjusted-scale argument. The first
    getter remains a separate discarded call in the decompilation, while the
@@ -393,11 +400,17 @@ source-present but NONEXACT.
    candidate-only audit in the width-order ledger.
 
    Additional first-return stack-slot scope batteries also failed: a single
-   function/case local stores to `[ebp-0x164]` and yields 85/123 E8; hoisting
-   all four shared temporaries can recover `[ebp-0x160]` but collapses the
+   function/case local stores to [ebp-0x164] and yields 85/123 E8; hoisting
+   all four shared temporaries can recover [ebp-0x160] but collapses the
    parent to 44/123 E8 and 14/32 data sites. Nested-switch scope behaves the
    same. The original source graph is retained; see the appended stack-slot
    lifetime section of the width-order ledger.
+   A follow-up scope/reference/aggregate/array matrix and compact local
+   struct/scale-pair battery also failed to recover the first-return spills
+   without collapsing the E8 graph (84–86/123); reusing the actual width or
+   adjusted-scale argument local was worse (45/123). Assignment-at-argument
+   variants compiled back to the maintained candidate. See the appended
+   scoped/aggregate lifetime section; no candidate is promoted.
    A mode45 native-order expression battery (named/reversed addition,
    compound assignment and post-adjustment width temporaries) did not improve
    the 5,989B/109-E8 maintained candidate. A mode46 role swap can produce
