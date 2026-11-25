@@ -843,3 +843,50 @@ register-register add/subtract, and their call graph/layout is worse than the
 maintained source. The production parent remains **5,989B/1,501 instructions,
 109/123 E8 positions, 68B total E8 displacement, 26/32 HIGHLOW sites and
 4,694/5,372 ordinary bytes**, SOURCE-PRESENT/NONEXACT.
+
+
+## 2026-11-25 follow-up: native-order first-result local and single-mode width lifetimes
+
+A new native-order source matrix kept mode35/36's original sequence
+(first inherited-scale call, color494/color490, draw count, pre-getter
+half-height, second inherited-scale call, adjusted scale, then width
+argument) and kept mode45/46 byte-for-byte source-identical.
+
+The best first-result-local variant uses one function-scope C++ float assigned
+by the first getter in both modes, while leaving mode35's width expression as
+a direct renderer argument. It emits **5,981B/1,499 instructions**,
+**84/123 E8 positions**, **320B** aggregate E8 offset distance,
+**23/32** HIGHLOW site/target pairs and **3,726/5,364** ordinary bytes. It
+materializes the first mode35 return at the native `[ebp-0x160]` slot and the
+mode36 first return at the same slot four bytes early; the adjusted-scale
+operations remain memory-source rather than the native register-register
+forms. The result therefore recovers a real native write-only lifetime but
+loses 25 call-position matches and 3 data-site matches relative to production.
+
+Other natural first-result placements were worse: a shared function local
+with mode35's width temporary retained gives **5,997B/1,501**, **85/123 E8**,
+**304B** displacement and **24/32** HIGHLOW, but its first stores land at
+`[ebp-0x164]`; per-case initialized locals land at `[ebp-0x20C]`/`[ebp-0x208]`;
+a single local reused for both getter returns collapses to **45/123 E8** and
+**14/32** HIGHLOW. A mode35-only assignment yields 84/123 E8 and a mode36-only
+assignment yields 86/123 E8; neither recovers both native spill sites. The
+native-order local is kept as a diagnostic only.
+
+The mode45/46 post-getter width half was also named in each mode separately,
+without changing the original pre-getter scale half or getter order:
+
+| Variant | Code / i386 | E8 positions | E8 offset delta | HIGHLOW |
+| --- | ---: | ---: | ---: | ---: |
+| Mode45 named half + adjusted width | 6,021B / 1,505 | 109/123 | 204B | 26/32 |
+| Mode46 named half + adjusted width | 6,017B / 1,504 | 109/123 | 100B | 26/32 |
+| Mode45 named half only | 6,005B / 1,503 | 109/123 | 108B | 26/32 |
+| Mode46 named half only | 6,001B / 1,502 | 109/123 | 68B | 26/32 |
+| Mode45 assigned width local | 6,005B / 1,503 | 109/123 | 108B | 26/32 |
+| Mode46 assigned width local | 6,005B / 1,503 | 109/123 | 76B | 26/32 |
+
+None creates a new native E8 position. The mode46 half-only form retains the
+same 68B displacement as production but adds 12B/one instruction; all other
+forms regress. Production remains the best semantically correct whole-parent
+candidate at **5,989B/1,501**, **109/123 E8**, **68B** displacement and
+**26/32** HIGHLOW site/target pairs. No source change is promoted from this
+matrix.
