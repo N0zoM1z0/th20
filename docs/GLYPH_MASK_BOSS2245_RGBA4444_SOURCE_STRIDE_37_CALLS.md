@@ -173,3 +173,33 @@ and regressed to 1,075B aggregate E8 offset distance, so the existing
 short-circuit expression remains the better natural-C++ reconstruction.
 The two native operand and bitfield changes are maintained; the parent is
 still SOURCE-PRESENT/NONEXACT.
+
+
+## 2026-11-25 follow-up: packed RGBA4444 bitfield write-shape matrix (not promoted)
+
+The original RGBA4444 branch performs four separate channel-nibble updates
+when constructing the outline word, and three separate destination nibble
+updates when preserving destination alpha. A natural C++ `union` view of the
+16-bit word was tested to model those operations with four-bit fields rather
+than a single packed-word expression. The source remains ordinary C++; no
+inline opcodes or padding are involved.
+
+| Probe | Code / i386 heads | E8 sites | E8 offset delta | Ordinary bytes |
+| --- | ---: | ---: | ---: | ---: |
+| Current packed-word source | **2,128B / 561** | **7/37** | **819** | **292/1,960** |
+| Four source-channel bitfield assignments only | 2,193B / 573 | 7/37 | 1,158 | 269/2,025 |
+| Three destination-channel bitfield assignments only | 2,216B / 584 | 3/37 | 830 | 207/2,048 |
+| Both source and destination bitfields | 2,286B / 596 | 3/37 | 1,680 | 174/2,077 |
+
+The union probes preserve all 37 E8 target roles, all nine live stride calls,
+four folded array-index calls and five DIR32 roles. They do not improve the
+physical call/data layout: source-channel bitfields shift the live-stride
+frontier, while destination bitfields move the cleanup and return path without
+recovering the original instruction boundaries. The combined representation
+is 41B larger than the original 2,245B body and still has 16 fewer i386
+instruction heads. The maintained packed-word expression therefore remains
+the better whole-function C++ reconstruction: it keeps 7/37 physical E8
+sites, 4/5 PE HIGHLOW site/target pairs, 819 aggregate E8 offset distance and
+292 ordinary overlap bytes. These bitfield variants are retained as
+reproducible probes only; no source promotion or authored-byte credit is
+claimed.
