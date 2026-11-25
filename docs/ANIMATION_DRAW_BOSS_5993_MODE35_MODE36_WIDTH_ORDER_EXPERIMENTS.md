@@ -890,3 +890,50 @@ forms regress. Production remains the best semantically correct whole-parent
 candidate at **5,989B/1,501**, **109/123 E8**, **68B** displacement and
 **26/32** HIGHLOW site/target pairs. No source change is promoted from this
 matrix.
+
+## 2026-11-25 follow-up: native-order spill correction, half-load controls and intrinsic rejection
+
+The native-order first-result candidate was disassembled against the pinned
+mode35/36 windows after the initial summary. It does **not** put both stores
+at the exact native instruction positions: mode35 stores the first getter at
+`+0x0FCD` to `[ebp-0x160]` exactly; mode36 stores to the same native slot at
+`+0x10B6`, four bytes before the original `+0x10BA`. The earlier **94/123**
+candidate did have both exact store positions, but only by reversing the
+pre-getter scale-half and post-getter width-half roles. It remains rejected.
+
+The semantically correct native-order candidate is **5,981B/1,499 i386**,
+**84/123 E8 positions**, **320B** aggregate E8 offset distance,
+**23/32** HIGHLOW pairs and **3,726/5,364** ordinary bytes. Its mode35 adjusted
+scale uses a memory-source `addss xmm0,[ebp-0x14c]` at `+0x1029`; native loads
+the same saved half into XMM1 and uses `addss xmm0,xmm1` at `+0x1031`. The
+mode36 candidate likewise uses memory-source `subss xmm0,[ebp-0x168]` at
+`+0x1112`; native loads XMM1 then uses register-source `subss` at `+0x111E`.
+Those two native XMM1 loads account for the 4B/4B local instruction-size
+shortfall: mode35's renderer E8 is four bytes early, and mode36's renderer E8
+is eight bytes early after the accumulated shifts. The first-result local
+recovers the native stack slot but not the full call frontier.
+
+The post-getter width half was then given an explicit source lifetime in six
+natural forms (uninitialized/initialized locals before the getter, a
+precomputed-then-overwritten local, const local after the getter, named local,
+and a shared dispatch-scope local). None improves the result: the best forms
+remain **84/123 E8** with **712B** aggregate offset delta and lose the native
+first-result spill slot; initialized/shared-scope forms fall to **45/123 E8**
+and **14/32** HIGHLOW. A separate volatile-half battery confirms that
+`volatile`/`const volatile` do not force the required XMM1 load (identical
+5,981B/84/123/320 result); pointer and copied-half variants fall to 28–45/123
+E8 and 14/32 HIGHLOW.
+
+Three C++ SSE-intrinsic forms (`_mm_load_ss`/`_mm_add_ss`, `_mm_set_ss` plus
+load, and a shuffled `__m128` operand aggregate) were compiled as additional
+controls. They are not usable reconstructions: the candidates grow to
+**6,205–6,209B**, emit **0/123** recognizable native E8 positions and
+**0/32** HIGHLOW pairs, with only 173–282 ordinary bytes matching. No intrinsic
+or SIMD helper is added to production source.
+
+The maintained source remains the best semantically correct whole-parent
+candidate: **5,989B/1,501 instructions**, **109/123 E8 positions**, **68B**
+aggregate E8 offset distance, **26/32** HIGHLOW site/target pairs and
+**4,694/5,372** ordinary bytes. The native-order first-result local and all
+half/intrinsic variants remain diagnostic-only; `src/AnimationDrawBoss.cpp`
+is unchanged.
