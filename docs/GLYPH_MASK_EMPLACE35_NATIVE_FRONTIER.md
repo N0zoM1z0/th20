@@ -107,3 +107,46 @@ current standard-library source. No wrapper is promoted, no original leaf is
 credited, and `src/GlyphMaskComposite2245.cpp` remains unchanged by these
 experiments. The complete 35B helper and all five PMR parents remain
 SOURCE-PRESENT/NONEXACT.
+
+## 2026-11-25 follow-up: old pointer-forwarding call and current MSVC controls
+
+The native `0x00416330` wrapper's first E8 is the shared 8B pointer-identity
+`std::move<>` helper, not an allocator operation. Its original instruction
+sequence is a `thiscall` method: save ECX, load the sole stack pointer
+argument, call `0x0040B280`, push the returned pointer, restore ECX, then call
+the 108B `0x00413370` backend. The native body is the complete 35B/15-i386
+function with `ret 4`, no PE HIGHLOW, and two direct E8 edges.
+
+The repository already demonstrates a real natural-C++ way to preserve this
+shared old-MSVC helper: `src/FrontDialogueAllocate156.cpp` explicitly
+instantiates `std::move<std::uint8_t*&>` with `__declspec(noinline)`, and its
+caller emits the original 8B out-of-line E8. `src/CardTextPayloadNative.cpp`
+likewise preserves `std::move<std::pmr::polymorphic_allocator<char>&>` for the
+108B PMR string move. These are source precedents for the helper, not evidence
+that the glyph insertion wrapper is exact.
+
+For the glyph path, the following pinned C++20 experiments were compiled:
+
+- Explicit noinline `std::move<const GlyphMaskOffset&>` plus ordinary
+  `std::pmr::vector::emplace_back` does not retain a move E8; the vector
+  template consumes the value as a forwarding reference and current MSVC
+  removes the identity operation.
+- Explicit pointer-reference and pointer-rvalue `std::move` specializations
+  likewise disappear when the result is immediately dereferenced into the
+  current vector `emplace_back` body.
+- A derived-vector member wrapper calling `Base::emplace_back` is only
+  **25B/11-i386, one E8**. A `push_back`/`back` wrapper is **33B/13-i386,
+two E8**, but those calls target modern `push_back` and `back`, not the
+  original 108B `_Emplace_one_at_back`.
+- A pointer-local forwarding wrapper does preserve the pointer `std::move`
+  E8, but its address-taken local triggers `/GS` and grows to **65B/24**.
+  A direct pointer-rvalue member wrapper is **39B/15** with one E8, not the
+  original two-E8 graph.
+
+The pinned MSVC 19.44 `vector` header confirms `_Emplace_one_at_back` is
+private (at `vector:837`); the public `emplace_back` delegates to it, while
+`push_back` also delegates to it. A natural derived class cannot call that
+private implementation directly. No private-access shim, `#define private
+public`, inline assembly, manual bytes or padding was introduced. The
+original 35B/108B compiler-template parent chain remains SOURCE-PRESENT,
+NONEXACT; the maintained compositor source is unchanged by these probes.
