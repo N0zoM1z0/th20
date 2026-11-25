@@ -254,8 +254,8 @@ def verify_candidate(obj: Path, image, base, sections, native):
     assert "construct_at@UGlyphMaskConstructClosure" in construct_relocs[2]["symbol"]
     assert "apply@UGlyphMaskConstructClosure" in construct_relocs[3]["symbol"]
     native_construct = pe.raw_at(image, base, sections, 0x00413AB0, 78)
-    native_construct_ins = disassemble(native_construct, 0x00413AB0)
-    native_construct_calls = call_sites(native_construct_ins, 0x00413AB0)
+    native_construct_ins = disassemble(native_construct)
+    native_construct_calls = call_sites(native_construct_ins, 0)
     assert list(native_construct_calls) == [0x0D, 0x1E, 0x30, 0x40]
     candidate_fields = {int(r["offset"]) for r in construct_relocs}
     native_fields = {site + 1 for site in native_construct_calls}
