@@ -392,6 +392,12 @@ source-present but NONEXACT.
    standard function-object wrappers did not close the gap. See the appended
    candidate-only audit in the width-order ledger.
 
+   Additional first-return stack-slot scope batteries also failed: a single
+   function/case local stores to `[ebp-0x164]` and yields 85/123 E8; hoisting
+   all four shared temporaries can recover `[ebp-0x160]` but collapses the
+   parent to 44/123 E8 and 14/32 data sites. Nested-switch scope behaves the
+   same. The original source graph is retained; see the appended stack-slot
+   lifetime section of the width-order ledger.
    A mode45 native-order expression battery (named/reversed addition,
    compound assignment and post-adjustment width temporaries) did not improve
    the 5,989B/109-E8 maintained candidate. A mode46 role swap can produce

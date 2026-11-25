@@ -315,3 +315,27 @@ mode46 dual-half predeclaration candidate is 6,005B/113 E8; direct-return is
 5,992B/109 E8. The `+0`, `*1`, `/1`, negative-half and negated-reverse scalar
 expression forms are 5,996–6,001B with 109 E8 and no native-order register
 subtraction. Keep the original source order.
+
+## Additional first-return stack-slot lifetime probes
+
+After restoring native mode45 order, the first mode35/36 getter spill was
+retested with three source scopes: a function-scope `first_inherited_scale`,
+a case-local `[[maybe_unused]]` const/mutable/volatile scalar, and a set of
+four function-scope shared temporaries (`first_inherited_scale`, `aux_half`,
+`inherited_scale`, `adjusted_scale`) in all declaration orders. The single
+function-scope or case-local first-result scalar lands at `[ebp-0x164]`, not
+the native `[ebp-0x160]`, and the candidate becomes **5,997B / 85/123 E8**,
+**3,855–3,863/5,380** ordinary bytes and 24/32 HIGHLOW sites. Const, mutable
+and volatile case-local forms are identical.
+
+Hoisting all four values to function scope does place both first getter stores
+at `[ebp-0x160]`, but every declaration order produces the same **5,963B /
+44/123 E8**, **1,669/5,344** ordinary bytes and 14/32 HIGHLOW result. Placing
+the same four shared temporaries at the nested-switch scope instead yields
+**5,979B / 44/123 E8**, **1,689/5,360** ordinary bytes and 14/32 HIGHLOW; it
+does not recover the native first-result slot. These broad-scope local sets
+change switch/table code generation too severely and are rejected.
+
+No function-scope, case-scope, or nested-switch-scope scalar lifetime
+reproduced both native first-return spills while retaining the original 123-E8
+parent graph. The production source remains the native-order 5,989B candidate.
