@@ -4,7 +4,7 @@
 // restores the 108B/140B/488B/200B bodies and the nested 92B/31B helper
 // shapes outside real relocation fields. The 35B wrapper is 34B with the
 // original compiler-emitted trailing NOP absent; the complete game
-// compositor remains NONEXACT (current full parent: 2,177B/581 i386).
+// compositor remains NONEXACT (current full parent: 2,186B/585 i386).
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphMaskOffsets.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -22,8 +22,8 @@
 // These are ordinary C++ implementations, not injected bytes or padding; the
 // 35B public wrapper remains NONEXACT because this compiler omits its NOP.
 // The main Boss uses a two-case pixel-format dispatch, constructs each PMR
-// stencil only after computing radius_squared, and takes the BGRA outline
-// edge directly from each of the four ordered neighbor tests.
+// stencil only after computing radius_squared, and takes both BGRA32 and
+// RGBA4444 outline edges directly from their four ordered neighbor tests.
 template __declspec(noinline) const th20::GlyphMaskOffset&&
 std::move<const th20::GlyphMaskOffset&>(const th20::GlyphMaskOffset&) noexcept;
 template __declspec(noinline) th20::GlyphMaskOffset&&
@@ -299,16 +299,25 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                     // element to the folded 22B array-index helper.
                     const std::int32_t delta_x=off[0];
                     const std::int32_t delta_y=off[1];
-                    if (((x-delta_x>=0 && y-delta_y>=0) &&
-                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y-delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)]), (reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf))) ||
-                        ((x+delta_x<canvas_width_415800() && y-delta_y>=0) &&
-                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y-delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)]), (reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf))) ||
-                        ((x-delta_x>=0 && y+delta_y<rows) &&
-                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)]), (reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf))) ||
-                        ((x+delta_x<canvas_width_415800() && y+delta_y<rows) &&
-                         ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)]), (reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf)))) {
-                        *dest=packed_color.packed;
-                        goto rgba4444_pixel_done;
+                    if (x-delta_x>=0 && y-delta_y>=0 &&
+                        ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y-delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)]),
+                         reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf)) {
+                        goto rgba4444_outline;
+                    }
+                    if (x+delta_x<canvas_width_415800() && y-delta_y>=0 &&
+                        ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y-delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)]),
+                         reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf)) {
+                        goto rgba4444_outline;
+                    }
+                    if (x-delta_x>=0 && y+delta_y<rows &&
+                        ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)]),
+                         reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf)) {
+                        goto rgba4444_outline;
+                    }
+                    if (x+delta_x<canvas_width_415800() && y+delta_y<rows &&
+                        ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)]),
+                         reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf)) {
+                        goto rgba4444_outline;
                     }
                 }
                 // The native non-outline path updates the packed RGB nibbles
@@ -320,6 +329,9 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                     reinterpret_cast<const NativeGlyphAlpha4444*>(&packed_color.packed)->green;
                 reinterpret_cast<NativeGlyphAlpha4444*>(dest)->blue =
                     reinterpret_cast<const NativeGlyphAlpha4444*>(&packed_color.packed)->blue;
+                goto rgba4444_pixel_done;
+                rgba4444_outline:
+                *dest=packed_color.packed;
                 rgba4444_pixel_done:
                 ;
             }

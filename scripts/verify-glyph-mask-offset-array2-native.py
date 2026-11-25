@@ -82,6 +82,8 @@ def verify(candidate):
  assert 'goto rgba4444_pixel_done;' in rgba
  assert 'rgba4444_pixel_done:' in rgba
  assert 'touches_outline' not in rgba
+ assert 'goto rgba4444_outline;' in rgba and 'rgba4444_outline:' in rgba
+ assert 'goto rgba4444_pixel_done;' in rgba and 'rgba4444_pixel_done:' in rgba
  assert rgba.index('->red =') < rgba.index('->green =') < rgba.index('->blue =')
  assert 'struct PackedColorChannels' in color_header and 'PackedColorChannels channels;' in color_header
  assert 'offsetof(PackedColorChannels, alpha) == 3' in color_header
@@ -91,15 +93,15 @@ def verify(candidate):
  assert index_cmp['result']=='structural-exact'
  assert index_cmp['matched_comparable_bytes']==index_cmp['comparable_bytes']==22
  assert not index_cmp['relocations']
- # This is a complete NONEXACT 2177B/581-i386 source, not a prefix
+ # This is a complete NONEXACT 2186B/585-i386 source, not a prefix
  # compared to the original 2245B/612-i386 parent extent.
- body,rel=cm.object_function(obj,SYM,2177)
+ body,rel=cm.object_function(obj,SYM,2186)
  ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(body),0))
- assert len(body)==2177 and len(ci)==581 and len(rel)==42
+ assert len(body)==2186 and len(ci)==585 and len(rel)==42
  mask={i for x in rel for i in range(x['offset'],x['offset']+4)}
  compared=[i for i in range(min(len(original),len(body))) if i not in mask]
  ordinary_matches=sum(original[i]==body[i] for i in compared)
- assert (ordinary_matches,len(compared))==(229,2009)
+ assert (ordinary_matches,len(compared))==(184,2018)
  assert (ci[-1].mnemonic,ci[-1].op_str)==('ret','0x14')
  assert ci[-1].address+ci[-1].size==len(body)
  rgba_instructions=[i for i in ci if 0x600<=i.address<0x800]
@@ -132,7 +134,7 @@ def verify(candidate):
  assert original_stride==[0x32,0x197,0x1D7,0x5A6,0x5E7,0x69B,0x6FA,0x752,0x7B4]
  candidate_stride=[x['offset']-1 for x in cr
                    if 'pixel_stride_4156c0' in x['symbol']]
- assert candidate_stride==[0x32,0x193,0x1D3,0x58A,0x5CB,0x67C,0x6D7,0x72B,0x785]
+ assert candidate_stride==[0x32,0x193,0x1D3,0x58A,0x5CB,0x67C,0x6D8,0x72D,0x78C]
  assert len(candidate_stride)==len(original_stride)==9
  # Genuine folded std::array<int32_t,2>::operator[] emits the same four
  # real index helper calls across the two native pixel-format branches.
@@ -175,7 +177,7 @@ def verify(candidate):
   dest=[value for prefix,value in highlow.items()
         if r['symbol'].startswith(prefix)]
   assert len(dest)==1 and dest[0]==actual[o],(hex(o),r['symbol'],dest)
- assert [x['offset'] for x in dr]==[0x06,0x18,0x57,0x5D,0x85A]
+ assert [x['offset'] for x in dr]==[0x06,0x18,0x57,0x5D,0x863]
  assert sum(x['offset']==o for x,o in zip(dr,sorted(actual)))==4
  assert sum('bitmap_pixels_4156a0' in x['symbol'] for x in rel)==1
  assert sum('pixel_stride_4156c0' in x['symbol'] for x in rel)==9
@@ -204,10 +206,10 @@ def verify(candidate):
   assert result['result']=='exact' and result['matched_bytes']==result['size']
  print('PASS immutable original whole 2245B/612 game Boss, 37 native E8/5 PE HIGHLOW and both complete pixel-format branches')
  print('PASS original four folded array-index E8 at +0x29E/+0x2B0/+0x666/+0x678, existing 22B array helper whole structural 22/22 (no duplicate credit)')
- print('PASS complete natural 2177B/581-i386 source: 229/2009 ordinary overlap bytes: all 37 E8/5 DIR32 roles, nine live-stride getter calls, including per-pixel RGBA4444 source at native +0x5E7')
+ print('PASS complete natural 2186B/585-i386 source: 184/2018 ordinary overlap bytes: all 37 E8/5 DIR32 roles, nine live-stride getter calls, including per-pixel RGBA4444 source at native +0x5E7')
  print('PASS 37/37 candidate E8 target roles in original order, native grouped (x +/- delta_x) addressing, four 16-bit alpha bitfield reads, direct BGRA early exits and direct RGBA4444 early-exit/write topology; 4/37 E8 and 4/5 PE HIGHLOW sites aligned')
  print('PASS all 24 previously accepted PMR/color generic source descendants remain whole native exact')
- print('SOURCE-PRESENT NONEXACT: entire 2177B candidate vs original 2245B parent, 834 aggregate E8 offset delta, no new game-authored code credit')
+ print('SOURCE-PRESENT NONEXACT: entire 2186B candidate vs original 2245B parent, 789 aggregate E8 offset delta, no new game-authored code credit')
 if __name__=='__main__':
  import argparse
  a=argparse.ArgumentParser();a.add_argument('--candidate-object',required=True,type=Path)
