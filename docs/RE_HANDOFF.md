@@ -510,3 +510,16 @@ negative-half and negated-reverse expression forms did not improve the
 maintained candidate; their bodies ranged from 5,992B to 6,005B and had
 109–113/123 E8 positions. No ASM, padding or production-only compiler
 shaping was introduced.
+
+
+## 2026-11-25 follow-up: isolated mode45 intrinsic rejection and exact draw leaves
+
+A mode45-only _mm_load_ss/_mm_set_ss intrinsic battery expands the
+contribution to 6,084–6,098B and loses the native E8 graph; these
+compiler-shaping forms are rejected. The scalar source-order correction
+remains production.
+
+The four DrawAccess leaves (two 20B color getters, 26B enabled predicate,
+93B inherited-scale getter) were rebuilt together after their include closure
+changed and passed strict canonical replay 4/4. Their exact child status does
+not imply parent exactness.

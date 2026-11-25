@@ -339,3 +339,32 @@ change switch/table code generation too severely and are rejected.
 No function-scope, case-scope, or nested-switch-scope scalar lifetime
 reproduced both native first-return spills while retaining the original 123-E8
 parent graph. The production source remains the native-order 5,989B candidate.
+
+
+## 2026-11-25 follow-up: isolated mode45 SSE-load intrinsics rejected
+
+After promoting the native mode45 evaluation order, an isolated mode45-only
+battery attempted to make the saved scale half explicitly resident in XMM1
+using _mm_load_ss and _mm_set_ss around the two scalar locals. The candidates
+were compiled under the same pinned /Od /Ob0 profile and scored with the
+candidate-only decoder:
+
+| Variant | Code | Ordinary bytes | E8 | Exact HIGHLOW sites | Candidate mode45 scale |
+| --- | ---: | ---: | ---: | ---: | --- |
+| Native-order scalar C++ | 5,989B | 4,694/5,372 | 109/123 | 26/32 | memory-source addss |
+| Load both scalar locals | 6,084B | 164/5,464 | 0/123 | 0/32 | no complete native call graph |
+| Set half vector | 6,098B | 268/5,480 | 0/123 | 0/32 | no complete native call graph |
+| Load half vector | 6,098B | 285/5,480 | 0/123 | 0/32 | no complete native call graph |
+
+The vector intrinsic expressions materialize extra scalar/vector temporaries
+and disrupt the switch contribution; they do not merely replace the native
+memory-source addss with movss xmm1 plus register-register addss. These probes
+are rejected and remain outside production source. The natural scalar C++
+mode45 correction is retained.
+
+The four small draw-access children were also cold-rebuilt as one affected
+source only after their include closure changed. Strict canonical replay
+passed 4/4: animation_draw_color_490_20 (20B), animation_draw_color_494_20
+(20B), animation_draw_enabled_26 (26B), and animation_draw_inherited_aux_scale_93
+(93B). This confirms the big parent's getter/color callees remain independently
+exact; it does not grant exactness to the 5,993B parent.
