@@ -30,6 +30,14 @@ site/target pairs. A subsequent source-level bit-extraction correction now yield
 and rejected probes are in
 [the focused mode45/46 report](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md).
 
+Mode35/36 now name the second inherited-scale getter result as
+`inherited_scale` before computing the real adjusted-scale argument. The first
+getter remains a distinct discarded call because the original stores its x87
+return to `[ebp-0x160]` without a later read; the source does not invent a
+compiler-only local to mimic that dead spill. This improves the source-level
+ownership description without changing the 5,993B candidate or its
+4,840/5,376 ordinary-byte score.
+
 The nested dispatcher now uses mode-specific aliases for the shared ANM
 variable slots: modes37/38 read `rounded_shape_radius`, while modes39-41 read
 `ring_center_radius` and `ring_thickness`. The renderer children independently

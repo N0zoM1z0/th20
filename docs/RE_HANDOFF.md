@@ -309,9 +309,11 @@ source-present but NONEXACT.
    `ring_thickness` aliases, with the 64B `AnmVariables` layout unchanged;
    the parent-only lexical semantic-debt scan is now zero (heuristic only).
    Mode46's half-height ownership and width recomputation now follow the
-   original order. Mode35/36's first getter still emits
-   `fstp st(0)` instead of the native dead-store spill to `[ebp-0x160]`; local
-   spill probes distort later case layout and are not promoted. The inherited-scale getter's exact 93B `float` ABI is closed;
+   original order. Mode35/36's second inherited-scale result is now named
+   `inherited_scale` and feeds the real adjusted-scale argument. The first
+   getter remains a separate discarded call and still emits `fstp st(0)`
+   instead of the native dead-store spill to `[ebp-0x160]`; local spill probes
+   distort later case layout and are not promoted. The inherited-scale getter's exact 93B `float` ABI is closed;
    Ghidra's `float10` does not justify MSVC `long double`. See
    [the focused mode45/46 frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md)
    and [the full-body convergence report](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md).
