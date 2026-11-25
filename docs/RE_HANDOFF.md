@@ -642,3 +642,22 @@ and the source-ordered mode35/36/45/46 arithmetic. Then ran only
 leaf functions replayed exact (20B, 20B, 26B, 93B) from one rebuilt object.
 No full cold replay was run; production sources and exact child sources are
 unchanged.
+
+2026-11-25 targeted renderer-child replay: independently replayed only the six
+renderer child sources reached by the Boss's detailed shape calls:
+
+- `AnimationShapeRotatedRing1001.cpp`: `draw_shape_43c780`, 1,001/1,001B exact
+- `AnimationShapeAlternating899.cpp`: `draw_shape_43df30`, 899/899B exact
+- `AnimationShapeRing1468.cpp`: `draw_shape_43ab20`, 1,468/1,468B exact
+- `AnimationShapeTriangle1601.cpp`: `draw_shape_43e2c0`, 1,601/1,601B exact
+- `AnimationShapeEllipticLine660.cpp`: `draw_shape_43c4e0`, 660/660B exact
+- `AnimationShapeEllipticFan863.cpp`: `draw_shape_43c180`, 863/863B exact
+
+Each source was replayed individually with `replay-exact-units.py --source`;
+all six used one affected canonical object each and passed strict full-byte /
+relocation replay (6/6). Together with the separately replayed four
+`AnimationDrawAccess.cpp` accessors, the Boss's six detailed renderer children
+and four accessors remain 10 exact leaf functions / 6,651 original bytes.
+No full cold replay was run and no leaf source was changed. The 5,993B parent
+remains SOURCE-PRESENT/NONEXACT; exact children do not transfer exactness to
+its call dispatcher.
