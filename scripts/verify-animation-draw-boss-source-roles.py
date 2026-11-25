@@ -95,6 +95,13 @@ def main():
     assert sum(native_calls.values()) == 123 and len(native_calls) == 43
 
     text = SOURCE.read_text()
+    # Mode-specific names are aliases of the same existing float slots; no
+    # anonymous offset names remain in this dispatcher.
+    assert "variables.rounded_shape_radius" in text
+    assert "variables.ring_center_radius" in text
+    assert "variables.ring_thickness" in text
+    assert "variables.field_10" not in text
+    assert "variables.field_14" not in text
     case_labels = [int(value) for value in re.findall(r"\bcase\s+(\d+)\s*:", text)]
     expected_case_labels = Counter(range(49))
     for mode in list(range(16,23)) + list(range(26,47)):

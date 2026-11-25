@@ -304,8 +304,12 @@ source-present but NONEXACT.
    SSE register operands, the first-getter x87 spill, mode45's half-height operand ownership/relocation position,
    and mode46's adjusted-scale SSE register operand (the final renderer call is
    four bytes early). The parent-angle bit-12 extraction now matches the
-   original six-byte SHR/AND sequence. Mode46's half-height ownership and
-   width recomputation now follow the original order. Mode35/36's first getter still emits
+   original six-byte SHR/AND sequence. Modes37/38 and 39-41 now use
+   offset-preserving `rounded_shape_radius`, `ring_center_radius` and
+   `ring_thickness` aliases, with the 64B `AnmVariables` layout unchanged;
+   the parent-only lexical semantic-debt scan is now zero (heuristic only).
+   Mode46's half-height ownership and width recomputation now follow the
+   original order. Mode35/36's first getter still emits
    `fstp st(0)` instead of the native dead-store spill to `[ebp-0x160]`; local
    spill probes distort later case layout and are not promoted. The inherited-scale getter's exact 93B `float` ABI is closed;
    Ghidra's `float10` does not justify MSVC `long double`. See

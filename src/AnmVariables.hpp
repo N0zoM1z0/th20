@@ -6,7 +6,9 @@
 namespace th20 {
 
 // Actual mixed integer/float ANM value at AnimationBase+444.
-// Offset labels retain unresolved field roles and original names.
+// Unresolved slots retain their offset labels. Mode-specific aliases below
+// are grounded in the renderer call signatures; one slot can serve different
+// ANM modes without becoming a universal semantic field.
 struct AnmVariables {
     // Variable slot 10000 is a script-owned word whose role depends on the
     // consuming animation path. These aliases name observed count uses; they
@@ -18,7 +20,16 @@ struct AnmVariables {
         std::int32_t particle_grid_count;
     };
     std::int32_t field_04, field_08, field_0c;
-    float field_10, field_14, field_18, field_1c, field_20, field_24;
+    union {
+        float field_10;
+        float rounded_shape_radius;
+        float ring_center_radius;
+    };
+    union {
+        float field_14;
+        float ring_thickness;
+    };
+    float field_18, field_1c, field_20, field_24;
     union {
         float field_28;
         float particle_grid_angle_offset;
@@ -35,6 +46,9 @@ static_assert(offsetof(AnmVariables, geometry_vertex_count) == 0);
 static_assert(offsetof(AnmVariables, draw_shape_count) == 0);
 static_assert(offsetof(AnmVariables, particle_grid_count) == 0);
 static_assert(offsetof(AnmVariables, field_10) == 16);
+static_assert(offsetof(AnmVariables, rounded_shape_radius) == 16);
+static_assert(offsetof(AnmVariables, ring_center_radius) == 16);
+static_assert(offsetof(AnmVariables, ring_thickness) == 20);
 static_assert(offsetof(AnmVariables, field_28) == 0x28);
 static_assert(offsetof(AnmVariables, particle_grid_angle_offset) == 0x28);
 static_assert(offsetof(AnmVariables, field_2c) == 44);

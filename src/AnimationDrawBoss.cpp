@@ -2,11 +2,11 @@
 // immutable 5,993-byte original at 0x00443880. SOURCE-PRESENT NONEXACT:
 // original 123 E8 calls, 49+31 genuine pointer tables and 32 in-body PE
 // relocation target roles are independently known. Current source compiles
-// to both real switch pointer partitions and the native 5993B/1501-x86
-// body length, 0x204 frame, all 123 call roles in physical order (81-site
-// exact prefix; 114 physical E8 sites total), and all 32 original data roles
-// (27 absolute relocation sites aligned). The other bytes still differ:
-// same size and instruction count do NOT imply native exactness.
+// to both real switch pointer partitions and the native 5993B code extent,
+// 0x204 frame, all 123 call roles in physical order (81-site exact prefix;
+// 114 physical E8 sites total), and all 32 original data roles (27 absolute
+// relocation sites aligned). The candidate has 1502 instruction heads vs
+// 1501 native; matching extent and tables do NOT imply native exactness.
 #include "Animation.hpp"
 #include "AnimationCallback.hpp"
 #include "AnimationDrawDetailedOwner.hpp"
@@ -31,7 +31,6 @@ static_assert(offsetof(AnimationBase, color_490) == 0x490);
 static_assert(offsetof(AnimationBase, color_494) == 0x494);
 static_assert(offsetof(AnimationBase, flags) == 0x498);
 static_assert(offsetof(Animation, callback) == 0x568);
-static_assert(offsetof(Animation, field_570) == 0x570);
 static_assert(offsetof(Animation, retirement_state) == 0x570);
 static_assert(offsetof(WindowState, scale) == 0x20C0);
 #endif
@@ -186,22 +185,22 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43a1c0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_494(animation),(animation->base.flags.word_10),(animation->base.flags.word_14));
         break;
     case 37:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43a2b0((position.x),(position.y),width,height,(animation->base.variables.field_10),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43a2b0((position.x),(position.y),width,height,(animation->base.variables.rounded_shape_radius),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
     case 38:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43a750((position.x),(position.y),width,height,(animation->base.variables.field_10),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43a750((position.x),(position.y),width,height,(animation->base.variables.rounded_shape_radius),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation));
         break;
     case 39:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43ab20((position.x),(position.y),width-(animation->base.variables.field_10)*native_two,height-(animation->base.variables.field_10)*native_two,
-                                     (animation->base.variables.field_10),(animation->base.variables.field_14),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43ab20((position.x),(position.y),width-(animation->base.variables.ring_center_radius)*native_two,height-(animation->base.variables.ring_center_radius)*native_two,
+                                     (animation->base.variables.ring_center_radius),(animation->base.variables.ring_thickness),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
     case 40:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43ab20((position.x),(position.y),width-(animation->base.variables.field_10)*native_two,height-(animation->base.variables.field_10)*native_two,
-                                     (animation->base.variables.field_10) + (animation->base.variables.field_14) / native_two,(animation->base.variables.field_14),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43ab20((position.x),(position.y),width-(animation->base.variables.ring_center_radius)*native_two,height-(animation->base.variables.ring_center_radius)*native_two,
+                                     (animation->base.variables.ring_center_radius) + (animation->base.variables.ring_thickness) / native_two,(animation->base.variables.ring_thickness),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
     case 41:
-        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43ab20((position.x),(position.y),width-(animation->base.variables.field_10)*native_two,height-(animation->base.variables.field_10)*native_two,
-                                     (animation->base.variables.field_10) - (animation->base.variables.field_14) / native_two,(animation->base.variables.field_14),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
+        reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43ab20((position.x),(position.y),width-(animation->base.variables.ring_center_radius)*native_two,height-(animation->base.variables.ring_center_radius)*native_two,
+                                     (animation->base.variables.ring_center_radius) - (animation->base.variables.ring_thickness) / native_two,(animation->base.variables.ring_thickness),angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
     case 28:
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43e2c0((position.x),(position.y),width,height,angle,animation_draw_color_490(animation),animation_draw_color_494(animation),(animation->base.flags.word_10),(animation->base.flags.word_14));

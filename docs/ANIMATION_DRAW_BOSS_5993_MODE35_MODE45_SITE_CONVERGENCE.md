@@ -38,7 +38,16 @@ compiled to a six-byte `and edx, 0x1000`; the corrected expression adds one
 instruction head but preserves the 5,993B code extent and raises ordinary-byte
 agreement from 4,834 to 4,840. The value-preserving source changes
 preserve all 123 original E8 target roles and the actual renderer argument
-values. Mode45's half-height operand ownership remains value-equivalent but reversed
+values. Modes37/38 now name the shared `+0x10` float as
+`rounded_shape_radius`; modes39/40/41 name the same slot `ring_center_radius`
+and the `+0x14` slot `ring_thickness`. The rounded renderers take an explicit
+`radius` parameter, while the ring renderer computes `radius +/- thickness/2`.
+These are mode-specific aliases, not universal renames of the shared ANM slots.
+The `AnmVariables` size and offsets remain unchanged, and the redundant
+`field_570` assertion was removed in favor of the existing `retirement_state`
+assertion. The parent-only semantic-debt scan now returns zero lexical
+candidates; this is a scope-limited heuristic result, not semantic completion
+or exactness credit. Mode45's half-height operand ownership remains value-equivalent but reversed
 relative to the native division sites. Mode46 has been returned to
 native evaluation order; the locked compiler still chooses a shorter
 direct-memory adjusted-scale subtraction:
