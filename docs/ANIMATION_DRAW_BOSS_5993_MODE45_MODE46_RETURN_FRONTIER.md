@@ -1,15 +1,17 @@
 # 5,993B Animation Draw Boss: mode45/46 temporary and return frontier
 
-The maintained `AnimationPoolOwner::draw(Animation*)` at `0x00443880` remains
-SOURCE-PRESENT/NONEXACT. Its current production body is 5,993B/1,501
+The maintained AnimationPoolOwner::draw(Animation*) at 0x00443880 remains
+SOURCE-PRESENT/NONEXACT. The immutable target body is 5,993B/1,501
 instructions with a 0x204 frame and 6,316B complete code+table contribution.
-The current whole-source metrics are **114/123** original E8 physical sites,
-**27/32** exact in-body relocation site/target pairs and **4,834/5,376**
-ordinary bytes. The latest source correction restores native mode46 half-height
-ownership; the remaining code-generation frontier is the mode46 adjusted-scale
-register operand, mode45 half-height operand ownership/relocation position,
-and the earlier mode35/36 call deltas.
-This report does not claim exactness.
+The current production source preserves native mode45/46 half-height
+evaluation order and compiles to 5,989B/1,501 instructions, with a 6,312B
+complete code+table contribution. Current whole-source metrics are 109/123
+original E8 physical sites, 26/32 exact in-body relocation site/target pairs
+and 4,694/5,372 ordinary bytes. The remaining code-generation frontier is the
+native register-register adjusted-scale operands in modes35/36/45/46, the first
+mode35/36 x87 result spill, and the four-byte body/table displacement from the
+source-correct mode45 expression. This report does not claim exactness.
+
 
 ## Native mode45 and mode46 lifetimes
 
@@ -495,3 +497,33 @@ operation and is not accepted as a reconstruction. It also leaves the full
 body four bytes too long. No current probe improves on the maintained source's
 4,840/5,376 ordinary-byte and 114/123 E8-position evidence while preserving
 all source-level semantics, so `src/AnimationDrawBoss.cpp` remains unchanged.
+
+
+## 2026-11-25 follow-up: native mode45 evaluation order restored in production
+
+Production src/AnimationDrawBoss.cpp now computes the mode45 scale half-height
+before the inherited-scale getter, uses it for adjusted scale after the getter,
+and independently recomputes the width half in the renderer argument list.
+Mode46 already used this original source order and remains unchanged. The
+earlier role-swap sections in this report describe a historical source snapshot
+and must not be read as the current production implementation.
+
+The focused source-role replay emits 5,989B/1,501 instructions, a 0x204 stack
+frame and a 6,312B code+table contribution. It matches 4,694/5,372 ordinary
+bytes, 109/123 E8 positions, 68B summed absolute E8 displacement and 26/32
+exact HIGHLOW site/target pairs. The former role-swap source had a better raw
+machine score but reversed the native evaluation order; it is no longer
+maintained.
+
+The original-only native verifier pins the four modes' scale and width
+sequences: mode35 scale +0x1016 / width +0x1068; mode36 scale +0x1103 /
+width +0x1155; mode45 scale +0x15DD / width +0x163D; mode46 scale +0x16BC /
+width +0x171C. The previous verifier mislabeled +0x171C as mode36 width; that
+is mode46, while mode36 width is +0x1155. Both focused verifiers pass.
+
+Candidate-only decoding confirms the corrected mode45 source still emits
+memory-source addss rather than native movss xmm1 followed by register-register
+addss. Mode46 likewise emits memory-source adjusted-scale subtraction. The
+candidate-only report separates these scale operations from the later width
+operations, so mode46's width subss xmm1,xmm0 is not misreported as its
+adjusted-scale subtraction. No opcode or padding is introduced.

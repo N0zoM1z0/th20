@@ -1,5 +1,13 @@
 # CORE/RECON-1112 — 5,993B Animation Draw Boss: nested-mode source convergence
 
+> Current source update (2026-11-25): the historical mode45 role swap
+> described below has been removed. Production C++ now follows the native
+> pre-getter scale-half / post-adjustment width-half order. The current
+> candidate is 5,989B/1,501 instructions, 4,694/5,372 ordinary bytes,
+> 109/123 E8 positions, 68B total absolute E8 displacement and 26/32 exact
+> HIGHLOW site/target pairs. See the final correction entry at the end of this
+> report; earlier mode45 role-swap metrics are historical only.
+
 **Current status: SOURCE-PRESENT, NONEXACT.** The immutable Japanese TH20
 Steamless v1.00a PE (SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`)
@@ -13,30 +21,25 @@ backend ABI evidence remains in the independent original-only
 [`verify-animation-draw-boss-native.py`](../scripts/verify-animation-draw-boss-native.py)
 and [`verify-animation-draw-boss-abi.py`](../scripts/verify-animation-draw-boss-abi.py).
 
-The current maintained full function is **5,993B/1,502 candidate i386 instructions** (the immutable native body is 1,501), with
-its `0x204` frame and 6,316B real code+table COFF contribution. Mode45 uses a
-value-equivalent role swap: the pre-getter half feeds width and the post-getter
-half feeds adjusted scale. Native mode45 instead uses the pre-getter half for
-adjusted scale and recomputes the width half after the getter. The maintained
-swap preserves the native register-register `addss` and renderer call position,
-but moves the second `native_two` relocation from the native width site to the
-adjusted-scale expression. Mode46 follows native half-height ownership: its
-pre-getter half feeds adjusted scale and its width half is recomputed after the
-getter. MSVC still chooses the shorter direct-memory adjusted-scale
-subtraction, leaving the final mode46 renderer call four bytes early. This is
-ordinary C++,
-not a byte patch or padding. The mode46 ownership correction keeps the native 5,993B code extent, **114/123** physical E8 positions and **27/32** exact body relocation
-site/target pairs. A subsequent source-level bit-extraction correction now yields **4,840/5,376** ordinary-byte agreement. The detailed native/compiled frontier
-and rejected probes are in
-[the focused mode45/46 report](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md).
+The prior source snapshot, before the 2026-11-25 mode45 correction, compiled to
+5,993B/1,502 candidate i386 instructions with a 0x204 frame and 6,316B
+code+table contribution. That snapshot used a value-equivalent mode45 role
+swap: its pre-getter half fed width and its post-getter half fed adjusted
+scale. Native mode45 instead uses the pre-getter half for adjusted scale and
+recomputes the width half after the getter. The swap retained the native
+register-register addss and renderer call position, but moved the second
+native_two relocation away from the native width site. The current source no
+longer uses that swap; it follows the original mode45 evaluation order and
+compiles to the 5,989B candidate summarized at the top of this report.
+
 
 Mode35/36 now name the second inherited-scale getter result as
 `inherited_scale` before computing the real adjusted-scale argument. The first
 getter remains a distinct discarded call because the original stores its x87
 return to `[ebp-0x160]` without a later read; the source does not invent a
 compiler-only local to mimic that dead spill. This improves the source-level
-ownership description without changing the 5,993B candidate or its
-4,840/5,376 ordinary-byte score.
+ownership description without changing the current 5,989B candidate or its
+4,694/5,372 ordinary-byte score.
 
 The nested dispatcher now uses mode-specific aliases for the shared ANM
 variable slots: modes37/38 read `rounded_shape_radius`, while modes39-41 read
@@ -188,3 +191,24 @@ previous checkpoint are unchanged. See the previous dated
 [5,993B frame/table frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md)
 and [mode35 x87 spill experiments](ANIMATION_DRAW_BOSS_5993_MODE35_X87_PROBES.md)
 for the original baseline and rejected variants.
+
+
+## 2026-11-25 correction: native mode45 evaluation order is now maintained
+
+The previous mode45 role swap was a compiler-layout optimization that did not
+preserve the original evaluation order. It computed the width half before the
+recursive getter and recomputed the scale half after it. The native PE computes
+the scale half first, uses it after the getter, then recomputes the width half
+in the renderer arguments. Production src/AnimationDrawBoss.cpp now follows
+that original order. The mode45/46 source-role verifier asserts the sequence,
+and the original-only native verifier pins both scale and width instruction
+windows for modes35, 36, 45 and 46.
+
+The corrected whole-parent candidate is 5,989B/1,501 i386 instructions,
+4,694/5,372 ordinary bytes, 109/123 E8 positions, 68B summed
+absolute E8 displacement and 26/32 exact HIGHLOW site/target pairs. This
+regresses the previous role-swap byte/call metrics but removes the source
+semantic mismatch. The remaining mode45 compiler difference is its
+memory-source addss; the native reloads the saved half into XMM1 before
+register-register addss. Mode46 has the analogous memory-source subtraction.
+No opcode or padding was introduced.
