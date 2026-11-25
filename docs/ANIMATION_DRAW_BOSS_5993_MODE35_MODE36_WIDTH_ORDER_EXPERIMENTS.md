@@ -937,3 +937,58 @@ aggregate E8 offset distance, **26/32** HIGHLOW site/target pairs and
 **4,694/5,372** ordinary bytes. The native-order first-result local and all
 half/intrinsic variants remain diagnostic-only; `src/AnimationDrawBoss.cpp`
 is unchanged.
+
+
+## 2026-11-25 follow-up: native first-result stack slots and shared-lifetime controls
+
+A fresh pinned MSVC 19.44 i386 rebuild of the maintained
+`src/AnimationDrawBoss.cpp` confirms the current baseline is **5,989B / 1,501
+instructions**, with all **123/123 original E8 target roles** in order,
+**109/123** original E8 instruction positions aligned, **68B** aggregate
+absolute E8 offset distance, and **26/32** original PE HIGHLOW site/target
+pairs aligned. The whole original `0x00443880` function remains 5,993B / 1,501
+instructions and NONEXACT. The current source was rebuilt directly rather
+than reusing an old probe object.
+
+The native mode35 stack dataflow is now explicitly mapped:
+
+| Native local | First write | Subsequent read | Meaning |
+| --- | --- | --- | --- |
+| `[ebp-0x160]` | `fstp` at `+0x0FCD` | none in this path | first inherited-scale getter result |
+| `[ebp-0x14c]` | `movss` at `+0x100E` | XMM1 at `+0x1029` | pre-getter half-height |
+| `[ebp-0x148]` | `fstp` at `+0x101B` | XMM0 at `+0x1021` | second inherited-scale result |
+| `[ebp-0x15c]` | `movss` at `+0x1035` | renderer argument at `+0x1081` | adjusted scale |
+
+Mode36 reuses the first-result slot `[ebp-0x160]`, while its own half,
+second getter and adjusted scale occupy `[ebp-0x168]`, `[ebp-0x164]`, and
+`[ebp-0x178]`. The maintained source currently discards the first getter
+(`fstp st(0)`) and stores mode35 adjusted scale at `[ebp-0x160]`; its width
+local occupies `[ebp-0x15c]`. This is a concrete stack-role inversion, not a
+missing native call target.
+
+Several natural C++ lifetime experiments were rebuilt from the current
+source: case-local unused/const/volatile first-result values, one shared
+function-scope first-result local at five declaration boundaries, scoped
+inner-block values, direct inline width expressions, and a two-float aggregate
+for the first result/adjusted result. They do force one or two `fstp` stores,
+but allocate extra frame slots at `[ebp-0x208]`/`[ebp-0x204]` or alter the
+nested local layout. The best direct first-result/inline-width candidates
+regress to **84/123** E8 positions, **320B** aggregate displacement and
+**23/32** HIGHLOW pairs; named-width controls reach 85/123 and 304B. Aggregate
+and `std::array<float,2>` variants are substantially worse. Merely moving a
+shared local declaration between the function, main-switch and nested-switch
+boundaries is codegen-identical.
+
+Mode45's named second-getter temporary was also tested separately; it is
+codegen-identical to the maintained source. `volatile`/const/auto variants of
+the first-result local are likewise codegen-identical. SSE scalar intrinsics
+(`_mm_load_ss`, `_mm_add_ss`, `_mm_sub_ss`) do force a different vector lowering,
+but expand the function to 6,112B / 1,526 instructions and destroy the E8
+frontier; the combined four-mode form grows to 6,415B / 1,574 instructions.
+They are rejected rather than used as an instruction shim.
+
+**No production source change is admitted from this matrix.** The native
+first-result local's reuse across modes35/36 and its placement relative to the
+adjusted-scale/width locals remain the next compiler-lifetime problem. The
+current 5,989B candidate remains the maintained source; none of the temporary
+variants receives exactness credit.
