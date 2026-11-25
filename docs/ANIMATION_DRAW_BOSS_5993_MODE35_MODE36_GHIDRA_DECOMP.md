@@ -122,7 +122,13 @@ reference and volatile scalar probes do not change that selection. `/fp:fast`,
 inherited-scale and adjusted-scale declarations to the start of each case while
 keeping their assignments in the native evaluation order also leaves the
 same stack operands and E8 positions. SSE intrinsic variants change
-stack/register allocation and contribution shape and are rejected.
+stack/register allocation and contribution shape and are rejected. A final
+function-scope lifetime battery moved distinct mode35/mode36 half, inherited
+and adjusted temporaries to the enclosing function and tried three declaration
+orders while preserving the Ghidra/native assignment order. All three compile
+to the same 5,985B / 3,726-of-5,368 ordinary-byte / 84-of-123 E8 result with
+both dead spills but memory-operand add/sub; no stack-slot declaration order
+recovers XMM1.
 
 No candidate currently preserves the original dead spill, both register
 operands, original width evaluation, the full 5,993B extent and the maintained
