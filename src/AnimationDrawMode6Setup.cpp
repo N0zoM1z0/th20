@@ -12,6 +12,7 @@
 #include "ScalarMath.hpp"
 #include <d3dx9math.h>
 #include <cstdint>
+#include "AnimationAnchorAccess.hpp"
 
 namespace th20 {
 extern const float native_half, native_one;
@@ -64,8 +65,8 @@ std::int32_t AnimationDrawDetailedOwner::prepare_complex_mode6(Animation* animat
     native_quad_vertices[0].position.z=projected_zero.z;
     // The actual original immutable data owner is [2 axes][3 modes][4
     // corners], with 0x30-byte axis stride and 0x10-byte mode stride.
-    const float* x_offsets=projection_mode_offsets[0][animation->base.flags.horizontal_anchor];
-    const float* y_offsets=projection_mode_offsets[1][animation->base.flags.vertical_anchor];
+    const float* x_offsets=projection_mode_offsets[0][TH20_HORIZONTAL_ANCHOR(animation->base.flags)];
+    const float* y_offsets=projection_mode_offsets[1][TH20_VERTICAL_ANCHOR(animation->base.flags)];
     transform_projected_xy(reinterpret_cast<Vector2*>(&native_quad_vertices[0].position),
         x_offsets[0]*scale_x,y_offsets[0]*scale_y,sine,cosine,scaled_half,offset_y);
     transform_projected_xy(reinterpret_cast<Vector2*>(&native_quad_vertices[1].position),

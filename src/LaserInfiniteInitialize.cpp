@@ -6,6 +6,7 @@
 #include "DiagnosticAllocator.hpp"
 #include "MotionMath.hpp"
 #include "SoundInf.hpp"
+#include "AnimationAnchorAccess.hpp"
 
 namespace th20 {
 
@@ -44,8 +45,8 @@ std::int32_t LaserInfiniteInf::initialize_laser(const void* input) {
     animation_0.update();
     set_animation_flag_byte_01_one(&animation_0);
     animation_0.base.flags.bytes_00.animation_mode=1;
-    animation_0.base.flags.horizontal_anchor=0;
-    animation_0.base.flags.vertical_anchor=2;
+    TH20_HORIZONTAL_ANCHOR(animation_0.base.flags)=0;
+    TH20_VERTICAL_ANCHOR(animation_0.base.flags)=2;
     animation_0.base.flags.bits_0b.viewport_placement_mode=1;
 
     file=context->laser_controller()->file;
