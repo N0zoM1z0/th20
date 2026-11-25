@@ -318,6 +318,9 @@ source-present but NONEXACT.
    exact, including the 34B `copy_base` wrapper and four callback/lifecycle
    helpers; original template/allocation callers are verified in
    `docs/ANIMATION_BINDING_LEAF_FUNCTIONS_EXACT.md`.
+   The adjacent `Animation::clear_flag_02` helper also now strictly replays
+   32/32B using the natural `AnimationFlagByte02::bit_10` C++ bitfield access;
+   its original authored-versus-accessor origin remains explicitly unresolved.
    The callback family also gained five strict native leaf replays (230B):
    `Animation::interrupt`, `Animation::set_callback`, callback construction,
    base destruction and the eight-byte scalar deleting path. The original

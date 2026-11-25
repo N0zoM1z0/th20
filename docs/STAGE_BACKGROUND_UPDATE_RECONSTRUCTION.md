@@ -8,7 +8,7 @@ The mesh updater is `0x004722E0` (1,375 bytes). It owns two independent mesh slo
 
 The adjacent 42-byte leaf at `0x00474DD0` is represented as `Animation::is_active()`: the original predicate tests whether `AnimationBase::field_28` is nonnegative. The source restores its behavior but deliberately leaves authored-versus-compiler origin unresolved.
 
-Two more adjacent leaves are now restored. `0x00472840` fills a caller-provided 4x4 `Matrix4` with the identity matrix and returns that pointer; its implementation is `matrix_identity` in `src/Matrix4Identity.cpp`. `0x00472A10` clears bit zero of `AnimationBase::flags.byte_02` without changing the other flag bits; its implementation is `Animation::clear_flag_02` in `src/AnimationClearFlag02.cpp`. Both retain unknown origin because their short generic-looking bodies do not establish whether the original code was game-authored or emitted from a utility/accessor layer.
+Two more adjacent leaves are now restored. `0x00472840` fills a caller-provided 4x4 `Matrix4` with the identity matrix and returns that pointer; its implementation is `matrix_identity` in `src/Matrix4Identity.cpp`. `0x00472A10` clears bit zero of `AnimationBase::flags.byte_02` without changing the other flag bits; its natural C++ implementation is `Animation::clear_flag_02` in `src/AnimationClearFlag02.cpp`, now using the exact `AnimationFlagByte02::bit_10` bitfield view. This 32-byte function strictly replays 32/32 bytes against the original PE. Its origin remains unknown because the short generic-looking body does not establish whether the original code was game-authored or emitted from a utility/accessor layer.
 
 ## Natural C++ reconstruction
 
@@ -25,7 +25,7 @@ Two more adjacent leaves are now restored. `0x00472840` fills a caller-provided 
 - project_culling_vertices is the natural C++ D3DX Vec3ProjectArray equivalent used by the production culler. The focused oracle replaces only the original D3DXMatrixTranslation and D3DXVec3ProjectArray import slots with independent test implementations; the latter performs its own matrix products and clip-to-viewport transform rather than calling the production helper.
 - `src/AnimationIsActive.cpp` restores the small Animation state predicate used by the object updater.
 - `src/Matrix4Identity.cpp` restores the original 4x4 identity-matrix helper used before Y-axis object rotation.
-- `src/AnimationClearFlag02.cpp` restores the isolated Animation flag-bit clear operation.
+- `src/AnimationClearFlag02.cpp` restores the isolated Animation flag-bit clear operation. The original 32B body is strict exact; the focused native role check is `scripts/verify-animation-clear-flag02-native.py`.
 - `src/StageResource.hpp` now names the 0x30-byte object record and 8-byte primitive header with offset assertions.
 
 The relevant original constants were checked at their actual PE addresses: amplitude `0x56F7B4 = 24.0f`, row divisor `0x56FA24 = 4.7f`, column divisor `0x56FA20 = 2.1f`, phase-frame divisors `0x56FA28 = 64.0f` and `0x56FA30 = 80.0f`, origin X `0x56FA6C = -192.0f`, mesh widths/heights `0x56CDA4 = 384.0f`, `0x56CD98 = 128.0f`, and `0x56D7C0 = 448.0f`. In particular, the `2.1f` divisor is not `2.1088f`; using the latter produces a visible Y displacement mismatch.
