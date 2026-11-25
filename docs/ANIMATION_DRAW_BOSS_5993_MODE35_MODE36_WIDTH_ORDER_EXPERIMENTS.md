@@ -352,9 +352,9 @@ candidate-only decoder:
 | Variant | Code | Ordinary bytes | E8 | Exact HIGHLOW sites | Candidate mode45 scale |
 | --- | ---: | ---: | ---: | ---: | --- |
 | Native-order scalar C++ | 5,989B | 4,694/5,372 | 109/123 | 26/32 | memory-source addss |
-| Load both scalar locals | 6,084B | 164/5,464 | 0/123 | 0/32 | no complete native call graph |
-| Set half vector | 6,098B | 268/5,480 | 0/123 | 0/32 | no complete native call graph |
-| Load half vector | 6,098B | 285/5,480 | 0/123 | 0/32 | no complete native call graph |
+| `_mm_load_ss` both scalar locals (`mode45_sse_load_intrinsic`) | 6,084B | 164/5,464 | 0/123 | 0/32 | no complete native call graph |
+| `_mm_set_ss` both scalar lanes (`mode45_sse_inline_intrinsic`) | 6,084B | 259/5,464 | 0/123 | 0/32 | no complete native call graph |
+| `_mm_load_ss` both lanes (`mode45_sse_intrinsic`) | 6,112B | 169/5,492 | 0/123 | 0/32 | no complete native call graph |
 
 The vector intrinsic expressions materialize extra scalar/vector temporaries
 and disrupt the switch contribution; they do not merely replace the native
