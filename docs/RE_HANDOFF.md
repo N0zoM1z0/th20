@@ -307,9 +307,10 @@ source-present but NONEXACT.
    original six-byte SHR/AND sequence. Modes37/38 and 39-41 now use
    offset-preserving `rounded_shape_radius`, `ring_center_radius` and
    `ring_thickness` aliases, with the 64B `AnmVariables` layout unchanged.
-   The exact 5,388B Animation geometry boss now also names mode24/25 angular
-   span/half-height, mode47 ring thickness/center-radius and mode48 triangle
-   radius; its 5,452B canonical relocated replay remains exact. The parent-only
+   The exact 5,388B Animation geometry boss now also names the shared geometry
+   UV span and mode24/25 angular span, half-height, base radius and center angle,
+   alongside mode47 ring thickness/center-radius and mode48 triangle radius;
+   its 5,452B canonical relocated replay remains exact. The parent-only
    lexical semantic-debt scan is now zero (heuristic only).
    Mode46's half-height ownership and width recomputation now follow the
    original order. Mode35/36's second inherited-scale result is now named

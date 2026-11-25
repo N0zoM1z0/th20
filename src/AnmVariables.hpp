@@ -19,7 +19,11 @@ struct AnmVariables {
         std::int32_t draw_shape_count;
         std::int32_t particle_grid_count;
     };
-    std::int32_t field_04, field_08, field_0c;
+    union {
+        std::int32_t field_04;
+        std::int32_t geometry_uv_v_span;
+    };
+    std::int32_t field_08, field_0c;
     union {
         float field_10;
         float rounded_shape_radius;
@@ -34,7 +38,15 @@ struct AnmVariables {
         float mode24_25_half_height;
         float mode47_ring_center_radius;
     };
-    float field_18, field_1c, field_20, field_24;
+    union {
+        float field_18;
+        float mode24_25_base_radius;
+    };
+    union {
+        float field_1c;
+        float mode24_25_center_angle;
+    };
+    float field_20, field_24;
     union {
         float field_28;
         float particle_grid_angle_offset;
@@ -50,6 +62,8 @@ static_assert(offsetof(AnmVariables, field_00) == 0);
 static_assert(offsetof(AnmVariables, geometry_vertex_count) == 0);
 static_assert(offsetof(AnmVariables, draw_shape_count) == 0);
 static_assert(offsetof(AnmVariables, particle_grid_count) == 0);
+static_assert(offsetof(AnmVariables, field_04) == 4);
+static_assert(offsetof(AnmVariables, geometry_uv_v_span) == 4);
 static_assert(offsetof(AnmVariables, field_10) == 16);
 static_assert(offsetof(AnmVariables, rounded_shape_radius) == 16);
 static_assert(offsetof(AnmVariables, ring_center_radius) == 16);
@@ -59,6 +73,8 @@ static_assert(offsetof(AnmVariables, mode47_ring_thickness) == 16);
 static_assert(offsetof(AnmVariables, mode48_triangle_radius) == 16);
 static_assert(offsetof(AnmVariables, mode24_25_half_height) == 20);
 static_assert(offsetof(AnmVariables, mode47_ring_center_radius) == 20);
+static_assert(offsetof(AnmVariables, mode24_25_base_radius) == 24);
+static_assert(offsetof(AnmVariables, mode24_25_center_angle) == 28);
 static_assert(offsetof(AnmVariables, field_28) == 0x28);
 static_assert(offsetof(AnmVariables, particle_grid_angle_offset) == 0x28);
 static_assert(offsetof(AnmVariables, field_2c) == 44);

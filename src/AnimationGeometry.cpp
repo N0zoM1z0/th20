@@ -46,7 +46,7 @@ void Animation::update_geometry() {
         float step = (pi * 2.0f) / float(count - 1);
         auto* vertex = static_cast<SpriteTexturedVertex*>(geometry);
         float uv = 0.0f;
-        float uv_step = float(base.variables.field_04) / float(count - 1);
+        float uv_step = float(base.variables.geometry_uv_v_span) / float(count - 1);
         Vector3 center;
         if (base.flags.bytes_00.animation_mode == 9) position(center);
         else center = {0,0,0};
@@ -80,7 +80,7 @@ void Animation::update_geometry() {
         float step=(pi*2.0f)/float(count-1);
         auto* vertex=static_cast<SpriteWorldTexturedVertex*>(geometry);
         float uv=0.0f;
-        float uv_step=float(base.variables.field_04)/float(count-1);
+        float uv_step=float(base.variables.geometry_uv_v_span)/float(count-1);
         Vector3 center;
         center={0,0,0};
         base.flags.word_04&=~0x200000u;
@@ -134,7 +134,7 @@ void Animation::update_geometry() {
         float step=base.vector_38.x/float(count-1);
         auto* vertex=static_cast<SpriteTexturedVertex*>(geometry);
         float uv=0.0f;
-        float uv_step=float(base.variables.field_04)/float(count-1);
+        float uv_step=float(base.variables.geometry_uv_v_span)/float(count-1);
         Vector3 center;
         position(center);
         base.flags.word_04&=~0x200000u;
@@ -162,17 +162,17 @@ void Animation::update_geometry() {
     case 24:
     case 25: {
         std::int32_t count=base.variables.geometry_vertex_count;
-        float angle=normalize_angle(base.variables.field_1c-base.variables.mode24_25_angular_span/2.0f);
+        float angle=normalize_angle(base.variables.mode24_25_center_angle-base.variables.mode24_25_angular_span/2.0f);
         float step=base.variables.mode24_25_angular_span/float(count-1);
         auto* vertex=static_cast<SpriteWorldTexturedVertex*>(geometry);
         float uv=0.0f;
-        float uv_step=float(base.variables.field_04)/float(count-1);
+        float uv_step=float(base.variables.geometry_uv_v_span)/float(count-1);
         base.flags.word_04&=~0x200000u;
         std::uint32_t color=base.flags.bits_09.color_mode?base.color_494:base.color_490;
         Vector3 point;
         float half_height=base.variables.mode24_25_half_height/2.0f;
-        float first_radius=base.variables.field_18;
-        float second_radius=base.variables.field_18;
+        float first_radius=base.variables.mode24_25_base_radius;
+        float second_radius=base.variables.mode24_25_base_radius;
         if(base.flags.bytes_00.animation_mode==25) {
             half_height=0;first_radius-=base.variables.mode24_25_half_height/2.0f;second_radius+=base.variables.mode24_25_half_height/2.0f;
         }
