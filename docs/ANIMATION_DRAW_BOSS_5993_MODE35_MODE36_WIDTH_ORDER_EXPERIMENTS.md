@@ -100,3 +100,54 @@ pre-getter half alive in XMM1 across the recursive getter, recomputes width's
 half at the original post-getter point, and preserves the 5,993B/123-E8/32-
 HIGHLOW parent. The maintained source is unchanged; parent exact credit
 remains zero.
+
+## 2026-11-25 follow-up: direct arguments, mixed ownership and exact call displacement
+
+The full Ghidra decompilation of `0x00443880` was refreshed. It confirms the
+mode35/36 expression order already stated above: `fVar9 = height / 2` is
+computed before the second getter; the adjusted scale consumes that saved
+value; the width half is a distinct calculation after adjusted scale, in the
+renderer argument sequence. The original PE verifier now pins both complete
+width arithmetic windows as well as the two getter/store and register-register
+adjusted-scale windows:
+
+- Mode35 width at `+0x1068`: `movss xmm0,[height]`, `divss xmm0,[native_two]`,
+  `addss xmm0,[width]`.
+- Mode36 width at `+0x171c`: the same height division, then
+  `movss xmm1,[width]` and `subss xmm1,xmm0`.
+
+The source-role verifier now independently checks that the maintained C++
+mode35/36 blocks preserve first getter, color getter, pre-getter scale half,
+second getter, adjusted scale, and post-adjustment width calculation in that
+order. Both focused verifiers pass; this adds semantic protection, not parent
+exactness credit.
+
+A fresh matrix combined the two half-height ownership choices independently
+in modes35 and 36, and then crossed them with native-order mode45. It also
+tried putting both expressions directly in the renderer call, letting MSVC
+choose argument evaluation order. The measured results are:
+
+| Candidate | Code | Ordinary bytes | E8 sites | Sum absolute E8 displacement | Exact HIGHLOW sites |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Maintained source | 5,993B | 4,840/5,376 | 114/123 | 44B | 27/32 |
+| Mode35 width-before-half | 5,993B | 4,844/5,376 | 114/123 | 62B | 27/32 |
+| First-result spill + both role swaps | 5,989B | 3,801/5,372 | 89/123 | 140B | 24/32 |
+| First-result spill + native half ownership in both modes | 5,985B | 3,726/5,368 | 84/123 | 296B | 23/32 |
+| First-result spill + mode35 role swap / mode36 native order | 5,989B | 3,800/5,372 | 89/123 | 140B | 24/32 |
+| First-result spill + mode35 native order / mode36 role swap | 5,985B | 3,725/5,368 | 84/123 | 296B | 23/32 |
+| Direct renderer arguments in both modes | 6,017B | 3,675/5,400 | 83/123 | 928B | 23/32 |
+| Spill + both native half modes + native mode45 | 6,013B | 3,735/5,396 | 84/123 | 360B | 23/32 |
+| Spill + mode35 role swap / mode36 native + native mode45 | 6,017B | 3,800/5,400 | 89/123 | 252B | 24/32 |
+
+The displacement sum is the sum of absolute byte differences for all 123
+physical E8 instruction offsets; it is useful alongside the simple count
+because two candidates can both match 114/123 positions while moving the
+remaining sites by different distances. The four-byte ordinary-byte increase
+from the mode35 width-before-half probe is not a genuine convergence: its
+absolute E8 displacement rises from 44B to 62B, while the mismatch count stays
+at nine. The direct-call experiment is substantially worse because the
+compiler's argument evaluation order moves the second getter and both nested
+case tails.
+
+No source variant improves the maintained parent's combined evidence. The
+production source, canonical objects and exactness registry remain unchanged.
