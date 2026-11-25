@@ -176,3 +176,55 @@ The other current PMR parent frontiers remain: 35B wrapper 34B/14 (native
 and reallocation 488B/170. Their natural C++ candidates preserve all native
 E8 counts; 108B/140B/488B non-relocation code bytes match, while relocation
 site types/targets remain a separate exactness requirement.
+
+
+## 2026-11-25 follow-up: restore the 200B iterator/backout move path
+
+The maintained `GlyphMaskComposite2245.cpp` now specializes the actual
+`std::_Uninitialized_backout_al<polymorphic_allocator<GlyphMaskOffset>>`
+for the TH20 two-word glyph element and the matching
+`std::_Uninitialized_move<GlyphMaskOffset*, GlyphMaskAllocator>` entry.
+This is ordinary C++ template code; no assembly, byte injection, or padding
+is used.
+
+The complete native `0x00413920` 200B function now has a 200B/65-i386
+candidate with all nine E8 offsets and both absolute relocation fields in
+the original positions. After zeroing only genuine E8 displacement and
+PE/COFF absolute relocation fields, all 200 bytes match. The old loop
+sequence is restored: two `_Get_unwrapped` calls, the backout local
+initialization/constructor, an out-of-line element `std::move`, the
+backout insertion member, `_Release`, and the backout destructor.
+
+The two nested helpers are also reconstructed as complete C++ functions:
+
+| Native head | Native extent | Candidate extent | Body result |
+| --- | ---: | ---: | --- |
+| `0x00413280` backout element insertion | 92B/34-i386, 3 E8 | 92B/34-i386, 3 E8 | Every non-relocation byte and call offset matches |
+| `0x00413A90` allocator move-construction wrapper | 31B/14-i386, 2 E8 | 31B/14-i386, 2 E8 | Every non-relocation byte and call offset matches |
+| `0x0040B2A0` `_Get_unwrapped` | 10B/6-i386 | 10B/6-i386 | Complete body matches |
+
+The 31B wrapper still calls a **69B** current-MSVC
+`polymorphic_allocator::construct` body, whereas the original 31B wrapper
+calls a separate **78B** native construction helper at `0x00413AB0`.
+That old 78B helper remains the deepest unresolved leaf. The 31B
+`__autoclassinit2` lowering also retains a separate native call-site
+frontier. Thus the 200B/92B/31B bodies are source-present and strongly
+converged, but are not promoted to whole-function exactness. The 35B
+public wrapper still omits its native trailing NOP, and the 2,245B game
+Boss remains NONEXACT.
+
+The 140B and 488B parents now route their element construction through
+the same natural 31B move-construction wrapper at their original E8
+positions. Their full 140B/52-i386 and 488B/170-i386 bodies remain
+byte-identical outside real relocation fields. The 24 previously accepted
+PMR/color child units still pass the source-scoped replay; no full cold
+replay was run.
+
+Targeted checks:
+
+```sh
+scripts/repo-python scripts/replay-exact-units.py --source src/GlyphMaskComposite2245.cpp
+scripts/repo-python scripts/verify-glyph-pmr-five-parents-native.py
+scripts/repo-python scripts/verify-glyph-mask-emplace35-native.py --candidate-object build/core1052-canonical/GlyphMaskComposite2245.obj
+scripts/repo-python scripts/verify-glyph-vector-growth488-native.py --candidate-object build/core1052-canonical/GlyphMaskComposite2245.obj
+```

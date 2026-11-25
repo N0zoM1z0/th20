@@ -198,3 +198,23 @@ noinline `std::move<GlyphMaskOffset*&>` instantiation restores the pointer
 forwarding operation before `_Uninitialized_backout_al::_Emplace_back`.
 The full body remains NONEXACT (100/150 ordinary overlap bytes); this is a
 real C++ template lowering improvement, not an instruction or padding shim.
+
+
+## 2026-11-25 follow-up: complete 200B parent and nested backout source
+
+The maintained source now emits the complete 200B/65-i386
+`_Uninitialized_move` body with nine E8 calls and two DIR32 relocation
+fields. Its non-relocation bytes match the original 200B/65 body exactly.
+The 92B `_Emplace_back_deref_move` and 31B
+`glyph_uninitialized_move_construct` helpers also match their complete
+native bodies after normalizing only real E8/COFF relocation fields.
+
+The 140B and 488B vector parents now call the same natural 31B move-
+construction wrapper at native offsets `+0x52` and `+0x112`; their full
+instruction bodies remain converged. The wrapper itself still calls the
+current 69B `polymorphic_allocator::construct` helper instead of the
+original 78B native leaf at `0x00413AB0`. The 10B `_Get_unwrapped` leaf
+and the 8B element `std::move` forwarding leaf now have complete native
+source bodies. The 31B `__autoclassinit2` call-site lowering is tracked
+separately. None of these body-shape results alone grants whole-function
+exactness or game-authored code credit.

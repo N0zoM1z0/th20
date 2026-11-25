@@ -95,7 +95,7 @@ vector<th20::GlyphMaskOffset, pmr::polymorphic_allocator<th20::GlyphMaskOffset>>
     const th20::GlyphMaskOffset& value) {
     auto& data = _Mypair._Myval2;
     pointer& last = data._Mylast;
-    _Alty_traits::construct(_Getal(), _Unfancy(last), std::move(value));
+    th20::glyph_uninitialized_move_construct(_Getal(), _Unfancy(last), std::move(value));
     _Orphan_range(last, last);
     th20::GlyphMaskOffset& result = *last;
     ++last;
@@ -127,7 +127,7 @@ vector<th20::GlyphMaskOffset, pmr::polymorphic_allocator<th20::GlyphMaskOffset>>
 
     const th20::GlyphMaskOffset&& source = std::move(value);
     const pointer destination = _Unfancy(new_vector + where_offset);
-    _Alty_traits::construct(allocator, destination, source);
+    th20::glyph_uninitialized_move_construct(allocator, destination, source);
     constructed_first = new_vector + where_offset;
 
     if (where == last) {
