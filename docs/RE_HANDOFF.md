@@ -343,8 +343,10 @@ source-present but NONEXACT.
    earlier half-height for width. The native path recomputes the width half
    after adjusted-scale; preserving that order currently reverts to the
    memory-operand subtraction. No source change is promoted. A focused mode36 declaration
-   battery, `/Zi`/`/Z7` debug-info builds, scalar SSE-load intrinsics and bit-cast
-   experiments did not recover the native XMM1 load without breaking the call
+   battery (including case-top predeclarations with native assignment order),
+   `/fp:fast`/`/fp:strict`/`/fp:precise`, `/Zi`/`/Z7` debug-info builds,
+   scalar SSE-load intrinsics and bit-cast experiments did not recover the
+   native XMM1 load without breaking the call
    census or natural source profile; see the appended mode36 probe report. The
    inherited-scale getter's exact 93B `float` ABI is closed;
    Ghidra's `float10` does not justify MSVC `long double`. See

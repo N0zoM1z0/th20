@@ -118,8 +118,11 @@ getter and recomputes width after it, but MSVC emits the adjusted-scale
 subtraction as `subss xmm0, [half]` rather than the original
 `movss xmm1, [half]; subss xmm0, xmm1`. Declaration order, mutability, copy,
 reference and volatile scalar probes do not change that selection. `/fp:fast`,
-`/fp:strict` and `/fp:precise` all produce the same code. SSE intrinsic variants
-change stack/register allocation and contribution shape and are rejected.
+`/fp:strict` and `/fp:precise` all produce the same code. Moving the half,
+inherited-scale and adjusted-scale declarations to the start of each case while
+keeping their assignments in the native evaluation order also leaves the
+same stack operands and E8 positions. SSE intrinsic variants change
+stack/register allocation and contribution shape and are rejected.
 
 No candidate currently preserves the original dead spill, both register
 operands, original width evaluation, the full 5,993B extent and the maintained
