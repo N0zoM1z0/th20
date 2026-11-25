@@ -732,3 +732,24 @@ The production source remains unchanged at 5,989B / 1,501 x86 heads,
 4,694/5,372 ordinary bytes, 109/123 E8 positions, 68B total E8 displacement,
 and 26/32 HIGHLOW sites. The 114-site candidate is a useful bound on the
 remaining source-order/register-allocation gap, not exactness credit.
+
+
+## 2026-11-25 follow-up: mode35/36 width-temporary staging controls
+
+With the maintained mode45/46 source order and the production flag expression
+held fixed, four natural C++ staging changes were compiled independently:
+
+| Probe | Code | x86 | E8 | abs E8 delta | HIGHLOW |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| mode35 inline width expression | 5,973B | 1,499 | 81/123 | 636B | 22/32 |
+| mode36 named width temporary | 6,005B | 1,503 | 81/123 | 556B | 22/32 |
+| mode36 mutable compound width | 6,015B | 1,505 | 45/123 | 1,130B | 14/32 |
+| mode35 mutable compound width | 5,999B | 1,503 | 45/123 | 606B | 14/32 |
+
+These are all rejected. Inlining mode35's width expression or staging a
+second mode36 width local moves the nested argument-evaluation sequence away
+from the native E8 frontier. Compound assignment also changes the generated
+switch/stack layout dramatically. None improves the maintained 5,989B,
+1,501-head, 109/123-E8, 26/32-HIGHLOW parent. The source-role verifier's
+mode35/36 order assertions remain unchanged; no candidate source was
+promoted.
