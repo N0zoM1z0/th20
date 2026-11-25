@@ -22,8 +22,8 @@
 // These are ordinary C++ implementations, not injected bytes or padding; the
 // 35B public wrapper remains NONEXACT because this compiler omits its NOP.
 // The main Boss uses a two-case pixel-format dispatch, constructs each PMR
-// stencil only after computing radius_squared, and takes both BGRA32 and RGBA4444 outline edges directly from their
-// four ordered neighbor tests.
+// stencil only after computing radius_squared, and takes both BGRA32 and
+// RGBA4444 outline edges directly from their four ordered neighbor tests.
 template __declspec(noinline) const th20::GlyphMaskOffset&&
 std::move<const th20::GlyphMaskOffset&>(const th20::GlyphMaskOffset&) noexcept;
 template __declspec(noinline) th20::GlyphMaskOffset&&
@@ -33,6 +33,40 @@ std::move<th20::GlyphMaskOffset&>(th20::GlyphMaskOffset&) noexcept;
 template __declspec(noinline) th20::GlyphMaskOffset*&&
 std::move<th20::GlyphMaskOffset*&>(th20::GlyphMaskOffset*&) noexcept;
 
+namespace th20 {
+struct GlyphMaskConstructClosure {
+    GlyphMaskOffset* destination;
+    explicit GlyphMaskConstructClosure(GlyphMaskOffset* value) : destination(value) {}
+    void operator()(const GlyphMaskOffset&& value) const {
+        ::new (const_cast<void*>(static_cast<const volatile void*>(destination)))
+            GlyphMaskOffset(std::move(value));
+    }
+};
+} // namespace th20
+
+namespace std::pmr {
+template <>
+template <>
+__declspec(safebuffers) void polymorphic_allocator<th20::GlyphMaskOffset>::construct<
+    th20::GlyphMaskOffset, const th20::GlyphMaskOffset>(
+    th20::GlyphMaskOffset* const destination,
+    const th20::GlyphMaskOffset&& source) {
+    using arguments_type = std::tuple<const th20::GlyphMaskOffset&&>;
+    alignas(arguments_type) std::byte arguments_storage[sizeof(arguments_type)];
+    auto* arguments = std::construct_at(
+        reinterpret_cast<arguments_type*>(arguments_storage),std::move(source));
+    alignas(th20::GlyphMaskConstructClosure)
+        std::byte constructor_storage[sizeof(th20::GlyphMaskConstructClosure)];
+    auto* constructor_object = std::construct_at(
+        reinterpret_cast<th20::GlyphMaskConstructClosure*>(constructor_storage),destination);
+    std::apply(std::move(*constructor_object),std::move(*arguments));
+}
+} // namespace std::pmr
+
+// The native allocator member builds a one-element argument tuple and applies
+// a destination-capturing callable. Keep that C++20 tuple/apply boundary
+// explicit instead of the newer generic uses_allocator helper; this restores
+// the original 78B member extent and four-call topology without byte injection.
 namespace th20 {
 using GlyphMaskAllocator = std::pmr::polymorphic_allocator<GlyphMaskOffset>;
 __declspec(noinline) void glyph_uninitialized_move_construct(

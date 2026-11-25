@@ -193,7 +193,7 @@ def verify(candidate):
  # CORE/RECON-1081 adds nine native whole-exact PMR growth/backout
  # descendants to the original fifteen code owners of this same C++ file.
  # The old exact-count assertion must follow the actual source closure.
- assert len(affected)==24
+ assert len(affected)==25
  new_descendants={
    'glyph_vec_calculate_growth_84','glyph_vec_allocate_at_least_19',
    'glyph_vec_pmr_array_allocate_58','glyph_vec_count_size_42',
@@ -208,7 +208,7 @@ def verify(candidate):
  print('PASS original four folded array-index E8 at +0x29E/+0x2B0/+0x666/+0x678, existing 22B array helper whole structural 22/22 (no duplicate credit)')
  print('PASS complete natural 2224B/591-i386 source: 193/2056 ordinary overlap bytes: all 37 E8/5 DIR32 roles, nine live-stride getter calls, including per-pixel RGBA4444 source at native +0x5E7')
  print('PASS 37/37 candidate E8 target roles in original order, native grouped (x +/- delta_x) addressing, four 16-bit alpha bitfield reads, typed BGRA byte writes and direct RGBA4444 early exits; 4/37 E8 and 4/5 PE HIGHLOW sites aligned')
- print('PASS all 24 previously accepted PMR/color generic source descendants remain whole native exact')
+ print('PASS all 25 accepted PMR/color/allocator source descendants remain whole native exact')
  print('SOURCE-PRESENT NONEXACT: entire 2224B candidate vs original 2245B parent, 314 aggregate E8 offset delta, no new game-authored code credit')
 if __name__=='__main__':
  import argparse

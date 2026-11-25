@@ -233,6 +233,37 @@ def verify_candidate(obj: Path, image, base, sections, native):
     allocator_relocs = {int(r["offset"]) - 1: r["symbol"] for r in relocs["allocator_move_construct"]}
     assert "move@ABV" in allocator_relocs[0x07]
     assert "polymorphic_allocator" in allocator_relocs[0x17] and "construct" in allocator_relocs[0x17]
+    # The 31B wrapper is a complete structural-exact unit: both original
+    # E8 destinations resolve to the real std::move leaf and allocator member.
+    wrapper_unit = coff.compare_unit("glyph_uninitialized_move_construct_31")
+    assert wrapper_unit["result"] == "exact" and wrapper_unit["matched_bytes"] == 31
+
+    # Reconstruct the original 78B polymorphic_allocator::construct leaf as
+    # natural tuple/apply C++, without claiming byte exactness for its body.
+    construct_symbol = next(s for s in strings if s.startswith(
+        "??$construct@V?$array@H$01@std@@$$CBV12@@?$polymorphic_allocator@"))
+    construct_body, construct_relocs = candidate_body(obj, construct_symbol, 78)
+    construct_ins = disassemble(construct_body)
+    assert len(construct_body) == 78 and len(construct_ins) == 30
+    assert list(call_sites(construct_ins, 0)) == [0x0D, 0x1A, 0x2D, 0x40]
+    assert len(construct_relocs) == 4
+    construct_relocs = sorted(construct_relocs, key=lambda r: int(r["offset"]))
+    assert [int(r["offset"]) for r in construct_relocs] == [0x0E, 0x1B, 0x2E, 0x41]
+    assert construct_relocs[0]["symbol"].startswith("??$move@ABV")
+    assert "construct_at@V?$tuple@" in construct_relocs[1]["symbol"]
+    assert "construct_at@UGlyphMaskConstructClosure" in construct_relocs[2]["symbol"]
+    assert "apply@UGlyphMaskConstructClosure" in construct_relocs[3]["symbol"]
+    native_construct = pe.raw_at(image, base, sections, 0x00413AB0, 78)
+    native_construct_ins = disassemble(native_construct, 0x00413AB0)
+    native_construct_calls = call_sites(native_construct_ins, 0x00413AB0)
+    assert list(native_construct_calls) == [0x0D, 0x1E, 0x30, 0x40]
+    candidate_fields = {int(r["offset"]) for r in construct_relocs}
+    native_fields = {site + 1 for site in native_construct_calls}
+    relocation_mask = {i for field in candidate_fields | native_fields
+                       for i in range(field, field + 4)}
+    compared = [i for i in range(78) if i not in relocation_mask]
+    assert (sum(native_construct[i] == construct_body[i] for i in compared), len(compared)) == (40, 55)
+    assert construct_ins[-1].mnemonic == "ret" and construct_ins[-1].op_str in ("8", "0x8")
 
     # The game-owned parent still calls the real C++ emplace_back specialization
     # at both original sites. This does not award parent exactness.
@@ -248,9 +279,11 @@ def verify_candidate(obj: Path, image, base, sections, native):
     print("PASS candidate 200B/65-i386 uninitialized-move body, 92B/34-i386 backout member and 31B/14-i386 allocator wrapper match all non-relocation bytes and native E8 positions")
     print("PASS candidate 488B has the original 14 E8 and 2 HIGHLOW relocation sites; 200B has 9 E8 and 2 HIGHLOW sites")
     print("PASS candidate std::move<GlyphMaskOffset&> forwarding leaf is byte-exact")
-    print("RESIDUAL: 10B C++20 _Get_unwrapped vs native 9B; 31B allocator wrapper calls current 69B polymorphic_allocator::construct vs native 78B helper; 31B __autoclassinit2 call-site lowering differs")
+    print("RESIDUAL: 10B C++20 _Get_unwrapped vs native 9B; 78B allocator::construct tuple/apply body remains NONEXACT (40/55 ordinary bytes, 2/4 call sites aligned); 31B __autoclassinit2 call-site lowering differs")
     print("PASS candidate 34B/14-i386 emplace wrapper retains both original E8 sites; only native +0x1C NOP is absent")
-    print("PASS 2,224B parent routes both BGRA/ARGB insertion calls through the specialized wrapper at candidate +0x16E/+0x50E; original sites are +0x165/+0x4DD, parent remains NONEXACT")
+    print("PASS 31B/14-i386 allocator-move wrapper is a whole structural-exact unit with both native E8 destinations")
+    print("PASS 78B/30-i386 allocator::construct is natural tuple/apply C++ with four E8 calls; 40/55 ordinary bytes, NONEXACT")
+    print("PASS 2,224B parent routes both BGRA/ARGB insertion calls through the specialized wrapper at candidate +0x16E/+0x4F3; original sites are +0x165/+0x4DD, parent remains NONEXACT")
 
 if __name__ == "__main__":
     candidate = None

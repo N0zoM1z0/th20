@@ -27123,6 +27123,20 @@ target_address = 0x00414280
 size = 22
 relocations = []
 
+# CORE/RECON-1082: exact native 31B allocator-move wrapper; both E8 targets independently resolved.
+[units.glyph_uninitialized_move_construct_31]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::glyph_uninitialized_move_construct"]
+symbol = "?glyph_uninitialized_move_construct@th20@@YAXAAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@AAV?$array@H$01@4@ABV54@@Z"
+target_address = 0x00413A90
+size = 31
+relocations = [
+  { offset = 0x8, type = "REL32", symbol = "??$move@ABV?$array@H$01@std@@@std@@YA$$QBV?$array@H$01@0@ABV10@@Z", target = 0x0040B280 },
+  { offset = 0x18, type = "REL32", symbol = "??$construct@V?$array@H$01@std@@$$CBV12@@?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@QAEXQAV?$array@H$01@2@$$QBV32@@Z", target = 0x00413AB0 },
+]
+
 # CORE/RECON-1054: original complete 10B PMR glyph-offset lifecycle helper.
 [units.glyph_mask_default_resource_10]
 source = "src/GlyphMaskComposite2245.cpp"
