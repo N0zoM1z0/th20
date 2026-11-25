@@ -244,3 +244,36 @@ it swaps the native mode45/46 scale-half and width-half roles.
 The separate 244B `Animation::project_corners` dispatcher is now strict exact
 as its own 260B code-plus-table unit; that leaf result does not change the
 5,993B Draw parent status or its residual call map.
+
+## 2026-11-25 fresh physical HIGHLOW residual map
+
+The maintained source's 32 original in-body PE HIGHLOW roles were compared
+again by physical site **and** absolute target, not merely by target histogram.
+It preserves all 32 target roles, with **26/32** exact site/target pairs. The
+six residuals are:
+
+| Native site | Maintained site | Target role | Explanation |
+| ---: | ---: | --- | --- |
+| `+0x00A2` | `+0x00A2` | main 49-entry switch table | candidate body is 4B shorter; table base is `0x00444FE8` instead of `0x00444FEC` |
+| `+0x04E7` | `+0x04E7` | nested 31-entry switch table | candidate body is 4B shorter; table base is `0x004450AC` instead of `0x004450B0` |
+| `+0x1007` | `+0x1003` | `native_two` | mode35 pre-getter scale half / local spill ordering |
+| `+0x1071` | `+0x103E` | `native_two` | mode35 post-adjustment width half is materialized too early |
+| `+0x10F4` | `+0x10F8` | `native_two` | mode36 pre-getter scale half / local spill ordering |
+| `+0x1646` | `+0x1642` | `native_two` | mode45 post-adjustment width half is 4B early |
+| `+0x16AD` | `+0x16A9` | `native_two` | mode46 pre-getter scale half is 4B early |
+| `+0x1725` | `+0x171D` | `native_two` | mode46 post-adjustment width half is 8B early |
+
+The first two entries share the same root cause: the maintained executable
+body ends at `+0x1765` rather than the native `+0x1769`, so the two compiler
+switch-table references resolve four bytes early. The other six entries are
+all distinct `native_two` references in modes35/36/45/46; their target roles
+are correct, but their source evaluation/spill sites differ. This explains
+all six unmatched body data sites without an unclassified relocation.
+
+A mode45-only value-equivalent half-role swap moves one `native_two` site onto
+the native mode46 scale-half position and raises the candidate to 27/32
+HIGHLOW site/target pairs, but it reverses native mode45's pre-getter scale
+half and post-getter width half. It remains rejected. Inline getter spelling
+and redundant parentheses in modes35/36 were also recompiled; both are
+codegen-identical to the maintained 109/123-E8 candidate. Production source
+remains unchanged and the parent remains NONEXACT.
