@@ -617,3 +617,15 @@ improve its stack-slot/call frontier. Sharing the half local for scale and
 width loses the first-result stores and collapses the call graph. Keep the
 current production source unchanged; detailed measurements are in the
 mode35/36 experiment ledger.
+
+2026-11-25 follow-up: isolated mode45/46 half-role swapping reaches
+5,993B/1,501 x86, 114/123 E8 positions, 44B total E8 displacement and 27/32
+HIGHLOW sites. All 123 REL32 target symbols remain in production order. It is
+rejected: it precomputes the width half before the getter and recomputes the
+scale half after it, while native source/dataflow computes scale half before
+the getter and width half after. The source-role verifier intentionally
+rejects this value-equivalent order swap. A bit-mask-only parent-flag rewrite
+also reduces the maintained build to 1,500 heads, so it is not promoted.
+`src/AnimationDrawBoss.cpp` remains unchanged at 5,989B/1,501, 109/123 E8,
+68B displacement, 26/32 HIGHLOW and NONEXACT. See the mode35/36 experiment
+ledger for exact mismatch offsets and candidate metrics.

@@ -687,3 +687,48 @@ produce no native spill. Sharing the half local between scale and width
 collapses to 45–77/123 E8 and loses the native first-result stores. The
 current candidate's function/switch-scope first-result lifetime is therefore
 stable, but the exact mode36 precomputed-half register load remains unresolved.
+
+
+## 2026-11-25 follow-up: 114-site mode45/46 swapped-half probe (rejected)
+
+A clean isolated C++ probe was built from the maintained parent by changing
+only the mode45/46 arithmetic ownership and using the equivalent bit-mask
+spelling of the parent-inheritance flag test. It reaches:
+
+| Metric | Probe | Maintained source |
+| --- | ---: | ---: |
+| Code extent | 5,993B | 5,989B |
+| x86 instruction heads | 1,501 | 1,501 |
+| Ordinary bytes | 4,835/5,376 | 4,694/5,372 |
+| E8 positions | **114/123** | 109/123 |
+| Total absolute E8 displacement | **44B** | 68B |
+| HIGHLOW sites | **27/32** | 26/32 |
+
+All 123 REL32 target symbols resolve and the complete target-symbol sequence
+is identical to the maintained parent's sequence. The nine remaining E8
+position mismatches are calls 81-88 in modes35/36 and call121 (mode46's final
+renderer call). The candidate's 27/32 HIGHLOW site count is one better than
+the maintained parent.
+
+This is explicitly **not promoted**. Its mode45/46 source computes
+`half_for_width = height/2` before the inherited-scale getter, then recomputes
+`height/2` inside the adjusted-scale expression after the getter. The native
+source/dataflow does the opposite: it computes the scale half before the
+getter, consumes that value in the register-register add/subtract, and only
+then independently computes the width half for the renderer argument. The
+probe has the same ordinary finite-float values because the helper reads
+Animation state and does not mutate the already-captured local height, but it
+reverses the two native local roles and their evaluation order. The maintained
+`scripts/verify-animation-draw-boss-source-roles.py` deliberately rejects this
+value-equivalent swap. Do not promote it as a source reconstruction.
+
+The equivalent bit-mask flag expression was also tested by itself. On the
+maintained source it produces 5,989B / 1,500 x86 heads, 109/123 E8, 26/32
+HIGHLOW and 4,688/5,372 ordinary bytes, so it is not a standalone improvement.
+Its 1,501-head result in the 114-site probe is an interaction with the rejected
+mode45/46 source change, not a separately promotable flag-expression fix.
+
+The production source remains unchanged at 5,989B / 1,501 x86 heads,
+4,694/5,372 ordinary bytes, 109/123 E8 positions, 68B total E8 displacement,
+and 26/32 HIGHLOW sites. The 114-site candidate is a useful bound on the
+remaining source-order/register-allocation gap, not exactness credit.
