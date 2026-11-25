@@ -30,6 +30,16 @@ site/target pairs. A subsequent source-level bit-extraction correction now yield
 and rejected probes are in
 [the focused mode45/46 report](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md).
 
+The nested dispatcher now uses mode-specific aliases for the shared ANM
+variable slots: modes37/38 read `rounded_shape_radius`, while modes39-41 read
+`ring_center_radius` and `ring_thickness`. The renderer children independently
+confirm these roles through their original `radius`, `size_x/size_y`, and
+`thickness` parameters. The aliases preserve the original 64B `AnmVariables`
+layout and the original offsets +0x10/+0x14; four direct consumer translation
+units compile with the unchanged ABI. The Boss-local semantic-debt scan now
+reports zero anonymous identifiers. This naming work does not claim additional
+machine-code exactness.
+
 The maintained function changes remain ordinary C++ source; no binary bytes,
 manual opcodes, or padding are introduced. The parent-angle flag test now uses
 `((word_04 >> 12) & 1u) == 0`, reproducing the original `shr edx, 0xc; and edx, 1`

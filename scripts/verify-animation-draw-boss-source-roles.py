@@ -126,6 +126,18 @@ def main():
     assert "animation->retirement_state != 0" in text
     assert "offsetof(Animation, retirement_state) == 0x570" in text
 
+    # Mode-specific names share the original 64B ANM variable storage; the
+    # draw Boss no longer uses anonymous radius/thickness offsets.
+    variables=(ROOT / "src/AnmVariables.hpp").read_text()
+    assert "float rounded_shape_radius;" in variables
+    assert "float ring_center_radius;" in variables
+    assert "float ring_thickness;" in variables
+    assert "offsetof(AnmVariables, rounded_shape_radius) == 16" in variables
+    assert "offsetof(AnmVariables, ring_center_radius) == 16" in variables
+    assert "offsetof(AnmVariables, ring_thickness) == 20" in variables
+    assert "variables.field_10" not in text and "variables.field_14" not in text
+    assert "field_570" not in text
+
     # Mode45 intentionally reverses the two equal half-height calculations
     # to keep native register-register ADDSS and its renderer call position.
     # The original PE instead uses the pre-getter half for adjusted scale and
