@@ -1,4 +1,5 @@
-**CORE/RECON-1082 UPDATED STATUS:** This original 35B helper and its complete 108B backend, 488B vector reallocation, 200B uninitialized move, and 140B non-growth construction now have [real std::pmr::vector<std::array<int32_t,2>> source-present NONEXACT records](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md). The original complete 35B still differs from the current natural 33B/13 C++20 template; old SOURCE-ABSENT/unclassified claims below are historical. All 24 already accepted PMR/color descendants remain whole exact.
+**CORE/RECON-1082 CURRENT STATUS:** The maintained C++ source now specializes the actual `std::pmr::vector<std::array<int32_t,2>>` member templates. It emits a 34B/14-i386 `emplace_back` wrapper with both native E8 positions (only the original +0x1C NOP is absent), an exact 8B shared `std::move` leaf, and 108B/40, 140B/52 and 488B/170 backend bodies whose every non-relocation byte and E8 position matches native. The 488B body also retains both original HIGHLOW sites as COFF DIR32 relocations. The 200B `_Uninitialized_move` remains 191B/62-i386 and NONEXACT; the 2,245B game compositor remains NONEXACT. The targeted source replay preserves 24/24 accepted PMR/color descendants. See the complete five-parent frontier below.
+
 
 # CORE/RECON-1055 — original 35B glyph-mask offset insertion, genuine native 2-call ABI frontier
 
@@ -90,7 +91,8 @@ Several ordinary C++ source paths were rebuilt under the pinned profile:
 - Explicit `__declspec(noinline)` instantiations of both
   `std::move<GlyphMaskOffset&>` and `std::move<const GlyphMaskOffset&>` do not
   force the modern vector template to retain a separate call. The complete
-  wrapper remains 33B/13 with one E8.
+  historical pre-specialization wrapper was 33B/13 with one E8; the current
+  member-template specialization is 34B/14 with both native E8 positions.
 - A separate natural free forwarding function
   `append_glyph_mask_offset(GlyphMaskOffsets&, const GlyphMaskOffset&)`
   emits **26B/11-i386** with two E8, but its ABI is `__cdecl` with two stack
@@ -150,3 +152,40 @@ private implementation directly. No private-access shim, `#define private
 public`, inline assembly, manual bytes or padding was introduced. The
 original 35B/108B compiler-template parent chain remains SOURCE-PRESENT,
 NONEXACT; the maintained compositor source is unchanged by these probes.
+
+## 2026-11-25 follow-up: natural C++ specializations restore the old PMR insertion/growth bodies
+
+The earlier 33B/13-i386 `emplace_back` candidate did not retain the old
+native forwarding boundary. The maintained source now explicitly specializes
+the MSVC `std::vector<GlyphMaskOffset, polymorphic_allocator<GlyphMaskOffset>>`
+member templates used by the real compositor. These are ordinary C++ member
+implementations; no inline assembly, native byte injection, NOP padding or
+synthetic call is used.
+
+| Native function | Native body | Maintained C++ body | Verified result |
+| --- | ---: | ---: | --- |
+| `0x00416330 emplace_back` | 35B / 15 heads / 2 E8 | 34B / 14 heads / 2 E8 | Both E8 positions and all bytes match after relocation normalization and removing only the original `+0x1C` NOP |
+| `0x0040B280 std::move` | 8B / 5 heads | 8B / 5 heads | Complete bytes identical |
+| `0x00413370 _Emplace_one_at_back` | 108B / 40 heads / 4 E8 | 108B / 40 heads / 4 E8 | Every non-relocation byte and E8 position identical |
+| `0x004132E0 _Emplace_back_with_unused_capacity` | 140B / 52 heads / 5 E8 | 140B / 52 heads / 5 E8 | Every non-relocation byte and E8 position identical |
+| `0x004133E0 _Emplace_reallocate` | 488B / 170 heads / 14 E8 / 2 HIGHLOW | 488B / 170 heads / 14 E8 / 2 DIR32 | Every non-relocation byte and E8 position identical; DIR32 fields correspond to native HIGHLOW at `+0x06/+0x15` |
+
+The 108B body calls the original 8B forwarding primitive at `+0x2C/+0x43`
+and dispatches to the 140B and 488B branches at `+0x38/+0x61`. The 140B
+body has the five original E8 positions (`+0x1F/+0x30/+0x3E/+0x52/+0x69`).
+The 488B body has all fourteen original E8 positions, including the two
+forwarding operations at `+0xE6/+0xFB` and the three uninitialized-move calls.
+
+The public wrapper is deliberately **not** called exact: the pinned compiler
+omits the native one-byte NOP at `+0x1C`. The separate 200B
+`_Uninitialized_move` parent also remains a 191B/62-i386 source frontier.
+The two game-parent calls are still shifted from native `+0x165/+0x4DD` to
+candidate `+0x160/+0x51E`; the 2,245B compositor is still NONEXACT. No parent
+exactness or game-authored exact-byte credit is claimed.
+
+The new `verify-glyph-mask-emplace35-native.py --candidate-object ...`
+checks the original hashes, every complete candidate extent, all native E8
+positions, normalized code bytes, the two reallocation HIGHLOW fields and
+both parent insertion edges. A source-scoped cold replay rebuilt only
+`GlyphMaskComposite2245.cpp` and retained **24/24** existing exact PMR/color
+children.

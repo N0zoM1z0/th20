@@ -9,10 +9,13 @@ The original **488B/170-instruction** vector growth/reallocation Boss at
 **14 real native E8** and **two genuine HIGHLOW** fields (`+0x06`
 EH `0x00567CED`; `+0x15` security cookie `0x005B25C0`). The genuine
 `std::pmr::vector<GlyphMaskOffset>` in the game-owned 2,245B glyph
-compositor instantiates a matching semantic source for this reallocation
-path. Under pinned MSVC 19.44 i386 C++20 the generated full candidate
-is **467B/163 instructions, 13 E8/2 DIR32**, so the 488B parent is
-SOURCE-PRESENT, **NONEXACT**. Its physical extent is not truncated.
+compositor now has an explicit natural C++20 member specialization for this
+reallocation path. Under pinned MSVC 19.44 i386 C++20 the generated full
+candidate is **488B/170 instructions, 14 E8/2 DIR32**. All fourteen E8
+positions and every non-relocation code byte match the original; the two
+COFF DIR32 fields occupy the exact original PE HIGHLOW positions. The 488B
+parent remains **NONEXACT** because normalized relocation roles are not a
+strict whole-function match. Its physical extent is complete, not truncated.
 
 Three deeper native code heads called by that full original 488B Boss
 are now independently **whole strict exact** from the *same existing*
@@ -31,8 +34,8 @@ call offsets and PE HIGHLOW roles are verified by
 The full **488B/170** parent and all **14 E8/2 HIGHLOW** are independently
 attested by
 [`verify-glyph-vector-growth488-native.py`](../scripts/verify-glyph-vector-growth488-native.py),
-which separately checks the authentic MSVC candidate **467B/163**
-without falsely admitting the original 488B whole extent.
+which delegates its candidate check to the complete PMR-chain verifier and
+separately refuses to admit the original 488B whole extent as strict exact.
 
 The natural source-generated methods reproduce all three complete
 function bodies and all independently anchored native relocations:
@@ -47,10 +50,13 @@ Exact replay: 12/12 units, 1 cold object (same existing glyph source owner)
 **Three distinct original native exact heads /262 original `.text` bytes**
 are newly covered. They are compiler/standard-library template bodies
 (`origin=unknown/review`), so **game-authored head/byte credit is zero**.
-The original 488B vector growth Boss, 108B downstream insertion backend,
-35B glyph offset insertion wrapper and 2,245B game compositor remain
-separate unfinished functions. No already accepted 153B vector `_Tidy`,
-PMR allocator or previously exact native method is double-counted.
+The 488B growth body now matches all native non-relocation bytes and E8
+positions, as do the 108B/140B insertion helpers. The 35B public wrapper
+remains a 34B/14-i386 candidate with the native trailing NOP absent; the
+200B uninitialized-move helper remains 191B/62. The five-parent PMR chain and
+2,245B game compositor therefore remain separate NONEXACT functions. No
+already accepted 153B vector `_Tidy`, PMR allocator or previously exact
+native method is double-counted.
 
 ```sh
 scripts/repo-python scripts/verify-glyph-vector-growth-leaves-native.py
@@ -81,3 +87,22 @@ All are ordinary C++20 generated from the corrected native two-int32
 array vector and replay **24/24** strict units in one affected source
 object. The original 488B and 2,245B parents are still NONEXACT,
 and generic source is not credited to game-authored `.text`.
+
+## 2026-11-25 follow-up: the 488B growth body now has complete native code shape
+
+The maintained source specializes `_Emplace_reallocate<const GlyphMaskOffset&>`
+using the original C++ allocation, forwarding, construct, uninitialized-move,
+rollback and array-replacement flow. The resulting contribution is now
+**488B/170 i386**, with **14/14 E8 positions** and **2/2 original absolute
+relocation sites**. The two COFF DIR32 fields at `+0x06/+0x15` correspond to
+the native EH-handler/security-cookie HIGHLOW fields. After normalizing only
+those relocation fields and the fourteen E8 displacements, the complete
+488-byte body is identical to the original.
+
+This is not a strict exact match: the linker-resolved target identities and
+relocation types are not all the original PE targets. The three independently
+accepted 16B/165B/81B children remain exact and distinct. The full insertion
+chain verifier also checks the 108B/40 and 140B/52 bodies, the exact 8B
+forwarding leaf, and the 34B public wrapper (native NOP omitted). The 200B
+uninitialized-move function remains 191B/62 and the 2,245B game parent remains
+NONEXACT.

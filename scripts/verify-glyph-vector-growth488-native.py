@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Whole original 488B vector-growth Boss and natural 467B PMR candidate.
+"""Whole original 488B vector-growth Boss and its natural C++ PMR body.
 
-This checker NEVER declares the 488B parent strict exact. Its children
-have independently accepted full physical original extents.
+This checker NEVER declares the 488B parent strict exact. The maintained
+candidate now has the complete 488B/170-i386 body and all native E8 sites;
+relocation-normalized code bytes match, while strict target resolution and
+its independently accepted children remain separate checks.
 """
 import argparse,hashlib,importlib.util,struct,sys
 from pathlib import Path
@@ -45,17 +47,11 @@ def verify(obj):
  print('PASS immutable original 488B/170-i386 vector-growth Boss, all 14 physical E8 and 2 PE HIGHLOW')
  print('PASS three native-exact 16/165/81-byte children at original E8 +0x79/+0x1A9/+0x1C5')
  if obj:
-  b,r=cm.object_function(obj,SYM,467)
-  cins=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(b),0))
-  assert len(b)==467 and len(cins)==163 and len(r)==15
-  assert sum(q['type']=='REL32' for q in r)==13
-  assert sum(q['type']=='DIR32' for q in r)==2
-  assert all(q['addend']==0 for q in r)
-  role_symbols=[q['symbol'] for q in r if q['type']=='REL32']
-  assert any('_Change_array@' in x for x in role_symbols)
-  assert any('_Reallocation_guard@' in x for x in role_symbols)
-  assert any('_Xlength@' in x for x in role_symbols)
-  print('SOURCE-PRESENT NONEXACT: real C++20 PMR _Emplace_reallocate generates 467B/163 i386, 13 E8/2 DIR32')
+  import subprocess
+  candidate = obj if obj.is_absolute() else ROOT / obj
+  subprocess.run([sys.executable, str(ROOT / "scripts/verify-glyph-mask-emplace35-native.py"),
+                  "--candidate-object", str(candidate)], cwd=ROOT, check=True)
+  print('SOURCE-PRESENT NONEXACT: natural C++20 PMR _Emplace_reallocate generates 488B/170 i386, 14 E8/2 DIR32; all non-relocation bytes and E8 positions match native')
  print('Native entire 488B method has NO canonical strict match unit; game-authored and generic source credits unchanged')
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--candidate-object',type=Path)

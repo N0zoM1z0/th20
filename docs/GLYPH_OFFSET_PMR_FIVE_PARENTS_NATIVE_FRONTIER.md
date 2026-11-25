@@ -16,10 +16,10 @@ Game-owned glyph compositor 0x00416420 (2245B, 37 E8)
   | E8 +0x165 and +0x4DD
   v
 std::pmr::vector::emplace_back 0x00416330 (35B, 2 E8)
-  | E8 +0x0B folded std::_Unfancy; E8 +0x17
+  | E8 +0x0B -> shared 8B std::move; E8 +0x17
   v
 _Emplace_one_at_back 0x00413370 (108B, 4 E8)
-  | E8 +0x2C/+0x43 folded std::_Unfancy
+  | E8 +0x2C/+0x43 -> shared 8B forwarding leaf
   | E8 +0x38 -> 0x004132E0 (140B non-growth construction)
   ` E8 +0x61 -> 0x004133E0 (488B reallocation)
                          | E8 +0x146/+0x162/+0x18B
@@ -33,11 +33,11 @@ pinned canonical source frontiers under MSVC 19.44 i386 C++20
 
 | Original head | Complete original | Natural maintained source | Compiler discrepancy |
 | --- | ---: | ---: | --- |
-| `0x00416330` `emplace_back(const&)` | **35B/15 i386, 2 E8/0 HIGHLOW** | **33B/13, 1 E8/0 DIR32** | Additional live old native pointer forwarding to folded `0x0040B280` |
-| `0x00413370` `_Emplace_one_at_back` | **108B/40, 4 E8/0 HIGHLOW** | **78B/30, 2 E8/0 DIR32** | Two extra native pointer-forwarding calls and different argument stack lifetime |
-| `0x004133E0` `_Emplace_reallocate` | **488B/170, 14 E8/2 HIGHLOW** | **467B/163, 13 E8/2 DIR32** | Old native vector placement/move and real STL lowering differences |
+| `0x00416330` `emplace_back(const&)` | **35B/15 i386, 2 E8/0 HIGHLOW** | **34B/14, 2 E8/0 DIR32** | Both native E8 positions and all non-relocation bytes match; native trailing NOP at `+0x1C` is absent |
+| `0x00413370` `_Emplace_one_at_back` | **108B/40, 4 E8/0 HIGHLOW** | **108B/40, 4 E8/0 DIR32** | Every non-relocation byte and all four E8 positions match |
+| `0x004133E0` `_Emplace_reallocate` | **488B/170, 14 E8/2 HIGHLOW** | **488B/170, 14 E8/2 DIR32** | Every non-relocation byte and all fourteen E8 positions match; both absolute fields are at the native HIGHLOW offsets |
 | `0x00413920` `_Uninitialized_move` | **200B/65, 9 E8/2 HIGHLOW** | **191B/62, 8 E8/2 DIR32** | One additional native forwarded pointer/action; EH owner still real |
-| `0x004132E0` `_Emplace_back_with_unused_capacity` | **140B/52, 5 E8/0 HIGHLOW** | **125B/47, 4 E8/0 DIR32** | Original pointer forwarding and allocator construction differs |
+| `0x004132E0` `_Emplace_back_with_unused_capacity` | **140B/52, 5 E8/0 HIGHLOW** | **140B/52, 5 E8/0 DIR32** | Every non-relocation byte and all five E8 positions match |
 
 The `std::array<int32_t,2>` type is important: its original 8B
 element size and 16B PMR-vector ABI are independently demonstrated
@@ -112,7 +112,8 @@ Several ordinary C++ source paths were rebuilt under the pinned profile:
 - Explicit `__declspec(noinline)` instantiations of both
   `std::move<GlyphMaskOffset&>` and `std::move<const GlyphMaskOffset&>` do not
   force the modern vector template to retain a separate call. The complete
-  wrapper remains 33B/13 with one E8.
+  historical pre-specialization wrapper was 33B/13 with one E8; see the
+  current 34B/14 member-template specialization in the 2026-11-25 follow-up.
 - A separate natural free forwarding function
   `append_glyph_mask_offset(GlyphMaskOffsets&, const GlyphMaskOffset&)`
   emits **26B/11-i386** with two E8, but its ABI is `__cdecl` with two stack
@@ -129,3 +130,28 @@ current standard-library source. No wrapper is promoted, no original leaf is
 credited, and `src/GlyphMaskComposite2245.cpp` remains unchanged by these
 experiments. The complete 35B helper and all five PMR parents remain
 SOURCE-PRESENT/NONEXACT.
+
+## 2026-11-25 follow-up: restore the three complete PMR insertion/growth bodies
+
+The current `GlyphMaskComposite2245.cpp` now provides explicit C++20 member
+specializations for the old vector call graph. Under the pinned MSVC profile,
+the 108B `_Emplace_one_at_back`, 140B `_Emplace_back_with_unused_capacity`
+and 488B `_Emplace_reallocate` candidates have exactly the native lengths,
+instruction counts, E8 positions and every non-relocation code byte. The
+488B candidate has 14 REL32 and two DIR32 relocations; those absolute fields
+occupy the exact original PE HIGHLOW sites `+0x06/+0x15`. The 8B shared
+`std::move` primitive is complete-byte exact.
+
+The public 35B wrapper is now 34B/14 heads with both original E8 sites and
+all non-relocation bytes matching after removing the native `+0x1C` NOP. The
+NOP is not synthesized. The 200B `_Uninitialized_move` remains 191B/62 heads,
+8 E8/2 DIR32 versus native 200B/65, 9 E8/2 HIGHLOW. Consequently the whole
+five-parent chain and 2,245B game compositor remain SOURCE-PRESENT/NONEXACT.
+
+The independent `verify-glyph-mask-emplace35-native.py --candidate-object`
+checks the complete 8B/34B/108B/140B/488B bodies, all call sites and both
+parent insertion edges. A targeted `replay-exact-units.py --source
+src/GlyphMaskComposite2245.cpp` rebuild retained 24/24 existing exact
+PMR/color descendants. The compositor remains 2,128B/561-i386 with
+37/37 E8 target roles, 7/37 aligned E8 positions, 292/1,960 ordinary bytes
+and 819 aggregate E8 offset distance.

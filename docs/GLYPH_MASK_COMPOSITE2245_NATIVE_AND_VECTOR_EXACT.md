@@ -1,3 +1,12 @@
+**CURRENT PMR SOURCE STATUS (2026-11-25):** The maintained compositor now
+uses explicit natural C++ specializations for the old MSVC PMR vector members.
+The 8B move leaf is byte-exact; 108B/40, 140B/52 and 488B/170 insertion/growth
+bodies match all native E8 positions and every non-relocation byte. The 35B
+public wrapper is 34B/14 with the native `+0x1C` NOP omitted; the 200B
+uninitialized-move helper remains 191B/62. Targeted replay preserves 24/24
+accepted PMR/color descendants. The full 2,245B compositor remains NONEXACT;
+see [the five-parent frontier](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md).
+
 **CORE/RECON-1083 CURRENT SOURCE UPDATE (2026-11-25):** The RGBA4444
 source now preserves the original grouped address expression
 `row_offset + (x +/- delta_x)` rather than relying on left-associative
@@ -170,16 +179,19 @@ The actual 2,245B source invokes a whole original
 at both native E8 `+0x165/+0x4DD`. Original helper has two E8 to
 an already-exact pointer forwarder and a distinct 108B vector
 backend; natural source `std::pmr::vector<GlyphMaskOffset>::emplace_back`
-currently generates 33B/13-i386 with only a single backend E8.
-The 35B helper and 2,245B parent stay NONEXACT, without changing any
-of the nine separately strict PMR and glyph-color child heads.
+historically generated 33B/13-i386 with only a single backend E8. The current
+member-template specialization emits 34B/14 with both native E8 sites and
+all non-relocation bytes matching after omitting the native +0x1C NOP. The
+35B helper and 2,245B parent stay NONEXACT, without changing any of the nine
+separately strict PMR and glyph-color child heads.
 
 ## CORE/RECON-1056 — genuine PMR growth method and three exact children
 
 The real vector used in both outline passes naturally instantiates a
 [488B original native growth/reallocation Boss](GLYPH_VECTOR_GROWTH_16_165_81_EXACT.md).
-The full MSVC source candidate is 467B/163 instructions, NONEXACT;
-its *independent* original 16B `_Xlength`, 165B `_Change_array`, and
-81B reallocation guard are all now WHOLE STRICT EXACT under the same
-source object. These generic template heads are not game-authored and
+The historical pre-specialization MSVC source candidate was 467B/163
+instructions. The current C++ member specialization is 488B/170 with all
+native E8 positions and non-relocation code bytes matching; the parent remains
+NONEXACT. Its *independent* original 16B `_Xlength`, 165B `_Change_array`, and
+81B reallocation guard remain WHOLE STRICT EXACT under the same source object. These generic template heads are not game-authored and
 do not close the original 2,245B compositor.

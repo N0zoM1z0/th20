@@ -2,7 +2,7 @@
 """Complete original 2245B glyph vector insertion/growth/rollback parents.
 
 All five source-present STL template methods are full original PE pinned;
-modern MSVC generated code is meaningful but individually NONEXACT.
+natural C++20 member specializations now recover the 108B/140B/488B parent bodies byte-for-byte outside relocation fields; the 35B wrapper is 34B/14-i386 with one native NOP absent, and the 200B move parent remains NONEXACT.
 """
 import hashlib,importlib.util,subprocess,struct,sys
 from pathlib import Path
@@ -14,11 +14,11 @@ pe=importlib.util.module_from_spec(s);s.loader.exec_module(pe)
 s=importlib.util.spec_from_file_location('parcm',ROOT/'scripts/compare-coff-function.py')
 cm=importlib.util.module_from_spec(s);s.loader.exec_module(cm)
 SPECS={
- 'emplace_back':(0x00416330,35,15,'bd26f62ba6f30fe4d6e5845561e0cc2ecdd80da8bc771cdcdd260e25109343b4',2,0,33,13,1,0,'??$emplace_back@ABV?$array@'),
- 'one_at_back':(0x00413370,108,40,'2ad1446dee98794f9578c474b883145c2296ff1adcb2def8d653e3d365e5e04b',4,0,78,30,2,0,'??$_Emplace_one_at_back@ABV?$array@'),
- 'reallocate':(0x004133E0,488,170,'5e5ecf3d3ff27b00fd364a728acb23dcae883c179f8e5d3e1fdde93788697b57',14,2,467,163,13,2,'??$_Emplace_reallocate@ABV?$array@'),
+ 'emplace_back':(0x00416330,35,15,'bd26f62ba6f30fe4d6e5845561e0cc2ecdd80da8bc771cdcdd260e25109343b4',2,0,34,14,2,0,'??$emplace_back@ABV?$array@'),
+ 'one_at_back':(0x00413370,108,40,'2ad1446dee98794f9578c474b883145c2296ff1adcb2def8d653e3d365e5e04b',4,0,108,40,4,0,'??$_Emplace_one_at_back@ABV?$array@'),
+ 'reallocate':(0x004133E0,488,170,'5e5ecf3d3ff27b00fd364a728acb23dcae883c179f8e5d3e1fdde93788697b57',14,2,488,170,14,2,'??$_Emplace_reallocate@ABV?$array@'),
  'uninitialized_move':(0x00413920,200,65,'ec0f652bfa6eaf3ee4ac165bd3088e80e924fc7b8747e74ba133d3041febca65',9,2,191,62,8,2,'??$_Uninitialized_move@PAV?$array@'),
- 'non_growth':(0x004132E0,140,52,'1f514d2135b7b78ef041cc44ba21003fe295a2033b33a1a78eb8e40862bc37f2',5,0,125,47,4,0,'??$_Emplace_back_with_unused_capacity@ABV?$array@'),
+ 'non_growth':(0x004132E0,140,52,'1f514d2135b7b78ef041cc44ba21003fe295a2033b33a1a78eb8e40862bc37f2',5,0,140,52,5,0,'??$_Emplace_back_with_unused_capacity@ABV?$array@'),
 }
 PARENT=0x00416420
 PARENT_SHA='06b62972af7ef2644b5a17d032b4124525d9b6aab0a5097f740ec777d14a40ad'
@@ -69,4 +69,6 @@ def verify():
   assert cm.compare_unit(unit)['result']=='exact'
  print('PASS whole original 2245B glyph Boss two E8 to 35B wrapper -> 108B one-at-back -> 140B no-growth or 488B reallocation ->200B uninitialized move')
  print('PASS eight representative exact native PMR child units, zero parent/game-authored code credited from five NONEXACT STL parents')
+ subprocess.run([sys.executable, str(ROOT/"scripts/verify-glyph-mask-emplace35-native.py"),
+                 "--candidate-object", str(obj)], cwd=ROOT, check=True)
 if __name__=='__main__':verify()

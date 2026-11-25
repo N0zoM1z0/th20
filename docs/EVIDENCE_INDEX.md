@@ -208,9 +208,9 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 - [CORE/RECON-1054 — four PMR glyph vector lifecycle helpers 10/24/43/153B whole strict exact](GLYPH_MASK_PMR_LIFECYCLE_10_24_43_153_STRICT_EXACT.md) — real original E8 chain beneath 63B vector ctor/20B destructor, 230 distinct native STL bytes and 9/9 focused strict units in existing one object; no authored game credit.
 
-- [CORE/RECON-1055 — native 35B glyph PMR vector insertion two-E8 ABI frontier](GLYPH_MASK_EMPLACE35_NATIVE_FRONTIER.md) — original 2,245B compositor E8 twice, native 35B/15 with two authentic calls vs source-generated 33B/13 with one; NONEXACT, no original exact credit.
+- [CORE/RECON-1055 — native 35B glyph PMR vector insertion two-E8 ABI frontier](GLYPH_MASK_EMPLACE35_NATIVE_FRONTIER.md) — native 35B/15 vs maintained 34B/14 with both original E8 sites and all non-relocation bytes matching; only native `+0x1C` NOP absent; full 108B/140B/488B bodies also code-byte converged, no whole-parent exact credit.
 
-- [CORE/RECON-1056 — 488B PMR glyph vector growth native Boss frontier and three 16B/165B/81B exact children](GLYPH_VECTOR_GROWTH_16_165_81_EXACT.md) — native 488B/170 14 E8/2 HL vs C++20 467B/163 candidate; three original exact STL growth paths +262 code bytes without game-authored credit.
+- [CORE/RECON-1056 — 488B PMR glyph vector growth native Boss frontier and three 16B/165B/81B exact children](GLYPH_VECTOR_GROWTH_16_165_81_EXACT.md) — native and maintained C++ both 488B/170 with 14/14 E8 positions and every non-relocation code byte matching; two native HIGHLOW fields represented by DIR32; three original exact STL growth children, zero game-authored credit.
 
 - [CORE/RECON-1057 — complete-source native 542B GDI Alpha-processing Boss](GLYPH_CANVAS_ALPHA542_TYPED_NATIVE_FRONTIER.md) — actual 2,227B text-core caller, three original alpha formats, 4 physical native E8/0 HIGHLOW, meaningful 540B/164-i386 source candidate NONEXACT.
 
@@ -264,7 +264,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 - [CORE/RECON-1081 — nine complete original 84B/19B/58B/42B/36B/42B/28B/39B/13B PMR glyph-vector descendant functions](GLYPH_VECTOR_GROWTH_DEEP_NINE_STRICT_EXACT.md) — native 488B growth, 200B backout-move and 140B no-growth construction parents; complete original 361B generic code, 24/24 local exact units, zero new game-authored credit.
 
-- [CORE/RECON-1082 — five full native 35B/108B/488B/200B/140B glyph offset PMR insertion/growth parent compiler frontiers](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md) — entire original E8/SEH chain and true current C++20 source sizes verified; false source-absent statuses corrected; all five NONEXACT, 24/24 child units preserved, zero extra game exact credit.
+- [CORE/RECON-1082 — five full native 35B/108B/488B/200B/140B glyph offset PMR insertion/growth parent compiler frontiers](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md) — natural C++ now restores the complete 108B/40, 140B/52 and 488B/170 non-relocation code bodies/E8 sites; the 35B wrapper is 34B with its native NOP omitted; 200B move helper remains 191B; 24/24 child units preserved, zero extra game exact credit.
 
 - [CORE/RECON-1083 — whole original 368B CP932 file opener and 493B Win32 one-shot file writer game Bosses strict exact](GAME_FILE_CP932_BOSSES_368_493_STRICT_EXACT.md) — original complete 94/125 i386, lock slot2, UTF16 CP932 and Win32 file operations, natural 368/368 and 493/493 exact, original 18 E8/26 HIGHLOW, +861 authored-game executable bytes.
 

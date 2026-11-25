@@ -203,3 +203,21 @@ sites, 4/5 PE HIGHLOW site/target pairs, 819 aggregate E8 offset distance and
 292 ordinary overlap bytes. These bitfield variants are retained as
 reproducible probes only; no source promotion or authored-byte credit is
 claimed.
+
+## 2026-11-25 follow-up: PMR insertion/growth chain source recovery
+
+The same maintained `GlyphMaskComposite2245.cpp` now specializes the old MSVC
+PMR vector insertion members in natural C++. The 8B `std::move` leaf is
+byte-exact; the 108B/40, 140B/52 and 488B/170 helper bodies match every
+non-relocation byte and every original E8 position. The 488B helper also
+preserves both native HIGHLOW field positions as COFF DIR32 relocations. The
+35B public wrapper is a 34B/14 candidate with both native E8 sites and one
+native NOP omitted; the 200B uninitialized-move helper remains 191B/62.
+
+The targeted source cold replay rebuilt one object and retained 24/24 exact
+PMR/color descendants. The parent remains 2,128B/561 versus native 2,245B/612,
+with 37/37 E8 target roles, 7/37 aligned physical E8 sites, 292/1,960 ordinary
+overlap bytes and 819 aggregate E8 offset distance. No whole-parent exactness
+or game-authored byte credit is claimed. See
+[the five-parent PMR frontier](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md)
+and [the complete insertion verifier](../scripts/verify-glyph-mask-emplace35-native.py).
