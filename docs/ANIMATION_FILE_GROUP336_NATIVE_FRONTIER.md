@@ -113,3 +113,10 @@ scripts/repo-python scripts/verify-animation-file-group336-native.py
 ```
 
 Next work is the native zero word's actual source ownership or compiler context.
+
+A private class-key control changes the header and Renderer view to public
+`class` definitions with the same field layout. Its complete 326B body and
+all 14 relocation records remain identical; the list constructor's earlier
+`/sdl` preclear finding does not explain this word. The private header/source
+and `class-key-controls.txt` are retained under the same analysis directory.
+No public-header change or replay expansion is justified by that result.
