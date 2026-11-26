@@ -4,7 +4,8 @@
 Unlike the older grep-based probe snippets, every instruction-form result in
 this report is extracted from the candidate COFF body only. The original PE
 and candidate sections are decoded independently to prevent accidentally
-reporting native instructions as candidate progress.
+reporting native instructions as candidate progress. Float windows follow
+verified getter/renderer call roles instead of fixed native offset ranges.
 """
 from __future__ import annotations
 
@@ -44,6 +45,36 @@ def candidate_body(path: Path):
         if not match:
             raise
         return COFF.object_function(path, SYMBOL, int(match.group(1)))
+
+
+def scale_width_window(mode, native_getter, instructions, relocs, native_calls, candidate_calls):
+    # The complete call sequence gives a stable boundary even when a probe
+    # moves a case away from its original native offset.
+    if len(native_calls) != len(candidate_calls):
+        raise ValueError("call census differs; mode boundary is unproven")
+    index = native_calls.index(native_getter)
+    getter, renderer = candidate_calls[index:index + 2]
+    symbols = {int(row["offset"]) - 1: str(row["symbol"])
+               for row in relocs if row["type"] == "REL32"}
+    target = "draw_shape_43c780@" if mode in (35, 36) else "draw_shape_43df30@"
+    if ("animation_inherited_aux_scale_x@" not in symbols.get(getter, "")
+            or target not in symbols.get(renderer, "")):
+        raise ValueError("getter/renderer roles differ; mode boundary is unproven")
+    window = [ins for ins in instructions
+              if candidate_calls[index - 1] + 5 <= ins.address - HEAD < renderer]
+    operator = "addss" if mode in (35, 45) else "subss"
+    arithmetic = [ins for ins in window
+                  if ins.address - HEAD > getter and ins.mnemonic == operator]
+    if len(arithmetic) != 2:
+        raise ValueError(f"expected scale/width arithmetic pair, found {len(arithmetic)}")
+    scale, width = arithmetic
+    divisions = [ins.address - HEAD for ins in window if ins.mnemonic == "divss"]
+    phases = (sum(site < getter for site in divisions),
+              sum(getter < site < scale.address - HEAD for site in divisions),
+              sum(scale.address - HEAD < site < width.address - HEAD for site in divisions))
+    if sum(phases) != len(divisions):
+        raise ValueError("division lies outside the identified scale/width phases")
+    return getter, scale, width, phases
 
 
 def main() -> int:
@@ -101,63 +132,23 @@ def main() -> int:
 
         first_spills = [ins.address - HEAD for ins in instructions
                         if ins.mnemonic == "fstp" and ins.op_str == "dword ptr [ebp - 0x160]"]
-        mode35_add = [ins.address - HEAD for ins in instructions
-                      if 0x0F00 <= ins.address - HEAD < 0x10B2
-                      and ins.mnemonic == "addss" and ins.op_str == "xmm0, xmm1"]
-        mode36_sub = [ins.address - HEAD for ins in instructions
-                      if 0x10B2 <= ins.address - HEAD < 0x1198
-                      and ins.mnemonic == "subss" and ins.op_str == "xmm0, xmm1"]
-        mode35_memory_add = [ins.address - HEAD for ins in instructions
-                             if 0x0F00 <= ins.address - HEAD < 0x10B2
-                             and ins.mnemonic == "addss" and ins.op_str.startswith("xmm0, dword ptr")]
-        mode36_memory_sub = [ins.address - HEAD for ins in instructions
-                             if 0x10B2 <= ins.address - HEAD < 0x1198
-                             and ins.mnemonic == "subss" and ins.op_str.startswith("xmm0, dword ptr")]
-        # Native mode45/46 are separate later cases in the same large switch.
-        # Keep these ranges distinct from mode35/36: mode45 uses ADDSS and
-        # mode46 uses SUBSS, each with a separately recomputed width half.
-        mode45_add = [ins.address - HEAD for ins in instructions
-                      if 0x15D5 <= ins.address - HEAD < 0x1604
-                      and ins.mnemonic == "addss" and ins.op_str == "xmm0, xmm1"]
-        mode46_sub = [ins.address - HEAD for ins in instructions
-                      if 0x16BC <= ins.address - HEAD < 0x16E3
-                      and ins.mnemonic == "subss" and ins.op_str == "xmm0, xmm1"]
-        mode46_reverse_sub = [ins.address - HEAD for ins in instructions
-                              if 0x16BC <= ins.address - HEAD < 0x16E3
-                              and ins.mnemonic == "subss" and ins.op_str == "xmm1, xmm0"]
-        mode45_memory_add = [ins.address - HEAD for ins in instructions
-                             if 0x15D5 <= ins.address - HEAD < 0x1604
-                             and ins.mnemonic == "addss" and ins.op_str.startswith("xmm0, dword ptr")]
-        mode46_memory_sub = [ins.address - HEAD for ins in instructions
-                             if 0x16BC <= ins.address - HEAD < 0x16E3
-                             and ins.mnemonic == "subss" and ins.op_str.startswith("xmm0, dword ptr")]
-        mode35_width_add = [ins.address - HEAD for ins in instructions
-                            if 0x1068 <= ins.address - HEAD < 0x107A
-                            and ins.mnemonic == "addss" and ins.op_str.startswith("xmm0, dword ptr")]
-        mode36_width_sub = [ins.address - HEAD for ins in instructions
-                            if 0x1155 <= ins.address - HEAD < 0x116B
-                            and ins.mnemonic == "subss" and ins.op_str == "xmm1, xmm0"]
-        mode45_width_add = [ins.address - HEAD for ins in instructions
-                            if 0x163D <= ins.address - HEAD < 0x1650
-                            and ins.mnemonic == "addss" and ins.op_str.startswith("xmm0, dword ptr")]
-        mode46_width_sub = [ins.address - HEAD for ins in instructions
-                            if 0x171C <= ins.address - HEAD < 0x1732
-                            and ins.mnemonic == "subss" and ins.op_str == "xmm1, xmm0"]
-
         print(f"{path.name}: contribution={len(body)}B code={code_end}B "
               f"x86={len(instructions)} ordinary={ordinary}/{comparable} "
               f"E8={aligned}/{len(native_calls)} abs-E8-delta={abs_delta} "
               f"HIGHLOW-sites={exact_highlow_sites}/{len(native_highlow)}")
-        print(f"  candidate-only mode35/36: first-result-spills={len(first_spills)} {first_spills}; "
-              f"register-add={mode35_add}; register-sub={mode36_sub}; "
-              f"memory-add={mode35_memory_add}; memory-sub={mode36_memory_sub}")
-        print(f"  candidate-only mode35/36/45/46: "
-              f"mode35-width-add={mode35_width_add}; mode36-width-sub={mode36_width_sub}; "
-              f"mode45-width-add={mode45_width_add}; mode46-width-sub={mode46_width_sub}")
-        print(f"  candidate-only mode45/46 scale: mode45-register-add={mode45_add}; "
-              f"mode46-native-order-register-sub={mode46_sub}; "
-              f"mode46-reversed-register-sub={mode46_reverse_sub}; "
-              f"memory-add={mode45_memory_add}; memory-sub={mode46_memory_sub}")
+        print(f"  candidate-only native-slot first-result-spills={len(first_spills)} {first_spills}")
+        for mode, native_getter in ((35, 0x1016), (36, 0x1103), (45, 0x15DD), (46, 0x16BC)):
+            try:
+                getter, scale, width, phases = scale_width_window(
+                    mode, native_getter, instructions, relocs, native_calls, candidate_calls)
+            except ValueError as exc:
+                print(f"  candidate-only mode{mode}: unavailable ({exc})")
+                continue
+            order = "native" if phases == (1, 0, 1) else "DIFFERENT"
+            print(f"  candidate-only mode{mode}: getter=+0x{getter:X}; "
+                  f"scale=+0x{scale.address - HEAD:X} {scale.mnemonic} {scale.op_str}; "
+                  f"width=+0x{width.address - HEAD:X} {width.mnemonic} {width.op_str}; "
+                  f"divisions(pre-getter, before-scale, before-width)={phases} division-order={order}")
         if len(candidate_calls) != len(native_calls):
             print(f"  WARNING: candidate E8 instruction count {len(candidate_calls)} != native {len(native_calls)}")
         if code_end != SIZE:

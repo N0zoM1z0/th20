@@ -583,3 +583,54 @@ and both 49+31-entry switch-table contributions. No shared header changed and
 no canonical exact unit uses this source, so **exact replay scope is zero**;
 unchanged child evidence is retained. The next problem remains native scalar
 operand/temporary lowering in modes35/36/45/46, not language-mode selection.
+
+
+## 2026-11-26: distinguish shifted arithmetic from native division order
+
+The 5,965B direct-expression probe does generate register-source adjusted-scale
+arithmetic in both modes45/46, but computes the scale half after the getter.
+Its apparent SSE convergence is therefore not a native-order reconstruction.
+The old candidate reporter used native-offset ranges and missed mode46's
+shifted subtraction at +0x16B7; it also could not distinguish an adjusted-scale
+operation from a width operation that happened to enter the same range.
+
+The reporter now follows the reviewed scale-getter call ordinal and checks
+the actual getter/renderer relocation roles before interpreting that window.
+The first two mode-specific scalar operations after the getter identify scale
+and width. Divisions are counted before the getter, between getter and scale,
+and between scale and width:
+
+| Complete candidate | Division phases in modes45/46 | Actual adjusted-scale form |
+| --- | --- | --- |
+| Maintained 5,989B source | `(1, 0, 1)` | Memory-source add/sub |
+| 5,965B direct-expression probe | `(0, 1, 1)` | `addss/subss xmm0,xmm1` |
+| Old 5,993B width-half role swap | `(1, 1, 0)` | `addss/subss xmm0,xmm1` |
+
+The direct-expression getters are at +0x15C8/+0x1697, their scale operations
+at +0x15E8/+0x16B7, and their width operations at +0x163A/+0x170E. These
+candidate-derived addresses no longer depend on falling inside a native
+range. Only `(1,0,1)` is labeled native *division order*; that label does not
+imply matching operand encoding, stack layout or complete-function bytes.
+Missing calls, incorrect getter/renderer roles or an unexpected arithmetic
+pair make the window unavailable instead of producing a guessed mode report.
+
+Two new bounded controls do not repair the discarded first returns:
+`static_cast<float>(animation_inherited_aux_scale_x(animation));` and the
+unchanged source compiled with `/fp:precise /fp:except`. Each produces the
+same complete **6,312B** COFF code/table bytes and identical relocation records
+as the maintained source, including `fstp st(0)` rather than the native m32
+stores. Neither control changes maintained native source or compiler profiles.
+
+The probe sources, receipts and objects remain under
+`.analysis/draw-boss-session/` and `build/gptweb-drawboss-session/`.
+`draw-call-bounded-float-windows.txt` records the initial inspection;
+`draw-role-window-reports.txt` contains the corrected real-object reports.
+`check_draw_window_report.py` checks all three phase patterns and rejects
+missing-call, wrong-getter and extra-arithmetic controls. The real-object
+reporter smoke covers maintained, direct-expression and role-swapped objects.
+
+Only the diagnostic reporter and knowledge changed. Native input graph and
+exact claims are unchanged, so exact replay scope is zero. The next useful
+source investigation is how to materialize the pre-getter half as a genuine
+expression temporary while preserving the second division after adjusted
+scale; restoring register arithmetic alone is insufficient.

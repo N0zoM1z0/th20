@@ -81,12 +81,23 @@ ordered E8 roles, 109/123 E8 positions and 26/32 HIGHLOW site/target pairs.
 Both switch-table partitions (49+31 pointers) remain correct. Fourteen E8
 positions remain open in modes35/36/45/46; write-only x87 stores are not
 recreated with dead locals. Private C++17 and C++20 controls emit identical
-code/table bytes and do not solve that frontier.
+code/table bytes and do not solve that frontier. Explicit discarded-float casts
+and `/fp:except` also leave the entire contribution and relocations unchanged.
 
-Validation scope: one changed NONEXACT source owner, complete 6,312B candidate
-versus 6,316B native code/table evidence; **zero canonical exact units replayed**.
-No shared header or accepted child source changed. See the
+The candidate reporter now follows getter/renderer call roles rather than
+fixed native offsets. It confirms that the 5,965B direct-expression probe has
+register arithmetic but computes its scale half after the getter, so that
+variant remains rejected. Current division phases are `(1,0,1)`; the direct
+expression gives `(0,1,1)` and the old width-half swap gives `(1,1,0)`. Real-object
+smoke and missing-call/wrong-role/extra-arithmetic controls pass. This reporter
+and knowledge checkpoint changes no native inputs: exact replay scope is zero.
+
+Retained source evidence compares the complete 6,312B candidate against the
+6,316B native code/table contribution, including both pointer partitions. No
+maintained source, shared header or accepted child changed in this checkpoint.
+See the
 [live-source reconciliation and compiler controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-reconcile-live-source-and-enforce-compiled-half-height-order)
+and [candidate window and division-order findings](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-distinguish-shifted-arithmetic-from-native-division-order)
 and [prior mode35/36 experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md).
 
 ## Latest checkpoint — StageResource selector and Enemy opcodes 622–626/631
