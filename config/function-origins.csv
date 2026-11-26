@@ -41,7 +41,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040B1D0,unknown,Worker,review,pending,"EXACT-053: Real Worker16/jthread12/atomic flag launch, replacement, guarded close/join/detach and destructor. Complete native instructions, reference-argument producers, library ABI, EH/data/unwind contributions and independent relocation anchors audited. Full cold strict replay377units/67objects/58903disjointbytes; owned real-thread C++20/UBSan lifecycle checks pass. Origin remains unknown; original library constructor/move emission and enclosing graphics/loading/resource/global lifetimes remain pending. See docs/EXACT_WORKER_RECONSTRUCTION.md."
 0x0040B280,unknown,EclBuffer,review,pending,"CORE/EXACT-127: Complete 8-byte address contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. This physical primitive has a verified ECL role; folded contributors/original source identity remain unresolved, so authored/library origin stays unknown. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md."
 0x0040B290,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040B2A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040B2A0,unknown,CxxRuntime,review,pending,"docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; Complete 10B contribution strictly replays as glyph_get_unwrapped_10, including all relocation fields. Move EH handler, padded cleanup and full 44B state metadata independently checked. No authored-game credit."
 0x0040B2B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040B3E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -395,7 +395,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00413140,unknown,CxxRuntime,review,pending,docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; Complete 65B native body strictly replays with all relocations from the C++17 allocator protocol owner (glyph_allocator_apply_impl_65). Original source origin remains unknown.
 0x00413190,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004131E0,unknown,CxxRuntime,review,pending,"CORE/RECON-1061; docs/GLYPH_QUEUE_LIST_59_124_34_19_48_STRICT_EXACT.md; entire native 151B std::pmr::list function node Emplace (8 E8/2 PE HL), natural C++20 130B 7 E8/2 HL, source-present nonexact; folded library provenance uncredited"
-0x00413280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00413280,unknown,CxxRuntime,review,pending,"docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; Complete 92B contribution strictly replays as glyph_backout_emplace_92, including all relocation fields. Move EH handler, padded cleanup and full 44B state metadata independently checked. No authored-game credit."
 0x004132E0,unknown,CxxRuntime,review,pending,"CORE/RECON-1082; docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; full natural C++20 member specialization emits 140B/52-i386, 5/5 E8 sites, all non-relocation code bytes match; original relocation targets remain separate; source-present NONEXACT, no authored game exact credit"
 0x00413370,unknown,CxxRuntime,review,pending,"CORE/RECON-1082; docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; full natural C++20 member specialization emits 108B/40-i386, 4/4 E8 sites, all non-relocation code bytes match; original relocation targets remain separate; source-present NONEXACT, no authored game exact credit"
 0x004133E0,unknown,CxxRuntime,review,pending,"CORE/RECON-1082; docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; full natural C++20 member specialization emits 488B/170-i386, 14/14 E8 sites and both PE HIGHLOW fields at +0x06/+0x15 as COFF DIR32; all non-relocation code bytes match; original relocation targets remain separate; source-present NONEXACT, no authored game exact credit"
@@ -408,7 +408,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00413810,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004138C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413910,unknown,CxxRuntime,review,pending,"CORE/RECON-1034; docs/CARD_TEXT_CALLABLE_TEST7_STRICT_EXACT.md; original 65B std::function _Reset E8 and natural C++20 std::_Test_callable, 7/7 source exact, generic compiler origin uncredited"
-0x00413920,unknown,CxxRuntime,review,pending,"CORE/RECON-1082; docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; complete original 200B STL vector insertion/growth; 200B/65 i386 native nine E8/two PE HIGHLOW, native 488B growth E8+0x146,+0x162,+0x18B; source 191B/62 eight E8/two DIR32, true allocator/exception rollback children exact. natural source present NONEXACT, no original authored game exact credit"
+0x00413920,unknown,CxxRuntime,review,pending,"docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; Complete 200B contribution strictly replays as glyph_uninitialized_move_200, including all relocation fields. Move EH handler, padded cleanup and full 44B state metadata independently checked. No authored-game credit."
 0x004139F0,unknown,CxxRuntime,review,pending,docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; Complete 78B native body strictly replays with all relocations from the C++17 allocator protocol owner (glyph_allocator_apply_78). Original source origin remains unknown.
 0x00413A40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413A90,unknown,CxxRuntime,review,pending,"CORE/RECON-1082; docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; native 31B allocator-move wrapper has both original E8 roles independently resolved; candidate source is whole structural-exact; origin remains unknown and no game-authored credit is inferred."
@@ -6916,6 +6916,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005672F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00567390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056746F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00567D60,compiler,CxxRuntime,exclude,high,"docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; Complete 13B contribution strictly replays as glyph_move_eh_cleanup_13, including all relocation fields. Move EH handler, padded cleanup and full 44B state metadata independently checked. No authored-game credit."
+0x00567D6D,compiler,CxxRuntime,exclude,high,"docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; Complete 39B contribution strictly replays as glyph_move_eh_handler_39, including all relocation fields. Move EH handler, padded cleanup and full 44B state metadata independently checked. No authored-game credit."
 0x0056B360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056B370,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056B380,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

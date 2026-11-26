@@ -1838,3 +1838,7 @@ std::forward_as_tuple<const GlyphMaskOffset>,0x00413CE0,function
 "std::_Apply_impl<GlyphMaskConstructLambda, GlyphMaskArguments>",0x00413140,function
 std::invoke<GlyphMaskConstructLambda>,0x00413D10,function
 std::pmr::polymorphic_allocator<GlyphMaskOffset>::construct::lambda::operator(),0x004130A0,function
+std::_Uninitialized_backout_al<GlyphMaskOffset>::_Emplace_back_deref_move,0x00413280,function
+std::_Get_unwrapped<GlyphMaskOffset*&>,0x0040B2A0,function
+std::_Uninitialized_move<GlyphMaskOffset>::unwind_cleanup,0x00567D60,function
+std::_Uninitialized_move<GlyphMaskOffset>::eh_handler,0x00567D6D,function

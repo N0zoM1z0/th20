@@ -353,3 +353,67 @@ The 35B public wrapper still lacks its native NOP, and the 2,245B compositor
 remains NONEXACT at 2,224B. With apply resolved, the next Glyph investigation
 is the 200B move parent's iterator/backout relocation identities and the
 native `__autoclassinit2` call boundary, followed by the larger PMR parents.
+
+
+## 2026-11-26 follow-up: exact 200B move parent and complete EH support
+
+The complete `std::_Uninitialized_move` at `0x00413920` now strictly
+replays all **200B / 65 instructions**, including nine REL32 and two DIR32
+fields, from the unchanged C++20 compositor source. The remaining call
+identities were already present in the maintained source; earlier residual
+notes about a 9B unwrap function and a different auto-initializer were stale.
+
+| Head | Complete contribution | Canonical unit |
+| --- | ---: | --- |
+| `0x00413920` | 200B uninitialized move | `glyph_uninitialized_move_200` |
+| `0x00413280` | 92B backout insertion | `glyph_backout_emplace_92` |
+| `0x0040B2A0` | 10B iterator unwrapping | `glyph_get_unwrapped_10` |
+| `0x00567D60` | 13B EH cleanup, including five native INT3 bytes | `glyph_move_eh_cleanup_13` |
+| `0x00567D6D` | 39B EH handler | `glyph_move_eh_handler_39` |
+
+The 10B leaf dereferences its reference-to-pointer argument. Its full body
+matches; the same native primitive also implements reference-tuple extraction.
+The compiler-generated `__autoclassinit2` is the full **31B** dynamic-span
+zeroing function at `0x0040C080`, folded with the independently established
+HitCtrlInf/ECL initializer. The glyph call supplies the real 12B backout span.
+Its sole call resolves to the existing memset anchor `0x00544760`; full
+relocation replay of the glyph-emitted helper also matches all 31 bytes.
+The backout constructor, release and destructor retain the separately exact
+42B/28B/39B bodies. Both 92B insertion forwarding calls resolve to the shared
+8B leaf, and its third call reaches the exact 31B allocator bridge.
+
+The exception path has been reconciled beyond the parent body's handler
+pointer. The complete 39B handler performs two cookie checks, selects
+FuncInfo at `0x005A9994`, and jumps to the established CxxFrameHandler3
+anchor `0x00544722`, also used by the independently reviewed
+[ECL lifetime handlers](EXACT_ECL_RUNTIME_LIFETIME_RECONSTRUCTION.md#complete-compiler-and-independent-support-evidence)
+and retained SoundInf handler evidence in `.analysis/core111-preload-eh.json`.
+Its single-state unwind map at `0x005A998C` selects
+`0x00567D60`; that cleanup restores the backout receiver at `[ebp-0x1C]`
+and tail-jumps to the exact destructor at `0x004143D0`. The full **44B**
+COFF .xdata contribution (8B map plus 36B FuncInfo) replays both genuine
+DIR32 fields and matches every native byte. The five trailing INT3 bytes
+belong to the compiler's 13B cleanup contribution and precede the handler;
+no padding was inserted into source.
+
+Attested Ghidra role decompilations are retained privately in
+`.analysis/draw-boss-session/glyph-move-parent-roles.c` for the seven ordinary
+function heads. The handler is not a Ghidra function entry, so its bounded
+listing is instead in `glyph-move-eh-native.txt`. PE decoding and the one-state
+metadata establish the cleanup extent and association. The chain verifier
+checks all five units, full EH data, and the folded auto-initializer.
+
+Validation cold-built only `src/GlyphMaskComposite2245.cpp` and strictly
+replayed **30/30 units from one object**; the allocator owner's seven unchanged
+units retain passing evidence and are checked by the chain verifier without
+another build. The five-parent and deep-nine verifiers pass. Temporary changes
+to the EH state count and cleanup relocation identity are both rejected.
+Replay output is retained in `glyph-move-protocol-replay.log` under the same
+private investigation directory.
+
+The new functions total 354B, including 52B of compiler-owned EH code; the
+other 302B remains origin-unknown. None adds authored-game credit. The 35B
+wrapper, 108B insertion selector, 140B unused-capacity insertion and 488B
+growth parent remain NONEXACT. The next Glyph step is to resolve their full
+call/exception graphs against the now-exact 200B move and 31B construct bridge.
+The 2,245B game compositor remains NONEXACT at 2,224B.

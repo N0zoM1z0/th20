@@ -3,13 +3,14 @@
 
 The 35B public wrapper omits one native compiler NOP. The 108B/140B/488B
 backend, 200B uninitialized-move, 92B backout, and 31B allocator wrapper
-bodies match after resolving their true COFF/PE relocation fields. Remaining
-callee-target differences are reported explicitly; no parent is promoted to
-whole-function exactness on body shape alone.
+bodies match after resolving their true COFF/PE relocation fields. The 200B move parent and its EH code/metadata now strictly replay. The
+35B/108B/140B/488B insertion parents remain independently NONEXACT.
 """
 from __future__ import annotations
 import hashlib
 import importlib.util
+import re
+import struct
 import subprocess
 import sys
 from pathlib import Path
@@ -152,6 +153,37 @@ def verify_original():
     print("PASS original 2,245B parent has the two physical insertion edges at +0x165/+0x4DD")
     return image, base, sections, native
 
+def verify_move_eh_metadata(obj: Path, image, base, sections):
+    # One complete 44B .xdata contribution: unwind map followed by FuncInfo.
+    # The handler selects FuncInfo; its single state cleans the backout at -0x1C.
+    symbols = subprocess.check_output(["objdump", "-t", str(obj)], text=True).splitlines()
+    suffix = next(line.rsplit(" ", 1)[-1] for line in symbols
+                  if " __ehfuncinfo$??$_Uninitialized_move@" in line)
+    row = next(line for line in symbols if line.endswith(" " + suffix))
+    match = re.search(r"\(sec\s+(\d+)\).*?\) (0x[0-9a-fA-F]+) ", row)
+    assert match and int(match[2], 16) == 8
+    raw = obj.read_bytes()
+    header = 20 + 40 * (int(match[1]) - 1)
+    size, offset, reloc_offset = struct.unpack_from("<III", raw, header + 16)
+    count = struct.unpack_from("<H", raw, header + 32)[0]
+    assert size == 44 and count == 2
+    data = bytearray(raw[offset:offset + size])
+    symbol_offset, symbol_count = struct.unpack_from("<II", raw, 8)
+    strings = raw[symbol_offset + symbol_count * 18:]
+    expected = ((4, 0x00567D60, suffix.replace("__ehfuncinfo$", "__unwindfunclet$") + "$0"),
+                (16, 0x005A998C, suffix.replace("__ehfuncinfo$", "__unwindtable$")))
+    for index, (field, target, symbol) in enumerate(expected):
+        actual_field, symbol_index, kind = struct.unpack_from("<IIH", raw, reloc_offset + 10 * index)
+        name = coff.coff_name(raw[symbol_offset + 18 * symbol_index:][:8], strings)
+        assert (actual_field, kind, name) == (field, 6, symbol)
+        assert struct.unpack_from("<I", data, field)[0] == 0
+        struct.pack_into("<I", data, field, target)
+    assert data == pe.raw_at(image, base, sections, 0x005A998C, 44)
+    highlow = {a - 0x005A998C for a in pe.physical_highlow(image, base, sections)
+               if 0x005A998C <= a < 0x005A998C + 44}
+    assert highlow == {4, 16}
+    print("PASS complete 44B move EH metadata, both DIR32 fields and single backout cleanup state")
+
 def verify_candidate(obj: Path, image, base, sections, native):
     strings = subprocess.run(["strings", str(obj)], capture_output=True, text=True, check=True).stdout.splitlines()
     candidates = {}
@@ -223,20 +255,27 @@ def verify_candidate(obj: Path, image, base, sections, native):
     assert candidates["move"] == native["move"] and not relocs["move"]
     assert candidates["move_element"] == native["move"] and not relocs["move_element"]
 
-    # Relocation identities expose the remaining old/new STL boundary rather
-    # than hiding it behind matching E8 positions.
-    move_relocs = {int(r["offset"]) - 1: r["symbol"] for r in relocs["uninitialized_move"] if r["type"] == "REL32"}
-    assert "_Get_unwrapped" in move_relocs[0x2C] and "_Get_unwrapped" in move_relocs[0x3B]
-    assert "_Emplace_back_deref_move" in move_relocs[0x8A]
-    backout_relocs = {int(r["offset"]) - 1: r["symbol"] for r in relocs["backout_emplace"]}
-    assert "glyph_uninitialized_move_construct" in backout_relocs[0x3F]
-    allocator_relocs = {int(r["offset"]) - 1: r["symbol"] for r in relocs["allocator_move_construct"]}
-    assert "move@ABV" in allocator_relocs[0x07]
-    assert "polymorphic_allocator" in allocator_relocs[0x17] and "construct" in allocator_relocs[0x17]
-    # The 31B wrapper is a complete structural-exact unit: both original
-    # E8 destinations resolve to the real std::move leaf and allocator member.
-    wrapper_unit = coff.compare_unit("glyph_uninitialized_move_construct_31")
-    assert wrapper_unit["result"] == "exact" and wrapper_unit["matched_bytes"] == 31
+    # All move/backout call identities now have independent native role evidence.
+    for name, size in (("glyph_uninitialized_move_200", 200),
+                       ("glyph_backout_emplace_92", 92),
+                       ("glyph_get_unwrapped_10", 10),
+                       ("glyph_move_eh_cleanup_13", 13),
+                       ("glyph_move_eh_handler_39", 39),
+                       ("glyph_uninitialized_move_construct_31", 31)):
+        result = coff.compare_unit(name)
+        assert result["result"] == "exact" and result["matched_bytes"] == size
+    verify_move_eh_metadata(obj, image, base, sections)
+    # The compiler-generated dynamic-span initializer is folded with the
+    # independently reconstructed HitCtrlInf/ECL helper at 0x0040C080.
+    auto_symbol = next(s for s in strings if s.startswith(
+        "?__autoclassinit2@?$_Uninitialized_backout_al"))
+    auto_body, auto_relocs = candidate_body(obj, auto_symbol, 31)
+    assert auto_relocs[0]["symbol"] == "_memset"
+    assert normalize_relocations(pe.raw_at(image, base, sections, 0x0040C080, 31),
+                                 auto_body, (0x11,), auto_relocs)
+    assert len(auto_relocs) == 1 and auto_relocs[0]["offset"] == 0x12
+    struct.pack_into("<I", auto_body, 0x12, 0x00544760 - (0x0040C080 + 0x16))
+    assert auto_body == pe.raw_at(image, base, sections, 0x0040C080, 31)
 
     # Native tuple-return, pointer-capture and apply roles were reviewed in
     # attested Ghidra exports; canonical units replay every relocation field.
@@ -283,9 +322,9 @@ def verify_candidate(obj: Path, image, base, sections, native):
     print("PASS candidate 200B/65-i386 uninitialized-move body, 92B/34-i386 backout member and 31B/14-i386 allocator wrapper match all non-relocation bytes and native E8 positions")
     print("PASS candidate 488B has the original 14 E8 and 2 HIGHLOW relocation sites; 200B has 9 E8 and 2 HIGHLOW sites")
     print("PASS candidate std::move<GlyphMaskOffset&> forwarding leaf is byte-exact")
-    print("RESIDUAL: 10B C++20 _Get_unwrapped vs native 9B; 31B __autoclassinit2 call-site lowering differs")
+    print("PASS complete 200B move parent, 92B backout member, 10B unwrap and 13B/39B EH code strictly replay")
     print("PASS candidate 34B/14-i386 emplace wrapper retains both original E8 sites; only native +0x1C NOP is absent")
-    print("PASS 31B/14-i386 allocator-move wrapper is a whole structural-exact unit with both native E8 destinations")
+    print("PASS 31B/14-i386 allocator-move wrapper is a whole strict-exact unit with both native E8 destinations")
     print("PASS complete allocator tuple/apply protocol: 78B construct, 33B args, 29B tuple, 78B apply, 65B apply-impl, 17B invoke and 62B lambda strictly replay")
     print("PASS 2,224B parent routes both BGRA/ARGB insertion calls through the specialized wrapper at candidate +0x16E/+0x4F3; original sites are +0x165/+0x4DD, parent remains NONEXACT")
 

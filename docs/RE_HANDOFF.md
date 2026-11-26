@@ -35,25 +35,25 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
-## Latest checkpoint — Glyph PMR allocator/apply protocol
+## Latest checkpoint — Glyph PMR move/backout parent
 
-Seven complete allocator/tuple/apply functions now strictly replay from the
-C++17 owner `src/GlyphMaskAllocatorConstruct.cpp`: 78B construct, 33B argument
-builder, 29B tuple forwarding, 78B apply, 65B apply implementation, 17B invoke,
-and 62B destination-capturing lambda. Four functions / 222B are newly exact.
-Original source origin remains unknown; authored-game totals do not increase.
+The 200B uninitialized-move parent at `0x00413920` now strictly replays with
+its 92B backout insertion, 10B unwrap leaf, 13B padded EH cleanup and 39B
+handler. All five complete contributions and the full 44B EH state data match,
+including every relocation. The old unwrap/auto-initializer residuals were
+stale: the current source already emits the native 10B/31B helpers.
 
-The C++20 compositor calls the allocator specialization through its unchanged
-31B bridge. Keeping its language profile preserves the existing 22B traits
-helper, which expands to 31B in a whole-source C++17 probe. Affected replay
-scope was only these two source providers: **32/32 units from two cold
-objects**, with no shared header changes. The chain, five-parent and growth
-verifiers pass; opcode and callee-role corruption cases are rejected.
+Replay scope was only `src/GlyphMaskComposite2245.cpp`: **30/30 units,
+one cold object**. No native source or shared header changed. The separate
+C++17 allocator owner's seven units retain passing evidence. Chain,
+five-parent and deep-nine checks pass; malformed EH state/relocation cases
+are rejected. The 354B of newly exact contributions adds no authored-game
+credit (302B origin-unknown, 52B compiler-owned).
 
-The 35B wrapper still omits its NOP and the 2,245B compositor remains NONEXACT
-at 2,224B. Next Glyph work is the 200B parent's iterator/backout relocation
-identities and `__autoclassinit2` boundary. See the
-[apply protocol proof](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md#2026-11-26-follow-up-exact-apply-protocol-and-source-ownership).
+Next Glyph work is the full 108B/140B/488B parent call and exception graphs,
+now that the 200B move and 31B allocator bridge strictly replay. The 35B
+wrapper still omits its NOP, and the 2,245B compositor remains NONEXACT at
+2,224B. See the [move and EH proof](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md#2026-11-26-follow-up-exact-200b-move-parent-and-complete-eh-support).
 
 ## Latest checkpoint — Animation corner projection dispatcher
 

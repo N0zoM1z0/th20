@@ -59,5 +59,5 @@ def verify():
  for old in ['glyph_vec_growth_change_array_165','glyph_vec_growth_reallocation_guard_81','glyph_vec_max_size_59','glyph_queue_memory_resource_allocate_59']:
   assert cm.compare_unit(old)['result']=='exact'
  print('PASS nine distinct complete original PMR-vector heads, 361 native generic bytes; existing 165B/81B/59B helpers not recredited')
- print('Original game 2245B glyph Boss / compiler STL 488B growth, 200B backout move, 140B construct remain independently NONEXACT')
+ print('Original game 2245B glyph Boss / compiler STL 488B growth and 140B construct remain independently NONEXACT; the 200B backout move now has strict replay')
 if __name__=='__main__':verify()
