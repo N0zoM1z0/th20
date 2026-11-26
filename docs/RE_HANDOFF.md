@@ -22,28 +22,29 @@ config/functions.csv and config/function-origins.csv. Read the current counts wi
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`.
 The README SVG is generated from those same ledgers by `scripts/progress.py`.
 
-## Current work — 294B text-submit cleanup
+## Current work — Player frame control flow and registers
 
-The text submitter at `0x0044FFF0` remains NONEXACT at 292B/104 instructions.
-Its missing NOPs follow destruction of the incoming by-value callback on two
-return paths. C++17 with NRVO and `/Z7` reproduce the same 292B contribution;
-`/ZI` restores the NOPs but changes the frame and saved registers. Reuse the
-[bounded compiler controls](ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md).
+The complete Player main frame at `0x004F9C30` remains NONEXACT:
+3,114 bytes and 783 instructions, versus 3,111 bytes and 783 native instructions.
+A fresh audit matches all 106 internal branch targets, 327 EBP/ESP memory
+operands, 174 ordinary immediates, 67 call roles and 37 data roles. Remaining ordinary differences are
+EAX/ECX/EDX-family register encodings. See [the complete audit and controls](PLAYER_MAIN_3111_CFG_AND_REGISTER_CONTROLS.md).
 
-The complete 42B owned EH code and 44B one-state metadata now strictly replay.
-**Replay scope: two EH units from one fresh submit object**, with no shared
-header changes. Current object/receipt:
-`build/gpt61-submit294-canonical/AsciiTextSubmit294.obj`. Preserve private
-controls in `.analysis/ascii-submit294-session/` and the existing text-core
-and queue products. There is no 294B parent unit or new authored-game credit.
+No production source or shared header changed: **canonical replay scope is
+zero**. Fresh main/data probes and source controls are under
+`build/gpt61-player-main-probe/` and `.analysis/player-main3111-session/`.
+Current Timer/Player accessor objects and receipts remain intact. Keep the
+verified Timer bool ABI; the byte-return hypothesis emits the wrong callee
+extent. Reuse the recorded expression/API/definition-visibility controls.
 
-The [movement/swap](GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md),
-[allocator application](GLYPH_QUEUE_APPLY_STRICT_EXACT.md) and
-[insertion/EH](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md) matches remain intact.
-Further text-submit work needs evidence for the original return-cleanup/debug
-context. The next independent game-owned scope is Player main-frame update at
-`0x004F9C30`; start with [its operand/register frontier](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md).
-The 578B/586B formatting callers remain separate frontiers.
+The next related game-owned scope is the 555B `Player::apply_move_delta` at
+`0x004FFA10`. Its independent child frontier remains unresolved; the current
+main-frame control-flow and frame-memory constraints should be retained.
+
+The [294B text-submit cleanup](ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md)
+remains at a 292B NONEXACT parent with two exact EH units under
+`build/gpt61-submit294-canonical/`. The prior glyph queue/application and
+movement/swap matches remain intact.
 
 ## Latest checkpoint — exact GDI glyph text core
 

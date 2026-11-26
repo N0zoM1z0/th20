@@ -1,3 +1,6 @@
+Current full control-flow/frame constraints and rejected source/ABI controls
+are recorded in [the focused follow-up](PLAYER_MAIN_3111_CFG_AND_REGISTER_CONTROLS.md).
+
 # CORE/RECON-721 — complete original Player main frame: invariant gameplay literals, object fields and seven remaining native register encodings
 
 **Player::update_main_frame remains NONEXACT.** This whole-function immutable original PE versus genuine maintained MSVC i386 comparison independently narrows the source/ABI frontier without substituting mnemonic similarity for native byte exactness.
