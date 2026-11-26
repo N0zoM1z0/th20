@@ -5,6 +5,7 @@
 // Current natural-C++ candidate is 574B/138 i386; it now names the original
 // unsigned conversion table directly. No ASM, padding, or target patching.
 #include "NativeAsciiTextDrawView.hpp"
+#include "AnimationTextFormat.hpp"
 #include "Animation.hpp"
 #include "AnimationFile.hpp"
 #include "AnimationRuntimeOwner.hpp"
@@ -16,7 +17,6 @@
 #include <functional>
 #include <mutex>
 namespace th20 {
-void __cdecl format_text_447940(wchar_t*,const wchar_t*,va_list);
 extern const float native_text_sizes_56c768[];
 extern const float native_double_56c8d0;
 extern const float native_one_56c8cc;
@@ -31,13 +31,10 @@ NativeTextDrawResult8 __cdecl NativeTextSubmitOwner::draw_44b020(
     NativeTextTransform4 transform;
     std::lock_guard<std::recursive_mutex> guard(process_locks.slot(9));
     float glyph_width=native_text_sizes_56c768[font];
-    // Physical stack buffer: 0x500 bytes. The format wrapper passes a
-    // 0x500 count to the wide CRT; its full bounds/encoding contract
-    // remains unresolved and is NOT asserted safe for arbitrary input.
-    wchar_t formatted[0x280];
+    char formatted[0x500];
     va_list args;
     va_start(args,format);
-    format_text_447940(formatted,reinterpret_cast<const wchar_t*>(format),args);
+    format_text_447940(formatted,format,args);
     va_end(args);
     SpriteData* sprite=animation->sprite_data();
     transform.field_a=animation->base.field_3a8;
@@ -51,7 +48,7 @@ NativeTextDrawResult8 __cdecl NativeTextSubmitOwner::draw_44b020(
     const float width_factor =
         glyph_width*native_double_56c8d0-native_one_56c8cc;
     const std::uint32_t byte_length = static_cast<std::uint32_t>(
-        std::strlen(reinterpret_cast<const char*>(formatted)));
+        std::strlen(formatted));
     const double corrected_length =
         static_cast<double>(static_cast<std::int32_t>(byte_length)) +
         native_unsigned_length_correction_56cdd0[byte_length >> 31];
@@ -60,7 +57,7 @@ NativeTextDrawResult8 __cdecl NativeTextSubmitOwner::draw_44b020(
         (width_factor*static_cast<float>(corrected_length))/native_double_56c8d0);
     auto* texture=reinterpret_cast<AnimationQuadSubmitOwner*>(this)->texture_for_sprite(sprite->texture_id);
     return this->submit_text_44fff0(
-       texture,sprite,x,layer,color,reinterpret_cast<const char*>(formatted),
+       texture,sprite,x,layer,color,formatted,
        shadow,font,align<<1,&transform,mode,callback);
 }
 }

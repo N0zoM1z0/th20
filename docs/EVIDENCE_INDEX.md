@@ -342,6 +342,8 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   [natural-C++ 4-way/8-way integer/float parameter copies 529/530/570/571; 1,262B/268-head/48-E8 native case map](ENEMY_41967_DYNAMIC_PARAMETER_529_530_570_571_SOURCE_FRONTIER.md).
   The original **39,470B Animation VM update** is also source-absent;
   see [source ownership](SOURCE_MAP.md).
+- **Renderer text formatting ABI:**
+  [narrow CRT path, 0x500-byte buffers, four complete canonical units and unchanged Renderer EH sections](RENDERER_TEXT_NARROW_CRT_ABI.md).
 - **5,993B Animation Draw — SOURCE-PRESENT, NONEXACT:**
   [current native width preparation, shared return and complete 24B case accounting](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-native-width-preparation-and-one-zero-result-return),
   [target compiler/volatile-access metadata, 19.10/19.44 and actual LTCG/real-getter controls](ANIMATION_DRAW_BOSS_5993_COMPILER_CONTEXT.md),
@@ -432,7 +434,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 ## Native complete 30B wchar format forwarding helper strict exact
 
-- [CORE/RECON-975 — full original 30B/13-i386 wide text `_vswprintf_s` wrapper](ANIMATION_TEXT_FORMAT30_STRICT_EXACT.md). Genuine 417B Animation text Boss parent E8, one native E8 to 0x00439880, original constant 0x500 and `va_list`, zero HIGHLOW. Natural **30/30 strict** with one utility-origin source unit, no authored game credit; 417B parent still nonexact.
+- [CORE/RECON-975 — full original 30B/13-i386 narrow text `vsprintf_s` wrapper](ANIMATION_TEXT_FORMAT30_STRICT_EXACT.md). Genuine 417B Animation text Boss parent E8, one native E8 to 0x00439880, original constant 0x500 and `va_list`, zero HIGHLOW. Natural **30/30 strict** with one utility-origin source unit, no authored game credit; 417B parent is now independently exact. See the [character-width correction](RENDERER_TEXT_NARROW_CRT_ABI.md).
 
 ## Original full 92B Renderer PRNG locked byte publication strict exact
 

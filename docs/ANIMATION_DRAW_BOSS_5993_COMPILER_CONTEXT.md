@@ -134,3 +134,10 @@ no new full-Draw candidate. Sources are `DrawDirectNarrowedCall.cpp`,
 their comparisons and receipt hashes are also in
 `draw-volatile-metadata-controls.txt`. Maintained native inputs and exact
 claims remain unchanged; affected exact replay scope is zero.
+
+Value-category controls also fail to recover the forms: discarded
+`std::move`/`std::forward` results produce 31B callers with an extra scalar
+copy, while moved/forwarded half expressions produce 67B callers and retain
+memory-source arithmetic. Moving a named half leaves the ordinary 57B caller
+unchanged. Complete code and relocations are retained in
+`draw-value-category-controls.txt`; no full-Draw variant is warranted.

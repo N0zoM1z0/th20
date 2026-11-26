@@ -35,6 +35,21 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
+## Latest checkpoint — Renderer narrow formatting ABI
+
+The 30B text formatter and all three Renderer consumers now share a correct
+`char*` declaration and use 0x500-byte buffers. Following the native CRT chain
+to its byte terminator and comparing the SDK's character-specific bodies
+resolves the previous wide-character label. Fresh strict replay passes the
+30B wrapper, 417B Renderer method and two genuine 31B/77B SDK inline bodies.
+The two new units are library support; authored exact coverage is unchanged.
+
+Affected exact replay scope is **four units in two providers**. The 586B
+centered and 574B ASCII candidates retain their complete code and owned EH
+sections after correcting symbol types; both remain NONEXACT. Next centered
+work is its original advance-before-strlen evaluation and scalar temporary
+ownership. See [the native CRT and ABI proof](RENDERER_TEXT_NARROW_CRT_ABI.md).
+
 ## Latest checkpoint — whole Glyph mask compositor exact
 
 The game-owned 2,245B `NativeGlyphCanvasView::composite_glyph_mask_416420`
@@ -67,7 +82,7 @@ and 1,486B rotated projector remain independently exact. Historical source
 provenance for the 244B dispatcher remains unknown. See
 [the dispatcher proof](ANIMATION_CORNER_PROJECTION_DISPATCH244_SOURCE_FRONTIER.md).
 
-## Active Boss — Animation main Draw
+## Open Boss — Animation main Draw
 
 The original 5,993B `AnimationPoolOwner::draw` at `0x00443880` remains
 SOURCE-PRESENT, NONEXACT. The maintained source now evaluates mode35 width

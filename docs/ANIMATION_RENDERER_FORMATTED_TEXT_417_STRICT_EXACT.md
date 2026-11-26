@@ -4,9 +4,13 @@ The original Japanese TH20 Steamless v1.00a (`a274b45fe6ec53511718bb328c2ff169a7
 
 The maintained source is [`AnimationRendererFormattedText417.cpp`](../src/AnimationRendererFormattedText417.cpp), with the borrowed variadic Renderer method in [`NativeRendererFormattedTextView.hpp`](../src/NativeRendererFormattedTextView.hpp). This replaces the prior unfinished private 418B candidate without changing the shared `Animation` layout. The original Ghidra 417B body and callers were inspected through the target-bound TH20 Ghidra provider; the complete physical x86 and PE relocation sites were then decoded independently from the hash-locked executable.
 
+The [narrow CRT ABI correction](RENDERER_TEXT_NARROW_CRT_ABI.md) preserves
+all 417 original bytes and owned EH sections while fixing the earlier wide
+format declaration.
+
 ## Reconstructed original behavior
 
-The `__cdecl` variadic Renderer member returns an eight-byte result through the hidden pointer, with `this` on the stack. It locks `process_locks.slot(9)` using `std::lock_guard<std::recursive_mutex>`, formats the incoming varargs through the already-exact 30B `format_text_447940` into a **640-`wchar_t`** buffer, retrieves the animation's sprite, and copies four actual transform words from `Animation+0x3A8..0x3B4`.
+The `__cdecl` variadic Renderer member returns an eight-byte result through the hidden pointer, with `this` on the stack. It locks `process_locks.slot(9)` using `std::lock_guard<std::recursive_mutex>`, formats the incoming varargs through the already-exact 30B `format_text_447940` into a **0x500-byte `char`** buffer, retrieves the animation's sprite, and copies four actual transform words from `Animation+0x3A8..0x3B4`.
 
 It performs the original **byte** flag setting at `Animation+0x49A` (`flags.bit_10 = 1`); the separate bit-10 predicate is read from the original **word at `Animation+0x49C`**, not from the changed byte. The texture is looked up by the sprite's texture ID. Finally the function passes the original shifted horizontal/align parameters and a **by-value `std::function<void()>`** to the 294B text submit call. The 294B submit function itself remains independently **NONEXACT**; this parent's exactness does not imply that callee's exactness. The original 417B body has 17 observed callers.
 

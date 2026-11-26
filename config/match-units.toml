@@ -25500,18 +25500,45 @@ target_address = 0x00450870
 size = 16
 relocations = []
 
-# CORE/RECON-975: original 30B/13-i386 wide-format C ABI wrapper;
+# CORE/RECON-975: original 30B/13-i386 narrow-format C ABI wrapper;
 # source ownership generic/library and not game-authored byte credit.
 [units.animation_text_format_30]
 source = "src/AnimationTextFormat30.cpp"
-object = "build/core975-canonical/AnimationTextFormat30.obj"
+object = "build/gpt61-renderer-text-canonical/AnimationTextFormat30.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::format_text_447940"]
-symbol = "?format_text_447940@th20@@YAXPA_WPB_WPAD@Z"
+symbol = "?format_text_447940@th20@@YAXPADPBD0@Z"
 target_address = 0x00447940
 size = 30
 relocations = [
- { offset = 0x15, type = "REL32", symbol = "__vswprintf_s", target = 0x00439880 },
+ { offset = 0x15, type = "REL32", symbol = "_vsprintf_s", target = 0x00439880 },
+]
+
+# Real SDK narrow CRT inline bodies emitted by the formatter provider.
+# Library support only; no authored game-byte credit.
+[units.crt_vsprintf_s_31]
+source = "src/AnimationTextFormat30.cpp"
+object = "build/gpt61-renderer-text-canonical/AnimationTextFormat30.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["vsprintf_s"]
+symbol = "_vsprintf_s"
+target_address = 0x00439880
+size = 31
+relocations = [
+ { offset = 0x16, type = "REL32", symbol = "__vsprintf_s_l", target = 0x0041F1D0 },
+]
+
+[units.crt_vsprintf_s_l_77]
+source = "src/AnimationTextFormat30.cpp"
+object = "build/gpt61-renderer-text-canonical/AnimationTextFormat30.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["_vsprintf_s_l"]
+symbol = "__vsprintf_s_l"
+target_address = 0x0041F1D0
+size = 77
+relocations = [
+ { offset = 0x1B, type = "REL32", symbol = "___local_stdio_printf_options", target = 0x0041F1C0 },
+ { offset = 0x27, type = "REL32", symbol = "___stdio_common_vsprintf_s", target = 0x0054A498 },
 ]
 
 
@@ -28533,19 +28560,19 @@ relocations = [
 # CORE/RECON-1104: full original 417B variadic Renderer sprite-text Boss.
 [units.animation_renderer_formatted_text_417]
 source = "src/AnimationRendererFormattedText417.cpp"
-object = "build/core1104-canonical/AnimationRendererFormattedText417.obj"
+object = "build/gpt61-renderer-text-canonical/AnimationRendererFormattedText417.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::NativeRendererFormattedTextView::draw_formatted_text_44ac20"]
-symbol = "?draw_formatted_text_44ac20@NativeRendererFormattedTextView@th20@@QAA?AUNativeTextDrawResult8@2@PAVAnimation@2@HIHHHHV?$function@$$A6AXXZ@std@@PB_WZZ"
+symbol = "?draw_formatted_text_44ac20@NativeRendererFormattedTextView@th20@@QAA?AUNativeTextDrawResult8@2@PAVAnimation@2@HIHHHHV?$function@$$A6AXXZ@std@@PBDZZ"
 target_address = 0x0044AC20
 size = 417
 relocations = [
-  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?draw_formatted_text_44ac20@NativeRendererFormattedTextView@th20@@QAA?AUNativeTextDrawResult8@2@PAVAnimation@2@HIHHHHV?$function@$$A6AXXZ@std@@PB_WZZ", target = 0x00568528 },
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?draw_formatted_text_44ac20@NativeRendererFormattedTextView@th20@@QAA?AUNativeTextDrawResult8@2@PAVAnimation@2@HIHHHHV?$function@$$A6AXXZ@std@@PBDZZ", target = 0x00568528 },
   { offset = 0x18, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 0x35, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
   { offset = 0x3A, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
   { offset = 0x46, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
-  { offset = 0x6A, type = "REL32", symbol = "?format_text_447940@th20@@YAXPA_WPB_WPAD@Z", target = 0x00447940 },
+  { offset = 0x6A, type = "REL32", symbol = "?format_text_447940@th20@@YAXPADPBD0@Z", target = 0x00447940 },
   { offset = 0x7F, type = "REL32", symbol = "?sprite_data@Animation@th20@@QAEPAUSpriteData@2@XZ", target = 0x00437CD0 },
   { offset = 0xFD, type = "REL32", symbol = "?texture_for_sprite@AnimationQuadSubmitOwner@th20@@QAEPAUIDirect3DBaseTexture9@@I@Z", target = 0x00445A00 },
   { offset = 0x117, type = "REL32", symbol = "??0?$function@$$A6AXXZ@std@@QAE@ABV01@@Z", target = 0x004140F0 },

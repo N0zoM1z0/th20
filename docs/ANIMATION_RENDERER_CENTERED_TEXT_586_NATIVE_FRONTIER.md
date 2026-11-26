@@ -1,12 +1,16 @@
-# CORE/RECON-1105 — complete 586B centered Unicode Renderer text source, SSE frontier
+# CORE/RECON-1105 — complete 586B centered narrow Renderer text source, SSE frontier
 
 The original Japanese TH20 Steamless v1.00a executable (SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`) contains a distinct **586-byte /140-instruction** Renderer text function at `0x0044ADD0..0x0044B019`. The entire native body SHA-256 is `f6f5cc2d5565eb50d13a16813098118685183bbaedbcb678eb6b766371f5f829`. A real `ret` ends at `0x0044B01A`; the following `0x0044B020` is the **different 578B ASCII renderer**. The original 586B centered function has two observed callers, at `0x004DECF0` and `0x0052DF30`.
 
 The full natural C++ source is now maintained in [`AnimationRendererCenteredText586.cpp`](../src/AnimationRendererCenteredText586.cpp). Its `__cdecl` variadic member belongs to the same borrowed [`NativeRendererFormattedTextView`](../src/NativeRendererFormattedTextView.hpp) owner as the separately whole-exact **417B** formatted-text function. Both methods pass `this` and the eight-byte hidden result pointer on the stack, rather than impersonating a nonmember caller; both delegate to the original `0x0044FFF0` submit method using the same Renderer `this`. The 417B exact unit was rebuilt and passed **417/417** after adding this sibling declaration, with no wider shared-header changes.
 
+The [narrow CRT ABI correction](RENDERER_TEXT_NARROW_CRT_ABI.md) resolves the
+previous wide declaration without changing this complete 586B candidate or
+its owned EH sections. Its SSE frontier remains open.
+
 ## Original game behavior and width calculation
 
-The complete original acquires `process_locks.slot(9)`, loads a float font advance from the genuine `0x0056C768` indexed table, formats variadic input with the separately exact `0x00447940` wide-text helper into a 640-`wchar_t` stack buffer, obtains `Animation::sprite_data()`, copies the four Animation transform words at `+0x3A8..+0x3B4`, sets bit zero of the actual **byte** at `Animation+0x49A` and independently reads bit ten of the **word** at `Animation+0x49C`.
+The complete original acquires `process_locks.slot(9)`, loads a float font advance from the genuine `0x0056C768` indexed table, formats variadic input with the separately exact `0x00447940` narrow-text helper into a 0x500-byte `char` stack buffer, obtains `Animation::sprite_data()`, copies the four Animation transform words at `+0x3A8..+0x3B4`, sets bit zero of the actual **byte** at `Animation+0x49A` and independently reads bit ten of the **word** at `Animation+0x49C`.
 
 The centered-horizontal displacement is the integer truncation of `sprite->extent_4c / 2.0f - ((font_advance * 2.0f - 1.0f) * float(strlen(formatted_bytes))) / 4.0f`. The original uses a real **unsigned 32-bit `strlen`** conversion, including its `0.0/4294967296.0` correction table, rather than a signed-only conversion or the unrelated scale used by the 578B ASCII caller. It looks up the Sprite texture, copies the original 40-byte `std::function<void()>` callback, passes the integer offset and `align << 1` to the 294B `submit_text_44fff0`, and releases the lock and callback under the genuine destructor/EH path. Formatting/encoding limitations of the native 0x500-byte stack region are not independently established.
 
