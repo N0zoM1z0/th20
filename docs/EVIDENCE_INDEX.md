@@ -348,9 +348,9 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   [mode35/36 width-order, first-return local and compiler-profile experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md),
   [live source and compiled half-height order](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-reconcile-live-source-and-enforce-compiled-half-height-order),
   [shifted arithmetic windows, division phases and discarded-result controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-distinguish-shifted-arithmetic-from-native-division-order),
-  [inline parameter temporaries and member/free float caller controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-inline-parameter-temporaries-and-caller-ownership-controls),
+  [inline temporary ownership, value/reference discards and float caller controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-inline-parameter-temporaries-and-caller-ownership-controls),
   [half/getter stack ownership, scheduling and inline half-return controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-half-value-ownership-versus-instruction-scheduling),
-  [explicit return narrowing, C++14/C11/C++20 and volatile-read controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-scalar-language-and-expression-order-controls),
+  [return narrowing, language/expression order and discarded-value controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-scalar-language-and-expression-order-controls),
   [complete first-result slot footprints, SSE and floating-environment controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-complete-slot-footprints-and-floating-environment-controls),
   [mode45/46 temporary lifetimes and common-return frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md),
   [mode35/36 x87 return-spill, SSE operand and full-body compiler probes](ANIMATION_DRAW_BOSS_5993_MODE35_X87_PROBES.md);

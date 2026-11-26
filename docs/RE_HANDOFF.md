@@ -90,8 +90,8 @@ along with their stack-slot ownership and receiver-load scheduling. Both
 first getters still discard ST0; a second return now occupies `[ebp-0x160]`,
 so a matching offset alone must not be called a first-result spill.
 
-Only `src/AnimationDrawBoss.cpp` changed native code. It has no canonical
-exact provider or source-including consumer; no shared header changed.
+The latest native change touched only `src/AnimationDrawBoss.cpp`. It has no
+canonical exact provider or source-including consumer; no shared header changed.
 **Affected exact replay scope: zero.** Existing accepted children retain
 their evidence, and the parent receives no exact credit.
 
@@ -101,6 +101,14 @@ ABI/language and floating-environment controls. Do not repeat them. Next
 investigate natural expression-temporary ownership for the two m32 stores
 and four scalar reloads while preserving the newly verified argument/return
 protocol. Keep the working getter declaration and locked compiler profile.
+
+New reduced controls do not justify full-parent variants: value/reference
+inline discards use separate branch temporaries, optimized scalar/vectorcall
+helpers still use memory operands plus result copies, and assignment/comma
+forms do not recover the register reload. Discarded comparisons, conversions,
+negations and additions remain bare ST0 discards. The current native source
+and accepted graph are unchanged; see the existing inline-ownership and
+scalar-expression sections in the focused note before trying these again.
 
 ## Latest checkpoint — StageResource selector and Enemy opcodes 622–626/631
 

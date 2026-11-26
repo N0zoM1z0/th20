@@ -651,17 +651,17 @@ scale; restoring register arithmetic alone is insufficient.
 
 ## 2026-11-26: inline parameter temporaries and caller ownership controls
 
-Allowing inlining does not recover the native scalar operand form. Under the
-locked compiler and remaining native flags, `/Od /Ob2` leaves the entire
-maintained 6,312B code/table contribution and relocation records identical to
-`/Od /Ob0`. Two real add/subtract helpers were then marked `__forceinline`
+Allowing inlining does not recover the native scalar operand form. For the
+earlier 6,312B candidate, the entire code/table contribution and relocations
+are identical under `/Od /Ob2` and `/Od /Ob0`. Two real add/subtract helpers
+were then marked `__forceinline`
 and used for adjusted scale in modes35/36/45/46. Their argument evaluation
 preserves native division order and they are successfully inlined: all 123
 original call roles remain, with no helper calls. The result is nevertheless
 **6,053B / 1,509 instructions**, a 0x214 frame, 81 aligned E8 sites and 22/32
 HIGHLOW sites. Arithmetic still uses the memory operand. Each inlined helper
 adds a result-temporary load/store before publication to adjusted scale; four
-such pairs explain the 64B / eight-instruction increase over production.
+such pairs explain the 64B / eight-instruction increase over that source.
 
 `std::ignore = animation_inherited_aux_scale_x(animation)` under `/Ob2`
 provides a natural discard operation without an unused source variable or
@@ -677,6 +677,24 @@ The control expands the frame from 0x204 to 0x20C and the body to
 sites. It retains all 123 call roles and four native division phases. Thus
 standard discard materialization explains how to obtain the store form, but
 not the shared native slot or complete parent. Neither experiment is promoted.
+
+Reduced value/reference controls isolate this ownership issue. Under `/Ob2`,
+an empty `__forceinline` function taking float by value, one taking it by
+const reference, and `std::ignore` produce identical complete **19B** callers
+and relocation records. With two branches, the value/reference callers are
+identical **99B** bodies: the first discarded returns occupy `[ebp-8]` and
+`[ebp-0xC]`, not one shared slot. Under `/Ob0`, the adapters remain real extra
+calls. Passing the discard by value therefore does not supply a better
+explanation of the shared native temporary.
+
+Local `#pragma optimize("gt", on)` around scalar and `__vectorcall`
+add/subtract helpers also fails to recover the register operand after inlining
+into an unoptimized caller. Each caller has only the original getter E8, but
+the scalar/vectorcall pairs have identical complete **65B** code and
+relocations, memory-source arithmetic and an additional result-copy pair.
+The direct control in the same pragma context is 55B. That context also emits
+`leave` instead of the native MOV/POP teardown, so it is not a parent-profile
+candidate. No full Draw build follows these reduced controls.
 
 A separate small ABI probe compares genuine member, const-member and free
 fastcall float calls using the same receiver convention. All three discarded
@@ -696,6 +714,9 @@ comparisons. The ABI probe sources are `DrawFloatCallerKinds.cpp` and
 `DrawFloatMaterializationKinds.cpp`; the full-parent probes are
 `AnimationDrawBoss-inline-arg-temporaries.cpp` and
 `AnimationDrawBoss-standard-ignore.cpp`.
+The reduced sources are `DrawDiscardArgumentOwnership.cpp` and
+`DrawInlineOptimizedArithmetic.cpp`; `draw-discard-inline-ownership-controls.txt`
+records their complete caller comparisons and object/compiler checks.
 
 Maintained native source, shared headers, compiler profiles and exact claims
 are unchanged. Exact replay scope is zero. The remaining issue is caller
@@ -767,6 +788,15 @@ height or divisor as volatile also leaves the 51B direct-add instruction
 bytes unchanged. These controls do not justify changing Draw's language mode
 or public headers.
 
+Assignment expressions do not restore XMM1 either. A half assigned within
+the right operand, `getter() + (half=height/native_two)`, and an explicitly
+sequenced comma form produce identical **57B** callers and relocation
+records; their subtract counterparts also agree. Each divides before the
+getter, then uses the saved half as an arithmetic memory operand. Discarded
+comparison, integer conversion, negation and addition expressions all emit
+the same complete **16B** code/relocations as bare getter discard, ending in
+`fstp st(0)`. Those operations cannot explain the native first-result stores.
+
 A bounded byte-pattern search for an EBP-relative m32 x87 store, XMM0/XMM1
 scalar loads and register add/sub finds the four Draw sites and three other
 decoded instruction heads: `0x00500869`, `0x00500BFD`, `0x00501538`.
@@ -782,6 +812,9 @@ pattern sites. The remaining source question is how the pre-getter half is
 kept as an expression temporary without folding its later load into the
 arithmetic memory operand. No maintained native input changed; affected exact
 replay scope is zero.
+`DrawHalfAssignmentExpression.cpp` and `DrawDiscardedExpression.cpp` retain
+the reduced expression controls; their complete comparisons are also in
+`draw-discard-inline-ownership-controls.txt`.
 
 
 ## 2026-11-26: complete slot footprints and floating-environment controls
