@@ -1819,3 +1819,7 @@ th20::StageResourceOwner::set_primary_rotation_flag
 std::pmr::polymorphic_allocator<GlyphMaskOffset>::construct
 std::uses_allocator_construction_args<GlyphMaskOffset>
 std::forward_as_tuple<const GlyphMaskOffset>
+"std::apply<GlyphMaskConstructLambda, GlyphMaskArguments>"
+"std::_Apply_impl<GlyphMaskConstructLambda, GlyphMaskArguments>"
+std::invoke<GlyphMaskConstructLambda>
+std::pmr::polymorphic_allocator<GlyphMaskOffset>::construct::lambda::operator()

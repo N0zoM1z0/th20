@@ -1834,3 +1834,7 @@ th20::StageResourceOwner::set_primary_rotation_flag,0x00477790,function
 std::pmr::polymorphic_allocator<GlyphMaskOffset>::construct,0x00413AB0,function
 std::uses_allocator_construction_args<GlyphMaskOffset>,0x00413D50,function
 std::forward_as_tuple<const GlyphMaskOffset>,0x00413CE0,function
+"std::apply<GlyphMaskConstructLambda, GlyphMaskArguments>",0x004139F0,function
+"std::_Apply_impl<GlyphMaskConstructLambda, GlyphMaskArguments>",0x00413140,function
+std::invoke<GlyphMaskConstructLambda>,0x00413D10,function
+std::pmr::polymorphic_allocator<GlyphMaskOffset>::construct::lambda::operator(),0x004130A0,function

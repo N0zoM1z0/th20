@@ -297,3 +297,59 @@ its native NOP. The whole compositor remains NONEXACT at 2,224B with both
 insertion calls at +0x16E/+0x4F3. The next useful Glyph action is to recover
 the original apply/index-sequence forwarding boundary before revisiting the
 larger PMR parents.
+
+
+## 2026-11-26 follow-up: exact apply protocol and source ownership
+
+C++17 with the same locked compiler and remaining flags naturally reproduces
+the entire original tuple-application chain. Four additional complete units
+strictly replay, including every relocation:
+
+| Head | Role | Size | Unit |
+| --- | --- | ---: | --- |
+| `0x004139F0` | `apply` | 78B / 30 instructions | `glyph_allocator_apply_78` |
+| `0x00413140` | `_Apply_impl` | 65B / 25 instructions | `glyph_allocator_apply_impl_65` |
+| `0x00413D10` | `invoke` | 17B | `glyph_allocator_invoke_17` |
+| `0x004130A0` | destination-capturing lambda | 62B | `glyph_allocator_lambda_62` |
+
+The C++17 `apply` emits its native three empty index-sequence byte stores,
+then calls tuple forwarding at +0x1B, callable forwarding at +0x2A, and
+`_Apply_impl` at +0x42. Both forwarding instantiations resolve to the shared
+8B identity leaf `0x0040B280`. `_Apply_impl` forwards the tuple, extracts its
+sole element through `get<0>` at `0x0040B2A0`, forwards the callable, and
+calls `invoke` at `0x00413D10`. That 17B trampoline invokes the 62B lambda,
+which calls the already established placement-new primitive `0x0040E700`
+and shared element move `0x0040B280` before copying both words and returning
+the destination. These are the same roles reviewed in the earlier attested
+Ghidra exports. The bounded native listing for the 78B `apply` is retained at
+`.analysis/draw-boss-session/glyph-apply-native-range.json`.
+
+Under C++20 the same source emits 34B `apply` and 30B `_Apply_impl`, with
+intrinsic forwarding. Redeclaring `forward` with `noinline` leaves those
+sizes unchanged. Switching the complete compositor to C++17 preserves 27
+of its 28 prior exact units, but expands the original 22B allocator-traits
+construct function to 31B. Private comparisons are retained in
+`glyph-cxx17-all-units.txt`, `glyph-apply-cxx17.txt`, and the associated probes
+under `.analysis/draw-boss-session/`. No instruction bytes or empty local
+objects were added to imitate the sequence stores.
+
+The construction protocol now has one maintained owner,
+`src/GlyphMaskAllocatorConstruct.cpp`, compiled as C++17. It owns the three
+previously exact 78B/33B/29B functions as well as these four descendants.
+The C++20 compositor declares the allocator specialization and calls it through
+the unchanged 31B bridge; its 22B traits helper remains exact. This partition
+records a local reproducible compiler configuration, not a conclusion about
+the original game's global language mode or translation-unit boundaries.
+
+Affected replay scope was exactly the two source providers, with no shared
+header changes: **32/32 units from two cold objects**, including all 28 prior
+units and the four new ones. Output is retained in
+`.analysis/draw-boss-session/glyph-apply-partition-replay.log`. The chain,
+five-parent and growth verifiers pass; opcode and callee-role corruption cases
+are rejected. The new 222B remains origin-unknown and does not increase the
+authored-game byte ledger.
+
+The 35B public wrapper still lacks its native NOP, and the 2,245B compositor
+remains NONEXACT at 2,224B. With apply resolved, the next Glyph investigation
+is the 200B move parent's iterator/backout relocation identities and the
+native `__autoclassinit2` call boundary, followed by the larger PMR parents.

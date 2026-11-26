@@ -35,21 +35,25 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
-## Latest checkpoint — Glyph PMR allocator tuple protocol
+## Latest checkpoint — Glyph PMR allocator/apply protocol
 
-The original 78B allocator `construct` at `0x00413AB0`, 33B uses-allocator
-argument builder at `0x00413D50`, and 29B `forward_as_tuple` at `0x00413CE0`
-now pass complete strict canonical replay. Natural C++ uses a pointer-capturing
-lambda and explicit tuple-helper specializations. Original source origin is
-unknown; authored-game exact totals do not increase.
+Seven complete allocator/tuple/apply functions now strictly replay from the
+C++17 owner `src/GlyphMaskAllocatorConstruct.cpp`: 78B construct, 33B argument
+builder, 29B tuple forwarding, 78B apply, 65B apply implementation, 17B invoke,
+and 62B destination-capturing lambda. Four functions / 222B are newly exact.
+Original source origin remains unknown; authored-game totals do not increase.
 
-Replay scope was only `src/GlyphMaskComposite2245.cpp`: **28/28 units,
-one cold object**, including the prior 31B bridge. No shared header changed.
-The chain verifier and two corruption cases pass. The native apply remains
-78B versus 34B in the current STL, the 35B wrapper still omits its NOP, and
-the 2,245B compositor remains NONEXACT at 2,224B. For the next Glyph step,
-recover apply/index-sequence forwarding. See the
-[tuple protocol proof](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md#2026-11-26-exact-allocator-tuple-construction-protocol).
+The C++20 compositor calls the allocator specialization through its unchanged
+31B bridge. Keeping its language profile preserves the existing 22B traits
+helper, which expands to 31B in a whole-source C++17 probe. Affected replay
+scope was only these two source providers: **32/32 units from two cold
+objects**, with no shared header changes. The chain, five-parent and growth
+verifiers pass; opcode and callee-role corruption cases are rejected.
+
+The 35B wrapper still omits its NOP and the 2,245B compositor remains NONEXACT
+at 2,224B. Next Glyph work is the 200B parent's iterator/backout relocation
+identities and `__autoclassinit2` boundary. See the
+[apply protocol proof](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md#2026-11-26-follow-up-exact-apply-protocol-and-source-ownership).
 
 ## Latest checkpoint — Animation corner projection dispatcher
 

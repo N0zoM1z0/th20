@@ -240,9 +240,12 @@ def verify_candidate(obj: Path, image, base, sections, native):
 
     # Native tuple-return, pointer-capture and apply roles were reviewed in
     # attested Ghidra exports; canonical units replay every relocation field.
-    construct_symbol = next(s for s in strings if s.startswith(
+    allocator_obj = ROOT / "build/glyph-allocator-canonical/GlyphMaskAllocatorConstruct.obj"
+    allocator_strings = subprocess.run(["strings", str(allocator_obj)], capture_output=True,
+                                       text=True, check=True).stdout.splitlines()
+    construct_symbol = next(s for s in allocator_strings if s.startswith(
         "??$construct@V?$array@H$01@std@@$$CBV12@@?$polymorphic_allocator@"))
-    construct_body, construct_relocs = candidate_body(obj, construct_symbol, 78)
+    construct_body, construct_relocs = candidate_body(allocator_obj, construct_symbol, 78)
     construct_ins = disassemble(construct_body)
     assert len(construct_ins) == 30
     assert call_sites(construct_ins, 0) == (0x0D, 0x1E, 0x30, 0x40)
@@ -258,7 +261,11 @@ def verify_candidate(obj: Path, image, base, sections, native):
                                  (0x0D, 0x1E, 0x30, 0x40), construct_relocs)
     for name, size in (("glyph_pmr_construct_78", 78),
                        ("glyph_uses_allocator_args_33", 33),
-                       ("glyph_forward_as_tuple_29", 29)):
+                       ("glyph_forward_as_tuple_29", 29),
+                       ("glyph_allocator_apply_78", 78),
+                       ("glyph_allocator_apply_impl_65", 65),
+                       ("glyph_allocator_invoke_17", 17),
+                       ("glyph_allocator_lambda_62", 62)):
         result = coff.compare_unit(name)
         assert result["result"] == "exact" and result["matched_bytes"] == size
 
@@ -276,10 +283,10 @@ def verify_candidate(obj: Path, image, base, sections, native):
     print("PASS candidate 200B/65-i386 uninitialized-move body, 92B/34-i386 backout member and 31B/14-i386 allocator wrapper match all non-relocation bytes and native E8 positions")
     print("PASS candidate 488B has the original 14 E8 and 2 HIGHLOW relocation sites; 200B has 9 E8 and 2 HIGHLOW sites")
     print("PASS candidate std::move<GlyphMaskOffset&> forwarding leaf is byte-exact")
-    print("RESIDUAL: 10B C++20 _Get_unwrapped vs native 9B; native 78B apply is 34B with current STL; 31B __autoclassinit2 call-site lowering differs")
+    print("RESIDUAL: 10B C++20 _Get_unwrapped vs native 9B; 31B __autoclassinit2 call-site lowering differs")
     print("PASS candidate 34B/14-i386 emplace wrapper retains both original E8 sites; only native +0x1C NOP is absent")
     print("PASS 31B/14-i386 allocator-move wrapper is a whole structural-exact unit with both native E8 destinations")
-    print("PASS complete 78B allocator::construct, 33B uses-allocator args and 29B forward-as-tuple pass strict canonical replay")
+    print("PASS complete allocator tuple/apply protocol: 78B construct, 33B args, 29B tuple, 78B apply, 65B apply-impl, 17B invoke and 62B lambda strictly replay")
     print("PASS 2,224B parent routes both BGRA/ARGB insertion calls through the specialized wrapper at candidate +0x16E/+0x4F3; original sites are +0x165/+0x4DD, parent remains NONEXACT")
 
 if __name__ == "__main__":
