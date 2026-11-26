@@ -1847,3 +1847,6 @@ std::pmr::vector<GlyphMaskOffset>::_Emplace_reallocate::eh_handler,0x00567CED,fu
 th20::NativeGlyphCanvasView::composite_glyph_mask_416420::bgra_unwind,0x00567E60,function
 th20::NativeGlyphCanvasView::composite_glyph_mask_416420::rgba_unwind,0x00567E68,function
 th20::NativeGlyphCanvasView::composite_glyph_mask_416420::eh_handler,0x00567E75,function
+th20::Card::start_spell::name_unwind,0x00569230,function
+th20::Card::start_spell::payload_unwind,0x00569238,function
+th20::Card::start_spell::eh_handler,0x00569248,function

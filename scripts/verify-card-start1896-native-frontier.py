@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-"""Full original 1896B Card start versus full nonexact typed-source contribution.
-
-Independent original Japanese PE E8/HIGHLOW values are compared to the
-candidate's REAL COFF relocation symbols; matching roles are NOT exact bytes.
-"""
+"""Audit the complete 1896B Card start, owned EH and canonical children."""
 import argparse
 import hashlib
 import importlib.util
 import struct
+import re
+import subprocess
 import sys
 from pathlib import Path
 from capstone import Cs, CS_ARCH_X86, CS_MODE_32
@@ -102,6 +100,66 @@ DATA_ROLE_TARGETS={
   '?process_sound@':{0x005BA830},
   '?native_card_script_table_5c6110@':{0x005C6110},
 }
+def verify_eh_metadata(obj, image, base, sections):
+    # Establish the owned code address without reading the root's EH field.
+    code, mask = bytearray(), set()
+    for name, size in (('__unwindfunclet$' + SYM + '$0', 8),
+                       ('__unwindfunclet$' + SYM + '$1', 16),
+                       ('__ehhandler$' + SYM, 42)):
+        body, relocs = coff.object_function(obj, name, size)
+        for r in relocs:
+            mask.update(range(len(code) + r['offset'], len(code) + r['offset'] + 4))
+        code.extend(body)
+    hits = []
+    for name, _, rva, length, offset in sections:
+        if name != b'.text':
+            continue
+        area, start = image[offset:offset + length], 0
+        while (start := area.find(code[:4], start)) >= 0:
+            if all(area[start + i] == b for i, b in enumerate(code) if i not in mask):
+                hits.append(base + rva + start)
+            start += 1
+    assert hits == [0x00569230]
+    symbol = '__ehfuncinfo$' + SYM
+    rows = subprocess.check_output(['objdump', '-t', str(obj)], text=True).splitlines()
+    row = next(line for line in rows if line.endswith(' ' + symbol))
+    match = re.search(r'\(sec\s+(\d+)\).*?\) (0x[0-9a-fA-F]+) ', row)
+    assert match and int(match[2], 16) == 16
+    raw = obj.read_bytes()
+    header = 20 + 40 * (int(match[1]) - 1)
+    size, offset, reloc_offset = struct.unpack_from('<III', raw, header + 16)
+    count = struct.unpack_from('<H', raw, header + 32)[0]
+    assert size == 52 and count == 3
+    data = bytearray(raw[offset:offset + size])
+    sym_offset, sym_count = struct.unpack_from('<II', raw, 8)
+    strings = raw[sym_offset + sym_count * 18:]
+    expected = ((4, 0x00569230, '__unwindfunclet$' + SYM + '$0'),
+                (12, 0x00569238, '__unwindfunclet$' + SYM + '$1'),
+                (24, 0x005AA6A4, '__unwindtable$' + SYM))
+    for index, (field, target, name) in enumerate(expected):
+        actual_field, sym_index, kind = struct.unpack_from('<IIH', raw, reloc_offset + 10 * index)
+        actual_name = coff.coff_name(raw[sym_offset + sym_index * 18:][:8], strings)
+        assert (actual_field, kind, actual_name) == (field, 6, name)
+        assert struct.unpack_from('<I', data, field)[0] == 0
+        struct.pack_into('<I', data, field, target)
+    # Cleanup targets are independently anchored above. Mask only the map's
+    # self-pointer when locating FuncInfo, rather than solving its handler field.
+    hits = []
+    for name, _, rva, length, offset in sections:
+        if name != b'.rdata':
+            continue
+        area, start = image[offset:offset + length], 0
+        while (start := area.find(data[:24], start)) >= 0:
+            if all(area[start + i] == b for i, b in enumerate(data) if not 24 <= i < 28):
+                hits.append(base + rva + start)
+            start += 1
+    assert hits == [0x005AA6A4]
+    assert data == pe.raw_at(image, base, sections, 0x005AA6A4, size)
+    highlow = {address - 0x005AA6A4 for address in pe.physical_highlow(image, base, sections)
+               if 0x005AA6A4 <= address < 0x005AA6A4 + size}
+    assert highlow == {field for field, _, _ in expected}
+    print('PASS complete 52B two-state EH metadata, both cleanup actions and all three DIR32 fields')
+
 def verify(candidate):
     image,_=pe.verified_target()
     base,sections=pe.parse_sections(image)
@@ -121,69 +179,48 @@ def verify(candidate):
     print('PASS native original entire 1896B/512 i386, 62 real E8 and all 26 genuine PE HIGHLOW positions/targets')
     print('PASS original 20B/16B separate file getters, text capture/queue and end-of-function PMR name destructor')
     if candidate:
-        # This entire natural COFF is NONEXACT; never compare a shortened
-        # source prefix against an original 1896B target as exact code.
-        body,relocs=coff.object_function(candidate,SYM,1915)
-        compiled=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(body),0))
-        assert len(body)==1915 and len(compiled)==495
-        assert (compiled[-1].mnemonic,compiled[-1].op_str)==('ret','0x10')
-        assert compiled[-1].address+compiled[-1].size==len(body)
-        calls=[r for r in relocs if r['type']=='REL32']
-        data=[r for r in relocs if r['type']=='DIR32']
-        assert len(relocs)==88 and len(calls)==62 and len(data)==26
-        assert all(r['addend']==0 for r in relocs)
-        call_ops=[i.address for i in compiled if i.size==5 and i.bytes[0]==0xe8]
-        assert len(call_ops)==62 and call_ops==[x['offset']-1 for x in calls]
-        actual_native=[original_calls[s] for s in sorted(original_calls)]
-        for index,(c,target) in enumerate(zip(calls,actual_native)):
-            matches=[address for prefix,address in CALL_ROLE_TARGETS.items()
-                     if c['symbol'].startswith(prefix)]
-            assert len(matches)==1 and matches[0]==target,(index,c['symbol'],matches,hex(target))
-        # original 62/62 target roles, not 62/62 matching physical sites:
-        # the source and original retain different frame/branch layouts.
-        same_sites=sum(a==z for a,z in zip(sorted(original_calls),call_ops))
-        assert same_sites==0
-        for (original_off,target),r in zip(sorted(native_data.items()),data):
-            matches=[dest for prefix,dests in DATA_ROLE_TARGETS.items()
-                     if r['symbol'].startswith(prefix) for dest in dests]
-            assert len(set(matches)&{target})==1 and target in matches,(hex(original_off),r['symbol'],hex(target))
-        assert sum(r['symbol'].startswith('?native_card_script_table_5c6110@') for r in data)==7
-        assert sum(r['symbol'].startswith('?native_card_renderer_5c0698@') for r in data)==4
-        assert [c['symbol'].startswith('?current_file_437950@') for c in calls].count(True)==2
-        assert sum(c['symbol'].startswith('?text_animation_file@AsciiInf@') for c in calls)==1
-        assert calls[-2]['symbol'].startswith('??1?$basic_string@')
-        assert calls[-1]['symbol'].startswith('@__security_check_cookie@4')
-        mask={i for r in relocs for i in range(r['offset'],r['offset']+4)}
-        same_bytes=sum(a==z for i,(a,z) in enumerate(zip(original,body)) if i not in mask)
-        compared_mask=len(mask & set(range(len(original))))
-        assert len(mask)==352
-        assert body!=original and len(body)!=len(original)
-        source=(ROOT/'src/CardStartSpell1896.cpp').read_text(encoding='utf8')
-        assert 'strcpy_s(reinterpret_cast<char*>(main_records->record_486e10(index)),' in source
-        assert 'native_card_records_5c6108->secondary_488700()+0xB08)' in source
-        assert 'std::int32_t script;  // descriptor +0x04' in source
-        assert 'std::int32_t group;   // descriptor +0x08' in source
-        assert 'const std::int32_t reward = static_cast<std::int32_t>(' in source
-        assert 'initial_bonus = reward;' in source
-        assert 'if (initial_bonus > 999999999)' in source
-        assert 'const Vector3 fallback_position(0.0f,0.0f,0.0f);' in source
-        assert 'const std::int32_t table_stage = group;' in source
-        assert 'const std::int32_t script_variant = variant;' in source
-        assert source.count('auto* controller = enemy_controller(0);') == 2
-        assert source.count('const std::uint32_t file_id =') == 2
-        assert source.count('const std::int32_t script = CARD_SCRIPT_ENTRY(') == 2
-        # The two shared Renderer getters and Card-start PMR constructor / callable
-        # remain strict original heads, never re-credit their byte extents.
-        for unit in ('card_hud_renderer_file_getter_20','card_hud_spell_result_boss_1522',
-                     'card_start_pmr_string_char_ctor_128','card_text_callable_test_7',
-                     'card_text_function_ctor_102','card_text_function_reset_65'):
-            result=coff.compare_unit(unit)
-            assert result['result']=='exact' and result['matched_bytes']==result['size'],unit
-        print('PASS candidate entire 1915B/495 i386, 62/62 original E8 CALLEE ROLES in order and 26/26 PE data target ROLES in order')
-        print('PASS authentic three independent file getter E8, four Renderer-global loads, seven live script-table loads, and late PMR destructor')
-        print('PASS six affected canonical units whole native exact (1522B HUD parent, 20B file getter, 128B PMR char constructor, 7B callable helper, 102B std::function ctor, 65B _Reset)')
-        print(f'NONEXACT full parent: candidate 1915B vs native 1896B, ordinary {same_bytes}/{len(original)-compared_mask} compared positional bytes, {same_sites}/62 physical E8 positions')
-    print('Original entire Card start 1896B Boss remains NONEXACT; zero new parent game-original byte credit')
+        body, relocs = coff.object_function(candidate, SYM, SIZE)
+        compiled = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(bytes(body), 0))
+        assert len(body) == SIZE and len(compiled) == 512
+        assert compiled[-1].address + compiled[-1].size == SIZE
+        assert (compiled[-1].mnemonic, compiled[-1].op_str) == ('ret', '0x10')
+        calls = [r for r in relocs if r['type'] == 'REL32']
+        data = [r for r in relocs if r['type'] == 'DIR32']
+        assert len(relocs) == 88 and len(calls) == 62 and len(data) == 26
+        assert all(r['addend'] == 0 for r in relocs)
+        relocated = bytearray(body)
+        for r in calls:
+            matches = [target for prefix, target in CALL_ROLE_TARGETS.items()
+                       if r['symbol'].startswith(prefix)]
+            assert len(matches) == 1
+            assert original_calls[r['offset'] - 1] == matches[0]
+            struct.pack_into('<I', relocated, r['offset'],
+                             (matches[0] - HEAD - r['offset'] - 4) & 0xffffffff)
+        for r in data:
+            if r['symbol'].startswith('$SG'):
+                literal = bytes.fromhex(r['literal'])
+                word = literal.split(b'\0', 1)[0] + b'\0'
+                assert not any(literal[len(word):])
+                target = {b'text\0': 0x0056FE1C, b'effect\0': 0x0056EC84}[word]
+            else:
+                matches = [target for prefix, targets in DATA_ROLE_TARGETS.items()
+                           if not prefix.startswith('$SG') and r['symbol'].startswith(prefix)
+                           for target in targets]
+                assert len(matches) == 1
+                target = matches[0]
+            assert NATIVE_DATA[r['offset']] == target
+            struct.pack_into('<I', relocated, r['offset'], target)
+        assert relocated == original
+        verify_eh_metadata(candidate, image, base, sections)
+        units = ('card_start_spell_1896', 'card_start_eh_name_cleanup_8',
+                 'card_start_eh_payload_cleanup_16', 'card_start_eh_handler_42',
+                 'card_start_pmr_string_char_ctor_128', 'card_text_callable_test_7',
+                 'card_text_function_ctor_102', 'card_text_function_reset_65')
+        for unit in units:
+            result = coff.compare_unit(unit)
+            assert result['result'] == 'exact' and result['matched_bytes'] == result['size'], unit
+        print('PASS complete 1896B/512-instruction parent: all bytes, 62 call fields and 26 data fields')
+        print('PASS eight canonical units in the affected Card-start provider, including 66B owned EH code')
 if __name__=='__main__':
     p=argparse.ArgumentParser()
     p.add_argument('--candidate-object',type=Path)

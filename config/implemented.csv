@@ -1837,3 +1837,7 @@ th20::NativeGlyphCanvasView::composite_glyph_mask_416420
 th20::NativeGlyphCanvasView::composite_glyph_mask_416420::bgra_unwind
 th20::NativeGlyphCanvasView::composite_glyph_mask_416420::rgba_unwind
 th20::NativeGlyphCanvasView::composite_glyph_mask_416420::eh_handler
+th20::Card::start_spell::name_unwind
+th20::Card::start_spell::payload_unwind
+th20::Card::start_spell::eh_handler
+th20::Card::start_spell

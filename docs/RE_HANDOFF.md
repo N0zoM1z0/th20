@@ -18,36 +18,29 @@ The target is resources/th20.exe, the Japanese TH20 1.00a Steamless executable:
 - A complete playable game has **not** yet been built, linked or runtime-validated.
 
 The canonical status is in config/matches.csv, config/match-units.toml,
-config/functions.csv and config/function-origins.csv. The ledger-derived
-summary checked on 2026-11-23 is:
+config/functions.csv and config/function-origins.csv. Read the current counts with
+`scripts/repo-python scripts/report-reconstruction-status.py --summary`.
+The README SVG is generated from those same ledgers by `scripts/progress.py`.
 
-| Measure | Current value |
-| --- | ---: |
-| Provisional candidates | 6,929 |
-| Review / authored / excluded | 5,857 / 972 / 100 |
-| Mapped functions | 1,828 |
-| Source-present functions | 1,814 |
-| Exact functions | 944 |
-| Exact original bytes | 298,672 |
-| Manifest units | 1,804 |
+## Current work — exact Card spell start
 
-Use scripts/repo-python scripts/report-reconstruction-status.py --summary
-for a fresh count. These are ledger totals, not a claim that the full game is
-complete.
+The complete 1,896B `Card::start_spell` at `0x00487C30` now strictly matches
+all 512 instructions, 62 call fields and 26 data fields. Its owned 66B EH
+code and 52B two-state metadata also match. Natural source restores temporary
+capture/list-assigned position lifetimes, direct getter expressions and
+indexed three-word script descriptors. See [the complete proof](CARD_START1896_STRICT_EXACT.md).
 
-## Current work — ANM parser output-size ownership
+**Replay scope: eight units from one fresh Card-start provider**, retaining
+all four prior helper matches. No shared header changed. The new provider is
+`build/gpt61-card-start-canonical/CardStartSpell1896.obj`; preserve the old
+`core1009-canonical` object/receipt and private controls under
+`.analysis/card-start1896-session/`. The README SVG has been regenerated.
 
-The 336B Renderer group parser never initializes its resource-size output at
-`[ebp-0x10C]`; the native entry zero targets a separate `[ebp-0x120]` word.
-The false `length=0` initializer is removed. Fresh source is 326B/82
-instructions, preserving all 14 relocation roles and the remaining branch
-protocol. The native 10B zero store and four-byte frame allocation remain
-unresolved, so the parser stays NONEXACT. See [the complete slot proof](ANIMATION_FILE_GROUP336_NATIVE_FRONTIER.md).
-
-Only this nonexact source and its focused audit changed; no shared header or
-exact provider changed. **Exact replay scope: zero.** Next work is the
-separate zero word's source ownership or compiler context. Retain the earlier
-336B initialized-size object as a rejected hypothesis.
+Next useful work is the adjacent 602B Card finish protocol or the remaining
+ASCII text render/submit lifetimes, using the now-exact start as evidence.
+The ANM parser's separate zero word remains unresolved: its 326B candidate
+and rejected initialized-size/class-key controls are retained in
+[the slot investigation](ANIMATION_FILE_GROUP336_NATIVE_FRONTIER.md).
 
 ## Latest checkpoint — Renderer narrow formatting ABI
 

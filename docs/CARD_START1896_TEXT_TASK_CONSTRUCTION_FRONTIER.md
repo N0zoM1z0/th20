@@ -1,3 +1,7 @@
+**2026-11-26:** The complete Card-start root and owned EH now pass
+[strict exact replay](CARD_START1896_STRICT_EXACT.md). The research states
+below are historical.
+
 **CURRENT WHOLE-SOURCE UPDATE:** The maintained 1,896B Card start now has the original 20B Renderer file getter twice, the separate 16B text-file getter, the actual `"text"` literal, and the PMR display name lifetime through the end of the Card method. The tail script table is re-read from its true `0x005C6110` global seven times. Its whole source candidate is now **1,915B/495 i386 with all 62 original E8 and 26 PE HIGHLOW destination roles represented in exact original order**, but still NONEXACT. See [current source call/data proof](CARD_START1896_FULL_CALL_DATA_ROLES_FRONTIER.md). Earlier numeric source states below are historical.
 
 **CORE/RECON-1160 / 1187 forwarding-leaf update:** the original 8B reference-forwarding primitive at `0x0040B280` remains `matching` from the `EclLoaderBuffer.cpp` owner. The original PMR string move (`0x0046A728`) now naturally calls it through an explicit out-of-line `std::move<polymorphic_allocator<char>&>` instantiation; the 108B PMR move constructor is whole exact. The Card `std::function` constructor (`0x00486839`) and `_Reset` helper (`0x00486A50`) are now both exact after CORE/RECON-1188 restored their real out-of-line `std::forward<NativeCardTextPayload>` calls; no synthetic wrapper or padding is used.

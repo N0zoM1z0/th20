@@ -1,3 +1,7 @@
+**2026-11-26:** The complete Card-start root and owned EH now pass
+[strict exact replay](CARD_START1896_STRICT_EXACT.md). The research states
+below are historical.
+
 # Card Start 1,896B Boss — recover all 62 native calls and 26 data owner roles
 
 The independent original is `resources/th20.exe`, TH20 Japanese Steamless

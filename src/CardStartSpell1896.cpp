@@ -1,10 +1,6 @@
-// Original Card start 1,896B Boss: main gameplay stages reconstructed
-// as typed C++20. The genuine renderer-file/text-file getters and all
-// seven script-table global reads now recover all original 62 E8/26
-// HIGHLOW destination roles in order. Candidate 1915B remains NONEXACT;
-// PMR callable construction and original EH/local lifetimes remain open.
-// The retained TextJob/record table interfaces below remain provisional,
-// and must be independently resolved before whole-code acceptance.
+// Complete native Card start at 0x00487C30: 1,896B, 62 calls and 26
+// HIGHLOW fields. Preserve the temporary capture/zero-position lifetimes,
+// live script-table reads and their indexed three-word descriptors.
 #include "Card.hpp"
 #include "NativeCardStartFlagsView.hpp"
 #include "NativeCardFinishViews.hpp"
@@ -27,7 +23,6 @@
 #include <utility>
 #include <memory_resource>
 #include <string>
-#include <utility>
 
 // CORE/RECON-1188: the original 102B std::function constructor and 65B
 // _Reset each make an out-of-line std::forward<T> call to the shared 8B
@@ -46,15 +41,10 @@ struct NativeCardStartBombView { bool active_478130() const; };
 // The temporary view below does not assert ownership or a larger class ABI.
 extern const std::uint8_t* native_card_script_table_5c6110;
 
-struct NativeCardScriptEntry {
-    std::int32_t file_id; // descriptor +0x00
-    std::int32_t script;  // descriptor +0x04
-    std::int32_t group;   // descriptor +0x08, published to Card flag 9
-};
+// Each native descriptor is three indexed int32 words: file id, script,
+// then the group published to Card flag 9.
+using NativeCardScriptEntry = std::int32_t[3];
 static_assert(sizeof(NativeCardScriptEntry)==0xC);
-static_assert(offsetof(NativeCardScriptEntry,file_id)==0x0);
-static_assert(offsetof(NativeCardScriptEntry,script)==0x4);
-static_assert(offsetof(NativeCardScriptEntry,group)==0x8);
 
 // Deliberately re-evaluate the native global table pointer at each of
 // its seven actual uses; no artificial cached table snapshot.
@@ -75,15 +65,12 @@ void Card::start_spell(std::int32_t index, const char* spell_name,
 
     if (!native_card_play_5c60fc->is_paused_488800()) {
         const std::int32_t attempt_kind = session.field_70_is_two() ? 1 : 0;
-        auto* main_records = reinterpret_cast<NativeSpellRecordArrayView*>(
-            reinterpret_cast<std::uint8_t*>(native_primary_records_50fc50(
-                native_card_records_5c6108))+0xB08);
-        // Keep the record lookup inside the first strcpy_s argument. On
-        // i386 MSVC the other two arguments are pushed first; the original
-        // ECL code therefore calls record_486e10 only after those pushes.
-        strcpy_s(reinterpret_cast<char*>(main_records->record_486e10(index)),
+        strcpy_s(reinterpret_cast<char*>(
+                     reinterpret_cast<NativeSpellRecordArrayView*>(
+                         reinterpret_cast<std::uint8_t*>(native_primary_records_50fc50(
+                             native_card_records_5c6108))+0xB08)->record_486e10(index)),
                  0xC0,spell_name);
-        main_records = reinterpret_cast<NativeSpellRecordArrayView*>(
+        auto* main_records = reinterpret_cast<NativeSpellRecordArrayView*>(
             reinterpret_cast<std::uint8_t*>(native_primary_records_50fc50(
                 native_card_records_5c6108))+0xB08);
         main_records->record_486e10(index)->increment_attempt_488590(attempt_kind);
@@ -121,84 +108,69 @@ void Card::start_spell(std::int32_t index, const char* spell_name,
 
     // The original PMR display name outlives its captured text payload,
     // the queue submission and the subsequent Card effect/script spawns.
-    // Its own destructor is the penultimate native E8 at +0x746, not an
-    // early cleanup before the sound effect and reward update.
-    // The actual 56B/23B capture constructor/destructor, 64B move and
-    // 167B PMR copy constructor are independently whole exact; the queue's own
-    // std::function capture/move EH remains a separate unresolved owner.
+    // Its destructor is the penultimate native E8 at +0x746. The capture
+    // is a temporary consumed by std::function; it is destroyed immediately
+    // after enqueue, before sound and effect operations.
     std::pmr::string display_name(spell_name);
-    {
-        NativeCardTextPayload payload(this,display_name,
-                                     info_handles[1].resolve());
-        reinterpret_cast<NativeCardAsciiTaskQueueView*>(native_card_renderer_5c0698)->
-            enqueue_470180(std::function<void()>(std::move(payload)));
-    }
+    reinterpret_cast<NativeCardAsciiTaskQueueView*>(native_card_renderer_5c0698)->
+        enqueue_470180(std::function<void()>(NativeCardTextPayload(
+            this,display_name,info_handles[1].resolve())));
     process_sound.request_effect(0x21,0);
 
     // The effect animation and its initial position are bound to the actual
     // Card context, not an invented globally-owned renderer structure.
-    auto* effect_file=context->effect_info()->animation_file(0);
-    effect_handle=effect_file->spawn("effect",6,-1,nullptr);
-    auto* boss=context->enemy_controller()->selected(0);
-    if (boss!=nullptr) position=context->enemy_controller()->selected(0)->position_ref();
+    effect_handle=context->effect_info()->animation_file(0)->spawn("effect",6,-1,nullptr);
+    if (context->enemy_controller()->selected(0)!=nullptr) position=context->enemy_controller()->selected(0)->position_ref();
     else {
-        // The native constructs a local zero Vector3, then copies its three
-        // words into Card::position; retain that value lifetime explicitly.
-        const Vector3 fallback_position(0.0f,0.0f,0.0f);
-        position = fallback_position;
+        // List assignment constructs the native zero temporary, then copies
+        // its three words from temporary storage into Card::position.
+        position = {0.0f,0.0f,0.0f};
     }
     effect_handle.set_position(position);
-    auto* var4=effect_handle.find_child(4,0);
-    var4->variables().field_08=duration_frames;
-    auto* var5=effect_handle.find_child(5,0);
-    var5->variables().field_08=duration_frames;
+    effect_handle.find_child(4,0)->variables().field_08=duration_frames;
+    effect_handle.find_child(5,0)->variables().field_08=duration_frames;
     duration=duration_frames;
 
     // The original reads the clamped base before the player mode, then
     // applies the actual difficulty-dependent tier; not a constant reward.
     const std::int32_t reward_multipliers[5]={500000,1000000,1500000,2000000,1000000};
-    const std::int32_t base=session.clamped_field_1f4();
-    std::int32_t multiplier_index=session.mode();
     const std::int32_t reward = static_cast<std::int32_t>(
-        static_cast<std::uint32_t>(base) *
-        static_cast<std::uint32_t>(reward_multipliers[multiplier_index]));
+        static_cast<std::uint32_t>(session.clamped_field_1f4()) *
+        static_cast<std::uint32_t>(reward_multipliers[session.mode()]));
     bonus = reward;
     initial_bonus = reward;
-    if (initial_bonus > 999999999)
+    if (initial_bonus >= 1000000000)
         initial_bonus = 999999999;
 
     // The original issues this second named effect spawn independently.
-    effect_file=context->effect_info()->animation_file(0);
-    effect_file->spawn("effect",0xD,-1,nullptr);
+    context->effect_info()->animation_file(0)->spawn("effect",0xD,-1,nullptr);
 
     // The real table at 0x005C6110 is mutable and re-read for *each*
     // original tested/spawned file id, script and flag-group word. The
-    // macro expands actual typed pointer expressions seven times; caching
+    // macro expands the indexed word view seven times; caching
     // a local table entry suppresses five genuine original PE HIGHLOW roles.
     // Slots are 12B and each stage is 0x34B, with two main variants and
     // a separately optional third script. No helper E8 exists in the PE.
     const std::int32_t table_stage = group;
-    const std::int32_t variant = (index >= 0x58 && index <= 0x5C) ? 1 : 0;
-    const std::int32_t script_variant = variant;
-    if (CARD_SCRIPT_ENTRY(table_stage, variant).file_id >= 0) {
+    const std::int32_t script_variant = (index >= 0x58 && index <= 0x5C) ? 1 : 0;
+    if (CARD_SCRIPT_ENTRY(table_stage, script_variant)[0] >= 0) {
         auto* controller = enemy_controller(0);
         const std::uint32_t file_id =
-            static_cast<std::uint32_t>(CARD_SCRIPT_ENTRY(table_stage, variant).file_id);
+            static_cast<std::uint32_t>(CARD_SCRIPT_ENTRY(table_stage, script_variant)[0]);
         auto* file = controller->animation_file(file_id);
-        const std::int32_t script = CARD_SCRIPT_ENTRY(table_stage, variant).script;
+        const std::int32_t script = CARD_SCRIPT_ENTRY(table_stage, script_variant)[1];
         background_handle = file->spawn(nullptr, script, -1, nullptr);
     }
 
-    const std::uint32_t flag_group = static_cast<std::uint32_t>(
-        CARD_SCRIPT_ENTRY(table_stage, script_variant).group);
-    reinterpret_cast<NativeCardStartFlagsView*>(this)->set_spell_flag9_488960(flag_group);
+    reinterpret_cast<NativeCardStartFlagsView*>(this)->set_spell_flag9_488960(
+        static_cast<std::uint32_t>(CARD_SCRIPT_ENTRY(table_stage, script_variant)[2]));
 
-    if (CARD_SCRIPT_ENTRY(table_stage, 2).file_id != -1) {
+    if (CARD_SCRIPT_ENTRY(group, 2)[0] != -1) {
         auto* controller = enemy_controller(0);
         const std::uint32_t file_id = static_cast<std::uint32_t>(
-            CARD_SCRIPT_ENTRY(table_stage, 2).file_id);
+            CARD_SCRIPT_ENTRY(group, 2)[0]);
         auto* file = controller->animation_file(file_id);
-        const std::int32_t script = CARD_SCRIPT_ENTRY(table_stage, 2).script;
+        const std::int32_t script = CARD_SCRIPT_ENTRY(group, 2)[1];
         file->spawn(nullptr, script, -1, nullptr);
     }
 }
