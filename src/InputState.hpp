@@ -24,6 +24,7 @@ struct InputButtonState {
     std::uint32_t current_bits(std::uint32_t mask) const;
     // Native 25B current replay-input masked bits, original offset +0x29C.
     std::uint32_t replay_current_bits(std::uint32_t mask) const;
+    std::uint32_t replay_pressed_bits(std::uint32_t mask) const;
     // Physical button index must be in 0..31; the receiver must be valid.
     std::uint32_t held_frame_count(std::uint32_t index) const;
     std::uint32_t pressed_bits(std::uint32_t mask) const;

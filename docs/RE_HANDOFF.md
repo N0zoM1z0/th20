@@ -22,31 +22,41 @@ config/functions.csv and config/function-origins.csv. Read the current counts wi
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`.
 The README SVG is generated from those same ledgers by `scripts/progress.py`.
 
-## Current work — Player state frame binding frontier
+## Current work — maintained Player state frame and exact dependencies
 
-The 4,043B Player state owner at `0x004F7430` is now mapped and classified
-as authored. Its complete contribution also owns one NOP and a 28B switch
-table, for **4,072B**. The final private C++ candidate matches all ordinary
-bytes, 1,028 instruction ordinals, 73 branch destinations and 344 frame
-operands. It has **no new exact credit or public source-presence credit**.
-See [the native ownership, compiler findings and binding frontier](PLAYER_STATE4043_NATIVE_FRONTIER.md).
+The complete Player state owner at `0x004F7430` is now source-present in
+`src/PlayerStateFrame4043.cpp`. Its 4,043B body, one NOP and seven switch
+pointers form a **4,072B** contribution. All 3,256 ordinary bytes match;
+complete independent relocation bindings remain open, so the parent is
+**NONEXACT**. See [the native scope and binding frontier](PLAYER_STATE4043_NATIVE_FRONTIER.md).
 
-**Public canonical replay scope: zero.** No maintained source, shared header
-or match unit changed. Preserve `.analysis/player-state4043-session/`,
-its `private/PlayerStateFrame4043.cpp` and `header-hypotheses.diff`, and
-`build/gpt61-player-state-probe/case4-boundary.obj` with its receipt.
+Thirteen new physical helper units pass complete canonical replay. The
+power-consumption method returns a full integer, correcting the decompiler's
+bool inference. The generic 68B Angle method remains under origin review;
+the folded 22B state setter receives no duplicate credit. See
+[the helper and return-ABI proof](PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md).
+
+**Affected canonical replay scope: 1,146 existing units from 313 providers,
+plus thirteen new helper units from one provider.** Nine declaration headers
+changed. The bounded source-filtered consumer replay passed 1,146/1,146; outputs
+are in `build/gpt61-player-state-canonical/`. Preserve the old canonical
+objects/receipts and `.analysis/player-state4043-abi/`, including its affected
+closure, replay log and old-product hashes. All 629 retained old-product and
+target hashes have been checked unchanged. The complete parent compiles
+separately and has no canonical unit.
 
 Next resolve independent relocation evidence, especially the zero Vector3
-at `0x00572664`: the bounded Ghidra query currently finds only this root's
-reference. Review the new member interfaces before promotion. The current
-nine-header hypothesis would affect 1,146 units from 313 source providers;
-rederive the captured closure for the interfaces actually promoted.
+at `0x00572664`, which has only this root's known reference. The native death
+entry at `0x004F8420` is a separate 663B implementation to recover once this
+checkpoint is stable. Reuse the earlier attested queries and private source
+under `.analysis/player-state4043-session/` and the final probe object
+`build/gpt61-player-state-probe/case4-boundary.obj` with its receipt.
 
 The [3,111B main frame](PLAYER_MAIN3111_STRICT_EXACT.md) and
 [555B movement](PLAYER_MOVEMENT555_STRICT_EXACT.md) remain whole strict exact.
 Keep their existing products in `build/gpt61-player-main-canonical/` and
 `build/gpt61-player-movement-canonical/`; their protected hashes are unchanged.
-The README SVG now includes the newly reviewed authored denominator.
+The README SVG is tracked and regenerated from the canonical ledgers.
 
 The [294B text-submit cleanup](ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md)
 remains at a 292B NONEXACT parent with two exact EH units under

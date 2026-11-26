@@ -73,6 +73,7 @@ struct PlayerFeedback : Timer {
     std::int32_t player_index;
     Context* context;
     PlayerFeedback();
+    void update();
     void operator+=(std::int32_t amount);
     void record_hit(std::int32_t value);
     std::int32_t count_value();
@@ -143,6 +144,7 @@ struct PlayerShotController {
     std::int32_t player_index;
     Context* context;
     PlayerShotController();
+    std::int32_t update();
     // Native 32-byte wrapper for the owner +0x12400 Timer assignment.
     void reset_timer_12400(std::int32_t value);
     void reset_all();

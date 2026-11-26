@@ -12,6 +12,7 @@ struct Identifier32 {
     std::uint32_t get() const;
     void operator=(std::uint32_t input);
     int equals(const Identifier32& other) const;
+    Identifier32 enable_damage_flag4();
 };
 static_assert(sizeof(Identifier32) == 4);
 

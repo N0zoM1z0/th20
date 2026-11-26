@@ -1869,3 +1869,17 @@ th20::glyph_task_pump_416140::eh_handler
 th20::NativeTextSubmitOwner::submit_text_44fff0::unwind
 th20::NativeTextSubmitOwner::submit_text_44fff0::eh_handler
 th20::NativeTextSubmitOwner::submit_text_44fff0
+th20::Player::update_state_frame
+th20::Player::revive_after_bomb
+th20::Player::direction_from
+th20::Player::set_position_xy
+th20::Player::entity_flag5
+th20::Player::motion_scale_value
+th20::Player::set_extra_motion
+th20::GameController::flag_19_set
+th20::InputButtonState::replay_pressed_bits
+th20::PlayerRecord::consume_power
+th20::PlayerRecord::clamped_field_d4
+th20::PlayerRecord::set_field_cc_clamped
+th20::Angle::to_vector
+th20::Animation::set_secondary_color

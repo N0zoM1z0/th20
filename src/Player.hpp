@@ -93,11 +93,19 @@ public:
     void rebuild_option_animations(std::int32_t mode);
     // Native original 1,081-byte Player frame child, one 300-byte option.
     std::int32_t update_option_frame(PlayerOption* option);
-    // Entire 555-byte native motion/clamp routine: maintained complete
-    // gameplay C++, but not yet strict machine-code exact.
+    // Complete native 555-byte motion/clamp routine; exact C++14 unit.
     void apply_move_delta(std::int32_t x, std::int32_t y);
-    // Entire original 3111B frame owner: source present, not yet native exact.
+    // Complete native 3111-byte main frame; exact C++20 unit.
     std::int32_t update_main_frame();
+    std::int32_t update_state_frame();
+    void set_state_value(std::int32_t value);
+    void enter_death_state();
+    void revive_after_bomb();
+    float direction_from(const Vector3& target);
+    void set_position_xy(float x, float y);
+    std::uint32_t entity_flag5() const;
+    float motion_scale_value() const;
+    void set_extra_motion(const Vector3& value);
     std::int32_t active_option_count() const;
     void set_option_field_fc(std::int32_t value);
     // Original complete Player movement bits and secondary option frame delay.

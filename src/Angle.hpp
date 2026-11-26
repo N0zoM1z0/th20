@@ -1,6 +1,7 @@
 #pragma once
 
 namespace th20 {
+struct Vector3;
 
 // Native reduction is bounded to 34 steps, including for infinite input.
 float normalize_angle(float value);
@@ -12,6 +13,7 @@ struct Angle {
     Angle();
     explicit Angle(float input);
     operator float() const;
+    void to_vector(Vector3& output, const Vector3* offset, float length);
     Angle& operator=(float input);
     Angle& operator+=(float input);
     Angle& operator-=(float input);

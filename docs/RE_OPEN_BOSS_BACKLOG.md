@@ -195,7 +195,7 @@ canonically accepted.
 
 ## C. Smaller outstanding ABI and ownership frontiers
 
-- **Player state-frame bindings** at `0x004F7430`: the complete private 4,072B contribution matches ordinary bytes, but the zero-vector anchor and new member interfaces remain open. The 4,043B code body is mapped/authored; public source and exact admission are pending. [Native scope and next evidence](PLAYER_STATE4043_NATIVE_FRONTIER.md).
+- **Player state-frame bindings** at `0x004F7430`: the complete maintained 4,072B contribution matches ordinary bytes, but independent relocation bindings, especially the zero-vector anchor, remain open. The 4,043B code body is source-present/authored and NONEXACT. Thirteen physical dependencies now replay exact. [Native scope and next evidence](PLAYER_STATE4043_NATIVE_FRONTIER.md).
 
 These should be addressed *alongside* major Bosses, not instead of them.
 

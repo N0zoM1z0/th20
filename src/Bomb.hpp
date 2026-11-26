@@ -42,6 +42,8 @@ public:
     Context* context;
     BombController() noexcept;
     ~BombController() override;
+    bool can_start();
+    std::int32_t start_bomb();
     std::int32_t initialize(std::int32_t index);
     void select_context(std::int32_t index);
     std::int32_t update();

@@ -1,11 +1,12 @@
-# Player state frame: complete extent and private matching candidate
+# Player state frame: complete maintained source and binding frontier
 
 The native function at `0x004F7430` is the Player state-frame owner. It
 selects seven states and then updates common timers, presentation, shots and
-feedback. A complete private C++ candidate now reproduces all 3,256 ordinary
+feedback. The complete maintained C++ source reproduces all 3,256 ordinary
 bytes of its 4,072B contribution, excluding 204 relocation fields. It is
-**not accepted as exact**: independent bindings and member-interface review
-remain open, and the candidate has not entered the public source graph.
+**not accepted as exact**: complete independent relocation bindings remain
+open. Source presence is recorded for
+[`PlayerStateFrame4043.cpp`](../src/PlayerStateFrame4043.cpp).
 
 The locked target is Japanese TH20 v1.00a Steamless, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
@@ -69,7 +70,7 @@ used the wrong +0x499 field and was corrected before the matching candidate.
 
 ## Compiler findings
 
-The private candidate uses locked MSVC 19.44.35211 x86 with
+The maintained candidate uses locked MSVC 19.44.35211 x86 with
 `/std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc`.
 The useful progression was:
 
@@ -98,11 +99,15 @@ was rejected. Reuse the retained controls.
 
 ## Independent binding frontier and next work
 
-Nine private header copies hold the new interfaces. Their exact diff is
-retained; public headers remain unchanged. In particular, the feedback update
-returns void, while the shot-controller update returns an integer. The
-Identifier32 damage operation and other new methods still need interface
-review before integration.
+The reviewed interfaces are now in nine maintained headers. Fourteen helper
+definitions match complete native extents; thirteen introduce new physical
+units, while the 22B state setter shares an existing canonical head. The
+power-consumption method returns a full integer, correcting Ghidra's bool
+inference. Feedback update returns void, while shot-controller update returns
+an integer. See [the exact helper and ABI evidence](PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md).
+Bomb start, death entry, Identifier32 damage-flag, feedback and shot
+implementations remain separate work; their declarations let the complete
+parent compile without substituting stubs.
 
 Existing canonical bindings cover many constants through aliases. Bounded
 attested cross-reference queries provide other consumers for the 512, 64,
@@ -112,11 +117,13 @@ bytes corroborate the value but do not independently resolve its address for
 this comparison. Do not populate a canonical destination from that field.
 This anchor is the next evidence question.
 
-**Public canonical replay scope is zero.** No maintained executable input or
-acceptance unit changed. Promoting all nine current interface hypotheses would
-expand the captured include closure to 1,146 units from 313 source providers;
-rederive the affected scope after settling the interfaces. Mapping and authored
-origin are recorded now; source presence and exact credit remain unchanged.
+The nine changed declaration headers affect **1,146 existing exact units from
+313 source providers**, derived from captured include closures. Their bounded
+source-filtered replay writes fresh objects under
+`build/gpt61-player-state-canonical/`; thirteen new helper units add one
+provider. The complete public parent compiles into the same directory and
+retains all ordinary bytes and relocation roles of the private candidate.
+It has no canonical unit and receives no exact credit.
 
 Private evidence is in `.analysis/player-state4043-session/`: attested
 `decompile.txt`, `callees.txt`, `owner-callbacks.txt` and query logs;
@@ -125,3 +132,5 @@ Private evidence is in `.analysis/player-state4043-session/`: attested
 `private/PlayerStateFrame4043.cpp`. Current objects/receipts are under
 `build/gpt61-player-state-probe/`; `case4-boundary.obj` is the final candidate.
 Preserve earlier exact Player products and these useful private controls.
+The reviewed return-ABI controls, public comparisons, affected closure and
+old-product hashes are retained in `.analysis/player-state4043-abi/`.

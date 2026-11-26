@@ -957,3 +957,15 @@ address,name,size,status,match_percent,unit,evidence
 0x00415830,th20::native_text_core_415830,2227,matching,100.00,glyph_text_core_2227,docs/GLYPH_TEXT_CORE2227_STRICT_EXACT.md
 0x004FFA10,th20::Player::apply_move_delta,555,matching,100.00,player_apply_move_delta_555,docs/PLAYER_MOVEMENT555_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
 0x004F9C30,th20::Player::update_main_frame,3111,matching,100.00,player_update_main_frame_3111,docs/PLAYER_MAIN3111_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x004F86C0,th20::Player::revive_after_bomb,38,matching,100.00,player_state_revive_after_bomb,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x004FF3F0,th20::Player::direction_from,157,matching,100.00,player_state_direction_from,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x004FFD80,th20::Player::set_position_xy,136,matching,100.00,player_state_set_position_xy,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x004FF820,th20::Player::entity_flag5,23,matching,100.00,player_state_entity_flag5,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x004FF610,th20::Player::motion_scale_value,20,matching,100.00,player_state_motion_scale_value,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x004FFEE0,th20::Player::set_extra_motion,40,matching,100.00,player_state_set_extra_motion,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x004AB2E0,th20::GameController::flag_19_set,26,matching,100.00,player_state_flag_19_set,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x004B58E0,th20::InputButtonState::replay_pressed_bits,25,matching,100.00,player_state_replay_pressed_bits,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x004E1680,th20::PlayerRecord::consume_power,130,matching,100.00,player_state_consume_power,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x004BD410,th20::PlayerRecord::clamped_field_d4,73,matching,100.00,player_state_clamped_field_d4,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x004E15E0,th20::PlayerRecord::set_field_cc_clamped,154,matching,100.00,player_state_set_field_cc_clamped,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x004AB610,th20::Animation::set_secondary_color,25,matching,100.00,player_state_secondary_color,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay

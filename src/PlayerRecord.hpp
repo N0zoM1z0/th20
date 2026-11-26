@@ -75,6 +75,9 @@ struct PlayerRecord {
     std::int32_t field_ec;
     PlayerRecord();
     void add_score(std::uint64_t amount);
+    std::int32_t consume_power(std::int32_t amount);
+    std::int32_t clamped_field_d4();
+    void set_field_cc_clamped(std::int32_t value);
     void add_field_44(std::int32_t amount);
     void add_field_5c(std::int32_t amount);
     void add_reward(std::int32_t kind,std::int32_t amount);

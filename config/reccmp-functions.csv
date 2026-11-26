@@ -1874,3 +1874,16 @@ th20::glyph_task_pump_416140::eh_handler,0x00567E2D,function
 th20::NativeTextSubmitOwner::submit_text_44fff0::unwind,0x005686F0,function
 th20::NativeTextSubmitOwner::submit_text_44fff0::eh_handler,0x005686FD,function
 th20::Player::update_state_frame,0x004F7430,function
+th20::Player::revive_after_bomb,0x004F86C0,function
+th20::Player::direction_from,0x004FF3F0,function
+th20::Player::set_position_xy,0x004FFD80,function
+th20::Player::entity_flag5,0x004FF820,function
+th20::Player::motion_scale_value,0x004FF610,function
+th20::Player::set_extra_motion,0x004FFEE0,function
+th20::GameController::flag_19_set,0x004AB2E0,function
+th20::InputButtonState::replay_pressed_bits,0x004B58E0,function
+th20::PlayerRecord::consume_power,0x004E1680,function
+th20::PlayerRecord::clamped_field_d4,0x004BD410,function
+th20::PlayerRecord::set_field_cc_clamped,0x004E15E0,function
+th20::Angle::to_vector,0x004FF710,function
+th20::Animation::set_secondary_color,0x004AB610,function
