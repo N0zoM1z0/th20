@@ -35,26 +35,27 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
-## Latest checkpoint — Glyph PMR insertion/growth backend
+## Latest checkpoint — whole Glyph mask compositor exact
 
-The complete 108B insertion selector, 140B unused-capacity insertion and
-488B reallocation now strictly replay, including every relocation. The
-reallocation's 13B padded EH cleanup, 39B handler and full 44B state metadata
-also match. The previously exact 200B move parent and seven-function C++17
-allocator/tuple/apply protocol remain exact. The full PMR backend call graph
-is now resolved; original source origin remains unknown.
+The game-owned 2,245B `NativeGlyphCanvasView::composite_glyph_mask_416420`
+at `0x00416420` now strictly replays all 612 instructions, 37 E8 calls and
+five HIGHLOW fields. Its complete 63B EH code and 52B two-state metadata
+also match. Source restores temporary offset insertion, original X/Y order,
+per-format snapshot bases, guarded BGRA neighbor addresses, direct pixel
+continues and the shared release-and-reset protocol.
 
-Replay scope was only `src/GlyphMaskComposite2245.cpp`: **35/35 units,
-one cold object**. No native source or shared header changed. The unchanged
-allocator owner retains its seven passing units. Chain, five-parent, growth488
-and deep-nine checks pass, as do four negative EH cases. Newly accepted code
-is 736B origin-unknown plus 52B compiler-owned; authored-game totals do not
-increase.
+Replay scope was only `src/GlyphMaskComposite2245.cpp`: **39/39 units from
+one fresh locked-compiler object**, retaining all 35 prior matches. No shared
+header changed. The C++17 allocator owner retains its seven passing units.
+Focused verifiers, six malformed EH cases and an inverted-alpha branch case
+pass. Authored exact coverage increases by one game function / 2,245B; the
+supporting compiler code is uncredited. See the
+[whole compositor proof](GLYPH_MASK_COMPOSITE2245_STRICT_EXACT.md).
 
-The 35B public wrapper is still 34B (also in a retained C++17 probe), and the
-2,245B compositor remains NONEXACT at 2,224B. Next Glyph work is the wrapper's
-native return/call boundary and the compositor's complete control flow and
-pixel-write ordering. See the [growth protocol proof](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md#2026-11-26-follow-up-exact-insertion-selector-and-full-growth-protocol).
+The public 35B insertion wrapper remains 34B and NONEXACT; none of its missing
+NOP is synthesized. Next Glyph work is that wrapper's native call/return
+boundary or the separate 2,227B text core, using the now-exact compositor and
+PMR backend as evidence.
 
 ## Latest checkpoint — Animation corner projection dispatcher
 

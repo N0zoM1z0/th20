@@ -32882,3 +32882,96 @@ relocations = [
   { offset = 0x1E, type = "DIR32", symbol = "__ehfuncinfo$??$_Emplace_reallocate@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEPAV?$array@H$01@1@QAV21@ABV21@@Z", target = 0x005A9968 },
   { offset = 0x23, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
 ]
+
+# Complete game glyph compositor and its compiler-owned exception code.
+[units.glyph_composite_mask_2245]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasView::composite_glyph_mask_416420"]
+symbol = "?composite_glyph_mask_416420@NativeGlyphCanvasView@th20@@QAE_NHHHIM@Z"
+target_address = 0x00416420
+size = 2245
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?composite_glyph_mask_416420@NativeGlyphCanvasView@th20@@QAE_NHHHIM@Z", target = 0x00567E75 },
+  { offset = 0x18, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x33, type = "REL32", symbol = "?pixel_stride_4156c0@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x004156C0 },
+  { offset = 0x45, type = "REL32", symbol = "?bitmap_pixels_4156a0@NativeGlyphCanvasView@th20@@QBEPAEXZ", target = 0x004156A0 },
+  { offset = 0x57, type = "DIR32", symbol = "$SG79144", target = 0x0056C7E0 },
+  { offset = 0x5D, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x62, type = "REL32", symbol = "??$allocate_array@E@DiagnosticAllocator@th20@@QAEPAEPBDH@Z", target = 0x0040D8C0 },
+  { offset = 0x82, type = "REL32", symbol = "_memcpy", target = 0x00543E20 },
+  { offset = 0xCB, type = "REL32", symbol = "?__autoclassinit2@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0xD3, type = "REL32", symbol = "??0?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAE@XZ", target = 0x004141C0 },
+  { offset = 0x166, type = "REL32", symbol = "??$emplace_back@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAEAAV?$array@H$01@1@ABV21@@Z", target = 0x00416330 },
+  { offset = 0x186, type = "REL32", symbol = "??0PackedColor@th20@@QAE@I@Z", target = 0x004142A0 },
+  { offset = 0x198, type = "REL32", symbol = "?pixel_stride_4156c0@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x004156C0 },
+  { offset = 0x1D8, type = "REL32", symbol = "?pixel_stride_4156c0@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x004156C0 },
+  { offset = 0x24C, type = "REL32", symbol = "?_Unchecked_begin@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAEPAV?$array@H$01@2@XZ", target = 0x00414F30 },
+  { offset = 0x25D, type = "REL32", symbol = "?_Unchecked_end@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAEPAV?$array@H$01@2@XZ", target = 0x00414F70 },
+  { offset = 0x29F, type = "REL32", symbol = "??A?$array@H$01@std@@QBEABHI@Z", target = 0x00414580 },
+  { offset = 0x2B1, type = "REL32", symbol = "??A?$array@H$01@std@@QBEABHI@Z", target = 0x00414580 },
+  { offset = 0x308, type = "REL32", symbol = "?canvas_width_415800@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x00415800 },
+  { offset = 0x39B, type = "REL32", symbol = "?canvas_width_415800@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x00415800 },
+  { offset = 0x421, type = "REL32", symbol = "??1?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAE@XZ", target = 0x00414440 },
+  { offset = 0x443, type = "REL32", symbol = "?__autoclassinit2@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAEXI@Z", target = 0x0040C080 },
+  { offset = 0x44B, type = "REL32", symbol = "??0?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAE@XZ", target = 0x004141C0 },
+  { offset = 0x4DE, type = "REL32", symbol = "??$emplace_back@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAEAAV?$array@H$01@1@ABV21@@Z", target = 0x00416330 },
+  { offset = 0x4FE, type = "REL32", symbol = "??0PackedColor@th20@@QAE@I@Z", target = 0x004142A0 },
+  { offset = 0x506, type = "REL32", symbol = "??0NativeGlyphColor4444@th20@@QAE@XZ", target = 0x00414280 },
+  { offset = 0x5A7, type = "REL32", symbol = "?pixel_stride_4156c0@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x004156C0 },
+  { offset = 0x5E8, type = "REL32", symbol = "?pixel_stride_4156c0@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x004156C0 },
+  { offset = 0x614, type = "REL32", symbol = "?_Unchecked_begin@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAEPAV?$array@H$01@2@XZ", target = 0x00414F30 },
+  { offset = 0x625, type = "REL32", symbol = "?_Unchecked_end@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAEPAV?$array@H$01@2@XZ", target = 0x00414F70 },
+  { offset = 0x667, type = "REL32", symbol = "??A?$array@H$01@std@@QBEABHI@Z", target = 0x00414580 },
+  { offset = 0x679, type = "REL32", symbol = "??A?$array@H$01@std@@QBEABHI@Z", target = 0x00414580 },
+  { offset = 0x69C, type = "REL32", symbol = "?pixel_stride_4156c0@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x004156C0 },
+  { offset = 0x6E1, type = "REL32", symbol = "?canvas_width_415800@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x00415800 },
+  { offset = 0x6FB, type = "REL32", symbol = "?pixel_stride_4156c0@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x004156C0 },
+  { offset = 0x753, type = "REL32", symbol = "?pixel_stride_4156c0@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x004156C0 },
+  { offset = 0x798, type = "REL32", symbol = "?canvas_width_415800@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x00415800 },
+  { offset = 0x7B5, type = "REL32", symbol = "?pixel_stride_4156c0@NativeGlyphCanvasView@th20@@QBEHXZ", target = 0x004156C0 },
+  { offset = 0x886, type = "REL32", symbol = "??1?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAE@XZ", target = 0x00414440 },
+  { offset = 0x894, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x899, type = "REL32", symbol = "??$release_array@E@DiagnosticAllocator@th20@@QAEXPAE@Z", target = 0x00413B70 },
+  { offset = 0x8BB, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.glyph_composite_eh_cleanup_bgra_8]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasView::composite_glyph_mask_416420::bgra_unwind"]
+symbol = "__unwindfunclet$?composite_glyph_mask_416420@NativeGlyphCanvasView@th20@@QAE_NHHHIM@Z$8"
+target_address = 0x00567E60
+size = 8
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAE@XZ", target = 0x00414440 },
+]
+
+[units.glyph_composite_eh_cleanup_rgba_13]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasView::composite_glyph_mask_416420::rgba_unwind"]
+symbol = "__unwindfunclet$?composite_glyph_mask_416420@NativeGlyphCanvasView@th20@@QAE_NHHHIM@Z$9"
+target_address = 0x00567E68
+size = 13
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAE@XZ", target = 0x00414440 },
+]
+
+[units.glyph_composite_eh_handler_42]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeGlyphCanvasView::composite_glyph_mask_416420::eh_handler"]
+symbol = "__ehhandler$?composite_glyph_mask_416420@NativeGlyphCanvasView@th20@@QAE_NHHHIM@Z"
+target_address = 0x00567E75
+size = 42
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x1C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x21, type = "DIR32", symbol = "__ehfuncinfo$?composite_glyph_mask_416420@NativeGlyphCanvasView@th20@@QAE_NHHHIM@Z", target = 0x005A9830 },
+  { offset = 0x26, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
+]

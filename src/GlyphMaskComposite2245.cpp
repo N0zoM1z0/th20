@@ -1,10 +1,7 @@
-// Game-owned 2,245B glyph compositor at 0x00416420. SOURCE-PRESENT,
-// NONEXACT: both native pixel-format branches and the 16B PMR-vector
-// offsets are reconstructed. The PMR insertion/growth/backout chain now
-// restores the 108B/140B/488B/200B bodies and the nested 92B/31B helper
-// shapes outside real relocation fields. The 35B wrapper is 34B with the
-// original compiler-emitted trailing NOP absent; the complete game
-// compositor remains NONEXACT (current full parent: 2,224B/591 i386).
+// Game-owned 2,245B glyph compositor at 0x00416420. The complete body,
+// both pixel-format branches and their exception cleanup strictly replay.
+// The PMR backend is independently exact; the public 35B emplace wrapper
+// still omits its original compiler NOP and is not credited as exact.
 #include "NativeGlyphCanvasView.hpp"
 #include "NativeGlyphMaskOffsets.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -223,75 +220,74 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
     case 0x15: {
         const float radius_squared=radius*radius;
         GlyphMaskOffsets offsets;
-        for (std::int32_t delta_y=0;delta_y<static_cast<std::int32_t>(radius_squared);++delta_y) {
-            for (std::int32_t delta_x=0;delta_x<static_cast<std::int32_t>(radius_squared);++delta_x) {
+        for (std::int32_t delta_x=0;delta_x<static_cast<std::int32_t>(radius_squared);++delta_x) {
+            for (std::int32_t delta_y=0;delta_y<static_cast<std::int32_t>(radius_squared);++delta_y) {
                 if (static_cast<float>(delta_x*delta_x+delta_y*delta_y)<radius_squared &&
-                    (delta_y!=0 || delta_x!=0)) {
-                    const GlyphMaskOffset displacement{delta_x,delta_y};
-                    offsets.emplace_back(displacement);
+                    (delta_x!=0 || delta_y!=0)) {
+                    offsets.emplace_back<const GlyphMaskOffset&>({delta_x,delta_y});
                 }
             }
         }
-        // One immutable stencil base serves every row and neighbor test.
+        // Each format keeps its own immutable snapshot base.
         const auto* stencil=reinterpret_cast<const PackedColorChannels*>(original);
         PackedColor opaque(color);
-        const std::int32_t row_words=pixel_stride_4156c0()/4;
+        const std::int32_t pixel_size=sizeof(PackedColorChannels);
+        const std::int32_t row_words=pixel_stride_4156c0()/pixel_size;
         // The native outline color flips only the packed alpha byte in place.
         opaque.channels.alpha = static_cast<std::uint8_t>(opaque.channels.alpha ^ 0xffu);
-        std::int32_t row_advance=0;
         // Native update edge reads the live stride before the row test.
-        for (std::int32_t y=0;y<rows;
+        for (std::int32_t y=0,row_advance=0;y<rows;
              ++y,row_advance+=pixel_stride_4156c0()) {
             auto* dest=reinterpret_cast<std::uint32_t*>(
-                pixels+row_advance+start*4);
+                pixels+(row_advance+start*4));
             for (std::int32_t x=start;x<end;++x,++dest) {
-                if (reinterpret_cast<const PackedColorChannels*>(dest)->alpha!=0) {
-                    for (const GlyphMaskOffset& off:offsets) {
-                    // The original has two genuine E8 calls per vector
-                    // element to the folded 22B array-index helper.
-                    const std::int32_t delta_x=off[0];
-                    const std::int32_t delta_y=off[1];
-                        if (x-delta_x>=0 && y-delta_y>=0 &&
-                            stencil[(y-delta_y)*row_words+x-delta_x].alpha!=0xff) {
-                            goto bgra32_outline;
-                        }
-                        if (x+delta_x<canvas_width_415800() && y-delta_y>=0 &&
-                            stencil[(y-delta_y)*row_words+x+delta_x].alpha!=0xff) {
-                            goto bgra32_outline;
-                        }
-                        if (x-delta_x>=0 && y+delta_y<rows &&
-                            stencil[(y+delta_y)*row_words+x-delta_x].alpha!=0xff) {
-                            goto bgra32_outline;
-                        }
-                        if (x+delta_x<canvas_width_415800() && y+delta_y<rows &&
-                            stencil[(y+delta_y)*row_words+x+delta_x].alpha!=0xff) {
-                            goto bgra32_outline;
-                        }
-                    }
-                    reinterpret_cast<PackedColorChannels*>(dest)->red=opaque.channels.red;
-                    reinterpret_cast<PackedColorChannels*>(dest)->green=opaque.channels.green;
-                    reinterpret_cast<PackedColorChannels*>(dest)->blue=opaque.channels.blue;
-                    goto bgra32_pixel_done;
-                    bgra32_outline:
-                    *reinterpret_cast<PackedColorChannels*>(dest)=opaque.channels;
+                if (reinterpret_cast<const PackedColorChannels*>(dest)->alpha==0) {
+                    continue;
                 }
-                bgra32_pixel_done:
-                ;
+                const PackedColorChannels* neighbor;
+                for (const GlyphMaskOffset& off:offsets) {
+                // The original has two genuine E8 calls per vector
+                // element to the folded 22B array-index helper.
+                const std::int32_t delta_x=off[0];
+                const std::int32_t delta_y=off[1];
+                    if (x-delta_x>=0 && y-delta_y>=0 &&
+                        ((neighbor=&stencil[(y-delta_y)*row_words+(x-delta_x)]),neighbor->alpha!=0xff)) {
+                        goto bgra32_outline;
+                    }
+                    if (x+delta_x<canvas_width_415800() && y-delta_y>=0 &&
+                        ((neighbor=&stencil[(y-delta_y)*row_words+(x+delta_x)]),neighbor->alpha!=0xff)) {
+                        goto bgra32_outline;
+                    }
+                    if (x-delta_x>=0 && y+delta_y<rows &&
+                        ((neighbor=&stencil[(y+delta_y)*row_words+(x-delta_x)]),neighbor->alpha!=0xff)) {
+                        goto bgra32_outline;
+                    }
+                    if (x+delta_x<canvas_width_415800() && y+delta_y<rows &&
+                        ((neighbor=&stencil[(y+delta_y)*row_words+(x+delta_x)]),neighbor->alpha!=0xff)) {
+                        goto bgra32_outline;
+                    }
+                }
+                reinterpret_cast<PackedColorChannels*>(dest)->red=opaque.channels.red;
+                reinterpret_cast<PackedColorChannels*>(dest)->green=opaque.channels.green;
+                reinterpret_cast<PackedColorChannels*>(dest)->blue=opaque.channels.blue;
+                continue;
+                bgra32_outline:
+                *reinterpret_cast<PackedColorChannels*>(dest)=opaque.channels;
             }
         }
     } break;
     case 0x1a: {
         const float radius_squared=radius*radius;
         GlyphMaskOffsets offsets;
-        for (std::int32_t delta_y=0;delta_y<static_cast<std::int32_t>(radius_squared);++delta_y) {
-            for (std::int32_t delta_x=0;delta_x<static_cast<std::int32_t>(radius_squared);++delta_x) {
+        for (std::int32_t delta_x=0;delta_x<static_cast<std::int32_t>(radius_squared);++delta_x) {
+            for (std::int32_t delta_y=0;delta_y<static_cast<std::int32_t>(radius_squared);++delta_y) {
                 if (static_cast<float>(delta_x*delta_x+delta_y*delta_y)<radius_squared &&
-                    (delta_y!=0 || delta_x!=0)) {
-                    const GlyphMaskOffset displacement{delta_x,delta_y};
-                    offsets.emplace_back(displacement);
+                    (delta_x!=0 || delta_y!=0)) {
+                    offsets.emplace_back<const GlyphMaskOffset&>({delta_x,delta_y});
                 }
             }
         }
+        const auto* stencil_base=reinterpret_cast<const std::uint16_t*>(original);
         const PackedColor unpacked(color);
         NativeGlyphColor4444 packed_color;
         packed_color.channels.red=static_cast<std::uint16_t>(unpacked.channels.red>>4);
@@ -307,29 +303,29 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                 // mutable scratch address then holds each real guarded
                 // neighbor's source address for its alpha-nibble test.
                 // Multiplication precedes signed division, as in the PE.
-                const std::uint16_t* stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y*pixel_stride_4156c0())/2)+x];
+                const std::uint16_t* stencil=&stencil_base[((y*pixel_stride_4156c0())/2)+x];
                 for (const GlyphMaskOffset& off:offsets) {
                     // The original has two genuine E8 calls per vector
                     // element to the folded 22B array-index helper.
                     const std::int32_t delta_x=off[0];
                     const std::int32_t delta_y=off[1];
                     if (x-delta_x>=0 && y-delta_y>=0 &&
-                        ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y-delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)]),
+                        ((stencil=&stencil_base[((y-delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)]),
                          reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf)) {
                         goto rgba4444_outline;
                     }
                     if (x+delta_x<canvas_width_415800() && y-delta_y>=0 &&
-                        ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y-delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)]),
+                        ((stencil=&stencil_base[((y-delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)]),
                          reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf)) {
                         goto rgba4444_outline;
                     }
                     if (x-delta_x>=0 && y+delta_y<rows &&
-                        ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)]),
+                        ((stencil=&stencil_base[((y+delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)]),
                          reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf)) {
                         goto rgba4444_outline;
                     }
                     if (x+delta_x<canvas_width_415800() && y+delta_y<rows &&
-                        ((stencil=&reinterpret_cast<const std::uint16_t*>(original)[((y+delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)]),
+                        ((stencil=&stencil_base[((y+delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)]),
                          reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf)) {
                         goto rgba4444_outline;
                     }
@@ -343,18 +339,16 @@ bool NativeGlyphCanvasView::composite_glyph_mask_416420(
                     reinterpret_cast<const NativeGlyphAlpha4444*>(&packed_color.packed)->green;
                 reinterpret_cast<NativeGlyphAlpha4444*>(dest)->blue =
                     reinterpret_cast<const NativeGlyphAlpha4444*>(&packed_color.packed)->blue;
-                goto rgba4444_pixel_done;
+                continue;
                 rgba4444_outline:
                 *dest=packed_color.packed;
-                rgba4444_pixel_done:
-                ;
             }
         }
     } break;
     default:
         break;
     }
-    process_allocator->release_array(original);
+    TH20_RELEASE_ARRAY_AND_RESET(original);
     return true;
 }
 } // namespace th20

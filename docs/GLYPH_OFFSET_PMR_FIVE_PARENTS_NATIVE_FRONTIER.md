@@ -1,3 +1,7 @@
+Current result: the complete 2,245B game compositor now strictly replays,
+including its EH code and metadata. See the [whole-function proof](GLYPH_MASK_COMPOSITE2245_STRICT_EXACT.md).
+The candidate metrics below describe earlier investigations.
+
 # CORE/RECON-1082 — complete original 35B/108B/488B/200B/140B glyph PMR insertion/growth parent source, NONEXACT
 
 Immutable original TH20 Japanese Steamless v1.00a SHA-256

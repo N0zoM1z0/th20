@@ -73,7 +73,7 @@ def verify():
  for unit in ['glyph_uninitialized_move_200','glyph_emplace_one_at_back_108',
               'glyph_emplace_unused_capacity_140','glyph_emplace_reallocate_488']:
   assert cm.compare_unit(unit)['result']=='exact'
- print('PASS four complete insertion/growth/move backend functions and eight PMR children exact; public wrapper and game compositor remain NONEXACT')
+ print('PASS four complete insertion/growth/move backend functions and eight PMR children exact; game compositor is now separately exact; public wrapper remains NONEXACT')
  subprocess.run([sys.executable, str(ROOT/"scripts/verify-glyph-mask-emplace35-native.py"),
                  "--candidate-object", str(obj)], cwd=ROOT, check=True)
 if __name__=='__main__':verify()

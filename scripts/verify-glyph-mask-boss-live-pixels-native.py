@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Locked 2245B original Boss, one bitmap fetch/live stride and real array index.
 
-This verifies a meaningful full C++ source candidate, not a shortened
-original or a whole-exact parent. Native original E8 and physical HIGHLOW
-come from pinned immutable PE; accepted children keep their own receipts.
+The complete game parent now passes strict canonical replay. Native E8 and
+physical HIGHLOW evidence comes from the locked PE; children retain their
+separate full comparisons.
 """
 import argparse,collections,hashlib,importlib.util,struct,sys
 from pathlib import Path
@@ -41,9 +41,9 @@ def verify(candidate):
          for x in hl if HEAD<=x<HEAD+2245}
  assert actual==DATA
  p=ROOT/candidate
- body,rel=cm.object_function(p,SYM,2224)
+ body,rel=cm.object_function(p,SYM,2245)
  ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(body),0))
- assert len(body)==2224 and len(ci)==591
+ assert len(body)==2245 and len(ci)==612
  assert len(rel)==42
  assert sum(x['type']=='REL32' for x in rel)==37
  assert sum(x['type']=='DIR32' for x in rel)==5
@@ -59,9 +59,10 @@ def verify(candidate):
   assert cm.compare_unit(unit)['result']=='exact'
  print('PASS locked original complete 2245B/612-i386 game glyph Boss, 37 real E8/5 native HIGHLOW')
  print('PASS original one bitmap_pixels getter at E8+0x44, nine native stride calls, four genuine folded 22B offset-index E8')
- print('SOURCE-PRESENT NONEXACT: meaningful current C++20 complete 2224B/591 i386, 37 E8/5 DIR32')
+ assert cm.compare_unit('glyph_composite_mask_2245')['result']=='exact'
+ print('STRICT EXACT: complete C++20 compositor, 2245B/612 i386, all 37 E8 and 5 DIR32 fields')
  print('PASS source restores one-time bitmap pixels getter, nine live stride E8 and four folded std::array<int32_t,2> offset-index E8')
- print('PASS six representative separate exact generic PMR vector units; original game 2245B parent not exact and not credited')
+ print('PASS six representative separate exact generic PMR vector units; game parent is now independently strict exact')
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('--candidate-object',type=Path,required=True)
  verify(parser.parse_args().candidate_object)

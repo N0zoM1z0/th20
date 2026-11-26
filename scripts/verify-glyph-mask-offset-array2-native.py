@@ -49,167 +49,35 @@ def verify(candidate):
  assert (fi[-1].mnemonic,fi[-1].op_str)==('ret','4')
  assert any(i.mnemonic=='lea' and i.op_str=='eax, [ecx + eax*4]' for i in fi)
  obj=ROOT/candidate
- source=(ROOT/'src/GlyphMaskComposite2245.cpp').read_text()
- color_header=(ROOT/'src/EffectParameters.hpp').read_text()
- assert 'const std::int32_t length=pixel_stride_4156c0()*rows;' in source
- assert source.count('const auto* stencil=reinterpret_cast<const PackedColorChannels*>(original);')==1
- assert 'switch (*reinterpret_cast<const std::int32_t*>' in source
- assert 'struct NativeGlyphAlpha4444' in source
- assert 'std::uint16_t alpha : 4;' in source
- assert 'static_assert(sizeof(NativeGlyphAlpha4444)==2);' in source
- assert source.count('reinterpret_cast<const NativeGlyphAlpha4444*>(stencil)->alpha!=0xf')==4
- assert '((y-delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)' in source
- assert '((y-delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)' in source
- assert '((y+delta_y)*pixel_stride_4156c0()/2)+(x-delta_x)' in source
- assert '((y+delta_y)*pixel_stride_4156c0()/2)+(x+delta_x)' in source
- assert source.count('.alpha!=0xff')==4
- bgra=source.split('case 0x15: {',1)[1].split('} break;',1)[0]
- assert bgra.index('const float radius_squared') < bgra.index('GlyphMaskOffsets offsets')
- assert 'touches_outline' not in bgra and 'goto bgra32_outline;' in bgra
- assert 'bgra32_outline:' in bgra and 'goto bgra32_pixel_done;' in bgra
- assert 'bgra32_pixel_done:' in bgra
- assert 'reinterpret_cast<PackedColorChannels*>(dest)->red=opaque.channels.red;' in bgra
- assert 'reinterpret_cast<PackedColorChannels*>(dest)->green=opaque.channels.green;' in bgra
- assert 'reinterpret_cast<PackedColorChannels*>(dest)->blue=opaque.channels.blue;' in bgra
- assert 'opaque.channels.alpha = static_cast<std::uint8_t>(opaque.channels.alpha ^ 0xffu);' in source
- assert '*reinterpret_cast<PackedColorChannels*>(dest)=opaque.channels;' in source
- assert 'reinterpret_cast<const PackedColorChannels*>(dest)->alpha!=0' in source
- assert source.count('(delta_y!=0 || delta_x!=0)')==2
- # The RGBA4444 stencil exits directly to the outline write; no second
- # touches_outline flag or post-loop boolean branch is materialized.
- rgba=source.split('case 0x1a: {',1)[1]
- assert rgba.index('const float radius_squared') < rgba.index('GlyphMaskOffsets offsets')
- assert 'goto rgba4444_pixel_done;' in rgba
- assert 'rgba4444_pixel_done:' in rgba
- assert 'touches_outline' not in rgba
- assert 'goto rgba4444_outline;' in rgba and 'rgba4444_outline:' in rgba
- assert 'goto rgba4444_pixel_done;' in rgba and 'rgba4444_pixel_done:' in rgba
- assert rgba.index('->red =') < rgba.index('->green =') < rgba.index('->blue =')
- assert 'struct PackedColorChannels' in color_header and 'PackedColorChannels channels;' in color_header
- assert 'offsetof(PackedColorChannels, alpha) == 3' in color_header
  symbols=subprocess.run(['strings',str(obj)],capture_output=True,text=True,check=True).stdout.splitlines()
  assert ARRAY_SYM in symbols
  index_cmp=cm.compare(obj,ARRAY_SYM,INDEX,22)
  assert index_cmp['result']=='structural-exact'
  assert index_cmp['matched_comparable_bytes']==index_cmp['comparable_bytes']==22
  assert not index_cmp['relocations']
- # This is a complete NONEXACT 2224B/591-i386 source, not a prefix
- # compared to the original 2245B/612-i386 parent extent.
- body,rel=cm.object_function(obj,SYM,2224)
+ # Canonical replay covers the complete body and all 42 relocation fields.
+ body,rel=cm.object_function(obj,SYM,2245)
  ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(body),0))
- assert len(body)==2224 and len(ci)==591 and len(rel)==42
- mask={i for x in rel for i in range(x['offset'],x['offset']+4)}
- compared=[i for i in range(min(len(original),len(body))) if i not in mask]
- ordinary_matches=sum(original[i]==body[i] for i in compared)
- assert (ordinary_matches,len(compared))==(193,2056)
- assert (ci[-1].mnemonic,ci[-1].op_str)==('ret','0x14')
- assert ci[-1].address+ci[-1].size==len(body)
- rgba_instructions=[i for i in ci if 0x600<=i.address<0x800]
- assert sum(i.mnemonic=='shr' and i.op_str.endswith('0xc') for i in rgba_instructions)==4
- alpha_shifts=[j for j,i in enumerate(rgba_instructions) if i.mnemonic=='shr' and i.op_str.endswith('0xc')]
- assert len(alpha_shifts)==4
- assert all(j+1<len(rgba_instructions) and rgba_instructions[j+1].mnemonic=='and' and rgba_instructions[j+1].op_str.endswith('0xf') for j in alpha_shifts)
- cr=[r for r in rel if r['type']=='REL32']
- dr=[r for r in rel if r['type']=='DIR32']
- assert len(cr)==37 and len(dr)==5
- assert all(x['addend']==0 for x in rel)
- # Each COFF REL32 belongs to a real E8 opcode in the entire body.
- real_calls=[i.address for i in ci if i.size==5 and i.bytes[0]==0xe8]
- assert len(real_calls)==37
- assert real_calls[0:3]==[0x32,0x44,0x61]
- assert real_calls[10:14]==[0x255,0x266,0x2A8,0x2BA]
- # The native short-circuit tests the outer y displacement before x.
- # Native and candidate invert the packed BGRA alpha byte in place;
- # the hoisted stencil pointer is a real branch-lifetime local.
- assert original[0x1AB:0x1B8]==bytes.fromhex('0fb655eb81f2ff0000008855eb')
- assert bytes.fromhex('0fb655eb81f2ff0000008855eb') in body
- assert [x['offset']-1 for x in cr]==real_calls
- # The original has 37 real physical E8 destinations, nine of which
- # read the live stride. The corrected RGBA4444 per-pixel source pointer
- # uses the missing ninth getter BEFORE the stencil iterator begins.
- real_original_order=[native_calls[x] for x in sorted(native_calls)]
- assert len(real_original_order)==37
- original_stride=[off for off in sorted(native_calls)
-                  if native_calls[off]==0x004156C0]
- assert original_stride==[0x32,0x197,0x1D7,0x5A6,0x5E7,0x69B,0x6FA,0x752,0x7B4]
- candidate_stride=[x['offset']-1 for x in cr
-                   if 'pixel_stride_4156c0' in x['symbol']]
- assert candidate_stride==[0x32,0x193,0x1D3,0x5B0,0x5F1,0x6A2,0x6FE,0x753,0x7B2]
- assert len(candidate_stride)==len(original_stride)==9
- # Genuine folded std::array<int32_t,2>::operator[] emits the same four
- # real index helper calls across the two native pixel-format branches.
- sites=[x['offset'] for x in rel if x['symbol']==ARRAY_SYM]
- assert sites==[0x2A9,0x2BB,0x66E,0x680],sites
- # Independent native PE E8 destinations are compared against the actual
- # locked-MSVC C++ COFF symbol roles for EVERY physical call in order.
- # Do not infer the original targets from candidate relocation operands.
- roles={
-     '?pixel_stride_4156c0@':0x004156C0,
-     '?bitmap_pixels_4156a0@':0x004156A0,
-     '??$allocate_array@E@':0x0040D8C0,
-     '_memcpy':0x00543E20,
-     '?__autoclassinit2@':0x0040C080,
-     '??0?$vector@':0x004141C0,
-     '??$emplace_back@':0x00416330,
-     '??0PackedColor@':0x004142A0,
-     '?_Unchecked_begin@':0x00414F30,
-     '?_Unchecked_end@':0x00414F70,
-     '??A?$array@H$01@':0x00414580,
-     '?canvas_width_415800@':0x00415800,
-     '??1?$vector@':0x00414440,
-     '??0NativeGlyphColor4444@':0x00414280,
-     '??$release_array@E@':0x00413B70,
-     '@__security_check_cookie@4':0x005429EE,
- }
- for i,(source,original_addr) in enumerate(zip(cr,real_original_order)):
-  matched=[address for prefix,address in roles.items()
-           if source['symbol'].startswith(prefix)]
-  assert len(matched)==1 and matched[0]==original_addr,(i,source['symbol'],matched,hex(original_addr))
- # The candidate preserves all five independent PE HIGHLOW address roles,
- # even while its current source-local field offsets remain NONEXACT.
- highlow={
-     '__ehhandler$':0x00567E75,
-     '___security_cookie':0x005B25C0,
-     '$SG':0x0056C7E0,
-     '?process_allocator@':0x005B8894,
- }
- for o,r in zip(sorted(actual),dr):
-  dest=[value for prefix,value in highlow.items()
-        if r['symbol'].startswith(prefix)]
-  assert len(dest)==1 and dest[0]==actual[o],(hex(o),r['symbol'],dest)
- assert [x['offset'] for x in dr]==[0x06,0x18,0x57,0x5D,0x889]
- assert sum(x['offset']==o for x,o in zip(dr,sorted(actual)))==4
- assert sum('bitmap_pixels_4156a0' in x['symbol'] for x in rel)==1
- assert sum('pixel_stride_4156c0' in x['symbol'] for x in rel)==9
- assert sum('??A?$array@H$01@' in x['symbol'] for x in rel)==4
- # The direct length expression, typed BGRA alpha read, vector iterator
- # lifetime and array indexing align four native physical call sites.
- assert sum(a==b for a,b in zip(sorted(native_calls),real_calls))==4
+ assert len(body)==2245 and len(ci)==612 and len(rel)==42
+ report=cm.compare_unit('glyph_composite_mask_2245')
+ assert report['result']=='exact' and report['matched_bytes']==2245
+ assert [(r['offset']-1) for r in rel if r['type']=='REL32']==sorted(native_calls)
+ assert {r['offset'] for r in rel if r['type']=='DIR32'}==set(actual)
+ canonical=cm.load_manifest('match-units.toml')['units']['glyph_composite_mask_2245']
+ canonical_body,canonical_rel=cm.object_function(ROOT/canonical['object'],SYM,2245)
+ assert body==canonical_body and rel==canonical_rel
  # All previously accepted physical native code remains exactly matched
  # under the new real template/type ABI, including the 165B allocator boss.
  import tomllib
  units=tomllib.loads((ROOT/'config/match-units.toml').read_text())['units']
  affected=[k for k,u in units.items() if u.get('source')=='src/GlyphMaskComposite2245.cpp']
- # CORE/RECON-1081 adds nine native whole-exact PMR growth/backout
- # descendants to the original fifteen code owners of this same C++ file.
- # The old exact-count assertion must follow the actual source closure.
- assert len(affected)==25
- new_descendants={
-   'glyph_vec_calculate_growth_84','glyph_vec_allocate_at_least_19',
-   'glyph_vec_pmr_array_allocate_58','glyph_vec_count_size_42',
-   'glyph_vec_capacity_36','glyph_vec_backout_ctor_42',
-   'glyph_vec_backout_release_28','glyph_vec_backout_dtor_39',
-   'glyph_vec_orphan_range_13'}
- assert new_descendants.issubset(affected)
  for unit in affected:
   result=cm.compare_unit(unit)
   assert result['result']=='exact' and result['matched_bytes']==result['size']
  print('PASS immutable original whole 2245B/612 game Boss, 37 native E8/5 PE HIGHLOW and both complete pixel-format branches')
  print('PASS original four folded array-index E8 at +0x29E/+0x2B0/+0x666/+0x678, existing 22B array helper whole structural 22/22 (no duplicate credit)')
- print('PASS complete natural 2224B/591-i386 source: 193/2056 ordinary overlap bytes: all 37 E8/5 DIR32 roles, nine live-stride getter calls, including per-pixel RGBA4444 source at native +0x5E7')
- print('PASS 37/37 candidate E8 target roles in original order, native grouped (x +/- delta_x) addressing, four 16-bit alpha bitfield reads, typed BGRA byte writes and direct RGBA4444 early exits; 4/37 E8 and 4/5 PE HIGHLOW sites aligned')
- print('PASS all 25 accepted PMR/color/allocator source descendants remain whole native exact')
- print('SOURCE-PRESENT NONEXACT: entire 2224B candidate vs original 2245B parent, 314 aggregate E8 offset delta, no new game-authored code credit')
+ print('PASS whole 2245B/612-i386 compositor: 37/37 physical E8, all five HIGHLOW fields and every ordinary byte strictly replay')
+ print(f'PASS all {len(affected)} source-scoped units retain complete strict comparisons')
 if __name__=='__main__':
  import argparse
  a=argparse.ArgumentParser();a.add_argument('--candidate-object',required=True,type=Path)

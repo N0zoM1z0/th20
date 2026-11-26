@@ -1833,3 +1833,7 @@ std::pmr::vector<GlyphMaskOffset>::_Emplace_back_with_unused_capacity
 std::pmr::vector<GlyphMaskOffset>::_Emplace_reallocate
 std::pmr::vector<GlyphMaskOffset>::_Emplace_reallocate::unwind_cleanup
 std::pmr::vector<GlyphMaskOffset>::_Emplace_reallocate::eh_handler
+th20::NativeGlyphCanvasView::composite_glyph_mask_416420
+th20::NativeGlyphCanvasView::composite_glyph_mask_416420::bgra_unwind
+th20::NativeGlyphCanvasView::composite_glyph_mask_416420::rgba_unwind
+th20::NativeGlyphCanvasView::composite_glyph_mask_416420::eh_handler

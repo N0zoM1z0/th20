@@ -1,3 +1,7 @@
+Current result: the complete 2,245B game compositor now strictly replays,
+including its EH code and metadata. See the [whole-function proof](GLYPH_MASK_COMPOSITE2245_STRICT_EXACT.md).
+The candidate metrics below describe earlier investigations.
+
 **CORE/RECON-1084 CURRENT SOURCE UPDATE (2026-11-25):** The RGBA4444
 source now preserves the original grouped neighbor-address expression and
 updates the non-outline destination's red, green and blue nibbles separately
