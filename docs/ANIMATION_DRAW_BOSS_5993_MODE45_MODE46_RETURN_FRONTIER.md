@@ -688,3 +688,54 @@ Maintained native source, shared headers, compiler profiles and exact claims
 are unchanged. Exact replay scope is zero. The remaining issue is caller
 materialization and temporary ownership within the original 0x204 frame;
 plain member-call spelling and scalar helper inlining do not explain it.
+
+
+## 2026-11-26: half-value ownership versus instruction scheduling
+
+Putting the half-height expression on the left of mode45's addition moves
+the receiver load into its native position, but reverses the two values'
+stack ownership and arithmetic operands. The private expression
+`(height/native_two) + animation_inherited_aux_scale_x(animation)` retains
+the four native division phases and all 123 ordered call roles. Its complete
+contribution remains 6,312B, with a 5,989B/1,501-instruction body, 109 aligned
+E8 sites and 26/32 HIGHLOW sites. Ordinary matching rises from 4,694 to
+4,703 bytes; the value trace explains why that score is insufficient:
+
+| Mode45 value | Native | Maintained source | Left-half expression |
+| --- | --- | --- | --- |
+| Half-height store | `[ebp-0x1D8]` | `[ebp-0x1D8]` | `[ebp-0x1D4]` |
+| Getter's x87 return store | `[ebp-0x1D4]` | `[ebp-0x1D4]` | `[ebp-0x1D8]` |
+| Addition inputs | getter in XMM0, half in XMM1 | getter in XMM0, half in memory | half in XMM0, getter in memory |
+
+Native loads ECX at +0x15D2, stores the half at +0x15D5 and calls the getter
+at +0x15DD. Production stores the half before loading ECX. The left-half
+expression recovers that scheduling, accounting for the nine extra matching
+bytes, while assigning the values to the opposite slots. It still emits the
+same memory-source addition spelling printed by the reporter. Operand text
+and division phases therefore need the actual preceding stores and loads to
+establish value identity. This candidate is not promoted.
+
+Applying the same expression to mode35 changes another twelve bytes around
+its half store, receiver load and getter-result store. It leaves complete
+relocation records and all summary metrics unchanged; it does not recover
+the missing register-source operation. Binding the half to a genuine
+`const float&` in modes45/46 instead produces a 6,017B/1,507-instruction body
+with indirect memory operands, only 28 aligned E8 sites and 14/32 HIGHLOW
+sites.
+
+A separate `__forceinline` half-height function under `/Od /Ob2` preserves
+getter-left arithmetic and native division order in all four modes. Its
+entire 6,312B code/table contribution is byte-identical to production.
+Relocation positions, types and resolved targets also agree; only two
+compiler-generated table labels are renumbered. Unlike the earlier inlined
+add/subtract helpers, this function adds no result-copy pair, but it still
+does not produce register-source arithmetic.
+
+Private probes and receipts remain in `.analysis/draw-boss-session/` and
+`build/gptweb-drawboss-session/`. `draw-half-ownership-controls.txt` records
+object-hash/compiler checks, all 123 call roles, four division phases and
+the native/candidate mode45 value traces. `draw-half-ownership-reports.txt`
+records the complete contribution metrics. Maintained source, shared headers,
+profiles and exact claims are unchanged; exact replay scope is zero. Future
+materialization probes must preserve the getter/half value identities as
+well as the division phases before their byte score is useful.
