@@ -1,16 +1,13 @@
-**CORE/RECON-1182 update:** The maintained natural-C++ source now names the real
+**Current source:** The maintained candidate is **574B / 138 instructions**,
+with all eleven original call roles and eight data roles. It explicitly owns
+the original unsigned-length correction table at `0x0056CDD0`, containing
+`{0.0, 4294967296.0}`. The native 578B body still differs in width-spill
+scheduling and a separate scalar load/register multiply. It remains NONEXACT.
 
-**CURRENT CORE/RECON-1173 UPDATE:** the previously unresolved unsigned-`strlen` conversion table at `0x0056CDD0` is now a typed `const double[2]` global, with original values `{0.0, 4294967296.0}`. `AsciiTextRender578.cpp` explicitly converts the 32-bit length through `int32_t` plus the indexed correction word before converting to float. The candidate now carries the exact table relocation and all 11 original E8 / 8 DIR32 target roles in order. It is 574B/138 instructions versus the 578B/139-instruction original. After relocation normalization, the only codegen differences are the local spill's scheduling around the `strlen` argument push and the compiler fusing native `movss xmm1,[width_factor]` + `mulss xmm0,xmm1` into `mulss xmm0,[width_factor]`. The candidate remains NONEXACT; no padding or assembly is used. See `scripts/verify-ascii-text-render578-source-candidate.py`.
-unsigned conversion correction table at `0x0056CDD0` directly. The native
-16-byte table is verified from the PE as `{0.0, 4294967296.0}`; the current
-candidate is **574B/138 i386**, with all **11 original E8 callee roles** and
-all **8 PE data roles** represented in order by 19 genuine COFF relocations.
-The candidate is four bytes and one instruction shorter than the original
-578B/139 function, and the final call/data fields move by four bytes after the
-shorter multiply expression. It remains **NONEXACT** with zero new game byte
-credit. The current source verifier checks the full native target, candidate
-extent, relocation roles, and correction-table contents. This is natural C++;
-no inline assembly, padding, or target-byte patching is used.
+[2026-11-26 conversion controls and verifier fix](ASCII_TEXT_RENDER578_CONVERSION_CONTROLS.md)
+record the failed comma, double-cast, assigned-double and strict-FP controls.
+The call-role checker now rejects foreign symbols using complete prefixes.
+Earlier source states below are historical.
 
 **CORE/RECON-1037 update:** The 111B Card text lambda calling this renderer is now [whole strict exact](CARD_TEXT_CALLBACK111_STRICT_EXACT.md); the 578B renderer still has five SSE operand bytes and an unverified correction-data symbol, so this original 578B function is still NONEXACT.
 
@@ -56,11 +53,10 @@ The native protocol is:
   `0x004140F0` ctor and submit text through the 294B native method;
   release lock and function in their genuine exception-safe sequence
 
-The original secure CRT wide formatter uses a count of `0x500` *wide
-characters* yet the caller allocates `0x500` bytes and counts its result
-with byte `_strlen`. These mixed-width details are directly observable
-in machine code; **no bound, text-encoding safety, or runtime correctness
-assumption** is made about unspecified inputs.
+The formatter is the narrow-character CRT path, with a 0x500-byte buffer
+and byte `strlen`. Its shared declaration and all three callers were
+corrected after following the native CRT chain to its byte terminator;
+see [the narrow ABI proof](RENDERER_TEXT_NARROW_CRT_ABI.md).
 
 ## Independent original E8 and PE HIGHLOW evidence
 

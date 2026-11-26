@@ -224,7 +224,8 @@ These should be addressed *alongside* major Bosses, not instead of them.
   registration plus two 13B callback bridges, 32B HUD leaf and 38B/41B archive
   selectors are exact. The [1,896B Card start](CARD_START1896_STRICT_EXACT.md)
   is now exact, including its owned exception code and metadata. The 602B
-  finish and 6,073B battle controller remain open.
+  finish was already [whole exact](CARD_FINISH_602_STRICT_EXACT.md); the
+  6,073B battle controller remains open.
 - **Animation resources/rendering:** 1,022B loader, 269B preloader, 182B
   find/wait, 40B file lookup, 417B formatted-text caller and the four
   BGRA/ARGB texel helpers are exact. The adjacent 586B Unicode text caller

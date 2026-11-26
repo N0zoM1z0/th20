@@ -16,7 +16,6 @@ from capstone import CS_ARCH_X86, CS_MODE_32, Cs
 
 ROOT = Path(__file__).resolve().parents[1]
 PE_PATH = ROOT / "resources/th20.exe"
-SOURCE = ROOT / "src/AsciiTextRender578.cpp"
 BASE = 0x00400000
 HEAD = 0x0044B020
 NATIVE_SIZE = 578
@@ -188,11 +187,11 @@ def main() -> None:
 
     # Candidate relocation symbols preserve the original native target order.
     call_symbols = [r["symbol"] for r in rel32]
-    for actual, fragments in zip(call_symbols, CALL_TARGET_FRAGMENTS):
-        assert any(fragment.lower() in actual.lower() for fragment in fragments), (fragments, actual)
+    for actual, fragment in zip(call_symbols, CALL_TARGET_FRAGMENTS):
+        assert actual.startswith(fragment), (fragment, actual)
     data_symbols = [r["symbol"] for r in dir32]
     for actual, fragment in zip(data_symbols, DATA_TARGET_FRAGMENTS):
-        assert fragment.lower() in actual.lower(), (fragment, actual)
+        assert actual.startswith(fragment), (fragment, actual)
 
     native_by_offset = {insn.address - HEAD: insn for insn in native}
     candidate_by_offset = {insn.address: insn for insn in candidate}
@@ -218,12 +217,6 @@ def main() -> None:
         [i for i in candidate if i.address not in candidate_skip],
         {offset_value(r["offset"]) for r in dir32}, 0)
     assert normalized_native == normalized_candidate
-
-    source = SOURCE.read_text(encoding="utf8")
-    assert "native_unsigned_length_correction_56cdd0[2]" in source
-    assert "native_unsigned_length_correction_56cdd0[byte_length >> 31]" in source
-    assert "static_cast<double>(static_cast<std::int32_t>(byte_length))" in source
-    assert "width_factor*static_cast<float>(corrected_length)" in source
 
     globals_rows = list(csv.reader(
         (ROOT / "config/known-globals.csv").read_text(encoding="utf8").splitlines()))

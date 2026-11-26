@@ -22,7 +22,21 @@ config/functions.csv and config/function-origins.csv. Read the current counts wi
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`.
 The README SVG is generated from those same ledgers by `scripts/progress.py`.
 
-## Current work — exact Card spell start
+## Current work — ASCII text conversion and verifier
+
+The 578B ASCII renderer remains a 574B NONEXACT candidate. Four private
+conversion controls distinguish the native double spill from direct XMM
+conversion; a strict-FP natural conversion still differs at five SSE operand
+bytes. The checker now rejects foreign call symbols after a reproduced
+false pass redirected lock lookup to `strlen`. See [the bounded controls](ASCII_TEXT_RENDER578_CONVERSION_CONTROLS.md).
+
+No native input changed: **public exact replay scope is zero**. The fresh
+baseline retains six existing helper matches through private comparison;
+all public providers and receipts are preserved. Next work needs evidence
+for the original scalar lowering or compiler context. Reuse these controls
+rather than repeating comma/assignment/double-cast variants.
+
+## Latest checkpoint — exact Card spell start
 
 The complete 1,896B `Card::start_spell` at `0x00487C30` now strictly matches
 all 512 instructions, 62 call fields and 26 data fields. Its owned 66B EH
@@ -36,8 +50,8 @@ all four prior helper matches. No shared header changed. The new provider is
 `core1009-canonical` object/receipt and private controls under
 `.analysis/card-start1896-session/`. The README SVG has been regenerated.
 
-Next useful work is the adjacent 602B Card finish protocol or the remaining
-ASCII text render/submit lifetimes, using the now-exact start as evidence.
+The adjacent 602B Card finish was already accepted as `card_finish_spell_602`;
+the remaining ASCII text render/submit frontiers are separate work.
 The ANM parser's separate zero word remains unresolved: its 326B candidate
 and rejected initialized-size/class-key controls are retained in
 [the slot investigation](ANIMATION_FILE_GROUP336_NATIVE_FRONTIER.md).

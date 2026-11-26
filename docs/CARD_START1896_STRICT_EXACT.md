@@ -106,6 +106,7 @@ map symbol. Proofs are retained as `canonical-build.txt`,
 `independent-EH-anchors.txt` and `verifier-controls.txt` in the investigation
 directory. The native decompilation came through attested `scripts/ghidra.py`.
 
-The adjacent 602B Card finish and the ASCII text render/submit frontiers
-remain useful next targets. This checkpoint establishes the spell-start
-unit and its owned extents; a complete game build remains open.
+The adjacent [602B Card finish](CARD_FINISH_602_STRICT_EXACT.md) was already
+exact. The ASCII text render/submit frontiers remain open. This checkpoint
+establishes the spell-start unit and its owned extents; a complete game build
+remains open.
