@@ -1,12 +1,6 @@
-// Complete authored C++ for native Player 555-byte movement/playfield clamp.
-// NONEXACT: current pinned MSVC emits 561B/136 instructions versus original
-// 555B/135 instructions. All original opcode kinds align, but an additional
-// real SSE float temporary spill remains; do not credit original bytes.
-// Native boundaries, clock source, clamps and gameplay are implemented whole.
-// The final two world-coordinate divisions use the original shared native
-// Player float 128 value at 0x0056CD98, not a compiler-private 128 literal.
-// This strengthens actual physical relocation identity without claiming
-// the remaining extra SSE spill or entire 555B original as byte exact.
+// Native Player movement and playfield clamp at 0x004FFA10.
+// The C++14 unit profile preserves integer conversion across the getter call;
+// world-coordinate locals retain each float result until its destination lookup.
 #include "Player.hpp"
 #include "ClockScalar.hpp"
 #include <cstdint>
@@ -42,13 +36,13 @@ void Player::apply_move_delta(std::int32_t x, std::int32_t y) {
             fixed_position_ref().y = 0x1000;
         else if (fixed_position_ref().y >
                  static_cast<std::int32_t>((native_448 - native_16) * native_128)) {
-            // The original recomputes the native 448-16 and 128 float bound
-            // after the comparison; this real local keeps that live result.
-            const float upper = (native_448 - native_16) * native_128;
-            fixed_position_ref().y = static_cast<std::int32_t>(upper);
+            // The native clamp recomputes the bound after the comparison.
+            fixed_position_ref().y = static_cast<std::int32_t>((native_448 - native_16) * native_128);
         }
     }
-    position_ref().x = static_cast<float>(fixed_position_ref().x) / native_128;
-    position_ref().y = static_cast<float>(fixed_position_ref().y) / native_128;
+    const float world_x = static_cast<float>(fixed_position_ref().x) / native_128;
+    position_ref().x = world_x;
+    const float world_y = static_cast<float>(fixed_position_ref().y) / native_128;
+    position_ref().y = world_y;
 }
 }

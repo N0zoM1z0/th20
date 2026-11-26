@@ -5,6 +5,7 @@
 // The shared option pointer/counter and full AnimationHandle assignments
 // reproduce the original MSVC i386 aggregate-return/position ABI.
 #include "Player.hpp"
+#include "AnimationFile.hpp"
 #include "PlayerRecord.hpp"
 #include "WeaponStoneInfo.hpp"
 #include "ShotData.hpp"

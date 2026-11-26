@@ -1,5 +1,6 @@
 #include "WeaponStoneInfo.hpp"
 #include "Player.hpp"
+#include "AnimationFile.hpp"
 #include "SoundInf.hpp"
 #include "Weapon.hpp"
 #include "Animation.hpp"

@@ -22,28 +22,31 @@ config/functions.csv and config/function-origins.csv. Read the current counts wi
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`.
 The README SVG is generated from those same ledgers by `scripts/progress.py`.
 
-## Current work — Player frame control flow and registers
+## Current work — exact Player movement
 
-The complete Player main frame at `0x004F9C30` remains NONEXACT:
-3,114 bytes and 783 instructions, versus 3,111 bytes and 783 native instructions.
-A fresh audit matches all 106 internal branch targets, 327 EBP/ESP memory
-operands, 174 ordinary immediates, 67 call roles and 37 data roles. Remaining ordinary differences are
-EAX/ECX/EDX-family register encodings. See [the complete audit and controls](PLAYER_MAIN_3111_CFG_AND_REGISTER_CONTROLS.md).
+The complete 555B/135-instruction `Player::apply_move_delta` at `0x004FFA10`
+now strictly matches, including all 17 REL32 and ten DIR32 fields. C++14
+mode, direct upper-bound assignment and two real world-coordinate values
+recover the native lifetimes. See [the complete proof and controls](PLAYER_MOVEMENT555_STRICT_EXACT.md).
 
-No production source or shared header changed: **canonical replay scope is
-zero**. Fresh main/data probes and source controls are under
-`build/gpt61-player-main-probe/` and `.analysis/player-main3111-session/`.
-Current Timer/Player accessor objects and receipts remain intact. Keep the
-verified Timer bool ABI; the byte-return hypothesis emits the wrong callee
-extent. Reuse the recorded expression/API/definition-visibility controls.
+**Replay scope: 92/92 units from 37 fresh providers.** Removing the unneeded
+AnimationFile definition from Player.hpp expands the captured closure to
+91 existing units; all pass. Two score units were routed to their existing
+SessionScore.cpp owner after the cold build exposed obsolete routing.
+Current products are in `build/gpt61-player-movement-canonical/`; preserve
+all former objects/receipts and `.analysis/player-movement555-session/`.
+The README SVG is regenerated from the updated canonical ledgers.
 
-The next related game-owned scope is the 555B `Player::apply_move_delta` at
-`0x004FFA10`. Its independent child frontier remains unresolved; the current
-main-frame control-flow and frame-memory constraints should be retained.
+The 3,111B Player main frame remains NONEXACT at 3,114B/783 instructions.
+Its [complete branch/frame/register audit](PLAYER_MAIN_3111_CFG_AND_REGISTER_CONTROLS.md)
+remains the constraint for next work: test the newly established language-mode
+hypothesis privately, retaining the verified Timer bool ABI. Reuse prior
+expression/API/definition controls. The known nonexact Player/WeaponStone
+consumers are checked against their complete retained objects.
 
 The [294B text-submit cleanup](ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md)
 remains at a 292B NONEXACT parent with two exact EH units under
-`build/gpt61-submit294-canonical/`. The prior glyph queue/application and
+`build/gpt61-submit294-canonical/`. The glyph queue/application and
 movement/swap matches remain intact.
 
 ## Latest checkpoint — exact GDI glyph text core

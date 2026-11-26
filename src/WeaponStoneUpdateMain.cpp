@@ -2,6 +2,7 @@
 #include "GameController.hpp"
 #include "HudGauge.hpp"
 #include "Player.hpp"
+#include "AnimationFile.hpp"
 #include "PlayerRecord.hpp"
 #include "Session.hpp"
 #include "Identifier32.hpp"

@@ -10,6 +10,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [Exact 555B Player movement](PLAYER_MOVEMENT555_STRICT_EXACT.md) — C++14 conversion lifetime and real world-coordinate values; complete 17-call/ten-data replay, 92/92 affected units.
 - [Control flow and registers in the Player main frame](PLAYER_MAIN_3111_CFG_AND_REGISTER_CONTROLS.md) — all 106 internal branch targets and 327 frame operands agree; rejected source/ABI controls, 3,114B parent still NONEXACT.
 - [Text-submit parameter cleanup and compiler controls](ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md) — incoming callback cleanup, bounded NRVO/debug/return controls, full 42B EH/44B metadata; the 294B parent remains NONEXACT.
 - [Exact glyph function movement and swap](GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md) — complete 188B/125B/46B library bodies and 68B pump EH/60B metadata; 22/22 scoped units.
@@ -380,9 +381,9 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   [ESI lifetime frontier](ANIMATION_POLYGON_MOTION_CALLERS_76_104_FRONTIER.md),
   [rotated whole strict exact](ANIMATION_CORNER_ROTATED_1486_STRICT_EXACT.md); [historical original NOP and 96B exact corner table](ANIMATION_CORNER_AXIS_96_ROTATED_1486_FRONTIER.md);
   [bounded Angle ABI/constructor probes and original 44B two-word helper](CORNER_1486_ANGLE_ABI_AND_CXX_PAIR44_FRONTIER.md).
-- **Player frame / movement:** [3,111B main](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md)
-  and [555B movement](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md)
-  remain source-present but nonexact.
+- **Player frame / movement:** the [3,111B main](PLAYER_MAIN_3111_CFG_AND_REGISTER_CONTROLS.md)
+  remains nonexact; [555B movement](PLAYER_MOVEMENT555_STRICT_EXACT.md)
+  is now whole strict exact.
 
 ## Unresolved polygon group ordinary destructor and C++ constructor helper
 

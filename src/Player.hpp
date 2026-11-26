@@ -1,10 +1,10 @@
 #pragma once
 #include "Animation.hpp"
-#include "AnimationFile.hpp"
 #include "PlayerStorage.hpp"
 #include "TaskInfo.hpp"
 
 namespace th20 {
+class AnimationFile;
 // Complete native Player storage. +18 has a floating-angle consumer;
 // +1484c has the same floating-zero producer but its role/tag remain unknown.
 // Original destruction/activation remain undefined until their ANM/gameplay

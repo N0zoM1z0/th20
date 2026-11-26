@@ -1,5 +1,9 @@
 # CORE/RECON-724 — genuine shared Player float 128: recover two original physical relocation identities in entire 555B movement source
 
+**Superseded movement status:** the complete 555B body is now
+[whole strict exact](PLAYER_MOVEMENT555_STRICT_EXACT.md). The observations
+below record the earlier C++20 frontier.
+
 **Player::apply_move_delta remains NONEXACT: original 555B/135 i386; maintained full MSVC source 561B/136 i386.** The original Player movement's last two world-coordinate divisions use the **same, existing game-owned native global float at physical address `0x0056CD98`** as the two previous maximum-Y bound calculations. The maintained source previously expressed these two denominators as `128.0f`, which made MSVC emit its unnamed private floating literal `__real@43000000`, rather than the independently original-attested `native_128` game symbol. Replacing only these two expressions with the already genuinely declared `native_128` preserves all game values and compiled machine code while restoring their original global data owner.
 
 Locked Japanese TH20 v1.00a Steamless target: SHA-256 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
@@ -26,7 +30,7 @@ A clean private pinned MSVC i386 C++20 `/Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:prec
 
 This repairs a **real file-backed global symbol/identity** in a game-owned medium-sized full function, without inventing separate magic constant storage, changing behavior or falsely claiming more native code coverage. The C++ implementation continues to perform both floating-clock motion updates, playfield clamps and 128-division world coordinate projection.
 
-The remaining blocker is unaffected: the original computes `cvttss2si esi,xmm0` after the second upper Y bound multiplication, whereas MSVC still emits an extra six-byte `movss [ebp-0x30],xmm0` before `cvttss2si esi,[ebp-0x30]`. The whole 555B parent is **NONEXACT**, and its original 17 E8/10 PE HIGHLOW source roles still require full offset/byte proof before strict acceptance. Do not add artificial compiler-local reads, volatile or assembly to hide the spill.
+The remaining blocker is unaffected: the original computes `cvttss2si esi,xmm0` after the second upper Y bound multiplication, whereas MSVC still emits a five-byte `movss [ebp-0x30],xmm0` followed by `cvttss2si esi,[ebp-0x30]`. The memory-source conversion adds another byte, giving a six-byte increase. The whole 555B parent is **NONEXACT**, and its original 17 E8/10 PE HIGHLOW source roles still require full offset/byte proof before strict acceptance. Do not add artificial compiler-local reads, volatile or assembly to hide the spill.
 
 Reproducible evidence:
 

@@ -7033,7 +7033,7 @@ relocations = [
 
 [units.context_ctor]
 source = "src/Context.cpp"
-object = "build/core163-canonical/Context.obj"
+object = "build/gpt61-player-movement-canonical/Context.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Context::Context"]
 symbol = "??0Context@th20@@QAE@XZ"
@@ -9468,7 +9468,7 @@ relocations = [
 
 [units.enemy_apply_spawn]
 source = "src/EnemySpawnApplication.cpp"
-object = "build/core180-canonical/EnemySpawnApplication.obj"
+object = "build/gpt61-player-movement-canonical/EnemySpawnApplication.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::apply_spawn"]
 symbol = "?apply_spawn@Enemy@th20@@QAEHABUEnemySpawn@2@@Z"
@@ -11600,7 +11600,7 @@ relocations = [
 
 [units.context_bomb_controller]
 source = "src/Context.cpp"
-object = "build/core163-canonical/Context.obj"
+object = "build/gpt61-player-movement-canonical/Context.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Context::bomb_controller"]
 symbol = "?bomb_controller@Context@th20@@QAEPAVBombController@2@XZ"
@@ -11685,7 +11685,7 @@ relocations = [
 
 [units.player_construct]
 source = "src/Player.cpp"
-object = "build/core180-canonical/Player.obj"
+object = "build/gpt61-player-movement-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::Player"]
 symbol = "??0Player@th20@@QAE@XZ"
@@ -11731,7 +11731,7 @@ relocations = [
 
 [units.player_option_values_10_construct]
 source = "src/Player.cpp"
-object = "build/core180-canonical/Player.obj"
+object = "build/gpt61-player-movement-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<PlayerOption,10>::PlayerValues"]
 symbol = "??0?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAE@XZ"
@@ -11747,7 +11747,7 @@ relocations = [
 
 [units.player_option_values_12_construct]
 source = "src/Player.cpp"
-object = "build/core180-canonical/Player.obj"
+object = "build/gpt61-player-movement-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<PlayerOption,12>::PlayerValues"]
 symbol = "??0?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAE@XZ"
@@ -11763,7 +11763,7 @@ relocations = [
 
 [units.player_point_values_33_construct]
 source = "src/Player.cpp"
-object = "build/core180-canonical/Player.obj"
+object = "build/gpt61-player-movement-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<IntPoint,33>::PlayerValues"]
 symbol = "??0?$PlayerValues@UIntPoint@th20@@$0CB@@th20@@QAE@XZ"
@@ -11779,7 +11779,7 @@ relocations = [
 
 [units.player_shot_data_load]
 source = "src/ShotData.cpp"
-object = "build/core166-canonical/ShotData.obj"
+object = "build/gpt61-player-movement-canonical/ShotData.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::load_shot_data"]
 symbol = "?load_shot_data@Player@th20@@QAEHPAPAUPlayerShotData@2@PBD@Z"
@@ -11793,7 +11793,7 @@ relocations = [
 
 [units.player_damage_limit]
 source = "src/PlayerDamageCap.cpp"
-object = "build/core180-canonical/PlayerDamageCap.obj"
+object = "build/gpt61-player-movement-canonical/PlayerDamageCap.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::damage_limit"]
 symbol = "?damage_limit@Player@th20@@QAEHXZ"
@@ -11813,7 +11813,7 @@ relocations = [
 
 [units.player_focused_mode]
 source = "src/PlayerDamageCap.cpp"
-object = "build/core180-canonical/PlayerDamageCap.obj"
+object = "build/gpt61-player-movement-canonical/PlayerDamageCap.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::focused_mode"]
 symbol = "?focused_mode@Player@th20@@QAE_NXZ"
@@ -11866,7 +11866,7 @@ relocations = [
 
 [units.weapon_stone_current]
 source = "src/PlayerDamageCap.cpp"
-object = "build/core180-canonical/PlayerDamageCap.obj"
+object = "build/gpt61-player-movement-canonical/PlayerDamageCap.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::weapon_stone_info"]
 symbol = "?weapon_stone_info@th20@@YAPAVWeaponStoneInfo@1@H@Z"
@@ -11880,7 +11880,7 @@ relocations = [
 
 [units.context_weapon_stone]
 source = "src/Context.cpp"
-object = "build/core163-canonical/Context.obj"
+object = "build/gpt61-player-movement-canonical/Context.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Context::weapon_stone_info"]
 symbol = "?weapon_stone_info@Context@th20@@QAEPAVWeaponStoneInfo@2@XZ"
@@ -11890,8 +11890,8 @@ relocations = [
 ]
 
 [units.record_score_add]
-source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+source = "src/SessionScore.cpp"
+object = "build/gpt61-player-movement-canonical/SessionScore.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerRecord::add_score"]
 symbol = "?add_score@PlayerRecord@th20@@QAEX_K@Z"
@@ -11902,8 +11902,8 @@ relocations = [
 ]
 
 [units.session_score_add]
-source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+source = "src/SessionScore.cpp"
+object = "build/gpt61-player-movement-canonical/SessionScore.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::add_score"]
 symbol = "?add_score@Session@th20@@QAEXI@Z"
@@ -11916,7 +11916,7 @@ relocations = [
 
 [units.timer_every]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+object = "build/gpt61-player-movement-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Timer::every"]
 symbol = "?every@Timer@th20@@QBEHH@Z"
@@ -11927,7 +11927,7 @@ relocations = [
 
 [units.player_frame_changed]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+object = "build/gpt61-player-movement-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::frame_changed"]
 symbol = "?frame_changed@Player@th20@@QAEHXZ"
@@ -11939,7 +11939,7 @@ relocations = [
 
 [units.player_find_shot]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+object = "build/gpt61-player-movement-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::find_shot"]
 symbol = "?find_shot@Player@th20@@QAEPAUPlayerShot@2@H@Z"
@@ -11951,7 +11951,7 @@ relocations = [
 
 [units.player_shot_find]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+object = "build/gpt61-player-movement-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShotController::find"]
 symbol = "?find@PlayerShotController@th20@@QAEPAUPlayerShot@2@H@Z"
@@ -11975,7 +11975,7 @@ relocations = [
 
 [units.region_player_shot]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+object = "build/gpt61-player-movement-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::DamageRegion::player_shot"]
 symbol = "?player_shot@DamageRegion@th20@@QAEPAUPlayerShot@2@XZ"
@@ -11989,7 +11989,7 @@ relocations = [
 
 [units.enemy_controller_find]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+object = "build/gpt61-player-movement-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::find"]
 symbol = "?find@EnemyController@th20@@QAEPAUEnemy@2@I@Z"
@@ -12014,7 +12014,7 @@ relocations = [
 
 [units.enemy_health_value]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+object = "build/gpt61-player-movement-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::health_value"]
 symbol = "?health_value@Enemy@th20@@QAEPAUEnemyHealth@2@XZ"
@@ -12025,7 +12025,7 @@ relocations = [
 
 [units.enemy_force_defeat]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+object = "build/gpt61-player-movement-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyHealth::force_defeat"]
 symbol = "?force_defeat@EnemyHealth@th20@@QAEXXZ"
@@ -12036,7 +12036,7 @@ relocations = [
 
 [units.enemy_reward_multiplier]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+object = "build/gpt61-player-movement-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::reward_multiplier_enabled"]
 symbol = "?reward_multiplier_enabled@Enemy@th20@@QAE_NXZ"
@@ -12047,7 +12047,7 @@ relocations = [
 
 [units.enemy_set_damage_marker]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+object = "build/gpt61-player-movement-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::set_damage_marker"]
 symbol = "?set_damage_marker@Enemy@th20@@QAEXI@Z"
@@ -12058,7 +12058,7 @@ relocations = [
 
 [units.weapon_stone_record_damage]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+object = "build/gpt61-player-movement-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::record_damage"]
 symbol = "?record_damage@WeaponStoneInfo@th20@@QAEXPBUVector3@2@HH@Z"
@@ -15547,7 +15547,7 @@ relocations = [
 
 [units.enemy_defeat]
 source = "src/EnemySpawnApplication.cpp"
-object = "build/core180-canonical/EnemySpawnApplication.obj"
+object = "build/gpt61-player-movement-canonical/EnemySpawnApplication.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::Enemy::defeat"]
 symbol = "?defeat@Enemy@th20@@QAEHXZ"
@@ -15731,7 +15731,7 @@ relocations = [
 
 [units.player_feedback_access]
 source = "src/Player.cpp"
-object = "build/core180-canonical/Player.obj"
+object = "build/gpt61-player-movement-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::feedback_value"]
 symbol = "?feedback_value@Player@th20@@QAEPAUPlayerFeedback@2@XZ"
@@ -15742,7 +15742,7 @@ relocations = [
 
 [units.player_access]
 source = "src/Player.cpp"
-object = "build/core180-canonical/Player.obj"
+object = "build/gpt61-player-movement-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::player"]
 symbol = "?player@th20@@YAPAVPlayer@1@H@Z"
@@ -15792,7 +15792,7 @@ relocations = [
 
 [units.enemy_callback_nonempty]
 source = "src/EnemySpawnApplication.cpp"
-object = "build/core180-canonical/EnemySpawnApplication.obj"
+object = "build/gpt61-player-movement-canonical/EnemySpawnApplication.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::function<void(th20::Enemy*)>::operator bool"]
 symbol = "??B?$function@$$A6AXPAUEnemy@th20@@@Z@std@@QBE_NXZ"
@@ -15804,7 +15804,7 @@ relocations = [
 
 [units.enemy_callback_empty]
 source = "src/EnemySpawnApplication.cpp"
-object = "build/core180-canonical/EnemySpawnApplication.obj"
+object = "build/gpt61-player-movement-canonical/EnemySpawnApplication.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::_Func_class<void,th20::Enemy*>::_Empty"]
 symbol = "?_Empty@?$_Func_class@XPAUEnemy@th20@@@std@@IBE_NXZ"
@@ -15816,7 +15816,7 @@ relocations = [
 
 [units.enemy_callback_implementation]
 source = "src/EnemySpawnApplication.cpp"
-object = "build/core180-canonical/EnemySpawnApplication.obj"
+object = "build/gpt61-player-movement-canonical/EnemySpawnApplication.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::_Func_class<void,th20::Enemy*>::_Getimpl"]
 symbol = "?_Getimpl@?$_Func_class@XPAUEnemy@th20@@@std@@ABEPAV?$_Func_base@XPAUEnemy@th20@@@2@XZ"
@@ -16601,7 +16601,7 @@ relocations = [
 
 [units.player_entity_flag_bit10]
 source = "src/Player.cpp"
-object = "build/core180-canonical/Player.obj"
+object = "build/gpt61-player-movement-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::set_entity_flag_10"]
 symbol = "?set_entity_flag_10@Player@th20@@QAEXI@Z"
@@ -16687,7 +16687,7 @@ relocations = [
 
 [units.enemy_controller_has_identifier]
 source = "src/DamageQueryProtocol.cpp"
-object = "build/core180-canonical/DamageQueryProtocol.obj"
+object = "build/gpt61-player-movement-canonical/DamageQueryProtocol.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyController::has_identifier"]
 symbol = "?has_identifier@EnemyController@th20@@QAE_NI@Z"
@@ -16949,7 +16949,7 @@ relocations = [
 # real float position, target direction and original .rdata constant identities.
 [units.player_position_ref]
 source = "src/PlayerDirection.cpp"
-object = "build/core208-canonical/PlayerDirection.obj"
+object = "build/gpt61-player-movement-canonical/PlayerDirection.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::position_ref"]
 symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ"
@@ -16962,7 +16962,7 @@ relocations = [
 # real float position, target direction and original .rdata constant identities.
 [units.player_direction_to]
 source = "src/PlayerDirection.cpp"
-object = "build/core208-canonical/PlayerDirection.obj"
+object = "build/gpt61-player-movement-canonical/PlayerDirection.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::direction_to"]
 symbol = "?direction_to@Player@th20@@QAEMABUVector3@2@@Z"
@@ -16982,7 +16982,7 @@ relocations = [
 # original shared_ptr value parameter, exact two-level shot loop and sound.
 [units.bullet_controller_fire]
 source = "src/BulletFire.cpp"
-object = "build/core210-canonical/BulletFire.obj"
+object = "build/gpt61-player-movement-canonical/BulletFire.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::fire"]
 symbol = "?fire@BulletController@th20@@QAEHABUShotParameters@2@V?$shared_ptr@UEtamaArgInf@@@std@@@Z"
@@ -17727,7 +17727,7 @@ relocations = [
 # 2 alignment and 28 native switch-table bytes (complete 928B COFF extent).
 [units.bullet_advance_command3]
 source = "src/BulletCommand3.cpp"
-object = "build/core244-canonical/BulletCommand3.obj"
+object = "build/gpt61-player-movement-canonical/BulletCommand3.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Bullet::advance_command3"]
 symbol = "?advance_command3@Bullet@th20@@QAEHXZ"
@@ -17782,7 +17782,7 @@ relocations = [
 # target-velocity interpolation with 21 independently anchored relocations.
 [units.bullet_advance_command7]
 source = "src/BulletCommand7.cpp"
-object = "build/core245-canonical/BulletCommand7.obj"
+object = "build/gpt61-player-movement-canonical/BulletCommand7.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Bullet::advance_command7"]
 symbol = "?advance_command7@Bullet@th20@@QAEHXZ"
@@ -18283,7 +18283,7 @@ relocations = [
 # all 212 native x86 instructions and 35 independently decoded PE relocs.
 [units.player_collision_rectangle]
 source = "src/PlayerCollisionRectangle.cpp"
-object = "build/core268-canonical/PlayerCollisionRectangle.obj"
+object = "build/gpt61-player-movement-canonical/PlayerCollisionRectangle.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::collision_rectangle"]
 symbol = "?collision_rectangle@Player@th20@@QAEHABUVector3@2@ABUVector2@2@H@Z"
@@ -18330,7 +18330,7 @@ relocations = [
 # CORE/EXACT-273: original entire 466B typed Player circle protocol.
 [units.player_collision_circle]
 source = "src/PlayerCollisionCircle.cpp"
-object = "build/core273-canonical/PlayerCollisionCircle.obj"
+object = "build/gpt61-player-movement-canonical/PlayerCollisionCircle.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::collision_circle"]
 symbol = "?collision_circle@Player@th20@@QAEHABUVector3@2@MH@Z"
@@ -18360,7 +18360,7 @@ relocations = [
 # CORE/EXACT-273: original entire 73B typed Player circle protocol.
 [units.player_record_collision_multiplier]
 source = "src/PlayerCollisionCircle.cpp"
-object = "build/core273-canonical/PlayerCollisionCircle.obj"
+object = "build/gpt61-player-movement-canonical/PlayerCollisionCircle.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerRecord::collision_radius_multiplier"]
 symbol = "?collision_radius_multiplier@PlayerRecord@th20@@QAEHXZ"
@@ -18373,7 +18373,7 @@ relocations = [
 # CORE/EXACT-273: original entire 23B typed Player circle protocol.
 [units.player_collision_expansion_flag]
 source = "src/PlayerCollisionCircle.cpp"
-object = "build/core273-canonical/PlayerCollisionCircle.obj"
+object = "build/gpt61-player-movement-canonical/PlayerCollisionCircle.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::collision_expansion_enabled"]
 symbol = "?collision_expansion_enabled@Player@th20@@QBEIXZ"
@@ -18435,7 +18435,7 @@ relocations = []
 # gameplay boss, all 81 independently attested original PE relocation sites.
 [units.bullet_process_collision]
 source = "src/BulletCollision.cpp"
-object = "build/core283-canonical/BulletCollision.obj"
+object = "build/gpt61-player-movement-canonical/BulletCollision.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Bullet::process_collision"]
 symbol = "?process_collision@Bullet@th20@@QAEHH@Z"
@@ -18529,7 +18529,7 @@ relocations = [
 # shot direction-mode boss, 22 independently attested original PE anchors.
 [units.bullet_aim_selector]
 source = "src/BulletAimSelector.cpp"
-object = "build/core294-canonical/BulletAimSelector.obj"
+object = "build/gpt61-player-movement-canonical/BulletAimSelector.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::select_bullet_aim"]
 symbol = "?select_bullet_aim@th20@@YAMHMABUVector3@1@MM@Z"
@@ -18613,7 +18613,7 @@ relocations = [
 # collision/graze boss, all 181 instructions and 24 independent PE anchors.
 [units.player_rotated_rectangle_circle]
 source = "src/PlayerRotatedCollision.cpp"
-object = "build/core297-canonical/PlayerRotatedCollision.obj"
+object = "build/gpt61-player-movement-canonical/PlayerRotatedCollision.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::collision_rectangle_circle"]
 symbol = "?collision_rectangle_circle@Player@th20@@QAEHABUVector3@2@MMMH@Z"
@@ -18650,7 +18650,7 @@ relocations = [
 # three original PE-base relocations and five independent native call targets.
 [units.player_draw]
 source = "src/PlayerDraw.cpp"
-object = "build/core301-canonical/PlayerDraw.obj"
+object = "build/gpt61-player-movement-canonical/PlayerDraw.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::draw"]
 symbol = "?draw@Player@th20@@QAEHXZ"
@@ -18671,7 +18671,7 @@ relocations = [
 # forwarder preserves EAX, matching an int-returning function pointer ABI.
 [units.player_draw_callback]
 source = "src/PlayerDrawCallback.cpp"
-object = "build/core303-canonical/PlayerDrawCallback.obj"
+object = "build/gpt61-player-movement-canonical/PlayerDrawCallback.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::player_draw_callback"]
 symbol = "?player_draw_callback@th20@@YAHPAX@Z"
@@ -18684,7 +18684,7 @@ relocations = [
 # CORE/EXACT-307: all 72 original instructions of Player option handle sweep.
 [units.player_option_clear]
 source = "src/PlayerOptionClear.cpp"
-object = "build/core307-canonical/PlayerOptionClear.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionClear.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::clear_option_animations"]
 symbol = "?clear_option_animations@Player@th20@@QAEXXZ"
@@ -18705,7 +18705,7 @@ relocations = [
 # same original 23 physical bytes; only one original address gets credit.
 [units.player_values_option_at]
 source = "src/PlayerOptionClear.cpp"
-object = "build/core307-canonical/PlayerOptionClear.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionClear.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<PlayerOption, 10>::at"]
 symbol = "?at@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEAAUPlayerOption@2@H@Z"
@@ -18715,7 +18715,7 @@ relocations = []
 
 [units.player_fixed_position_ref]
 source = "src/PlayerAccessors.cpp"
-object = "build/core307-canonical/PlayerAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::fixed_position_ref"]
 symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ"
@@ -18725,7 +18725,7 @@ relocations = []
 
 [units.player_set_clock_scale]
 source = "src/PlayerAccessors.cpp"
-object = "build/core307-canonical/PlayerAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::set_clock_scale"]
 symbol = "?set_clock_scale@Player@th20@@QAEXM@Z"
@@ -18735,7 +18735,7 @@ relocations = []
 
 [units.player_values_int_point_end]
 source = "src/PlayerAccessors.cpp"
-object = "build/core307-canonical/PlayerAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<IntPoint, 33>::end"]
 symbol = "?end@?$PlayerValues@UIntPoint@th20@@$0CB@@th20@@QAEPAUIntPoint@2@XZ"
@@ -18746,7 +18746,7 @@ relocations = []
 # CORE/EXACT-308: entire original 73-byte PlayerTable clamp to [0,1].
 [units.player_table_mode_clamp_one]
 source = "src/PlayerResetStateAccessors.cpp"
-object = "build/core308-canonical/PlayerResetStateAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerResetStateAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerTable::clamped_field_1e4"]
 symbol = "?clamped_field_1e4@PlayerTable@th20@@QAEHXZ"
@@ -18758,7 +18758,7 @@ relocations = [
 
 [units.session_flag0_value]
 source = "src/PlayerResetStateAccessors.cpp"
-object = "build/core308-canonical/PlayerResetStateAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerResetStateAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Session::flag0_value"]
 symbol = "?flag0_value@Session@th20@@QBEIXZ"
@@ -18768,7 +18768,7 @@ relocations = []
 
 [units.player_clear_entity_flag2]
 source = "src/PlayerResetStateAccessors.cpp"
-object = "build/core308-canonical/PlayerResetStateAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerResetStateAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::clear_entity_flag2"]
 symbol = "?clear_entity_flag2@Player@th20@@QAEXXZ"
@@ -18780,7 +18780,7 @@ relocations = []
 # full native 19 call + 21 PE HIGHLOW data fields and the typed 33-slot loop.
 [units.player_reset_initial_state]
 source = "src/PlayerResetInitial.cpp"
-object = "build/core314-canonical/PlayerResetInitial.obj"
+object = "build/gpt61-player-movement-canonical/PlayerResetInitial.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::reset_initial_state"]
 symbol = "?reset_initial_state@Player@th20@@QAEXXZ"
@@ -18848,7 +18848,7 @@ relocations = [
 # CORE/EXACT-320: complete native original 20B, observed ABI and relocations.
 [units.player_option_active_count]
 source = "src/PlayerOptionManagement.cpp"
-object = "build/core320-canonical/PlayerOptionManagement.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionManagement.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::active_option_count"]
 symbol = "?active_option_count@Player@th20@@QBEHXZ"
@@ -18860,7 +18860,7 @@ relocations = [
 # CORE/EXACT-320: complete native original 42B, observed ABI and relocations.
 [units.player_shot_set_flag0]
 source = "src/PlayerOptionManagement.cpp"
-object = "build/core320-canonical/PlayerOptionManagement.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionManagement.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerShotController::set_flag0"]
 symbol = "?set_flag0@PlayerShotController@th20@@QAEXI@Z"
@@ -18886,7 +18886,7 @@ relocations = [
 # CORE/EXACT-320: complete native original 165B, observed ABI and relocations.
 [units.player_option_set_field_fc]
 source = "src/PlayerOptionManagement.cpp"
-object = "build/core320-canonical/PlayerOptionManagement.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionManagement.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::set_option_field_fc"]
 symbol = "?set_option_field_fc@Player@th20@@QAEXH@Z"
@@ -18902,7 +18902,7 @@ relocations = [
 # CORE/EXACT-320: complete native original 19B, observed ABI and relocations.
 [units.player_options_end10]
 source = "src/PlayerOptionManagement.cpp"
-object = "build/core320-canonical/PlayerOptionManagement.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionManagement.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<PlayerOption, 10>::end"]
 symbol = "?end@?$PlayerValues@UPlayerOption@th20@@$09@th20@@QAEPAUPlayerOption@2@XZ"
@@ -18914,7 +18914,7 @@ relocations = [
 # CORE/EXACT-320: complete native original 19B, observed ABI and relocations.
 [units.player_options_end12]
 source = "src/PlayerOptionManagement.cpp"
-object = "build/core320-canonical/PlayerOptionManagement.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionManagement.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<PlayerOption, 12>::end"]
 symbol = "?end@?$PlayerValues@UPlayerOption@th20@@$0M@@th20@@QAEPAUPlayerOption@2@XZ"
@@ -18966,7 +18966,7 @@ relocations = [
 # CORE/EXACT-322: whole original 52B, real typed Player option dependency.
 [units.weapon_stone_option_focused]
 source = "src/WeaponStoneOptionOffsets.cpp"
-object = "build/core322-canonical/WeaponStoneOptionOffsets.obj"
+object = "build/gpt61-player-movement-canonical/WeaponStoneOptionOffsets.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::focused_offset"]
 symbol = "?focused_offset@WeaponStoneInfo@th20@@QAEPBUVector2@2@HH@Z"
@@ -18978,7 +18978,7 @@ relocations = [
 # CORE/EXACT-322: whole original 52B, real typed Player option dependency.
 [units.weapon_stone_option_unfocused]
 source = "src/WeaponStoneOptionOffsets.cpp"
-object = "build/core322-canonical/WeaponStoneOptionOffsets.obj"
+object = "build/gpt61-player-movement-canonical/WeaponStoneOptionOffsets.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::unfocused_offset"]
 symbol = "?unfocused_offset@WeaponStoneInfo@th20@@QAEPBUVector2@2@HH@Z"
@@ -18990,7 +18990,7 @@ relocations = [
 # CORE/EXACT-326: whole original 77B Weapon/Player option dispatcher.
 [units.weapon_stone_option_script_variant]
 source = "src/WeaponStoneOptionOffsets.cpp"
-object = "build/core322-canonical/WeaponStoneOptionOffsets.obj"
+object = "build/gpt61-player-movement-canonical/WeaponStoneOptionOffsets.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::option_script_variant"]
 symbol = "?option_script_variant@WeaponStoneInfo@th20@@QAEHXZ"
@@ -19004,7 +19004,7 @@ relocations = [
 # CORE/EXACT-326: whole original 90B Weapon/Player option dispatcher.
 [units.weapon_stone_initialize_option_pair]
 source = "src/WeaponStoneOptionOffsets.cpp"
-object = "build/core322-canonical/WeaponStoneOptionOffsets.obj"
+object = "build/gpt61-player-movement-canonical/WeaponStoneOptionOffsets.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::initialize_option_pair"]
 symbol = "?initialize_option_pair@WeaponStoneInfo@th20@@QAEXPAUPlayerOption@2@H@Z"
@@ -19029,7 +19029,7 @@ relocations = [
 # CORE/EXACT-330: whole 17-byte original typed call chain method.
 [units.player_animation_file_ref]
 source = "src/Player.cpp"
-object = "build/core180-canonical/Player.obj"
+object = "build/gpt61-player-movement-canonical/Player.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::animation_file_ref"]
 symbol = "?animation_file_ref@Player@th20@@QBEPAVAnimationFile@2@XZ"
@@ -19053,7 +19053,7 @@ relocations = []
 # All E8 and PE HIGHLOW addresses independently attested from unmodified target.
 [units.player_record_bullet_graze]
 source = "src/PlayerGrazeFeedback.cpp"
-object = "build/core347-canonical/PlayerGrazeFeedback.obj"
+object = "build/gpt61-player-movement-canonical/PlayerGrazeFeedback.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::record_bullet_graze"]
 symbol = "?record_bullet_graze@Player@th20@@QAEXABUVector3@2@I@Z"
@@ -19203,7 +19203,7 @@ relocations = [
 # Player option animation boss; 57 original E8 and 3 original PE HIGHLOW fields.
 [units.player_rebuild_option_animations]
 source = "src/PlayerOptionRebuild.cpp"
-object = "build/core369-canonical/PlayerOptionRebuild.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionRebuild.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
 functions = ["th20::Player::rebuild_option_animations"]
 symbol = "?rebuild_option_animations@Player@th20@@QAEXH@Z"
@@ -19589,7 +19589,7 @@ relocations = [
 # Player per-option frame boss or typed IntPoint presentation conversion.
 [units.player_option_frame_boss]
 source = "src/PlayerOptionFrame.cpp"
-object = "build/core417-canonical/PlayerOptionFrame.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionFrame.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::update_option_frame"]
 symbol = "?update_option_frame@Player@th20@@QAEHPAUPlayerOption@2@@Z"
@@ -19657,7 +19657,7 @@ relocations = [
 # gameplay source with original independent PE E8 / HIGHLOW references.
 [units.player_movement_mode_get]
 source = "src/PlayerOptionManagement.cpp"
-object = "build/core320-canonical/PlayerOptionManagement.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionManagement.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::movement_mode"]
 symbol = "?movement_mode@Player@th20@@QBEIXZ"
@@ -19670,7 +19670,7 @@ relocations = [
 # gameplay source with original independent PE E8 / HIGHLOW references.
 [units.player_movement_mode_set]
 source = "src/PlayerOptionManagement.cpp"
-object = "build/core320-canonical/PlayerOptionManagement.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionManagement.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::set_movement_mode"]
 symbol = "?set_movement_mode@Player@th20@@QAEII@Z"
@@ -19684,7 +19684,7 @@ relocations = [
 # gameplay source with original independent PE E8 / HIGHLOW references.
 [units.player_secondary_option_field_fc]
 source = "src/PlayerOptionManagement.cpp"
-object = "build/core320-canonical/PlayerOptionManagement.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionManagement.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::set_secondary_option_field_fc"]
 symbol = "?set_secondary_option_field_fc@Player@th20@@QAEXH@Z"
@@ -19699,7 +19699,7 @@ relocations = [
 # called three times by the separate still-open 3111B Player main frame.
 [units.player_option_history_capacity]
 source = "src/PlayerAccessors.cpp"
-object = "build/core307-canonical/PlayerAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<IntPoint,33>::size"]
 symbol = "?size@?$PlayerValues@UIntPoint@th20@@$0CB@@th20@@QBEIXZ"
@@ -19711,7 +19711,7 @@ relocations = []
 # native caller at 0x004F9C30 independently decoded, no E8/HIGHLOW.
 [units.player_history_index_33]
 source = "src/PlayerAccessors.cpp"
-object = "build/core307-canonical/PlayerAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerValues<IntPoint,33>::at"]
 symbol = "?at@?$PlayerValues@UIntPoint@th20@@$0CB@@th20@@QAEAAUIntPoint@2@H@Z"
@@ -19735,7 +19735,7 @@ relocations = []
 # suspender; separate physical address/semantics from 237B mode2 clearer.
 [units.player_option_suspend_animations]
 source = "src/PlayerOptionClear.cpp"
-object = "build/core307-canonical/PlayerOptionClear.obj"
+object = "build/gpt61-player-movement-canonical/PlayerOptionClear.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::suspend_option_animations"]
 symbol = "?suspend_option_animations@Player@th20@@QAEXXZ"
@@ -20490,7 +20490,7 @@ relocations = [
 # original fields, and the natural source uses genuine 4.0f native scalar.
 [units.bullet_emitter_whole_3735]
 source = "src/BulletEmitter.cpp"
-object = "build/core645-canonical/BulletEmitter.obj"
+object = "build/gpt61-player-movement-canonical/BulletEmitter.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::emit"]
 symbol = "?emit@BulletController@th20@@QAEHABUShotParameters@2@V?$shared_ptr@UEtamaArgInf@@@std@@HHM@Z"
@@ -20634,7 +20634,7 @@ relocations = [
 # Original 29B setter uses the same +0x223C float member.
 [units.player_clock_scale_value]
 source = "src/PlayerAccessors.cpp"
-object = "build/core307-canonical/PlayerAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::clock_scale_value"]
 symbol = "?clock_scale_value@Player@th20@@QBEMXZ"
@@ -28781,7 +28781,7 @@ relocations = []
 # CORE/RECON-1118: original whole Card frame Boss 875B/262 x86; 28 E8/8 HIGHLOW.
 [units.card_tick_boss_875]
 source = "src/CardTickBoss875.cpp"
-object = "build/core1118-canonical/CardTickBoss875.obj"
+object = "build/gpt61-player-movement-canonical/CardTickBoss875.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::NativeCardTickView::update_486f60"]
 symbol = "?update_486f60@NativeCardTickView@th20@@QAEHXZ"
@@ -30198,7 +30198,7 @@ relocations = [{ offset = 0xB, type = "REL32", symbol = "?resolve_or_resident_44
 # CORE/RECON-1122: Player+0x2050 real Timer receives original integer assignment, not set(int).
 [units.bomb_pulse_invulnerability_32]
 source = "src/BombPulsePlayerInvulnerability32.cpp"
-object = "build/gptweb-bomb-pulse-canonical/BombPulsePlayerInvulnerability32.obj"
+object = "build/gpt61-player-movement-canonical/BombPulsePlayerInvulnerability32.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::NativeBombPlayerView::set_invulnerability_479060"]
 symbol = "?set_invulnerability_479060@NativeBombPlayerView@th20@@QAEXH@Z"
@@ -30209,7 +30209,7 @@ relocations = [{ offset = 0x15, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z
 # CORE/RECON-1122: Marks Player entity flag bit2 after Bomb pulse initialization.
 [units.bomb_pulse_flag2_26]
 source = "src/BombPulsePlayerFlags26.cpp"
-object = "build/gptweb-bomb-pulse-canonical/BombPulsePlayerFlags26.obj"
+object = "build/gpt61-player-movement-canonical/BombPulsePlayerFlags26.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::NativeBombPlayerView::mark_bomb_used_4790a0"]
 symbol = "?mark_bomb_used_4790a0@NativeBombPlayerView@th20@@QAEXXZ"
@@ -30733,7 +30733,7 @@ relocations = [
 # CORE/RECON-1140: Player motion-parameter accessors used by ItemInf update.
 [units.player_motion_parameter_00_value]
 source = "src/PlayerMotionParameterAccessors.cpp"
-object = "build/player-motion-parameter-accessors/PlayerMotionParameterAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerMotionParameterAccessors.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::motion_parameter_00_value"]
 symbol = "?motion_parameter_00_value@Player@th20@@QBEMXZ"
@@ -30743,7 +30743,7 @@ relocations = []
 
 [units.player_motion_parameter_04_value]
 source = "src/PlayerMotionParameterAccessors.cpp"
-object = "build/player-motion-parameter-accessors/PlayerMotionParameterAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerMotionParameterAccessors.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::motion_parameter_04_value"]
 symbol = "?motion_parameter_04_value@Player@th20@@QBEMXZ"
@@ -30753,7 +30753,7 @@ relocations = []
 
 [units.player_motion_parameter_08_value]
 source = "src/PlayerMotionParameterAccessors.cpp"
-object = "build/player-motion-parameter-accessors/PlayerMotionParameterAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerMotionParameterAccessors.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::motion_parameter_08_value"]
 symbol = "?motion_parameter_08_value@Player@th20@@QBEMXZ"
@@ -30763,7 +30763,7 @@ relocations = []
 
 [units.player_motion_parameter_10_value]
 source = "src/PlayerMotionParameterAccessors.cpp"
-object = "build/player-motion-parameter-accessors/PlayerMotionParameterAccessors.obj"
+object = "build/gpt61-player-movement-canonical/PlayerMotionParameterAccessors.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::motion_parameter_10_value"]
 symbol = "?motion_parameter_10_value@Player@th20@@QBEMXZ"
@@ -30838,7 +30838,7 @@ relocations = [
 # CORE/RECON-1143: native Item reward-number queue owner and context lookup.
 [units.item_reward_popup_queue]
 source = "src/ItemRewardPopupQueue.cpp"
-object = "build/item-reward-popup/ItemRewardPopupQueue.obj"
+object = "build/gpt61-player-movement-canonical/ItemRewardPopupQueue.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::ItemRewardPopupQueue::enqueue"]
 symbol = "?enqueue@ItemRewardPopupQueue@th20@@QAEXPBUVector3@2@HI@Z"
@@ -30851,7 +30851,7 @@ relocations = [
 
 [units.item_reward_popup_queue_lookup]
 source = "src/ItemRewardPopupQueue.cpp"
-object = "build/item-reward-popup/ItemRewardPopupQueue.obj"
+object = "build/gpt61-player-movement-canonical/ItemRewardPopupQueue.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::item_reward_popup_queue"]
 symbol = "?item_reward_popup_queue@th20@@YAPAUItemRewardPopupQueue@1@H@Z"
@@ -30866,7 +30866,7 @@ relocations = [
 # CORE/RECON-1144: original Item life/power reward helper, full call order.
 [units.item_award_life_reward]
 source = "src/ItemRewardHelpers.cpp"
-object = "build/item-reward-helpers/ItemRewardHelpers.obj"
+object = "build/gpt61-player-movement-canonical/ItemRewardHelpers.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::item_award_life_reward"]
 symbol = "?item_award_life_reward@th20@@YIXPAUItem@1@@Z"
@@ -30898,7 +30898,7 @@ relocations = [
 # CORE/RECON-1145: original Item context-bound special reward helper.
 [units.item_award_reward_type_2]
 source = "src/ItemRewardHelpers.cpp"
-object = "build/item-reward-helpers/ItemRewardHelpers.obj"
+object = "build/gpt61-player-movement-canonical/ItemRewardHelpers.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::item_award_reward_type_2"]
 symbol = "?item_award_reward_type_2@th20@@YIXPAUItem@1@@Z"
@@ -31283,7 +31283,7 @@ relocations = [
 
 [units.weapon_stone_complete_item_progress]
 source = "src/WeaponStoneCompleteItemProgress.cpp"
-object = "build/weapon-stone-complete-item-progress/WeaponStoneCompleteItemProgress.obj"
+object = "build/gpt61-player-movement-canonical/WeaponStoneCompleteItemProgress.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::WeaponStoneInfo::complete_item_progress"]
 symbol = "?complete_item_progress@WeaponStoneInfo@th20@@QAEXXZ"
@@ -32350,7 +32350,7 @@ relocations = [
 # CORE/RECON-1262: original whole-function Enemy opcode-629 callback Boss.
 [units.enemy_state_clear_bullets_in_animation_rectangle]
 source = "src/EnemyStateBulletClearOpcode.cpp"
-object = "build/gpt-web-enemy-629-canonical/EnemyStateBulletClearOpcode.obj"
+object = "build/gpt61-player-movement-canonical/EnemyStateBulletClearOpcode.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyState::clear_bullets_in_animation_rectangle"]
 symbol = "?clear_bullets_in_animation_rectangle@EnemyState@th20@@QAEHXZ"
@@ -32400,7 +32400,7 @@ relocations = [
 # CORE/RECON-1262: original whole-function Enemy opcode-629 callback Boss.
 [units.enemy_state_clear_all_bullets_for_enemy_clear]
 source = "src/EnemyStateBulletClearOpcode.cpp"
-object = "build/gpt-web-enemy-629-canonical/EnemyStateBulletClearOpcode.obj"
+object = "build/gpt61-player-movement-canonical/EnemyStateBulletClearOpcode.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::EnemyState::clear_all_bullets_for_enemy_clear"]
 symbol = "?clear_all_bullets_for_enemy_clear@EnemyState@th20@@QAEHXZ"
@@ -33649,4 +33649,43 @@ relocations = [
   { offset = 0xF, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
   { offset = 0x14, type = "DIR32", symbol = "__ehfuncinfo$?submit_text_44fff0@NativeTextSubmitOwner@th20@@QAE?AUNativeTextDrawResult8@2@PAUIDirect3DBaseTexture9@@PAUSpriteData@2@HHIPBDHHHPBUNativeTextTransform4@2@HV?$function@$$A6AXXZ@std@@@Z", target = 0x005A9E90 },
   { offset = 0x19, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
+]
+
+# Player movement: C++14 conversion lifetime and explicit world-coordinate values.
+[units.player_apply_move_delta_555]
+source = "src/PlayerMovement.cpp"
+object = "build/gpt61-player-movement-canonical/PlayerMovement.obj"
+profile = ["/nologo", "/c", "/std:c++14", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/EHsc"]
+functions = ["th20::Player::apply_move_delta"]
+symbol = "?apply_move_delta@Player@th20@@QAEXHH@Z"
+target_address = 0x004FFA10
+size = 555
+relocations = [
+  { offset = 0x10, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x1A, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x3C, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x46, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0xC7, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0xF1, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x112, type = "REL32", symbol = "?movement_mode@Player@th20@@QBEIXZ", target = 0x004FF870 },
+  { offset = 0x122, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x132, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x142, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x152, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x160, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x171, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x182, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x18A, type = "DIR32", symbol = "?native_448@th20@@3MB", target = 0x0056D7C0 },
+  { offset = 0x192, type = "DIR32", symbol = "?native_16@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x19A, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x1AB, type = "DIR32", symbol = "?native_448@th20@@3MB", target = 0x0056D7C0 },
+  { offset = 0x1B3, type = "DIR32", symbol = "?native_16@th20@@3MB", target = 0x0056CD90 },
+  { offset = 0x1BB, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x1C7, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x1D2, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x1DE, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x1EB, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
+  { offset = 0x1FC, type = "REL32", symbol = "?fixed_position_ref@Player@th20@@QAEAAUIntPoint@2@XZ", target = 0x004FF690 },
+  { offset = 0x209, type = "DIR32", symbol = "?native_128@th20@@3MB", target = 0x0056CD98 },
+  { offset = 0x216, type = "REL32", symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ", target = 0x00460850 },
 ]

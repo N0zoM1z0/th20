@@ -1,6 +1,10 @@
 # CORE/EXACT-429 and CORE/RECON-429 — exact 16-byte Player history size; entire 555-byte movement C++ frontier
 
-**Later [CORE/RECON-724](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md) correction:** the original world X and Y conversion denominators both use the already exact-game-attested physical float `0x0056CD98`. Maintained whole `src/PlayerMovement.cpp` now uses the actual `native_128` symbol, replacing two compiler-private constant references without changing any of the 561 generated code bytes, 27 relocation field locations or game behavior. The six-byte extra SSE spill remains and the 555B original parent stays **NONEXACT**.
+**Superseded movement status:** the complete 555B body is now
+[whole strict exact](PLAYER_MOVEMENT555_STRICT_EXACT.md). The observations
+below record the earlier C++20 frontier.
+
+**Later [CORE/RECON-724](PLAYER_MOVEMENT_555_SHARED_NATIVE_128_RELOCATION.md) correction:** the original world X and Y conversion denominators both use the already exact-game-attested physical float `0x0056CD98`. Maintained whole `src/PlayerMovement.cpp` now uses the actual `native_128` symbol, replacing two compiler-private constant references without changing any of the 561 generated code bytes, 27 relocation field locations or game behavior. The six-byte code increase remains and the 555B original parent stays **NONEXACT**.
 
 Comparison original: the immutable Japanese TH20 v1.00a Steamless
 `resources/th20.exe`, original whole SHA-256
@@ -107,9 +111,9 @@ and **27 COFF relocation fields with matching type/count**.
 **It is NOT exact.** The best natural source preserves
 a genuine live y-upper-bound float value across the
 call to `fixed_position_ref()`. MSVC emits
-`movss [ebp-0x30],xmm0` as **one additional 6-byte SSE
-temporary spill** before converting that float to a
-signed integer in the preserved ESI register. The
+the five-byte `movss [ebp-0x30],xmm0` before converting the float to a
+signed integer in ESI. That memory-source conversion is one byte longer
+than the native register-source conversion, giving a six-byte increase. The
 original directly performs `cvttss2si esi,xmm0`
 and never makes that extra float spill. The source
 does not claim the original 555 bytes, even though

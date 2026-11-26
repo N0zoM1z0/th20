@@ -5,6 +5,7 @@
 // True __thiscall receiver Player*, real PlayerOption* native stack argument.
 // All game-owned member offsets remain type checked through the real headers.
 #include "Player.hpp"
+#include "AnimationFile.hpp"
 #include "PlayerRecord.hpp"
 #include "WeaponStoneInfo.hpp"
 #include "ShotData.hpp"
