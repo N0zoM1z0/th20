@@ -1871,3 +1871,5 @@ th20::glyph_task_pump_416140::unwind_0,0x00567E10,function
 th20::glyph_task_pump_416140::unwind_1,0x00567E18,function
 th20::glyph_task_pump_416140::unwind_2,0x00567E20,function
 th20::glyph_task_pump_416140::eh_handler,0x00567E2D,function
+th20::NativeTextSubmitOwner::submit_text_44fff0::unwind,0x005686F0,function
+th20::NativeTextSubmitOwner::submit_text_44fff0::eh_handler,0x005686FD,function

@@ -33621,3 +33621,32 @@ relocations = [
   { offset = 0x1E, type = "DIR32", symbol = "__ehfuncinfo$?glyph_task_pump_416140@th20@@YAXXZ", target = 0x005A98E4 },
   { offset = 0x23, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
 ]
+
+# Text-submit parameter cleanup; docs/ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md.
+[units.ascii_text_submit_unwind_8]
+source = "src/AsciiTextSubmit294.cpp"
+object = "build/gpt61-submit294-canonical/AsciiTextSubmit294.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeTextSubmitOwner::submit_text_44fff0::unwind"]
+symbol = "__unwindfunclet$?submit_text_44fff0@NativeTextSubmitOwner@th20@@QAE?AUNativeTextDrawResult8@2@PAUIDirect3DBaseTexture9@@PAUSpriteData@2@HHIPBDHHHPBUNativeTextTransform4@2@HV?$function@$$A6AXXZ@std@@@Z$0"
+target_address = 0x005686F0
+size = 8
+compare_size = 13
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
+]
+
+# Text-submit parameter cleanup; docs/ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md.
+[units.ascii_text_submit_eh_handler_29]
+source = "src/AsciiTextSubmit294.cpp"
+object = "build/gpt61-submit294-canonical/AsciiTextSubmit294.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::NativeTextSubmitOwner::submit_text_44fff0::eh_handler"]
+symbol = "__ehhandler$?submit_text_44fff0@NativeTextSubmitOwner@th20@@QAE?AUNativeTextDrawResult8@2@PAUIDirect3DBaseTexture9@@PAUSpriteData@2@HHIPBDHHHPBUNativeTextTransform4@2@HV?$function@$$A6AXXZ@std@@@Z"
+target_address = 0x005686FD
+size = 29
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x14, type = "DIR32", symbol = "__ehfuncinfo$?submit_text_44fff0@NativeTextSubmitOwner@th20@@QAE?AUNativeTextDrawResult8@2@PAUIDirect3DBaseTexture9@@PAUSpriteData@2@HHIPBDHHHPBUNativeTextTransform4@2@HV?$function@$$A6AXXZ@std@@@Z", target = 0x005A9E90 },
+  { offset = 0x19, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
+]

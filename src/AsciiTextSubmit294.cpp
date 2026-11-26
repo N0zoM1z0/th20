@@ -1,23 +1,13 @@
-// Original 294B text submit Boss, full two-path game source, NONEXACT.
-// Its original scalar word forwards by value as a completion pointer,
-// with no extra stack slot; the resulting pointer bits are unchanged on x86.
-// The core's genuine EDX:EAX uint64 result is published directly into the
-// native hidden eight-byte result object, separately in each real path.
-// Pinned MSVC i386 emits 292B/104 instructions versus 294B/106 original:
-// only two original compiler-generated post-destructor NOPs are absent.
-// The exact original full 294B extent is NOT claimed or truncated.
+// Native two-path text submission with a by-value callback and hidden 8B result.
+// The complete source body is 292B; the original 294B additionally retains
+// two NOPs after parameter destruction on the returning paths.
 #include "NativeAsciiTextDrawView.hpp"
 #include "NativeGlyphTextCore.hpp"
 #include <cstdint>
 #include <functional>
 namespace th20 {
-// The separately original 2227-byte text renderer core at 0x00415830.
-// Its complete implementation and original C++ spelling remain unresolved.
-
-// This is an explicitly MSVC-i386-specific representation operation:
-// the same eight valid return bytes are written as a packed integer and
-// read as the original pair of 32-bit result words. It does not allocate
-// an extra buffer, invent a helper call or change native pixel semantics.
+// On the locked MSVC x86 ABI, write the core's packed EDX:EAX result into
+// the returned two-word object without an additional intermediate object.
 #if defined(_M_IX86)
 static_assert(sizeof(NativeTextDrawResult8) == sizeof(std::uint64_t));
 #endif

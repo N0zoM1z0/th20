@@ -10,6 +10,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [Text-submit parameter cleanup and compiler controls](ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md) — incoming callback cleanup, bounded NRVO/debug/return controls, full 42B EH/44B metadata; the 294B parent remains NONEXACT.
 - [Exact glyph function movement and swap](GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md) — complete 188B/125B/46B library bodies and 68B pump EH/60B metadata; 22/22 scoped units.
 - [Exact glyph task allocator application](GLYPH_QUEUE_APPLY_STRICT_EXACT.md) — complete 78B/65B/17B/61B application chain, C++17 construction owner and 22/22 scoped units from two providers.
 - [Exact glyph queue insertion and allocator forwarding](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md) — complete 151B/158B/31B/78B support functions and owned EH; one forwarding specialization, 18/18 scoped units, no authored-game credit.

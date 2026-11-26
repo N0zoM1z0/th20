@@ -22,25 +22,28 @@ config/functions.csv and config/function-origins.csv. Read the current counts wi
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`.
 The README SVG is generated from those same ledgers by `scripts/progress.py`.
 
-## Current work — exact function movement and swap
+## Current work — 294B text-submit cleanup
 
-The complete 188B function-base swap, 125B move reset and 46B function move
-constructor now strictly replay. One out-of-line `std::move` instance restores
-the swap's three missing calls. The queue pump's full 68B EH contribution and
-60B three-state metadata also match. See [the movement/swap proof](GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md).
+The text submitter at `0x0044FFF0` remains NONEXACT at 292B/104 instructions.
+Its missing NOPs follow destruction of the incoming by-value callback on two
+return paths. C++17 with NRVO and `/Z7` reproduce the same 292B contribution;
+`/ZI` restores the NOPs but changes the frame and saved registers. Reuse the
+[bounded compiler controls](ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md).
 
-**Replay scope: twenty-two units from two providers**, retaining all fifteen
-prior matches. Only the pump source changed; no shared header changed. Its
-fifteen units use one fresh object in `build/gpt61-function-move-canonical/`.
-The unchanged allocator object/receipt in `build/gpt61-glyph-apply-canonical/`
-are re-attested and reused for seven units. Preserve `core1075-canonical`
-and useful private evidence in `.analysis/glyph-function-move-session/`.
-These library/compiler matches add no authored-game credit.
+The complete 42B owned EH code and 44B one-state metadata now strictly replay.
+**Replay scope: two EH units from one fresh submit object**, with no shared
+header changes. Current object/receipt:
+`build/gpt61-submit294-canonical/AsciiTextSubmit294.obj`. Preserve private
+controls in `.analysis/ascii-submit294-session/` and the existing text-core
+and queue products. There is no 294B parent unit or new authored-game credit.
 
-The [allocator application](GLYPH_QUEUE_APPLY_STRICT_EXACT.md) and
+The [movement/swap](GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md),
+[allocator application](GLYPH_QUEUE_APPLY_STRICT_EXACT.md) and
 [insertion/EH](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md) matches remain intact.
-Next useful work is the game-owned 294B text submission method at `0x0044FFF0`. The 578B/586B
-formatting callers remain independent frontiers.
+Further text-submit work needs evidence for the original return-cleanup/debug
+context. The next independent game-owned scope is Player main-frame update at
+`0x004F9C30`; start with [its operand/register frontier](PLAYER_MAIN_3111_SEMANTIC_OPERANDS_AND_REGISTER_FRONTIER.md).
+The 578B/586B formatting callers remain separate frontiers.
 
 ## Latest checkpoint — exact GDI glyph text core
 

@@ -1,3 +1,8 @@
+Current cleanup/compiler findings and complete EH acceptance are recorded in
+[the focused follow-up](ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md). The 294B
+submitter remains NONEXACT; the independently owned GDI text core is now
+[exact](GLYPH_TEXT_CORE2227_STRICT_EXACT.md).
+
 # CORE/RECON-1063 — original 294B text submit Boss now two compiler-generated NOPs from whole exact
 
 Immutable original: Japanese TH20 Steamless v1.00a SHA-256

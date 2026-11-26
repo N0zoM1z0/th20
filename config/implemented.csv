@@ -1866,3 +1866,6 @@ th20::glyph_task_pump_416140::unwind_0
 th20::glyph_task_pump_416140::unwind_1
 th20::glyph_task_pump_416140::unwind_2
 th20::glyph_task_pump_416140::eh_handler
+th20::NativeTextSubmitOwner::submit_text_44fff0::unwind
+th20::NativeTextSubmitOwner::submit_text_44fff0::eh_handler
+th20::NativeTextSubmitOwner::submit_text_44fff0
