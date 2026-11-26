@@ -22,25 +22,27 @@ config/functions.csv and config/function-origins.csv. Read the current counts wi
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`.
 The README SVG is generated from those same ledgers by `scripts/progress.py`.
 
-## Current work — exact glyph queue forwarding
+## Current work — exact glyph task allocator application
 
-The 151B insertion, 158B node constructor and 31B/78B allocator construction
-heads now strictly replay. Retaining the observed out-of-line
-`std::forward<std::function<void()>>` instance restores the missing calls
-and native frames without changing SDK headers. Owned constructor/guard
-EH code and complete 44B/36B metadata also match. See [the focused proof](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md).
+The task allocator's complete 78B `apply`, 65B `_Apply_impl`, 17B `invoke`
+and 61B construction lambda now strictly replay. A C++17 construction owner
+preserves native forwarding and empty index-sequence passing; the list retains
+its C++20 profile. See [the focused proof](GLYPH_QUEUE_APPLY_STRICT_EXACT.md)
+and [the preceding insertion/EH proof](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md).
 
-**Replay scope: eighteen units from one fresh provider**, preserving all
-eleven prior matches. No shared header changed. Current object/receipt:
-`build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj`. Preserve the
-old `core1061-canonical` products and private evidence in
-`.analysis/glyph-queue151-session/`. These support matches do not increase
-the authored-game exact total; the README SVG reflects the current ledgers.
+**Replay scope: twenty-two units from two fresh providers**, retaining all
+eighteen previous matches. The new allocator declaration is captured only by
+these two providers: seventeen list units and five allocator units. Objects
+and receipts are under `build/gpt61-glyph-apply-canonical/`. Preserve the
+previous `gpt61-glyph-queue-canonical` and `core1061-canonical` products and
+useful private evidence in `.analysis/glyph-apply-session/` and
+`.analysis/glyph-queue151-session/`. Owned node/guard EH code and all44B/36B
+metadata remain exact. Library support adds no authored-game exact credit.
 
-Next useful allocator work is `std::apply` at `0x00413A40` and `_Apply_impl`
-at `0x00413190`. Reuse the attested native export and the already accepted
-shared tuple-argument head at `0x00413D50`. The 294B submit and 578B/586B
-formatting callers remain independent frontiers.
+Next useful work is the function move/reset protocol at `0x004140C0` and
+`0x00414BE0`. The full 46B move body already matches as supporting evidence;
+its inherited Ghidra `shared_ptr` annotation is misleading. The 294B submit
+and 578B/586B formatting callers remain independent frontiers.
 
 ## Latest checkpoint — exact GDI glyph text core
 

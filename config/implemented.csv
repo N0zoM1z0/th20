@@ -1855,3 +1855,7 @@ std::pmr::polymorphic_allocator<GlyphTaskNode>::construct_function
 std::_List_node_emplace_op2<GlyphTaskNode>::ctor_unwind
 std::_List_node_emplace_op2<GlyphTaskNode>::ctor_eh_handler
 std::_List_node_emplace_op2<GlyphTaskNode>::dtor_eh_handler
+"std::apply<GlyphTaskConstructLambda, GlyphTaskArguments>"
+"std::_Apply_impl<GlyphTaskConstructLambda, GlyphTaskArguments>"
+std::invoke<GlyphTaskConstructLambda>
+std::pmr::polymorphic_allocator<GlyphTaskNode>::construct::lambda::operator()

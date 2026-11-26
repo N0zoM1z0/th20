@@ -2,10 +2,8 @@
 // The native forwarding calls use the shared eight-byte identity leaf.
 // Keep this function specialization out of line, as in the original
 // list insertion, node construction and allocator-traits callers.
-#include <functional>
-#include <list>
+#include "NativeGlyphTaskAllocator.hpp"
 #include <memory>
-#include <memory_resource>
 #include <utility>
 template __declspec(noinline) std::function<void()>&&
 std::forward<std::function<void()>>(std::function<void()>&) noexcept;

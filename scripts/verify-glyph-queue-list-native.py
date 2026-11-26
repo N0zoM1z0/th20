@@ -38,6 +38,17 @@ SPEC.update({
    {0x0D:0x0040B280,0x1E:0x00413D50,0x30:0x0040B670,0x40:0x00413A40},{},'traits_construct',0x17,'8'),
 })
 
+SPEC.update({
+ 'glyph_queue_apply_78':(0x00413A40,78,30,'147ddcaf11c408a3dc1acefd995d513376ca59493e153869d09795177d5014ee',
+   {0x1B:0x0040B280,0x2A:0x0040B280,0x42:0x00413190},{},'pmr_construct',0x40,''),
+ 'glyph_queue_apply_impl_65':(0x00413190,65,25,'25c80aeb31fd68d740a435a77e0514c4e31fbc4112090dc58a21cf51c2e1c4bb',
+   {0x0A:0x0040B280,0x13:0x0040B2A0,0x22:0x0040B280,0x35:0x00413D30},{},'apply',0x42,''),
+ 'glyph_queue_invoke_17':(0x00413D30,17,8,'9710bf12b8751f39cfcae00e18b05924fc0060332c40ce403406c3e76bf18738',
+   {0x0A:0x004130E0},{},'apply_impl',0x35,''),
+ 'glyph_queue_construct_lambda_61':(0x004130E0,61,23,'9d0700f4c18be3086e5420ca7657967413b23b64db4b229f3c375b7fbfd21bcf',
+   {0x11:0x0040E700,0x20:0x0040B280,0x32:0x004140C0},{},'invoke',0x0A,'4'),
+})
+
 PARENT={
  'main':(0x004131E0,151,'a1e5d8303be8a6e2c711f15a2174863b26046d8fe8c8f7be913613b806321f75',51),
  'node_ctor':(0x00413000,158,'5f339325649d81d3a161cbcd2f58f2d6b434b36e8520a5e30126966d0fbeb31b',51),
@@ -48,6 +59,43 @@ PARENT.update({
  'bridge':(0x004162F0,56,'5213451236ddccc50439af53540e50639d92771ca89506c80233331e217ebac9',22),
  'traits_construct':(0x00413B00,31,'a3636b851ea7f0edb5db28d8ebb7dec7d0f8ab35bec63ce5020865529280a463',14),
 })
+
+PARENT.update({
+ 'pmr_construct':(0x00413B20,78,'08c33c70016459c03dced99339d02febb1670f58f420e9e1a505dc0ceeb38cdb',30),
+ 'apply':(0x00413A40,78,'147ddcaf11c408a3dc1acefd995d513376ca59493e153869d09795177d5014ee',30),
+ 'apply_impl':(0x00413190,65,'25c80aeb31fd68d740a435a77e0514c4e31fbc4112090dc58a21cf51c2e1c4bb',25),
+ 'invoke':(0x00413D30,17,'9710bf12b8751f39cfcae00e18b05924fc0060332c40ce403406c3e76bf18738',8),
+})
+
+def verify_apply_helpers(obj,im,base,secs,manifest):
+ helpers={}
+ for name in ('glyph_queue_pmr_construct_78','glyph_queue_apply_78',
+              'glyph_queue_apply_impl_65','glyph_queue_construct_lambda_61'):
+  unit=manifest[name]
+  _,rows=cm.object_function(obj,unit['symbol'],unit['size'])
+  for row in rows:
+   symbol=row['symbol']
+   if symbol.startswith('??$forward@'):helpers[symbol]=(8,0x0040B280)
+   elif symbol.startswith('??$get@$0A@'):helpers[symbol]=(10,0x0040B2A0)
+   elif symbol.startswith('??0<lambda_'):helpers[symbol]=(26,0x0040B670)
+ for symbol,(size,address) in helpers.items():
+  body,rows=cm.object_function(obj,symbol,size)
+  assert not rows and body==pe.raw_at(im,base,secs,address,size),symbol
+ assert len(helpers)==6
+ # The lambda constructs a 40B std::function. Ghidra's inherited shared_ptr
+ # annotation is inconsistent with this independently emitted complete body.
+ symbol='??0?$function@$$A6AXXZ@std@@QAE@$$QAV01@@Z'
+ body,rows=cm.object_function(obj,symbol,46)
+ bindings={'??0?$_Func_class@X$$V@std@@QAE@XZ':0x00413F80,
+           '??$move@AAV?$function@':0x0040B280,
+           '?_Reset_move@?$_Func_class@X$$V@std@@':0x00414BE0}
+ assert len(rows)==3
+ for row in rows:
+  targets=[a for prefix,a in bindings.items() if row['symbol'].startswith(prefix)]
+  assert len(targets)==1 and row['type']=='REL32' and row['addend']==0
+  struct.pack_into('<I',body,row['offset'],(targets[0]-0x004140C0-row['offset']-4)&0xffffffff)
+ assert body==pe.raw_at(im,base,secs,0x004140C0,46)
+ print('PASS actual tuple/callable forwarding, get, capture and complete function-move callee')
 
 def verify_owned_eh(obj,im,base,secs):
  import re
@@ -141,12 +189,14 @@ def verify():
   assert len(pi)==pcount and calls(pi,ph)[calloff]==head
   print(f'PASS {unit}: original {n}B/{count} instructions, {len(edges)} E8/{len(reloc)} HL, authentic {par} E8 +0x{calloff:X}')
  manifest=cm.load_manifest('match-units.toml')['units']
- names=[name for name,u in manifest.items() if u['source']=='src/GlyphTextQueueList151.cpp']
+ sources={'src/GlyphTextQueueList151.cpp','src/GlyphTaskAllocatorConstruct.cpp'}
+ names=[name for name,u in manifest.items() if u['source'] in sources]
  obj=ROOT/manifest['glyph_queue_list_emplace_151']['object']
  verify_owned_eh(obj,img,base,secs)
+ verify_apply_helpers(ROOT/manifest['glyph_queue_apply_78']['object'],img,base,secs,manifest)
  for unit in names:
   result=cm.compare_unit(unit)
   assert result['result']=='exact' and result['matched_compared_bytes']==result['compared_size'],unit
- print(f'PASS {len(names)} whole canonical units from the one affected queue-list provider')
- print('PASS full151B insertion,158B node construction,31B traits and78B PMR construction; generic code has no authored-game credit')
+ print(f'PASS {len(names)} whole canonical units from the two affected queue/allocator providers')
+ print('PASS full queue insertion, allocator construction and C++17 apply protocol; generic code has no authored-game credit')
 if __name__=='__main__':verify()

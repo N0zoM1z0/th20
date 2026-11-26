@@ -10,6 +10,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [Exact glyph task allocator application](GLYPH_QUEUE_APPLY_STRICT_EXACT.md) — complete 78B/65B/17B/61B application chain, C++17 construction owner and 22/22 scoped units from two providers.
 - [Exact glyph queue insertion and allocator forwarding](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md) — complete 151B/158B/31B/78B support functions and owned EH; one forwarding specialization, 18/18 scoped units, no authored-game credit.
 
 - [Exact GDI glyph text core](GLYPH_TEXT_CORE2227_STRICT_EXACT.md) — complete 2,316B contribution, 99B EH code and 76B metadata; implicit temporary queue submission and reused X position; 10/10 scoped units.

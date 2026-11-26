@@ -93,16 +93,14 @@ without deriving its anchors from the handler fields being compared.
 
 ## Reproduction and retained evidence
 
-No shared header changed. Only `src/GlyphTextQueueList151.cpp` was freshly
+At the forwarding checkpoint, no shared header changed. Only
+`src/GlyphTextQueueList151.cpp` was freshly
 compiled; its eleven existing helpers, four new library bodies and three
 EH code units pass from `build/gpt61-glyph-queue-canonical/`. The old
 `core1061-canonical` object and receipt are preserved unchanged.
 
-```sh
-nice -n15 scripts/repo-python scripts/replay-exact-units.py \
-  --source src/GlyphTextQueueList151.cpp --existing-objects
-nice -n15 scripts/repo-python scripts/verify-glyph-queue-list-native.py
-```
+The later [application checkpoint](GLYPH_QUEUE_APPLY_STRICT_EXACT.md) splits
+the construction owner and records current replay commands.
 
 The constructor, guard and PMR descendant checkers pass against the new
 provider. Private controls reject a wrong node state count, map symbol,
@@ -116,6 +114,6 @@ Native exports and proof logs are retained in
 `verifier-controls.txt`.
 
 The downstream `std::apply` and `_Apply_impl` heads at `0x00413A40` and
-`0x00413190` remain separate unaccepted allocator-protocol targets. The
-new matches close this insertion/construction scope without establishing
-a complete linked game.
+`0x00413190` are now accepted by the linked application checkpoint, together
+with their invoke/construction lambda. The forwarding finding and owned EH
+proof above remain applicable.
