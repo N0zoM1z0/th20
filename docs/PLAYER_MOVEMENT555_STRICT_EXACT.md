@@ -86,7 +86,6 @@ complete mismatch, `canonical-proof.txt` records 555/555, and
 units and the routing repair. Sources, full listings and receipts retain
 the useful failed controls. `protected-before.json` records the old products.
 
-The next related question is whether this language-mode finding explains
-any register allocation in the still-nonexact 3,111B Player main frame.
-Use its [complete control-flow and register audit](PLAYER_MAIN_3111_CFG_AND_REGISTER_CONTROLS.md)
-as constraints; changing this child does not match the parent.
+The enclosing [3,111B Player main frame](PLAYER_MAIN3111_STRICT_EXACT.md)
+has since become independently whole strict exact under C++20. Its empty
+Timer condition resolves the register frontier without changing this child.

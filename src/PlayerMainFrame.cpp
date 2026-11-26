@@ -1,10 +1,6 @@
-// Complete original 0x004F9C30..0x004FA856 Player main-frame protocol.
-// Source-present, NONEXACT: original 3111B/783-instruction game method.
-// Typed input evaluation and signed movement-speed branches now recover
-// most of the original control-flow shape (still NOT byte exact).
-// Both genuine EnemyController getters, both sprite-scale evaluations,
-// and the original 67 E8/37 PE HIGHLOW reference counts are maintained.
-// Do not count this parent as original exact without strict replay.
+// Complete native Player main frame at 0x004F9C30.
+// The otherwise unused Timer comparison has an empty conditional body;
+// it stays separate from the following 16-frame exit test.
 #include "Player.hpp"
 #include "InputInf.hpp"
 #include "EnemyController.hpp"
@@ -58,10 +54,10 @@ std::int32_t Player::update_main_frame() {
                 set_secondary_option_field_fc(1);
             }
         }
-        // Original preserves the otherwise ignored equals(8) E8 before
-        // checking the 16-frame endpoint. Both calls share the native
-        // Timer statement/EH boundary without an extra compiler NOP.
-        if (timer_2070.equals(8); timer_2070.at_least(16)) {
+        // The native equals(8) call has no following action. Keep its
+        // empty condition separate from the 16-frame endpoint check.
+        if (timer_2070.equals(8)) {}
+        if (timer_2070.at_least(16)) {
             clear_option_animations();
             set_movement_mode(0);
         } else goto finish_normal_movement;

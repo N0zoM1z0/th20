@@ -1,5 +1,9 @@
 # Control flow and registers in the Player main frame
 
+**Superseded main-frame status:** the complete 3,111B method is now
+[whole strict exact](PLAYER_MAIN3111_STRICT_EXACT.md). The audit below records
+the earlier 3,114B candidate and useful rejected controls.
+
 Every internal branch in the current Player main frame targets the same
 instruction ordinal as the original; all EBP/ESP memory operands also agree. Its remaining ordinary
 instruction differences are confined to EAX/ECX/EDX-family register encodings.

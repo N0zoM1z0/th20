@@ -22,27 +22,28 @@ config/functions.csv and config/function-origins.csv. Read the current counts wi
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`.
 The README SVG is generated from those same ledgers by `scripts/progress.py`.
 
-## Current work — exact Player movement
+## Current work — exact Player main frame
 
-The complete 555B/135-instruction `Player::apply_move_delta` at `0x004FFA10`
-now strictly matches, including all 17 REL32 and ten DIR32 fields. C++14
-mode, direct upper-bound assignment and two real world-coordinate values
-recover the native lifetimes. See [the complete proof and controls](PLAYER_MOVEMENT555_STRICT_EXACT.md).
+The complete 3,111B/783-instruction `Player::update_main_frame` at
+`0x004F9C30` now strictly matches, including all 67 calls and 37 data fields.
+An empty Timer comparison, separate from the 16-frame endpoint check,
+restores the native register sequence under C++20. See
+[the complete proof and compiler controls](PLAYER_MAIN3111_STRICT_EXACT.md).
 
-**Replay scope: 92/92 units from 37 fresh providers.** Removing the unneeded
-AnimationFile definition from Player.hpp expands the captured closure to
-91 existing units; all pass. Two score units were routed to their existing
-SessionScore.cpp owner after the cold build exposed obsolete routing.
-Current products are in `build/gpt61-player-movement-canonical/`; preserve
-all former objects/receipts and `.analysis/player-movement555-session/`.
+**Replay scope: one unit from one fresh provider.** No shared header or
+Timer ABI changed. Current products are in
+`build/gpt61-player-main-canonical/`; preserve the older main-frame probes
+and `.analysis/player-main3111-language/`. The direction-table checker passes
+its 72B/37-field check and rejects the old parent and a wrong table value.
 The README SVG is regenerated from the updated canonical ledgers.
 
-The 3,111B Player main frame remains NONEXACT at 3,114B/783 instructions.
-Its [complete branch/frame/register audit](PLAYER_MAIN_3111_CFG_AND_REGISTER_CONTROLS.md)
-remains the constraint for next work: test the newly established language-mode
-hypothesis privately, retaining the verified Timer bool ABI. Reuse prior
-expression/API/definition controls. The known nonexact Player/WeaponStone
-consumers are checked against their complete retained objects.
+The [555B movement child](PLAYER_MOVEMENT555_STRICT_EXACT.md) remains exact
+with its separate C++14 profile. Keep its products in
+`build/gpt61-player-movement-canonical/` and its earlier scope evidence.
+
+Next review the unclassified 4,043B caller at `0x004F7430` through the attested
+Ghidra workflow. Reconcile its full control flow and boundaries before naming
+or implementing it.
 
 The [294B text-submit cleanup](ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md)
 remains at a 292B NONEXACT parent with two exact EH units under

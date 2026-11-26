@@ -79,12 +79,12 @@ def main() -> None:
     parser.add_argument(
         "--data-object",
         type=Path,
-        default=ROOT / "build/core729-probes/PlayerDirectionTable-production.obj",
+        default=ROOT / "build/gpt61-player-main-probe/PlayerDirectionTable.obj",
     )
     parser.add_argument(
         "--player-object",
         type=Path,
-        default=ROOT / "build/core729-probes/PlayerMainFrame.obj",
+        default=ROOT / "build/gpt61-player-main-canonical/PlayerMainFrame.obj",
     )
     args = parser.parse_args()
 
@@ -105,7 +105,7 @@ def main() -> None:
     ] == expected_pairs
 
     main_code, relocations = checker["object_function"](
-        args.player_object, PLAYER_SYMBOL, 3114
+        args.player_object, PLAYER_SYMBOL, 3111
     )
     native_code = checker["pe_bytes_at"](pe, PE_PLAYER_ADDRESS, 3111)
     disassembler = Cs(CS_ARCH_X86, CS_MODE_32)
@@ -175,8 +175,8 @@ def main() -> None:
         "2 real table fields, 1 original 7-byte effect literal"
     )
     print(
-        "Parent remains NONEXACT: original 3111B/783 instructions, "
-        "compiled 3114B/783, original 67 E8/37 PE HIGHLOW fields"
+        "Data roles checked for the 3111B/783-instruction body; "
+        "full exactness requires canonical player_update_main_frame_3111 replay"
     )
 
 
