@@ -27691,7 +27691,7 @@ relocations = [
 # CORE/RECON-1075: complete original game-owned 254B i386 queue dispatcher.
 [units.glyph_text_queue_pump_254]
 source = "src/GlyphTextQueuePump254.cpp"
-object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::glyph_task_pump_416140"]
 symbol = "?glyph_task_pump_416140@th20@@YAXXZ"
@@ -27726,7 +27726,7 @@ relocations = [
 # CORE/RECON-1076: genuine whole original 23B glyph queue STL child.
 [units.glyph_queue_func_default_ctor_23]
 source = "src/GlyphTextQueuePump254.cpp"
-object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::function<void()>::function"]
 symbol = "??0?$function@$$A6AXXZ@std@@QAE@XZ"
@@ -27739,7 +27739,7 @@ relocations = [
 # CORE/RECON-1076: genuine whole original 22B glyph queue STL child.
 [units.glyph_queue_list_front_22]
 source = "src/GlyphTextQueuePump254.cpp"
-object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::list<GlyphTask>::front"]
 symbol = "?front@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QAEAAV?$function@$$A6AXXZ@2@XZ"
@@ -27751,7 +27751,7 @@ relocations = [
 # CORE/RECON-1076: genuine whole original 60B glyph queue STL child.
 [units.glyph_queue_func_copy_assign_60]
 source = "src/GlyphTextQueuePump254.cpp"
-object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::function<void()>::copy_assign"]
 symbol = "??4?$function@$$A6AXXZ@std@@QAEAAV01@ABV01@@Z"
@@ -27766,7 +27766,7 @@ relocations = [
 # CORE/RECON-1076: genuine whole original 63B glyph queue STL child.
 [units.glyph_queue_list_begin_63]
 source = "src/GlyphTextQueuePump254.cpp"
-object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::list<GlyphTask>::begin"]
 symbol = "?begin@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QAE?AV?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@2@XZ"
@@ -27780,7 +27780,7 @@ relocations = [
 # CORE/RECON-1076: genuine whole original 93B glyph queue STL child.
 [units.glyph_queue_list_erase_93]
 source = "src/GlyphTextQueuePump254.cpp"
-object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::list<GlyphTask>::erase"]
 symbol = "?erase@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QAE?AV?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@2@V?$_List_const_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@2@@Z"
@@ -27796,7 +27796,7 @@ relocations = [
 # CORE/RECON-1076: genuine whole original 33B glyph queue STL child.
 [units.glyph_queue_list_iterator_ctor_33]
 source = "src/GlyphTextQueuePump254.cpp"
-object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_List_iterator<GlyphTask>::constructor"]
 symbol = "??0?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@std@@QAE@PAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@1@PBV?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@1@@Z"
@@ -27809,7 +27809,7 @@ relocations = [
 # CORE/RECON-1076: genuine whole original 70B glyph queue STL child.
 [units.glyph_queue_list_unlinknode_70]
 source = "src/GlyphTextQueuePump254.cpp"
-object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_List_val<GlyphTask>::_Unlinknode"]
 symbol = "?_Unlinknode@?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@QAEPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@2@PAU32@@Z"
@@ -27822,7 +27822,7 @@ relocations = [
 # CORE/RECON-1076: genuine whole original 44B glyph queue STL child.
 [units.glyph_queue_list_make_iter_44]
 source = "src/GlyphTextQueuePump254.cpp"
-object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::list<GlyphTask>::_Make_iter"]
 symbol = "?_Make_iter@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QBE?AV?$_List_iterator@V?$_List_val@U?$_List_simple_types@V?$function@$$A6AXXZ@std@@@std@@@std@@@2@PAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@2@@Z"
@@ -27836,7 +27836,7 @@ relocations = [
 # CORE/RECON-1076: genuine whole original 26B glyph queue STL child.
 [units.glyph_queue_func_swap_26]
 source = "src/GlyphTextQueuePump254.cpp"
-object = "build/core1075-canonical/GlyphTextQueuePump254.obj"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::function<void()>::swap"]
 symbol = "?swap@?$function@$$A6AXXZ@std@@QAEXAAV12@@Z"
@@ -33501,4 +33501,123 @@ relocations = [
   { offset = 0x12, type = "REL32", symbol = "??2@YAPAXIPAX@Z", target = 0x0040E700 },
   { offset = 0x21, type = "REL32", symbol = "??$forward@$$QAV?$function@$$A6AXXZ@std@@@std@@YA$$QAV?$function@$$A6AXXZ@0@AAV10@@Z", target = 0x0040B280 },
   { offset = 0x33, type = "REL32", symbol = "??0?$function@$$A6AXXZ@std@@QAE@$$QAV01@@Z", target = 0x004140C0 },
+]
+
+# Complete function movement/swap protocol; docs/GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md.
+[units.glyph_queue_func_class_swap_188]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_class<void>::_Swap"]
+symbol = "?_Swap@?$_Func_class@X$$V@std@@IAEXAAV12@@Z"
+target_address = 0x00414C80
+size = 188
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x17, type = "REL32", symbol = "?_Local@?$_Func_class@X$$V@std@@ABE_NXZ", target = 0x00414AF0 },
+  { offset = 0x26, type = "REL32", symbol = "?_Local@?$_Func_class@X$$V@std@@ABE_NXZ", target = 0x00414AF0 },
+  { offset = 0x35, type = "REL32", symbol = "?_Getimpl@?$_Func_class@X$$V@std@@ABEPAV?$_Func_base@X$$V@2@XZ", target = 0x00414AD0 },
+  { offset = 0x40, type = "REL32", symbol = "?_Getimpl@?$_Func_class@X$$V@std@@ABEPAV?$_Func_base@X$$V@2@XZ", target = 0x00414AD0 },
+  { offset = 0x49, type = "REL32", symbol = "?_Set@?$_Func_class@X$$V@std@@AAEXPAV?$_Func_base@X$$V@2@@Z", target = 0x00414C60 },
+  { offset = 0x55, type = "REL32", symbol = "?_Set@?$_Func_class@X$$V@std@@AAEXPAV?$_Func_base@X$$V@2@@Z", target = 0x00414C60 },
+  { offset = 0x60, type = "REL32", symbol = "??0?$_Func_class@X$$V@std@@QAE@XZ", target = 0x00413F80 },
+  { offset = 0x69, type = "REL32", symbol = "??$move@AAV?$_Func_class@X$$V@std@@@std@@YA$$QAV?$_Func_class@X$$V@0@AAV10@@Z", target = 0x0040B280 },
+  { offset = 0x75, type = "REL32", symbol = "?_Reset_move@?$_Func_class@X$$V@std@@IAEX$$QAV12@@Z", target = 0x00414BE0 },
+  { offset = 0x7E, type = "REL32", symbol = "??$move@AAV?$_Func_class@X$$V@std@@@std@@YA$$QAV?$_Func_class@X$$V@0@AAV10@@Z", target = 0x0040B280 },
+  { offset = 0x8A, type = "REL32", symbol = "?_Reset_move@?$_Func_class@X$$V@std@@IAEX$$QAV12@@Z", target = 0x00414BE0 },
+  { offset = 0x93, type = "REL32", symbol = "??$move@AAV?$_Func_class@X$$V@std@@@std@@YA$$QAV?$_Func_class@X$$V@0@AAV10@@Z", target = 0x0040B280 },
+  { offset = 0x9F, type = "REL32", symbol = "?_Reset_move@?$_Func_class@X$$V@std@@IAEX$$QAV12@@Z", target = 0x00414BE0 },
+  { offset = 0xA7, type = "REL32", symbol = "??1?$_Func_class@X$$V@std@@QAE@XZ", target = 0x00414310 },
+  { offset = 0xB2, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# Complete function movement/swap protocol; docs/GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md.
+[units.glyph_queue_func_move_ctor_46]
+source = "src/GlyphTaskAllocatorConstruct.cpp"
+object = "build/gpt61-glyph-apply-canonical/GlyphTaskAllocatorConstruct.obj"
+profile = ["/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::function<void()>::function(std::function<void()>&&)"]
+symbol = "??0?$function@$$A6AXXZ@std@@QAE@$$QAV01@@Z"
+target_address = 0x004140C0
+size = 46
+relocations = [
+  { offset = 0xB, type = "REL32", symbol = "??0?$_Func_class@X$$V@std@@QAE@XZ", target = 0x00413F80 },
+  { offset = 0x14, type = "REL32", symbol = "??$move@AAV?$function@$$A6AXXZ@std@@@std@@YA$$QAV?$function@$$A6AXXZ@0@AAV10@@Z", target = 0x0040B280 },
+  { offset = 0x20, type = "REL32", symbol = "?_Reset_move@?$_Func_class@X$$V@std@@IAEX$$QAV12@@Z", target = 0x00414BE0 },
+]
+
+# Complete function movement/swap protocol; docs/GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md.
+[units.glyph_queue_func_reset_move_125]
+source = "src/GlyphTaskAllocatorConstruct.cpp"
+object = "build/gpt61-glyph-apply-canonical/GlyphTaskAllocatorConstruct.obj"
+profile = ["/std:c++17", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Func_class<void>::_Reset_move"]
+symbol = "?_Reset_move@?$_Func_class@X$$V@std@@IAEX$$QAV12@@Z"
+target_address = 0x00414BE0
+size = 125
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?_Empty@?$_Func_class@X$$V@std@@IBE_NXZ", target = 0x00414A80 },
+  { offset = 0x1C, type = "REL32", symbol = "?_Local@?$_Func_class@X$$V@std@@ABE_NXZ", target = 0x00414AF0 },
+  { offset = 0x2B, type = "REL32", symbol = "?_Getimpl@?$_Func_class@X$$V@std@@ABEPAV?$_Func_base@X$$V@2@XZ", target = 0x00414AD0 },
+  { offset = 0x4C, type = "REL32", symbol = "?_Set@?$_Func_class@X$$V@std@@AAEXPAV?$_Func_base@X$$V@2@@Z", target = 0x00414C60 },
+  { offset = 0x54, type = "REL32", symbol = "?_Tidy@?$_Func_class@X$$V@std@@IAEXXZ", target = 0x00414D50 },
+  { offset = 0x5F, type = "REL32", symbol = "?_Getimpl@?$_Func_class@X$$V@std@@ABEPAV?$_Func_base@X$$V@2@XZ", target = 0x00414AD0 },
+  { offset = 0x68, type = "REL32", symbol = "?_Set@?$_Func_class@X$$V@std@@AAEXPAV?$_Func_base@X$$V@2@@Z", target = 0x00414C60 },
+  { offset = 0x72, type = "REL32", symbol = "?_Set@?$_Func_class@X$$V@std@@AAEXPAV?$_Func_base@X$$V@2@@Z", target = 0x00414C60 },
+]
+
+# Complete function movement/swap protocol; docs/GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md.
+[units.glyph_queue_pump_unwind_0]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::glyph_task_pump_416140::unwind_0"]
+symbol = "__unwindfunclet$?glyph_task_pump_416140@th20@@YAXXZ$0"
+target_address = 0x00567E10
+size = 8
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+]
+
+# Complete function movement/swap protocol; docs/GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md.
+[units.glyph_queue_pump_unwind_1]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::glyph_task_pump_416140::unwind_1"]
+symbol = "__unwindfunclet$?glyph_task_pump_416140@th20@@YAXXZ$1"
+target_address = 0x00567E18
+size = 8
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+]
+
+# Complete function movement/swap protocol; docs/GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md.
+[units.glyph_queue_pump_unwind_2]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::glyph_task_pump_416140::unwind_2"]
+symbol = "__unwindfunclet$?glyph_task_pump_416140@th20@@YAXXZ$2"
+target_address = 0x00567E20
+size = 8
+compare_size = 13
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
+]
+
+# Complete function movement/swap protocol; docs/GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md.
+[units.glyph_queue_pump_eh_handler_39]
+source = "src/GlyphTextQueuePump254.cpp"
+object = "build/gpt61-function-move-canonical/GlyphTextQueuePump254.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::glyph_task_pump_416140::eh_handler"]
+symbol = "__ehhandler$?glyph_task_pump_416140@th20@@YAXXZ"
+target_address = 0x00567E2D
+size = 39
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x19, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x1E, type = "DIR32", symbol = "__ehfuncinfo$?glyph_task_pump_416140@th20@@YAXXZ", target = 0x005A98E4 },
+  { offset = 0x23, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
 ]

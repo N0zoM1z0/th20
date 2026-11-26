@@ -22,27 +22,25 @@ config/functions.csv and config/function-origins.csv. Read the current counts wi
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`.
 The README SVG is generated from those same ledgers by `scripts/progress.py`.
 
-## Current work — exact glyph task allocator application
+## Current work — exact function movement and swap
 
-The task allocator's complete 78B `apply`, 65B `_Apply_impl`, 17B `invoke`
-and 61B construction lambda now strictly replay. A C++17 construction owner
-preserves native forwarding and empty index-sequence passing; the list retains
-its C++20 profile. See [the focused proof](GLYPH_QUEUE_APPLY_STRICT_EXACT.md)
-and [the preceding insertion/EH proof](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md).
+The complete 188B function-base swap, 125B move reset and 46B function move
+constructor now strictly replay. One out-of-line `std::move` instance restores
+the swap's three missing calls. The queue pump's full 68B EH contribution and
+60B three-state metadata also match. See [the movement/swap proof](GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md).
 
-**Replay scope: twenty-two units from two fresh providers**, retaining all
-eighteen previous matches. The new allocator declaration is captured only by
-these two providers: seventeen list units and five allocator units. Objects
-and receipts are under `build/gpt61-glyph-apply-canonical/`. Preserve the
-previous `gpt61-glyph-queue-canonical` and `core1061-canonical` products and
-useful private evidence in `.analysis/glyph-apply-session/` and
-`.analysis/glyph-queue151-session/`. Owned node/guard EH code and all44B/36B
-metadata remain exact. Library support adds no authored-game exact credit.
+**Replay scope: twenty-two units from two providers**, retaining all fifteen
+prior matches. Only the pump source changed; no shared header changed. Its
+fifteen units use one fresh object in `build/gpt61-function-move-canonical/`.
+The unchanged allocator object/receipt in `build/gpt61-glyph-apply-canonical/`
+are re-attested and reused for seven units. Preserve `core1075-canonical`
+and useful private evidence in `.analysis/glyph-function-move-session/`.
+These library/compiler matches add no authored-game credit.
 
-Next useful work is the function move/reset protocol at `0x004140C0` and
-`0x00414BE0`. The full 46B move body already matches as supporting evidence;
-its inherited Ghidra `shared_ptr` annotation is misleading. The 294B submit
-and 578B/586B formatting callers remain independent frontiers.
+The [allocator application](GLYPH_QUEUE_APPLY_STRICT_EXACT.md) and
+[insertion/EH](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md) matches remain intact.
+Next useful work is the game-owned 294B text submission method at `0x0044FFF0`. The 578B/586B
+formatting callers remain independent frontiers.
 
 ## Latest checkpoint — exact GDI glyph text core
 

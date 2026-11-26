@@ -86,3 +86,8 @@ SOURCE-PRESENT, NONEXACT with its physical original SHA and complete
 15-E8/one-HIGHLOW graph independently recorded. It receives no
 original exact credit; the 26B wrapper, 60B assignment and native
 254B TH20 queue pump stay separately whole exact.
+
+The [movement/swap checkpoint](GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md)
+now closes the 188B swap and its move/reset support. The missing folded
+calls come from `std::move`, retained by one local explicit instantiation;
+the historical 161B frontier above is superseded.

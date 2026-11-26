@@ -86,7 +86,8 @@ Private evidence is in `.analysis/glyph-apply-session/`: `native.c`,
 `verifier-controls.txt`. The constructor, guard and PMR descendant checkers
 also pass. Earlier compiler controls remain useful in the linked mask note.
 
-The function-move/reset support is a useful next bounded scope. The 294B
+The function-move/reset support is now accepted by the
+[movement/swap checkpoint](GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md). The 294B
 queue submit and 578B/586B formatting frontiers remain open. This local
 partition is reproducible; the original game's global language mode and
 translation-unit partition are still unknown.

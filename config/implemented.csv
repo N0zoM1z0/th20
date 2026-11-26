@@ -1859,3 +1859,10 @@ std::_List_node_emplace_op2<GlyphTaskNode>::dtor_eh_handler
 "std::_Apply_impl<GlyphTaskConstructLambda, GlyphTaskArguments>"
 std::invoke<GlyphTaskConstructLambda>
 std::pmr::polymorphic_allocator<GlyphTaskNode>::construct::lambda::operator()
+std::_Func_class<void>::_Swap
+std::function<void()>::function(std::function<void()>&&)
+std::_Func_class<void>::_Reset_move
+th20::glyph_task_pump_416140::unwind_0
+th20::glyph_task_pump_416140::unwind_1
+th20::glyph_task_pump_416140::unwind_2
+th20::glyph_task_pump_416140::eh_handler

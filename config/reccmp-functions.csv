@@ -1865,3 +1865,9 @@ std::_List_node_emplace_op2<GlyphTaskNode>::dtor_eh_handler,0x00567750,function
 "std::_Apply_impl<GlyphTaskConstructLambda, GlyphTaskArguments>",0x00413190,function
 std::invoke<GlyphTaskConstructLambda>,0x00413D30,function
 std::pmr::polymorphic_allocator<GlyphTaskNode>::construct::lambda::operator(),0x004130E0,function
+std::function<void()>::function(std::function<void()>&&),0x004140C0,function
+std::_Func_class<void>::_Reset_move,0x00414BE0,function
+th20::glyph_task_pump_416140::unwind_0,0x00567E10,function
+th20::glyph_task_pump_416140::unwind_1,0x00567E18,function
+th20::glyph_task_pump_416140::unwind_2,0x00567E20,function
+th20::glyph_task_pump_416140::eh_handler,0x00567E2D,function

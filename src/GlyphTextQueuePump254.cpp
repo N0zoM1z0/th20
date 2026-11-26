@@ -3,12 +3,12 @@
 // std::list::_Empty call), two game-owned recursive lock slots 0x12/0x13,
 // an owned 40-byte std::function copy, erase(begin()) and invocation while
 // both original locks remain held. These are live game task operations.
-// The nested 188B std::_Func_class::_Swap is real source-present library
-// code but NONEXACT under current MSVC STL (161B lacking three original
-// std::_Unfancy pointer-forwarding E8), separate from this exact Boss.
 #include "NativeGlyphTaskQueue.hpp"
 #include "LockRegistry.hpp"
 #include <mutex>
+// Retain the observed out-of-line base-function moves during three-way swap.
+template __declspec(noinline) std::_Func_class<void>&&
+std::move<std::_Func_class<void>&>(std::_Func_class<void>&) noexcept;
 namespace th20 {
 void glyph_task_pump_416140() {
     if (native_glyph_task_queue_5b66e0.size()!=0) {

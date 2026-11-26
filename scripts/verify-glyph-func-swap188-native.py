@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
-"""Original whole 188B std::_Func_class<void>::_Swap and 161B source frontier.
-
-Native original triple std::_Unfancy E8 are not in the installed MSVC
-STL body. This script explicitly refuses whole parent exact credit.
-"""
-import difflib,hashlib,importlib.util,struct,subprocess,sys
+"""Verify whole native function movement/swap and queue-pump EH ownership."""
+import hashlib,importlib.util,re,struct,subprocess,sys
 from pathlib import Path
 from capstone import Cs,CS_ARCH_X86,CS_MODE_32
 ROOT=Path(__file__).resolve().parents[1]
@@ -27,6 +23,50 @@ PREFIX='?_Swap@?$_Func_class@X$$V@std@@'
 def calls(ins,head):
  return {i.address-head:(i.address+5+struct.unpack_from('<i',i.bytes,1)[0])&0xFFFFFFFF
          for i in ins if i.size==5 and i.bytes[0]==0xE8}
+def verify_move_forward(obj,im,base,sec,manifest):
+ unit=manifest['glyph_queue_func_class_swap_188']
+ _,rows=cm.object_function(obj,unit['symbol'],188)
+ moves=[r for r in rows if r['symbol'].startswith('??$move@AAV?$_Func_class@')]
+ assert [r['offset'] for r in moves]==[0x69,0x7E,0x93]
+ assert len({r['symbol'] for r in moves})==1
+ body,relocations=cm.object_function(obj,moves[0]['symbol'],8)
+ assert not relocations and body==pe.raw_at(im,base,sec,0x0040B280,8)
+ print('PASS actual out-of-line std::move<_Func_class<void>&> identity at all three swap sites')
+
+def verify_pump_eh(obj,im,base,sec):
+ symbol='?glyph_task_pump_416140@th20@@YAXXZ'
+ raw=obj.read_bytes();symbols=subprocess.check_output(['objdump','-t',str(obj)],text=True).splitlines()
+ row=next(s for s in symbols if s.endswith(' __ehfuncinfo$'+symbol))
+ m=re.search(r'\(sec\s+(\d+)\).*?\) (0x[0-9a-fA-F]+) ',row)
+ assert m and int(m[2],16)==24
+ sh=20+40*(int(m[1])-1);size,offset,reloc=struct.unpack_from('<III',raw,sh+16)
+ assert (size,struct.unpack_from('<H',raw,sh+32)[0])==(60,4)
+ data=bytearray(raw[offset:offset+size])
+ symoff,count=struct.unpack_from('<II',raw,8);strings=raw[symoff+count*18:]
+ expected=[(4,0x00567E10,'__unwindfunclet$'+symbol+'$0'),
+           (12,0x00567E18,'__unwindfunclet$'+symbol+'$1'),
+           (20,0x00567E20,'__unwindfunclet$'+symbol+'$2'),
+           (32,0x005A98CC,'__unwindtable$'+symbol)]
+ for i,(field,target,name) in enumerate(expected):
+  actual,index,kind=struct.unpack_from('<IIH',raw,reloc+10*i)
+  observed=cm.coff_name(raw[symoff+18*index:][:8],strings)
+  assert (actual,kind,observed)==(field,6,name) and struct.unpack_from('<I',data,field)[0]==0
+  struct.pack_into('<I',data,field,target)
+ # The cleanup owner follows the previously pinned 0x567E2D handler.
+ # Locate its complete metadata independently, excluding the map self-pointer.
+ hits=[]
+ for name,_,rva,length,off in sec:
+  if name!=b'.rdata':continue
+  area,start=im[off:off+length],0
+  while (start:=area.find(data[:24],start))>=0:
+   if all(area[start+i]==b for i,b in enumerate(data) if not 32<=i<36):hits.append(base+rva+start)
+   start+=1
+ assert hits==[0x005A98CC]
+ assert data==pe.raw_at(im,base,sec,0x005A98CC,60)
+ high={p-0x005A98CC for p in pe.physical_highlow(im,base,sec) if 0x005A98CC<=p<0x005A9908}
+ assert high=={4,12,20,32}
+ print('PASS complete 60B queue-pump metadata, three unwind actions and four physical DIR32 fields')
+
 def verify():
  im,_=pe.verified_target();base,sec=pe.parse_sections(im)
  original=pe.raw_at(im,base,sec,HEAD,188)
@@ -42,34 +82,30 @@ def verify():
  assert hashlib.sha256(p).hexdigest()==PARENT_SHA
  pi=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(p,PARENT))
  assert len(pi)==12 and calls(pi,PARENT)[0x0E]==HEAD
- obj=ROOT/'build/core1075-canonical/GlyphTextQueuePump254.obj'
- syms=subprocess.run(['strings',str(obj)],capture_output=True,text=True,check=True).stdout.splitlines()
- sym=next(x for x in syms if x.startswith(PREFIX))
- candidate,rel=cm.object_function(obj,sym,161)
- ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(candidate,0))
- assert len(candidate)==161 and len(ci)==54
- assert sum(x['type']=='REL32' for x in rel)==12
- assert sum(x['type']=='DIR32' for x in rel)==1
- assert all(x['addend']==0 for x in rel)
- extra=[x for x in ni if x.size==5 and x.bytes[0]==0xE8 and
-        (x.address-HEAD) in (0x68,0x7D,0x92)]
- assert len(extra)==3 and all(calls(ni,HEAD)[x.address-HEAD]==0x0040B280 for x in extra)
- # The 27 real extra bytes are exactly the three original live
- # std::_Unfancy calls with return-pointer stack cleanup/re-push.
- diff=[x for x in difflib.SequenceMatcher(None,[i.mnemonic for i in ci],
-         [i.mnemonic for i in ni],autojunk=False).get_opcodes() if x[0]!='equal']
- assert [(x[0],x[2]-x[1],x[4]-x[3]) for x in diff]==[('insert',0,3)]*3
- for code,_,_,lo,hi in diff:
-  assert [i.mnemonic for i in ni[lo:hi]] in (['call','add','push'],['push','call','add'])
- for site in (0x68,0x7D,0x92):
-  offset=site
-  assert offset in CALLS and CALLS[offset]==0x0040B280
- assert cm.compare_unit('glyph_queue_func_swap_26')['result']=='exact'
- assert cm.compare_unit('glyph_queue_func_copy_assign_60')['result']=='exact'
- assert cm.compare_unit('glyph_text_queue_pump_254')['result']=='exact'
- print('PASS original whole 188B/63-i386 generic std::_Func_class<void>::_Swap, all 15 native E8 and one native PE HIGHLOW')
- print('PASS actual original 26B std::function::swap parent E8 +0x0E into this 188B physical native head')
- print('NONEXACT: full natural C++20 source _Swap is 161B/54 i386, 12 E8/one DIR32')
- print('SOURCE DIFF: exactly 3 additional original live E8 std::_Unfancy(0x40B280) with stack cleanup/operand forwarding, 9B/3 instructions each')
- print('No 188B exact unit or game-authored credit, prior original 26B wrapper and 60B assign remain independently strict exact')
+ manifest=cm.load_manifest('match-units.toml')['units']
+ obj=ROOT/manifest['glyph_queue_func_class_swap_188']['object']
+ verify_move_forward(obj,im,base,sec,manifest)
+ verify_pump_eh(obj,im,base,sec)
+ for name,head,size,count,sha,edges in [
+  ('glyph_queue_func_move_ctor_46',0x004140C0,46,18,'56a11a2c04ab37a80184f042adaff7918280e0c243bfe65ca3795c2f9946fe8c',
+   {0x0A:0x00413F80,0x13:0x0040B280,0x1F:0x00414BE0}),
+  ('glyph_queue_func_reset_move_125',0x00414BE0,125,44,'7ce39dfeb58413ed98a6f39ce1b046753e25178ef98d2b74704e98431b7a70a6',
+   {0x0C:0x00414A80,0x1B:0x00414AF0,0x2A:0x00414AD0,0x4B:0x00414C60,
+    0x53:0x00414D50,0x5E:0x00414AD0,0x67:0x00414C60,0x71:0x00414C60})]:
+  body=pe.raw_at(im,base,sec,head,size)
+  assert hashlib.sha256(body).hexdigest()==sha
+  inst=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(body,head))
+  assert len(inst)==count and inst[-1].address+inst[-1].size==head+size
+  assert (inst[-1].mnemonic,inst[-1].op_str)==('ret','4')
+  assert calls(inst,head)==edges
+  assert not any(head<=p<head+size for p in pe.physical_highlow(im,base,sec))
+  print(f'PASS complete native {name}: {size}B/{count} instructions, all {len(edges)} direct calls')
+ sources={'src/GlyphTextQueuePump254.cpp','src/GlyphTaskAllocatorConstruct.cpp'}
+ names=[name for name,u in manifest.items() if u['source'] in sources]
+ for name in names:
+  result=cm.compare_unit(name)
+  assert result['result']=='exact' and result['matched_compared_bytes']==result['compared_size'],name
+ print('PASS complete 188B/63-instruction swap, fifteen calls and security-cookie field')
+ print('PASS complete 68B pump EH code including five INT3 tail bytes, with double-cookie handler')
+ print(f'PASS {len(names)} scoped canonical units from two providers; no new authored-game credit')
 if __name__=='__main__':verify()
