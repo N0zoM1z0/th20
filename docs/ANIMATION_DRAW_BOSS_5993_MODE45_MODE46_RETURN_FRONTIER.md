@@ -527,3 +527,59 @@ addss. Mode46 likewise emits memory-source adjusted-scale subtraction. The
 candidate-only report separates these scale operations from the later width
 operations, so mode46's width subss xmm1,xmm0 is not misreported as its
 adjusted-scale subtraction. No opcode or padding is introduced.
+
+
+## 2026-11-26: reconcile live source and enforce compiled half-height order
+
+The live source at checkpoint `fc41bb4` still used the width-half role swap
+in modes45/46, despite the earlier note saying it had been removed. A fresh
+build produced **5,993B / 1,502 instructions**, 114/123 E8 positions, 44B
+aggregate E8 displacement and 27/32 HIGHLOW site/target pairs. Its full COFF
+contribution was 6,316B with 4,841/5,376 ordinary bytes matching. Those are
+measurements of the actual old source, not the 5,989B candidate described in
+that earlier note.
+
+Both maintained cases now explicitly compute the scale half before the
+inherited-scale getter and recompute the width half afterwards in the renderer
+argument list. Mode46 preserves getter-minus-half and width-minus-half operand
+order. The corrected source builds to **5,989B / 1,501 instructions**, a
+6,312B code/table contribution, all 123 call roles, 109 aligned E8 positions,
+68B total E8 displacement and 26/32 exact HIGHLOW pairs. It matches
+4,694/5,372 ordinary bytes. The native body/contribution is 5,993B/6,316B;
+the candidate remains NONEXACT, with no new exact credit.
+
+The verifier formerly accepted the equivalent pure-expression role swap and
+then unconditionally required that same source spelling. It now locates the
+four modes' real scale-getter calls by their independent native call sequence
+and checks the compiled instructions: exactly one division before the getter,
+exactly one afterwards, with adjusted-scale arithmetic before that second
+division. Original and corrected candidate pass. The retained old source is
+rejected at native getter +0x15DD; a separate mode46-only role swap is rejected
+at +0x16BC. This checks executable evaluation order rather than comments or
+variable names.
+
+C++17 does not resolve the floating-point frontier in the tested configuration.
+A direct C++17 build fails because the current include closure contains
+`std::jthread` and C++20 bit-field initializers. A private probe uses the real
+incomplete Graphics type (the dispatcher only takes its address) and a copy of
+WindowState with only unused default bit-field initializers removed. No public
+header changes. For both old and corrected Draw sources, the entire emitted
+code/table bytes are identical between those private C++17 probes and their
+C++20 counterparts; relocation positions/types also agree. The private views
+are compiler experiments, not alternative maintained object layouts.
+
+A direct scalar-expression variant, with separate post-getter width arithmetic
+but no named scale-half local, produces 5,965B/1,499 instructions, 108/123 E8
+positions and 206B total E8 displacement. It does not close the parent and is
+not promoted. Earlier first-result-local, intrinsic and role-swap failures
+remain useful; no write-only source local is added for the native x87 stores.
+
+Evidence is retained under `.analysis/draw-boss-session/`: native Ghidra listing
+`draw-mode45-46-live-native.txt`, the pre-correction source and object,
+`draw-restored-order-source-proof.txt`, `draw-restored-order-native-proof.txt`,
+`draw-restored-order-report.txt`, and the C++17/negative-control probes.
+Validation compiled only the changed Draw owner and compared its entire code
+and both 49+31-entry switch-table contributions. No shared header changed and
+no canonical exact unit uses this source, so **exact replay scope is zero**;
+unchanged child evidence is retained. The next problem remains native scalar
+operand/temporary lowering in modes35/36/45/46, not language-mode selection.

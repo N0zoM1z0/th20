@@ -70,13 +70,24 @@ provenance for the 244B dispatcher remains unknown. See
 ## Active Boss — Animation main Draw
 
 The 5,993B `AnimationPoolOwner::draw` at `0x00443880` remains SOURCE-PRESENT,
-NONEXACT. The maintained 5,989B/1,501-i386 C++ candidate preserves all 123
-ordered E8 target roles and both native switch tables; 109/123 physical E8
-positions and 26/32 body HIGHLOW site/target pairs match. Fourteen E8 offsets
-remain in modes35/36 and 45/46. The two native first-result x87 stores are
-write-only, so no dead local is added to the source. See the
-[current residual map](ANIMATION_DRAW_BOSS_5993_MODE35_MODE45_SITE_CONVERGENCE.md)
-and [mode35/36 experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md).
+NONEXACT. Modes45/46 now actually preserve the native phase order: scale half
+before the getter, adjusted scale after it, width half recomputed afterwards.
+The live pre-correction source had retained the role swap despite earlier
+handoff claims. Its new source verifier checks compiled division/arithmetic
+order and rejects independently compiled mode45 and mode46 role swaps.
+
+The current complete candidate is **5,989B/1,501 instructions**, with all 123
+ordered E8 roles, 109/123 E8 positions and 26/32 HIGHLOW site/target pairs.
+Both switch-table partitions (49+31 pointers) remain correct. Fourteen E8
+positions remain open in modes35/36/45/46; write-only x87 stores are not
+recreated with dead locals. Private C++17 and C++20 controls emit identical
+code/table bytes and do not solve that frontier.
+
+Validation scope: one changed NONEXACT source owner, complete 6,312B candidate
+versus 6,316B native code/table evidence; **zero canonical exact units replayed**.
+No shared header or accepted child source changed. See the
+[live-source reconciliation and compiler controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-reconcile-live-source-and-enforce-compiled-half-height-order)
+and [prior mode35/36 experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md).
 
 ## Latest checkpoint — StageResource selector and Enemy opcodes 622–626/631
 
