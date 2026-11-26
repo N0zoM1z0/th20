@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Complete original 2245B glyph vector insertion/growth/rollback parents.
 
-All five source-present STL template methods are full original PE pinned;
-natural C++20 member specializations now recover the 108B/140B/488B parent bodies byte-for-byte outside relocation fields; the 35B wrapper is 34B/14-i386 with one native NOP absent, and the 200B move parent now passes strict replay with its EH code/metadata.
+All five source-present STL template methods have complete native PE evidence.
+The 108B/140B/488B/200B backend functions strictly replay, including both
+EH protocols. The 35B wrapper is 34B/14-i386 with one native NOP absent.
 """
 import hashlib,importlib.util,subprocess,struct,sys
 from pathlib import Path
@@ -51,7 +52,7 @@ def verify():
   assert sum(x['type']=='REL32' for x in r)==ce
   assert sum(x['type']=='DIR32' for x in r)==cd
   assert all(x['addend']==0 for x in r)
-  status = 'STRICT EXACT' if label == 'uninitialized_move' else 'SOURCE-PRESENT NONEXACT'
+  status = 'SOURCE-PRESENT NONEXACT' if label == 'emplace_back' else 'STRICT EXACT'
   print(f'PASS original entire {label} at {head:#x}: {n}B/{nins} x86, {ecount} real E8/{hcount} HL; {status} {csize}B/{cins} x86, {ce} E8/{cd} DIR32')
  assert all(not(a&b) for i,a in enumerate(code.values()) for b in list(code.values())[i+1:])
  assert orig_calls['emplace_back']=={0x0B:0x0040B280,0x17:0x00413370}
@@ -69,8 +70,10 @@ def verify():
               'glyph_vec_orphan_range_13','glyph_vec_growth_change_array_165']:
   assert cm.compare_unit(unit)['result']=='exact'
  print('PASS whole original 2245B glyph Boss two E8 to 35B wrapper -> 108B one-at-back -> 140B no-growth or 488B reallocation ->200B uninitialized move')
- assert cm.compare_unit('glyph_uninitialized_move_200')['result']=='exact'
- print('PASS 200B move parent and eight representative PMR children exact; four insertion/growth parents remain NONEXACT, authored-game credit unchanged')
+ for unit in ['glyph_uninitialized_move_200','glyph_emplace_one_at_back_108',
+              'glyph_emplace_unused_capacity_140','glyph_emplace_reallocate_488']:
+  assert cm.compare_unit(unit)['result']=='exact'
+ print('PASS four complete insertion/growth/move backend functions and eight PMR children exact; public wrapper and game compositor remain NONEXACT')
  subprocess.run([sys.executable, str(ROOT/"scripts/verify-glyph-mask-emplace35-native.py"),
                  "--candidate-object", str(obj)], cwd=ROOT, check=True)
 if __name__=='__main__':verify()

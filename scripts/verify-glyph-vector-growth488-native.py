@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """Whole original 488B vector-growth Boss and its natural C++ PMR body.
 
-This checker NEVER declares the 488B parent strict exact. The maintained
-candidate now has the complete 488B/170-i386 body and all native E8 sites;
-relocation-normalized code bytes match, while strict target resolution and
-its independently accepted children remain separate checks.
+The complete 488B/170-i386 body now strictly replays with all 14 E8 calls,
+both HIGHLOW fields, and separately checked EH code and state metadata.
 """
 import argparse,hashlib,importlib.util,struct,sys
 from pathlib import Path
@@ -51,8 +49,10 @@ def verify(obj):
   candidate = obj if obj.is_absolute() else ROOT / obj
   subprocess.run([sys.executable, str(ROOT / "scripts/verify-glyph-mask-emplace35-native.py"),
                   "--candidate-object", str(candidate)], cwd=ROOT, check=True)
-  print('SOURCE-PRESENT NONEXACT: natural C++20 PMR _Emplace_reallocate generates 488B/170 i386, 14 E8/2 DIR32; all non-relocation bytes and E8 positions match native')
- print('Native entire 488B method has NO canonical strict match unit; game-authored and generic source credits unchanged')
+  print('PASS C++20 PMR growth protocol, complete EH support, and dependent child units')
+ report=cm.compare_unit('glyph_emplace_reallocate_488')
+ assert report['result']=='exact' and report['matched_bytes']==488
+ print('STRICT EXACT: complete 488B growth method with all relocations; source origin remains unknown')
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--candidate-object',type=Path)
  a=p.parse_args();verify(a.candidate_object)

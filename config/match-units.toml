@@ -32796,3 +32796,89 @@ relocations = [
   { offset = 0x1E, type = "DIR32", symbol = "__ehfuncinfo$??$_Uninitialized_move@PAV?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@YAPAV?$array@H$01@0@PAV10@00AAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@@Z", target = 0x005A9994 },
   { offset = 0x23, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
 ]
+
+# Glyph insertion/growth protocol with complete compiler-emitted EH support.
+[units.glyph_emplace_one_at_back_108]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<GlyphMaskOffset>::_Emplace_one_at_back"]
+symbol = "??$_Emplace_one_at_back@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEAAV?$array@H$01@1@ABV21@@Z"
+target_address = 0x00413370
+size = 108
+relocations = [
+  { offset = 0x2D, type = "REL32", symbol = "??$move@ABV?$array@H$01@std@@@std@@YA$$QBV?$array@H$01@0@ABV10@@Z", target = 0x0040B280 },
+  { offset = 0x39, type = "REL32", symbol = "??$_Emplace_back_with_unused_capacity@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEAAV?$array@H$01@1@ABV21@@Z", target = 0x004132E0 },
+  { offset = 0x44, type = "REL32", symbol = "??$move@ABV?$array@H$01@std@@@std@@YA$$QBV?$array@H$01@0@ABV10@@Z", target = 0x0040B280 },
+  { offset = 0x62, type = "REL32", symbol = "??$_Emplace_reallocate@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEPAV?$array@H$01@1@QAV21@ABV21@@Z", target = 0x004133E0 },
+]
+
+[units.glyph_emplace_unused_capacity_140]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<GlyphMaskOffset>::_Emplace_back_with_unused_capacity"]
+symbol = "??$_Emplace_back_with_unused_capacity@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEAAV?$array@H$01@1@ABV21@@Z"
+target_address = 0x004132E0
+size = 140
+relocations = [
+  { offset = 0x20, type = "REL32", symbol = "??$move@ABV?$array@H$01@std@@@std@@YA$$QBV?$array@H$01@0@ABV10@@Z", target = 0x0040B280 },
+  { offset = 0x31, type = "REL32", symbol = "??$_Unfancy@V?$array@H$01@std@@@std@@YAPAV?$array@H$01@0@PAV10@@Z", target = 0x0040B280 },
+  { offset = 0x3F, type = "REL32", symbol = "?_Getal@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEAAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0x53, type = "REL32", symbol = "?glyph_uninitialized_move_construct@th20@@YAXAAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@AAV?$array@H$01@4@ABV54@@Z", target = 0x00413A90 },
+  { offset = 0x6A, type = "REL32", symbol = "?_Orphan_range@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@ABEXPAV?$array@H$01@2@0@Z", target = 0x00414B60 },
+]
+
+[units.glyph_emplace_reallocate_488]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<GlyphMaskOffset>::_Emplace_reallocate"]
+symbol = "??$_Emplace_reallocate@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEPAV?$array@H$01@1@QAV21@ABV21@@Z"
+target_address = 0x004133E0
+size = 488
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??$_Emplace_reallocate@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEPAV?$array@H$01@1@QAV21@ABV21@@Z", target = 0x00567CED },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x2F, type = "REL32", symbol = "?_Getal@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEAAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0x70, type = "REL32", symbol = "?max_size@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QBEIXZ", target = 0x004162B0 },
+  { offset = 0x7A, type = "REL32", symbol = "?_Xlength@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@CAXXZ", target = 0x00414FE0 },
+  { offset = 0x90, type = "REL32", symbol = "?_Calculate_growth@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@ABEII@Z", target = 0x00414900 },
+  { offset = 0xA0, type = "REL32", symbol = "??$_Allocate_at_least_helper@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@@std@@YAPAV?$array@H$01@0@AAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@AAI@Z", target = 0x00413120 },
+  { offset = 0xE7, type = "REL32", symbol = "??$move@ABV?$array@H$01@std@@@std@@YA$$QBV?$array@H$01@0@ABV10@@Z", target = 0x0040B280 },
+  { offset = 0xFC, type = "REL32", symbol = "??$_Unfancy@V?$array@H$01@std@@@std@@YAPAV?$array@H$01@0@PAV10@@Z", target = 0x0040B280 },
+  { offset = 0x113, type = "REL32", symbol = "?glyph_uninitialized_move_construct@th20@@YAXAAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@AAV?$array@H$01@4@ABV54@@Z", target = 0x00413A90 },
+  { offset = 0x147, type = "REL32", symbol = "??$_Uninitialized_move@PAV?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@YAPAV?$array@H$01@0@PAV10@00AAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@@Z", target = 0x00413920 },
+  { offset = 0x163, type = "REL32", symbol = "??$_Uninitialized_move@PAV?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@YAPAV?$array@H$01@0@PAV10@00AAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@@Z", target = 0x00413920 },
+  { offset = 0x18C, type = "REL32", symbol = "??$_Uninitialized_move@PAV?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@YAPAV?$array@H$01@0@PAV10@00AAV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@@Z", target = 0x00413920 },
+  { offset = 0x1AA, type = "REL32", symbol = "?_Change_array@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEXQAV?$array@H$01@2@II@Z", target = 0x00414960 },
+  { offset = 0x1C6, type = "REL32", symbol = "??1_Reallocation_guard@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAE@XZ", target = 0x004144E0 },
+  { offset = 0x1DE, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+[units.glyph_growth_eh_cleanup_13]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<GlyphMaskOffset>::_Emplace_reallocate::unwind_cleanup"]
+symbol = "__unwindfunclet$??$_Emplace_reallocate@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEPAV?$array@H$01@1@QAV21@ABV21@@Z$0"
+target_address = 0x00567CE0
+size = 13
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1_Reallocation_guard@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@QAE@XZ", target = 0x004144E0 },
+]
+
+[units.glyph_growth_eh_handler_39]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::vector<GlyphMaskOffset>::_Emplace_reallocate::eh_handler"]
+symbol = "__ehhandler$??$_Emplace_reallocate@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEPAV?$array@H$01@1@QAV21@ABV21@@Z"
+target_address = 0x00567CED
+size = 39
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x19, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x1E, type = "DIR32", symbol = "__ehfuncinfo$??$_Emplace_reallocate@ABV?$array@H$01@std@@@?$vector@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@@std@@AAEPAV?$array@H$01@1@QAV21@ABV21@@Z", target = 0x005A9968 },
+  { offset = 0x23, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
+]

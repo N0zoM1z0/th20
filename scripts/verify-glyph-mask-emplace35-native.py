@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Verify the original glyph PMR insertion/growth/move chain and C++ bodies.
 
-The 35B public wrapper omits one native compiler NOP. The 108B/140B/488B
-backend, 200B uninitialized-move, 92B backout, and 31B allocator wrapper
-bodies match after resolving their true COFF/PE relocation fields. The 200B move parent and its EH code/metadata now strictly replay. The
-35B/108B/140B/488B insertion parents remain independently NONEXACT.
+The complete 108B/140B/488B insertion/growth backend, 200B move parent,
+92B backout and 31B allocator bridge strictly replay. Both EH protocols
+include their complete compiler code and state metadata. The 35B public
+wrapper remains NONEXACT because this compiler omits its native NOP.
 """
 from __future__ import annotations
 import hashlib
@@ -153,12 +153,15 @@ def verify_original():
     print("PASS original 2,245B parent has the two physical insertion edges at +0x165/+0x4DD")
     return image, base, sections, native
 
-def verify_move_eh_metadata(obj: Path, image, base, sections):
+def verify_vector_eh_metadata(obj: Path, image, base, sections, growth=False):
     # One complete 44B .xdata contribution: unwind map followed by FuncInfo.
-    # The handler selects FuncInfo; its single state cleans the backout at -0x1C.
+    # Both vector operations use one unwind state for their real RAII guard.
+    prefix = "__ehfuncinfo$??$_Emplace_reallocate@" if growth else "__ehfuncinfo$??$_Uninitialized_move@"
+    address = 0x005A9960 if growth else 0x005A998C
+    cleanup = 0x00567CE0 if growth else 0x00567D60
     symbols = subprocess.check_output(["objdump", "-t", str(obj)], text=True).splitlines()
     suffix = next(line.rsplit(" ", 1)[-1] for line in symbols
-                  if " __ehfuncinfo$??$_Uninitialized_move@" in line)
+                  if " " + prefix in line)
     row = next(line for line in symbols if line.endswith(" " + suffix))
     match = re.search(r"\(sec\s+(\d+)\).*?\) (0x[0-9a-fA-F]+) ", row)
     assert match and int(match[2], 16) == 8
@@ -170,19 +173,20 @@ def verify_move_eh_metadata(obj: Path, image, base, sections):
     data = bytearray(raw[offset:offset + size])
     symbol_offset, symbol_count = struct.unpack_from("<II", raw, 8)
     strings = raw[symbol_offset + symbol_count * 18:]
-    expected = ((4, 0x00567D60, suffix.replace("__ehfuncinfo$", "__unwindfunclet$") + "$0"),
-                (16, 0x005A998C, suffix.replace("__ehfuncinfo$", "__unwindtable$")))
+    expected = ((4, cleanup, suffix.replace("__ehfuncinfo$", "__unwindfunclet$") + "$0"),
+                (16, address, suffix.replace("__ehfuncinfo$", "__unwindtable$")))
     for index, (field, target, symbol) in enumerate(expected):
         actual_field, symbol_index, kind = struct.unpack_from("<IIH", raw, reloc_offset + 10 * index)
         name = coff.coff_name(raw[symbol_offset + 18 * symbol_index:][:8], strings)
         assert (actual_field, kind, name) == (field, 6, symbol)
         assert struct.unpack_from("<I", data, field)[0] == 0
         struct.pack_into("<I", data, field, target)
-    assert data == pe.raw_at(image, base, sections, 0x005A998C, 44)
-    highlow = {a - 0x005A998C for a in pe.physical_highlow(image, base, sections)
-               if 0x005A998C <= a < 0x005A998C + 44}
+    assert data == pe.raw_at(image, base, sections, address, 44)
+    highlow = {a - address for a in pe.physical_highlow(image, base, sections)
+               if address <= a < address + 44}
     assert highlow == {4, 16}
-    print("PASS complete 44B move EH metadata, both DIR32 fields and single backout cleanup state")
+    role = "growth" if growth else "move"
+    print(f"PASS complete 44B {role} EH metadata, both DIR32 fields and single guard cleanup state")
 
 def verify_candidate(obj: Path, image, base, sections, native):
     strings = subprocess.run(["strings", str(obj)], capture_output=True, text=True, check=True).stdout.splitlines()
@@ -255,16 +259,22 @@ def verify_candidate(obj: Path, image, base, sections, native):
     assert candidates["move"] == native["move"] and not relocs["move"]
     assert candidates["move_element"] == native["move"] and not relocs["move_element"]
 
-    # All move/backout call identities now have independent native role evidence.
+    # All backend call identities have independent native role evidence.
     for name, size in (("glyph_uninitialized_move_200", 200),
                        ("glyph_backout_emplace_92", 92),
                        ("glyph_get_unwrapped_10", 10),
                        ("glyph_move_eh_cleanup_13", 13),
                        ("glyph_move_eh_handler_39", 39),
-                       ("glyph_uninitialized_move_construct_31", 31)):
+                       ("glyph_uninitialized_move_construct_31", 31),
+                       ("glyph_emplace_one_at_back_108", 108),
+                       ("glyph_emplace_unused_capacity_140", 140),
+                       ("glyph_emplace_reallocate_488", 488),
+                       ("glyph_growth_eh_cleanup_13", 13),
+                       ("glyph_growth_eh_handler_39", 39)):
         result = coff.compare_unit(name)
         assert result["result"] == "exact" and result["matched_bytes"] == size
-    verify_move_eh_metadata(obj, image, base, sections)
+    verify_vector_eh_metadata(obj, image, base, sections)
+    verify_vector_eh_metadata(obj, image, base, sections, growth=True)
     # The compiler-generated dynamic-span initializer is folded with the
     # independently reconstructed HitCtrlInf/ECL helper at 0x0040C080.
     auto_symbol = next(s for s in strings if s.startswith(
@@ -322,7 +332,7 @@ def verify_candidate(obj: Path, image, base, sections, native):
     print("PASS candidate 200B/65-i386 uninitialized-move body, 92B/34-i386 backout member and 31B/14-i386 allocator wrapper match all non-relocation bytes and native E8 positions")
     print("PASS candidate 488B has the original 14 E8 and 2 HIGHLOW relocation sites; 200B has 9 E8 and 2 HIGHLOW sites")
     print("PASS candidate std::move<GlyphMaskOffset&> forwarding leaf is byte-exact")
-    print("PASS complete 200B move parent, 92B backout member, 10B unwrap and 13B/39B EH code strictly replay")
+    print("PASS complete 108B/140B/488B insertion/growth and 200B/92B/10B move/backout functions, both 13B/39B EH code pairs strictly replay")
     print("PASS candidate 34B/14-i386 emplace wrapper retains both original E8 sites; only native +0x1C NOP is absent")
     print("PASS 31B/14-i386 allocator-move wrapper is a whole strict-exact unit with both native E8 destinations")
     print("PASS complete allocator tuple/apply protocol: 78B construct, 33B args, 29B tuple, 78B apply, 65B apply-impl, 17B invoke and 62B lambda strictly replay")

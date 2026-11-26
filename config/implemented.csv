@@ -1828,3 +1828,8 @@ std::_Uninitialized_backout_al<GlyphMaskOffset>::_Emplace_back_deref_move
 std::_Get_unwrapped<GlyphMaskOffset*&>
 std::_Uninitialized_move<GlyphMaskOffset>::unwind_cleanup
 std::_Uninitialized_move<GlyphMaskOffset>::eh_handler
+std::pmr::vector<GlyphMaskOffset>::_Emplace_one_at_back
+std::pmr::vector<GlyphMaskOffset>::_Emplace_back_with_unused_capacity
+std::pmr::vector<GlyphMaskOffset>::_Emplace_reallocate
+std::pmr::vector<GlyphMaskOffset>::_Emplace_reallocate::unwind_cleanup
+std::pmr::vector<GlyphMaskOffset>::_Emplace_reallocate::eh_handler

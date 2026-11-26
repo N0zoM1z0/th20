@@ -264,7 +264,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 - [CORE/RECON-1081 — nine complete original 84B/19B/58B/42B/36B/42B/28B/39B/13B PMR glyph-vector descendant functions](GLYPH_VECTOR_GROWTH_DEEP_NINE_STRICT_EXACT.md) — native 488B growth, 200B backout-move and 140B no-growth construction parents; complete original 361B generic code, 24/24 local exact units, zero new game-authored credit.
 
-- [CORE/RECON-1082 — Glyph PMR insertion, growth and rollback chain](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md) — the complete 200B move parent, 92B backout insertion, 10B unwrap and 13B/39B EH code now strictly replay, with full 44B state metadata; the seven C++17 allocator/tuple/apply functions remain exact. The 35B/108B/140B/488B insertion/growth parents and 2,245B compositor remain NONEXACT. No added authored-game credit.
+- [CORE/RECON-1082 — Glyph PMR insertion, growth and rollback chain](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md) — the complete 108B/140B/488B/200B backend now strictly replays, including both 13B/39B EH code pairs and both full 44B state records. The seven allocator/tuple/apply functions remain exact. The public 35B wrapper and 2,245B game compositor remain NONEXACT; authored-game credit is unchanged.
 
 - [CORE/RECON-1083 — whole original 368B CP932 file opener and 493B Win32 one-shot file writer game Bosses strict exact](GAME_FILE_CP932_BOSSES_368_493_STRICT_EXACT.md) — original complete 94/125 i386, lock slot2, UTF16 CP932 and Win32 file operations, natural 368/368 and 493/493 exact, original 18 E8/26 HIGHLOW, +861 authored-game executable bytes.
 

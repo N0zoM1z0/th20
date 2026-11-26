@@ -35,25 +35,26 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
-## Latest checkpoint — Glyph PMR move/backout parent
+## Latest checkpoint — Glyph PMR insertion/growth backend
 
-The 200B uninitialized-move parent at `0x00413920` now strictly replays with
-its 92B backout insertion, 10B unwrap leaf, 13B padded EH cleanup and 39B
-handler. All five complete contributions and the full 44B EH state data match,
-including every relocation. The old unwrap/auto-initializer residuals were
-stale: the current source already emits the native 10B/31B helpers.
+The complete 108B insertion selector, 140B unused-capacity insertion and
+488B reallocation now strictly replay, including every relocation. The
+reallocation's 13B padded EH cleanup, 39B handler and full 44B state metadata
+also match. The previously exact 200B move parent and seven-function C++17
+allocator/tuple/apply protocol remain exact. The full PMR backend call graph
+is now resolved; original source origin remains unknown.
 
-Replay scope was only `src/GlyphMaskComposite2245.cpp`: **30/30 units,
-one cold object**. No native source or shared header changed. The separate
-C++17 allocator owner's seven units retain passing evidence. Chain,
-five-parent and deep-nine checks pass; malformed EH state/relocation cases
-are rejected. The 354B of newly exact contributions adds no authored-game
-credit (302B origin-unknown, 52B compiler-owned).
+Replay scope was only `src/GlyphMaskComposite2245.cpp`: **35/35 units,
+one cold object**. No native source or shared header changed. The unchanged
+allocator owner retains its seven passing units. Chain, five-parent, growth488
+and deep-nine checks pass, as do four negative EH cases. Newly accepted code
+is 736B origin-unknown plus 52B compiler-owned; authored-game totals do not
+increase.
 
-Next Glyph work is the full 108B/140B/488B parent call and exception graphs,
-now that the 200B move and 31B allocator bridge strictly replay. The 35B
-wrapper still omits its NOP, and the 2,245B compositor remains NONEXACT at
-2,224B. See the [move and EH proof](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md#2026-11-26-follow-up-exact-200b-move-parent-and-complete-eh-support).
+The 35B public wrapper is still 34B (also in a retained C++17 probe), and the
+2,245B compositor remains NONEXACT at 2,224B. Next Glyph work is the wrapper's
+native return/call boundary and the compositor's complete control flow and
+pixel-write ordering. See the [growth protocol proof](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md#2026-11-26-follow-up-exact-insertion-selector-and-full-growth-protocol).
 
 ## Latest checkpoint — Animation corner projection dispatcher
 

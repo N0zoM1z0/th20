@@ -417,3 +417,58 @@ wrapper, 108B insertion selector, 140B unused-capacity insertion and 488B
 growth parent remain NONEXACT. The next Glyph step is to resolve their full
 call/exception graphs against the now-exact 200B move and 31B construct bridge.
 The 2,245B game compositor remains NONEXACT at 2,224B.
+
+
+## 2026-11-26 follow-up: exact insertion selector and full growth protocol
+
+The remaining three PMR backend parents now pass strict canonical replay
+from the unchanged C++20 compositor source, including all relocations:
+
+| Head | Complete function | Unit |
+| --- | ---: | --- |
+| `0x00413370` | 108B / 40 instructions, insertion selector | `glyph_emplace_one_at_back_108` |
+| `0x004132E0` | 140B / 52 instructions, unused-capacity insertion | `glyph_emplace_unused_capacity_140` |
+| `0x004133E0` | 488B / 170 instructions, reallocation | `glyph_emplace_reallocate_488` |
+
+The selector routes spare capacity to the 140B member and full capacity to
+the 488B member. Its four native calls now resolve to those bodies and the
+shared forwarding leaf. The 140B member performs ordered element forwarding,
+pointer extraction, allocator access, exact 31B construction, and iterator
+orphaning before advancing the end pointer. Its five REL32 fields replay.
+
+The complete growth method replays all 14 REL32 and both HIGHLOW/DIR32 fields.
+Its length guard, growth calculation, allocation helper, 31B construction,
+three 200B move paths, 165B array replacement and 81B guard destruction each
+have independently reviewed native roles. The 19B allocation helper at
+`0x00413120` reads the count through its reference and invokes the PMR
+allocator, consistent with its prior independent exact unit. Attested Ghidra
+role evidence for all three parents, allocation helper and guard destructor
+is retained in `.analysis/draw-boss-session/glyph-growth-three-parent-roles.c`.
+
+The EH handler at `0x00567CED` is the complete 39B compiler contribution.
+It checks the native cookie slots, selects FuncInfo at `0x005A9968`, then
+jumps to the established CxxFrameHandler3 endpoint. The one-state map at
+`0x005A9960` selects the cleanup at `0x00567CE0`. That complete 13B contribution
+restores the guard receiver at `[ebp-0x28]`, tail-jumps to the exact destructor
+at `0x004144E0`, and includes the five original INT3 alignment bytes. Both
+code contributions strictly replay as `glyph_growth_eh_handler_39` and
+`glyph_growth_eh_cleanup_13`. The full 44B .xdata contribution also replays
+both DIR32 fields and every ordinary byte. Bounded native handler instructions
+are retained in `glyph-growth-eh-native.txt` in the same private directory.
+
+Validation cold-built only `src/GlyphMaskComposite2245.cpp` and strictly
+replayed **35/35 units from one object**, retaining every prior match. No
+native source or shared header changed. The seven C++17 allocator-owner units
+retain passing evidence and are checked by the chain verifier without another
+build. The chain, five-parent, growth488 and deep-nine verifiers pass. Both
+move and growth EH checks reject state-count and cleanup-relocation corruption.
+Replay output is retained at `glyph-growth-protocol-replay.log` under the same
+private directory.
+
+This adds 736B of origin-unknown backend code and 52B of compiler-owned EH
+code, with no authored-game credit. All four 108B/140B/488B/200B backend
+functions now strictly replay. The public 35B emplace wrapper is still 34B;
+a retained whole-source C++17 probe also emits 34B, so changing the language
+mode alone does not recover its NOP. The game compositor remains NONEXACT at
+2,224B versus 2,245B native. Next work is the wrapper's native return/call
+boundary and the compositor's complete control flow and pixel-write ordering.
