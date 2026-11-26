@@ -11,6 +11,8 @@ pairs and 3,691/5,352 ordinary bytes agree. The 24B length gap is confined to
 four complete cases: two first-getter store forms and four scalar register
 reloads account for it. Stack slots and receiver-load scheduling also remain
 different. See [the current source decision](#2026-11-26-native-width-preparation-and-one-zero-result-return).
+The separate [compiler/link-context controls](ANIMATION_DRAW_BOSS_5993_COMPILER_CONTEXT.md)
+cover retained PE metadata, the older compiler and actual LTCG with the real getter.
 
 
 ## Native mode45 and mode46 lifetimes

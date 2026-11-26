@@ -110,6 +110,15 @@ negations and additions remain bare ST0 discards. The current native source
 and accepted graph are unchanged; see the existing inline-ownership and
 scalar-expression sections in the focused note before trying these again.
 
+[Compiler/link-context controls](ANIMATION_DRAW_BOSS_5993_COMPILER_CONTEXT.md)
+now retain the target's RSDS/feature metadata and confirm that `GCTL` plus an
+empty `iltcg` can arise without code generation. The no-SSA option and shared
+19.10 comparison do not recover the missing forms. Actual LTCG callers also
+match ordinary COFF, including with the real 93B getter visible as IR.
+Independent MAP replay covers every caller/getter byte and relocation in these
+controls. Keep the current profile and focus on source temporary ownership;
+the markers alone do not warrant a full Draw LTCG build.
+
 ## Latest checkpoint — StageResource selector and Enemy opcodes 622–626/631
 
 The maintained partial Enemy root now executes opcodes 622–626/631 through
