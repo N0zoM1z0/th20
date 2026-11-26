@@ -1831,3 +1831,6 @@ th20::StageResourceOwner::select_record,0x004773C0,function
 th20::StageBackgroundFogOwner::execute_script,0x004751B0,function
 th20::StageResourceOwner::interrupt_animations,0x00477480,function
 th20::StageResourceOwner::set_primary_rotation_flag,0x00477790,function
+std::pmr::polymorphic_allocator<GlyphMaskOffset>::construct,0x00413AB0,function
+std::uses_allocator_construction_args<GlyphMaskOffset>,0x00413D50,function
+std::forward_as_tuple<const GlyphMaskOffset>,0x00413CE0,function

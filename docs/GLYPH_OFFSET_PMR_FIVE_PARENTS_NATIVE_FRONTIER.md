@@ -236,3 +236,64 @@ scripts/repo-python scripts/verify-glyph-pmr-five-parents-native.py
 scripts/repo-python scripts/verify-glyph-mask-emplace35-native.py --candidate-object build/core1052-canonical/GlyphMaskComposite2245.obj
 scripts/repo-python scripts/verify-glyph-vector-growth488-native.py --candidate-object build/core1052-canonical/GlyphMaskComposite2245.obj
 ```
+
+
+## 2026-11-26: exact allocator tuple construction protocol
+
+The maintained glyph source now reproduces three complete native functions
+with strict canonical relocation replay under MSVC 19.44.35211, C++20,
+`/Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc`:
+
+| Native head | Function | Complete size | Canonical unit |
+| --- | --- | ---: | --- |
+| `0x00413AB0` | PMR allocator `construct` | 78B / 30 instructions | `glyph_pmr_construct_78` |
+| `0x00413D50` | `uses_allocator_construction_args` | 33B | `glyph_uses_allocator_args_33` |
+| `0x00413CE0` | `forward_as_tuple` | 29B | `glyph_forward_as_tuple_29` |
+
+The prior named closure and placement-storage implementation had the right
+78B extent but only 40/55 ordinary bytes and two aligned calls. A real
+pointer-capturing lambda plus the uses-allocator tuple helper restores all
+four original call sites, at +0x0D/+0x1E/+0x30/+0x40, and all 62 ordinary
+bytes. The two explicit tuple-helper specializations preserve the older STL's
+out-of-line forwarding boundaries. The lambda returns the placement-new
+pointer, consistent with native `0x004130A0` copying both element words and
+returning the destination.
+
+Call anchors come from the reviewed protocol, independently of the fields
+being compared:
+
+- `construct`: the shared move leaf `0x0040B280`, tuple-argument builder
+  `0x00413D50`, one-pointer capture constructor `0x0040B670`, and apply
+  `0x004139F0`.
+- The 33B builder ignores the allocator for this non-allocator-aware array,
+  forwards its element argument and returns the tuple through the caller's
+  hidden result pointer. Its calls are move and `forward_as_tuple` at
+  `0x00413CE0`.
+- The 29B forwarding helper calls move and the reference-tuple constructor
+  `0x00412F90`. Ghidra shows that constructor forwarding the argument into
+  the tuple base. The apply chain at `0x004139F0 -> 0x00413140 ->
+  0x00413D10 -> 0x004130A0` extracts the tuple element and invokes the
+  destination-capturing callable. The capture constructor is also shared by
+  the independently exact ECL name capture; this is a folded primitive.
+
+Attested Ghidra exports are retained privately under
+`.analysis/draw-boss-session/glyph-allocator-four-boundaries.json`,
+`glyph-allocator-tuple-apply-children.c`, `glyph-allocator-tuple-and-lambda.c`
+and `glyph-allocator-lambda-body.c`. The native 78B body SHA-256 is
+`fc7708405a1134e12f616ab5893eb2b9692ab1a498048057c8fd978b2e232e20`.
+Executable anchors and full extents are in `config/match-units.toml`.
+
+Validation rebuilt only `src/GlyphMaskComposite2245.cpp` and strictly replayed
+**28/28 units from one cold object**, including the three new units and the
+previously accepted 31B bridge. The updated chain verifier passes; temporary
+opcode and callee-role corruptions are both rejected. The five-parent and
+488B growth verifiers also pass. Replay output is retained at
+`.analysis/draw-boss-session/glyph-allocator-tuple-replay.log`.
+
+Original source origin remains unknown, so the 140B of newly exact template
+code does not enter the authored-game byte ledger. The native apply is still
+78B versus the current STL's 34B, and the public emplace wrapper still lacks
+its native NOP. The whole compositor remains NONEXACT at 2,224B with both
+insertion calls at +0x16E/+0x4F3. The next useful Glyph action is to recover
+the original apply/index-sequence forwarding boundary before revisiting the
+larger PMR parents.

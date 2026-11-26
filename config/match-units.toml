@@ -32624,3 +32624,45 @@ relocations = [
   { offset = 0xFC, type = "DIR32", symbol = "$LN6", target = 0x0044581F },
   { offset = 0x100, type = "DIR32", symbol = "$LN6", target = 0x0044581F },
 ]
+
+# Glyph allocator tuple protocol: independently reviewed native call roles.
+[units.glyph_pmr_construct_78]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::polymorphic_allocator<GlyphMaskOffset>::construct"]
+symbol = "??$construct@V?$array@H$01@std@@$$CBV12@@?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@QAEXQAV?$array@H$01@2@$$QBV32@@Z"
+target_address = 0x00413AB0
+size = 78
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??$move@ABV?$array@H$01@std@@@std@@YA$$QBV?$array@H$01@0@ABV10@@Z", target = 0x0040B280 },
+  { offset = 0x1F, type = "REL32", symbol = "??$uses_allocator_construction_args@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@$$CBV12@@std@@YA?A_PABV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@$$QBV?$array@H$01@0@@Z", target = 0x00413D50 },
+  { offset = 0x31, type = "REL32", symbol = "??0<lambda_1>@?1???$construct@V?$array@H$01@std@@$$CBV12@@?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@QAEXQAV?$array@H$01@3@$$QBV43@@Z@QAE@ABQAV43@@Z", target = 0x0040B670 },
+  { offset = 0x41, type = "REL32", symbol = "??$apply@V<lambda_1>@?1???$construct@V?$array@H$01@std@@$$CBV12@@?$polymorphic_allocator@V?$array@H$01@std@@@pmr@std@@QAEXQAV?$array@H$01@4@$$QBV54@@Z@V?$tuple@$$QBV?$array@H$01@std@@@4@@std@@YA?A_T$$QAV<lambda_1>@?1???$construct@V?$array@H$01@std@@$$CBV12@@?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@QAEXQAV?$array@H$01@0@$$QBV40@@Z@$$QAV?$tuple@$$QBV?$array@H$01@std@@@0@@Z", target = 0x004139F0 },
+]
+
+[units.glyph_uses_allocator_args_33]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::uses_allocator_construction_args<GlyphMaskOffset>"]
+symbol = "??$uses_allocator_construction_args@V?$array@H$01@std@@V?$polymorphic_allocator@V?$array@H$01@std@@@pmr@2@$$CBV12@@std@@YA?A_PABV?$polymorphic_allocator@V?$array@H$01@std@@@pmr@0@$$QBV?$array@H$01@0@@Z"
+target_address = 0x00413D50
+size = 33
+relocations = [
+  { offset = 0x8, type = "REL32", symbol = "??$move@ABV?$array@H$01@std@@@std@@YA$$QBV?$array@H$01@0@ABV10@@Z", target = 0x0040B280 },
+  { offset = 0x15, type = "REL32", symbol = "??$forward_as_tuple@$$CBV?$array@H$01@std@@@std@@YA?AV?$tuple@$$QBV?$array@H$01@std@@@0@$$QBV?$array@H$01@0@@Z", target = 0x00413CE0 },
+]
+
+[units.glyph_forward_as_tuple_29]
+source = "src/GlyphMaskComposite2245.cpp"
+object = "build/core1052-canonical/GlyphMaskComposite2245.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::forward_as_tuple<const GlyphMaskOffset>"]
+symbol = "??$forward_as_tuple@$$CBV?$array@H$01@std@@@std@@YA?AV?$tuple@$$QBV?$array@H$01@std@@@0@$$QBV?$array@H$01@0@@Z"
+target_address = 0x00413CE0
+size = 29
+relocations = [
+  { offset = 0x8, type = "REL32", symbol = "??$move@ABV?$array@H$01@std@@@std@@YA$$QBV?$array@H$01@0@ABV10@@Z", target = 0x0040B280 },
+  { offset = 0x14, type = "REL32", symbol = "??$?0$$CBV?$array@H$01@std@@$$V$0A@@?$tuple@$$QBV?$array@H$01@std@@@std@@QAE@$$QBV?$array@H$01@1@@Z", target = 0x00412F90 },
+]

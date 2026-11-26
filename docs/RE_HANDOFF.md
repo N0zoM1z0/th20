@@ -35,19 +35,21 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
-## Latest checkpoint — Glyph PMR insertion/growth chain
+## Latest checkpoint — Glyph PMR allocator tuple protocol
 
-`GlyphMaskComposite2245.cpp` now restores the old PMR vector chain with
-natural C++ member-template specializations. The 8B shared `std::move` leaf
-is byte-exact; the complete 108B/40, 140B/52 and 488B/170 bodies match all
-non-relocation bytes and original E8 positions. The 35B wrapper is 34B/14
-with the native `+0x1C` NOP omitted. The 200B/65 uninitialized-move parent,
-92B/34 backout member and 31B/14 allocator bridge match all non-relocation
-bytes and native E8 positions. The 31B bridge still reaches a 69B current-STL
-allocator constructor instead of the original 78B leaf. Targeted cold replay
-rebuilt only the compositor and retained 24/24 exact PMR/color descendants. The 2,245B compositor remains NONEXACT at
-2,221B/584; see the [PMR five-parent frontier](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md)
-and [complete chain verifier](../scripts/verify-glyph-mask-emplace35-native.py).
+The original 78B allocator `construct` at `0x00413AB0`, 33B uses-allocator
+argument builder at `0x00413D50`, and 29B `forward_as_tuple` at `0x00413CE0`
+now pass complete strict canonical replay. Natural C++ uses a pointer-capturing
+lambda and explicit tuple-helper specializations. Original source origin is
+unknown; authored-game exact totals do not increase.
+
+Replay scope was only `src/GlyphMaskComposite2245.cpp`: **28/28 units,
+one cold object**, including the prior 31B bridge. No shared header changed.
+The chain verifier and two corruption cases pass. The native apply remains
+78B versus 34B in the current STL, the 35B wrapper still omits its NOP, and
+the 2,245B compositor remains NONEXACT at 2,224B. For the next Glyph step,
+recover apply/index-sequence forwarding. See the
+[tuple protocol proof](GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md#2026-11-26-exact-allocator-tuple-construction-protocol).
 
 ## Latest checkpoint — Animation corner projection dispatcher
 

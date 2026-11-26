@@ -14,6 +14,7 @@
 #include <memory_resource>
 #include <vector>
 #include <utility>
+#include <tuple>
 
 // TH20's glyph-offset vector was emitted by an older MSVC STL. The pinned
 // newer STL folds the old pointer-forwarding calls and changes the growth
@@ -33,16 +34,33 @@ std::move<th20::GlyphMaskOffset&>(th20::GlyphMaskOffset&) noexcept;
 template __declspec(noinline) th20::GlyphMaskOffset*&&
 std::move<th20::GlyphMaskOffset*&>(th20::GlyphMaskOffset*&) noexcept;
 
-namespace th20 {
-struct GlyphMaskConstructClosure {
-    GlyphMaskOffset* destination;
-    explicit GlyphMaskConstructClosure(GlyphMaskOffset* value) : destination(value) {}
-    void operator()(const GlyphMaskOffset&& value) const {
-        ::new (const_cast<void*>(static_cast<const volatile void*>(destination)))
-            GlyphMaskOffset(std::move(value));
-    }
-};
-} // namespace th20
+namespace std {
+#if _MSVC_LANG < 202002L
+// C++17 library compatibility: the native PMR allocator helper predates the
+// C++20 standard declaration, but its ABI is the same one-element argument tuple.
+template <class _Ty, class _Alloc, class... _Types>
+_NODISCARD constexpr auto uses_allocator_construction_args(const _Alloc&, _Types&&...) noexcept;
+#endif
+
+template <>
+_NODISCARD constexpr __declspec(noinline) tuple<const th20::GlyphMaskOffset&&>
+forward_as_tuple<const th20::GlyphMaskOffset>(
+    const th20::GlyphMaskOffset&& source) noexcept {
+    return tuple<const th20::GlyphMaskOffset&&>(std::move(source));
+}
+
+template <>
+_NODISCARD constexpr __declspec(noinline) auto
+uses_allocator_construction_args<
+    th20::GlyphMaskOffset,
+    pmr::polymorphic_allocator<th20::GlyphMaskOffset>,
+    const th20::GlyphMaskOffset>(
+    const pmr::polymorphic_allocator<th20::GlyphMaskOffset>& allocator,
+    const th20::GlyphMaskOffset&& source) noexcept {
+    (void)allocator;
+    return std::forward_as_tuple(std::move(source));
+}
+} // namespace std
 
 namespace std::pmr {
 template <>
@@ -51,22 +69,19 @@ __declspec(safebuffers) void polymorphic_allocator<th20::GlyphMaskOffset>::const
     th20::GlyphMaskOffset, const th20::GlyphMaskOffset>(
     th20::GlyphMaskOffset* const destination,
     const th20::GlyphMaskOffset&& source) {
-    using arguments_type = std::tuple<const th20::GlyphMaskOffset&&>;
-    alignas(arguments_type) std::byte arguments_storage[sizeof(arguments_type)];
-    auto* arguments = std::construct_at(
-        reinterpret_cast<arguments_type*>(arguments_storage),std::move(source));
-    alignas(th20::GlyphMaskConstructClosure)
-        std::byte constructor_storage[sizeof(th20::GlyphMaskConstructClosure)];
-    auto* constructor_object = std::construct_at(
-        reinterpret_cast<th20::GlyphMaskConstructClosure*>(constructor_storage),destination);
-    std::apply(std::move(*constructor_object),std::move(*arguments));
+    std::apply(
+        [destination](const th20::GlyphMaskOffset&& value) -> th20::GlyphMaskOffset* {
+            return ::new (const_cast<void*>(static_cast<const volatile void*>(destination)))
+                th20::GlyphMaskOffset(std::move(value));
+        },
+        std::uses_allocator_construction_args<th20::GlyphMaskOffset>(
+            *this,std::move(source)));
 }
 } // namespace std::pmr
 
-// The native allocator member builds a one-element argument tuple and applies
-// a destination-capturing callable. Keep that C++20 tuple/apply boundary
-// explicit instead of the newer generic uses_allocator helper; this restores
-// the original 78B member extent and four-call topology without byte injection.
+// The allocator construct member reproduces the native uses-allocator
+// argument tuple, then applies a destination-capturing C++ callable.
+
 namespace th20 {
 using GlyphMaskAllocator = std::pmr::polymorphic_allocator<GlyphMaskOffset>;
 __declspec(noinline) void glyph_uninitialized_move_construct(

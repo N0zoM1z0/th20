@@ -238,32 +238,29 @@ def verify_candidate(obj: Path, image, base, sections, native):
     wrapper_unit = coff.compare_unit("glyph_uninitialized_move_construct_31")
     assert wrapper_unit["result"] == "exact" and wrapper_unit["matched_bytes"] == 31
 
-    # Reconstruct the original 78B polymorphic_allocator::construct leaf as
-    # natural tuple/apply C++, without claiming byte exactness for its body.
+    # Native tuple-return, pointer-capture and apply roles were reviewed in
+    # attested Ghidra exports; canonical units replay every relocation field.
     construct_symbol = next(s for s in strings if s.startswith(
         "??$construct@V?$array@H$01@std@@$$CBV12@@?$polymorphic_allocator@"))
     construct_body, construct_relocs = candidate_body(obj, construct_symbol, 78)
     construct_ins = disassemble(construct_body)
-    assert len(construct_body) == 78 and len(construct_ins) == 30
-    assert list(call_sites(construct_ins, 0)) == [0x0D, 0x1A, 0x2D, 0x40]
-    assert len(construct_relocs) == 4
-    construct_relocs = sorted(construct_relocs, key=lambda r: int(r["offset"]))
-    assert [int(r["offset"]) for r in construct_relocs] == [0x0E, 0x1B, 0x2E, 0x41]
+    assert len(construct_ins) == 30
+    assert call_sites(construct_ins, 0) == (0x0D, 0x1E, 0x30, 0x40)
+    assert [int(r["offset"]) for r in construct_relocs] == [0x0E, 0x1F, 0x31, 0x41]
     assert construct_relocs[0]["symbol"].startswith("??$move@ABV")
-    assert "construct_at@V?$tuple@" in construct_relocs[1]["symbol"]
-    assert "construct_at@UGlyphMaskConstructClosure" in construct_relocs[2]["symbol"]
-    assert "apply@UGlyphMaskConstructClosure" in construct_relocs[3]["symbol"]
+    assert "uses_allocator_construction_args" in construct_relocs[1]["symbol"]
+    assert construct_relocs[2]["symbol"].startswith("??0<lambda_")
+    assert construct_relocs[3]["symbol"].startswith("??$apply@")
     native_construct = pe.raw_at(image, base, sections, 0x00413AB0, 78)
-    native_construct_ins = disassemble(native_construct)
-    native_construct_calls = call_sites(native_construct_ins, 0)
-    assert list(native_construct_calls) == [0x0D, 0x1E, 0x30, 0x40]
-    candidate_fields = {int(r["offset"]) for r in construct_relocs}
-    native_fields = {site + 1 for site in native_construct_calls}
-    relocation_mask = {i for field in candidate_fields | native_fields
-                       for i in range(field, field + 4)}
-    compared = [i for i in range(78) if i not in relocation_mask]
-    assert (sum(native_construct[i] == construct_body[i] for i in compared), len(compared)) == (40, 55)
-    assert construct_ins[-1].mnemonic == "ret" and construct_ins[-1].op_str in ("8", "0x8")
+    assert hashlib.sha256(native_construct).hexdigest() == (
+        "fc7708405a1134e12f616ab5893eb2b9692ab1a498048057c8fd978b2e232e20")
+    assert normalize_relocations(native_construct, construct_body,
+                                 (0x0D, 0x1E, 0x30, 0x40), construct_relocs)
+    for name, size in (("glyph_pmr_construct_78", 78),
+                       ("glyph_uses_allocator_args_33", 33),
+                       ("glyph_forward_as_tuple_29", 29)):
+        result = coff.compare_unit(name)
+        assert result["result"] == "exact" and result["matched_bytes"] == size
 
     # The game-owned parent still calls the real C++ emplace_back specialization
     # at both original sites. This does not award parent exactness.
@@ -279,10 +276,10 @@ def verify_candidate(obj: Path, image, base, sections, native):
     print("PASS candidate 200B/65-i386 uninitialized-move body, 92B/34-i386 backout member and 31B/14-i386 allocator wrapper match all non-relocation bytes and native E8 positions")
     print("PASS candidate 488B has the original 14 E8 and 2 HIGHLOW relocation sites; 200B has 9 E8 and 2 HIGHLOW sites")
     print("PASS candidate std::move<GlyphMaskOffset&> forwarding leaf is byte-exact")
-    print("RESIDUAL: 10B C++20 _Get_unwrapped vs native 9B; 78B allocator::construct tuple/apply body remains NONEXACT (40/55 ordinary bytes, 2/4 call sites aligned); 31B __autoclassinit2 call-site lowering differs")
+    print("RESIDUAL: 10B C++20 _Get_unwrapped vs native 9B; native 78B apply is 34B with current STL; 31B __autoclassinit2 call-site lowering differs")
     print("PASS candidate 34B/14-i386 emplace wrapper retains both original E8 sites; only native +0x1C NOP is absent")
     print("PASS 31B/14-i386 allocator-move wrapper is a whole structural-exact unit with both native E8 destinations")
-    print("PASS 78B/30-i386 allocator::construct is natural tuple/apply C++ with four E8 calls; 40/55 ordinary bytes, NONEXACT")
+    print("PASS complete 78B allocator::construct, 33B uses-allocator args and 29B forward-as-tuple pass strict canonical replay")
     print("PASS 2,224B parent routes both BGRA/ARGB insertion calls through the specialized wrapper at candidate +0x16E/+0x4F3; original sites are +0x165/+0x4DD, parent remains NONEXACT")
 
 if __name__ == "__main__":
