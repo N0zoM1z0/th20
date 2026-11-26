@@ -9,6 +9,10 @@ Agent workflow: follow the highest-priority requirements in [AGENTS.md](AGENTS.m
     alt="Original Japanese TH20 title screen">
 </p>
 
+<p align="center">
+  <img src="resources/progress.svg" alt="TH20 exact source reconstruction progress">
+</p>
+
 Source reconstruction of the original Japanese TH20 v1.00a **Steamless**
 executable. Function-level exactness requires reproducible comparison against
 one hash-attested target. The workflow follows [TH095](https://github.com/N0zoM1z0/th095),
@@ -129,7 +133,7 @@ Documentation and artifact-cleanup handoffs use diff/link checks and protected
 product hashes. An unchanged native compiler-input graph needs no replay,
 compiler, Ghidra or full CI run. Shared-header text edits can invalidate
 pinned compiler receipt hashes: replay only the actual pre-edit receipt include
-closure in that case. Use the `gpt-web:` commit prefix.
+closure in that case. Use the `gpt-6.1-sol:` commit prefix.
 
 When code or infrastructure changes warrant broader checks, public CI needs
 Python 3.11+, with no original game or C++ compiler:

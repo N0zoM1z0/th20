@@ -51,7 +51,7 @@ messages must be in English, as explicitly requested by the user.
 Official Japanese names and original target evidence may retain their original
 language, as the user explicitly clarified. Preserve the official title in
 `config/target.toml`, following TH095's treatment of game metadata.
-Use the user's current commit prefix **`gpt-web:`** for every new checkpoint.
+Use the user's current commit prefix **`gpt-6.1-sol:`** for every new checkpoint.
 Do not rewrite historical commits or use a different prefix for cleanup work.
 
 Invoke Python through `scripts/repo-python` for repository work, including

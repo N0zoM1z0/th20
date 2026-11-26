@@ -12,7 +12,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / ".analysis" / "progress" / "PROGRESS.md"
-SVG = OUTPUT.with_name("progress.svg")
+SVG = ROOT / "resources" / "progress.svg"
 
 
 def measures():

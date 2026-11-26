@@ -12,9 +12,10 @@ functions. Exact byte totals use the accepted extents in
 [`config/matches.csv`](../config/matches.csv).
 
 For a Markdown snapshot and SVG generated from those same totals, run
-`scripts/repo-python scripts/progress.py`. Both files are written to
-`.analysis/progress/`. This keeps the published instructions independent of
-any one checkpoint's totals.
+`scripts/repo-python scripts/progress.py`. The Markdown snapshot is written to
+`.analysis/progress/PROGRESS.md`; the SVG is written to
+[`resources/progress.svg`](../resources/progress.svg) and displayed in the README.
+Regenerate the SVG when publishing updated ledger totals.
 
 Inspect which local builds need refreshing with
 `scripts/repo-python scripts/replay-exact-units.py --list-stale-sources`.

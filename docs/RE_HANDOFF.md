@@ -562,7 +562,7 @@ entire analysis or build tree to save space.
 The root verifier is a focused dispatcher/host check, not a full cold replay
 or whole-parent exactness test. Use replay-exact-units.py --source only for
 actual source changes and their captured include-closure consumers. Commit
-stable checkpoints with the required gpt-web: prefix. Preserve and inspect
+stable checkpoints with the required gpt-6.1-sol: prefix. Preserve and inspect
 all dirty/untracked work before making changes.
 
 
