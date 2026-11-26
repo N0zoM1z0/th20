@@ -142,3 +142,10 @@ receipts are retained there and in `build/gpt61-renderer-text-probe/`.
 The maintained 586B source and profile remain unchanged. Exact replay scope
 for this investigation is **zero**. Future candidates must preserve the
 native arithmetic order before their byte or call-site scores are useful.
+
+Reduced unsigned-length expressions also agree across C11, C++14 and C++20:
+length-first and advance-first forms retain identical complete **121B** and
+**131B** bodies and relocation records respectively. Both still evaluate
+sprite half early. `unsigned-language-controls.txt` retains the comparisons
+and object hashes; these results do not justify a full-parent language-mode
+variant or a public-header compatibility change.
