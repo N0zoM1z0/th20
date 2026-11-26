@@ -50,6 +50,14 @@ sections after correcting symbol types; both remain NONEXACT. Next centered
 work is its original advance-before-strlen evaluation and scalar temporary
 ownership. See [the native CRT and ABI proof](RENDERER_TEXT_NARROW_CRT_ABI.md).
 
+The latest [centered expression-order controls](ANIMATION_RENDERER_CENTERED_TEXT_586_NATIVE_FRONTIER.md#2026-11-26-expression-order-controls-after-the-narrow-abi-correction)
+leave native inputs unchanged; exact replay scope is **zero**. A 582B typed
+length candidate still evaluates sprite half early. A different 586B formula
+aligns all calls but changes the division/subtraction sequence. Neither is
+promoted. Preserve advance → strlen → length conversion → quarter span →
+sprite half → subtraction in the next source hypothesis; reuse the rejected
+literal, conversion, sign and inline controls.
+
 ## Latest checkpoint — whole Glyph mask compositor exact
 
 The game-owned 2,245B `NativeGlyphCanvasView::composite_glyph_mask_416420`

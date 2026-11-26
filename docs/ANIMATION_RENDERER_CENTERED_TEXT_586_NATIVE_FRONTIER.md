@@ -96,3 +96,49 @@ scripts/repo-python scripts/compare-coff-function.py --unit animation_renderer_f
 ```
 
 Next work: recover the original intermediate float lifetime/register allocation that preserves the actual length-conversion order, prove the nine relocation targets against the unchanged machine-code positions, and only then consider adding a 586B strict unit. Do not count the independent whole-exact 417B parent again.
+
+## 2026-11-26: expression-order controls after the narrow ABI correction
+
+The native arithmetic order is **advance, strlen, unsigned length to float,
+product divided by four, sprite width divided by two, subtraction**. New
+locked-compiler controls compare complete COFF contributions and call roles:
+
+| Source context | Complete code / instructions | Result |
+| --- | ---: | --- |
+| Implicit strlen-to-float conversion | 586B / 140 | Identical code and relocations to the current explicit cast |
+| Advance first in the product | 602B / 142 | Sprite half still evaluated before strlen; literal factors leave code unchanged |
+| Negative span plus sprite half | 593B / 141 | Advance/strlen prefix restored, but adds a nonnative `xorps` and reverses multiplication registers |
+| Negated span-minus-half difference | 593B / 141 | Retains a nonnative sign-mask operation |
+| One named text-span local | 598B / 141 | Adds a span store and memory-source subtraction |
+| Explicit unsigned correction, as in the ASCII method | 582B / 139 | Sprite half precedes the float conversion/product; multiply still folds the saved advance into a memory operand |
+| Half of the width-minus-text difference | 586B / 140 | All 11 E8 positions align, but division by two follows subtraction instead of the native separate quarter-span and half-sprite operations |
+
+The last formula is byte/relocation-identical under `/fp:precise` and
+`/fp:fast`. Its size and aligned calls do not justify promoting a different
+arithmetic sequence. The 582B variant likewise cannot be described as only
+missing a four-byte reload: its evaluation order also differs.
+
+Full-parent `/Ob2` helper trials grow to 718B/164 and 698B/161. Each still
+has 11 E8 calls, but lock-guard construction/release becomes mutex lock/unlock,
+and callback copy/destruction becomes `_Reset_copy`/`_Tidy`. These are changed
+call roles. [MSVC's inline-option documentation](https://learn.microsoft.com/en-us/cpp/build/reference/ob-inline-function-expansion?view=msvc-170)
+also identifies `/Ob0` as disabling expansion. Reduced half-width accessors
+do not supply an alternative: ordinary and locally optimized helpers produce
+identical 141B callers, retain early half evaluation and add a scalar copy
+relative to the direct 131B control.
+
+Native volatile-access metadata covers the complete method and marks only
+the GS cookie accesses at `0x0044ADEE` and `0x0044B00C`. A bounded search for
+the EBP-relative double-to-float conversion, XMM1 reload and register scalar
+arithmetic finds only this method and the pending ASCII sibling, at
+`0x0044AF2A` and `0x0044B17A`; both matches are decoded instruction heads.
+This search supplies no accepted source exemplar for the missing lowering.
+
+Private `centered-order-controls.txt` records complete sizes, compiler/object/
+source/include hash checks, call-role comparisons, arithmetic events and metadata
+under `.analysis/renderer-centered-session/`. The two closest failed forms'
+instructions are in `centered-order-frontier-disassembly.txt`; sources and
+receipts are retained there and in `build/gpt61-renderer-text-probe/`.
+The maintained 586B source and profile remain unchanged. Exact replay scope
+for this investigation is **zero**. Future candidates must preserve the
+native arithmetic order before their byte or call-site scores are useful.
