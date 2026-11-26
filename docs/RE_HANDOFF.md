@@ -119,6 +119,14 @@ Independent MAP replay covers every caller/getter byte and relocation in these
 controls. Keep the current profile and focus on source temporary ownership;
 the markers alone do not warrant a full Draw LTCG build.
 
+The same note now records native volatile-access metadata: Draw is fully
+covered, but only its two GS cookie accesses are marked. Linked positive
+controls mark volatile x87 stores and saved-half accesses, arguing against
+volatile storage for the missing native forms. Direct narrowed-wide arithmetic,
+strict floating-environment narrowing and global `/O2` with local optimization
+disabled also leave the reviewed callers unchanged. Reuse these results;
+continue with expression-temporary ownership under the working float ABI.
+
 ## Latest checkpoint — StageResource selector and Enemy opcodes 622–626/631
 
 The maintained partial Enemy root now executes opcodes 622–626/631 through
