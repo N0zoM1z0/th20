@@ -22,33 +22,35 @@ config/functions.csv and config/function-origins.csv. Read the current counts wi
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`.
 The README SVG is generated from those same ledgers by `scripts/progress.py`.
 
-## Current work — exact Player main frame
+## Current work — Player state frame binding frontier
 
-The complete 3,111B/783-instruction `Player::update_main_frame` at
-`0x004F9C30` now strictly matches, including all 67 calls and 37 data fields.
-An empty Timer comparison, separate from the 16-frame endpoint check,
-restores the native register sequence under C++20. See
-[the complete proof and compiler controls](PLAYER_MAIN3111_STRICT_EXACT.md).
+The 4,043B Player state owner at `0x004F7430` is now mapped and classified
+as authored. Its complete contribution also owns one NOP and a 28B switch
+table, for **4,072B**. The final private C++ candidate matches all ordinary
+bytes, 1,028 instruction ordinals, 73 branch destinations and 344 frame
+operands. It has **no new exact credit or public source-presence credit**.
+See [the native ownership, compiler findings and binding frontier](PLAYER_STATE4043_NATIVE_FRONTIER.md).
 
-**Replay scope: one unit from one fresh provider.** No shared header or
-Timer ABI changed. Current products are in
-`build/gpt61-player-main-canonical/`; preserve the older main-frame probes
-and `.analysis/player-main3111-language/`. The direction-table checker passes
-its 72B/37-field check and rejects the old parent and a wrong table value.
-The README SVG is regenerated from the updated canonical ledgers.
+**Public canonical replay scope: zero.** No maintained source, shared header
+or match unit changed. Preserve `.analysis/player-state4043-session/`,
+its `private/PlayerStateFrame4043.cpp` and `header-hypotheses.diff`, and
+`build/gpt61-player-state-probe/case4-boundary.obj` with its receipt.
 
-The [555B movement child](PLAYER_MOVEMENT555_STRICT_EXACT.md) remains exact
-with its separate C++14 profile. Keep its products in
-`build/gpt61-player-movement-canonical/` and its earlier scope evidence.
+Next resolve independent relocation evidence, especially the zero Vector3
+at `0x00572664`: the bounded Ghidra query currently finds only this root's
+reference. Review the new member interfaces before promotion. The current
+nine-header hypothesis would affect 1,146 units from 313 source providers;
+rederive the captured closure for the interfaces actually promoted.
 
-Next review the unclassified 4,043B caller at `0x004F7430` through the attested
-Ghidra workflow. Reconcile its full control flow and boundaries before naming
-or implementing it.
+The [3,111B main frame](PLAYER_MAIN3111_STRICT_EXACT.md) and
+[555B movement](PLAYER_MOVEMENT555_STRICT_EXACT.md) remain whole strict exact.
+Keep their existing products in `build/gpt61-player-main-canonical/` and
+`build/gpt61-player-movement-canonical/`; their protected hashes are unchanged.
+The README SVG now includes the newly reviewed authored denominator.
 
 The [294B text-submit cleanup](ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md)
 remains at a 292B NONEXACT parent with two exact EH units under
-`build/gpt61-submit294-canonical/`. The glyph queue/application and
-movement/swap matches remain intact.
+`build/gpt61-submit294-canonical/`.
 
 ## Latest checkpoint — exact GDI glyph text core
 

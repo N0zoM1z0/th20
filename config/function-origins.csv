@@ -4547,7 +4547,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004F71B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F71E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F7210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004F7430,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004F7430,authored,Player,authored,high,"docs/PLAYER_STATE4043_NATIVE_FRONTIER.md; Player-specific state/input/death/item protocol, ECX layout and independently exact Player callees"
 0x004F8420,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F86C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F86F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

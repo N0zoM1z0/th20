@@ -4547,7 +4547,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x004F71B0,46,0x004F71DD,FID_conflict:`scalar_deleting_destructor',,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004F71E0,46,0x004F720D,FID_conflict:`scalar_deleting_destructor',,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004F7210,543,0x004F742E,FUN_004f7210,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x004F7430,4043,0x004F83FA,FUN_004f7430,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x004F7430,4043,0x004F83FA,FUN_004f7430,th20::Player::update_state_frame,Player,unclassified,0.00,__thiscall,?update_state_frame@Player@th20@@QAEHXZ,false,,docs/PLAYER_STATE4043_NATIVE_FRONTIER.md,authored,"Attested seven-state Player frame owner: 4043B/1028 code plus one NOP and 28B switch table, complete contribution4072B. Private whole C++ candidate matches ordinary bytes and branch/frame operands, but independent relocation bindings and interface integration remain open. No public source presence or exact credit."
 0x004F8420,663,0x004F86B6,FUN_004f8420,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004F86C0,38,0x004F86E5,FUN_004f86c0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x004F86F0,336,0x004F883F,FUN_004f86f0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

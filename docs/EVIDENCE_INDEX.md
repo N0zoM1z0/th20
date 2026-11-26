@@ -10,6 +10,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [Player state-frame ownership and 4,072B contribution](PLAYER_STATE4043_NATIVE_FRONTIER.md) — seven-state 4,043B root, complete private candidate and ordinary-byte match; independent bindings/interfaces remain open, no exact credit.
 - [Exact 555B Player movement](PLAYER_MOVEMENT555_STRICT_EXACT.md) — C++14 conversion lifetime and real world-coordinate values; complete 17-call/ten-data replay, 92/92 affected units.
 - [Exact 3,111B Player main frame](PLAYER_MAIN3111_STRICT_EXACT.md) — empty Timer condition restores native registers; complete 783 instructions, 67 calls and 37 data fields, one scoped provider.
 - [Text-submit parameter cleanup and compiler controls](ASCII_TEXT_SUBMIT294_CLEANUP_CONTROLS.md) — incoming callback cleanup, bounded NRVO/debug/return controls, full 42B EH/44B metadata; the 294B parent remains NONEXACT.
