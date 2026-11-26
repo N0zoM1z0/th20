@@ -35,6 +35,20 @@ Use scripts/repo-python scripts/report-reconstruction-status.py --summary
 for a fresh count. These are ledger totals, not a claim that the full game is
 complete.
 
+## Current work — ANM parser output-size ownership
+
+The 336B Renderer group parser never initializes its resource-size output at
+`[ebp-0x10C]`; the native entry zero targets a separate `[ebp-0x120]` word.
+The false `length=0` initializer is removed. Fresh source is 326B/82
+instructions, preserving all 14 relocation roles and the remaining branch
+protocol. The native 10B zero store and four-byte frame allocation remain
+unresolved, so the parser stays NONEXACT. See [the complete slot proof](ANIMATION_FILE_GROUP336_NATIVE_FRONTIER.md).
+
+Only this nonexact source and its focused audit changed; no shared header or
+exact provider changed. **Exact replay scope: zero.** Next work is the
+separate zero word's source ownership or compiler context. Retain the earlier
+336B initialized-size object as a rejected hypothesis.
+
 ## Latest checkpoint — Renderer narrow formatting ABI
 
 The 30B text formatter and all three Renderer consumers now share a correct

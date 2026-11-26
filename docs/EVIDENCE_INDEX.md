@@ -289,7 +289,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
 
 - [CORE/RECON-1094 — nine whole original 686B filesystem/PMR/CRT helpers from 1,022B AnimationFile loader](ANIMATION_FILE_PATH_PMR_NINE_STRICT_EXACT.md) — 141B `_Find_extension`, 118B PMR assign, 82B filename/stem, 75B allocator-aware string conversion and other authentic native path functions; 10/10 local exact units, zero authored-game credit.
 
-- [CORE/RECON-1095 — original 336B Renderer ANM group parser whole C++ source, 278/280 ordinary bytes NONEXACT](ANIMATION_FILE_GROUP336_NATIVE_FRONTIER.md) — native 6 E8/8 HIGHLOW, true 0x28B group header, original CP932 errors and texture data; original 0x120 stack zero slot differs from current C++ 0x11C without fabricating padding.
+- [336B Renderer ANM parser: separate native zero and reader-size slots](ANIMATION_FILE_GROUP336_NATIVE_FRONTIER.md) — corrected 326B/82 candidate preserves all six call/eight data roles and remaining instruction/branch protocol. The native 10B zero store and extra frame allocation remain unresolved; parent stays NONEXACT.
 
 - [CORE/RECON-1096 — whole exact 81B/132B/104B/54B/44B nested AnimationFile filesystem/PMR helpers](ANIMATION_LOADER_NESTED_FIVE_STL_415_STRICT_EXACT.md) — 415 new distinct generic native bytes, original parent E8 and true 104B security HIGHLOW, 15/15 source-scoped exact receipts, no game-authored credit.
 

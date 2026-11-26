@@ -1,6 +1,6 @@
 // Original 336B Renderer-owned AnimationFile ANM group parser.
-// Source-present whole 336B/83 i386 compiler frontier, NONEXACT: two
-// original stack-slot/frame bytes are not yet naturally reproduced.
+// SOURCE-PRESENT, NONEXACT: the original separate prologue zero store
+// remains unowned. Resource size is written by the successful reader.
 // The outer 1022B game AnimationFile loader calls this method on the
 // actual Renderer process global, passing its AnimationFile separately.
 #include "NativeAnimationFileLoadView.hpp"
@@ -18,7 +18,7 @@ extern const char native_anm_err_texture_56e488[];
 std::int32_t NativeRendererAnmGroupView::parse_group_44ebf0(
     NativeAnimationFileLoadView* file, std::int32_t index,
     const NativeAnmGroupHeader* group) {
-    std::int32_t length=0;
+    std::int32_t length;
     if (group==nullptr) {
         report_log_error(&diagnostic_log,native_anm_err_corrupt_56e428);
         return -1;
