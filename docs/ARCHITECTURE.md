@@ -54,11 +54,11 @@ The original **39,470-byte Animation VM at 0x0042B5D0** is now source-present
 as a complete semantic C++ body but remains NONEXACT; its 161-opcode/505-call
 frontier is documented in `ANIMATION_UPDATE_VM_RECONSTRUCTION.md`. The
 separate **41,967-byte Enemy opcode dispatcher at 0x0048C010** remains open.
-The 12,140B Bullet command parent at 0x0047DCF0 is also source-absent
-NONEXACT, despite **208/210 native original E8 occurrences** now mapping
-to wholly strict-exact game-callee sources; the other two direct calls are
-compiler runtime, not outstanding game helper implementations. Its genuine
-34+8+11 switch pointer groups remain a complete-original-CFG challenge.
+The 12,140B Bullet command parent at 0x0047DCF0 is source-present and
+NONEXACT. Its natural C++ represents all 34 primary command IDs, including
+the three shared no-op entries; whole-parent ABI and code generation remain
+open. The original 34+8+11 switch-pointer groups and call roles are recorded
+in [the current source frontier](BULLET_12140_PARTIAL_CPP_DISPATCHER_FRONTIER.md).
 The **5,993B Animation Draw dispatcher** is still maintained typed
 **SOURCE-PRESENT/NONEXACT** C++; its 123 original E8 callee roles and
 49+31 switch pointers are known, but physical site and stack-layout
@@ -69,7 +69,7 @@ pointers (**3,180/3,180B relocated contribution**) and an independent
 The **3,735B Bullet emitter is also whole strict exact**; older
 quad/emitter NONEXACT frontiers are superseded. See
 [full quad proof](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md) and
-[current Draw frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md).
+[current Draw frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-native-width-preparation-and-one-zero-result-return).
 
 The independent ECL Runtime tick at 0x0053B5C0 is accepted with its complete
 11,504-byte compiler contribution (11,110B game-body coverage), including

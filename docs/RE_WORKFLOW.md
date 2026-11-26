@@ -104,16 +104,14 @@ receiver/producer/consumer flow before assigning field ownership or meaning.
 No matching instruction does not establish padding or absence of dynamic access.
 See TOOLS.md and ANIMATION_BINDING_RECONSTRUCTION.md for the verified CORE119 use.
 
-## Comment-only C++/header edits and canonical literal-name receipts
+## Compiler-generated literal names
 
-Documentation-only edits under `docs/` do not modify compiler inputs and
-need **zero native replay**. However, even a **comment-only** change under
-`src/*.cpp` or a shared `src/*.hpp` changes the pinned compiler input
-fingerprint. A header change also affects all transitive C++ consumers,
-regardless of whether any generated machine-code instruction changes.
-Determine the actual *quoted-include closure* and replay only the
-currently accepted exact units from those sources. Noncanonical and
-source-present/NONEXACT consumers have no strict receipt to refresh.
+Keep native source unchanged during documentation and artifact-cleanup handoffs.
+Existing receipts fingerprint their actual source inputs; preserve them as
+historical build evidence. Do not turn prose or ordinary spelling into extra
+checkpoint gates, or edit old receipts to manufacture freshness. When native
+changes require a build, derive the affected include closure and verify any
+changed compiler-generated symbol against its independent target evidence.
 
 MSVC may renumber the compiler-generated `$SG...` **symbol names** of
 string literals when a header's source line numbering changes. This
