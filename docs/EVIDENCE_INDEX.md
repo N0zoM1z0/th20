@@ -349,6 +349,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   [shifted arithmetic windows, division phases and discarded-result controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-distinguish-shifted-arithmetic-from-native-division-order),
   [inline parameter temporaries and member/free float caller controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-inline-parameter-temporaries-and-caller-ownership-controls),
   [half/getter stack ownership, scheduling and inline half-return controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-half-value-ownership-versus-instruction-scheduling),
+  [explicit return narrowing, C++14/C11/C++20 and volatile-read controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-scalar-language-and-expression-order-controls),
   [mode45/46 temporary lifetimes and common-return frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md),
   [mode35/36 x87 return-spill, SSE operand and full-body compiler probes](ANIMATION_DRAW_BOSS_5993_MODE35_X87_PROBES.md);
   [earlier native x87/stack frontier](ANIMATION_DRAW_BOSS_5993_NATIVE_LENGTH_AND_STACK_FRONTIER.md)

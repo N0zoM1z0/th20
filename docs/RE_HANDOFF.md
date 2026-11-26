@@ -93,6 +93,15 @@ complete code/table bytes as production. Earlier arithmetic helpers,
 native materialization unresolved. Preserve value identities when assessing
 future operand forms. No source candidate was promoted; exact replay scope is zero.
 
+Reduced C++14/C11/C++20 callers now emit identical complete code and
+relocations for the five reviewed scalar forms. Volatile height/divisor reads
+do not recover the pre-getter half either. The older wide-return rejection
+was narrowed: its m64 arithmetic came from expressions without an explicit
+float conversion. Correctly narrowed double callers match the float caller
+instruction bytes, but still use the wrong memory operand and discarded-return
+form. Keep the working getter declaration. The next source question remains
+pre-getter expression-temporary materialization, rather than language mode.
+
 Retained source evidence compares the complete 6,312B candidate against the
 6,316B native code/table contribution, including both pointer partitions. No
 maintained source, shared header or accepted child changed in this checkpoint.
@@ -100,6 +109,8 @@ See the
 [live-source reconciliation and compiler controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-reconcile-live-source-and-enforce-compiled-half-height-order)
 and [candidate window and division-order findings](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-distinguish-shifted-arithmetic-from-native-division-order)
 and [half-value ownership and scheduling](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-half-value-ownership-versus-instruction-scheduling).
+See also [the narrowed-return correction](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#getter-abi-ghidra-float10-is-not-an-msvc-long-double-source-type)
+and [scalar language controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-scalar-language-and-expression-order-controls).
 Prior [mode35/36 experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md)
 remain useful; do not repeat rejected lifetime or operand-order changes.
 

@@ -205,12 +205,25 @@ mode35/36 sequence stores that x87 return with `fstp m32` before loading it
 into XMM0. The current C++ `float` declaration therefore remains the supported
 source-level ABI model.
 
-An isolated full-function probe changed only that declaration to `long double`
-and explicitly cast the result back to `float`. Under MSVC 19.44, `long double`
-is 64-bit: the candidate instead emits `fstp m64`, `movsd`, `cvtss2sd`,
-`addsd`/`subsd`, and `cvtsd2ss`. It grows to a 6,005B code body and does not
-match the original single-precision path. This hypothesis is rejected; neither
-the exact getter nor its declaration is changed.
+The older `.analysis/gptweb5993-float10-return-cast.cpp` probe declares a
+`long double` return, but explicitly narrows only modes45/46. Modes35/36
+still combine the wide return with the half before conversion to float.
+Their `fstp m64`, `movsd`, `cvtss2sd`, `addsd`/`subsd` and `cvtsd2ss`
+instructions reject that mixed-width source, not every explicitly narrowed
+wide-return expression. The earlier 6,005B result was too broadly described.
+
+A reduced locked-MSVC 19.44 control now checks the conversion boundary
+directly. `static_cast<float>(double_getter(receiver)) + half` emits the same
+complete **57B** instruction bytes as `float_getter(receiver) + half`, with
+the expected different call relocation symbol. Both use `fstp m32` and a
+memory-source `addss`. Their discarded expressions are likewise identical
+**16B** bodies ending in `fstp st(0)`. The narrowed subtraction also retains
+the memory operand. Thus m32 stores alone do not uniquely identify the source
+return type, and explicit narrowing does not solve either open instruction
+form. Keep the working float declaration and independently exact getter.
+The probe is `DrawFloatNarrowingBoundary.cpp`; its object-hash and complete
+caller comparisons are in `draw-scalar-boundary-controls.txt`, under the
+current private session directories.
 
 ## Mode35/36 operand-register frontier
 
@@ -739,3 +752,33 @@ records the complete contribution metrics. Maintained source, shared headers,
 profiles and exact claims are unchanged; exact replay scope is zero. Future
 materialization probes must preserve the getter/half value identities as
 well as the division phases before their byte score is useful.
+
+
+## 2026-11-26: scalar language and expression-order controls
+
+Five small callers compiled as C++14, C11 and C++20 have identical complete
+instruction bytes and relocation records under the locked compiler and
+otherwise common native flags. They cover discarded returns, a named half,
+a direct return expression, and add/subtract expressions passed to a real
+sink. The named half gives division before the getter but memory-source
+addition. The direct expressions give register-source arithmetic but division
+after the getter in all three language modes. Qualifying the directly read
+height or divisor as volatile also leaves the 51B direct-add instruction
+bytes unchanged. These controls do not justify changing Draw's language mode
+or public headers.
+
+A bounded byte-pattern search for an EBP-relative m32 x87 store, XMM0/XMM1
+scalar loads and register add/sub finds the four Draw sites and three other
+decoded instruction heads: `0x00500869`, `0x00500BFD`, `0x00501538`.
+Read-only attested Ghidra exports for their containing functions are retained
+in `draw-float-idiom-neighbors.c`. None supplies an accepted exact source
+example for the missing lowering. This search covers that specific register
+and addressing shape, not every equivalent scalar computation.
+
+Private sources are `DrawFloatLanguageBoundary.c` and
+`DrawFloatExpressionScheduling.cpp`; `draw-scalar-boundary-controls.txt`
+records the checked complete caller bodies, compiler/object hashes and seven
+pattern sites. The remaining source question is how the pre-getter half is
+kept as an expression temporary without folding its later load into the
+arithmetic memory operand. No maintained native input changed; affected exact
+replay scope is zero.
