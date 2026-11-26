@@ -103,9 +103,6 @@ nice -n15 scripts/repo-python scripts/replay-exact-units.py \
 nice -n15 scripts/repo-python scripts/verify-glyph-func-swap188-native.py
 ```
 
-Private evidence is in `.analysis/glyph-function-move-session/`: `native.c`,
-`ghidra-log.txt`, `move-proof.txt`, `eh-proof.txt`, `pump-replay.txt`,
-`allocator-replay.txt`, `native-proof.txt` and `verifier-controls.txt`.
 Controls reject a corrupt move leaf, wrong state count, flags or map owner,
 and the old 161B extent. The pump checker passes. The nine-helper checker
 passes its nine owned bodies and pump, then reaches a pre-existing stale

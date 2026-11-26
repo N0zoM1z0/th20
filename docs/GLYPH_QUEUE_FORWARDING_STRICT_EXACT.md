@@ -107,12 +107,6 @@ provider. Private controls reject a wrong node state count, map symbol,
 guard flags, cleanup receiver and error-message byte, and reject the old
 130B insertion extent. They mutate only private object copies.
 
-Native exports and proof logs are retained in
-`.analysis/glyph-queue151-session/`: `native.c`, `allocator-native.c`,
-`forward-proof.txt`, `canonical-replay.txt`, `canonical-native-proof.txt`,
-`node-ctor-proof.txt`, `guard-proof.txt`, `descendants-proof.txt` and
-`verifier-controls.txt`.
-
 The downstream `std::apply` and `_Apply_impl` heads at `0x00413A40` and
 `0x00413190` are now accepted by the linked application checkpoint, together
 with their invoke/construction lambda. The forwarding finding and owned EH

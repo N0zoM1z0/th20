@@ -119,7 +119,7 @@ This anchor is the next evidence question.
 
 The nine changed declaration headers affect **1,146 existing exact units from
 313 source providers**, derived from captured include closures. Their bounded
-source-filtered replay writes fresh objects under
+source-filtered replay passed 1,146/1,146 with fresh objects under
 `build/gpt61-player-state-canonical/`; thirteen new helper units add one
 provider. The complete public parent compiles into the same directory and
 retains all ordinary bytes and relocation roles of the private candidate.
@@ -129,8 +129,10 @@ Private evidence is in `.analysis/player-state4043-session/`: attested
 `decompile.txt`, `callees.txt`, `owner-callbacks.txt` and query logs;
 `native-extent-proof.txt`; `boundary-audit.py/json/txt`; `data-xrefs.txt`;
 `header-hypotheses.diff`; and the complete maintained-style candidate in
-`private/PlayerStateFrame4043.cpp`. Current objects/receipts are under
-`build/gpt61-player-state-probe/`; `case4-boundary.obj` is the final candidate.
-Preserve earlier exact Player products and these useful private controls.
+`private/PlayerStateFrame4043.cpp`. The maintained parent object/receipt is in
+`build/gpt61-player-state-canonical/`;
+the corrected-ABI private parent is retained in `build/gpt61-player-state-abi/`.
+Earlier compiled trial batteries were retired; the private source hypotheses
+and current open-binding evidence remain.
 The reviewed return-ABI controls, public comparisons, affected closure and
 old-product hashes are retained in `.analysis/player-state4043-abi/`.

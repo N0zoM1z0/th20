@@ -93,13 +93,15 @@ state, `ghidra-project/`, Factory runtime directories and every canonical
 object/receipt, including superseded canonical directories. Keep private native
 source, attested exports and useful open-question controls under `.analysis/`.
 
-The cleanup removed obsolete Draw experiment objects/receipts only from
-`build/gptweb-probe/`. Private sources, native evidence and measured findings
-remain. Current `build/gptweb-drawboss-session/`, the source verifier's
-`build/core835-probe/` output, debug controls and representative older spill
-controls are retained. Other build contexts were left intact. Disposable
-historical output paths in command recipes can be recreated; do not treat
-those paths as required inputs or restart old experiment batteries.
+Completed investigation snapshots, bulk reference-audit exports, old validation
+logs and ledger baselines have been retired. Noncanonical compiled batteries,
+portable host binaries and duplicate generated copies were removed. The private
+Player state sessions remain; its corrected-ABI parent object is retained under
+`build/gpt61-player-state-abi/`. Draw keeps the current and restored-order parent
+objects, compiler/link calibration controls and debug metadata; the source
+verifier's `build/core835-probe/` output is also retained. Other ordinary probe
+objects can be rebuilt when needed. Historical scratch paths are not a retention
+requirement; use canonical source/units and the focused findings for closed work.
 
 For native changes, inspect all live Git dirt and run the preflight in AGENTS.
 Derive affected providers from captured include closures and manifest

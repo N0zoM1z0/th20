@@ -79,13 +79,6 @@ update consumers remain NONEXACT. Fresh comparisons preserve their complete
 3,114B/104-relocation and 1,023B/49-relocation contributions respectively,
 including actual literal payloads when compiler-local labels differ.
 
-Private evidence is under `.analysis/player-movement555-session/`:
-`audit.py` and `whole-audit.txt/json` record the old
-complete mismatch, `canonical-proof.txt` records 555/555, and
-`closure-replay.txt` plus `closure-replay-resume.txt` record all affected
-units and the routing repair. Sources, full listings and receipts retain
-the useful failed controls. `protected-before.json` records the old products.
-
 The enclosing [3,111B Player main frame](PLAYER_MAIN3111_STRICT_EXACT.md)
 has since become independently whole strict exact under C++20. Its empty
 Timer condition resolves the register frontier without changing this child.

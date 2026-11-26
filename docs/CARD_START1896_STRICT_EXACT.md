@@ -48,8 +48,8 @@ capture temporary at `[ebp-0x120]`. All 62 physical call positions match.
 The shared Card layout and handle array are unchanged: the original also
 contains the constant-index handle arithmetic.
 
-Useful retained controls in `.analysis/card-start1896-session/` distinguish
-these effects. Temporary capture alone gives 1,891B / 500 instructions;
+The source controls distinguish these effects. Temporary capture alone gives
+1,891B / 500 instructions;
 turning both primary receivers into expressions gives 1,897B. The chained
 lookup candidate reaches 1,837B with its first 43 calls aligned. Indexed
 script descriptors plus list-assigned position reach 1,906B / 514 with
@@ -101,10 +101,9 @@ nice -n15 scripts/repo-python scripts/verify-card-start1896-native-frontier.py \
 The focused checker also verifies the complete metadata and independent
 anchors. Private controls reject an inverted same-size pause branch, the
 old 1,891B contribution, and malformed EH state count, cleanup symbol and
-map symbol. Proofs are retained as `canonical-build.txt`,
-`canonical-replay.txt`, `canonical-frontier-proof.txt`,
-`independent-EH-anchors.txt` and `verifier-controls.txt` in the investigation
-directory. The native decompilation came through attested `scripts/ghidra.py`.
+map symbol. The native decompilation came through attested `scripts/ghidra.py`.
+The maintained source, unit configuration and canonical products reproduce the
+complete comparison.
 
 The adjacent [602B Card finish](CARD_FINISH_602_STRICT_EXACT.md) was already
 exact. The ASCII text render/submit frontiers remain open. This checkpoint

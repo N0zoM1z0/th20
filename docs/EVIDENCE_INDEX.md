@@ -1,7 +1,6 @@
 # TH20 original-native evidence index
 
-**Native evidence navigation, reconciled 2026-11-11.** For live
-repository status, **first read the [current handoff](RE_HANDOFF.md)**,
+For live repository status, **first read the [current handoff](RE_HANDOFF.md)**,
 [accepted author-code ledger](../config/matches.csv), and
 [strict unit graph](../config/match-units.toml). The following detailed
 investigations preserve their **original dated checkpoint observations**;
@@ -26,13 +25,11 @@ not current facts when newer canonical units supersede them.
 The [current handoff](RE_HANDOFF.md) and
 [open Boss backlog](RE_OPEN_BOSS_BACKLOG.md) are the **active state**;
 entries below preserve dated evidence, not necessarily current acceptance.
-Disposable noncanonical compiled objects named in historical entries may have
-been cleaned; reproduce them with the source/probe instructions rather than
-using the historical object path as a current file locator.
-At the 2026-11-11 checkpoint the authoritative ledgers record
-**1,584 strict units /438 canonical object-receipt providers**,
-**775 game-authored exact heads /265,737 original code bytes**.
-Recheck the live CSV/TOML before relying on these dated counts.
+Closed investigations retain their findings, maintained source and canonical
+unit settings. Historical scratch logs, bulk exports and private probe snapshots
+may have been retired; paths in dated notes describe the original investigation,
+not the current local file inventory. Reproduce exact comparisons through the
+canonical unit graph, and use the live ledgers for totals.
 
 - **201B WeaponStoneInfo item-progress transition:** [whole strict exact](WEAPON_STONE_ITEM_PROGRESS_EXACT.md).
 - **157B game file-existence wrapper:** [whole strict exact](GAME_FILE_EXISTS157_NATIVE_FRONTIER.md).

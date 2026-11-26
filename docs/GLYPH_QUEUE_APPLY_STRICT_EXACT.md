@@ -80,11 +80,7 @@ nice -n15 scripts/repo-python scripts/replay-exact-units.py \
 nice -n15 scripts/repo-python scripts/verify-glyph-queue-list-native.py
 ```
 
-Private evidence is in `.analysis/glyph-apply-session/`: `native.c`,
-`ghidra-log.txt`, `allocator17-proof.txt`, `canonical-queue-replay.txt`,
-`canonical-allocator-replay.txt`, `canonical-native-proof.txt` and
-`verifier-controls.txt`. The constructor, guard and PMR descendant checkers
-also pass. Earlier compiler controls remain useful in the linked mask note.
+The constructor, guard and PMR descendant checkers also pass.
 
 The function-move/reset support is now accepted by the
 [movement/swap checkpoint](GLYPH_FUNCTION_SWAP188_NATIVE_FRONTIER.md). The 294B

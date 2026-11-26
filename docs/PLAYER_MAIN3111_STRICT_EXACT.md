@@ -48,7 +48,7 @@ The existing Timer bool predicates retain their independently verified 46B
 bodies. Exact bytes establish this source representation; the original
 source spelling remains unknown.
 
-The compiler controls are retained privately. `/permissive` leaves the old
+The compiler controls showed that `/permissive` left the old
 3,114B body unchanged. A C++17 compile fails because the included Worker
 storage contains `std::jthread`. The successful main-frame unit remains
 C++20; the separate [555B movement match](PLAYER_MOVEMENT555_STRICT_EXACT.md)
@@ -73,18 +73,13 @@ complete bytes/hash checked.
 **Affected canonical replay: one unit from one fresh provider.** No shared
 header changed. Current products are
 `build/gpt61-player-main-canonical/PlayerMainFrame.obj` and its receipt;
-prior main-frame probes and the exact movement products remain intact.
+the exact movement products remain intact. The active provider path is recorded
+in the canonical unit manifest.
 The direction-data checker now accepts the complete 3,111B contribution and
 uses current product paths. Its real 72B/37-field check passes; negative
 controls reject the old 3,114B parent and a changed direction-table value.
 It continues to report data evidence separately from canonical exactness.
 
-Private evidence is under `.analysis/player-main3111-language/`:
-`canonical-proof.json` contains the full replay, `independent-anchors.txt`
-records the folded callees/table and independent byte replay, and
-`data-roles-proof.txt` plus `checker-negative-proof.txt` cover the checker.
-Sources, complete listings and receipts retain the controls.
-
-The next related native scope is the unclassified 4,043B caller at
-`0x004F7430`. Review its complete boundaries and control flow through the
-attested Ghidra workflow before assigning a maintained owner or source body.
+The enclosing [4,072B Player state-frame contribution](PLAYER_STATE4043_NATIVE_FRONTIER.md)
+is now mapped and source-present. It matches ordinary bytes but remains NONEXACT
+until its independent relocation bindings are complete.

@@ -109,13 +109,9 @@ root; ordinary lambda captures reproduced the 132B/23B children but also
 left the 2,308B frontier. These controls explain why changing the closure's
 spelling alone did not recover the caller's lifetime boundary.
 
-Attested Ghidra output, private source controls and proof logs are retained
-under `.analysis/glyph-core2227-session/`. Key files are `native.c`,
-`ghidra-log.txt`, `implicit-function-proof.txt`, `reused-position-proof.txt`,
-`canonical-replay.txt`, `canonical-frontier-proof.txt`, `queue-native-proof.txt`
-and `verifier-controls.txt`. Current objects/receipts are in
-`build/gpt61-glyph-text-canonical/`; the old `core1059-canonical` and
-`core1060-canonical` products are preserved.
+Canonical objects/receipts remain in `build/gpt61-glyph-text-canonical/`;
+the old `core1059-canonical` and `core1060-canonical` products are preserved.
+The unit manifest records the active provider and complete comparison settings.
 
 The downstream [151B list insertion and allocator construction](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md)
 are now independently exact. The 294B submit and 578B/586B formatting callers
