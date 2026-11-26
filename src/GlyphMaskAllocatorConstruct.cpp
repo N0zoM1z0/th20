@@ -51,4 +51,3 @@ __declspec(safebuffers) void polymorphic_allocator<th20::GlyphMaskOffset>::const
             *this,std::move(source)));
 }
 } // namespace std::pmr
-
