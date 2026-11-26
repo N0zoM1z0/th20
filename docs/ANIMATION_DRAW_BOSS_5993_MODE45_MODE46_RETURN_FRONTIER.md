@@ -782,3 +782,29 @@ pattern sites. The remaining source question is how the pre-getter half is
 kept as an expression temporary without folding its later load into the
 arithmetic memory operand. No maintained native input changed; affected exact
 replay scope is zero.
+
+
+## 2026-11-26: complete slot footprints and floating-environment controls
+
+The native-only first-result audit previously matched only memory operands
+starting exactly at `[ebp-0x160]`. It now checks their complete byte ranges,
+so a wide read starting earlier cannot silently overlap the four-byte slot.
+Indexed frame accesses and lower-frame `lea` addresses are rejected because
+their possible consumers have not been established. The immutable 5,993B
+body still has only the two m32 stores. Five synthetic controls reject a
+spanning 16B read, a last-byte read, an extra store, a lower-frame address and
+an indexed read; three nonoverlapping boundary controls pass. The full native
+verifier also passes its existing call, CFG, table and relocation checks.
+
+Explicit `fenv_access(on)` with `/fp:strict` leaves all five reduced caller
+bodies and relocation records identical to the `/arch:SSE2 /fp:precise`
+baseline. `/arch:SSE` instead emits x87 division/addition for the arithmetic
+callers: direct-add shrinks from 51B to 33B and named-add from 57B to 39B.
+It does not produce the missing scalar-SSE load/register operation. Neither
+control warrants a full-parent rebuild or profile change.
+
+Private evidence is `draw-first-slot-extent-native.txt`,
+`draw-first-slot-extent-controls.txt` and `draw-sse-fenv-controls.txt` in
+`.analysis/draw-boss-session/`. The two compiler objects and receipts remain
+under `build/gptweb-drawboss-session/`; their source is the existing language
+fixture and `DrawFloatEnvironmentBoundary.c`.

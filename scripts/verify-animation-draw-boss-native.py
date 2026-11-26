@@ -184,6 +184,26 @@ def verify_mode_dispatch_paths(instructions, main, nested) -> None:
     print("PASS 28 actual main-to-nested switch traversals; mode 24/25 use their main table directly")
 
 
+def verify_first_result_slot(native_body: bytes) -> None:
+    decoder = Cs(CS_ARCH_X86, CS_MODE_32)
+    decoder.detail = True
+    accesses = []
+    for ins in decoder.disasm(native_body, HEAD):
+        for operand in ins.operands:
+            if operand.type != CS_OP_MEM or operand.mem.base != X86_REG_EBP:
+                continue
+            assert operand.mem.index == 0, (hex(ins.address), "indexed frame access")
+            # A pointer into the lower frame could expose this slot through
+            # an aggregate. The native function takes no such address.
+            if ins.mnemonic == "lea":
+                assert operand.mem.disp >= -0x15C, (hex(ins.address), "lower-frame address")
+                continue
+            assert operand.size > 0
+            if operand.mem.disp < -0x15C and operand.mem.disp + operand.size > -0x160:
+                accesses.append((ins.address - HEAD, ins.mnemonic, operand.size))
+    assert accesses == [(0x0FCD, "fstp", 4), (0x10BA, "fstp", 4)], accesses
+
+
 def verify() -> None:
     image, _ = verified_target()
     base, sections = parse_sections(image)
@@ -251,20 +271,11 @@ def verify() -> None:
     print("PASS native mode35/36 first-return spills and register-register scale ops; "
           "mode35/36/45/46 width and mode45/46 scale XMM operand order")
 
-    # Both first getter returns are rounded to the same local slot. The slot
-    # has exactly two native writes and no reads anywhere in the parent body;
-    # it is a write-only compiler-visible temporary, not an adjusted-scale
-    # input. Preserve that distinction when testing natural C++ lifetimes.
-    slot_decoder = Cs(CS_ARCH_X86, CS_MODE_32)
-    slot_decoder.detail = True
-    first_result_slot_accesses = []
-    for ins in slot_decoder.disasm(native_body, HEAD):
-        for operand in ins.operands:
-            if (operand.type == CS_OP_MEM and operand.mem.base == X86_REG_EBP
-                    and operand.mem.index == 0 and operand.mem.disp == -0x160):
-                first_result_slot_accesses.append((ins.address - HEAD, ins.mnemonic))
-    assert first_result_slot_accesses == [(0x0FCD, "fstp"), (0x10BA, "fstp")], first_result_slot_accesses
-    print("PASS native first getter temporary: exactly two x87 stores to [ebp-0x160], no reads")
+    # Check complete access widths: a wider load starting before the slot
+    # would still read it even without an exact -0x160 displacement.
+    verify_first_result_slot(native_body)
+    print("PASS native first getter temporary: two m32 stores, no overlapping "
+          "EBP-relative reads, indexed frame accesses or lower-frame addresses")
 
     # Mode28 forwards AnimationFlags+0x4A8/+0x4AC as the final two cdecl
     # arguments of the already-exact 1,601B triangle renderer. The first is

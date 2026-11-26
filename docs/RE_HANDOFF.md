@@ -102,6 +102,13 @@ instruction bytes, but still use the wrong memory operand and discarded-return
 form. Keep the working getter declaration. The next source question remains
 pre-getter expression-temporary materialization, rather than language mode.
 
+The first-result native audit now checks full memory-access widths, indexed
+accesses and lower-frame addresses, closing the earlier exact-displacement
+gap. The real body, three boundary controls and five rejection controls pass.
+Explicit floating-environment access leaves the reduced callers unchanged;
+`/arch:SSE` switches their arithmetic to x87. Neither justifies changing the
+parent profile.
+
 Retained source evidence compares the complete 6,312B candidate against the
 6,316B native code/table contribution, including both pointer partitions. No
 maintained source, shared header or accepted child changed in this checkpoint.
@@ -111,6 +118,8 @@ and [candidate window and division-order findings](ANIMATION_DRAW_BOSS_5993_MODE
 and [half-value ownership and scheduling](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-half-value-ownership-versus-instruction-scheduling).
 See also [the narrowed-return correction](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#getter-abi-ghidra-float10-is-not-an-msvc-long-double-source-type)
 and [scalar language controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-scalar-language-and-expression-order-controls).
+The latest [slot-footprint and floating-environment controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-complete-slot-footprints-and-floating-environment-controls)
+retain zero affected exact replay units.
 Prior [mode35/36 experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md)
 remain useful; do not repeat rejected lifetime or operand-order changes.
 
