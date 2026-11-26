@@ -634,3 +634,57 @@ exact claims are unchanged, so exact replay scope is zero. The next useful
 source investigation is how to materialize the pre-getter half as a genuine
 expression temporary while preserving the second division after adjusted
 scale; restoring register arithmetic alone is insufficient.
+
+
+## 2026-11-26: inline parameter temporaries and caller ownership controls
+
+Allowing inlining does not recover the native scalar operand form. Under the
+locked compiler and remaining native flags, `/Od /Ob2` leaves the entire
+maintained 6,312B code/table contribution and relocation records identical to
+`/Od /Ob0`. Two real add/subtract helpers were then marked `__forceinline`
+and used for adjusted scale in modes35/36/45/46. Their argument evaluation
+preserves native division order and they are successfully inlined: all 123
+original call roles remain, with no helper calls. The result is nevertheless
+**6,053B / 1,509 instructions**, a 0x214 frame, 81 aligned E8 sites and 22/32
+HIGHLOW sites. Arithmetic still uses the memory operand. Each inlined helper
+adds a result-temporary load/store before publication to adjusted scale; four
+such pairs explain the 64B / eight-instruction increase over production.
+
+`std::ignore = animation_inherited_aux_scale_x(animation)` under `/Ob2`
+provides a natural discard operation without an unused source variable or
+additional calls. It produces real `fstp m32` stores, but not the native frame:
+
+| First result | Native | `std::ignore` control |
+| --- | --- | --- |
+| Mode35 | +0x0FCD to `[ebp-0x160]` | +0x0FCD to `[ebp-0x20C]` |
+| Mode36 | +0x10BA to `[ebp-0x160]` | +0x10C6 to `[ebp-0x208]` |
+
+The control expands the frame from 0x204 to 0x20C and the body to
+5,997B / 1,501 instructions, with 85/123 aligned E8 sites and 24/32 HIGHLOW
+sites. It retains all 123 call roles and four native division phases. Thus
+standard discard materialization explains how to obtain the store form, but
+not the shared native slot or complete parent. Neither experiment is promoted.
+
+A separate small ABI probe compares genuine member, const-member and free
+fastcall float calls using the same receiver convention. All three discarded
+calls have the same complete 16B instruction sequence ending in `fstp st(0)`,
+with call relocations naming their respective declarations. Member and free
+adjusted-scale callers likewise have the same 57B structure with memory-source
+addition. Const/volatile value returns, conversion-operator calls and property
+access also produce the same 16B discard sequence. These controls do not
+identify the original declaration, but give no reason to change the supported
+float ABI or expand the public Animation header's consumer closure.
+
+Private sources/objects and compiler receipts are retained under
+`.analysis/draw-boss-session/` and `build/gptweb-drawboss-session/`.
+`draw-inline-materialization-reports.txt` records the complete parent metrics;
+`draw-inline-abi-controls.txt` records the call-role/phase and complete caller
+comparisons. The ABI probe sources are `DrawFloatCallerKinds.cpp` and
+`DrawFloatMaterializationKinds.cpp`; the full-parent probes are
+`AnimationDrawBoss-inline-arg-temporaries.cpp` and
+`AnimationDrawBoss-standard-ignore.cpp`.
+
+Maintained native source, shared headers, compiler profiles and exact claims
+are unchanged. Exact replay scope is zero. The remaining issue is caller
+materialization and temporary ownership within the original 0x204 frame;
+plain member-call spelling and scalar helper inlining do not explain it.

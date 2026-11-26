@@ -84,13 +84,14 @@ recreated with dead locals. Private C++17 and C++20 controls emit identical
 code/table bytes and do not solve that frontier. Explicit discarded-float casts
 and `/fp:except` also leave the entire contribution and relocations unchanged.
 
-The candidate reporter now follows getter/renderer call roles rather than
-fixed native offsets. It confirms that the 5,965B direct-expression probe has
-register arithmetic but computes its scale half after the getter, so that
-variant remains rejected. Current division phases are `(1,0,1)`; the direct
-expression gives `(0,1,1)` and the old width-half swap gives `(1,1,0)`. Real-object
-smoke and missing-call/wrong-role/extra-arithmetic controls pass. This reporter
-and knowledge checkpoint changes no native inputs: exact replay scope is zero.
+The candidate reporter follows getter/renderer call roles rather than fixed
+native offsets and distinguishes native division phases `(1,0,1)` from the
+rejected direct-expression and width-half-swap phases. New `/Ob2` controls
+show that successfully inlined arithmetic helpers still select memory operands;
+`std::ignore` materializes first results in two new frame slots, not native
+`[ebp-0x160]`. Isolated member/const-member/free float callers emit the same
+instruction sequence, so the supported getter declaration and public headers remain unchanged.
+No source candidate was promoted; exact replay scope is zero.
 
 Retained source evidence compares the complete 6,312B candidate against the
 6,316B native code/table contribution, including both pointer partitions. No
@@ -98,7 +99,9 @@ maintained source, shared header or accepted child changed in this checkpoint.
 See the
 [live-source reconciliation and compiler controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-reconcile-live-source-and-enforce-compiled-half-height-order)
 and [candidate window and division-order findings](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-distinguish-shifted-arithmetic-from-native-division-order)
-and [prior mode35/36 experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md).
+and [inline parameter/ABI controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-inline-parameter-temporaries-and-caller-ownership-controls).
+Prior [mode35/36 experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md)
+remain useful; do not repeat rejected lifetime or operand-order changes.
 
 ## Latest checkpoint — StageResource selector and Enemy opcodes 622–626/631
 
