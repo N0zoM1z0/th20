@@ -2,11 +2,10 @@
 // immutable 5,993-byte original at 0x00443880. SOURCE-PRESENT NONEXACT:
 // original 123 E8 calls, 49+31 genuine pointer tables and 32 in-body PE
 // relocation target roles are independently known. Current native-order C++
-// compiles to a 5989B/1501-head body with the original 0x204 frame and both
-// pointer partitions. All 123 call targets remain in original order; the first
-// 81 physical call sites match and the full body matches 109/123 E8 positions.
-// It also matches 26/32 body HIGHLOW site/target pairs and 4694/5372 ordinary
-// bytes. This parent remains NONEXACT; matching call roles/tables is not exact.
+// preserves both pointer partitions, all 123 ordered call roles, native width
+// evaluation during argument preparation and the shared zero-result path.
+// The first-result m32 stores and four scalar register reloads remain open.
+// This parent remains NONEXACT; matching call roles/tables is not exact.
 #include "Animation.hpp"
 #include "AnimationCallback.hpp"
 #include "AnimationDrawDetailedOwner.hpp"
@@ -223,9 +222,8 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43c780((position.x),(position.y),animation_inherited_aux_scale_x(animation),width,height,angle,(animation->base.variables.draw_shape_count),animation_draw_color_490(animation),animation_draw_color_494(animation));
         break;
     case 35: {
-        // The native calls inherited-scale twice, then color494/color490,
-        // then the second scale within the size expression. Preserve that
-        // observable order and the two separate original /2 operations.
+        // Preserve the first getter, color494/color490, count and second
+        // getter order. Recompute width's half while passing the arguments.
         animation_inherited_aux_scale_x(animation);
         const auto second_color=animation_draw_color_494(animation);
         const auto first_color=animation_draw_color_490(animation);
@@ -233,11 +231,8 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
         const float aux_half=height/native_two;
         const float inherited_scale=animation_inherited_aux_scale_x(animation);
         const float adjusted_scale=inherited_scale+aux_half;
-        // A genuinely used width argument: its separate lifetime aligns
-        // downstream native E8 sites without a dummy compiler-shaping local.
-        const float shape_width=width+(height/native_two);
         reinterpret_cast<AnimationDrawDetailedOwner*>(this)->draw_shape_43c780(
-            position.x,position.y,adjusted_scale,shape_width,height,
+            position.x,position.y,adjusted_scale,width+(height/native_two),height,
             angle,quad_count,first_color,second_color);
         break;
     }
@@ -324,8 +319,9 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
     default:
         break;
     }
-    return 0;
     }
+    // Nested primitives share the outer switch's zero-result path.
+    [[fallthrough]];
     case 10:
     case 23:
     default:

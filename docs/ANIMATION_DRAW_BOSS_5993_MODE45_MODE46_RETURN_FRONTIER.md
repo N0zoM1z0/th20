@@ -3,14 +3,14 @@
 The maintained AnimationPoolOwner::draw(Animation*) at 0x00443880 remains
 SOURCE-PRESENT/NONEXACT. The immutable target body is 5,993B/1,501
 instructions with a 0x204 frame and 6,316B complete code+table contribution.
-The current production source preserves native mode45/46 half-height
-evaluation order and compiles to 5,989B/1,501 instructions, with a 6,312B
-complete code+table contribution. Current whole-source metrics are 109/123
-original E8 physical sites, 26/32 exact in-body relocation site/target pairs
-and 4,694/5,372 ordinary bytes. The remaining code-generation frontier is the
-native register-register adjusted-scale operands in modes35/36/45/46, the first
-mode35/36 x87 result spill, and the four-byte body/table displacement from the
-source-correct mode45 expression. This report does not claim exactness.
+The current source evaluates width during argument preparation and shares the
+native zero-result return path. It compiles to **5,969B/1,497 instructions**,
+with a 0x200 frame and a complete 6,292B code+table contribution. All 123 call
+roles remain in order; 81/123 physical call positions, 22/32 HIGHLOW site/target
+pairs and 3,691/5,352 ordinary bytes agree. The 24B length gap is confined to
+four complete cases: two first-getter store forms and four scalar register
+reloads account for it. Stack slots and receiver-load scheduling also remain
+different. See [the current source decision](#2026-11-26-native-width-preparation-and-one-zero-result-return).
 
 
 ## Native mode45 and mode46 lifetimes
@@ -808,3 +808,59 @@ Private evidence is `draw-first-slot-extent-native.txt`,
 `.analysis/draw-boss-session/`. The two compiler objects and receipts remain
 under `build/gptweb-drawboss-session/`; their source is the existing language
 fixture and `DrawFloatEnvironmentBoundary.c`.
+
+
+## 2026-11-26: native width preparation and one zero-result return
+
+The maintained source now removes mode35's eager `shape_width` local and the
+separate zero return following the nested switch. Width is evaluated while
+preparing the renderer arguments, and the nested cases explicitly fall through
+to the outer switch's existing zero-result path. The target has both of these
+properties. The prior source had used the width local to improve physical call
+alignment, despite computing it before the target's argument preparation.
+
+Compiled verification now checks the number of pushes between adjusted-scale
+arithmetic and the width division: **5/5/6/6** in modes35/36/45/46, independently
+confirmed from the complete native body. The former mode35 source has zero
+such pushes. The final renderer call also leads through NOP, one zero result
+and the cookie epilogue, matching the native tail; the former source inserted
+another jump and zero result. The retained previous object fails both new
+checks, while the target and freshly compiled maintained source pass.
+
+The complete native/candidate case extents are:
+
+| Mode | Native bytes / instructions | Current bytes / instructions | Length gap |
+| --- | ---: | ---: | ---: |
+| 35 | 237 / 52 | 229 / 51 | 8B |
+| 36 | 241 / 53 | 233 / 52 | 8B |
+| 45 | 223 / 49 | 219 / 48 | 4B |
+| 46 | 222 / 49 | 218 / 48 | 4B |
+
+These four gaps total the entire **24B/four-instruction** body deficit. The
+two native first-result m32 stores are each four bytes longer than the current
+ST0 discard. Each native register-source add/sub pair is four bytes longer
+than the current memory-source operation. Recovering their temporary ownership
+must also restore the frame and operands; matching these lengths alone would
+not establish exactness.
+
+Physical metrics decrease from 109 to 81 aligned E8 sites and from 26 to 22
+HIGHLOW site/target pairs after removing the two non-native source steps.
+The source decision follows native evaluation and control flow rather than
+keeping those steps to offset missing instructions. The full original
+5,993B extent and both 49+31 pointer tables remain the comparison target.
+
+The reporter now describes stores at `[ebp-0x160]` by location rather than
+calling them first-result spills. In the new frame, one second-getter return
+uses that offset; both first getters still emit `fstp st(0)`. Call-role tracing
+in `draw-argument-return-order-controls.txt` preserves this distinction.
+
+Fresh source proof, complete reports and case accounting are retained as
+`draw-direct-width-shared-return-source-proof.txt`,
+`draw-direct-width-shared-return-reports.txt` and
+`draw-case-extent-accounting.txt` under `.analysis/draw-boss-session/`.
+The full-native 6,316B extent request is rejected as 6,292B, retained in
+`draw-direct-width-shared-return-full-extent.txt`; no target-sized prefix is used.
+The previous source/object remain in the restored-order private probes.
+Only `src/AnimationDrawBoss.cpp` changed native code; it has no canonical
+exact providers or source-including consumers. No shared header changed,
+and the affected exact replay scope is zero. Parent exact credit stays zero.

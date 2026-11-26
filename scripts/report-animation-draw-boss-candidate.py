@@ -130,13 +130,13 @@ def main() -> int:
                              if relocation["type"] == "DIR32" and int(relocation["offset"]) < code_end}
         exact_highlow_sites = len(native_highlow & candidate_highlow)
 
-        first_spills = [ins.address - HEAD for ins in instructions
+        native_slot_stores = [ins.address - HEAD for ins in instructions
                         if ins.mnemonic == "fstp" and ins.op_str == "dword ptr [ebp - 0x160]"]
         print(f"{path.name}: contribution={len(body)}B code={code_end}B "
               f"x86={len(instructions)} ordinary={ordinary}/{comparable} "
               f"E8={aligned}/{len(native_calls)} abs-E8-delta={abs_delta} "
               f"HIGHLOW-sites={exact_highlow_sites}/{len(native_highlow)}")
-        print(f"  candidate-only native-slot first-result-spills={len(first_spills)} {first_spills}")
+        print(f"  candidate-only fstp-m32 stores at [ebp-0x160]={len(native_slot_stores)} {native_slot_stores}")
         for mode, native_getter in ((35, 0x1016), (36, 0x1103), (45, 0x15DD), (46, 0x16BC)):
             try:
                 getter, scale, width, phases = scale_width_window(

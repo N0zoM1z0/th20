@@ -69,59 +69,38 @@ provenance for the 244B dispatcher remains unknown. See
 
 ## Active Boss — Animation main Draw
 
-The 5,993B `AnimationPoolOwner::draw` at `0x00443880` remains SOURCE-PRESENT,
-NONEXACT. Modes45/46 now actually preserve the native phase order: scale half
-before the getter, adjusted scale after it, width half recomputed afterwards.
-The live pre-correction source had retained the role swap despite earlier
-handoff claims. Its new source verifier checks compiled division/arithmetic
-order and rejects independently compiled mode45 and mode46 role swaps.
+The original 5,993B `AnimationPoolOwner::draw` at `0x00443880` remains
+SOURCE-PRESENT, NONEXACT. The maintained source now evaluates mode35 width
+while preparing renderer arguments and uses one shared zero-result return.
+Compiled checks confirm the native 5/5/6/6 prepared pushes in modes35/36/45/46
+and the final renderer-to-cookie tail. The previous source fails both checks.
 
-The current complete candidate is **5,989B/1,501 instructions**, with all 123
-ordered E8 roles, 109/123 E8 positions and 26/32 HIGHLOW site/target pairs.
-Both switch-table partitions (49+31 pointers) remain correct. Fourteen E8
-positions remain open in modes35/36/45/46; write-only x87 stores are not
-recreated with dead locals. Private C++17 and C++20 controls emit identical
-code/table bytes and do not solve that frontier. Explicit discarded-float casts
-and `/fp:except` also leave the entire contribution and relocations unchanged.
+The fresh candidate is **5,969B/1,497 instructions**, with a 0x200 frame
+(native 0x204) and a complete **6,292B** code/table contribution (native
+6,316B). All 123 E8 roles and both 49+31 switch-table alias partitions remain.
+Physical metrics are 81/123 E8 sites, 22/32 HIGHLOW site/target pairs and
+3,691/5,352 ordinary bytes. The earlier 5,989B candidate's higher score partly
+offset missing instructions with eager width staging and a duplicate return.
+The source now follows the native evaluation and return paths.
 
-The candidate reporter follows getter/renderer call roles and checks division
-phases `(1,0,1)`. The latest mode45 left-half expression improves scheduling
-by nine matching bytes but swaps the half/getter stack slots and addition
-inputs; it is rejected. An inlined half-height function produces the same
-complete code/table bytes as production. Earlier arithmetic helpers,
-`std::ignore`, reference lifetimes and caller ABI controls also leave the
-native materialization unresolved. Preserve value identities when assessing
-future operand forms. No source candidate was promoted; exact replay scope is zero.
+Four complete cases account for the entire 24B/four-instruction length gap:
+mode35 is 8B short, mode36 8B, mode45 4B and mode46 4B. The two first-getter
+m32 store forms and four register-source arithmetic reloads remain open,
+along with their stack-slot ownership and receiver-load scheduling. Both
+first getters still discard ST0; a second return now occupies `[ebp-0x160]`,
+so a matching offset alone must not be called a first-result spill.
 
-Reduced C++14/C11/C++20 callers now emit identical complete code and
-relocations for the five reviewed scalar forms. Volatile height/divisor reads
-do not recover the pre-getter half either. The older wide-return rejection
-was narrowed: its m64 arithmetic came from expressions without an explicit
-float conversion. Correctly narrowed double callers match the float caller
-instruction bytes, but still use the wrong memory operand and discarded-return
-form. Keep the working getter declaration. The next source question remains
-pre-getter expression-temporary materialization, rather than language mode.
+Only `src/AnimationDrawBoss.cpp` changed native code. It has no canonical
+exact provider or source-including consumer; no shared header changed.
+**Affected exact replay scope: zero.** Existing accepted children retain
+their evidence, and the parent receives no exact credit.
 
-The first-result native audit now checks full memory-access widths, indexed
-accesses and lower-frame addresses, closing the earlier exact-displacement
-gap. The real body, three boundary controls and five rejection controls pass.
-Explicit floating-environment access leaves the reduced callers unchanged;
-`/arch:SSE` switches their arithmetic to x87. Neither justifies changing the
-parent profile.
-
-Retained source evidence compares the complete 6,312B candidate against the
-6,316B native code/table contribution, including both pointer partitions. No
-maintained source, shared header or accepted child changed in this checkpoint.
-See the
-[live-source reconciliation and compiler controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-reconcile-live-source-and-enforce-compiled-half-height-order)
-and [candidate window and division-order findings](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-distinguish-shifted-arithmetic-from-native-division-order)
-and [half-value ownership and scheduling](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-half-value-ownership-versus-instruction-scheduling).
-See also [the narrowed-return correction](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#getter-abi-ghidra-float10-is-not-an-msvc-long-double-source-type)
-and [scalar language controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-scalar-language-and-expression-order-controls).
-The latest [slot-footprint and floating-environment controls](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-complete-slot-footprints-and-floating-environment-controls)
-retain zero affected exact replay units.
-Prior [mode35/36 experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md)
-remain useful; do not repeat rejected lifetime or operand-order changes.
+See [the current source proof and complete case accounting](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-native-width-preparation-and-one-zero-result-return).
+The focused note also retains the rejected width-half swaps, inline helpers,
+ABI/language and floating-environment controls. Do not repeat them. Next
+investigate natural expression-temporary ownership for the two m32 stores
+and four scalar reloads while preserving the newly verified argument/return
+protocol. Keep the working getter declaration and locked compiler profile.
 
 ## Latest checkpoint — StageResource selector and Enemy opcodes 622–626/631
 

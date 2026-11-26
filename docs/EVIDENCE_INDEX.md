@@ -343,6 +343,7 @@ checkpoint's `SOURCE-ABSENT` or `NONEXACT` title.
   The original **39,470B Animation VM update** is also source-absent;
   see [source ownership](SOURCE_MAP.md).
 - **5,993B Animation Draw — SOURCE-PRESENT, NONEXACT:**
+  [current native width preparation, shared return and complete 24B case accounting](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-native-width-preparation-and-one-zero-result-return),
   [mode35/36 original Ghidra expression order, write-only x87 spill and register-operand evidence](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_GHIDRA_DECOMP.md),
   [mode35/36 width-order, first-return local and compiler-profile experiments](ANIMATION_DRAW_BOSS_5993_MODE35_MODE36_WIDTH_ORDER_EXPERIMENTS.md),
   [live source and compiled half-height order](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-reconcile-live-source-and-enforce-compiled-half-height-order),
