@@ -22,7 +22,26 @@ config/functions.csv and config/function-origins.csv. Read the current counts wi
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`.
 The README SVG is generated from those same ledgers by `scripts/progress.py`.
 
-## Current work — ASCII text conversion and verifier
+## Current work — exact GDI glyph text core
+
+The GDI core at `0x00415830` now strictly replays its full 2,316B
+contribution: 2,227B/470 instructions, one NOP and 22 font pointers. The
+99B owned EH code and 76B five-state metadata also match. Implicit function
+conversion at the consuming queue call and one reused X-position local
+recover the native lifetime and frame. See [the complete proof](GLYPH_TEXT_CORE2227_STRICT_EXACT.md).
+
+**Replay scope: ten units from two fresh providers**, derived from the
+changed queue header's captured include closures. Existing 132B/23B job
+children and the 56B bridge remain exact. The current objects/receipts are
+in `build/gpt61-glyph-text-canonical/`; preserve the old canonical products
+and private controls in `.analysis/glyph-core2227-session/`.
+
+The 151B list insertion backend remains a useful bounded next target;
+its current source is `GlyphTextQueueList151.cpp`, still NONEXACT. The
+294B submit and 578B/586B formatting callers also remain open. The README
+SVG has been regenerated from the ledgers.
+
+## Previous frontier — ASCII text conversion and verifier
 
 The 578B ASCII renderer remains a 574B NONEXACT candidate. Four private
 conversion controls distinguish the native double spill from direct XMM

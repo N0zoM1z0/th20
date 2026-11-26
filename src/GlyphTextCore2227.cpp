@@ -1,14 +1,7 @@
-// Original 2,227B GDI text generation/upload Boss at 0x00415830.
-// SOURCE-PRESENT NONEXACT: all native font, GDI, outline, alpha and
-// submission stages are maintained; original compiler/EH and the queued
-// functor/task producer have independent source boundaries still open.
-// Its 22-entry native font switch, GDI color/offset protocol and correct
-// same-frame draw/submit behavior are retained. A real 8B folded canvas
-// reference call, completion-pointer ABI and named job lifetime restore
-// the first 17 native E8 sites, while the whole parent remains NONEXACT.
-// Full current MSVC x86 COFF contribution: 2308B (candidate code 2220B
-// including return, then 22 real switch pointers); original total 2316B.
-// All 25 callee roles and 43 original data roles remain accounted for.
+// Complete native GDI text core at 0x00415830: 2,227B/470 instructions,
+// one alignment NOP and 22 font-switch pointers. The queue consumes an
+// implicitly constructed function temporary; both task temporaries survive
+// submission, then the function is destroyed before its captured glyph job.
 #include "NativeGlyphRenderJob.hpp"
 #include "NativeGlyphTextCore.hpp"
 #include "NativeGlyphFontResources.hpp"
@@ -137,10 +130,10 @@ std::uint64_t __cdecl native_text_core_415830(
         }
         TextOutW(dc,horizontal_offset,baseline,unicode,char_count);
     } else {
+        std::int32_t px=horizontal_offset;
         wchar_t single_character[2]{};
         SetTextColor(dc,text_color);
         if (is_special!=0) {
-            std::int32_t px=horizontal_offset;
             for(std::int32_t k=0;k<char_count;++k) {
                 single_character[0]=unicode[k];
                 single_character[1]=0;
@@ -150,7 +143,7 @@ std::uint64_t __cdecl native_text_core_415830(
             reinterpret_cast<NativeGlyphCanvasView*>(canvas)->composite_glyph_mask_416420(bitmap_height+6,0,bitmap_width,
                                                 outline_color,outline_radius);
         }
-        std::int32_t px=horizontal_offset;
+        px=horizontal_offset;
         for(std::int32_t k=0;k<char_count;++k) {
             single_character[0]=unicode[k];
             single_character[1]=0;
@@ -180,21 +173,13 @@ std::uint64_t __cdecl native_text_core_415830(
         // a redundant compiler-spilled conversion from an integer local.
         // The original also invokes an 8B folded identity helper on the
         // address of its canvas pointer before capturing the canvas value.
-        NativeGlyphRenderJob glyph_job{*std::addressof(canvas),texture,
-                                       native_rectangle,pixel_rectangle,
-                                       completion_flag,callback};
-        // The original 56B queue bridge takes an already-constructed
-        // std::function lvalue by reference, preserving its owner lifetime.
-        // Keep a named rvalue reference to the actual constructed job while
-        // preparing its moved std::function capture. The reference aliases
-        // the live stack object; it does not create a second task or owner.
-        NativeGlyphRenderJob&& queued_job=std::move(glyph_job);
-        std::function<void()> submitted(std::move(queued_job));
-        // Original 0x005B66E0 is the 12B PMR list object itself, not
-        // a global pointer. Borrow the identical native head/count layout
-        // for its whole-exact 56B member bridge without copying the list.
+        // Implicit conversion materializes the function as the queue argument.
+        // Both temporaries are destroyed at this full expression's end.
         reinterpret_cast<NativeGlyphQueueView*>(&native_glyph_task_queue_5b66e0)
-            ->submit_4162f0(submitted);
+            ->submit_4162f0(NativeGlyphRenderJob{
+                *std::addressof(canvas),texture,native_rectangle,pixel_rectangle,
+                completion_flag,callback});
+
     }
     // The original result is the eight object-representation bytes of SIZE
     // returned directly in i386 EDX:EAX. This MSVC x86-specific view avoids

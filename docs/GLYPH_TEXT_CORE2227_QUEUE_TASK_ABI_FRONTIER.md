@@ -1,3 +1,8 @@
+**2026-11-26:** The complete text core and owned EH now pass
+[strict exact replay](GLYPH_TEXT_CORE2227_STRICT_EXACT.md). The queue consumes
+an implicitly converted function temporary; the named-task states below
+are historical.
+
 **2026-11-19 CURRENT ADOPTED UPDATE:** The real `NativeGlyphRenderJob`
 now remains visibly owned by a named rvalue reference that is actually moved
 into the queued `std::function`. This captures the genuine pointer/lifetime

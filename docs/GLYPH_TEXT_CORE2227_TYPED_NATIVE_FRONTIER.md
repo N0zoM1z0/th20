@@ -1,3 +1,8 @@
+**2026-11-26:** The complete text core and owned EH now pass
+[strict exact replay](GLYPH_TEXT_CORE2227_STRICT_EXACT.md). The queue consumes
+an implicitly converted function temporary; the named-task states below
+are historical.
+
 **Newer adopted source:** The queue-task/completion-pointer ABI is now
 corrected in maintained C++. The full candidate is **2,296B**, with
 **17/25** native E8 sites and **41/43** native body data locations aligned;

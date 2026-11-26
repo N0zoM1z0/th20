@@ -1,3 +1,8 @@
+**2026-11-26:** The complete text core and owned EH now pass
+[strict exact replay](GLYPH_TEXT_CORE2227_STRICT_EXACT.md). The queue consumes
+an implicitly converted function temporary; the named-task states below
+are historical.
+
 # Glyph Text Core: real queued job rvalue/reference lifetime improves 2,227B Boss
 
 Original TH20 v1.00a Japanese Steamless GDI glyph text rasterizer has a

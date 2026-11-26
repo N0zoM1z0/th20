@@ -1841,3 +1841,10 @@ th20::Card::start_spell::name_unwind
 th20::Card::start_spell::payload_unwind
 th20::Card::start_spell::eh_handler
 th20::Card::start_spell
+th20::native_text_core_415830
+th20::native_text_core_415830::unwind_0
+th20::native_text_core_415830::unwind_1
+th20::native_text_core_415830::unwind_2
+th20::native_text_core_415830::unwind_3
+th20::native_text_core_415830::unwind_4
+th20::native_text_core_415830::eh_handler

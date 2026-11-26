@@ -15,8 +15,9 @@ struct NativeGlyphQueueView {
     void* child_04;
     std::uint32_t count_08;
     void append_4131e0(void* child, std::function<void()>&& task);
-    // The native 56B wrapper borrows an existing 40B task by reference.
-    void submit_4162f0(std::function<void()>& task);
+    // The 56B wrapper moves from this referenced 40B task into the queue.
+    // The caller owns its lifetime, including implicit conversion temporaries.
+    void submit_4162f0(std::function<void()>&& task);
 };
 #if defined(_M_IX86)
 static_assert(offsetof(NativeGlyphQueueView,child_04)==4);

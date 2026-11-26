@@ -27267,7 +27267,7 @@ relocations = [
 # CORE/RECON-1059: real 132B glyph render task capture, const std::function&.
 [units.glyph_text_job_capture_132]
 source = "src/GlyphTextCore2227.cpp"
-object = "build/core1059-canonical/GlyphTextCore2227.obj"
+object = "build/gpt61-glyph-text-canonical/GlyphTextCore2227.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::NativeGlyphRenderJob::NativeGlyphRenderJob"]
 symbol = "??0NativeGlyphRenderJob@th20@@QAE@PAVNativeGlyphCanvasStorage@1@ABQAUIDirect3DBaseTexture9@@ABUNativeTextTransform4@1@2ABQAEABV?$function@$$A6AXXZ@std@@@Z"
@@ -27280,10 +27280,10 @@ relocations = [
 # CORE/RECON-1060: complete original 56B/22-i386 native glyph queue submit.
 [units.glyph_text_queue_submit_56]
 source = "src/GlyphTextQueueSubmit56.cpp"
-object = "build/core1060-canonical/GlyphTextQueueSubmit56.obj"
+object = "build/gpt61-glyph-text-canonical/GlyphTextQueueSubmit56.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::NativeGlyphQueueView::submit_4162f0"]
-symbol = "?submit_4162f0@NativeGlyphQueueView@th20@@QAEXAAV?$function@$$A6AXXZ@std@@@Z"
+symbol = "?submit_4162f0@NativeGlyphQueueView@th20@@QAEX$$QAV?$function@$$A6AXXZ@std@@@Z"
 target_address = 0x004162F0
 size = 56
 relocations = [
@@ -27364,7 +27364,7 @@ relocations = [
 # CORE/RECON-1062: original complete 23B game-specific glyph task destructor.
 [units.glyph_text_job_dtor_23]
 source = "src/GlyphTextCore2227.cpp"
-object = "build/core1059-canonical/GlyphTextCore2227.obj"
+object = "build/gpt61-glyph-text-canonical/GlyphTextCore2227.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::NativeGlyphRenderJob::~NativeGlyphRenderJob"]
 symbol = "??1NativeGlyphRenderJob@th20@@QAE@XZ"
@@ -33142,5 +33142,189 @@ relocations = [
   { offset = 0x12, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
   { offset = 0x1C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
   { offset = 0x21, type = "DIR32", symbol = "__ehfuncinfo$?start_spell@Card@th20@@QAEXHPBDHH@Z", target = 0x005AA6B4 },
+  { offset = 0x26, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
+]
+
+# Complete GDI text core and owned extents; docs/GLYPH_TEXT_CORE2227_STRICT_EXACT.md.
+[units.glyph_text_core_2227]
+source = "src/GlyphTextCore2227.cpp"
+object = "build/gpt61-glyph-text-canonical/GlyphTextCore2227.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::native_text_core_415830"]
+symbol = "?native_text_core_415830@th20@@YA_KPBUNativeTextTransform4@1@HHIPBDPAUIDirect3DBaseTexture9@@HHHPAEV?$function@$$A6AXXZ@std@@@Z"
+target_address = 0x00415830
+size = 2227
+compare_size = 2316
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$?native_text_core_415830@th20@@YA_KPBUNativeTextTransform4@1@HHIPBDPAUIDirect3DBaseTexture9@@HHHPAEV?$function@$$A6AXXZ@std@@@Z", target = 0x00567DD9 },
+  { offset = 0x18, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x35, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x3A, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x46, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x53, type = "DIR32", symbol = "?native_glyph_fonts_5b66f0@th20@@3V?$array@PAUHFONT__@@$0BG@@std@@A", target = 0x005B66F0 },
+  { offset = 0x58, type = "REL32", symbol = "??A?$array@PAUHFONT__@@$0BG@@std@@QAEAAPAUHFONT__@@I@Z", target = 0x00414580 },
+  { offset = 0x68, type = "DIR32", symbol = "?native_font_size_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x7F, type = "DIR32", symbol = "$SG178505", target = 0x0056C860 },
+  { offset = 0x85, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x8A, type = "REL32", symbol = "??$allocate_object@VNativeGlyphCanvasStorage@th20@@$$V@DiagnosticAllocator@th20@@QAEPAVNativeGlyphCanvasStorage@1@PBD@Z", target = 0x00413C50 },
+  { offset = 0xAF, type = "DIR32", symbol = "$LN49", target = 0x004160E4 },
+  { offset = 0xB7, type = "DIR32", symbol = "?native_font_size_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0xD6, type = "DIR32", symbol = "?native_font_size_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0xF5, type = "DIR32", symbol = "?native_font_size_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x114, type = "DIR32", symbol = "?native_font_size_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x133, type = "DIR32", symbol = "?native_font_size_56c8d4@th20@@3MB", target = 0x0056C8D4 },
+  { offset = 0x152, type = "DIR32", symbol = "?native_font_size_56c8d4@th20@@3MB", target = 0x0056C8D4 },
+  { offset = 0x171, type = "DIR32", symbol = "?native_font_size_56c8d8@th20@@3MB", target = 0x0056C8D8 },
+  { offset = 0x190, type = "DIR32", symbol = "?native_font_size_56c8dc@th20@@3MB", target = 0x0056C8DC },
+  { offset = 0x1AF, type = "DIR32", symbol = "?native_font_size_56c8e0@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x1CE, type = "DIR32", symbol = "?native_font_size_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x1ED, type = "DIR32", symbol = "?native_font_size_56c8d8@th20@@3MB", target = 0x0056C8D8 },
+  { offset = 0x20C, type = "DIR32", symbol = "?native_font_size_56c8d8@th20@@3MB", target = 0x0056C8D8 },
+  { offset = 0x22B, type = "DIR32", symbol = "?native_font_size_56c8e0@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x247, type = "DIR32", symbol = "?native_font_size_56c8e0@th20@@3MB", target = 0x0056C8E0 },
+  { offset = 0x263, type = "DIR32", symbol = "?native_font_size_56c8d0@th20@@3MB", target = 0x0056C8D0 },
+  { offset = 0x27F, type = "DIR32", symbol = "?native_font_size_56c8d8@th20@@3MB", target = 0x0056C8D8 },
+  { offset = 0x29B, type = "DIR32", symbol = "?native_font_size_56c8d8@th20@@3MB", target = 0x0056C8D8 },
+  { offset = 0x2BD, type = "DIR32", symbol = "?native_font_outline_scale_5ae120@th20@@3MA", target = 0x005AE120 },
+  { offset = 0x2CD, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x2D5, type = "DIR32", symbol = "?native_font_outline_scale_5ae120@th20@@3MA", target = 0x005AE120 },
+  { offset = 0x2E8, type = "REL32", symbol = "_memset", target = 0x00544760 },
+  { offset = 0x30A, type = "DIR32", symbol = "__imp__MultiByteToWideChar@24", target = 0x0056C124 },
+  { offset = 0x363, type = "REL32", symbol = "?ensure_format_4153d0@NativeGlyphCanvasView@th20@@QAE_NHHH@Z", target = 0x004153D0 },
+  { offset = 0x36E, type = "REL32", symbol = "?device_context_415620@NativeGlyphCanvasView@th20@@QBEPAXXZ", target = 0x00415620 },
+  { offset = 0x388, type = "DIR32", symbol = "__imp__SelectObject@8", target = 0x0056C02C },
+  { offset = 0x3F4, type = "DIR32", symbol = "__imp__SetBkMode@8", target = 0x0056C028 },
+  { offset = 0x400, type = "REL32", symbol = "_wcslen", target = 0x00548300 },
+  { offset = 0x42B, type = "DIR32", symbol = "__imp__GetTextExtentPoint32W@16", target = 0x0056C030 },
+  { offset = 0x453, type = "DIR32", symbol = "__imp__SetTextColor@8", target = 0x0056C024 },
+  { offset = 0x480, type = "DIR32", symbol = "__imp__TextOutW@20", target = 0x0056C01C },
+  { offset = 0x4B0, type = "REL32", symbol = "?composite_glyph_mask_416420@NativeGlyphCanvasView@th20@@QAE_NHHHIM@Z", target = 0x00416420 },
+  { offset = 0x4D7, type = "DIR32", symbol = "__imp__TextOutW@20", target = 0x0056C01C },
+  { offset = 0x502, type = "DIR32", symbol = "__imp__SetTextColor@8", target = 0x0056C024 },
+  { offset = 0x572, type = "REL32", symbol = "___report_rangecheckfailure", target = 0x00542B55 },
+  { offset = 0x5A7, type = "DIR32", symbol = "__imp__TextOutW@20", target = 0x0056C01C },
+  { offset = 0x5EB, type = "REL32", symbol = "?composite_glyph_mask_416420@NativeGlyphCanvasView@th20@@QAE_NHHHIM@Z", target = 0x00416420 },
+  { offset = 0x65A, type = "REL32", symbol = "___report_rangecheckfailure", target = 0x00542B55 },
+  { offset = 0x68F, type = "DIR32", symbol = "__imp__TextOutW@20", target = 0x0056C01C },
+  { offset = 0x6B7, type = "DIR32", symbol = "__imp__SelectObject@8", target = 0x0056C02C },
+  { offset = 0x6D7, type = "REL32", symbol = "?invert_alpha_417ab0@NativeGlyphCanvasView@th20@@QAE_NHHHH@Z", target = 0x00417AB0 },
+  { offset = 0x6EB, type = "DIR32", symbol = "__imp__SelectObject@8", target = 0x0056C02C },
+  { offset = 0x6F3, type = "DIR32", symbol = "?process_locks@th20@@3VLockRegistry@1@A", target = 0x005C0240 },
+  { offset = 0x6F8, type = "REL32", symbol = "?slot@LockRegistry@th20@@QAEAAVrecursive_mutex@std@@I@Z", target = 0x0040C310 },
+  { offset = 0x704, type = "REL32", symbol = "??0?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@AAVrecursive_mutex@1@@Z", target = 0x0040B730 },
+  { offset = 0x783, type = "DIR32", symbol = "?native_font_extra_padding_5b66ec@th20@@3_NA", target = 0x005B66EC },
+  { offset = 0x7BD, type = "REL32", symbol = "??$addressof@PAVNativeGlyphCanvasStorage@th20@@@std@@YAPAPAVNativeGlyphCanvasStorage@th20@@AAPAV12@@Z", target = 0x0040B280 },
+  { offset = 0x7E8, type = "REL32", symbol = "??0NativeGlyphRenderJob@th20@@QAE@PAVNativeGlyphCanvasStorage@1@ABQAUIDirect3DBaseTexture9@@ABUNativeTextTransform4@1@2ABQAEABV?$function@$$A6AXXZ@std@@@Z", target = 0x00413EC0 },
+  { offset = 0x810, type = "REL32", symbol = "??$?0UNativeGlyphRenderJob@th20@@$0A@@?$function@$$A6AXXZ@std@@QAE@$$QAUNativeGlyphRenderJob@th20@@@Z", target = 0x00412F20 },
+  { offset = 0x820, type = "DIR32", symbol = "?native_glyph_task_queue_5b66e0@th20@@3V?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@A", target = 0x005B66E0 },
+  { offset = 0x825, type = "REL32", symbol = "?submit_4162f0@NativeGlyphQueueView@th20@@QAEX$$QAV?$function@$$A6AXXZ@std@@@Z", target = 0x004162F0 },
+  { offset = 0x834, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
+  { offset = 0x843, type = "REL32", symbol = "??1NativeGlyphRenderJob@th20@@QAE@XZ", target = 0x004142C0 },
+  { offset = 0x853, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x87B, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+  { offset = 0x88A, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
+  { offset = 0x8AB, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x8B4, type = "DIR32", symbol = "$LN10", target = 0x004158E3 },
+  { offset = 0x8B8, type = "DIR32", symbol = "$LN14", target = 0x00415902 },
+  { offset = 0x8BC, type = "DIR32", symbol = "$LN15", target = 0x00415921 },
+  { offset = 0x8C0, type = "DIR32", symbol = "$LN16", target = 0x00415940 },
+  { offset = 0x8C4, type = "DIR32", symbol = "$LN17", target = 0x0041595F },
+  { offset = 0x8C8, type = "DIR32", symbol = "$LN18", target = 0x0041597E },
+  { offset = 0x8CC, type = "DIR32", symbol = "$LN19", target = 0x0041599D },
+  { offset = 0x8D0, type = "DIR32", symbol = "$LN10", target = 0x004158E3 },
+  { offset = 0x8D4, type = "DIR32", symbol = "$LN19", target = 0x0041599D },
+  { offset = 0x8D8, type = "DIR32", symbol = "$LN21", target = 0x004159BC },
+  { offset = 0x8DC, type = "DIR32", symbol = "$LN22", target = 0x004159DB },
+  { offset = 0x8E0, type = "DIR32", symbol = "$LN10", target = 0x004158E3 },
+  { offset = 0x8E4, type = "DIR32", symbol = "$LN23", target = 0x004159FA },
+  { offset = 0x8E8, type = "DIR32", symbol = "$LN23", target = 0x004159FA },
+  { offset = 0x8EC, type = "DIR32", symbol = "$LN25", target = 0x00415A19 },
+  { offset = 0x8F0, type = "DIR32", symbol = "$LN26", target = 0x00415A38 },
+  { offset = 0x8F4, type = "DIR32", symbol = "$LN27", target = 0x00415A57 },
+  { offset = 0x8F8, type = "DIR32", symbol = "$LN28", target = 0x00415A73 },
+  { offset = 0x8FC, type = "DIR32", symbol = "$LN29", target = 0x00415A8F },
+  { offset = 0x900, type = "DIR32", symbol = "$LN29", target = 0x00415A8F },
+  { offset = 0x904, type = "DIR32", symbol = "$LN31", target = 0x00415AAB },
+  { offset = 0x908, type = "DIR32", symbol = "$LN32", target = 0x00415AC7 },
+]
+
+# Complete GDI text core and owned extents; docs/GLYPH_TEXT_CORE2227_STRICT_EXACT.md.
+[units.glyph_text_core_eh_cleanup_0]
+source = "src/GlyphTextCore2227.cpp"
+object = "build/gpt61-glyph-text-canonical/GlyphTextCore2227.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::native_text_core_415830::unwind_0"]
+symbol = "__unwindfunclet$?native_text_core_415830@th20@@YA_KPBUNativeTextTransform4@1@HHIPBDPAUIDirect3DBaseTexture9@@HHHPAEV?$function@$$A6AXXZ@std@@@Z$0"
+target_address = 0x00567DA0
+size = 8
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
+]
+
+# Complete GDI text core and owned extents; docs/GLYPH_TEXT_CORE2227_STRICT_EXACT.md.
+[units.glyph_text_core_eh_cleanup_1]
+source = "src/GlyphTextCore2227.cpp"
+object = "build/gpt61-glyph-text-canonical/GlyphTextCore2227.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::native_text_core_415830::unwind_1"]
+symbol = "__unwindfunclet$?native_text_core_415830@th20@@YA_KPBUNativeTextTransform4@1@HHIPBDPAUIDirect3DBaseTexture9@@HHHPAEV?$function@$$A6AXXZ@std@@@Z$1"
+target_address = 0x00567DA8
+size = 11
+relocations = [
+  { offset = 0x7, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+]
+
+# Complete GDI text core and owned extents; docs/GLYPH_TEXT_CORE2227_STRICT_EXACT.md.
+[units.glyph_text_core_eh_cleanup_2]
+source = "src/GlyphTextCore2227.cpp"
+object = "build/gpt61-glyph-text-canonical/GlyphTextCore2227.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::native_text_core_415830::unwind_2"]
+symbol = "__unwindfunclet$?native_text_core_415830@th20@@YA_KPBUNativeTextTransform4@1@HHIPBDPAUIDirect3DBaseTexture9@@HHHPAEV?$function@$$A6AXXZ@std@@@Z$2"
+target_address = 0x00567DB3
+size = 11
+relocations = [
+  { offset = 0x7, type = "REL32", symbol = "??1?$lock_guard@Vrecursive_mutex@std@@@std@@QAE@XZ", target = 0x0040B900 },
+]
+
+# Complete GDI text core and owned extents; docs/GLYPH_TEXT_CORE2227_STRICT_EXACT.md.
+[units.glyph_text_core_eh_cleanup_3]
+source = "src/GlyphTextCore2227.cpp"
+object = "build/gpt61-glyph-text-canonical/GlyphTextCore2227.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::native_text_core_415830::unwind_3"]
+symbol = "__unwindfunclet$?native_text_core_415830@th20@@YA_KPBUNativeTextTransform4@1@HHIPBDPAUIDirect3DBaseTexture9@@HHHPAEV?$function@$$A6AXXZ@std@@@Z$3"
+target_address = 0x00567DBE
+size = 11
+relocations = [
+  { offset = 0x7, type = "REL32", symbol = "??1NativeGlyphRenderJob@th20@@QAE@XZ", target = 0x004142C0 },
+]
+
+# Complete GDI text core and owned extents; docs/GLYPH_TEXT_CORE2227_STRICT_EXACT.md.
+[units.glyph_text_core_eh_cleanup_4]
+source = "src/GlyphTextCore2227.cpp"
+object = "build/gpt61-glyph-text-canonical/GlyphTextCore2227.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::native_text_core_415830::unwind_4"]
+symbol = "__unwindfunclet$?native_text_core_415830@th20@@YA_KPBUNativeTextTransform4@1@HHIPBDPAUIDirect3DBaseTexture9@@HHHPAEV?$function@$$A6AXXZ@std@@@Z$4"
+target_address = 0x00567DC9
+size = 16
+relocations = [
+  { offset = 0x7, type = "REL32", symbol = "??1?$function@$$A6AXXZ@std@@QAE@XZ", target = 0x00414400 },
+]
+
+# Complete GDI text core and owned extents; docs/GLYPH_TEXT_CORE2227_STRICT_EXACT.md.
+[units.glyph_text_core_eh_handler_42]
+source = "src/GlyphTextCore2227.cpp"
+object = "build/gpt61-glyph-text-canonical/GlyphTextCore2227.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::native_text_core_415830::eh_handler"]
+symbol = "__ehhandler$?native_text_core_415830@th20@@YA_KPBUNativeTextTransform4@1@HHIPBDPAUIDirect3DBaseTexture9@@HHHPAEV?$function@$$A6AXXZ@std@@@Z"
+target_address = 0x00567DD9
+size = 42
+relocations = [
+  { offset = 0x12, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x1C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x21, type = "DIR32", symbol = "__ehfuncinfo$?native_text_core_415830@th20@@YA_KPBUNativeTextTransform4@1@HHIPBDPAUIDirect3DBaseTexture9@@HHHPAEV?$function@$$A6AXXZ@std@@@Z", target = 0x005A9880 },
   { offset = 0x26, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
 ]

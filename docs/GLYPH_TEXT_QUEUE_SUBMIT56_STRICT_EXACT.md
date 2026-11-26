@@ -1,3 +1,10 @@
+**2026-11-26 interface update:** The [whole exact text-core caller](GLYPH_TEXT_CORE2227_STRICT_EXACT.md)
+now submits an implicitly converted function temporary. The consuming interface
+uses `std::function<void()>&&`; its complete 56B code and both relocations
+are unchanged from the earlier lvalue-reference declaration below. The native
+four-byte reference argument remains the same. Scoped replay passes all ten
+units across the caller and bridge providers.
+
 # CORE/RECON-1060 — complete original 56B glyph text render queue bridge, whole strict exact
 
 Immutable target: Japanese TH20 v1.00a Steamless SHA-256

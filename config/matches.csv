@@ -954,3 +954,4 @@ address,name,size,status,match_percent,unit,evidence
 0x00446BF0,th20::Animation::set_callback,28,matching,100.00,animation_set_callback,docs/ANIMATION_CALLBACK_RECONSTRUCTION.md; original Animation+0x568 callback publication and pointer return
 0x00416420,th20::NativeGlyphCanvasView::composite_glyph_mask_416420,2245,matching,100.00,glyph_composite_mask_2245,docs/GLYPH_MASK_COMPOSITE2245_STRICT_EXACT.md
 0x00487C30,th20::Card::start_spell,1896,matching,100.00,card_start_spell_1896,docs/CARD_START1896_STRICT_EXACT.md
+0x00415830,th20::native_text_core_415830,2227,matching,100.00,glyph_text_core_2227,docs/GLYPH_TEXT_CORE2227_STRICT_EXACT.md

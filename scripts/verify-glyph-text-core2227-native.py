@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Original whole 2227B GDI text rasterization Boss, 22-pointer source frontier.
-
-This never accepts a shortened code extent and does not infer native target
-roles from a generated COFF input. Children have independent match units.
-"""
+"""Verify the complete GDI text core, font pointers, owned EH and strict replay."""
 import argparse,hashlib,importlib.util,struct,sys
 from pathlib import Path
 from capstone import Cs,CS_ARCH_X86,CS_MODE_32
@@ -29,7 +25,101 @@ IMPORTANT_DATA={0x06:0x00567DD9,0x18:0x005B25C0,0x35:0x005C0240,
  0x453:0x0056C024,0x480:0x0056C01C,0x6B7:0x0056C02C,
  0x6F3:0x005C0240,0x783:0x005B66EC,0x820:0x005B66E0}
 SYM='?native_text_core_415830@th20@@YA_KPBUNativeTextTransform4@1@HHIPBDPAUIDirect3DBaseTexture9@@HHHPAEV?$function@$$A6AXXZ@std@@@Z'
-CTOR_SYM='??0NativeGlyphRenderJob@th20@@QAE@PAUNativeGlyphCanvasStorage@1@ABIABUNativeTextTransform4@1@2ABHV?$function@$$A6AXXZ@std@@@Z'
+
+CALL_ROLES = (
+ ('?slot@LockRegistry@',0x0040C310),
+ ('??0?$lock_guard@',0x0040B730),
+ ('??A?$array@PAUHFONT',0x00414580),
+ ('??$allocate_object@',0x00413C50),
+ ('_memset',0x00544760),
+ ('?ensure_format_4153d0@',0x004153D0),
+ ('?device_context_415620@',0x00415620),
+ ('_wcslen',0x00548300),
+ ('?composite_glyph_mask_416420@',0x00416420),
+ ('___report_rangecheckfailure',0x00542B55),
+ ('?composite_glyph_mask_416420@',0x00416420),
+ ('___report_rangecheckfailure',0x00542B55),
+ ('?invert_alpha_417ab0@',0x00417AB0),
+ ('?slot@LockRegistry@',0x0040C310),
+ ('??0?$lock_guard@',0x0040B730),
+ ('??$addressof@PAVNativeGlyphCanvasStorage@',0x0040B280),
+ ('??0NativeGlyphRenderJob@',0x00413EC0),
+ ('??$?0UNativeGlyphRenderJob@',0x00412F20),
+ ('?submit_4162f0@',0x004162F0),
+ ('??1?$function@',0x00414400),
+ ('??1NativeGlyphRenderJob@',0x004142C0),
+ ('??1?$lock_guard@',0x0040B900),
+ ('??1?$lock_guard@',0x0040B900),
+ ('??1?$function@',0x00414400),
+ ('@__security_check_cookie@4',0x005429EE),
+)
+DATA_ROLES = (
+ ('__ehhandler$',0x00567DD9),
+ ('___security_cookie',0x005B25C0),
+ ('?process_locks@',0x005C0240),
+ ('?native_glyph_fonts_5b66f0@',0x005B66F0),
+ ('?native_font_size_56c8d0@',0x0056C8D0),
+ ('?native_font_size_56c8d4@',0x0056C8D4),
+ ('?native_font_size_56c8d8@',0x0056C8D8),
+ ('?native_font_size_56c8dc@',0x0056C8DC),
+ ('?native_font_size_56c8e0@',0x0056C8E0),
+ ('$SG',0x0056C860),
+ ('?process_allocator@',0x005B8894),
+ ('$LN',0x004160E4),
+ ('?native_font_outline_scale_5ae120@',0x005AE120),
+ ('__real@3f800000',0x0056C8CC),
+ ('__imp__MultiByteToWideChar@24',0x0056C124),
+ ('__imp__SelectObject@8',0x0056C02C),
+ ('__imp__SetBkMode@8',0x0056C028),
+ ('__imp__GetTextExtentPoint32W@16',0x0056C030),
+ ('__imp__SetTextColor@8',0x0056C024),
+ ('__imp__TextOutW@20',0x0056C01C),
+ ('?native_font_extra_padding_5b66ec@',0x005B66EC),
+ ('?native_glyph_task_queue_5b66e0@',0x005B66E0),
+)
+def verify_eh(obj,image,base,sections):
+ import re,subprocess
+ code,mask = bytearray(),set()
+ for symbol,size in [(f'__unwindfunclet${SYM}${i}',size) for i,size in enumerate((8,11,11,11,16))]+[('__ehhandler$'+SYM,42)]:
+  body,rows = cm.object_function(obj,symbol,size)
+  for r in rows:mask.update(range(len(code)+r['offset'],len(code)+r['offset']+4))
+  code.extend(body)
+ hits=[]
+ for name,_,rva,length,offset in sections:
+  if name != b'.text':continue
+  area,start=image[offset:offset+length],0
+  while (start:=area.find(code[:4],start))>=0:
+   if all(area[start+i]==b for i,b in enumerate(code) if i not in mask):hits.append(base+rva+start)
+   start+=1
+ assert hits == [0x00567DA0]
+ rows=subprocess.check_output(['objdump','-t',str(obj)],text=True).splitlines()
+ row=next(r for r in rows if r.endswith(' __ehfuncinfo$'+SYM))
+ m=re.search(r'\(sec\s+(\d+)\).*?\) (0x[0-9a-fA-F]+) ',row)
+ assert m and int(m[2],16)==0
+ raw=obj.read_bytes();header=20+40*(int(m[1])-1)
+ size,offset,reloc=struct.unpack_from('<III',raw,header+16)
+ assert size==76 and struct.unpack_from('<H',raw,header+32)[0]==6
+ data=bytearray(raw[offset:offset+size]);symoff,count=struct.unpack_from('<II',raw,8);strings=raw[symoff+count*18:]
+ expected=[(8,0x005A98A4,'__unwindtable$'+SYM)]
+ expected += [(40+8*i,target,f'__unwindfunclet${SYM}${i}') for i,target in enumerate((0x00567DA0,0x00567DA8,0x00567DB3,0x00567DBE,0x00567DC9))]
+ for i,(field,target,symbol) in enumerate(expected):
+  actual,index,kind=struct.unpack_from('<IIH',raw,reloc+10*i)
+  name=cm.coff_name(raw[symoff+18*index:][:8],strings)
+  assert (actual,kind,name)==(field,6,symbol) and struct.unpack_from('<I',data,field)[0]==0
+  struct.pack_into('<I',data,field,target)
+ hits=[]
+ for name,_,rva,length,offset in sections:
+  if name!=b'.rdata':continue
+  area,start=image[offset:offset+length],0
+  while (start:=area.find(data[:8],start))>=0:
+   if all(area[start+i]==b for i,b in enumerate(data) if not 8<=i<12):hits.append(base+rva+start)
+   start+=1
+ assert hits==[0x005A9880]
+ assert data==pe.raw_at(image,base,sections,0x005A9880,76)
+ high={a-0x005A9880 for a in pe.physical_highlow(image,base,sections) if 0x005A9880<=a<0x005A9880+76}
+ assert high=={field for field,_,_ in expected}
+ print('PASS independently anchored99B EH code and complete76B five-state metadata with all6 DIR32 fields')
+
 def calls(ins,head):
  return {i.address-head:(i.address+5+struct.unpack_from('<i',i.bytes,1)[0])&0xffffffff
          for i in ins if i.size==5 and i.bytes[0]==0xE8}
@@ -77,112 +167,41 @@ def verify(candidate):
  assert at[0x492]==('mov','edx, dword ptr [ebp + 0x14]')
  assert at[0x5CD]==('mov','eax, dword ptr [ebp + 0x14]')
  if candidate:
-  # Whole, actual COFF function+switch contribution. Do not compare an
-  # original-length prefix or claim that the shorter candidate is exact.
-  b,r=cm.object_function(candidate,SYM,2308)
-  assert len(b)==2308 and len(r)==90
-  ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(b[:2220]),0))
-  assert len(ci)==468 and ci[-1].mnemonic=='ret'
-  assert ci[-1].address==2219 and ci[-1].address+ci[-1].size==2220
-  body_fields=[x for x in r if x['offset']<2220]
-  call_fields=[x for x in body_fields if x['type']=='REL32']
-  data=[x for x in body_fields if x['type']=='DIR32']
-  table=[x for x in r if x['offset']>=2220]
-  assert len(call_fields)==25 and len(data)==43 and len(table)==22
-  assert [x['offset'] for x in table]==list(range(2220,2308,4))
-  assert all(x['type']=='DIR32' and x['symbol'].startswith('$LN') for x in table)
-  assert all(x['addend']==0 for x in r)
-  ca=[x['symbol'] for x in table]
-  assert len(set(ca))==17
-  assert all((original_table[i]==original_table[j])==(ca[i]==ca[j])
-             for i in range(22) for j in range(22))
-  assert [x['offset']-1 for x in call_fields[:17]]==sorted(E8)[:17]
-  native_e8=list(sorted(E8))
-  generated_e8=[x['offset']-1 for x in call_fields]
-  assert sum(a==b for a,b in zip(native_e8,generated_e8))==17
-  assert sum(abs(a-b) for a,b in zip(native_e8,generated_e8))==52
-  # Source roles are independent literal identities mapped onto the
-  # immutable PE E8 targets, in order (including both destructor paths).
-  callsites=(
-    ('?slot@LockRegistry@',0x0040C310),('??0?$lock_guard@',0x0040B730),
-    ('??A?$array@PAUHFONT',0x00414580),('??$allocate_object@',0x00413C50),
-    ('_memset',0x00544760),('?ensure_format_4153d0@',0x004153D0),
-    ('?device_context_415620@',0x00415620),('_wcslen',0x00548300),
-    ('?composite_glyph_mask_416420@',0x00416420),
-    ('___report_rangecheckfailure',0x00542B55),
-    ('?composite_glyph_mask_416420@',0x00416420),
-    ('___report_rangecheckfailure',0x00542B55),
-    ('?invert_alpha_417ab0@',0x00417AB0),('?slot@LockRegistry@',0x0040C310),
-    ('??0?$lock_guard@',0x0040B730),
-    ('??$addressof@PAVNativeGlyphCanvasStorage@',0x0040B280),
-    ('??0NativeGlyphRenderJob@',0x00413EC0),
-    ('??$?0UNativeGlyphRenderJob@',0x00412F20),
-    ('?submit_4162f0@',0x004162F0),
-    ('??1?$function@',0x00414400),('??1NativeGlyphRenderJob@',0x004142C0),
-    ('??1?$lock_guard@',0x0040B900),('??1?$lock_guard@',0x0040B900),
-    ('??1?$function@',0x00414400),('@__security_check_cookie@4',0x005429EE),
-  )
-  assert len(callsites)==len(call_fields)==len(E8)
-  for (prefix,address),reloc,(_offset,original_target) in zip(callsites,call_fields,sorted(E8.items())):
-   assert reloc['symbol'].startswith(prefix),(prefix,reloc['symbol'])
-   assert address==original_target,(hex(address),hex(original_target))
-  # The genuine 8B folded lib helper at +0x7BC has no original E8 or
-  # PE HIGHLOW. The generated std::addressof instantiation is exact as
-  # one shared physical helper; it does NOT create additional coverage.
-  helper='??$addressof@PAVNativeGlyphCanvasStorage@th20@@@std@@YAPAPAVNativeGlyphCanvasStorage@th20@@AAPAV12@@Z'
-  same=cm.compare(candidate,helper,0x0040B280,8)
-  assert same['result']=='structural-exact'
-  assert same['matched_comparable_bytes']==8 and not same['relocations']
-  # Original data destinations are read from the original PE, but role
-  # identities are separately fixed here rather than guessed from object.
-  roles=(
-      ('__ehhandler$',0x00567DD9),('___security_cookie',0x005B25C0),
-      ('?process_locks@',0x005C0240),('?native_glyph_fonts_5b66f0@',0x005B66F0),
-      ('?native_font_size_56c8d0@',0x0056C8D0),
-      ('?native_font_size_56c8d4@',0x0056C8D4),
-      ('?native_font_size_56c8d8@',0x0056C8D8),
-      ('?native_font_size_56c8dc@',0x0056C8DC),
-      ('?native_font_size_56c8e0@',0x0056C8E0),
-      ('$SG',0x0056C860),('?process_allocator@',0x005B8894),
-      ('$LN',0x004160E4),('?native_font_outline_scale_5ae120@',0x005AE120),
-      ('__real@3f800000',0x0056C8CC),
-      ('__imp__MultiByteToWideChar@24',0x0056C124),
-      ('__imp__SelectObject@8',0x0056C02C),
-      ('__imp__SetBkMode@8',0x0056C028),
-      ('__imp__GetTextExtentPoint32W@16',0x0056C030),
-      ('__imp__SetTextColor@8',0x0056C024),
-      ('__imp__TextOutW@20',0x0056C01C),
-      ('?native_font_extra_padding_5b66ec@',0x005B66EC),
-      ('?native_glyph_task_queue_5b66e0@',0x005B66E0),
-  )
-  oldsites=sorted(native_data)
-  assert len(oldsites)==len(data)==43
-  assert sum(offset==ref['offset'] for offset,ref in zip(oldsites,data))==41
-  for offset,ref in zip(oldsites,data):
-   matches=[target for prefix,target in roles if ref['symbol'].startswith(prefix)]
-   assert len(matches)==1 and matches[0]==native_data[offset],(offset,ref['symbol'],matches)
-  # No duplicate game credit: mask only actual COFF relocation fields and
-  # count ordinary bytes across this COMPLETE 2,308B contribution.
-  masked={i for ref in r for i in range(ref['offset'],ref['offset']+4)}
-  original_prefix=pe.raw_at(img,base,sec,HEAD,2308)
-  equal=sum(a==z for i,(a,z) in enumerate(zip(b,original_prefix)) if i not in masked)
-  assert len(masked)==360 and len(b)-len(masked)==1948 and equal==1629
-  assert bytes(b)!=original_prefix
-  assert cm.compare_unit('glyph_text_queue_submit_56')['result']=='exact'
-  assert cm.compare_unit('glyph_text_job_capture_132')['result']=='exact'
-  source=(ROOT/'src/GlyphTextCore2227.cpp').read_text()
-  assert 'NativeGlyphRenderJob&& queued_job=std::move(glyph_job);' in source
-  assert 'submitted(std::move(queued_job))' in source
-  assert cm.compare_unit('glyph_text_job_dtor_23')['result']=='exact'
-  assert original[0x43A:0x443]==bytes.fromhex('8b450c83c00289450c')
-  assert at[0x797]==('mov','edx, dword ptr [ebp - 0x224]')
-  print('PASS typed completion pointer stack slot +0x2C, authentic glyph text/outline args and live +6 region increment')
-  print('PASS original physical 8B address helper equals C++ std::addressof 8/8; 17/25 E8 positions and all 25 callee roles preserved in order')
-  print('PASS 43/43 original body HIGHLOW target roles, 41/43 original positions, 22 generated font-case pointers and all 17 original alias classes')
-  print('PASS natural named glyph job survives queued std::function submit, function destructor precedes job destructor, matching original role order')
-  print(f'NONEXACT: candidate 2308B/468 code instructions vs original 2316B/470+NOP, ordinary {equal}/1948; no parent exact credit')
-  print('PASS separate 132B glyph job constructor, 23B destructor and 56B queue submit whole native exact')
- print('Original entire 2227B text core remains NONEXACT; exact 132B game-owned capture is a distinct physical native head')
+  b, rows = cm.object_function(candidate, SYM, 2316)
+  assert len(b) == 2316 and len(rows) == 90
+  ins = list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(b[:2227]), 0))
+  assert len(ins) == 470 and ins[-1].address + ins[-1].size == 2227
+  assert b[2227] == 0x90
+  call_fields = [r for r in rows if r['type'] == 'REL32']
+  data = [r for r in rows if r['type'] == 'DIR32' and r['offset'] < 2227]
+  table = [r for r in rows if r['offset'] >= 2228]
+  assert len(call_fields) == 25 and len(data) == 43 and len(table) == 22
+  assert all(r['addend'] == 0 for r in rows)
+  assert [r['offset'] - 1 for r in call_fields] == sorted(E8)
+  assert [r['offset'] for r in data] == sorted(native_data)
+  assert [r['offset'] for r in table] == list(range(2228,2316,4))
+  patched = bytearray(b)
+  for r, (prefix, target) in zip(call_fields, CALL_ROLES):
+   assert r['symbol'].startswith(prefix) and E8[r['offset']-1] == target
+   struct.pack_into('<I',patched,r['offset'],(target-HEAD-r['offset']-4)&0xffffffff)
+  for r in data:
+   targets = [target for prefix,target in DATA_ROLES if r['symbol'].startswith(prefix)]
+   assert len(targets) == 1 and native_data[r['offset']] == targets[0]
+   struct.pack_into('<I',patched,r['offset'],targets[0])
+  for r in table:
+   assert r['type'] == 'DIR32' and r['symbol'].startswith('$LN')
+   assert isinstance(r['section_delta'],int) and 0 <= r['section_delta'] < 2227
+   struct.pack_into('<I',patched,r['offset'],HEAD+r['section_delta'])
+  assert patched == pe.raw_at(img,base,sec,HEAD,2316)
+  verify_eh(candidate,img,base,sec)
+  for unit in ('glyph_text_core_2227','glyph_text_job_capture_132','glyph_text_job_dtor_23',
+               'glyph_text_queue_submit_56', *(f'glyph_text_core_eh_cleanup_{i}' for i in range(5)),
+               'glyph_text_core_eh_handler_42'):
+   result = cm.compare_unit(unit)
+   assert result['result'] == 'exact' and result['matched_bytes'] == result['size'],unit
+   assert result['matched_compared_bytes'] == result['compared_size'],unit
+  print('PASS complete 2316B contribution: 2227B/470-instruction core, one NOP and all22 font pointers')
+  print('PASS all25 call fields,43 body data fields,22 table fields and ten scoped canonical units')
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--candidate-object',type=Path)
  a=p.parse_args();verify(a.candidate_object)
