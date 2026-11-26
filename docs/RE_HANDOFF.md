@@ -22,7 +22,27 @@ config/functions.csv and config/function-origins.csv. Read the current counts wi
 `scripts/repo-python scripts/report-reconstruction-status.py --summary`.
 The README SVG is generated from those same ledgers by `scripts/progress.py`.
 
-## Current work — exact GDI glyph text core
+## Current work — exact glyph queue forwarding
+
+The 151B insertion, 158B node constructor and 31B/78B allocator construction
+heads now strictly replay. Retaining the observed out-of-line
+`std::forward<std::function<void()>>` instance restores the missing calls
+and native frames without changing SDK headers. Owned constructor/guard
+EH code and complete 44B/36B metadata also match. See [the focused proof](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md).
+
+**Replay scope: eighteen units from one fresh provider**, preserving all
+eleven prior matches. No shared header changed. Current object/receipt:
+`build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj`. Preserve the
+old `core1061-canonical` products and private evidence in
+`.analysis/glyph-queue151-session/`. These support matches do not increase
+the authored-game exact total; the README SVG reflects the current ledgers.
+
+Next useful allocator work is `std::apply` at `0x00413A40` and `_Apply_impl`
+at `0x00413190`. Reuse the attested native export and the already accepted
+shared tuple-argument head at `0x00413D50`. The 294B submit and 578B/586B
+formatting callers remain independent frontiers.
+
+## Latest checkpoint — exact GDI glyph text core
 
 The GDI core at `0x00415830` now strictly replays its full 2,316B
 contribution: 2,227B/470 instructions, one NOP and 22 font pointers. The
@@ -36,10 +56,9 @@ children and the 56B bridge remain exact. The current objects/receipts are
 in `build/gpt61-glyph-text-canonical/`; preserve the old canonical products
 and private controls in `.analysis/glyph-core2227-session/`.
 
-The 151B list insertion backend remains a useful bounded next target;
-its current source is `GlyphTextQueueList151.cpp`, still NONEXACT. The
-294B submit and 578B/586B formatting callers also remain open. The README
-SVG has been regenerated from the ledgers.
+The downstream insertion/allocator scope is now covered by the forwarding
+checkpoint above. The 294B submit and 578B/586B formatting callers remain
+open.
 
 ## Previous frontier — ASCII text conversion and verifier
 

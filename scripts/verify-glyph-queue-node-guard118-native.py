@@ -51,5 +51,5 @@ def verify():
  print('PASS true native 118B ret plus five consecutive 0xCC alignment bytes, entire 123B MSVC contribution 123/123 exact')
  print('PASS complete original 151B/51-i386 list Emplace native E8 +0x7F -> this 118B destructor, +0x5B -> separate native 158B node constructor')
  print('PASS downstream original 17B/16B/48B generic destructors separately exact; no double credit')
- print('Source-present original 151B and 158B parent compiler bodies remain NONEXACT; this 118B guard is generic STL, not game-authored credit')
+ print('Guard and allocator support remain outside authored-game exact credit')
 if __name__=='__main__':verify()

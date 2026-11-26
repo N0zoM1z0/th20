@@ -13,8 +13,8 @@ source/byte mismatches; some old status prose predates later commits.
 
 The [2,227B GDI text core](GLYPH_TEXT_CORE2227_STRICT_EXACT.md) and
 [2,245B glyph compositor](GLYPH_MASK_COMPOSITE2245_STRICT_EXACT.md) are now
-whole exact. Their separate 151B insertion and 35B offset-wrapper frontiers
-remain open.
+whole exact. The [151B insertion and allocator construction](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md)
+are now exact as support code; the separate 35B offset wrapper remains open.
 
 The former **508B/511B Renderer list-update pair is no longer open**:
 [CORE/RECON-1110 whole native strict exact proof](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md)

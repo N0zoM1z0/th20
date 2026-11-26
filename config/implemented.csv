@@ -1848,3 +1848,10 @@ th20::native_text_core_415830::unwind_2
 th20::native_text_core_415830::unwind_3
 th20::native_text_core_415830::unwind_4
 th20::native_text_core_415830::eh_handler
+std::pmr::list<std::function<void()>>::_Emplace
+std::_List_node_emplace_op2<GlyphTaskNode>::_List_node_emplace_op2
+std::_Normal_allocator_traits<GlyphTaskNodeAllocator>::construct_function
+std::pmr::polymorphic_allocator<GlyphTaskNode>::construct_function
+std::_List_node_emplace_op2<GlyphTaskNode>::ctor_unwind
+std::_List_node_emplace_op2<GlyphTaskNode>::ctor_eh_handler
+std::_List_node_emplace_op2<GlyphTaskNode>::dtor_eh_handler

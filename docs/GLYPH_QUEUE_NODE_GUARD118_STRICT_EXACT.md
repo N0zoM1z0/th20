@@ -1,3 +1,7 @@
+**2026-11-26:** The insertion and node-construction bodies now pass
+[complete strict replay](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md), including
+owned EH. The earlier shorter candidates below are historical.
+
 # CORE/RECON-1073 — whole original 118B PMR glyph queue node guard destructor, strict exact including native 5B INT3 tail
 
 Immutable target Japanese TH20 Steamless v1.00a SHA-256

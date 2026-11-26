@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Immutable complete native 158B PMR glyph-list node constructor frontier.
-
-Modern natural C++20 source generates 143B, not the 158B original;
-this checker explicitly forbids treating that smaller candidate as exact.
-"""
+"""Verify the complete original 158B PMR node constructor and strict replay."""
 import hashlib,importlib.util,subprocess,struct,sys
 from pathlib import Path
 from capstone import Cs,CS_ARCH_X86,CS_MODE_32
@@ -39,23 +35,14 @@ def verify():
  pi=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(parent,PARENT))
  assert len(pi)==51 and calls(pi,PARENT)[0x5B]==HEAD
  assert calls(pi,PARENT)[0x7F]==0x00414350
- p=ROOT/'build/core1061-canonical/GlyphTextQueueList151.obj'
- symbols=subprocess.run(['strings',str(p)],capture_output=True,text=True,check=True).stdout.splitlines()
- sym=next(x for x in symbols if x.startswith(PREFIX))
- candidate,rel=cm.object_function(p,sym,143)
- ci=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(bytes(candidate),0))
- assert len(candidate)==143 and len(ci)==46
- assert sum(x['type']=='REL32' for x in rel)==4
- assert sum(x['type']=='DIR32' for x in rel)==2
- assert all(x['addend']==0 for x in rel)
- assert any('_Alloc_construct_ptr' in x['symbol'] for x in rel)
- assert any('_Allocate@' in x['symbol'] for x in rel)
- assert any('construct@' in x['symbol'] for x in rel)
+ result=cm.compare_unit('glyph_queue_node_ctor_158')
+ assert result['result']=='exact' and result['matched_compared_bytes']==158
+ assert len(result['relocations'])==7
  assert cm.compare_unit('glyph_queue_allocator_construct_34')['result']=='exact'
  assert cm.compare_unit('glyph_queue_node_allocator_allocate_47')['result']=='exact'
  assert cm.compare_unit('glyph_queue_node_guard_dtor_118')['result']=='exact'
  print('PASS complete original 158B/51-i386 native glyph task-list node-emplace constructor and actual 151B/51 parent E8 +0x5B')
  print('PASS five original child E8 and two physical PE HIGHLOW; first-stage allocation ctor, real memory_resource and folded pointer forwarding')
- print('SOURCE-PRESENT NONEXACT: genuine std::pmr::list C++20 constructor is complete 143B/46 i386, four E8/two DIR32, not original 158B/51 five E8/two HIGHLOW')
- print('PASS independently whole exact 34B/47B allocation children and 118B guard; no native parent or authored-game byte credit')
+ print('PASS canonical whole158B/51 constructor, five REL32 and two DIR32 fields')
+ print('PASS independently whole exact 34B/47B allocation children and 118B guard; no authored-game byte credit')
 if __name__=='__main__':verify()

@@ -10,6 +10,8 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [Exact glyph queue insertion and allocator forwarding](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md) — complete 151B/158B/31B/78B support functions and owned EH; one forwarding specialization, 18/18 scoped units, no authored-game credit.
+
 - [Exact GDI glyph text core](GLYPH_TEXT_CORE2227_STRICT_EXACT.md) — complete 2,316B contribution, 99B EH code and 76B metadata; implicit temporary queue submission and reused X position; 10/10 scoped units.
 
 - [Exact 1,896B Card spell start](CARD_START1896_STRICT_EXACT.md) — complete 512 instructions, 62 calls, 26 data fields, 66B EH code and 52B metadata; 8/8 scoped canonical comparisons.

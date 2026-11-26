@@ -27294,7 +27294,7 @@ relocations = [
 # CORE/RECON-1061: original complete 59B glyph queue standard list helper.
 [units.glyph_queue_list_max_size_59]
 source = "src/GlyphTextQueueList151.cpp"
-object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::list<std::function<void()>>::max_size"]
 symbol = "?max_size@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QBEIXZ"
@@ -27310,7 +27310,7 @@ relocations = [
 # CORE/RECON-1061: original complete 124B glyph queue standard list helper.
 [units.glyph_queue_list_transfer_124]
 source = "src/GlyphTextQueueList151.cpp"
-object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_List_node_emplace_op2::_Transfer_before"]
 symbol = "?_Transfer_before@?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAEPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@2@QAU32@@Z"
@@ -27326,7 +27326,7 @@ relocations = [
 # CORE/RECON-1061: original complete 34B glyph queue standard list helper.
 [units.glyph_queue_allocator_construct_34]
 source = "src/GlyphTextQueueList151.cpp"
-object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_Alloc_construct_ptr<std::pmr::list<std::function<void()>>>::constructor"]
 symbol = "??0?$_Alloc_construct_ptr@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@AAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@@Z"
@@ -27338,7 +27338,7 @@ relocations = [
 # CORE/RECON-1061: original complete 19B glyph queue standard list helper.
 [units.glyph_queue_allocator_max_size_19]
 source = "src/GlyphTextQueueList151.cpp"
-object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_Normal_allocator_traits<glyph task list>::max_size"]
 symbol = "?max_size@?$_Normal_allocator_traits@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@SAIABV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@2@@Z"
@@ -27351,7 +27351,7 @@ relocations = [
 # CORE/RECON-1061: original complete 48B glyph queue standard list helper.
 [units.glyph_queue_allocator_destroy_48]
 source = "src/GlyphTextQueueList151.cpp"
-object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_Alloc_construct_ptr<glyph task list>::destructor"]
 symbol = "??1?$_Alloc_construct_ptr@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@XZ"
@@ -27606,7 +27606,7 @@ relocations = [
 # CORE/RECON-1072: complete native 47B PMR glyph task-list descendant.
 [units.glyph_queue_node_allocator_allocate_47]
 source = "src/GlyphTextQueueList151.cpp"
-object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_Alloc_construct_ptr<GlyphTaskNode>::_Allocate"]
 symbol = "?_Allocate@?$_Alloc_construct_ptr@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAEXXZ"
@@ -27619,7 +27619,7 @@ relocations = [
 # CORE/RECON-1072: complete native 58B PMR glyph task-list descendant.
 [units.glyph_queue_pmr_node_allocate_58]
 source = "src/GlyphTextQueueList151.cpp"
-object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::polymorphic_allocator<GlyphTaskNode>::allocate"]
 symbol = "?allocate@?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@QAEPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@3@I@Z"
@@ -27633,7 +27633,7 @@ relocations = [
 # CORE/RECON-1072: complete native 59B PMR glyph task-list descendant.
 [units.glyph_queue_memory_resource_allocate_59]
 source = "src/GlyphTextQueueList151.cpp"
-object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::pmr::memory_resource::allocate"]
 symbol = "?allocate@memory_resource@pmr@std@@QAEPAXII@Z"
@@ -27646,7 +27646,7 @@ relocations = [
 # CORE/RECON-1072: complete native 17B PMR glyph task-list descendant.
 [units.glyph_queue_allocator_destroy_17]
 source = "src/GlyphTextQueueList151.cpp"
-object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_Normal_allocator_traits<GlyphTaskNode>::destroy"]
 symbol = "??$destroy@V?$function@$$A6AXXZ@std@@@?$_Normal_allocator_traits@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@SAXAAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@PAV?$function@$$A6AXXZ@1@@Z"
@@ -27659,7 +27659,7 @@ relocations = [
 # CORE/RECON-1072: complete native 16B PMR glyph task-list descendant.
 [units.glyph_queue_function_destroy_at_16]
 source = "src/GlyphTextQueueList151.cpp"
-object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::destroy_at<std::function<void()>>"]
 symbol = "??$destroy_at@V?$function@$$A6AXXZ@std@@@std@@YAXQAV?$function@$$A6AXXZ@0@@Z"
@@ -27673,7 +27673,7 @@ relocations = [
 # Genuine five original INT3 alignment bytes belong to its full COFF 123B.
 [units.glyph_queue_node_guard_dtor_118]
 source = "src/GlyphTextQueueList151.cpp"
-object = "build/core1061-canonical/GlyphTextQueueList151.obj"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["std::_List_node_emplace_op2<GlyphTaskNode>::~_List_node_emplace_op2"]
 symbol = "??1?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@XZ"
@@ -33327,4 +33327,119 @@ relocations = [
   { offset = 0x1C, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
   { offset = 0x21, type = "DIR32", symbol = "__ehfuncinfo$?native_text_core_415830@th20@@YA_KPBUNativeTextTransform4@1@HHIPBDPAUIDirect3DBaseTexture9@@HHHPAEV?$function@$$A6AXXZ@std@@@Z", target = 0x005A9880 },
   { offset = 0x26, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
+]
+
+# Complete glyph queue forwarding protocol; docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md.
+[units.glyph_queue_list_emplace_151]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::list<std::function<void()>>::_Emplace"]
+symbol = "??$_Emplace@V?$function@$$A6AXXZ@std@@@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QAEPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@1@QAU21@$$QAV?$function@$$A6AXXZ@1@@Z"
+target_address = 0x004131E0
+size = 151
+relocations = [
+  { offset = 0x7, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x20, type = "REL32", symbol = "?max_size@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@QBEIXZ", target = 0x00416270 },
+  { offset = 0x2C, type = "DIR32", symbol = "??_C@_0O@NKNMEGII@list?5too?5long@", target = 0x0056C8BC },
+  { offset = 0x31, type = "REL32", symbol = "?_Xlength_error@std@@YAXPBD@Z", target = 0x00540ED5 },
+  { offset = 0x3A, type = "REL32", symbol = "?_Getal@?$list@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@V?$function@$$A6AXXZ@std@@@pmr@2@@std@@AAEAAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@2@XZ", target = 0x0040F160 },
+  { offset = 0x46, type = "REL32", symbol = "??$forward@V?$function@$$A6AXXZ@std@@@std@@YA$$QAV?$function@$$A6AXXZ@0@AAV10@@Z", target = 0x0040B280 },
+  { offset = 0x5C, type = "REL32", symbol = "??$?0V?$function@$$A6AXXZ@std@@@?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@AAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@$$QAV?$function@$$A6AXXZ@1@@Z", target = 0x00413000 },
+  { offset = 0x75, type = "REL32", symbol = "?_Transfer_before@?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAEPAU?$_List_node@V?$function@$$A6AXXZ@std@@PAX@2@QAU32@@Z", target = 0x00414EB0 },
+  { offset = 0x80, type = "REL32", symbol = "??1?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@XZ", target = 0x00414350 },
+  { offset = 0x8D, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+]
+
+# Complete glyph queue forwarding protocol; docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md.
+[units.glyph_queue_node_ctor_158]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_List_node_emplace_op2<GlyphTaskNode>::_List_node_emplace_op2"]
+symbol = "??$?0V?$function@$$A6AXXZ@std@@@?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@AAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@$$QAV?$function@$$A6AXXZ@1@@Z"
+target_address = 0x00413000
+size = 158
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??$?0V?$function@$$A6AXXZ@std@@@?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@AAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@$$QAV?$function@$$A6AXXZ@1@@Z", target = 0x00567CBD },
+  { offset = 0x15, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x30, type = "REL32", symbol = "??0?$_Alloc_construct_ptr@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@AAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@@Z", target = 0x00413F50 },
+  { offset = 0x3F, type = "REL32", symbol = "?_Allocate@?$_Alloc_construct_ptr@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAEXXZ", target = 0x004148D0 },
+  { offset = 0x48, type = "REL32", symbol = "??$forward@V?$function@$$A6AXXZ@std@@@std@@YA$$QAV?$function@$$A6AXXZ@0@AAV10@@Z", target = 0x0040B280 },
+  { offset = 0x5D, type = "REL32", symbol = "??$addressof@V?$function@$$A6AXXZ@std@@@std@@YAPAV?$function@$$A6AXXZ@0@AAV10@@Z", target = 0x0040B280 },
+  { offset = 0x7C, type = "REL32", symbol = "??$construct@V?$function@$$A6AXXZ@std@@V12@@?$_Normal_allocator_traits@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@SAXAAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@PAV?$function@$$A6AXXZ@1@$$QAV41@@Z", target = 0x00413B00 },
+]
+
+# Complete glyph queue forwarding protocol; docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md.
+[units.glyph_queue_traits_construct_31]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_Normal_allocator_traits<GlyphTaskNodeAllocator>::construct_function"]
+symbol = "??$construct@V?$function@$$A6AXXZ@std@@V12@@?$_Normal_allocator_traits@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@SAXAAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@PAV?$function@$$A6AXXZ@1@$$QAV41@@Z"
+target_address = 0x00413B00
+size = 31
+relocations = [
+  { offset = 0x8, type = "REL32", symbol = "??$forward@V?$function@$$A6AXXZ@std@@@std@@YA$$QAV?$function@$$A6AXXZ@0@AAV10@@Z", target = 0x0040B280 },
+  { offset = 0x18, type = "REL32", symbol = "??$construct@V?$function@$$A6AXXZ@std@@V12@@?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@QAEXQAV?$function@$$A6AXXZ@2@$$QAV32@@Z", target = 0x00413B20 },
+]
+
+# Complete glyph queue forwarding protocol; docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md.
+[units.glyph_queue_pmr_construct_78]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::pmr::polymorphic_allocator<GlyphTaskNode>::construct_function"]
+symbol = "??$construct@V?$function@$$A6AXXZ@std@@V12@@?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@QAEXQAV?$function@$$A6AXXZ@2@$$QAV32@@Z"
+target_address = 0x00413B20
+size = 78
+relocations = [
+  { offset = 0xE, type = "REL32", symbol = "??$forward@V?$function@$$A6AXXZ@std@@@std@@YA$$QAV?$function@$$A6AXXZ@0@AAV10@@Z", target = 0x0040B280 },
+  { offset = 0x1F, type = "REL32", symbol = "??$uses_allocator_construction_args@V?$function@$$A6AXXZ@std@@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@2@V12@@std@@YA?A_PABV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@0@$$QAV?$function@$$A6AXXZ@0@@Z", target = 0x00413D50 },
+  { offset = 0x31, type = "REL32", symbol = "??0<lambda_1>@?1???$construct@V?$function@$$A6AXXZ@std@@V12@@?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@QAEXQAV?$function@$$A6AXXZ@3@$$QAV43@@Z@QAE@ABQAV43@@Z", target = 0x0040B670 },
+  { offset = 0x41, type = "REL32", symbol = "??$apply@V<lambda_1>@?1???$construct@V?$function@$$A6AXXZ@std@@V12@@?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@QAEXQAV?$function@$$A6AXXZ@4@$$QAV54@@Z@V?$tuple@$$QAV?$function@$$A6AXXZ@std@@@4@@std@@YA?A_T$$QAV<lambda_1>@?1???$construct@V?$function@$$A6AXXZ@std@@V12@@?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@0@QAEXQAV?$function@$$A6AXXZ@0@$$QAV40@@Z@$$QAV?$tuple@$$QAV?$function@$$A6AXXZ@std@@@0@@Z", target = 0x00413A40 },
+]
+
+# Complete glyph queue forwarding protocol; docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md.
+[units.glyph_queue_node_ctor_cleanup_8]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_List_node_emplace_op2<GlyphTaskNode>::ctor_unwind"]
+symbol = "__unwindfunclet$??$?0V?$function@$$A6AXXZ@std@@@?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@AAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@$$QAV?$function@$$A6AXXZ@1@@Z$0"
+target_address = 0x00567CB0
+size = 8
+compare_size = 13
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1?$_Alloc_construct_ptr@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@XZ", target = 0x004142E0 },
+]
+
+# Complete glyph queue forwarding protocol; docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md.
+[units.glyph_queue_node_ctor_handler_29]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_List_node_emplace_op2<GlyphTaskNode>::ctor_eh_handler"]
+symbol = "__ehhandler$??$?0V?$function@$$A6AXXZ@std@@@?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@AAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@$$QAV?$function@$$A6AXXZ@1@@Z"
+target_address = 0x00567CBD
+size = 29
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x14, type = "DIR32", symbol = "__ehfuncinfo$??$?0V?$function@$$A6AXXZ@std@@@?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@AAV?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@1@$$QAV?$function@$$A6AXXZ@1@@Z", target = 0x005A993C },
+  { offset = 0x19, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
+]
+
+# Complete glyph queue forwarding protocol; docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md.
+[units.glyph_queue_node_guard_handler_29]
+source = "src/GlyphTextQueueList151.cpp"
+object = "build/gpt61-glyph-queue-canonical/GlyphTextQueueList151.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["std::_List_node_emplace_op2<GlyphTaskNode>::dtor_eh_handler"]
+symbol = "__ehhandler$??1?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@XZ"
+target_address = 0x00567750
+size = 29
+relocations = [
+  { offset = 0xF, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
+  { offset = 0x14, type = "DIR32", symbol = "__ehfuncinfo$??1?$_List_node_emplace_op2@V?$polymorphic_allocator@U?$_List_node@V?$function@$$A6AXXZ@std@@PAX@std@@@pmr@std@@@std@@QAE@XZ", target = 0x005A91B8 },
+  { offset = 0x19, type = "REL32", symbol = "___CxxFrameHandler3", target = 0x00544722 },
 ]

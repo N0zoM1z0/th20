@@ -117,6 +117,6 @@ and `verifier-controls.txt`. Current objects/receipts are in
 `build/gpt61-glyph-text-canonical/`; the old `core1059-canonical` and
 `core1060-canonical` products are preserved.
 
-The 151B list insertion backend remains NONEXACT at its separately tracked
-130B frontier. The 294B submit and 578B/586B formatting callers also remain
-open. The exact text core does not establish a complete linked game.
+The downstream [151B list insertion and allocator construction](GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md)
+are now independently exact. The 294B submit and 578B/586B formatting callers
+remain open. The exact text core does not establish a complete linked game.
