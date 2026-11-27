@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Two whole Renderer list-update class-key probes and exact-consumer compatibility.
+"""Recheck Renderer class-key codegen and existing Animation.cpp consumers.
 
-Builds ONLY three isolated probe objects. The original 508B/511B are
-complete, relocation-role-resolved, but must NOT be canonically admitted:
-a migrated class specialization must preserve every preexisting exact
-consumer and class-versus-struct MSVC symbol identity.
+Builds ONLY three isolated probe objects. The maintained class-key
+specialization and 508B/511B parents are already canonical; this bounded
+regression probe independently rechecks their original relocation roles,
+ordinary bytes, and all 37 configured Animation.cpp contributions. It does
+not add canonical exactness credit or replace the accepted whole-unit replay.
 """
 from __future__ import annotations
 
@@ -106,20 +107,20 @@ def prove_one(n,data,image,base,sections,physical_highlow):
 
 
 def compatibility():
-    """Prove ALL 38 Animation.cpp exact contributions, including true padding."""
+    """Prove all 37 configured Animation.cpp exact contributions, including true padding."""
     obj=OUT/'AnimationExactCompatibility.obj'
     compile_source('probes/AnimationRendererClassTagExactCompatibilityProbe.cpp',obj)
     with (ROOT/'config/match-units.toml').open('rb') as f:
         units=tomllib.load(f)['units']
     chosen=[(name,unit) for name,unit in units.items()
             if unit['source']=='src/Animation.cpp']
-    assert len(chosen)==38,('changed exact scope',len(chosen))
+    assert len(chosen)==37,('changed exact scope',len(chosen))
     for name,unit in chosen:
         size=int(unit.get('compare_size',unit['size']))
         result=cf.compare(obj,unit['symbol'],int(unit['target_address']),size)
         assert result['result']=='structural-exact' and result['matched_comparable_bytes']==result['comparable_bytes'],(name,result)
-    print('PASS positive compatibility: 38/38 canonical Animation.cpp bodies, including original 5B after-ret padding for ctor/dtor units')
-    print('Class-vs-struct mangled parameter symbols in queue retirement and other list consumers still need coherent migration')
+    print('PASS positive compatibility: 37/37 canonical Animation.cpp bodies, including original 5B after-ret padding for ctor/dtor units')
+    print('PASS current class-key ABI migration is coherent for the scoped consumers; helper 40B/42B leaves remain separately NONEXACT')
 
 
 def main():

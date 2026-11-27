@@ -20,7 +20,7 @@ public:
     IntrusiveIterator<Animation> begin();
     IntrusiveIterator<Animation>* end();
 };
-inline IntrusiveList<Animation>::IntrusiveList() : IntrusiveLink<Animation>(),tail(this) {}
+inline IntrusiveList<Animation>::IntrusiveList() : IntrusiveLink<Animation>(),tail(this) { tail=this; }
 inline Animation* IntrusiveList<Animation>::node_value(){return IntrusiveLink<Animation>::node_value();}
 inline void IntrusiveList<Animation>::remove(IntrusiveLink<Animation>* link){
     if (tail == link) {

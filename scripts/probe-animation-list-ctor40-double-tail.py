@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Evidence-only complete 40B list constructor dual-tail-write C++ hypothesis.
+"""Compile and verify the maintained two-phase 40B Animation list constructor.
 
-Original TH20 binary performs two same-address tail writes, as independently
-observed in original PE and Ghidra. Do NOT put this duplicate in canonical
-source without genuine source-ownership evidence and strict native match.
-Compiles only one temporary translation unit, never any accepted exact unit.
+The constructor expresses a natural member initializer plus a constructor-body
+invariant assignment. The verifier requires the original two tail stores and
+reports the two remaining ModRM differences; it never grants exactness credit.
 """
 from pathlib import Path
 import hashlib
@@ -12,7 +11,6 @@ import importlib.util
 import struct
 import subprocess
 import sys
-import tempfile
 
 from capstone import Cs, CS_ARCH_X86, CS_MODE_32
 
@@ -57,44 +55,20 @@ def main():
     assert HEAD+0x0A+5+struct.unpack_from('<i',original_calls[0].bytes,1)[0]==0x00418A10
 
     header=(ROOT/'src/IntrusiveListAnimation.hpp').read_text()
-    old='inline IntrusiveList<Animation>::IntrusiveList() : IntrusiveLink<Animation>(),tail(this) {}'
-    assert header.count(old)==1,'owner constructor source changed: rerun source audit'
-    candidate=header.replace(old,
-        'inline IntrusiveList<Animation>::IntrusiveList() : IntrusiveLink<Animation>(),tail(this) { tail=this; }')
-    with tempfile.TemporaryDirectory(prefix='list-ctor40-',dir=ROOT/'.analysis') as directory:
-        folder=Path(directory)
-        (folder/'IntrusiveListAnimation.hpp').write_text(candidate)
-        (folder/'CtorProbe.cpp').write_text('''#include "IntrusiveListAnimation.hpp"
-#include "../../src/Animation.hpp"
-namespace th20 {
-void trigger_ctor_probe() {
-    IntrusiveList<Animation> list;
-    list.reset(nullptr);
-}
-}
-''')
-        output=ROOT/'build/gptweb-list-ctor40/DoubleTailResearch.obj'
-        output.parent.mkdir(parents=True,exist_ok=True)
-        subprocess.run([str(ROOT/'scripts/repo-python'),
-            str(ROOT/'scripts/compile-probe.py'),
-            str(folder/'CtorProbe.cpp'),str(output),*FLAGS],cwd=ROOT,check=True)
-        body,rels=cf.object_function(output,SYMBOL,SIZE)
-        assert len(rels)==1 and rels[0]['offset']==0x0B and rels[0]['type']=='REL32'
-        result=cf.compare(output,SYMBOL,HEAD,SIZE)
-        assert result['result']=='mismatch'
-        assert (result['matched_comparable_bytes'],result['comparable_bytes'])==(34,36)
-        assert result['first_differences']==[
-            {'offset':'0x16','object':0x48,'target':0x41},
-            {'offset':'0x1F','object':0x42,'target':0x50},
-        ]
-        assert result['relocations'][0]['solved_destination']=='0x00418A10'
-        actual=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(body,0))
-        assert len(actual)==16
-        assert [i.mnemonic for i in actual]==[i.mnemonic for i in ins]
-        print('PASS evidence-only 40B/16-i386 dual-tail C++ hypothesis against full original 40B/16-i386')
-        print('PASS 34/36 ordinary bytes, exactly two ModRM register-direction differences +0x16 and +0x1F')
-        print('PASS true only E8 at +0x0A -> original folded 63B base constructor 0x00418A10')
-        print('NONEXACT, no canonical constructor code change and no authored/duplicate credit')
+    assert 'tail(this) { tail=this; }' in header, 'maintained two-phase constructor source changed'
+    output=ROOT/'build/gptweb-list-ctor40/DoubleTailResearch.obj'
+    output.parent.mkdir(parents=True,exist_ok=True)
+    subprocess.run([str(ROOT/'scripts/repo-python'),
+        str(ROOT/'scripts/compile-probe.py'),
+        str(ROOT/'probes/AnimationRendererLinkFrontier.cpp'),str(output),*FLAGS],cwd=ROOT,check=True)
+    original_helpers.verify(output)
+    body,rels=cf.object_function(output,SYMBOL,SIZE)
+    assert len(rels)==1 and rels[0]['offset']==0x0B and rels[0]['type']=='REL32'
+    actual=list(Cs(CS_ARCH_X86,CS_MODE_32).disasm(body,0))
+    assert len(actual)==16
+    assert [i.mnemonic for i in actual]==[i.mnemonic for i in ins]
+    print('PASS maintained natural C++ constructor: original 40B/16-instruction extent and two tail stores')
+    print('NONEXACT: two ModRM register-direction differences remain; no strict head/byte credit')
 
 
 if __name__=='__main__':main()

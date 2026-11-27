@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Renderer update's real 40/42B list helpers versus compiled 31/42B probe.
+"""Renderer update's real 40/42B list helpers versus compiled 40/42B probe.
 
 Prove the 63/61B child templates are already matched elsewhere; these are
 not new game-authored contributions. No ignored or fake machine instructions.
@@ -57,9 +57,18 @@ def verify(candidate):
         print(f'PASS original {name}: {length}B/{len(instructions)} x86, real call sites and SHA')
         if not candidate:continue
         if name=='list_ctor':
-            code,_=coff.object_function(candidate,symbol,31)
-            assert len(code)==31
-            print('FRONTIER list ctor: 31B compiled vs 40B native; second tail publication is absent')
+            code,rels=coff.object_function(candidate,symbol,40)
+            assert len(code)==40
+            result=coff.compare(candidate,symbol,addr,length)
+            assert result['result']=='mismatch'
+            assert (result['matched_comparable_bytes'],result['comparable_bytes'])==(34,36)
+            assert result['first_differences']==[
+                {'offset':'0x16','object':0x48,'target':0x41},
+                {'offset':'0x1F','object':0x42,'target':0x50},
+            ]
+            assert len(rels)==1 and rels[0]['offset']==0x0B and rels[0]['type']=='REL32'
+            assert result['relocations'][0]['solved_destination']=='0x00418A10'
+            print('FRONTIER list ctor: maintained 40B/16 source, 34/36 ordinary bytes; two ModRM register-direction bytes remain')
         else:
             result=coff.compare(candidate,symbol,addr,length)
             if name=='list_reset':
