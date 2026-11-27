@@ -2,11 +2,13 @@
 """Independently attest full 5,993B Animation Draw Boss source/PE roles.
 
 The immutable original body is 5993B/1501-x86 instructions. The maintained
-pinned-MSVC C++ candidate currently emits 5969B/1497 instructions with a
-0x200 frame (native 0x204). Both original 49+31-pointer switch tables preserve native
+pinned-MSVC C++ candidate currently emits 5977B/1497 instructions with the
+native 0x204 frame. The first mode35/36 inherited-scale getter result is
+materialized in a function-scope float local, recovering both original
+[ebp-0x160] stores. Four scalar SSE register reloads remain open. Both original 49+31-pointer switch tables preserve native
 case aliasing, but the table block follows the shorter source body. All 123
-E8 call roles agree in native order; the first 81 physical call positions match,
-and 22/32 original PE body data relocation offsets/targets
+E8 call roles agree in native order; the first 84 physical call positions match,
+and 23/32 original PE body data relocation offsets/targets
 coincide. Real instruction/branch/relocation differences remain: this is
 SOURCE-PRESENT, NONEXACT, not a canonical match unit.
 """
@@ -193,8 +195,10 @@ def main():
     assert "variables.field_10" not in text and "variables.field_14" not in text
     assert "field_570" not in text
 
-    # The second mode35/36 getter result is a real value consumed by the
-    # adjusted scale; only the first native getter result is discarded.
+    # The first mode35/36 getter result has a real local home so C2 emits the
+    # native x87 fstp to [ebp-0x160]; the second result feeds adjusted_scale.
+    assert "[[maybe_unused]] float first_inherited_scale;" in text
+    assert text.count("first_inherited_scale=animation_inherited_aux_scale_x(animation);") == 2
     assert "const float adjusted_scale=inherited_scale+aux_half;" in text
     assert "const float adjusted_scale=inherited_scale-aux_half;" in text
     # The native mode35/36 paths compute the scale half before the second
@@ -243,16 +247,19 @@ def main():
     marker = bytes.fromhex("c204000f1f00")
     assert compiled.count(marker) == 1
     code_end = compiled.index(marker) + 3
-    assert code_end == 5969
+    assert code_end == 5977
     assert compiled[code_end:code_end+3] == bytes.fromhex("0f1f00")
-    assert len(compiled) == 6292
+    assert len(compiled) == 6300
     code = list(Cs(CS_ARCH_X86, CS_MODE_32).disasm(compiled[:code_end], HEAD))
     assert len(native) == 1501 and len(code) == 1497
     # Native parent-angle gating extracts bit 12 as SHR+AND, not a single
     # AND-immediate mask. Keep the exact original six bytes at this site.
     assert compiled[0x3E8:0x3EE] == original[0x3E8:0x3EE] == bytes.fromhex("c1ea0c83e201")
-    assert code[2].mnemonic=="sub" and code[2].op_str=="esp, 0x200"
+    assert code[2].mnemonic=="sub" and code[2].op_str=="esp, 0x204"
     assert native[2].mnemonic=="sub" and native[2].op_str=="esp, 0x204"
+    first_result_stores = [inst for inst in code if inst.mnemonic == "fstp"
+                           and inst.op_str == "dword ptr [ebp - 0x160]"]
+    assert len(first_result_stores) == 2, first_result_stores
     assert code[-1].address+code[-1].size == HEAD+code_end
     assert code[-1].mnemonic=="ret" and code[-1].op_str=="4"
     assert len(compiled)-code_end == 3+49*4+31*4
@@ -288,8 +295,8 @@ def main():
         for address in sorted(set(native_calls) | set(source_calls))
         if native_calls[address] != source_calls[address]
     ]
-    # The first 81 E8 instruction offsets and all 123 physical target roles
-    # agree; the complete native code/table contribution is 24 bytes longer
+    # The first 84 E8 instruction offsets and all 123 physical target roles
+    # agree; the complete native code/table contribution is 16 bytes longer
     # than this NONEXACT candidate. Native phase order takes precedence over
     # the higher byte score of the rejected width-half role swap.
     physical_calls=[(inst.address-HEAD,
@@ -299,15 +306,15 @@ def main():
                      for r in actual_rels]
     assert len(physical_calls)==len(candidate_calls)==123
     assert [value for _,value in physical_calls] == [value for _,value in candidate_calls]
-    assert physical_calls[:81]==candidate_calls[:81]
+    assert physical_calls[:84]==candidate_calls[:84]
     verify_half_evaluation_order(physical_calls, physical_calls, native)
     verify_half_evaluation_order(physical_calls, candidate_calls, code)
     verify_shared_return_tail(native)
     verify_shared_return_tail(code)
     assert physical_calls!=candidate_calls
     matched_call_sites=sum(a==b for a,b in zip(physical_calls,candidate_calls))
-    assert matched_call_sites==81
-    assert sum(abs(a[0]-b[0]) for a,b in zip(physical_calls,candidate_calls))==640
+    assert matched_call_sites==84
+    assert sum(abs(a[0]-b[0]) for a,b in zip(physical_calls,candidate_calls))==324
 
 
     assert chosen_render_targets <= set(source_calls), chosen_render_targets - set(source_calls)
@@ -375,7 +382,7 @@ def main():
             target='table_main' if row['offset']<0x400 else 'table_nested'
         current_site_roles[row['offset']]=target
     matched_data_sites=len(set(native_site_roles.items())&set(current_site_roles.items()))
-    assert matched_data_sites==22 and len(native_site_roles)==len(current_site_roles)==32
+    assert matched_data_sites==23 and len(native_site_roles)==len(current_site_roles)==32
 
     # Compare code and after-RET data as a provisional strict-replay
     # diagnostic: no relocation targets are solved from original bytes.
@@ -386,7 +393,7 @@ def main():
         ignored.update(range(int(row['offset']),int(row['offset'])+4))
     comparable_bytes=sum(original_extent[i]==compiled[i]
                          for i in range(len(compiled)) if i not in ignored)
-    assert comparable_bytes==3691 and len(compiled)-len(ignored)==5352
+    assert comparable_bytes==3726 and len(compiled)-len(ignored)==5360
 
 
     assert all(addr in reloc_sites for t,n in ((ORIGINAL.MAIN_TABLE, 49),
@@ -396,13 +403,13 @@ def main():
     print("PASS original complete 5,993B/1,501-i386 draw Boss native PE census")
     print("PASS full 49-main +31-nested pointer alias partitions, all 80/80 true direct COFF entries (no 49-byte compression index)")
     print("PASS all 123 original E8 target roles in original physical sequence, 43 distinct target addresses")
-    print(f"PASS first 81 consecutive E8 instruction sites and {matched_call_sites}/123 complete original E8 physical positions (all 123 targets in order)")
+    print(f"PASS first 84 consecutive E8 instruction sites and {matched_call_sites}/123 complete original E8 physical positions (all 123 targets in order)")
     print(f"PASS 32/32 native PE in-body HIGHLOW roles, {matched_data_sites}/32 exact site/target pairs")
     print("PASS mode6 native thiscall and two original eight-parameter draw helper receiver/stack roles are in source")
     print("PASS native mode35/36/45/46 scale/width division phases and 5/5/6/6 prepared argument pushes")
     print("PASS native final renderer-to-cookie tail through one shared zero-result path")
-    print(f"PASS candidate code {code_end}B/{len(code)} x86, frame 0x200 versus native 0x204; complete COFF {len(compiled)}B versus native 6316B including 3B alignment+80 true pointer fields")
-    print(f"NONEXACT parent: only {comparable_bytes}/{len(compiled)-len(ignored)} nonrelocation bytes equal; remaining nested-case local life and relocation offsets differ; zero game exact credit")
+    print(f"PASS candidate code {code_end}B/{len(code)} x86, frame 0x204 matches native; complete COFF {len(compiled)}B versus native 6316B including 3B alignment+80 true pointer fields")
+    print(f"NONEXACT parent: {comparable_bytes}/{len(compiled)-len(ignored)} nonrelocation bytes equal; four scalar SSE register reloads and remaining relocation offsets differ; zero game exact credit")
 
 
 if __name__ == "__main__":
