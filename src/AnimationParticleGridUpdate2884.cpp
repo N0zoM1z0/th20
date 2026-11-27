@@ -1,11 +1,12 @@
 // Original 2,884B particle-grid virtual Update at 0x0045C360.
 // Full game-owned C++ logic, SOURCE-PRESENT NONEXACT. The original has
 // 768 i386 instructions, 99 E8 calls and 25 PE HIGHLOW fields; current
-// pinned-MSVC 2856B/756-instruction body preserves 99 REL32/25 DIR32.
+// pinned-MSVC 2881B/767-instruction body preserves 99 REL32/25 DIR32.
 // Four emitter child updates and the 200-slot loop reuse one Animation*
-// local, matching the original [EBP-0x54] pointer lifetime.
+// local. Each owner access reloads the current animation member from the
+// group, matching the original repeated this+4 loads rather than caching it.
 // The native early ESI lifetime is recovered by comparing the actual child age
-// directly against the owner's variable, without an unnecessary saved int.
+// directly against the current animation member, without a saved int.
 // The emission slot is assigned by the Timer before its first use; the two
 // polar angle intermediates retain real effectful getter evaluation order.
 // Session -> Context -> EffectInfo -> AnimationFile -> spawn is the actual
@@ -36,18 +37,17 @@ int NativeParticleGridGroup::update() {
     int processed = 0;
     int emission_index;
     int effect_index=0;
-    Animation* const owner=animation;
     Animation* child;
-    Vector3 center=owner->vector_5bc_ref();
+    Vector3 center=animation->vector_5bc_ref();
     extra_1920=center;
     extra_1914=center;
     extra_1908=center;
-    const float angle=owner->rotation_z_value();
+    const float angle=animation->rotation_z_value();
     polar(tangent,angle,native_particle_radius_300);
     tangent.z=0.0f;
     extra_1914+=tangent;
-    float direction=owner->rotation_z_value();
-    direction+=owner->variables().particle_grid_angle_offset;
+    float direction=animation->rotation_z_value();
+    direction+=animation->variables().particle_grid_angle_offset;
     polar(tangent,direction,native_particle_radius_150);
     tangent.z=0.0f;
     extra_1908+=tangent;
@@ -79,26 +79,26 @@ int NativeParticleGridGroup::update() {
                 colors_08[emission_index+3]=file->spawn_45d210("effect",0x96,nullptr,0.0f,effect_index);
             }
             union { std::uint32_t word; AnimationColorChannels channels; } initial_color;
-            initial_color.word = reinterpret_cast<NativeParticleAnimationAccess*>(owner)->color_ref_45d0e0();
+            initial_color.word = reinterpret_cast<NativeParticleAnimationAccess*>(animation)->color_ref_45d0e0();
             {
                 child=colors_08[emission_index+0].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
-                    child->variables().particle_grid_count=owner->variables().particle_grid_count;
+                    child->variables().particle_grid_count=animation->variables().particle_grid_count;
                 }
             }
             {
                 child=colors_08[emission_index+1].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
-                    child->variables().particle_grid_count=owner->variables().particle_grid_count;
+                    child->variables().particle_grid_count=animation->variables().particle_grid_count;
                 }
             }
             {
                 child=colors_08[emission_index+2].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
-                    child->variables().particle_grid_count=owner->variables().particle_grid_count;
+                    child->variables().particle_grid_count=animation->variables().particle_grid_count;
                 }
             }
             // Original immutable native fourth-emitter color transform:
@@ -110,7 +110,7 @@ int NativeParticleGridGroup::update() {
                 child=colors_08[emission_index+3].resolve();
                 if(child) {
                     child->set_packed_color(initial_color.word);
-                    child->variables().particle_grid_count=owner->variables().particle_grid_count;
+                    child->variables().particle_grid_count=animation->variables().particle_grid_count;
                 }
             }
         }
@@ -118,7 +118,7 @@ int NativeParticleGridGroup::update() {
     for (int index=0;index<200;++index) {
         child=colors_08[index].resolve();
         if (!child) continue;
-        child->set_slowdown(owner->slowdown());
+        child->set_slowdown(animation->slowdown());
         if (stages_15e8[index]==0) {
             position=extra_1914;
             polar(tangent,native_polygon_random_5ba4c4.radians(),
@@ -143,14 +143,14 @@ int NativeParticleGridGroup::update() {
                 native_polygon_random_5ba4c4.unit()*native_particle_radius_100+
                 native_particle_radius_100);
             reinterpret_cast<NativeAnimationInterpolationForwardView*>(child)->configure_45d150(
-                static_cast<int>(owner->variables().particle_grid_count),position,tangent,gradient,velocity);
+                static_cast<int>(animation->variables().particle_grid_count),position,tangent,gradient,velocity);
             positions_328[index]=gradient;
             vectors_c88[index]=velocity;
             stages_15e8[index]=1;
         } else {
             if (reinterpret_cast<NativeParticleAnimationAccess*>(child)->age_45d0a0()
-                >= owner->variables().particle_grid_count+1 && stages_15e8[index]==1) {
-                gradient=owner->vector_5bc_ref();
+                >= animation->variables().particle_grid_count+1 && stages_15e8[index]==1) {
+                gradient=animation->vector_5bc_ref();
                 polar(tangent,native_polygon_random_5ba4c4.radians(),
                     native_polygon_random_5ba4c4.unit()*native_particle_radius_20);
                 tangent.z=0.0f;
@@ -159,7 +159,7 @@ int NativeParticleGridGroup::update() {
                     native_polygon_random_5ba4c4.unit()*native_particle_radius_20);
                 tangent.z=0.0f;
                 reinterpret_cast<NativeAnimationInterpolationForwardView*>(child)->configure_45d150(
-                    static_cast<int>(owner->variables().particle_grid_count),
+                    static_cast<int>(animation->variables().particle_grid_count),
                     positions_328[index],vectors_c88[index],gradient,tangent);
                 stages_15e8[index]=2;
             }

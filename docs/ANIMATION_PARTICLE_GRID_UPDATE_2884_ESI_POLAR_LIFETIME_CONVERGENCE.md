@@ -1,10 +1,35 @@
+**2026-11-27 repeated-owner reload update:** The cached Animation pointer
+snapshot is removed. Native instructions repeatedly reload the current group
+member from this+4 before variables, slowdown, vector_5bc_ref, and interpolation
+calls; the source now evaluates animation->... at each original access point.
+This is more faithful to the actual owner-retargeting semantics than retaining
+a stale pointer snapshot. The maintained whole function now compiles to
+**2,881B/767 i386**, only **3 bytes and one instruction below** the 2,884B/768
+native body, while preserving all **99/99 E8 target roles**, **25/25 DIR32
+roles**, the **0x19C frame**, and native ESI age-across-call lifetime. Physical
+E8 alignment is **6/99**, total offset delta **883** (first 20: **107**); this
+trades the previous direct-spawn checkpoint's 14 aligned calls / 712 total
+delta for the more accurate repeated member loads. The original parent remains
+**NONEXACT**, with no new exactness credit.
+
+A bounded MSVC /Od source-order matrix tested all **120 permutations** of the
+five Vector3 locals and all **24 permutations** of the scalar/pointer locals.
+They all emitted the same 2,881B/767 body: declaration reordering alone does
+not change this compiler's live-range stack-slot assignment. Moving the
+color-word union to four function/block positions likewise left the body
+unchanged. A natural four-named AnimationHandle result-local hypothesis
+emitted **2,901B/771**, 6/99 aligned and 2,411 total E8 offset delta, so it is
+rejected as a worse candidate. These controls narrow the remaining local-layout
+frontier to actual temporary/materialization and lifetime semantics, not simple
+declaration order.
+
 **CORE/RECON-1112 CURRENT SOURCE UPDATE (2026-11-25):** The four
 particle-emitter branches now assign the real `spawn_45d210(...)` return
 value directly into `colors_08[emission_index + n]`, rather than materializing
 an additional named `AnimationHandle` local and then copying it. This is a
 natural C++ return-value/assignment expression; it retains all four distinct
 script IDs and the original Session → EffectInfo → AnimationFile → spawn
-resource chain. The full function now compiles to **2,856B/756 i386**
+resource chain. The pre-owner-reload checkpoint compiled to **2,856B/756 i386**
 (down 20B/four instructions from 2,876B/760). All **99/99 original E8
 target roles** and **25/25 original PE HIGHLOW data-target roles** remain
 identical and in order. Physical E8-site alignment improves from **8/99 to
@@ -13,7 +38,7 @@ first-20 delta falls from **92 to 87**. The native **0x19C** frame and ESI
 age-across-call lifetime remain. The complete 2,884B/768-i386 game Boss is
 still **SOURCE-PRESENT/NONEXACT**; no parent exactness credit is claimed.
 The maintained one-object probe and independent original-role verifier both
-pass for the complete 2,856B candidate.
+pass for the complete 2,856B historical candidate; the current 2,881B candidate is independently reproduced by the same probe.
 
 # CORE/RECON-1111 — 2,884B particle Update: ESI/age, polar and shared-child lifetime convergence
 
@@ -91,13 +116,13 @@ candidate relocation counts.
 
 | Measured property | 2,969B source | 2,924B checkpoint | Current checkpoint | Original native |
 | --- | ---: | ---: | ---: | ---: |
-| Whole compiler code bytes | 2,969 | 2,924 | **2,856** | 2,884 |
-| Whole i386 instructions | 763 | 760 | **756** | 768 |
+| Whole compiler code bytes | 2,969 | 2,924 | **2,881** | 2,884 |
+| Whole i386 instructions | 763 | 760 | **767** | 768 |
 | E8 / COFF REL32 calls | 99 | 99 | **99** | 99 |
 | PE HIGHLOW / COFF DIR32 | 25 | 25 | **25** | 25 |
-| E8 opcode offsets exactly aligned | 0 /99 | 6 /99 | **14 /99** | 99 /99 |
-| Sum of absolute differences between corresponding E8 offsets | 7,558 | 3,639 | **712** | 0 |
-| First 20 E8 offset absolute-difference sum | 659 | 119 | **87** | 0 |
+| E8 opcode offsets exactly aligned | 0 /99 | 6 /99 | **6 /99** | 99 /99 |
+| Sum of absolute differences between corresponding E8 offsets | 7,558 | 3,639 | **883** | 0 |
+| First 20 E8 offset absolute-difference sum | 659 | 119 | **107** | 0 |
 | Local stack frame | — | 0x1AC | **0x19C** | 0x19C |
 | Original ESI push/age-across-call lifetime | No | Yes | **Yes** | Yes |
 
@@ -105,15 +130,15 @@ The previous 2,969B candidate source is retained as
 `.analysis/gptweb-particle-owner-probes/EffectChainSpawnSlot.cpp`; its
 noncanonical compiled object was removed during storage cleanup. Rebuild it
 with `scripts/compile-probe.py` if needed. The pre-RECON-1112 2,876B candidate is a historical checkpoint; the
-maintained single-source probe now reproduces the **2,856B/756** candidate.
+maintained single-source probe now reproduces the **2,881B/767** repeated-owner candidate; the 2,856B/756 direct-spawn checkpoint is retained as a historical comparison.
 The shared child-pointer lifetime first removed **48B** from the 2,924B
 checkpoint and restored the native **0x19C** frame, aligning eight E8 sites
 with total offset delta **1,463**. RECON-1112 then changed all four named
 `AnimationHandle` temporaries into direct `colors_08[index] = spawn(...)`
 assignments: this removes a further **20B/four instructions**, improves
 alignment from **8/99 to 14/99**, and cuts total E8 offset delta from
-**1,463 to 712** (first 20 sites: 87). The current candidate is **28B and
-12 instructions shorter** than the original; these bytes are *not* accepted
+**1,463 to 712** (first 20 sites: 87). The 2026-11-27 repeated-owner reload now gives a **2,881B/767** candidate,
+only 3B and one instruction shorter than native. These bytes are *not* accepted
 as original code, and code length alone has no matching credit. A more
 aggressive const-reference center probe compiled to 2,856B/758, but was
 rejected: the native explicitly materializes a 12-byte Vector3 snapshot
@@ -140,7 +165,7 @@ This role checker now runs automatically after the existing
 [`probe-animation-particle-grid-update2884.py`](../scripts/probe-animation-particle-grid-update2884.py)
 compiles the *one* real maintained function. The 2026-11-20 source
 checkpoint reported 2,876B/760 i386 and 8/99 physical E8 sites aligned;
-the current source reports 2,856B/756 i386 and 14/99 aligned, preserving
+the current source reports 2,881B/767 i386 and 6/99 aligned, preserving
 every original call/data role and the exact 0x19C local frame:
 
 ```sh

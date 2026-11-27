@@ -1,10 +1,19 @@
+**2026-11-27 current source update:** The cached owner pointer was removed;
+all original owner operations now reload animation from the group member,
+matching the native repeated this+4 reads. The complete maintained C++ body
+compiles to **2,881B/767 i386**, preserving all 99 E8 and 25 data relocation
+roles, the native 0x19C frame and ESI age lifetime. It is only 3B and one
+instruction shorter than native, but remains NONEXACT: 6/99 E8 sites align and
+total call-offset delta is 883. See the [repeated-owner reload and compiler-order
+controls](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
+
 **CORE/RECON-1112 CURRENT SOURCE UPDATE (2026-11-25):** The four
 particle-emitter branches now assign the real `spawn_45d210(...)` return
 value directly into `colors_08[emission_index + n]`, rather than materializing
 an additional named `AnimationHandle` local and then copying it. This is a
 natural C++ return-value/assignment expression; it retains all four distinct
 script IDs and the original Session → EffectInfo → AnimationFile → spawn
-resource chain. The full function now compiles to **2,856B/756 i386**
+resource chain. The 2026-11-25 direct-spawn checkpoint compiled to **2,856B/756 i386**
 (down 20B/four instructions from 2,876B/760). All **99/99 original E8
 target roles** and **25/25 original PE HIGHLOW data-target roles** remain
 identical and in order. Physical E8-site alignment improves from **8/99 to
@@ -13,11 +22,11 @@ first-20 delta falls from **92 to 87**. The native **0x19C** frame and ESI
 age-across-call lifetime remain. The complete 2,884B/768-i386 game Boss is
 still **SOURCE-PRESENT/NONEXACT**; no parent exactness credit is claimed.
 The maintained one-object probe and independent original-role verifier both
-pass for the complete 2,856B candidate.
+pass for the complete 2,856B historical candidate; the current repeated-owner source is 2,881B/767.
 
 # CORE/RECON-1107 — source-present 2,884B particle-grid Update with real effect resource ownership
 
-> **Previous status (2026-11-20):** The 2,924B compiler measurement below was a historical checkpoint. The shared `Animation* child` lifetime produced the intermediate **2,876B/760 i386** candidate with **8/99** E8 sites aligned. The later RECON-1112 direct spawn-result assignments advance the maintained source to **2,856B/756 i386**, **14/99** aligned, with all 99 call/25 data roles and the native **0x19C** stack frame preserved. It remains **SOURCE-PRESENT, NONEXACT**. See the [latest shared-child convergence](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
+> **Previous status (2026-11-20):** The 2,924B compiler measurement below was a historical checkpoint. The shared `Animation* child` lifetime produced the intermediate **2,876B/760 i386** candidate with **8/99** E8 sites aligned. The later RECON-1112 direct spawn-result assignments advance the 2026-11-25 direct-spawn checkpoint to **2,856B/756 i386**, **14/99** aligned, with all 99 call/25 data roles and the native **0x19C** stack frame preserved. It remains **SOURCE-PRESENT, NONEXACT**. See the [latest shared-child convergence](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
 
 This checkpoint promotes the full game-authored 200-particle virtual Update
 at **`0x0045C360..0x0045CEA3`** into maintained
