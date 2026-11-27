@@ -33984,3 +33984,17 @@ target_address = 0x004AB610
 size = 25
 relocations = [
 ]
+
+# CORE/EXACT-249 — complete original 38B indexed Animation sprite accessor.
+[units.animation_sprite_data_indexed]
+source = "src/AnimationSpriteAccess.cpp"
+object = "build/gpt61-player-state-canonical/AnimationSpriteAccess.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::Animation::sprite_data(std::int32_t)"]
+symbol = "?sprite_data@Animation@th20@@QAEPAUSpriteData@2@H@Z"
+target_address = 0x00437CA0
+size = 38
+relocations = [
+  { offset = 0x0D, type = "REL32", symbol = "?animation_file@Animation@th20@@QAEPAVAnimationFile@2@XZ", target = 0x00437500 },
+  { offset = 0x1C, type = "REL32", symbol = "?sprite@AnimationFile@th20@@QAEPAUSpriteData@2@H@Z", target = 0x00437C80 },
+]

@@ -1059,6 +1059,7 @@ th20::Bullet::advance_command7
 th20::Bullet::advance_command8
 th20::Animation::animation_file
 th20::AnimationFile::sprite
+th20::Animation::sprite_data(std::int32_t)
 th20::Animation::sprite_data
 th20::Bullet::wrap_screen
 th20::Bullet::cancel

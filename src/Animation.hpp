@@ -250,6 +250,7 @@ public:
     Vector3& position_ref();
     AnimationFile* animation_file();
     SpriteData* sprite_data();
+    SpriteData* sprite_data(std::int32_t index);
     float inherited_scale_y();
     float inherited_scale_x();
     float height();

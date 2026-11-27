@@ -22,4 +22,10 @@ SpriteData* Animation::sprite_data() {
     const std::int32_t index = base.field_20;
     return file->sprite(index);
 }
+
+// Native indexed sprite lookup used by Animation's geometry preparation.
+SpriteData* Animation::sprite_data(std::int32_t index) {
+    AnimationFile* file = animation_file();
+    return file->sprite(index);
+}
 } // namespace th20

@@ -2,6 +2,7 @@ address,name,size,status,match_percent,unit,evidence
 0x00423F50,th20::Timer::reset,41,matching,100.00,timer_reset,REF-001; locked MSVC cold build and complete canonical relocation replay
 0x00423F80,th20::Timer::set,90,matching,100.00,timer_set,REF-001; locked MSVC cold build and complete canonical relocation replay
 0x00423FE0,th20::Timer::set_mode,38,matching,100.00,timer_mode,REF-002; locked MSVC cold build and complete canonical relocation replay
+0x00437CA0,th20::Animation::sprite_data(std::int32_t),38,matching,100.00,animation_sprite_data_indexed,CORE/EXACT-249; docs/ANIMATION_SPRITE_DATA_INDEXED_RECONSTRUCTION.md
 0x004530F0,th20::Timer::add,295,matching,100.00,timer_add,REF-002; locked MSVC cold build and complete canonical relocation replay
 0x004533B0,th20::Timer::tick,324,matching,100.00,timer_tick,REF-002; locked MSVC cold build and complete canonical relocation replay
 0x00411970,th20::FunctionChainLink::FunctionChainLink,64,matching,100.00,chain_link_construct,REF-002; locked MSVC cold build and complete canonical replay
