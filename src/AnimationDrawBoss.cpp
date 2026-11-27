@@ -36,6 +36,7 @@ static_assert(offsetof(WindowState, scale) == 0x20C0);
 
 
 std::int32_t AnimationPoolOwner::draw(Animation* animation) {
+    [[maybe_unused]] float first_inherited_scale;
     // Original ECX this is the existing game AnimationPoolOwner. The
     // same-layout local view provides names for currently unsourced private
     // renderer methods; no duplicate vtable or object storage is produced.
@@ -224,7 +225,7 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
     case 35: {
         // Preserve the first getter, color494/color490, count and second
         // getter order. Recompute width's half while passing the arguments.
-        animation_inherited_aux_scale_x(animation);
+        first_inherited_scale=animation_inherited_aux_scale_x(animation);
         const auto second_color=animation_draw_color_494(animation);
         const auto first_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;
@@ -239,7 +240,7 @@ std::int32_t AnimationPoolOwner::draw(Animation* animation) {
     case 36: {
         // Same native double inherited-scale call order as mode35, but with
         // subtraction for both real width and auxiliary-scale arguments.
-        animation_inherited_aux_scale_x(animation);
+        first_inherited_scale=animation_inherited_aux_scale_x(animation);
         const auto second_color=animation_draw_color_494(animation);
         const auto first_color=animation_draw_color_490(animation);
         const auto quad_count=animation->base.variables.draw_shape_count;

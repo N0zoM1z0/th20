@@ -239,3 +239,65 @@ arena across the interference subroutines. It does not yet map the
 C1-named half_for_scale/adjusted_scale records to individual arena nodes,
 nor explain the four missing scalar XMM reloads. Do not infer either from the
 arena reset alone.
+
+## 2026-11-27 mode 35/36 first inherited-scale result: native frame slot recovered
+
+The apparent mode-36 four-byte frame displacement was traced to the first
+`animation_inherited_aux_scale_x(animation)` call in each case. The
+reconstruction previously expressed these as discarded expression statements.
+In the current C2 output that lowers to `fstp st(0)`, so no local home is
+reserved. The original native function instead stores each first getter result
+to `[ebp-0x160]`.
+
+A natural source-level local restores this behavior:
+
+```cpp
+[[maybe_unused]] float first_inherited_scale;
+```
+
+Both case 35 and case 36 now assign their first getter result to that local.
+The local is function-scoped and the same home slot is reused by the two
+mutually exclusive switch cases. No inline assembly, padding, volatile access,
+or synthetic instruction was introduced.
+
+The C2 pass trace proves the new symbol is present before stack allocation as
+`_first_inherited_scale` with provisional slot `-4`. At
+`Calculate Frame Info`, it becomes `-352`, i.e. native EBP displacement
+`-0x160`. The final object emits `fstp dword ptr [ebp-0x160]` for both
+first getter calls.
+
+The resulting mode-35 native stack layout is recovered:
+
+| Local | EBP displacement |
+| --- | ---: |
+| first inherited-scale result | `-0x160` |
+| adjusted_scale | `-0x15C` |
+| quad_count | `-0x158` |
+| second_color | `-0x150` |
+| first_color | `-0x154` |
+| aux_half | `-0x14C` |
+| inherited_scale | `-0x148` |
+
+The resulting mode-36 layout is also recovered:
+
+| Local / temporary | EBP displacement |
+| --- | ---: |
+| first inherited-scale result | `-0x160` |
+| first color result | `-0x16C` |
+| second color result | `-0x170` |
+| quad_count | `-0x174` |
+| half_for_scale | `-0x168` |
+| inherited_scale | `-0x164` |
+| adjusted_scale | `-0x178` |
+
+This corrects the earlier working hypothesis that the three mode-36 C1
+symbols absent from the C2 named-local table were responsible for the
+four-byte shift. They remain relevant to the named-local versus temporary
+lowering investigation, but they are not the cause of this frame displacement:
+the decisive difference was the discarded first getter result.
+
+Validation used only the AnimationDrawBoss translation unit and C2 pass
+breakpoints, not a full cold replay. The source build's target function is
+6300 bytes and is byte-identical to the tested first-function source variant;
+all 235 COFF relocation records also compare identical. The C2 frame-info
+snapshot agrees with the original native offsets above.
