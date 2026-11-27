@@ -1,3 +1,40 @@
+**2026-11-27 Timer postfix ABI correction (current source):** The original
+`0x0045CE75..0x0045CE90` tail computes the timer subobject pointer, spills it
+at `[EBP-0x130]`, pushes the postfix dummy argument `0`, and calls
+`Timer::operator++(int)` at **`0x00423540`**. This is not the distinct prefix
+`Timer::operator++()` at `0x00429400`. The maintained source now spells the
+original operation as `timer_1930.time++`; pinned MSVC emits the exact postfix
+COFF symbol `??ETimer@th20@@QAEXH@Z`. The targeted candidate is
+**2,888B/770 i386**, with the native **0x19C frame**, **99/99 signature-checked
+E8 destinations**, **25/25 DIR32 data roles**, **6/99** physical E8 sites
+aligned, total E8 offset delta **430** (first 20: **84**), and the native ESI
+age-across-call lifetime. It remains SOURCE-PRESENT/NONEXACT: four bytes and
+two instructions larger than the original 2,884B/768 body, with vector local
+slots still four bytes displaced and remaining x87/SSE materialization
+mismatches.
+
+**Verifier correction:** The previous candidate-role checker used the broad
+symbol prefix `??ETimer@`, which incorrectly treated prefix
+`??ETimer@th20@@QAEXXZ` as the native postfix target `0x00423540`. The prefix
+operator actually targets `0x00429400`; the original Update calls postfix at
+`0x00423540`. Consequently the historical 2,875B/767 reused-angle candidate
+and 2,881B/767 repeated-owner candidate were **98/99 actual E8 destination
+matches**, not 99/99. The updated checker maps the complete decorated
+signatures separately and rejects the old prefix object. All historical
+pre-correction `99/99` target-role claims below are superseded by this audit.
+
+**Historical 2026-11-27 reused polar-angle lifetime checkpoint:** The first
+and second rotation getters retained their original effectful order, but the
+source reused one mutable `float angle` after the first polar result was
+consumed. That real C++ lifetime change moved the pinned MSVC `/Od /Ob0`
+whole-source probe from **2,881B/767** to **2,875B/767 i386**. Its 99 E8 and
+25 DIR32 relocations were present; however, the old broad-prefix verifier
+misclassified the final Timer prefix call, so the candidate had only 98/99
+true E8 destination matches. Physical E8 alignment was **6/99**, total offset
+delta **440** (first 20: **84**), and the frame was **0x194** versus native
+**0x19C**. The current source retains the reused-angle lifetime and fixes the
+Timer postfix ABI, producing the 2,888B/770 result above.
+
 **2026-11-27 reused polar-angle lifetime update:** The first and second
 rotation getters retain their original effectful order, but the source now
 reuses one mutable `float angle` after the first polar result has been consumed.
@@ -12,21 +49,19 @@ improvement, with no match-unit or authored-byte credit. The vector-role map
 below remains valid; its current candidate locals are still displaced by four
 bytes from the original roles.
 
-**Rejected 2026-11-27 delayed-counter experiment:** Moving `processed=0` from
+**Historical rejected delayed-counter experiment:** Moving `processed=0` from
 the prologue to immediately after the polar setup is semantically safe because
 its first increment/read is in the later particle loop, and it emitted a
-smaller **2,874B/766** candidate. It is nevertheless rejected as the maintained
-candidate: ordered native mnemonic-byte alignment fell from **2,826 to 2,764**,
+smaller **2,874B/766** candidate. It was nevertheless rejected at that checkpoint: ordered native mnemonic-byte alignment fell from **2,826 to 2,764**,
 E8-site alignment fell from **6/99 to 5/99**, and the first-20 E8 displacement
 sum worsened from **84 to 117**. The total E8 displacement sum did improve
 440→398, but that isolated metric does not outweigh the loss of early and
-whole-body instruction order. The maintained source therefore keeps
-`processed=0` at function entry and the **2,875B/767** reused-angle result.
+whole-body instruction order. That historical source kept `processed=0` at function entry and the 2,875B/767 reused-angle result; the current source keeps the same counter lifetime while using the corrected postfix Timer ABI.
 A separate `__forceinline` direction helper was also rejected: pinned `/Ob0`
 emitted an out-of-line helper E8 rather than inlining it, violating the
 original 99-call role set.
 
-**2026-11-27 native Vector3 local-role recovery:** The maintained source now
+**Historical 2026-11-27 native Vector3 local-role recovery:** The source then
 uses `basis` as the original polar-output and vector-difference scratch, while
 `tangent` is the separately normalized second direction. This is derived from
 the original call operands, not from decompiler variable names: the native
@@ -37,23 +72,25 @@ The candidate now assigns the same source roles, but the pinned MSVC build
 places position/tangent/gradient/velocity/basis at `[EBP-0x44]`,
 `[EBP-0x50]`, `[EBP-0x20]`, `[EBP-0x38]`, and `[EBP-0x14]` respectively: a
 uniform four-byte displacement. At that pre-angle checkpoint the targeted
-whole-source probe was **2,881B/767 i386**, with **99/99 call roles** and
-**25/25 data roles** intact, **6/99** E8 sites aligned and total call-offset
-delta **883**. The later reused-angle checkpoint supersedes those size/offset
+whole-source probe was **2,881B/767 i386**, with 99 E8 and 25 DIR32 relocations,
+**98/99 actual call destinations** after the corrected Timer signature audit,
+**6/99** E8 sites aligned and total call-offset delta **883**. The later reused-angle checkpoint supersedes those size/offset
 measurements. This is a source/dataflow correction, not an exactness claim;
 the remaining frame-local allocation and x87/SSE argument materialization
 still need compiler-level explanation.
 
-**Earlier 2026-11-27 repeated-owner reload checkpoint (superseded by the
-reused-angle update above):** The cached Animation pointer snapshot is
+**Historical 2026-11-27 repeated-owner reload checkpoint (superseded by the
+reused-angle and Timer ABI corrections above):** The cached Animation pointer snapshot is
 removed. Native instructions repeatedly reload the current group member from
 this+4 before variables, slowdown, vector_5bc_ref, and interpolation calls;
 the source now evaluates animation->... at each original access point.
 This is more faithful to the actual owner-retargeting semantics than retaining
-a stale pointer snapshot. The maintained whole function now compiles to
+a stale pointer snapshot. That historical whole function compiled to
 **2,881B/767 i386**, only **3 bytes and one instruction below** the 2,884B/768
-native body, while preserving all **99/99 E8 target roles**, **25/25 DIR32
-roles**, the **0x19C frame**, and native ESI age-across-call lifetime. Physical
+native body, while preserving 99 E8 and 25 DIR32 relocations, the **0x19C frame**, and
+native ESI age-across-call lifetime. The old broad-prefix checker overstated
+its Timer call target; the signature-aware audit records **98/99** true E8
+destination matches for this prefix-increment source. Physical
 E8 alignment is **6/99**, total offset delta **883** (first 20: **107**); this
 trades the previous direct-spawn checkpoint's 14 aligned calls / 712 total
 delta for the more accurate repeated member loads. The original parent remains
@@ -178,17 +215,18 @@ The previous 2,969B candidate source is retained as
 noncanonical compiled object was removed during storage cleanup. Rebuild it
 with `scripts/compile-probe.py` if needed. The pre-RECON-1112 2,876B candidate is a historical checkpoint; the
 2,881B/767 repeated-owner source and 2,856B/756 direct-spawn source are retained
-as historical comparisons. The maintained single-source probe now reproduces
-the **2,875B/767** reused-angle candidate.
+as historical comparisons. The current single-source probe now reproduces the
+**2,888B/770** reused-angle plus Timer-postfix candidate.
 The shared child-pointer lifetime first removed **48B** from the 2,924B
 checkpoint and restored the native **0x19C** frame, aligning eight E8 sites
 with total offset delta **1,463**. RECON-1112 then changed all four named
 `AnimationHandle` temporaries into direct `colors_08[index] = spawn(...)`
 assignments: this removes a further **20B/four instructions**, improves
 alignment from **8/99 to 14/99**, and cuts total E8 offset delta from
-**1,463 to 712** (first 20 sites: 87). The 2026-11-27 reused-angle source now gives a **2,875B/767** candidate,
-with the native E8 displacement sum reduced to 440 but a 0x194 frame rather
-than the native 0x19C. These bytes are *not* accepted
+**1,463 to 712** (first 20 sites: 87). The historical 2026-11-27 reused-angle/prefix source gave a **2,875B/767**
+candidate with E8 displacement sum 440 and a 0x194 frame. The current
+postfix-corrected source gives **2,888B/770**, E8 displacement sum 430, and
+the native 0x19C frame. These bytes are *not* accepted
 as original code, and code length alone has no matching credit. A more
 aggressive const-reference center probe compiled to 2,856B/758, but was
 rejected: the native explicitly materializes a 12-byte Vector3 snapshot
@@ -215,19 +253,17 @@ This role checker now runs automatically after the existing
 [`probe-animation-particle-grid-update2884.py`](../scripts/probe-animation-particle-grid-update2884.py)
 compiles the *one* real maintained function. The 2026-11-20 source
 checkpoint reported 2,876B/760 i386 and 8/99 physical E8 sites aligned;
-the current source reports 2,875B/767 i386 and 6/99 aligned, preserving
-every original call/data role and the native ESI lifetime; its frame is
-0x194 versus the native 0x19C:
+the current source reports 2,888B/770 i386 and 6/99 aligned, preserving
+every original call/data role with the native 0x19C frame and ESI lifetime:
 
 ```sh
 nice -n 15 scripts/repo-python scripts/probe-animation-particle-grid-update2884.py
 ```
 
 The original `0x0045C360` **2,884B/768-i386** remains NONEXACT;
-there is **no new match-unit or game-authored byte credit**. The candidate's
-0x194 local frame is eight bytes smaller than the original 0x19C; remaining
-differences include early float-argument push/spill order, Vector3 local-slot
-placement, and some per-loop register lifetimes. The strict **26B EffectInfo**,
+there is **no new match-unit or game-authored byte credit**. The 0x19C frame size now matches, but individual Vector3 local slots remain
+four bytes displaced; remaining differences include early float-argument
+push/spill order and some per-loop register lifetimes. The strict **26B EffectInfo**,
 **51B Event**, **92B Stop** and associated already exact descendants
 are separate functions and were not modified; no all-project cold replay
 was performed.

@@ -1,14 +1,16 @@
 // Original 2,884B particle-grid virtual Update at 0x0045C360.
 // Full game-owned C++ logic, SOURCE-PRESENT NONEXACT. The original has
 // 768 i386 instructions, 99 E8 calls and 25 PE HIGHLOW fields; current
-// pinned-MSVC 2875B/767-instruction body preserves 99 REL32/25 DIR32.
+// pinned-MSVC 2888B/770-instruction body preserves 99 REL32/25 DIR32,
+// including the native Timer postfix ABI.
 // Four emitter child updates and the 200-slot loop reuse one Animation*
 // local. Each owner access reloads the current animation member from the
 // group, matching the original repeated this+4 loads rather than caching it.
 // The native early ESI lifetime is recovered by comparing the actual child age
 // directly against the current animation member, without a saved int.
-// The emission slot is assigned by the Timer before its first use; the two
-// one reused polar angle retains the original effectful getter order.
+// The emission slot is assigned by the Timer before its first use. The two
+// polar-angle getters retain their effectful order and share one reused angle;
+// the terminal Timer update is the original postfix increment.
 // Native vector dataflow reuses `basis` as the polar-output/difference
 // temporary. `tangent` is the separately normalized second direction; it is
 // not the first polar scratch. Native EBP locals map basis/gradient/position/
@@ -174,7 +176,7 @@ int NativeParticleGridGroup::update() {
         ++processed;
     }
     if (!processed) return -1;
-    ++timer_1930.time;
+    timer_1930.time++;
     return 0;
 }
 }

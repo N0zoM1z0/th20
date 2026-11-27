@@ -67,7 +67,8 @@ CALL_ROLES={
  '?configure_45d150@':0x0045D150,
  '??A?$array@UVector3@':0x0045C2C0,
  '?age_45d0a0@':0x0045D0A0,
- '??ETimer@':0x00423540,
+ '??ETimer@th20@@QAEXH@Z':0x00423540, # postfix operator++(int), native dummy-zero ABI
+ '??ETimer@th20@@QAEXXZ':0x00429400, # distinct prefix operator++()
  '@__security_check_cookie@':0x005429EE,
 }
 DATA_ROLES={
@@ -115,6 +116,8 @@ def main():
                     f'"effect",{script},nullptr,0.0f,effect_index);')
         assert source.count(expression)==1,(index,expression)
     assert 'AnimationHandle handle=file->spawn_45d210' not in source
+    assert '    timer_1930.time++;' in source, 'native Timer call is postfix operator++(int)'
+    assert '    ++timer_1930.time;' not in source, 'prefix Timer operator++() is a different native function'
     image,_=pe.verified_target()
     base,sections=pe.parse_sections(image)
     original=pe.raw_at(image,base,sections,HEAD,ORIGINAL_SIZE)
@@ -133,6 +136,9 @@ def main():
     data_reloc=sorted((r for r in relocs if r['type']=='DIR32'),key=lambda r:r['offset'])
     assert len(call_reloc)==len(candidate_calls)==len(old_calls)==99
     assert len(data_reloc)==len(old_data)==25
+    timer_symbols=[r['symbol'] for r in call_reloc if r['symbol'].startswith('??ETimer@')]
+    assert timer_symbols==['??ETimer@th20@@QAEXH@Z'], \
+        f'original update must use Timer postfix operator++(int), got {timer_symbols}'
     assert [int(r['offset']) for r in call_reloc]==[i+1 for i in candidate_calls],\
         'all 99 compiler REL32 fields must be real E8 operands'
     for i,(old,ref) in enumerate(zip(old_calls,call_reloc)):
