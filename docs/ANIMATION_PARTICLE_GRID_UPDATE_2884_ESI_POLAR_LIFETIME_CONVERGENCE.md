@@ -12,6 +12,20 @@ improvement, with no match-unit or authored-byte credit. The vector-role map
 below remains valid; its current candidate locals are still displaced by four
 bytes from the original roles.
 
+**Rejected 2026-11-27 delayed-counter experiment:** Moving `processed=0` from
+the prologue to immediately after the polar setup is semantically safe because
+its first increment/read is in the later particle loop, and it emitted a
+smaller **2,874B/766** candidate. It is nevertheless rejected as the maintained
+candidate: ordered native mnemonic-byte alignment fell from **2,826 to 2,764**,
+E8-site alignment fell from **6/99 to 5/99**, and the first-20 E8 displacement
+sum worsened from **84 to 117**. The total E8 displacement sum did improve
+440→398, but that isolated metric does not outweigh the loss of early and
+whole-body instruction order. The maintained source therefore keeps
+`processed=0` at function entry and the **2,875B/767** reused-angle result.
+A separate `__forceinline` direction helper was also rejected: pinned `/Ob0`
+emitted an out-of-line helper E8 rather than inlining it, violating the
+original 99-call role set.
+
 **2026-11-27 native Vector3 local-role recovery:** The maintained source now
 uses `basis` as the original polar-output and vector-difference scratch, while
 `tangent` is the separately normalized second direction. This is derived from
@@ -22,17 +36,19 @@ configuration call forwards `position` from `[EBP-0x40]`, `tangent` from
 The candidate now assigns the same source roles, but the pinned MSVC build
 places position/tangent/gradient/velocity/basis at `[EBP-0x44]`,
 `[EBP-0x50]`, `[EBP-0x20]`, `[EBP-0x38]`, and `[EBP-0x14]` respectively: a
-uniform four-byte displacement. The targeted
-whole-source probe remains **2,881B/767 i386**, with **99/99 call roles** and
+uniform four-byte displacement. At that pre-angle checkpoint the targeted
+whole-source probe was **2,881B/767 i386**, with **99/99 call roles** and
 **25/25 data roles** intact, **6/99** E8 sites aligned and total call-offset
-delta **883**. This is a source/dataflow correction, not an exactness claim;
+delta **883**. The later reused-angle checkpoint supersedes those size/offset
+measurements. This is a source/dataflow correction, not an exactness claim;
 the remaining frame-local allocation and x87/SSE argument materialization
 still need compiler-level explanation.
 
-**2026-11-27 repeated-owner reload update:** The cached Animation pointer
-snapshot is removed. Native instructions repeatedly reload the current group
-member from this+4 before variables, slowdown, vector_5bc_ref, and interpolation
-calls; the source now evaluates animation->... at each original access point.
+**Earlier 2026-11-27 repeated-owner reload checkpoint (superseded by the
+reused-angle update above):** The cached Animation pointer snapshot is
+removed. Native instructions repeatedly reload the current group member from
+this+4 before variables, slowdown, vector_5bc_ref, and interpolation calls;
+the source now evaluates animation->... at each original access point.
 This is more faithful to the actual owner-retargeting semantics than retaining
 a stale pointer snapshot. The maintained whole function now compiles to
 **2,881B/767 i386**, only **3 bytes and one instruction below** the 2,884B/768

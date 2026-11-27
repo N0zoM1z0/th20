@@ -1,7 +1,7 @@
 // Original 2,884B particle-grid virtual Update at 0x0045C360.
 // Full game-owned C++ logic, SOURCE-PRESENT NONEXACT. The original has
 // 768 i386 instructions, 99 E8 calls and 25 PE HIGHLOW fields; current
-// pinned-MSVC 2881B/767-instruction body preserves 99 REL32/25 DIR32.
+// pinned-MSVC 2875B/767-instruction body preserves 99 REL32/25 DIR32.
 // Four emitter child updates and the 200-slot loop reuse one Animation*
 // local. Each owner access reloads the current animation member from the
 // group, matching the original repeated this+4 loads rather than caching it.
@@ -18,8 +18,9 @@
 // Session -> Context -> EffectInfo -> AnimationFile -> spawn is the actual
 // resource chain, with the original four independently observed calls.
 // The native loop stage words are int32_t at +0x15E8; the 200 handles
-// and stage values use their real C++ array owners. The 0x19C stack frame
-// now matches; x87/SSE argument lifetimes and some source/ABI details remain.
+// and stage values use their real C++ array owners. The candidate frame is
+// 0x194 versus native 0x19C; x87/SSE argument lifetimes and some source/ABI
+// details remain.
 #include "NativeParticleGridGroup.hpp"
 #include "NativeAnimationInterpolationConfig.hpp"
 #include "Animation.hpp"

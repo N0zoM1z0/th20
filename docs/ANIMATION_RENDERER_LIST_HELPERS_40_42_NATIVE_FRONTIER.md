@@ -46,6 +46,16 @@ still **NONEXACT**. The real 42B reset remains **37/38 ordinary bytes**
 (one original register-selection byte unresolved), despite 15 private
 natural C++ alias/lvalue tests. **No new original head/byte credit.**
 
+**2026-11-27 reset-register follow-up:** A further **21 compilable natural
+C++ forms** were tested for the 42B reset: distinct owner/base/value pointers,
+reference aliases, pointer-to-member access, address-of-field stores, qualified
+base calls, and scoped pointer lifetimes around `initialize(input)`. None
+produced a new 42B exact candidate. Same-size candidates retain the single
+`+0x22` ModRM difference (`0x42` emitted versus native `0x50`); the remaining
+forms grow to 44–73B or shrink to 34B and are rejected. No source/header change
+or new exactness credit follows. The 40B constructor remains a private
+34/36-nonrelocation-byte two-store hypothesis, not canonical source.
+
 Fast focused reproduction:
 
 ```sh

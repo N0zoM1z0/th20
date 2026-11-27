@@ -72,6 +72,18 @@ and `cl.exe` returned zero; the fault must not be reported as a failed source
 compile or as a C2 lowering failure. The C1xx VCTIP path and this C2
 instrumentation-record path remain distinct.
 
+**2026-11-27 VCTIP runtime check:** The C2 image contains the named pipe
+`\\.\pipe\VCTIP_14.44.35211.0_PIPE` plus its matching READY event and
+client mutex, and the bundled `vctip.exe` is a .NET assembly. Launching it in
+the repository Wine prefix fails because **Wine Mono is not installed**; no
+VCTIP server process is available to accept the compiler's connection. Wine
+also reports `RPC_S_SERVER_UNAVAILABLE` at the same KernelBase address
+`0x6fffff483f07` during the VCTIP startup attempt. This strongly implicates the
+missing optional VCTIP service in the record-writer fault; it is not evidence
+of a C2 codegen failure. A naive GDB attempt to skip the record writer by
+popping a return address was also rejected: a second entry had a zero stack-top
+value, so it is not safe to treat every entry as an ordinary call/return.
+
 **Additional negative identification:** C2 RVA `0x1d1e20` is now classified
 as a six-record instrumentation/telemetry writer by its live pointer checks,
 0x30-byte cursor increments, fixed record tags and append calls. Its faulting
