@@ -135,3 +135,56 @@ No boss-function exactness credit is claimed by these diagnostics. The
 remaining 24B/4-instruction difference is still open; the typed-IL and worker
 callback evidence is intended to explain it at the compiler level rather than
 mask it with padding or assembly.
+
+## 2026-11-27 `/Od` interference-to-stack-allocation state trace
+
+The pass-name strings were cross-referenced through RIP-relative loads inside
+real `.pdata` function extents, then checked against a live compile of the
+current `AnimationDrawBoss.cpp`. This distinguishes normal code from chained
+EH funclets: the `RegSimpleAssign` string at `.rdata+0x872010` is referenced
+from the chained range `0x3DF56A..0x3DFB8A`, not from a separately executed
+normal-path function. Do not use that funclet range as the allocator entry.
+
+The actual normal-path sequence for the target function is:
+
+| Role | C2 RVA | Live evidence |
+| --- | ---: | --- |
+| Build Interferences | `0x0F7964` | Hit once on the draw worker |
+| Stack/codegen allocation pipeline | `0x0F7604` | Hit once on the same worker |
+| RegSimpleAssign wrapper call site | `0x0F769F` | Hit once between those stages |
+| RegSimpleAssign wrapper | `0x3153A0` | Hit once, called with the draw function object |
+| Wrapper metadata helper | `0x034044` | Hit once with argument `4` |
+| Predicate | `0x315488` | Called with `4` and `0x25`; both return `1` |
+
+Static disassembly shows the wrapper's other helper at `0x31540C` saves/restores
+a TLS bit around the pass. `0x034044` initializes a per-thread 0xB0-entry
+pointer table and walks the function's linked type/symbol metadata, invoking
+`0x119FF8` and `0x123F8C` for qualifying nodes. The wrapper and both predicate
+calls leave the sampled function-object bytes unchanged. This is evidence
+about the pass boundary and its setup, not proof that the predicate itself
+performs physical-register assignment.
+
+A live object snapshot provides a stronger boundary than pass-name guessing.
+At `Build Interferences` entry, function-object `+0x10` points to
+`0x...E0118` and the qword at `+0x148` is `0x0020680A00000000`. By the time
+`Stack Allocation` starts, `+0x10` points to `0x...952B18` and `+0x148` is
+`0x0030680A00000004`; `+0x150` remains `0x4000`. The RegSimpleAssign wrapper
+runs after that state transition and does not further change those sampled
+fields. The exact owner of the `+0x10` replacement and the flag-bit meanings
+remain open; do not label them as a register map until their consumers are
+identified.
+
+The captured C1 typed-IL identifier segment also contains the actual local
+names used by this function. In segment 1, the shared `position`/`height`/
+`width` declarations precede the mode-local `adjusted_scale`, `quad_count`,
+`second_color`, `aux_half`, `inherited_scale`, and `first_color` records; later
+records contain the mode45/46 `half_for_scale`, `secondary_color`, and
+`primary_color` names. The surrounding record bytes are retained, but their
+field schema is not yet decoded, so the names alone do not establish stack
+slot ownership.
+
+**Next experiment:** trace the `+0x10` object through the Build Interferences
+return and the Stack Allocation return, decode the referenced local-record
+metadata against the typed-IL segment, and only then alter the current
+5,969B/1,497-instruction C++ candidate. The native 5,993B parent remains
+NONEXACT; no padding, inline assembly, or exactness credit is claimed.
