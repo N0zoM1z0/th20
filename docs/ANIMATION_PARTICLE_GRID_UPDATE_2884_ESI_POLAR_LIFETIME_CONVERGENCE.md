@@ -35,20 +35,6 @@ delta **440** (first 20: **84**), and the frame was **0x194** versus native
 **0x19C**. The current source retains the reused-angle lifetime and fixes the
 Timer postfix ABI, producing the 2,888B/770 result above.
 
-**2026-11-27 reused polar-angle lifetime update:** The first and second
-rotation getters retain their original effectful order, but the source now
-reuses one mutable `float angle` after the first polar result has been consumed.
-This is a real C++ lifetime change, not a cast or code-generation directive.
-The pinned MSVC `/Od /Ob0` whole-source probe moves from **2,881B/767** to
-**2,875B/767 i386**. All **99/99 E8** and **25/25 DIR32** roles remain in the
-original order; physical E8 alignment remains **6/99**, while total E8 offset
-delta falls from **883 to 440** and the first-20 delta from **107 to 84**.
-The candidate frame is now **0x194** versus native **0x19C**; native ESI
-age-across-call lifetime is still present. This is a measured NONEXACT source
-improvement, with no match-unit or authored-byte credit. The vector-role map
-below remains valid; its current candidate locals are still displaced by four
-bytes from the original roles.
-
 **Historical rejected delayed-counter experiment:** Moving `processed=0` from
 the prologue to immediately after the polar setup is semantically safe because
 its first increment/read is in the later particle loop, and it emitted a
@@ -107,22 +93,24 @@ rejected as a worse candidate. These controls narrow the remaining local-layout
 frontier to actual temporary/materialization and lifetime semantics, not simple
 declaration order.
 
-**CORE/RECON-1112 CURRENT SOURCE UPDATE (2026-11-25):** The four
+**Historical CORE/RECON-1112 source update (2026-11-25):** The four
 particle-emitter branches now assign the real `spawn_45d210(...)` return
 value directly into `colors_08[emission_index + n]`, rather than materializing
 an additional named `AnimationHandle` local and then copying it. This is a
 natural C++ return-value/assignment expression; it retains all four distinct
 script IDs and the original Session → EffectInfo → AnimationFile → spawn
 resource chain. The pre-owner-reload checkpoint compiled to **2,856B/756 i386**
-(down 20B/four instructions from 2,876B/760). All **99/99 original E8
-target roles** and **25/25 original PE HIGHLOW data-target roles** remain
-identical and in order. Physical E8-site alignment improves from **8/99 to
+(down 20B/four instructions from 2,876B/760). Its old **99/99 E8 target-role**
+claim predates signature-aware Timer checking and must be treated as unverified
+until that exact object is rechecked; the 25/25 PE HIGHLOW data-target result
+is a separate data-relocation check. Physical E8-site alignment improves from **8/99 to
 14/99**; total absolute E8 offset delta falls from **1,463 to 712**, and the
 first-20 delta falls from **92 to 87**. The native **0x19C** frame and ESI
 age-across-call lifetime remain. The complete 2,884B/768-i386 game Boss is
 still **SOURCE-PRESENT/NONEXACT**; no parent exactness credit is claimed.
-The maintained one-object probe and independent original-role verifier both
-pass for the complete 2,856B historical candidate; the current 2,881B candidate is independently reproduced by the same probe.
+The one-object probe reproduced the complete 2,856B historical candidate;
+its old Timer call-role result predates the signature-aware audit. The current
+2,888B candidate is independently reproduced by the same focused probe.
 
 # CORE/RECON-1111 — 2,884B particle Update: ESI/age, polar and shared-child lifetime convergence
 
@@ -190,25 +178,27 @@ These are used-source changes, not artificial padding or dead variables:
 
 The genuine locked MSVC 19.44 i386 profile is
 `/std:c++20 /Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:precise /sdl /EHsc`.
-Both before and after, the *complete* 99 original E8 target roles and
-25 original PE HIGHLOW data roles are still reconstructed, including
-all four Session→EffectInfo→AnimationFile→83B spawn branches, two
-Vector3 normalization calls, four child color copies and both real
-integer-stage transitions. These are compared against independently
-locked original destinations; they are **not** inferred from matching
-candidate relocation counts.
+All candidates contain 99 E8 and 25 DIR32 relocation fields. The older
+columns predate signature-aware Timer checking; their broad `??ETimer@`
+prefix match could not distinguish prefix from postfix. The 2,881B and 2,875B
+columns are now known to have one wrong Timer destination; the 2,969B and
+2,924B objects have not yet been re-audited under the exact-signature map.
+The 2,888B postfix-corrected column is the current candidate and its 99 E8
+destinations and 25 DIR32 data roles are compared against independently
+locked original targets, not inferred from relocation counts.
 
-| Measured property | 2,969B source | 2,924B checkpoint | 2,881B repeated-owner | 2,875B reused-angle | Original native |
-| --- | ---: | ---: | ---: | ---: |
-| Whole compiler code bytes | 2,969 | 2,924 | 2,881 | **2,875** | 2,884 |
-| Whole i386 instructions | 763 | 760 | 767 | **767** | 768 |
-| E8 / COFF REL32 calls | 99 | 99 | 99 | **99** | 99 |
-| PE HIGHLOW / COFF DIR32 | 25 | 25 | 25 | **25** | 25 |
-| E8 opcode offsets exactly aligned | 0 /99 | 6 /99 | 6 /99 | **6 /99** | 99 /99 |
-| Sum of absolute differences between corresponding E8 offsets | 7,558 | 3,639 | 883 | **440** | 0 |
-| First 20 E8 offset absolute-difference sum | 659 | 119 | 107 | **84** | 0 |
-| Local stack frame | — | 0x1AC | 0x19C | **0x194** | 0x19C |
-| Original ESI push/age-across-call lifetime | No | Yes | Yes | **Yes** | Yes |
+| Measured property | 2,969B source | 2,924B checkpoint | 2,881B repeated-owner | 2,875B reused-angle | 2,888B postfix-corrected | Original native |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Whole compiler code bytes | 2,969 | 2,924 | 2,881 | 2,875 | **2,888** | 2,884 |
+| Whole i386 instructions | 763 | 760 | 767 | 767 | **770** | 768 |
+| E8 / COFF REL32 calls | 99 | 99 | 99 | 99 | **99** | 99 |
+| PE HIGHLOW / COFF DIR32 | 25 | 25 | 25 | 25 | **25** | 25 |
+| Timer operator ABI | not audited | not audited | prefix mismatch | prefix mismatch | **postfix match** | postfix |
+| E8 opcode offsets exactly aligned | 0 /99 | 6 /99 | 6 /99 | 6 /99 | **6 /99** | 99 /99 |
+| Sum of absolute differences between corresponding E8 offsets | 7,558 | 3,639 | 883 | 440 | **430** | 0 |
+| First 20 E8 offset absolute-difference sum | 659 | 119 | 107 | 84 | **84** | 0 |
+| Local stack frame | — | 0x1AC | 0x19C | **0x194** | **0x19C** | 0x19C |
+| Original ESI push/age-across-call lifetime | No | Yes | Yes | Yes | **Yes** | Yes |
 
 The previous 2,969B candidate source is retained as
 `.analysis/gptweb-particle-owner-probes/EffectChainSpawnSlot.cpp`; its
@@ -254,7 +244,8 @@ This role checker now runs automatically after the existing
 compiles the *one* real maintained function. The 2026-11-20 source
 checkpoint reported 2,876B/760 i386 and 8/99 physical E8 sites aligned;
 the current source reports 2,888B/770 i386 and 6/99 aligned, preserving
-every original call/data role with the native 0x19C frame and ESI lifetime:
+all 99 original E8 destinations and 25 data roles with the native 0x19C
+frame and ESI lifetime:
 
 ```sh
 nice -n 15 scripts/repo-python scripts/probe-animation-particle-grid-update2884.py

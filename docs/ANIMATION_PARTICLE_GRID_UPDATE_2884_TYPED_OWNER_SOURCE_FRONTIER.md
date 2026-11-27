@@ -1,48 +1,34 @@
-**2026-11-27 reused-angle update:** The first and second polar-angle
-computations now reuse one mutable `float angle` while preserving the ordered
-rotation/variables getter calls. The maintained one-function probe is
-**2,875B/767 i386**, with all **99 E8** and **25 data** roles preserved,
-**6/99** E8 sites aligned, total E8 offset delta **440** (first 20: **84**),
-and native ESI lifetime. The frame is **0x194**, eight bytes below native
-**0x19C**. It remains SOURCE-PRESENT/NONEXACT. See the [latest compiler and
-lifetime frontier](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
+**2026-11-27 current source and Timer ABI update:** The maintained
+`src/AnimationParticleGridUpdate2884.cpp` now uses the original postfix
+`Timer::operator++(int)` call at `0x00423540`, including the dummy-zero stack
+argument. The distinct prefix `operator++()` targets `0x00429400`. The previous
+role checker matched the broad `??ETimer@` prefix and could not distinguish
+these overloads; its historical 99/99 call-target claims are not valid proof
+for prefix-increment candidates. The signature-aware checker now verifies the
+exact postfix COFF symbol and all 99 native E8 destinations.
 
-**2026-11-27 native vector-role update:** The `basis`/`tangent` use now follows
-the original polar, subtraction, normalization and interpolation call operands.
+The current focused build is **2,888B/770 i386**, with the native **0x19C
+frame**, **6/99** E8 instruction offsets aligned, and total E8 displacement
+delta **430**. It remains SOURCE-PRESENT/NONEXACT: four bytes and two
+instructions larger than the 2,884B/768 native body, with remaining local-slot
+and x87/SSE materialization differences. See the [current ESI/polar/Timer ABI
+frontier](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
+
+**Historical candidate corrections:** The 2,875B/767 reused-angle and
+2,881B/767 repeated-owner candidates used prefix `operator++()` and therefore
+matched only **98/99** actual native E8 destinations. The 2,856B/756 direct-spawn
+candidate's old 99/99 report predates the exact-signature audit and remains
+unverified until its object is rechecked. The historical 2,924B/760 and
+2,876B/760 checkpoints are not current source measurements.
+
+**Native Vector3 local-role update:** The `basis`/`tangent` use follows the
+original polar, subtraction, normalization and interpolation call operands.
 The native EBP-local map and the current candidate's uniform four-byte local
 shift are documented in the [ESI/polar lifetime frontier](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
-The 2,881B/767 repeated-owner candidate is a historical checkpoint; the
-current reused-angle parent is 2,875B/767 i386 and remains NONEXACT.
-
-**2026-11-27 current source update:** The cached owner pointer was removed;
-all original owner operations now reload animation from the group member,
-matching the native repeated this+4 reads. The complete maintained C++ body
-compiles to **2,875B/767 i386**, preserving all 99 E8 and 25 data relocation
-roles and ESI age lifetime. Its 0x194 frame is eight bytes below native 0x19C;
-6/99 E8 sites align and total call-offset delta is 440. It remains NONEXACT. See the [repeated-owner reload and compiler-order
-controls](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
-
-**CORE/RECON-1112 CURRENT SOURCE UPDATE (2026-11-25):** The four
-particle-emitter branches now assign the real `spawn_45d210(...)` return
-value directly into `colors_08[emission_index + n]`, rather than materializing
-an additional named `AnimationHandle` local and then copying it. This is a
-natural C++ return-value/assignment expression; it retains all four distinct
-script IDs and the original Session → EffectInfo → AnimationFile → spawn
-resource chain. The 2026-11-25 direct-spawn checkpoint compiled to **2,856B/756 i386**
-(down 20B/four instructions from 2,876B/760). All **99/99 original E8
-target roles** and **25/25 original PE HIGHLOW data-target roles** remain
-identical and in order. Physical E8-site alignment improves from **8/99 to
-14/99**; total absolute E8 offset delta falls from **1,463 to 712**, and the
-first-20 delta falls from **92 to 87**. The native **0x19C** frame and ESI
-age-across-call lifetime remain. The complete 2,884B/768-i386 game Boss is
-still **SOURCE-PRESENT/NONEXACT**; no parent exactness credit is claimed.
-The maintained one-object probe and independent original-role verifier both
-pass for the complete 2,856B historical candidate; the current reused-angle
-source is 2,875B/767.
 
 # CORE/RECON-1107 — source-present 2,884B particle-grid Update with real effect resource ownership
 
-> **Previous status (2026-11-20):** The 2,924B compiler measurement below was a historical checkpoint. The shared `Animation* child` lifetime produced the intermediate **2,876B/760 i386** candidate with **8/99** E8 sites aligned. The later RECON-1112 direct spawn-result assignments advance the 2026-11-25 direct-spawn checkpoint to **2,856B/756 i386**, **14/99** aligned, with all 99 call/25 data roles and the native **0x19C** stack frame preserved. It remains **SOURCE-PRESENT, NONEXACT**. See the [latest shared-child convergence](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
+> **Historical status (2026-11-20 through 2026-11-25):** The 2,924B, 2,876B and 2,856B compiler measurements below are earlier source checkpoints, not the current candidate. The shared `Animation* child` lifetime produced the intermediate **2,876B/760 i386** candidate with **8/99** E8 sites aligned. The later direct spawn-result assignments produced **2,856B/756 i386**, **14/99** aligned, and the native **0x19C** stack frame. Their old 99/99 E8 destination claims predate the signature-aware Timer ABI correction and must not be treated as verified target matches. The current source is **2,888B/770 i386**, SOURCE-PRESENT/NONEXACT. See the [latest shared-child and Timer ABI convergence](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
 
 This checkpoint promotes the full game-authored 200-particle virtual Update
 at **`0x0045C360..0x0045CEA3`** into maintained
@@ -59,8 +45,8 @@ points slot 1 to this function; slot 3 points to the independently exact
 The group now represents the unchanged Timer storage at offset `+0x1930`
 by `NativeGridTimedDelta.time`, which permits the event's original folded
 26B forwarding operator and the group's genuine 172B direct Timer constructor.
-The maintained Update invokes the member Timer's `changed`, `less_than`,
-`operator*`, and increment; it continues compiling as 2,924B/760 i386,
+At this historical checkpoint the Update invoked the member Timer's `changed`,
+`less_than`, `operator*`, and increment; it compiled as 2,924B/760 i386,
 99 REL32/25 DIR32, NONEXACT. Twelve real `INT3` bytes separate these bodies.
 
 The original Ghidra inventory missed the 2,884B Update boundary. The
@@ -117,7 +103,7 @@ to call the original 26B folded `+=` helper without altering the already
 strict 172B constructor's real Timer E8 target. All eight previously exact
 particle-group units remained exact after six targeted object rebuilds.
 The Update's calls use `.time`; the original 2,969B/763
-compiler frontier was subsequently improved to the current 2,924B/760
+compiler frontier was subsequently improved to the then-current 2,924B/760
 with meaningful source/ESI/polar evaluation changes. No bytes from the 2,884B parent are newly credited.
 
 Beyond the four resource paths, the maintained C++ preserves the 200-handle
@@ -131,7 +117,7 @@ callee was already exact and is not credited again.
 
 ## 2026-11-11: original ESI lifetime and polar-angle convergence
 
-The maintained whole-body compiler output is now **2,924B/760 i386**,
+At this historical checkpoint, the maintained whole-body compiler output was **2,924B/760 i386**,
 45B closer to the 2,884B original than the prior 2,969B source.
 Native disassembly established a genuine callee-saved ESI age comparison
 across `Animation::variables()`, not a stack-cached `const int elapsed`.
@@ -146,8 +132,8 @@ The complete parent remains **SOURCE-PRESENT NONEXACT**; no credited bytes.
 
 ## Native result and remaining Boss frontier
 
-Pinned MSVC 19.44 x86 C++20 `/Od /Ob0 /GS /Gy /Zl /arch:SSE2
-/fp:precise /sdl /EHsc` compiles the **entire maintained source** into
+At this historical checkpoint, pinned MSVC 19.44 x86 C++20 `/Od /Ob0 /GS /Gy /Zl /arch:SSE2
+/fp:precise /sdl /EHsc` compiled the **entire maintained source** into
 **2,924B/760 i386 instructions**, **99 REL32 and 25 DIR32** relocations.
 All **99 original E8 target roles remain in the same ordered call sequence**;
 the caller instruction positions, frame/local allocation, x87/SSE polar
