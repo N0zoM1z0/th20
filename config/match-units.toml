@@ -32627,6 +32627,17 @@ size = 11
 relocations = [
 ]
 
+# CORE/RECON-1300: native bit-4 StageResource primary-rotation flag setter.
+[units.stage_resource_primary_rotation_flag]
+source = "src/StageResourcePrimaryRotationFlag.cpp"
+object = "build/gptweb-stageflag-canonical/StageResourcePrimaryRotationFlag.obj"
+profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
+functions = ["th20::StageResourceOwner::set_primary_rotation_flag"]
+symbol = "?set_primary_rotation_flag@StageResourceOwner@th20@@QAEXI@Z"
+target_address = 0x00477790
+size = 45
+relocations = []
+
 # Complete original 244B Animation corner-mode dispatcher. The native 16B
 # jump table follows the function body and is included in compare_size.
 [units.animation_corner_projection_dispatch244]

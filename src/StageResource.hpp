@@ -205,7 +205,16 @@ struct StageResourceOwner {
         std::uint32_t rendered[3];
         StageResourceRenderCounts render_counts;
     };
-    std::uint32_t state_flags;
+    // Opcode 22 updates bit 4 as a one-bit field; keep the complete word view
+    // for the other StageResource flag consumers sharing this owner word.
+    union {
+        std::uint32_t state_flags;
+        struct {
+            std::uint32_t reserved_flags_low : 4;
+            std::uint32_t primary_rotation : 1;
+            std::uint32_t reserved_flags_high : 27;
+        } state_flags_bits;
+    };
     Timer fade_timer;
     std::int32_t stage_id;
     std::uint32_t frame_count;
@@ -260,6 +269,7 @@ static_assert(offsetof(StageResourceOwner, animation_file_value) == 0x3334);
 static_assert(offsetof(StageResourceOwner, rendered) == 0x3338);
 static_assert(offsetof(StageResourceOwner, render_counts) == 0x3338);
 static_assert(offsetof(StageResourceOwner, state_flags) == 0x3344);
+static_assert(offsetof(StageResourceOwner, state_flags_bits) == 0x3344);
 static_assert(offsetof(StageResourceOwner, fade_timer) == 0x3348);
 static_assert(offsetof(StageResourceOwner, stage_id) == 0x3358);
 static_assert(offsetof(StageResourceOwner, frame_count) == 0x335c);
