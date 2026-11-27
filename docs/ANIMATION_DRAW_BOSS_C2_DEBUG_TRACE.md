@@ -188,3 +188,54 @@ return and the Stack Allocation return, decode the referenced local-record
 metadata against the typed-IL segment, and only then alter the current
 5,969B/1,497-instruction C++ candidate. The native 5,993B parent remains
 NONEXACT; no padding, inline assembly, or exactness credit is claimed.
+
+## 2026-11-27 C2 function-arena cleanup and exact reset callsites
+
+A hardware write watchpoint on the target function object's +0x10 field was
+correlated with entry breakpoints on C2's cleanup routine. This corrects the
+earlier coarse interpretation that the pointer replacement belonged to the
+Stack Allocation entry itself.
+
+The writer at C2 RVA 0x04C4D2 is inside a chained EH funclet, not an
+independent normal-path function. .pdata identifies parent
+0x04C340..0x04C3D7; the child range 0x04C3D7..0x04C599 has unwind flags
+CHAININFO and points back to that parent. The parent traverses the
+function-owned linked metadata list and checks node byte +0x0C and function
+state at +0x14C. Its cleanup funclet reinitializes a 0x58-byte pool header:
+type 3 at +0x20, chunk size 0x2A0 at +0x28, alignment 0x40 at +0x30,
+then installs it with mov [rsi+0x10],rbx. This establishes +0x10 as a
+function-owned pool/arena handle; it is not a physical-register map.
+
+The live compile was repeated with both the parent entry and a write watchpoint
+installed before C2 started. For the same AnimationPoolOwner::draw object,
+the nine parent-cleanup invocations and two actual pointer changes correlate
+as follows:
+
+| Parent hit | Caller return RVA | Pointer before | Pointer after |
+| ---: | ---: | --- | --- |
+| 1 | 0x0DF6F8 | 0x...A30118 | unchanged |
+| 2 | 0x0DBCDF | 0x...A30118 | unchanged |
+| 3 | 0x0DBCDF | 0x...A30118 | unchanged |
+| 4 | 0x0DF76C | 0x...A30118 | 0x...A25618 |
+| 5 | 0x0DBCDF | 0x...A25618 | unchanged |
+| 6 | 0x0C1630 | 0x...A25618 | 0x...9A2B18 |
+| 7-9 | 0x0DBBFA | 0x...9A2B18 | unchanged |
+
+The two changing callsites are reached from within the target
+Build Interferences function (0x0F7964): its call at 0x0F7D9A enters
+helper 0x0DF6A4, whose cleanup call at 0x0DF767 performs the first reset;
+its call at 0x0F8017 enters helper 0x0C13FC, whose cleanup call at
+0x0C162B performs the second. The direct call at 0x0F8094 is a different
+cleanup path and did not account for either watched pointer change.
+
+The later cleanup invocations at caller 0x0DBBFA update the opaque qword at
++0x148 without changing the arena pointer: it advances from
+0x0020680A00000000 to 0x0030680A00000000, then to
+0x0030680A00000004. Their bit meanings are not yet decoded. Stack Allocation
+entry (0x0F7604) sees the final arena pointer and final sampled state.
+
+This gives a concrete lifetime boundary for C2's function-owned temporary
+arena across the interference subroutines. It does not yet map the
+C1-named half_for_scale/adjusted_scale records to individual arena nodes,
+nor explain the four missing scalar XMM reloads. Do not infer either from the
+arena reset alone.
