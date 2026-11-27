@@ -4,13 +4,17 @@ The maintained AnimationPoolOwner::draw(Animation*) at 0x00443880 remains
 SOURCE-PRESENT/NONEXACT. The immutable target body is 5,993B/1,501
 instructions with a 0x204 frame and 6,316B complete code+table contribution.
 The current source evaluates width during argument preparation and shares the
-native zero-result return path. It compiles to **5,969B/1,497 instructions**,
-with a 0x200 frame and a complete 6,292B code+table contribution. All 123 call
-roles remain in order; 81/123 physical call positions, 22/32 HIGHLOW site/target
-pairs and 3,691/5,352 ordinary bytes agree. The 24B length gap is confined to
-four complete cases: two first-getter store forms and four scalar register
-reloads account for it. Stack slots and receiver-load scheduling also remain
-different. See [the current source decision](#2026-11-26-native-width-preparation-and-one-zero-result-return).
+native zero-result return path. The pre-first-result frontier in the historical
+experiments below compiled to 5,969B/1,497 instructions with a 0x200 frame.
+After recovering the two mode35/36 first getter-result stores, current HEAD
+compiles to **5,977B/1,497 instructions**, with the native 0x204 frame and a
+6,300B complete code+table contribution (native 6,316B). All 123 call roles
+remain in order; 84/123 physical call positions, 23/32 HIGHLOW site/target
+pairs and 3,726/5,360 ordinary bytes agree. The remaining 16B gap is exactly
+four explicit XMM1 reloads: native register-source addss/subss operations are
+currently folded to memory-source forms. The first getter stores and frame
+discrepancy are closed. See the current C2 trace update for the verified
+stack-home recovery in ANIMATION_DRAW_BOSS_C2_DEBUG_TRACE.md.
 The separate [compiler/link-context controls](ANIMATION_DRAW_BOSS_5993_COMPILER_CONTEXT.md)
 cover retained PE metadata, the older compiler and actual LTCG with the real getter.
 

@@ -4,7 +4,7 @@ Date: 2026-11-27
 
 ## Scope
 
-This note records a compiler-debugging checkpoint for the large `AnimationPoolOwner::draw` reconstruction at target VA `0x00443880` (the 5,993-byte native body). It is investigation evidence only: it does not claim a codegen match, semantic ownership, or accepted replay evidence. The current local source frontier remains the 24-byte residual described by the draw-boss frontier note.
+This note records a compiler-debugging checkpoint for the large `AnimationPoolOwner::draw` reconstruction at target VA `0x00443880` (the 5,993-byte native body). It is investigation evidence only: it does not claim a codegen match, semantic ownership, or accepted replay evidence. The current source frontier is a 16-byte/four-instruction residual: the 0x204 frame and first mode35/36 getter-result stores have been recovered; four XMM1 reloads remain.
 
 ## Compiler host and ABI
 
@@ -86,7 +86,7 @@ static/live call flow rather than names guessed from nearby telemetry.
 
 1. Decode the five typed-IL segments structurally and trace their pointer/length consumers; do not infer segment semantics from a few printable strings.
 2. Follow the eight C2 worker threads from their task-entry/dispatch path and locate the per-function compile work.
-3. Identify the C2 functions responsible for SSE scalar lowering, physical-register selection, and spill insertion, then inspect their live operands/register state for the four residual mode-45/46 cases.
+3. Identify the C2 functions responsible for SSE scalar lowering, physical-register selection, and spill insertion, then inspect their live operands/register state for the four residual mode35/36/45/46 scale expressions.
 4. Keep all compiler probes targeted to `AnimationDrawBoss.cpp`; do not run a full cold replay for each experiment.
 5. Preserve each useful source/codegen frontier in a local commit with the required `gpt-web:` prefix. A successful compile or commit is not exactness evidence; only the repository's canonical targeted replay can establish accepted exactness.
 
@@ -95,9 +95,11 @@ static/live call flow rather than names guessed from nearby telemetry.
 The VCTIP pipe is now serviced by a local diagnostic stub in the pinned Wine
 prefix. This is deliberately a minimal consumer, not a replacement for the
 Microsoft telemetry service. With it running, the real `cl.exe` → C1xx → C2
-compile completes successfully; the `AnimationPoolOwner::draw` object body is
+compile completes successfully; the `AnimationPoolOwner::draw` object body at that earlier checkpoint was
 **5,969B/1,497 i386 instructions** against the **5,993B/1,501-instruction**
-native body. The object as a whole is 14,573B. The live C2 `InvokeCompilerPassW`
+native body. The object as a whole was 14,573B; the current post-fix object is
+14,581B and its body/frame metrics are recorded in the 2026-11-27 scorecard
+below. The live C2 `InvokeCompilerPassW`
 entry still receives 22 arguments and is reached with `-il` pointing to an
 in-memory typed-IL object.
 
@@ -183,11 +185,13 @@ records contain the mode45/46 `half_for_scale`, `secondary_color`, and
 field schema is not yet decoded, so the names alone do not establish stack
 slot ownership.
 
-**Next experiment:** trace the `+0x10` object through the Build Interferences
+**Historical next experiment (superseded):** trace the `+0x10` object through the Build Interferences
 return and the Stack Allocation return, decode the referenced local-record
-metadata against the typed-IL segment, and only then alter the current
-5,969B/1,497-instruction C++ candidate. The native 5,993B parent remains
-NONEXACT; no padding, inline assembly, or exactness credit is claimed.
+metadata against the typed-IL segment, and only then alter the pre-fix
+5,969B/1,497-instruction C++ candidate. This experiment was superseded by the
+first-result local recovery and current 5,977B/1,497-instruction candidate
+recorded below. The native parent remains NONEXACT; no padding, inline assembly,
+or exactness credit is claimed.
 
 ## 2026-11-27 C2 function-arena cleanup and exact reset callsites
 
@@ -301,3 +305,34 @@ breakpoints, not a full cold replay. The source build's target function is
 6300 bytes and is byte-identical to the tested first-function source variant;
 all 235 COFF relocation records also compare identical. The C2 frame-info
 snapshot agrees with the original native offsets above.
+
+
+## 2026-11-27 current parent scorecard after first-result local recovery
+
+The source-role verifier now recompiles only AnimationDrawBoss.cpp and passes
+the recovered frame and call-role checks. Current pinned-MSVC results:
+
+| Measurement | Native | Current C++ |
+| --- | ---: | ---: |
+| Function body | 5,993 bytes / 1,501 instructions | 5,977 bytes / 1,497 instructions |
+| Stack frame | 0x204 | 0x204 |
+| Complete COFF code+table contribution | 6,316 bytes | 6,300 bytes |
+| Ordered E8 call roles | 123 | 123 |
+| Matching physical E8 sites | — | 84/123 |
+| Native in-body HIGHLOW roles | 32 | 23/32 exact site/target pairs |
+| Non-relocation bytes equal | — | 3,726/5,360 |
+
+The function-scope first_inherited_scale local is now present in C2 before
+stack allocation, starts with provisional slot -4, and is assigned final
+frame displacement -352 (-0x160) by Calculate Frame Info. The object contains
+two fstp stores to [ebp-0x160], matching the native first getter results.
+The 0x204 frame now agrees with the original.
+
+The only four missing instructions in the current body are the explicit
+movss xmm1 reloads at the four scale additions/subtractions. The current
+compiler folds each into an SSE memory-source addss/subss instruction. The
+remaining work is to understand and reproduce those four register-source
+forms with natural C++ while retaining native evaluation order; the first
+getter store and frame discrepancy are closed. The strict 38-byte indexed
+Animation::sprite_data(std::int32_t) leaf at 0x00437CA0 has also been restored
+and registered separately.
