@@ -89,3 +89,49 @@ static/live call flow rather than names guessed from nearby telemetry.
 3. Identify the C2 functions responsible for SSE scalar lowering, physical-register selection, and spill insertion, then inspect their live operands/register state for the four residual mode-45/46 cases.
 4. Keep all compiler probes targeted to `AnimationDrawBoss.cpp`; do not run a full cold replay for each experiment.
 5. Preserve each useful source/codegen frontier in a local commit with the required `gpt-web:` prefix. A successful compile or commit is not exactness evidence; only the repository's canonical targeted replay can establish accepted exactness.
+
+## 2026-11-27 typed-IL segment and worker-dispatch follow-up
+
+The VCTIP pipe is now serviced by a local diagnostic stub in the pinned Wine
+prefix. This is deliberately a minimal consumer, not a replacement for the
+Microsoft telemetry service. With it running, the real `cl.exe` → C1xx → C2
+compile completes successfully; the `AnimationPoolOwner::draw` object body is
+**5,969B/1,497 i386 instructions** against the **5,993B/1,501-instruction**
+native body. The object as a whole is 14,573B. The live C2 `InvokeCompilerPassW`
+entry still receives 22 arguments and is reached with `-il` pointing to an
+in-memory typed-IL object.
+
+The `-il` object is not a flat byte stream. Its first five qwords are pointers
+to five separately allocated segments; the next five qwords at `+0x28` are
+their lengths: **0x346DB, 0x1E321, 0x6B6C5, 0x3AAF, 0x760D1** respectively
+(about 1.28MB total). All five full ranges were captured from the live compiler
+process. Initial string inspection identifies source/file and identifier
+material in the first segments and C++ type names in the final segment; the
+opaque middle record stream and exact per-segment schemas remain undecoded.
+The dumps are temporary investigation artifacts under `.analysis/`, not
+canonical source or committed binaries.
+
+The C2 instrumentation-record entry at RVA `0x1D1E20` is now reached with a
+valid vector object while the local pipe consumer is present. The previously
+faulting growth/write path at `0x1D1FED` is not taken in this run. The stub
+observed pipe messages of 80B, 261B and 412B; these are transport/diagnostic
+records, not evidence that any compiler optimization pass has been identified.
+
+**Worker-thread frontier:** C2 imports MSVC threadpool helpers, but the
+`__std_create_threadpool_work` / `__std_bulk_submit_threadpool_work` entrypoints
+were not called in this compile. The actual worker creation path is through
+`_beginthreadex`; `NtCreateThreadEx` and `RtlCreateUserThread` were each observed
+eight times. A `_beginthreadex` stack exposes a C2 worker entry candidate at
+RVA `0x36CB38`. Static disassembly shows a generic wait/dispatch loop: it uses
+worker-context fields at `+0x10` and `+0x20`, then calls the function pointer at
+`+0x20`. This is a worker trampoline, **not yet the function-level codegen
+callback**. The callback target and context schema remain the next concrete
+breakpoint target. A multi-thread GDB all-stop attempt caused an internal
+remote-debugger error when several worker threads reached one shared entry
+breakpoint, so future tracing should capture the `_beginthreadex` callback
+before resuming the new thread and use one-shot breakpoints.
+
+No boss-function exactness credit is claimed by these diagnostics. The
+remaining 24B/4-instruction difference is still open; the typed-IL and worker
+callback evidence is intended to explain it at the compiler level rather than
+mask it with padding or assembly.
