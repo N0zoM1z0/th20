@@ -9,6 +9,12 @@
 // directly against the current animation member, without a saved int.
 // The emission slot is assigned by the Timer before its first use; the two
 // polar angle intermediates retain real effectful getter evaluation order.
+// Native vector dataflow reuses `basis` as the polar-output/difference
+// temporary. `tangent` is the separately normalized second direction; it is
+// not the first polar scratch. Native EBP locals map basis/gradient/position/
+// velocity/tangent to -0x10/-0x1c/-0x40/-0x34/-0x4c respectively. The current
+// MSVC candidate assigns those same roles four bytes lower, so the frame is
+// still structurally close but not byte-exact.
 // Session -> Context -> EffectInfo -> AnimationFile -> spawn is the actual
 // resource chain, with the original four independently observed calls.
 // The native loop stage words are int32_t at +0x15E8; the 200 handles
@@ -43,14 +49,14 @@ int NativeParticleGridGroup::update() {
     extra_1914=center;
     extra_1908=center;
     const float angle=animation->rotation_z_value();
-    polar(tangent,angle,native_particle_radius_300);
-    tangent.z=0.0f;
-    extra_1914+=tangent;
+    polar(basis,angle,native_particle_radius_300);
+    basis.z=0.0f;
+    extra_1914+=basis;
     float direction=animation->rotation_z_value();
     direction+=animation->variables().particle_grid_angle_offset;
-    polar(tangent,direction,native_particle_radius_150);
-    tangent.z=0.0f;
-    extra_1908+=tangent;
+    polar(basis,direction,native_particle_radius_150);
+    basis.z=0.0f;
+    extra_1908+=basis;
     if (timer_1930.time.changed()) {
         if (timer_1930.time.less_than(50)) {
             emission_index=timer_1930.time * 4;
@@ -121,15 +127,15 @@ int NativeParticleGridGroup::update() {
         child->set_slowdown(animation->slowdown());
         if (stages_15e8[index]==0) {
             position=extra_1914;
-            polar(tangent,native_polygon_random_5ba4c4.radians(),
+            polar(basis,native_polygon_random_5ba4c4.radians(),
                   native_polygon_random_5ba4c4.unit()*native_particle_radius_150);
-            tangent.z=0.0f;
-            position+=tangent;
+            basis.z=0.0f;
+            position+=basis;
             gradient=extra_1908;
-            polar(tangent,native_polygon_random_5ba4c4.radians(),
+            polar(basis,native_polygon_random_5ba4c4.radians(),
                   native_polygon_random_5ba4c4.unit()*native_particle_radius_50);
-            tangent.z=0.0f;
-            gradient+=tangent;
+            basis.z=0.0f;
+            gradient+=basis;
             basis=gradient-position;
             normalize_vector3_45cf10(velocity,basis);
             basis=extra_1920-gradient;
@@ -151,10 +157,10 @@ int NativeParticleGridGroup::update() {
             if (reinterpret_cast<NativeParticleAnimationAccess*>(child)->age_45d0a0()
                 >= animation->variables().particle_grid_count+1 && stages_15e8[index]==1) {
                 gradient=animation->vector_5bc_ref();
-                polar(tangent,native_polygon_random_5ba4c4.radians(),
+                polar(basis,native_polygon_random_5ba4c4.radians(),
                     native_polygon_random_5ba4c4.unit()*native_particle_radius_20);
-                tangent.z=0.0f;
-                gradient+=tangent;
+                basis.z=0.0f;
+                gradient+=basis;
                 polar(tangent,native_polygon_random_5ba4c4.radians(),
                     native_polygon_random_5ba4c4.unit()*native_particle_radius_20);
                 tangent.z=0.0f;

@@ -1,3 +1,20 @@
+**2026-11-27 native Vector3 local-role recovery:** The maintained source now
+uses `basis` as the original polar-output and vector-difference scratch, while
+`tangent` is the separately normalized second direction. This is derived from
+the original call operands, not from decompiler variable names: the native
+configuration call forwards `position` from `[EBP-0x40]`, `tangent` from
+`[EBP-0x4C]`, `gradient` from `[EBP-0x1C]`, and `velocity` from
+`[EBP-0x34]`; the polar and subtraction scratch is `[EBP-0x10]` (`basis`).
+The candidate now assigns the same source roles, but the pinned MSVC build
+places position/tangent/gradient/velocity/basis at `[EBP-0x44]`,
+`[EBP-0x50]`, `[EBP-0x20]`, `[EBP-0x38]`, and `[EBP-0x14]` respectively: a
+uniform four-byte displacement. The targeted
+whole-source probe remains **2,881B/767 i386**, with **99/99 call roles** and
+**25/25 data roles** intact, **6/99** E8 sites aligned and total call-offset
+delta **883**. This is a source/dataflow correction, not an exactness claim;
+the remaining frame-local allocation and x87/SSE argument materialization
+still need compiler-level explanation.
+
 **2026-11-27 repeated-owner reload update:** The cached Animation pointer
 snapshot is removed. Native instructions repeatedly reload the current group
 member from this+4 before variables, slowdown, vector_5bc_ref, and interpolation

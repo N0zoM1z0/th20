@@ -1,3 +1,9 @@
+**2026-11-27 native vector-role update:** The `basis`/`tangent` use now follows
+the original polar, subtraction, normalization and interpolation call operands.
+The native EBP-local map and the current candidate's uniform four-byte local
+shift are documented in the [ESI/polar lifetime frontier](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
+The parent remains SOURCE-PRESENT/NONEXACT at 2,881B/767 i386.
+
 **2026-11-27 current source update:** The cached owner pointer was removed;
 all original owner operations now reload animation from the group member,
 matching the native repeated this+4 reads. The complete maintained C++ body
