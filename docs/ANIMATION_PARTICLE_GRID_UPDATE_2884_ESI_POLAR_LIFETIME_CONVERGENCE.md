@@ -1,3 +1,17 @@
+**2026-11-27 reused polar-angle lifetime update:** The first and second
+rotation getters retain their original effectful order, but the source now
+reuses one mutable `float angle` after the first polar result has been consumed.
+This is a real C++ lifetime change, not a cast or code-generation directive.
+The pinned MSVC `/Od /Ob0` whole-source probe moves from **2,881B/767** to
+**2,875B/767 i386**. All **99/99 E8** and **25/25 DIR32** roles remain in the
+original order; physical E8 alignment remains **6/99**, while total E8 offset
+delta falls from **883 to 440** and the first-20 delta from **107 to 84**.
+The candidate frame is now **0x194** versus native **0x19C**; native ESI
+age-across-call lifetime is still present. This is a measured NONEXACT source
+improvement, with no match-unit or authored-byte credit. The vector-role map
+below remains valid; its current candidate locals are still displaced by four
+bytes from the original roles.
+
 **2026-11-27 native Vector3 local-role recovery:** The maintained source now
 uses `basis` as the original polar-output and vector-difference scratch, while
 `tangent` is the separately normalized second direction. This is derived from
@@ -131,31 +145,34 @@ integer-stage transitions. These are compared against independently
 locked original destinations; they are **not** inferred from matching
 candidate relocation counts.
 
-| Measured property | 2,969B source | 2,924B checkpoint | Current checkpoint | Original native |
+| Measured property | 2,969B source | 2,924B checkpoint | 2,881B repeated-owner | 2,875B reused-angle | Original native |
 | --- | ---: | ---: | ---: | ---: |
-| Whole compiler code bytes | 2,969 | 2,924 | **2,881** | 2,884 |
-| Whole i386 instructions | 763 | 760 | **767** | 768 |
-| E8 / COFF REL32 calls | 99 | 99 | **99** | 99 |
-| PE HIGHLOW / COFF DIR32 | 25 | 25 | **25** | 25 |
-| E8 opcode offsets exactly aligned | 0 /99 | 6 /99 | **6 /99** | 99 /99 |
-| Sum of absolute differences between corresponding E8 offsets | 7,558 | 3,639 | **883** | 0 |
-| First 20 E8 offset absolute-difference sum | 659 | 119 | **107** | 0 |
-| Local stack frame | — | 0x1AC | **0x19C** | 0x19C |
-| Original ESI push/age-across-call lifetime | No | Yes | **Yes** | Yes |
+| Whole compiler code bytes | 2,969 | 2,924 | 2,881 | **2,875** | 2,884 |
+| Whole i386 instructions | 763 | 760 | 767 | **767** | 768 |
+| E8 / COFF REL32 calls | 99 | 99 | 99 | **99** | 99 |
+| PE HIGHLOW / COFF DIR32 | 25 | 25 | 25 | **25** | 25 |
+| E8 opcode offsets exactly aligned | 0 /99 | 6 /99 | 6 /99 | **6 /99** | 99 /99 |
+| Sum of absolute differences between corresponding E8 offsets | 7,558 | 3,639 | 883 | **440** | 0 |
+| First 20 E8 offset absolute-difference sum | 659 | 119 | 107 | **84** | 0 |
+| Local stack frame | — | 0x1AC | 0x19C | **0x194** | 0x19C |
+| Original ESI push/age-across-call lifetime | No | Yes | Yes | **Yes** | Yes |
 
 The previous 2,969B candidate source is retained as
 `.analysis/gptweb-particle-owner-probes/EffectChainSpawnSlot.cpp`; its
 noncanonical compiled object was removed during storage cleanup. Rebuild it
 with `scripts/compile-probe.py` if needed. The pre-RECON-1112 2,876B candidate is a historical checkpoint; the
-maintained single-source probe now reproduces the **2,881B/767** repeated-owner candidate; the 2,856B/756 direct-spawn checkpoint is retained as a historical comparison.
+2,881B/767 repeated-owner source and 2,856B/756 direct-spawn source are retained
+as historical comparisons. The maintained single-source probe now reproduces
+the **2,875B/767** reused-angle candidate.
 The shared child-pointer lifetime first removed **48B** from the 2,924B
 checkpoint and restored the native **0x19C** frame, aligning eight E8 sites
 with total offset delta **1,463**. RECON-1112 then changed all four named
 `AnimationHandle` temporaries into direct `colors_08[index] = spawn(...)`
 assignments: this removes a further **20B/four instructions**, improves
 alignment from **8/99 to 14/99**, and cuts total E8 offset delta from
-**1,463 to 712** (first 20 sites: 87). The 2026-11-27 repeated-owner reload now gives a **2,881B/767** candidate,
-only 3B and one instruction shorter than native. These bytes are *not* accepted
+**1,463 to 712** (first 20 sites: 87). The 2026-11-27 reused-angle source now gives a **2,875B/767** candidate,
+with the native E8 displacement sum reduced to 440 but a 0x194 frame rather
+than the native 0x19C. These bytes are *not* accepted
 as original code, and code length alone has no matching credit. A more
 aggressive const-reference center probe compiled to 2,856B/758, but was
 rejected: the native explicitly materializes a 12-byte Vector3 snapshot
@@ -182,8 +199,9 @@ This role checker now runs automatically after the existing
 [`probe-animation-particle-grid-update2884.py`](../scripts/probe-animation-particle-grid-update2884.py)
 compiles the *one* real maintained function. The 2026-11-20 source
 checkpoint reported 2,876B/760 i386 and 8/99 physical E8 sites aligned;
-the current source reports 2,881B/767 i386 and 6/99 aligned, preserving
-every original call/data role and the exact 0x19C local frame:
+the current source reports 2,875B/767 i386 and 6/99 aligned, preserving
+every original call/data role and the native ESI lifetime; its frame is
+0x194 versus the native 0x19C:
 
 ```sh
 nice -n 15 scripts/repo-python scripts/probe-animation-particle-grid-update2884.py
@@ -191,9 +209,9 @@ nice -n 15 scripts/repo-python scripts/probe-animation-particle-grid-update2884.
 
 The original `0x0045C360` **2,884B/768-i386** remains NONEXACT;
 there is **no new match-unit or game-authored byte credit**. The candidate's
-0x19C local frame now matches the original; remaining differences are the
-early float-argument push/spill order, Vector3 local-slot placement, and
-some per-loop register lifetimes. The strict **26B EffectInfo**,
+0x194 local frame is eight bytes smaller than the original 0x19C; remaining
+differences include early float-argument push/spill order, Vector3 local-slot
+placement, and some per-loop register lifetimes. The strict **26B EffectInfo**,
 **51B Event**, **92B Stop** and associated already exact descendants
 are separate functions and were not modified; no all-project cold replay
 was performed.

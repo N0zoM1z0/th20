@@ -8,7 +8,7 @@
 // The native early ESI lifetime is recovered by comparing the actual child age
 // directly against the current animation member, without a saved int.
 // The emission slot is assigned by the Timer before its first use; the two
-// polar angle intermediates retain real effectful getter evaluation order.
+// one reused polar angle retains the original effectful getter order.
 // Native vector dataflow reuses `basis` as the polar-output/difference
 // temporary. `tangent` is the separately normalized second direction; it is
 // not the first polar scratch. Native EBP locals map basis/gradient/position/
@@ -48,13 +48,13 @@ int NativeParticleGridGroup::update() {
     extra_1920=center;
     extra_1914=center;
     extra_1908=center;
-    const float angle=animation->rotation_z_value();
+    float angle=animation->rotation_z_value();
     polar(basis,angle,native_particle_radius_300);
     basis.z=0.0f;
     extra_1914+=basis;
-    float direction=animation->rotation_z_value();
-    direction+=animation->variables().particle_grid_angle_offset;
-    polar(basis,direction,native_particle_radius_150);
+    angle=animation->rotation_z_value();
+    angle+=animation->variables().particle_grid_angle_offset;
+    polar(basis,angle,native_particle_radius_150);
     basis.z=0.0f;
     extra_1908+=basis;
     if (timer_1930.time.changed()) {

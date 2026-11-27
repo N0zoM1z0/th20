@@ -1,16 +1,25 @@
+**2026-11-27 reused-angle update:** The first and second polar-angle
+computations now reuse one mutable `float angle` while preserving the ordered
+rotation/variables getter calls. The maintained one-function probe is
+**2,875B/767 i386**, with all **99 E8** and **25 data** roles preserved,
+**6/99** E8 sites aligned, total E8 offset delta **440** (first 20: **84**),
+and native ESI lifetime. The frame is **0x194**, eight bytes below native
+**0x19C**. It remains SOURCE-PRESENT/NONEXACT. See the [latest compiler and
+lifetime frontier](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
+
 **2026-11-27 native vector-role update:** The `basis`/`tangent` use now follows
 the original polar, subtraction, normalization and interpolation call operands.
 The native EBP-local map and the current candidate's uniform four-byte local
 shift are documented in the [ESI/polar lifetime frontier](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
-The parent remains SOURCE-PRESENT/NONEXACT at 2,881B/767 i386.
+The 2,881B/767 repeated-owner candidate is a historical checkpoint; the
+current reused-angle parent is 2,875B/767 i386 and remains NONEXACT.
 
 **2026-11-27 current source update:** The cached owner pointer was removed;
 all original owner operations now reload animation from the group member,
 matching the native repeated this+4 reads. The complete maintained C++ body
-compiles to **2,881B/767 i386**, preserving all 99 E8 and 25 data relocation
-roles, the native 0x19C frame and ESI age lifetime. It is only 3B and one
-instruction shorter than native, but remains NONEXACT: 6/99 E8 sites align and
-total call-offset delta is 883. See the [repeated-owner reload and compiler-order
+compiles to **2,875B/767 i386**, preserving all 99 E8 and 25 data relocation
+roles and ESI age lifetime. Its 0x194 frame is eight bytes below native 0x19C;
+6/99 E8 sites align and total call-offset delta is 440. It remains NONEXACT. See the [repeated-owner reload and compiler-order
 controls](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
 
 **CORE/RECON-1112 CURRENT SOURCE UPDATE (2026-11-25):** The four
@@ -28,7 +37,8 @@ first-20 delta falls from **92 to 87**. The native **0x19C** frame and ESI
 age-across-call lifetime remain. The complete 2,884B/768-i386 game Boss is
 still **SOURCE-PRESENT/NONEXACT**; no parent exactness credit is claimed.
 The maintained one-object probe and independent original-role verifier both
-pass for the complete 2,856B historical candidate; the current repeated-owner source is 2,881B/767.
+pass for the complete 2,856B historical candidate; the current reused-angle
+source is 2,875B/767.
 
 # CORE/RECON-1107 — source-present 2,884B particle-grid Update with real effect resource ownership
 
