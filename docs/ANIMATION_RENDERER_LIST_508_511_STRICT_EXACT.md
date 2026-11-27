@@ -75,9 +75,12 @@ is no longer needed for either accepted unit.
 
 The original list constructor `0x00418A50` (40B) and reset `0x0044A640`
 (42B) remain separate unresolved native helpers. This checkpoint does
-**not** claim them exact: the compiled constructor still differs in size,
-and the reset still has a register-selection byte mismatch. Their original
-physical targets are nevertheless independently pinned at E8 fields in
+**not** claim them exact: the maintained two-store constructor now has the
+full 40B/16-instruction extent but still differs in two ModRM bytes
+(34/36 ordinary bytes); reset remains 37/38 ordinary bytes with one
+register-selection mismatch. See the current bounded measurements in
+[the 40B/42B helper frontier](ANIMATION_RENDERER_LIST_HELPERS_40_42_NATIVE_FRONTIER.md).
+Their original physical targets are nevertheless independently pinned at E8 fields in
 the now-exact parent functions. The already exact 411B recursive-retirement
 and 308B pool-release callees are not recredited.
 
@@ -110,13 +113,15 @@ project replay, the native exact ledger was replayed **only for those
 | AnimationFile spawn / pool allocation/resolve/lifetime | 9 | 6 | **9/9 pass** |
 | Renderer retirement, classification, wrappers and staging | 15 | 11 | **15/15 pass** |
 | **Existing exact coverage protected** | **82** | **22** | **82/82 whole relocated pass** |
+| Two newly accepted Renderer Boss parents | — | 2 | **2/2 whole relocated pass** |
+| **Total including the two new parents** | **82 + 2** | **24** | **84/84 whole relocated pass** |
 
 An initial private test comparing just original code `size` rather than
 configured COFF `compare_size` mistakenly interpreted five bytes of
 existing *after-ret* compiler padding in several `Animation.cpp`
 constructors/destructors as an ABI regression. That error was corrected
 before promotion: the complete original `Animation.cpp` translation unit
-and all **38/38 canonical contributions**, including the authentic
+and all **37/37 canonical contributions**, including the authentic
 padding and relocation fields, match. A separate anonymous-namespace
 function-checker initially missed lower-case `t` local COFF symbols;
 actual canonical whole-function replay independently passed all **4/4**

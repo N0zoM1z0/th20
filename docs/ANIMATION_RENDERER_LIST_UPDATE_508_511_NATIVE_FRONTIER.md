@@ -1,15 +1,23 @@
 **2026-11-11 RESOLVED:** Both maintained Renderer list-update
 functions are now [complete native 508B/511B WHOLE STRICT EXACT](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md),
 with real class-key `/sdl` initialization, complete native E8/HIGHLOW roles
-and **82/82** exact affected consumers rebuilt. The research-only
+and **84/84** whole relocated units verified (82 existing consumers plus two new parents). The research-only
 NONEXACT hypotheses below remain archived historical observations.
+
+**2026-11-27 helper follow-up:** The maintained Animation-specific list
+constructor is now a natural C++ two-phase initialization in
+[`IntrusiveListAnimation.hpp`](../src/IntrusiveListAnimation.hpp). Its
+bounded compile produces the complete original 40B/16-instruction body,
+with 34/36 ordinary bytes matching and two ModRM differences; the distinct
+42B reset remains 37/38 ordinary bytes. Neither helper is exact. See the
+[measured 40B/42B helper frontier](ANIMATION_RENDERER_LIST_HELPERS_40_42_NATIVE_FRONTIER.md).
 
 **CORE/RECON-1109 continuation:** A new dedicated explicit
 `class IntrusiveList<Animation>` probe reproduces **both whole 508B/511B
 bodies with every original E8/HIGHLOW field, all physical targets and all
 368/371 ordinary bytes**, without changing the generic public type.
 [Full executable proof and exact-consumer regression audit](ANIMATION_RENDERER_LIST_508_511_ANIMATION_CLASS_SPECIALIZATION_FRONTIER.md)
-shows 38/38 Animation.cpp canonical objects still structurally exact when
+shows 37/37 Animation.cpp canonical contributions still structurally exact when
 compared at their genuine full COFF lengths; the remaining class/struct
 mangled-ABI and other affected owner migration must be resolved before
 claiming the two Bosses as canonical exact.

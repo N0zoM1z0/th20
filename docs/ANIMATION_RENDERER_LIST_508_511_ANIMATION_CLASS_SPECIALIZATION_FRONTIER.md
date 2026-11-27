@@ -1,8 +1,33 @@
 **2026-11-11 RESOLVED:** Both maintained Renderer list-update
 functions are now [complete native 508B/511B WHOLE STRICT EXACT](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md),
 with real class-key `/sdl` initialization, complete native E8/HIGHLOW roles
-and **82/82** exact affected consumers rebuilt. The research-only
+and **84/84** whole relocated units verified (82 existing consumers plus two new parents). The research-only
 NONEXACT hypotheses below remain archived historical observations.
+
+## 2026-11-27 current mainline status
+
+The explicit `class IntrusiveList<Animation>` specialization is now the
+maintained owner in [`src/IntrusiveListAnimation.hpp`](../src/IntrusiveListAnimation.hpp),
+not a private probe-only declaration. The 508B and 511B parents are already
+canonical WHOLE STRICT EXACT; their class-key ABI migration preserved all
+**82/82 previously exact consumer units** across 22 affected compiler
+objects. Including the two new parent heads, the scoped strict result is
+**84/84**. The current three-object regression probe independently confirms
+both whole parent bodies (368/368 and 371/371 ordinary bytes, 30 E8 plus
+5 HIGHLOW roles each) and **37/37** configured `Animation.cpp` contributions.
+
+The separate list leaves remain open: the maintained natural C++ constructor
+uses `tail(this) { tail=this; }` and emits the original 40B/16-instruction
+extent, but only 34/36 ordinary bytes match (two ModRM register-direction
+bytes differ); the 42B reset remains 37/38 ordinary bytes. Neither leaf has
+strict exact credit. The current constructor probe is
+[`scripts/probe-animation-list-ctor40-double-tail.py`](../scripts/probe-animation-list-ctor40-double-tail.py).
+
+The following CORE/RECON-1109 narrative records the earlier isolated-probe
+and pre-migration checkpoint; statements there that the parent Bosses were
+SOURCE-PRESENT/NONEXACT or that the specialization was probe-only are
+historical and superseded by the current mainline status above and the
+[accepted strict-exact record](ANIMATION_RENDERER_LIST_508_511_STRICT_EXACT.md).
 
 # CORE/RECON-1109 — 508B/511B Renderer Boss class-key specialization, full-body relocation-role proof and regression gate
 
@@ -66,8 +91,8 @@ because the game-authored code extents of those functions are
 **725B/498B/62B**. In reality, their canonical unit configurations
 already use **`compare_size = 730/503/67`**, including the genuine trailing
 five bytes. Recompiling the entire actual `Animation.cpp` translation unit
-under the class specialization and using `compare_size` for **all 38
-accepted original units** confirms **38/38 full structural exact**.
+under the class specialization and using `compare_size` for **all 37
+currently configured original units** confirms **37/37 full structural exact**.
 The test was corrected before any canonical acceptance or commit.
 
 The remaining complication is a real **source/API symbol migration**:
