@@ -53,12 +53,31 @@ setup, consistent with its downstream startup and option-processing calls.
 The same trace observed calls into C2 RVAs `0x1d5a00`, `0x1d764c`, `0x1d4294`,
 `0x1d59e0`, and `0x1d1490`, but their roles are **not yet established**. The
 candidate phase-dispatch address `0x1d3d3c` was not hit in that run. A nearby
-C2 `int3` at RVA `0x1d1e1f` precedes an unclassified record/vector-append path;
-a later write at RVA `0x1d1fed` faulted while targeting the Wine
-`RaiseException` code address. The compiler still emitted its object and
-returned zero after GDB detached, but this is not code-generation evidence and
-must not be interpreted as a failed source compile or as a register-allocation
-pass. The C1xx VCTIP path and this C2 record path are kept distinct.
+C2 `int3` at RVA `0x1d1e1f` enters the separately classified record writer at
+RVA `0x1d1e20..0x1d223b` (1,051 bytes). This is not function lowering or
+register allocation: it walks a record-buffer cursor, tests the current/end
+pointers, emits six 0x30-byte records with tags `0x140002`, `0x140004`,
+`0x140005`, `0x140006`, `0x140007`, and `0x140003`, calls the record append
+helpers at `0x264e8c`/`0x264c48`, clears the record byte at `+0x28`, and advances
+the cursor by `0x30`. The tag/data pairs draw from six global table offsets
+`+0x60` through `+0x100`. This is compiler instrumentation/telemetry-shaped
+record construction, not evidence of a codegen pass.
+
+The GDB run faulted at RVA `0x1d1fed`, the `mov dword ptr [rdi],eax` record-tag
+store, with `eax=0x140002` and `rdi=0x6fffff483f07` (an unaligned address in the
+loaded Wine KernelBase mapping whose base was `0x6fffff470000`). The invalid
+record-buffer pointer's ownership is not yet established. Despite this remote
+debugger fault, the targeted compile produced its COFF object (8,240 bytes)
+and `cl.exe` returned zero; the fault must not be reported as a failed source
+compile or as a C2 lowering failure. The C1xx VCTIP path and this C2
+instrumentation-record path remain distinct.
+
+**Additional negative identification:** C2 RVA `0x1d1e20` is now classified
+as a six-record instrumentation/telemetry writer by its live pointer checks,
+0x30-byte cursor increments, fixed record tags and append calls. Its faulting
+write at `0x1d1fed` is a Wine debugger-run record-buffer problem, not a
+register-allocation observation. The actual function-level compile dispatch
+is still unlocated.
 
 **Corrected conclusion:** `InvokeCompilerPassW` and the `0x1d01a8` argv entry
 prove that C2 receives typed in-memory IL and 22 wide arguments. They do not
