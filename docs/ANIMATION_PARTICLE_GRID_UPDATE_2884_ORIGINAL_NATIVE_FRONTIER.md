@@ -68,7 +68,7 @@ alignment bytes. The original target hash is rechecked every run.
 | `0x0045CF10` | 2 | **202B three-dimensional normalization**, now independently whole strict exact |
 | `0x0044CED0` | 5 | Original AnimationHandle resolve |
 | `0x0045D030` | 1 | Original Timer change gate |
-| `0x00423540` | 1 | Timer advancement |
+| `0x00423540` | 1 | Timer postfix `operator++(int)`; the native call pushes dummy `0` before E8 |
 | `0x005429EE` | 1 | Original stack security-cookie verifier |
 
 The original global RNG at `0x005BA4C4` occurs in **ten physical HIGHLOW
