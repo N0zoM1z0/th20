@@ -108,3 +108,7 @@ Derive affected providers from captured include closures and manifest
 relationships. Replay only explicit source filters or individual units,
 including full owned extents and relocations. Keep `config/claims.csv`
 header-only. Never edit historical receipts to manufacture a pass.
+
+## 2026-11-27 operator directive and active work
+
+The latest operator instruction supersedes the previous single-function focus gate for this session: continue substantive TH20 reconstruction on both large boss functions and small leaf functions, do not avoid pre-existing dirty work, make multiple `gpt-web:` commits after real progress, use targeted rather than full cold replay, and reconstruct natural C/C++ rather than assembly or padding. The active large-function investigation is `AnimationPoolOwner::draw` at `0x00443880`; its current residual and compiler evidence are recorded in `ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md` and `ANIMATION_DRAW_BOSS_C2_DEBUG_TRACE.md`. The TH10-style C2 debugger has now reached the x64 `InvokeCompilerPassW` entry and observed typed in-memory IL arguments. The actual codegen/register-allocation entry is not yet identified, and no exactness claim is made.
