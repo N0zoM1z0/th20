@@ -39,6 +39,33 @@ This establishes that the C2 backend consumes typed IL through an in-memory poin
 
 The first internal functions reached after `InvokeCompilerPassW` include startup, argument parsing, and tracing/telemetry. Static disassembly shows that some candidate addresses (including the command-line parser and trace callback) are not register-allocation or code-generation passes. Do not label them as such merely because they are called from the C2 entry path. The actual per-function lowering/register-allocation path remains to be identified.
 
+## 2026-11-27 follow-up: reclassify the C2 RVA `0x1d01a8` entry
+
+A second targeted trace used the particle-grid translation unit to validate the
+internal C2 entry reached after `InvokeCompilerPassW`. The function at C2 RVA
+`0x1d01a8` is **not** a per-function code-generation pass or register allocator.
+Its disassembly begins by preserving `rdx` in `rsi` and `ecx` in `r14d`, then
+publishes those values as the compiler argument count and argument-vector
+pointer. At runtime the values were `rcx = 0x16` and `rdx` pointed to 22
+wide-character command-line argument pointers. This is command-line/driver
+setup, consistent with its downstream startup and option-processing calls.
+
+The same trace observed calls into C2 RVAs `0x1d5a00`, `0x1d764c`, `0x1d4294`,
+`0x1d59e0`, and `0x1d1490`, but their roles are **not yet established**. The
+candidate phase-dispatch address `0x1d3d3c` was not hit in that run. A nearby
+C2 `int3` at RVA `0x1d1e1f` precedes an unclassified record/vector-append path;
+a later write at RVA `0x1d1fed` faulted while targeting the Wine
+`RaiseException` code address. The compiler still emitted its object and
+returned zero after GDB detached, but this is not code-generation evidence and
+must not be interpreted as a failed source compile or as a register-allocation
+pass. The C1xx VCTIP path and this C2 record path are kept distinct.
+
+**Corrected conclusion:** `InvokeCompilerPassW` and the `0x1d01a8` argv entry
+prove that C2 receives typed in-memory IL and 22 wide arguments. They do not
+identify the function-level lowering, physical-register selection, or spill
+insertion passes. Those remain open and require new breakpoints grounded in
+static/live call flow rather than names guessed from nearby telemetry.
+
 ## Wine/VCTIP debugger caveat
 
 `c1xx.dll` contains a VCTIP named-pipe path whose literal is `\\.\pipe\VCTIP_14.44.35211.0_PIPE`; the nearby diagnostic text is `Failed to open connection to VCTIP`. One path can raise Windows exception `0x80000003` around C1xx RVA `0x1b1b14`. Treat this as a compiler telemetry/debug-break path, not as proof of a codegen failure. GDB must distinguish this event from a real compiler exception and verify the compiler's final exit status and object output.
