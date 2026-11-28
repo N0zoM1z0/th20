@@ -13,8 +13,8 @@ and computes D3DX9 View and Projection matrices. It uses unsigned
 32-bit viewport x/y/width/height, the source viewport and actual
 current ViewportState fields, and the existing Vector3(float,float,float)
 native constructor at 0x00422DD0 exactly three times. The z-distance
-comes from the genuine native float sqrt helper at 0x00439850
-applied to the viewport FOV/2; eye and target X/Y add the true
+is the integer-halved viewport height divided by the native float tangent helper at
+0x00439850 applied to FOV/2; eye and target X/Y add the true
 width/height half offsets. The up vector is (0,-1,0).
 
 It then calls the authentic imported
@@ -50,12 +50,19 @@ Only the changed file was cold replayed:
 
 The 194B D3D9 transform stage and 284B Graphics viewport
 caller were already independent whole-exact functions and
-remain separate. The sqrt helper is treated as a native callee;
+remain separate. The tangent helper is treated as a native callee;
 this work does not credit it as a new authored original head.
 One distinct new **846B game-authored whole exact** Boss head.
 
-The native 35B sqrt adapter at 0x00439850 subsequently reached
-[35/35B original source exact](GRAPHICS_CAMERA_SQRT_ADAPTER35_SOURCE_EXACT_ORIGIN_REVIEW.md),
+The native 35B tangent adapter at 0x00439850 reached
+[35/35B original source exact](GRAPHICS_CAMERA_TAN_ADAPTER35_SOURCE_EXACT_ORIGIN_REVIEW.md),
 but its compiler/CRT authorship is under review and **not credited**
 as a new game-authored exact head. The camera Boss owns only its
 own 846 original bytes.
+
+The earlier evidence mislabeled the adapter's CRT destination as sqrt. The
+[complete tangent review](CRT_X87_CONTROL_TANGENT_ORIGIN_REVIEW.md) independently
+identifies `_tan` at `0x00550000` and true `_sqrt` at `0x00550050`. Maintained
+source, declaration and canonical symbols are corrected. This camera passed
+fresh complete strict replay within the captured 84-unit affected closure;
+ordinary bytes and its physical helper destination remain unchanged.

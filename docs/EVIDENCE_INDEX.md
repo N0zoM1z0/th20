@@ -9,6 +9,8 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [CRT x87 control, tangent and shared exits](CRT_X87_CONTROL_TANGENT_ORIGIN_REVIEW.md) — seventeen entries including six recovered heads; false 755B tangent span resolved, full common/SSE sections and tables retained. Three wrong math-adapter bindings corrected; 84/84 affected units strictly replayed.
+- [ScalarMath acos/atan adapters](SCALAR_MATH_ACOS_ATAN_35_EXACT.md) — complete 35B leaves with independently corrected CRT destinations; source exact, origins unknown/review.
 - [CRT math dispatch and corrected disjoint boundaries](CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md) — four oversized spans resolved; complete default/SSE groups, intrinsic and stack interfaces, retained atan instruction and full shared coefficient tables.
 - [CRT allocation origins and corrected aligned-new boundary](CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md) — 3,046B false span becomes 52B parent plus shared 28B throw helper; complete new-handler text/SEH, encoded state, missed restore prefixes and natural 36B SDK constructor emission.
 - [STL random-device and condition-broadcast leaves](CRT_RANDOM_CONDITION_LEAF_ORIGIN_REVIEW.md) — complete 33B/20B bodies plus one INT3; nonreturning range error and PE-bound broadcast identity despite identical signal opcodes.
@@ -1759,7 +1761,7 @@ Compiler scores labelled "current" in historical entries below mean
 
 - [Graphics camera matrix Boss 846B original strict exact](GRAPHICS_CAMERA_MATRIX_BOSS846_STRICT_EXACT.md) — genuine Vector3 eye/target/up, 32-bit unsigned dimensions lowered through true native 0/2^32 conversion table, D3DX9 LookAtLH and PerspectiveFovLH imports, 7/7 E8+20/20 PE HIGHLOW physical sites, 738/738 ordinary bytes and whole 846/846B strict source replay; +846 distinct game-authored original bytes.
 
-- [Graphics camera sqrt 35B source exact, origin held review](GRAPHICS_CAMERA_SQRT_ADAPTER35_SOURCE_EXACT_ORIGIN_REVIEW.md) — 13 native i386, genuine sqrt(double) at 0x00550000, whole original 35/35B source and 31/31 ordinary bytes, source-local 1/1 replay; possible CRT-generated wrapper, deliberately zero additional authored game byte credit.
+- [Graphics camera tangent 35B source exact, origin held review](GRAPHICS_CAMERA_TAN_ADAPTER35_SOURCE_EXACT_ORIGIN_REVIEW.md) — corrected `_tan` at 0x00550000, complete 35/35B strict replay with correct external symbol; unknown wrapper origin and no authored credit. The earlier sqrt binding was wrong despite ordinary-byte agreement.
 
 - [Window frame scheduler Boss 884B whole strict original exact](WINDOW_FRAME_SCHEDULER_BOSS884_STRICT_EXACT.md) — 239 x86 instructions, 32/32 original E8 plus 21/21 native PE HIGHLOW physical sites and targets, 672/672 ordinary original bytes; real D3D9 raster ScanLine/InVBlank loop, scoped device Reset and WinMM pacing, original locked SHA and 1/1 source-cold replay, +884 distinct game-authored native bytes.
 

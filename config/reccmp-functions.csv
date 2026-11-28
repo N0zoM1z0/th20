@@ -1640,7 +1640,7 @@ th20::NativeGraphicsModeAction::set_clip_41dce0,0x0041DCE0,function
 th20::NativeTickGraphicsView::bail_out_4d9e30,0x004D9E30,function
 th20::NativeGraphicsModeAction::prepare_device_4da120,0x004DA120,function
 th20::NativeGraphicsModeAction::recompute_current_4da1f0,0x004DA1F0,function
-th20::native_sqrt_439850,0x00439850,function
+th20::native_tan_439850,0x00439850,function
 th20::NativeFrameGraphicsView::frame_recover_4dd840,0x004DD840,function
 th20::window_frame_initialize_41a2c0,0x0041A2C0,function
 th20::NativeAnimationResetHooks::restart_state_41db40,0x0041DB40,function
@@ -1674,8 +1674,8 @@ th20::Interpolation<Angle>::set_tangent_start,0x004394B0,function
 th20::Animation::set_rotation_speed,0x00439280,function
 th20::Animation::set_scale_speed,0x00439390,function
 th20::Animation::update,0x0042B5D0,function
-th20::scalar_math::arcsine,0x00439760,function
-th20::scalar_math::arccosine,0x00439790,function
+th20::scalar_math::arccosine,0x00439760,function
+th20::scalar_math::arctangent_single,0x00439790,function
 th20::polar_components,0x004392D0,function
 th20::scalar_math::floating_remainder,0x004397F0,function
 th20::NativeCardCaptureTimeoutView::elapsed_4887d0,0x004887D0,function

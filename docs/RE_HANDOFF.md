@@ -5,9 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [math dispatch and corrected disjoint boundaries](CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md).
-This checkpoint changes no canonical native inputs and has **zero affected exact
-replay units**; existing canonical products retain their captured hashes.
+review covers [x87 control, tangent and shared exits](CRT_X87_CONTROL_TANGENT_ORIGIN_REVIEW.md).
+It identifies `_tan` at `0x00550000` and true `_sqrt` at `0x00550050`, correcting
+three wrong maintained math-adapter bindings. The changed headers, source and
+canonical graph passed **84/84 affected units from 31 fresh providers**; all
+superseded canonical objects/receipts remain intact. The Animation VM consumer
+compiled before/after with only the three expected call-name changes and stays
+NONEXACT. The reviewed CRT entries and corrected adapters add no authored credit.
 
 Read [AGENTS.md](../AGENTS.md), then the focused notes for the selected owner.
 Use the **`gpt-6.1-sol:`** commit prefix. Keep native writes and heavy jobs serial,
@@ -36,7 +40,24 @@ complete comparison units and bindings. Source presence and origin are separate
 ledgers. The tracked README SVG is generated from them by `scripts/progress.py`.
 Its denominator is the currently confirmed authored set, not the whole game.
 
-## Latest native checkpoint — Player state frame
+## Latest native correction — math-adapter bindings
+
+`GraphicsCameraTanAdapter35.cpp` now calls `std::tan(double)` at `0x00439850`.
+`ScalarMath.cpp` binds `arccosine` at `0x00439760` to `_acos`/`0x0054FEB0` and
+`arctangent_single` at `0x00439790` to `_atan`/`0x0054FF00`. The old ordinary
+bytes could not distinguish their incorrect external names. Full independent
+CRT sections now establish the identities, and fresh complete canonical replay
+passes. All three wrapper origins remain unknown/review. The existing true
+square-root wrapper and two-argument atan2 retain their bindings.
+
+Preserve `build/gpt61-origin-tangent-canonical/`, the before/after VM objects in
+`build/gpt61-origin-tangent-{before,after}/`, and
+`.analysis/origin-boundary/{x87,tangent-binding}/`. The latter holds captured
+include closures, old product hashes, the 84-unit replay log, consumer comparison
+and the old wrong-symbol source/object negative case. Do not overwrite old
+receipts. The two public camera verifiers read current manifest object paths.
+
+## Retained native frontier — Player state frame
 
 `src/PlayerStateFrame4043.cpp` contains the complete state owner at `0x004F7430`.
 Its 4,043B body, one NOP and seven switch pointers form a **4,072B** contribution.
@@ -107,8 +128,12 @@ to the separately owned kernels. Intrinsic adapters consume ST(0) and create the
 stack argument view; kernels need that view as well as XMM0/XMM7. Reuse
 `disjoint/reviewed-sse.json` and its original listing for unchanged inputs.
 
-Next review the common x87 support around `0x0055B518` and `0x0055B775`,
-including shared entry fragments and floating control/error exits.
+The common x87 support and tangent group are now reviewed. The false 755-byte
+span at `0x0055B518` is a six-byte head, followed by a separate 564-byte shared
+kernel, fourteen alignment bytes and independent common helpers. Reuse
+`x87/reviewed.json`, including all 5,929 constant/table bytes. Next review the
+shared one-/two-argument math error entries at `0x005640B7`/`0x005640A0` and
+their complete owner, or continue a separate bounded CRT group.
 Underlying heap entries at `0x005584C0`, `0x00554310` and `0x00554330` remain
 another bounded allocation frontier. Reuse established runtime bindings.
 Use independent archive symbols and complete original control flow, including

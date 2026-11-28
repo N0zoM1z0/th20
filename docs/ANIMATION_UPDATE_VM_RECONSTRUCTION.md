@@ -1,5 +1,17 @@
 # Animation::update — 39,470-byte VM Boss source reconstruction
 
+## 2026-11-28 math-adapter identity correction
+
+Independent complete CRT sections establish that opcodes `0x20`, `0x21` and
+`0x22` call tangent, acos and atan. Earlier sqrt/asin/acos labels were wrong;
+the maintained names, source bodies and canonical bindings are now corrected.
+See [the complete origin review](CRT_X87_CONTROL_TANGENT_ORIGIN_REVIEW.md).
+The VM compiled before/after with the same locked profile: all 39,764 bytes of
+its complete contribution and all four runtime sections agree after exactly
+three external-name substitutions. The 505-call original target multiset is
+retained. The VM remains NONEXACT. The focused candidate below is unchanged;
+later narrative sections preserve earlier source checkpoints.
+
 ## 2026-11-24 current source checkpoint: typed variable-length instruction header
 
 The 39,470B native boss is **SOURCE-PRESENT, NONEXACT** in
@@ -162,20 +174,20 @@ negative-index sprite fallbacks. The latter is independently checked as
 20/20 bytes with no relocations. Both Timer postfix-decrement sites now call
 `timer_4c8--`; the Angle and two float interpolation-duration writes call their
 real typed members, with the Angle specialization independently verified
-22/22 bytes. Opcode 0x20 now calls the existing exact CRT sqrt adapter
+22/22 bytes. Opcode 0x20 now calls the exact CRT tangent adapter
 (35/35 bytes). A subsequent lexical-lifetime pass moved 65 one-opcode locals
 into their case scopes, removed 12 unused decompiler temporaries, and reduced
 the frame another four bytes to `0x858` without changing any opcode or call
 site. The four scalar trig opcodes now call the natural cdecl
-`scalar_math::{sine,cosine,arcsine,arccosine}` wrappers directly; all four
-35-byte CRT adapters replay exactly, including the newly added asin/acos
-units and their original `_asin`/`_acos` relocations. Opcode 0x24 now calls
+`scalar_math::{sine,cosine,arccosine,arctangent_single}` wrappers directly; all
+four 35-byte CRT adapters replay exactly, including the corrected acos/atan
+units and their original `_acos`/`_atan` relocations. Opcode 0x24 now calls
 `polar_components`, an 88/88-byte exact cdecl helper that writes independent
 x/y output pointers and preserves both original float-wrapper relocations.
 The original helper's ECX value is unused, so the natural free-function
 signature replaces the former numeric member-call view. This removes a
 further four bytes and one instruction head from the preceding 40,812-byte
-checkpoint. The preceding Timer/interpolation/sqrt pass reduced
+checkpoint. The preceding Timer/interpolation/math-adapter pass reduced
 the stack frame from `0x874` to `0x85c`. Opcode temporaries use natural `Color3`,
 `Vector3`, `Vector2`, and `Angle` objects. Both four-corner paths now use
 `Vector3 corners[4]`; the MSVC-generated 56-byte array-construction helper is

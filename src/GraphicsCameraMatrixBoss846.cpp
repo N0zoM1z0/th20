@@ -4,11 +4,11 @@
 // calls/arguments produce the original 7 E8 and 20 PE data sites.
 // The source does not synthesize conversion instructions or temporaries.
 #include "NativeGraphicsModeAction.hpp"
+#include "GraphicsCameraTanAdapter35.hpp"
 #include "Vector3.hpp"
 #include <cstdint>
 #include <d3dx9math.h>
 namespace th20 {
-float __cdecl native_sqrt_439850(float value);
 extern const float native_camera_half_divisor_56c8d0;
 extern const float native_camera_min_z_56c8cc;
 extern const float native_camera_negative_one_56e0f4;
@@ -17,7 +17,7 @@ void NativeGraphicsModeAction::recompute_current_4da1f0(ViewportState* state, Na
     Vector3 camera_eye(
         static_cast<float>(viewport->x) + static_cast<float>(viewport->width) / native_camera_half_divisor_56c8d0,
         static_cast<float>(viewport->y) + static_cast<float>(viewport->height) / native_camera_half_divisor_56c8d0,
-        static_cast<float>(viewport->height >> 1) / native_sqrt_439850(state->field_of_view / native_camera_half_divisor_56c8d0));
+        static_cast<float>(viewport->height >> 1) / native_tan_439850(state->field_of_view / native_camera_half_divisor_56c8d0));
     Vector3 camera_target(
         static_cast<float>(state->viewport.x) + static_cast<float>(state->viewport.width) / native_camera_half_divisor_56c8d0,
         static_cast<float>(state->viewport.y) + static_cast<float>(state->viewport.height) / native_camera_half_divisor_56c8d0,

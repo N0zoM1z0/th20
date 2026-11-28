@@ -10,7 +10,7 @@
 #include "AnimationCallback.hpp"
 #include "MotionMath.hpp"
 #include "ScalarMath.hpp"
-#include "GraphicsCameraSqrtAdapter35.hpp"
+#include "GraphicsCameraTanAdapter35.hpp"
 #include "GameController.hpp"
 #include "GameRandom.hpp"
 #include "AnimationCornerProjectionOwner.hpp"
@@ -2867,7 +2867,7 @@ LAB_0042df8e:
         else {
           local_4d0 = this->float_value((reinterpret_cast<float*>(&instruction->first_operand)[1]));
         }
-        local_738 = native_sqrt_439850(local_4d0);
+        local_738 = native_tan_439850(local_4d0);
         *this->float_argument(reinterpret_cast<float*>(&instruction->first_operand),static_cast<std::uint16_t>(instruction->operand_flags),0) = local_738;
         break;
       }
@@ -2880,7 +2880,7 @@ LAB_0042df8e:
         else {
           local_4d4 = this->float_value((reinterpret_cast<float*>(&instruction->first_operand)[1]));
         }
-        local_73c = scalar_math::arcsine(local_4d4);
+        local_73c = scalar_math::arccosine(local_4d4);
         *this->float_argument(reinterpret_cast<float*>(&instruction->first_operand),static_cast<std::uint16_t>(instruction->operand_flags),0) = local_73c;
         break;
       }
@@ -2893,7 +2893,7 @@ LAB_0042df8e:
         else {
           local_4d8 = this->float_value((reinterpret_cast<float*>(&instruction->first_operand)[1]));
         }
-        local_740 = scalar_math::arccosine(local_4d8);
+        local_740 = scalar_math::arctangent_single(local_4d8);
         *this->float_argument(reinterpret_cast<float*>(&instruction->first_operand),static_cast<std::uint16_t>(instruction->operand_flags),0) = local_740;
         break;
       }

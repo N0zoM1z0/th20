@@ -75,7 +75,7 @@ relocations = []
 # REF-035: observed cdecl float/double CRT wrappers; native call anchors precede probes.
 [units.scalar_math_sine]
 source = "src/ScalarMath.cpp"
-object = "build/core141-canonical/ScalarMath.obj"
+object = "build/gpt61-origin-tangent-canonical/ScalarMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::scalar_math::sine"]
 symbol = "?sine@scalar_math@th20@@YAMM@Z"
@@ -85,7 +85,7 @@ relocations = [{ offset = 0x12, type = "REL32", symbol = "_sin", target = 0x0054
 
 [units.scalar_math_cosine]
 source = "src/ScalarMath.cpp"
-object = "build/core141-canonical/ScalarMath.obj"
+object = "build/gpt61-origin-tangent-canonical/ScalarMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::scalar_math::cosine"]
 symbol = "?cosine@scalar_math@th20@@YAMM@Z"
@@ -97,7 +97,7 @@ relocations = [{ offset = 0x12, type = "REL32", symbol = "_cos", target = 0x0054
 
 [units.scalar_math_square_root]
 source = "src/ScalarMath.cpp"
-object = "build/core141-canonical/ScalarMath.obj"
+object = "build/gpt61-origin-tangent-canonical/ScalarMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::scalar_math::square_root"]
 symbol = "?square_root@scalar_math@th20@@YAMM@Z"
@@ -107,7 +107,7 @@ relocations = [{ offset = 0x12, type = "REL32", symbol = "_sqrt", target = 0x005
 
 [units.scalar_math_arctangent]
 source = "src/ScalarMath.cpp"
-object = "build/core141-canonical/ScalarMath.obj"
+object = "build/gpt61-origin-tangent-canonical/ScalarMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::scalar_math::arctangent"]
 symbol = "?arctangent@scalar_math@th20@@YAMMM@Z"
@@ -2785,7 +2785,7 @@ relocations = [{ offset = 0xB, type = "REL32", symbol = "??0FogValue@th20@@QAE@X
 
 [units.motion_velocity]
 source = "src/MotionUpdates.cpp"
-object = "build/gpt61-player-state-canonical/MotionUpdates.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionUpdates.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::Motion::update_velocity"]
 symbol = "?update_velocity@Motion@th20@@QAEXXZ"
@@ -2830,7 +2830,7 @@ relocations = [
 
 [units.motion_position]
 source = "src/MotionUpdates.cpp"
-object = "build/gpt61-player-state-canonical/MotionUpdates.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionUpdates.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::Motion::update_position"]
 symbol = "?update_position@Motion@th20@@QAEXXZ"
@@ -2884,7 +2884,7 @@ relocations = [
 
 [units.motion_snap]
 source = "src/MotionUpdates.cpp"
-object = "build/gpt61-player-state-canonical/MotionUpdates.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionUpdates.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::Motion::snap_position"]
 symbol = "?snap_position@Motion@th20@@QAEXXZ"
@@ -2901,7 +2901,7 @@ relocations = [
 
 [units.motion_vector]
 source = "src/MotionUpdates.cpp"
-object = "build/gpt61-player-state-canonical/MotionUpdates.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionUpdates.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::Motion::motion_vector"]
 symbol = "?motion_vector@Motion@th20@@QAEAAUVector3@2@XZ"
@@ -2912,7 +2912,7 @@ relocations = [
 
 [units.motion_z]
 source = "src/MotionUpdates.cpp"
-object = "build/gpt61-player-state-canonical/MotionUpdates.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionUpdates.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::Motion::set_motion_z"]
 symbol = "?set_motion_z@Motion@th20@@QAEXM@Z"
@@ -2995,7 +2995,7 @@ relocations = [
 
 [units.motion_polar]
 source = "src/MotionMath.cpp"
-object = "build/core154-canonical/MotionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::polar"]
 symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z"
@@ -3008,7 +3008,7 @@ relocations = [
 
 [units.motion_rotate_xy]
 source = "src/MotionMath.cpp"
-object = "build/core154-canonical/MotionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::rotate_xy"]
 symbol = "??$rotate_xy@UVector3@th20@@@th20@@YAXAAUVector3@0@ABU10@M@Z"
@@ -3021,7 +3021,7 @@ relocations = [
 
 [units.motion_vector_direction]
 source = "src/MotionMath.cpp"
-object = "build/core154-canonical/MotionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::vector_direction"]
 symbol = "?vector_direction@th20@@YAMABUVector3@1@@Z"
@@ -3033,7 +3033,7 @@ relocations = [
 
 [units.motion_floor_scalar]
 source = "src/MotionMath.cpp"
-object = "build/core154-canonical/MotionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::floor_scalar"]
 symbol = "?floor_scalar@th20@@YAMM@Z"
@@ -3045,7 +3045,7 @@ relocations = [
 
 [units.motion_angle_difference]
 source = "src/MotionMath.cpp"
-object = "build/core154-canonical/MotionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::angle_difference"]
 symbol = "?angle_difference@th20@@YAMMM@Z"
@@ -3062,7 +3062,7 @@ relocations = [
 
 [units.cmath_cos_float]
 source = "src/MotionMath.cpp"
-object = "build/core154-canonical/MotionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["cos(float)"]
 symbol = "?cos@@YAMM@Z"
@@ -3074,7 +3074,7 @@ relocations = [
 
 [units.cmath_sin_float]
 source = "src/MotionMath.cpp"
-object = "build/core154-canonical/MotionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["sin(float)"]
 symbol = "?sin@@YAMM@Z"
@@ -3088,7 +3088,7 @@ relocations = [
 
 [units.easing]
 source = "src/Easing.cpp"
-object = "build/core141-canonical/Easing.obj"
+object = "build/gpt61-origin-tangent-canonical/Easing.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::easing"]
 symbol = "?easing@th20@@YAMHMM@Z"
@@ -4332,7 +4332,7 @@ relocations = [
 
 [units.ellipse_polar]
 source = "src/MotionMath.cpp"
-object = "build/core154-canonical/MotionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::ellipse_polar"]
 symbol = "?ellipse_polar@th20@@YAXAAUVector3@1@MMM@Z"
@@ -4345,7 +4345,7 @@ relocations = [
 
 [units.normalize_to_length]
 source = "src/MotionMath.cpp"
-object = "build/core154-canonical/MotionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::normalize_to_length"]
 symbol = "?normalize_to_length@th20@@YAXAAUVector3@1@ABU21@M@Z"
@@ -4760,7 +4760,7 @@ relocations = [
 
 [units.geometry_squared_norm_xy]
 source = "src/GeometryMetrics.cpp"
-object = "build/core154-v2/GeometryMetrics.obj"
+object = "build/gpt61-origin-tangent-canonical/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::squared_norm_xy"]
 symbol = "?squared_norm_xy@geometry@th20@@YAMMM@Z"
@@ -4771,7 +4771,7 @@ relocations = [
 
 [units.geometry_norm_xy]
 source = "src/GeometryMetrics.cpp"
-object = "build/core154-v2/GeometryMetrics.obj"
+object = "build/gpt61-origin-tangent-canonical/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::norm_xy"]
 symbol = "?norm_xy@geometry@th20@@YAMMM@Z"
@@ -4784,7 +4784,7 @@ relocations = [
 
 [units.geometry_squared_distance_xy_scalar]
 source = "src/GeometryMetrics.cpp"
-object = "build/core154-v2/GeometryMetrics.obj"
+object = "build/gpt61-origin-tangent-canonical/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::squared_distance_xy(float,float,float,float)"]
 symbol = "?squared_distance_xy@geometry@th20@@YAMMMMM@Z"
@@ -4795,7 +4795,7 @@ relocations = [
 
 [units.geometry_distance_xy_scalar]
 source = "src/GeometryMetrics.cpp"
-object = "build/core154-v2/GeometryMetrics.obj"
+object = "build/gpt61-origin-tangent-canonical/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::distance_xy(float,float,float,float)"]
 symbol = "?distance_xy@geometry@th20@@YAMMMMM@Z"
@@ -4808,7 +4808,7 @@ relocations = [
 
 [units.geometry_squared_distance_xy_vector]
 source = "src/GeometryMetrics.cpp"
-object = "build/core154-v2/GeometryMetrics.obj"
+object = "build/gpt61-origin-tangent-canonical/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::squared_distance_xy(const Vector3&,const Vector3&)"]
 symbol = "?squared_distance_xy@geometry@th20@@YAMABUVector3@2@0@Z"
@@ -4819,7 +4819,7 @@ relocations = [
 
 [units.geometry_distance_xy_vector]
 source = "src/GeometryMetrics.cpp"
-object = "build/core154-v2/GeometryMetrics.obj"
+object = "build/gpt61-origin-tangent-canonical/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::distance_xy(const Vector3&,const Vector3&)"]
 symbol = "?distance_xy@geometry@th20@@YAMABUVector3@2@0@Z"
@@ -4832,7 +4832,7 @@ relocations = [
 
 [units.geometry_line_parameters]
 source = "src/GeometryMetrics.cpp"
-object = "build/core154-v2/GeometryMetrics.obj"
+object = "build/gpt61-origin-tangent-canonical/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::line_parameters"]
 symbol = "?line_parameters@geometry@th20@@YAHAAM0MMMM@Z"
@@ -4845,7 +4845,7 @@ relocations = [
 
 [units.rotate_xy_array_vector2]
 source = "src/MotionMath.cpp"
-object = "build/core154-canonical/MotionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::rotate_xy_array<Vector2>"]
 symbol = "??$rotate_xy_array@UVector2@th20@@@th20@@YAXPAUVector2@0@PBU10@MI@Z"
@@ -4858,7 +4858,7 @@ relocations = [
 
 [units.rotate_xy_array_vector3]
 source = "src/MotionMath.cpp"
-object = "build/core154-canonical/MotionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::rotate_xy_array<Vector3>"]
 symbol = "??$rotate_xy_array@UVector3@th20@@@th20@@YAXPAUVector3@0@PBU10@MI@Z"
@@ -5897,7 +5897,7 @@ relocations = [
 # EXACT-057: complete ECL tick, whole jump table and shared random angle.
 [units.ecl_runtime_tick]
 source = "src/EclRuntimeTick.cpp"
-object = "build/gpt61-player-state-canonical/EclRuntimeTick.obj"
+object = "build/gpt61-origin-tangent-canonical/EclRuntimeTick.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/Gd", "/sdl"]
 functions = ["th20::EclRuntime::tick"]
 symbol = "?tick@EclRuntime@th20@@QAEHM@Z"
@@ -6861,7 +6861,7 @@ relocations = [
 # EXACT-061: whole Enemy movement and its actual graphics/file/context owners.
 [units.enemy_update_movements]
 source = "src/EnemyMovementUpdate.cpp"
-object = "build/gpt61-player-state-canonical/EnemyMovementUpdate.obj"
+object = "build/gpt61-origin-tangent-canonical/EnemyMovementUpdate.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl"]
 functions = ["th20::EnemyState::update_movements"]
 symbol = "?update_movements@EnemyState@th20@@QAEHXZ"
@@ -7112,7 +7112,7 @@ relocations = [
 
 [units.scalar_absolute]
 source = "src/ScalarMath.cpp"
-object = "build/core141-canonical/ScalarMath.obj"
+object = "build/gpt61-origin-tangent-canonical/ScalarMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::scalar_math::absolute"]
 symbol = "?absolute@scalar_math@th20@@YAMM@Z"
@@ -12342,7 +12342,7 @@ relocations = [
 
 [units.item_spawn_primary]
 source = "src/ItemSpawn.cpp"
-object = "build/gpt61-player-state-canonical/ItemSpawn.obj"
+object = "build/gpt61-origin-tangent-canonical/ItemSpawn.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::ItemInf::spawn"]
 symbol = "?spawn@ItemInf@th20@@QAEPAUItem@2@HABUVector3@2@IMMHIH@Z"
@@ -14770,7 +14770,7 @@ relocations = [
 
 [units.enemy_mesh_owner_dtor]
 source = "src/EnemyMesh.cpp"
-object = "build/gpt61-player-state-canonical/EnemyMesh.obj"
+object = "build/gpt61-origin-tangent-canonical/EnemyMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EnemyMeshOwner::~EnemyMeshOwner"]
 symbol = "??1EnemyMeshOwner@th20@@QAE@XZ"
@@ -14786,7 +14786,7 @@ relocations = [
 
 [units.enemy_mesh_owner_release]
 source = "src/EnemyMesh.cpp"
-object = "build/gpt61-player-state-canonical/EnemyMesh.obj"
+object = "build/gpt61-origin-tangent-canonical/EnemyMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::release_object<EnemyMeshOwner>"]
 symbol = "??$release_object@UEnemyMeshOwner@th20@@@DiagnosticAllocator@th20@@QAEXPAUEnemyMeshOwner@1@@Z"
@@ -14805,7 +14805,7 @@ relocations = [
 
 [units.render_mesh_release]
 source = "src/EnemyMesh.cpp"
-object = "build/gpt61-player-state-canonical/EnemyMesh.obj"
+object = "build/gpt61-origin-tangent-canonical/EnemyMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::DiagnosticAllocator::release_object<RenderMesh>"]
 symbol = "??$release_object@VRenderMesh@th20@@@DiagnosticAllocator@th20@@QAEXPAVRenderMesh@1@@Z"
@@ -14824,7 +14824,7 @@ relocations = [
 
 [units.enemy_mesh_owner_destroy_at]
 source = "src/EnemyMesh.cpp"
-object = "build/gpt61-player-state-canonical/EnemyMesh.obj"
+object = "build/gpt61-origin-tangent-canonical/EnemyMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::destroy_at<th20::EnemyMeshOwner>"]
 symbol = "??$destroy_at@UEnemyMeshOwner@th20@@@std@@YAXQAUEnemyMeshOwner@th20@@@Z"
@@ -14836,7 +14836,7 @@ relocations = [
 
 [units.render_mesh_destroy_at]
 source = "src/EnemyMesh.cpp"
-object = "build/gpt61-player-state-canonical/EnemyMesh.obj"
+object = "build/gpt61-origin-tangent-canonical/EnemyMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["std::destroy_at<th20::RenderMesh>"]
 symbol = "??$destroy_at@VRenderMesh@th20@@@std@@YAXQAVRenderMesh@th20@@@Z"
@@ -14848,7 +14848,7 @@ relocations = [
 
 [units.enemy_mesh_owner_scalar_deleting_destructor]
 source = "src/EnemyMesh.cpp"
-object = "build/gpt61-player-state-canonical/EnemyMesh.obj"
+object = "build/gpt61-origin-tangent-canonical/EnemyMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EnemyMeshOwner::scalar_deleting_destructor"]
 symbol = "??_GEnemyMeshOwner@th20@@QAEPAXI@Z"
@@ -14861,7 +14861,7 @@ relocations = [
 
 [units.render_mesh_scalar_deleting_destructor]
 source = "src/EnemyMesh.cpp"
-object = "build/gpt61-player-state-canonical/EnemyMesh.obj"
+object = "build/gpt61-origin-tangent-canonical/EnemyMesh.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::RenderMesh::scalar_deleting_destructor"]
 symbol = "??_GRenderMesh@th20@@QAEPAXI@Z"
@@ -15166,7 +15166,7 @@ relocations = [
 
 [units.enemy_pattern_drop]
 source = "src/ItemSpawn.cpp"
-object = "build/gpt61-player-state-canonical/ItemSpawn.obj"
+object = "build/gpt61-origin-tangent-canonical/ItemSpawn.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EnemyPattern::drop"]
 symbol = "?drop@EnemyPattern@th20@@QAEXABUVector3@2@_N@Z"
@@ -15756,7 +15756,7 @@ relocations = [
 
 [units.geometry_direction_xy]
 source = "src/GeometryMetrics.cpp"
-object = "build/core154-v2/GeometryMetrics.obj"
+object = "build/gpt61-origin-tangent-canonical/GeometryMetrics.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::geometry::direction_xy"]
 symbol = "?direction_xy@geometry@th20@@YAMABUVector3@2@0@Z"
@@ -16949,7 +16949,7 @@ relocations = [
 # real float position, target direction and original .rdata constant identities.
 [units.player_position_ref]
 source = "src/PlayerDirection.cpp"
-object = "build/gpt61-player-state-canonical/PlayerDirection.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerDirection.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::position_ref"]
 symbol = "?position_ref@Player@th20@@QAEAAUVector3@2@XZ"
@@ -16962,7 +16962,7 @@ relocations = [
 # real float position, target direction and original .rdata constant identities.
 [units.player_direction_to]
 source = "src/PlayerDirection.cpp"
-object = "build/gpt61-player-state-canonical/PlayerDirection.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerDirection.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::direction_to"]
 symbol = "?direction_to@Player@th20@@QAEMABUVector3@2@@Z"
@@ -17605,7 +17605,7 @@ relocations = [
 # CORE/EXACT-242: whole original 471B Bullet command1 velocity/angle update.
 [units.bullet_advance_command1]
 source = "src/BulletCommandVelocity.cpp"
-object = "build/gpt61-player-state-canonical/BulletCommandVelocity.obj"
+object = "build/gpt61-origin-tangent-canonical/BulletCommandVelocity.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Bullet::advance_command1"]
 symbol = "?advance_command1@Bullet@th20@@QAEHXZ"
@@ -17637,7 +17637,7 @@ relocations = [
 # CORE/EXACT-242: whole original 473B Bullet command10 velocity/angle update.
 [units.bullet_advance_command10]
 source = "src/BulletCommandVelocity.cpp"
-object = "build/gpt61-player-state-canonical/BulletCommandVelocity.obj"
+object = "build/gpt61-origin-tangent-canonical/BulletCommandVelocity.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Bullet::advance_command10"]
 symbol = "?advance_command10@Bullet@th20@@QAEHXZ"
@@ -17669,7 +17669,7 @@ relocations = [
 # CORE/EXACT-242: entire 25B native XY-only Bullet velocity magnitude.
 [units.bullet_velocity_magnitude]
 source = "src/BulletVelocityMagnitude.cpp"
-object = "build/gpt61-player-state-canonical/BulletVelocityMagnitude.obj"
+object = "build/gpt61-origin-tangent-canonical/BulletVelocityMagnitude.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::bullet_velocity_magnitude"]
 symbol = "?bullet_velocity_magnitude@th20@@YAMABUVector3@1@@Z"
@@ -17782,7 +17782,7 @@ relocations = [
 # target-velocity interpolation with 21 independently anchored relocations.
 [units.bullet_advance_command7]
 source = "src/BulletCommand7.cpp"
-object = "build/gpt61-player-state-canonical/BulletCommand7.obj"
+object = "build/gpt61-origin-tangent-canonical/BulletCommand7.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Bullet::advance_command7"]
 symbol = "?advance_command7@Bullet@th20@@QAEHXZ"
@@ -17816,7 +17816,7 @@ relocations = [
 # original 189 x86 instructions and 22 exact original native relocations.
 [units.bullet_advance_command8]
 source = "src/BulletCommand8.cpp"
-object = "build/gpt61-player-state-canonical/BulletCommand8.obj"
+object = "build/gpt61-origin-tangent-canonical/BulletCommand8.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Bullet::advance_command8"]
 symbol = "?advance_command8@Bullet@th20@@QAEHXZ"
@@ -18055,7 +18055,7 @@ relocations = []
 # helpers. Native geometry call identities were independently attested.
 [units.bullet_command11_normalize]
 source = "src/BulletCommand11Geometry.cpp"
-object = "build/core256-canonical/BulletCommand11Geometry.obj"
+object = "build/gpt61-origin-tangent-canonical/BulletCommand11Geometry.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::normalize_vector2"]
 symbol = "?normalize_vector2@th20@@YAXAAUVector2@1@ABU21@@Z"
@@ -19312,7 +19312,7 @@ relocations = [
 # Complete 178 native x86 instructions and 18 E8 / 12 PE HIGHLOW independently grounded.
 [units.enemy_pattern_emit_items]
 source = "src/ItemSpawn.cpp"
-object = "build/gpt61-player-state-canonical/ItemSpawn.obj"
+object = "build/gpt61-origin-tangent-canonical/ItemSpawn.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
 functions = ["th20::EnemyPattern::emit_items"]
 symbol = "?emit_items@EnemyPattern@th20@@QAEXABUVector3@2@@Z"
@@ -20490,7 +20490,7 @@ relocations = [
 # original fields, and the natural source uses genuine 4.0f native scalar.
 [units.bullet_emitter_whole_3735]
 source = "src/BulletEmitter.cpp"
-object = "build/gpt61-player-state-canonical/BulletEmitter.obj"
+object = "build/gpt61-origin-tangent-canonical/BulletEmitter.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::BulletController::emit"]
 symbol = "?emit@BulletController@th20@@QAEHABUShotParameters@2@V?$shared_ptr@UEtamaArgInf@@@std@@HHM@Z"
@@ -21743,7 +21743,7 @@ relocations = [
 # helpers; each whole i386 body follows the original source/thiscall graph.
 [units.animation_depth_squared_70]
 source = "src/AnimationDepthMath.cpp"
-object = "build/core838-canonical/AnimationDepthMath.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationDepthMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::animation_depth_squared"]
 symbol = "?animation_depth_squared@th20@@YAMABUVector3@1@@Z"
@@ -21753,7 +21753,7 @@ relocations = []
 
 [units.animation_depth_25]
 source = "src/AnimationDepthMath.cpp"
-object = "build/core838-canonical/AnimationDepthMath.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationDepthMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::animation_depth"]
 symbol = "?animation_depth@th20@@YAMABUVector3@1@@Z"
@@ -21867,7 +21867,7 @@ relocations = [
 # Physical native modes, E8 callee and original empty PE HIGHLOW independently audited.
 [units.animation_projection_length_73]
 source = "src/AnimationProjectionMath.cpp"
-object = "build/core841-canonical/AnimationProjectionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationProjectionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::animation_vector3_length"]
 symbol = "?animation_vector3_length@th20@@YAMABUVector3@1@@Z"
@@ -21879,7 +21879,7 @@ relocations = [
 
 [units.animation_projection_xy_86]
 source = "src/AnimationProjectionMath.cpp"
-object = "build/core841-canonical/AnimationProjectionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationProjectionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationDrawDetailedOwner::transform_projected_xy"]
 symbol = "?transform_projected_xy@AnimationDrawDetailedOwner@th20@@QAEXPAUVector2@2@MMMMMM@Z"
@@ -21891,7 +21891,7 @@ relocations = []
 # Actual 17 physical E8 and 21 original PE HIGHLOW site+target roles attested.
 [units.animation_draw_mode6_setup_1378]
 source = "src/AnimationDrawMode6Setup.cpp"
-object = "build/gpt61-player-state-canonical/AnimationDrawMode6Setup.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationDrawMode6Setup.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationDrawDetailedOwner::prepare_complex_mode6"]
 symbol = "?prepare_complex_mode6@AnimationDrawDetailedOwner@th20@@QAEHPAVAnimation@2@@Z"
@@ -22429,7 +22429,7 @@ relocations = []
 # Original 12 E8 and 16 PE HIGHLOW fields independently fixed and audited.
 [units.animation_shape_rect_1980]
 source = "src/AnimationShapeRect1980.cpp"
-object = "build/core855-canonical/AnimationShapeRect1980.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationShapeRect1980.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationDrawDetailedOwner::draw_rect_439a00"]
 symbol = "?draw_rect_439a00@AnimationDrawDetailedOwner@th20@@QAEHMMMMMIIHH@Z"
@@ -22470,7 +22470,7 @@ relocations = [
 # All original 12 E8 and 17 PE HIGHLOW physical targets attested independently.
 [units.animation_shape_linestrip_2169]
 source = "src/AnimationShapeLineStrip2169.cpp"
-object = "build/core856-canonical/AnimationShapeLineStrip2169.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationShapeLineStrip2169.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationDrawDetailedOwner::draw_shape_43b0e0"]
 symbol = "?draw_shape_43b0e0@AnimationDrawDetailedOwner@th20@@QAEHMMMMMIIHH@Z"
@@ -22512,7 +22512,7 @@ relocations = [
 # Original 11 E8 and 19 PE HIGHLOW exact native target/physical roles.
 [units.animation_shape_triangle_1601]
 source = "src/AnimationShapeTriangle1601.cpp"
-object = "build/core857-canonical/AnimationShapeTriangle1601.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationShapeTriangle1601.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationDrawDetailedOwner::draw_shape_43e2c0"]
 symbol = "?draw_shape_43e2c0@AnimationDrawDetailedOwner@th20@@QAEHMMMMMIIHH@Z"
@@ -22734,7 +22734,7 @@ relocations = [
 # Independently authentic physical 15 E8 +13 PE HIGHLOW site/target roles.
 [units.animation_shape_rotatedring_1001]
 source = "src/AnimationShapeRotatedRing1001.cpp"
-object = "build/gpt61-player-state-canonical/AnimationShapeRotatedRing1001.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationShapeRotatedRing1001.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationDrawDetailedOwner::draw_shape_43c780"]
 symbol = "?draw_shape_43c780@AnimationDrawDetailedOwner@th20@@QAEHMMMMMMHII@Z"
@@ -22775,7 +22775,7 @@ relocations = [
 # Native original 10 E8 and 13 PE HIGHLOW independently proven site/targets.
 [units.animation_shape_twopoint_1116]
 source = "src/AnimationShapeTwoPoint1116.cpp"
-object = "build/core865-canonical/AnimationShapeTwoPoint1116.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationShapeTwoPoint1116.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationDrawDetailedOwner::draw_shape_43cd40"]
 symbol = "?draw_shape_43cd40@AnimationDrawDetailedOwner@th20@@QAEHMMMMIIHH@Z"
@@ -22841,7 +22841,7 @@ relocations = [
 # Original immutable x86 E8 and PE HIGHLOW actual physical site/targets.
 [units.animation_shape_ellipticline_660]
 source = "src/AnimationShapeEllipticLine660.cpp"
-object = "build/gpt61-player-state-canonical/AnimationShapeEllipticLine660.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationShapeEllipticLine660.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationDrawDetailedOwner::draw_shape_43c4e0"]
 symbol = "?draw_shape_43c4e0@AnimationDrawDetailedOwner@th20@@QAEHMMMMMHII@Z"
@@ -22874,7 +22874,7 @@ relocations = [
 # Original immutable x86 E8 and PE HIGHLOW actual physical site/targets.
 [units.animation_shape_ellipticfan_863]
 source = "src/AnimationShapeEllipticFan863.cpp"
-object = "build/gpt61-player-state-canonical/AnimationShapeEllipticFan863.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationShapeEllipticFan863.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::AnimationDrawDetailedOwner::draw_shape_43c180"]
 symbol = "?draw_shape_43c180@AnimationDrawDetailedOwner@th20@@QAEHMMMMMHII@Z"
@@ -24776,7 +24776,7 @@ relocations = [
 # Authentic +0x41 NOP emitted by real lexical scope after Angle ctor.
 [units.animation_corner_rotated_1486]
 source = "src/AnimationCornerRotated1486.cpp"
-object = "build/gpt61-player-state-canonical/AnimationCornerRotated1486.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationCornerRotated1486.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::NativeAnimationCornerProjector::project_rotated_corners_43ef20"]
 symbol = "?project_rotated_corners_43ef20@NativeAnimationCornerProjector@th20@@QAEXPAVAnimation@2@PAUVector3@2@111@Z"
@@ -24944,7 +24944,7 @@ relocations = [
 # CORE/RECON-951: entire original 202B/58-i386 native Vector3 normalize.
 [units.animation_particle_grid_normalize_202]
 source = "src/AnimationParticleGridNormalize202.cpp"
-object = "build/core951-canonical/AnimationParticleGridNormalize202.obj"
+object = "build/gpt61-origin-tangent-canonical/AnimationParticleGridNormalize202.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::normalize_vector3_45cf10"]
 symbol = "?normalize_vector3_45cf10@th20@@YAXAAUVector3@1@ABU21@@Z"
@@ -29550,7 +29550,7 @@ relocations = [
 # CORE/RECON-1142: whole original 846B D3DX Graphics camera matrices.
 [units.graphics_camera_matrix_boss_846]
 source = "src/GraphicsCameraMatrixBoss846.cpp"
-object = "build/core1142-canonical/GraphicsCameraMatrixBoss846.obj"
+object = "build/gpt61-origin-tangent-canonical/GraphicsCameraMatrixBoss846.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::NativeGraphicsModeAction::recompute_current_4da1f0"]
 symbol = "?recompute_current_4da1f0@NativeGraphicsModeAction@th20@@QAEXPAUViewportState@2@PAUNativeViewport@2@@Z"
@@ -29560,7 +29560,7 @@ relocations = [
   { offset = 0xA, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
   { offset = 0x31, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
   { offset = 0x4B, type = "DIR32", symbol = "?native_camera_half_divisor_56c8d0@th20@@3MB", target = 0x0056C8D0 },
-  { offset = 0x5B, type = "REL32", symbol = "?native_sqrt_439850@th20@@YAMM@Z", target = 0x00439850 },
+  { offset = 0x5B, type = "REL32", symbol = "?native_tan_439850@th20@@YAMM@Z", target = 0x00439850 },
   { offset = 0x8D, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
   { offset = 0xB4, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
   { offset = 0xCC, type = "DIR32", symbol = "?native_camera_half_divisor_56c8d0@th20@@3MB", target = 0x0056C8D0 },
@@ -29586,17 +29586,17 @@ relocations = [
   { offset = 0x344, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x005429EE },
 ]
 
-# CORE/RECON-1143: exact 35B sqrt wrapper; origin/author review (NOT game credit).
-[units.graphics_camera_sqrt_adapter_35]
-source = "src/GraphicsCameraSqrtAdapter35.cpp"
-object = "build/core1143-canonical/GraphicsCameraSqrtAdapter35.obj"
+# CORE/RECON-1143: 35B tangent adapter; callee corrected by complete CRT origin evidence.
+[units.graphics_camera_tan_adapter_35]
+source = "src/GraphicsCameraTanAdapter35.cpp"
+object = "build/gpt61-origin-tangent-canonical/GraphicsCameraTanAdapter35.obj"
 profile = ["/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
-functions = ["th20::native_sqrt_439850"]
-symbol = "?native_sqrt_439850@th20@@YAMM@Z"
+functions = ["th20::native_tan_439850"]
+symbol = "?native_tan_439850@th20@@YAMM@Z"
 target_address = 0x00439850
 size = 35
 relocations = [
-  { offset = 0x12, type = "REL32", symbol = "_sqrt", target = 0x00550000 },
+  { offset = 0x12, type = "REL32", symbol = "_tan", target = 0x00550000 },
 ]
 
 # CORE/RECON-1144: native full 884B WindowState frame scheduler Boss.
@@ -30109,12 +30109,12 @@ target_address = 0x00454110
 size = 59
 relocations = []
 
-# CORE/RECON-1163: natural C++ wrappers for the original CRT arcsine/arccosine helpers.
+# CORE/RECON-1163: natural C++ float/double acos and unary atan adapters.
 
 # CORE/RECON-1164: exact independent XY polar outputs used by Animation VM opcode 0x24.
 [units.motion_math_polar_components_4392d0]
 source = "src/MotionMath.cpp"
-object = "build/core154-canonical/MotionMath.obj"
+object = "build/gpt61-origin-tangent-canonical/MotionMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::polar_components"]
 symbol = "?polar_components@th20@@YAXPAM0MM@Z"
@@ -30129,7 +30129,7 @@ relocations = [
 # CORE/RECON-1165: exact VM cdecl fmod adapter at 0x004397F0.
 [units.scalar_math_floating_remainder_4397f0]
 source = "src/ScalarMath.cpp"
-object = "build/core141-canonical/ScalarMath.obj"
+object = "build/gpt61-origin-tangent-canonical/ScalarMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::scalar_math::floating_remainder"]
 symbol = "?floating_remainder@scalar_math@th20@@YAMMM@Z"
@@ -30137,25 +30137,25 @@ target_address = 0x004397F0
 size = 48
 relocations = [{ offset = 0x1F, type = "REL32", symbol = "_fmod", target = 0x0054FFA0 }]
 
-[units.scalar_math_arcsine_35]
-source = "src/ScalarMath.cpp"
-object = "build/core1165-canonical/ScalarMath.obj"
-profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
-functions = ["th20::scalar_math::arcsine"]
-symbol = "?arcsine@scalar_math@th20@@YAMM@Z"
-target_address = 0x00439760
-size = 35
-relocations = [{ offset = 0x12, type = "REL32", symbol = "_asin", target = 0x0054FEB0 }]
-
 [units.scalar_math_arccosine_35]
 source = "src/ScalarMath.cpp"
-object = "build/core1165-canonical/ScalarMath.obj"
+object = "build/gpt61-origin-tangent-canonical/ScalarMath.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
 functions = ["th20::scalar_math::arccosine"]
 symbol = "?arccosine@scalar_math@th20@@YAMM@Z"
+target_address = 0x00439760
+size = 35
+relocations = [{ offset = 0x12, type = "REL32", symbol = "_acos", target = 0x0054FEB0 }]
+
+[units.scalar_math_arctangent_single_35]
+source = "src/ScalarMath.cpp"
+object = "build/gpt61-origin-tangent-canonical/ScalarMath.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS-", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict"]
+functions = ["th20::scalar_math::arctangent_single"]
+symbol = "?arctangent_single@scalar_math@th20@@YAMM@Z"
 target_address = 0x00439790
 size = 35
-relocations = [{ offset = 0x12, type = "REL32", symbol = "_acos", target = 0x0054FF00 }]
+relocations = [{ offset = 0x12, type = "REL32", symbol = "_atan", target = 0x0054FF00 }]
 
 # CORE/RECON-1120: whole original Card timer 60-frame threshold; one real E8.
 [units.card_capture_timeout_35]
@@ -33819,7 +33819,7 @@ relocations = [
 
 [units.player_state_revive_after_bomb]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::revive_after_bomb"]
 symbol = "?revive_after_bomb@Player@th20@@QAEXXZ"
@@ -33832,7 +33832,7 @@ relocations = [
 
 [units.player_state_direction_from]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::direction_from"]
 symbol = "?direction_from@Player@th20@@QAEMABUVector3@2@@Z"
@@ -33850,7 +33850,7 @@ relocations = [
 
 [units.player_state_set_position_xy]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::set_position_xy"]
 symbol = "?set_position_xy@Player@th20@@QAEXMM@Z"
@@ -33866,7 +33866,7 @@ relocations = [
 
 [units.player_state_entity_flag5]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::entity_flag5"]
 symbol = "?entity_flag5@Player@th20@@QBEIXZ"
@@ -33877,7 +33877,7 @@ relocations = [
 
 [units.player_state_motion_scale_value]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::motion_scale_value"]
 symbol = "?motion_scale_value@Player@th20@@QBEMXZ"
@@ -33888,7 +33888,7 @@ relocations = [
 
 [units.player_state_set_extra_motion]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Player::set_extra_motion"]
 symbol = "?set_extra_motion@Player@th20@@QAEXABUVector3@2@@Z"
@@ -33899,7 +33899,7 @@ relocations = [
 
 [units.player_state_flag_19_set]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::GameController::flag_19_set"]
 symbol = "?flag_19_set@GameController@th20@@QBEIXZ"
@@ -33910,7 +33910,7 @@ relocations = [
 
 [units.player_state_replay_pressed_bits]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::InputButtonState::replay_pressed_bits"]
 symbol = "?replay_pressed_bits@InputButtonState@th20@@QBEII@Z"
@@ -33921,7 +33921,7 @@ relocations = [
 
 [units.player_state_consume_power]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerRecord::consume_power"]
 symbol = "?consume_power@PlayerRecord@th20@@QAEHH@Z"
@@ -33932,7 +33932,7 @@ relocations = [
 
 [units.player_state_clamped_field_d4]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerRecord::clamped_field_d4"]
 symbol = "?clamped_field_d4@PlayerRecord@th20@@QAEHXZ"
@@ -33944,7 +33944,7 @@ relocations = [
 
 [units.player_state_set_field_cc_clamped]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::PlayerRecord::set_field_cc_clamped"]
 symbol = "?set_field_cc_clamped@PlayerRecord@th20@@QAEXH@Z"
@@ -33963,7 +33963,7 @@ relocations = [
 
 [units.player_state_angle_to_vector]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Angle::to_vector"]
 symbol = "?to_vector@Angle@th20@@QAEXAAUVector3@2@PBU32@M@Z"
@@ -33976,7 +33976,7 @@ relocations = [
 
 [units.player_state_secondary_color]
 source = "src/PlayerStateNativeAccessors.cpp"
-object = "build/gpt61-player-state-canonical/PlayerStateNativeAccessors.obj"
+object = "build/gpt61-origin-tangent-canonical/PlayerStateNativeAccessors.obj"
 profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:precise", "/sdl", "/EHsc"]
 functions = ["th20::Animation::set_secondary_color"]
 symbol = "?set_secondary_color@Animation@th20@@QAEXI@Z"

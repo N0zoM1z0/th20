@@ -45,7 +45,8 @@ def main():
  assert pe.raw_at(exe,base,sec,0x56E0F4,4)==struct.pack('<f',-1.)
  assert pe.raw_at(exe,base,sec,0x571EA0,4)==struct.pack('<f',10000.)
  assert [i.address-HEAD for i in inst if i.mnemonic=='nop']==[0x33D]
- source,rel=cf.object_function(R/'build/core1142-canonical/GraphicsCameraMatrixBoss846.obj',SYM,SIZE)
+ unit=cf.load_manifest('match-units.toml')['units']['graphics_camera_matrix_boss_846']
+ source,rel=cf.object_function(R/unit['object'],SYM,SIZE)
  assert len(source)==SIZE and len(rel)==27
  assert [r['offset']-1 for r in rel if r['type']=='REL32']==list(E8)
  assert [r['offset'] for r in rel if r['type']=='DIR32']==list(CONST_SITES)
