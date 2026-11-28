@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [CRT character conversion and case-mapping origins](CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md) — nine complete archive contributions; conversion state/results, packed DBCS case mapping and stack/heap buffer cleanup.
 - [Facet virtual methods and SDK lifetime origins](CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md) — eight whole SDK/compiler contributions; atomic this+4 count, pointer-valued decrement, RTTI-linked phases and four/eight-byte deletion.
 - [Locale implementation origins and exception guard cleanup](CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md) — seventeen `_Locimp`/name/global/temporary-locale entries; independent RTTI, 42B SDK cleanup emission and full one-state EH section.
 - [CRT global retirement and SDK locale destructor](CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md) — twelve locale/facet/exit-stack contributions, natural 80B SDK emission and complete 29B handler/36B metadata; all six pending callback origins resolved.

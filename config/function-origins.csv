@@ -5979,14 +5979,14 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00541CAB,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 40B body reviewed as ?_Setgloballocale@locale@std@@CAXPAX@Z; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
 0x00541CD3,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 59B body reviewed as __Deletegloballocale; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
 0x00541D0E,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 45B body reviewed as _tidy_global; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
-0x00541D3B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541DAE,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541EE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541F37,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00541D3B,library,CrtConversion,exclude,high,"docs/CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md; Complete 115B __Getcvt from CRT xwctomb.obj; full ordinary bytes, original control flow, relocation roles and PE imports reviewed."
+0x00541DAE,library,CrtConversion,exclude,high,"docs/CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md; Complete 306B __Mbrtowc from CRT xmbtowc.obj; full ordinary bytes, original control flow, relocation roles and PE imports reviewed."
+0x00541EE0,library,CrtConversion,exclude,high,"docs/CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md; Complete 87B __Utf8_trailing_byte_count from CRT xmbtowc.obj; full ordinary bytes, original control flow, relocation roles and PE imports reviewed."
+0x00541F37,library,CrtConversion,exclude,high,"docs/CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md; Complete 255B ___std_get_cvt@8 from CRT format.obj; full ordinary bytes, original control flow, relocation roles and PE imports reviewed."
 0x00542036,library,CxxRuntime,exclude,high,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT uncaught_exceptions.obj symbol ?uncaught_exceptions@std@@YAHXZ reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.
-0x0054203B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005420A9,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00542195,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0054203B,library,CrtConversion,exclude,high,"docs/CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md; Complete 110B __Getctype from CRT _tolower.obj; full ordinary bytes, original control flow, relocation roles and PE imports reviewed."
+0x005420A9,library,CrtConversion,exclude,high,"docs/CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md; Complete 236B __Tolower from CRT _tolower.obj; full ordinary bytes, original control flow, relocation roles and PE imports reviewed."
+0x00542195,library,CrtConversion,exclude,high,"docs/CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md; Complete 236B __Toupper from CRT _toupper.obj; full ordinary bytes, original control flow, relocation roles and PE imports reviewed."
 0x00542281,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005422CD,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00542300,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6000,8 +6000,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005424B1,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 14B original contribution agrees with CRT xmtx.obj symbol __Mtxunlock, including independently checked relocation roles and full attested instruction coverage."
 0x005424BF,library,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 99B native contribution and full control flow reviewed as ??1_Init_atexit@@QAE@XZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
 0x00542527,library,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 47B native contribution and full control flow reviewed as ?_Atexit@@YAXP6AXXZ@Z; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
-0x00542556,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054256F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00542556,library,CrtConversion,exclude,high,"docs/CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md; Complete 25B ??1?$__crt_scoped_stack_ptr@_W@@QAE@XZ from CRT StlLCMapStringA.obj; full ordinary bytes, original control flow, relocation roles and PE imports reviewed."
+0x0054256F,library,CrtConversion,exclude,high,"docs/CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md; Complete 464B ___crtLCMapStringA from CRT StlLCMapStringA.obj; full ordinary bytes, original control flow, relocation roles and PE imports reviewed."
 0x0054273F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054275D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054278D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

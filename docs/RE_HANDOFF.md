@@ -11,8 +11,9 @@ bodies, x86 integer helpers, startup policy/TLS leaves and lock ownership. See t
 [startup defaults](CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md),
 [lock ownership](CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md),
 [global retirement](CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md),
-[locale implementation](CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md), and
-[facet virtual lifetime](CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md). The combined
+[locale implementation](CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md),
+[facet virtual lifetime](CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md), and
+[character conversion](CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md). The combined
 integer divide/remainder helpers return quotient in EDX:EAX and remainder in
 EBX:ECX; preserve that compiler-helper ABI in later consumers.
 This checkpoint changes no canonical native inputs and has **zero affected exact
@@ -103,10 +104,16 @@ four/eight-byte deleting entries; retain `Facet.obj` and its receipt beside the
 other private SDK probes. Original vtable/RTTI records distinguish the classes
 and shared reference methods. No canonical unit or source owner was added.
 
-Next review the remaining conversion helpers beginning at `0x00541D3B`, using
-independent archive symbols and complete original control flow. Reuse the locale
-lock, temporary-state and SDK cleanup bindings. Generate current counts from the
-ledgers.
+Nine character-conversion/case-mapping entries now have reviewed library origins.
+Complete archive bodies and original instruction coverage agree for 1,834 bytes.
+`0x00541F37` is the explicit-code-page `__std_get_cvt`, and the 25-byte mapping
+cleanup at `0x00542556` is a scoped-buffer destructor. `_Mbrtowc` ignores its
+state parameter. Preserve the observed lead-byte range endpoint and retained
+length returns in later source work; the focused note records those branches.
+
+Next review the adjoining `ios_base` lifecycle group beginning at `0x00542281`,
+using independent archive symbols and complete original control flow. Reuse the
+locale, lock and retirement bindings. Generate current counts from the ledgers.
 
 The following native frontiers remain available after review:
 
