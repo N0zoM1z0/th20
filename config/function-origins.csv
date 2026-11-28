@@ -6799,11 +6799,15 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0055F596,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055F5B0,library,CrtHeap,exclude,high,"docs/CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md; Complete 109B __recalloc_base body reviewed in seven whole SDK code contributions, including all owned INT3 alignment, original branches, state and import/callee roles."
 0x0055F630,library,CrtHeap,exclude,high,"docs/CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md; Complete 11B __recalloc body reviewed in seven whole SDK code contributions, including all owned INT3 alignment, original branches, state and import/callee roles."
-0x0055F686,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055F6EE,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055F720,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055F730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055F7D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0055F640,library,CrtHeapLifetime,exclude,high,"docs/CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md; Complete 6B __get_heap_handle reviewed through four whole SDK code contributions, full 128B initializer table, original branches, imports and shared heap roles."
+0x0055F650,library,CrtHeapLifetime,exclude,high,"docs/CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md; Complete 17B ___acrt_initialize_heap reviewed through four whole SDK code contributions, full 128B initializer table, original branches, imports and shared heap roles."
+0x0055F670,library,CrtHeapLifetime,exclude,high,"docs/CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md; Complete 10B ___acrt_uninitialize_heap reviewed through four whole SDK code contributions, full 128B initializer table, original branches, imports and shared heap roles."
+0x0055F680,library,CrtHeapLifetime,exclude,high,"docs/CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md; Complete 6B ___acrt_getheap reviewed through four whole SDK code contributions, full 128B initializer table, original branches, imports and shared heap roles."
+0x0055F686,library,CrtHeapLifetime,exclude,high,"docs/CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md; Complete 104B ___acrt_execute_initializers reviewed through four whole SDK code contributions, full 128B initializer table, original branches, imports and shared heap roles."
+0x0055F6EE,library,CrtHeapLifetime,exclude,high,"docs/CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md; Complete 49B ___acrt_execute_uninitializers reviewed through four whole SDK code contributions, full 128B initializer table, original branches, imports and shared heap roles."
+0x0055F720,library,CrtHeapLifetime,exclude,high,"docs/CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md; Complete 11B __expand reviewed through four whole SDK code contributions, full 128B initializer table, original branches, imports and shared heap roles."
+0x0055F730,library,CrtHeapLifetime,exclude,high,"docs/CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md; Complete 151B __expand_base reviewed through four whole SDK code contributions, full 128B initializer table, original branches, imports and shared heap roles."
+0x0055F7D0,library,CrtHeapLifetime,exclude,high,"docs/CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md; Complete 62B ?is_contraction_possible@@YA_NI@Z reviewed through four whole SDK code contributions, full 128B initializer table, original branches, imports and shared heap roles."
 0x0055F810,library,CrtHeap,exclude,high,"docs/CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md; Complete 51B __msize_base body reviewed in seven whole SDK code contributions, including all owned INT3 alignment, original branches, state and import/callee roles."
 0x0055F850,library,CrtHeap,exclude,high,"docs/CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md; Complete 11B __msize body reviewed in seven whole SDK code contributions, including all owned INT3 alignment, original branches, state and import/callee roles."
 0x0055F860,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

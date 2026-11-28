@@ -5,10 +5,10 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [heap bases, aligned owners and new-mode state](CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md).
-Twenty-five entries cover seven full code contributions, the complete shared
-aligned owner, all original INT3 alignment, retry/overflow paths and new-mode
-state. This classification-only checkpoint changes no native graph;
+review covers [heap lifetime, initializer rollback and in-place resize](CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md).
+Nine entries include four recovered heap-handle heads, paired startup records,
+complete initializer executors and the LFH-aware failed-contraction path.
+This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
 Read [AGENTS.md](../AGENTS.md), then the focused notes for the selected owner.
@@ -152,9 +152,14 @@ sixteen public/internal aligned allocation entries and new-mode state are now
 reviewed. Preserve `heap/` with seven full code sections: 5,463B of instructions
 and all 220 INT3 bytes, full import/callee roles and the zero-filled new-mode
 cell. The complete 5,124B align section resolves duplicate byte shapes through
-real layout and original allocator-facing calls. Next inspect heap-handle
-initialization and the `_expand` family at `0x0055F720`, including the separate
-base owner and in-place failure behavior. Reuse established heap/import bindings.
+real layout and original allocator-facing calls. Heap lifetime, initializer
+execution/rollback and the complete `_expand` family are now reviewed in
+`heap-control/`: four code contributions, 45 INT3 bytes and the full 128B paired
+initializer table at `0x00599410`. Shutdown clears the CRT handle rather than
+destroying the process heap; failed LFH contraction can return the original
+block successfully. Next follow that table and the original calls to the two
+executors into the root UCRT initialization/termination owner, using the
+retained `initialization.obj` and installed source. Reuse heap/import bindings.
 Use independent archive symbols and complete original control flow, including
 nonreturning paths and owned EH. Generate current counts from the ledgers.
 

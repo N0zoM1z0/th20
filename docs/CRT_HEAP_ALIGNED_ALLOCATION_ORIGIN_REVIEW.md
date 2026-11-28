@@ -125,7 +125,8 @@ the new-handler protocol; it does not replace that separately owned callback.
 
 Other recorded external roles include `_expand` at `0x0055F720`, `memmove` at
 `0x00543E20` and `memset` at `0x00544760`. Their bodies remain separate owners.
-Heap-handle initialization and the `_expand` family are useful next scopes.
+Heap-handle initialization and the `_expand` family are covered by the subsequent
+[lifetime and in-place resize review](CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md).
 
 ## Evidence and affected scope
 
