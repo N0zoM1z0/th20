@@ -5,7 +5,7 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [random-device and condition-broadcast leaves](CRT_RANDOM_CONDITION_LEAF_ORIGIN_REVIEW.md).
+review covers [allocation and the corrected aligned-new boundary](CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md).
 This checkpoint changes no canonical native inputs and has **zero affected exact
 replay units**; existing canonical products retain their captured hashes.
 
@@ -77,18 +77,18 @@ probes/receipts in `build/gpt61-origin-locale/`: `Locale.obj` emits the original
 80-byte destructor, `Yarn.obj` the 42-byte cleanup, and `Facet.obj` eight complete
 virtual/lifetime contributions. Reuse those results for unchanged inputs.
 
-The latest Win32 owner adds the missing 52-byte initializer at `0x005423F7`
-and classifies the 80-byte time wrapper at `0x0054242B`. The original startup
-pointer is at `0x0056C424`. Its five alignment bytes and existing 29-byte handler
-at `0x00567600` are retained; the handler is shared with the exit controller.
-The 36-byte FuncInfo at `0x005A91B8` is also shared with `ios_base::_Tidy`'s
-separate handler at `0x005679A0`. Avoid duplicate physical-head credit.
+The allocation review resolves the false 3,046-byte span at `0x00542E42`:
+the full aligned-new parent is 52 bytes, and its shared 28-byte bad-array throw
+helper at `0x00543A0C` is now separately inventoried. Both allocation parents'
+failure edges, two throw-helper INT3 bytes and all ten shared type records are
+retained. One natural pinned-header probe emits the original 36-byte bad-array
+default constructor; preserve `build/gpt61-origin-allocation/BadArray.obj`, its
+receipt and `.analysis/origin-boundary/allocation/` alongside the earlier probes.
 
-The random-device and condition-broadcast leaves at `0x005423C1`/`0x005423E3`
-are reviewed, including the one-byte alignment and PE-bound broadcast identity.
-Next review the allocation entries beginning at `0x0054273F`. Use independent archive
-symbols and complete original control flow, including nonreturning paths and
-owned EH. Generate current counts from the ledgers.
+Next review the remaining allocation protocol entries at `0x00552860`,
+`0x0054A550` and `0x00542E76`. Reuse established new/delete/failure bindings.
+Use independent archive symbols and complete original control flow, including
+nonreturning paths and owned EH. Generate current counts from the ledgers.
 
 The following native frontiers remain available after review:
 
