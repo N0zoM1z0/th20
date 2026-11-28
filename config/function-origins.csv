@@ -2335,7 +2335,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004845F0,library,EnemyShotAllocation,exclude,high,"EXACT-064: Native RTTI establishes global EtamaArgInf/DebugAllocator. Real slot-1 guarded scalar allocation/release, metadata copy and five std-associated control/factory bodies; eight complete functions /1131 instruction+10 alignment bytes strictly replay. Full generated RTTI, vtable, EH and direct owned support replay without duplicate credit. Frozen-source461units/87objects/86547disjointbytes. Owned locking, recursive acquisition, allocator-selected isolated copy, move and strong/weak lifetime tests pass. Copy factory/control forwarding, whole queues, full Enemy dispatcher and whole-game linkage/runtime remain pending. See docs/EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md. Original std RTTI, installed headers and actual control/factory ABI independently establish library association; no authored credit."
 0x00484670,library,EnemyShotAllocation,exclude,high,"EXACT-064: Native RTTI establishes global EtamaArgInf/DebugAllocator. Real slot-1 guarded scalar allocation/release, metadata copy and five std-associated control/factory bodies; eight complete functions /1131 instruction+10 alignment bytes strictly replay. Full generated RTTI, vtable, EH and direct owned support replay without duplicate credit. Frozen-source461units/87objects/86547disjointbytes. Owned locking, recursive acquisition, allocator-selected isolated copy, move and strong/weak lifetime tests pass. Copy factory/control forwarding, whole queues, full Enemy dispatcher and whole-game linkage/runtime remain pending. See docs/EXACT_SHOT_ALLOCATION_RECONSTRUCTION.md. Original std RTTI, installed headers and actual control/factory ABI independently establish library association; no authored credit."
 0x004846E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00484700,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00484700,library,CrtFacet,exclude,high,"docs/CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md; Complete 20B ?_Incref@facet@locale@std@@UAEXXZ is emitted naturally by pinned SDK headers; full body/relocations, original vtable/RTTI and constructor/destructor chains reviewed."
 0x00484720,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00484750,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00484790,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4491,14 +4491,14 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004F49C0,authored,Player,authored,medium,"CORE/ORIGIN-555; docs/ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md; full immutable original PE x86 E8 and real PE HIGHLOW / 249 original call+absolute fields, original source-specific MSVC 14 real objects 122/122 strict. High confidence if real original gameplay caller; medium for absent E8 or anonymous constructor wrapper; whole original physical source present."
 0x004F4B80,authored,Player,authored,high,"CORE/ORIGIN-555; docs/ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md; full immutable original PE x86 E8 and real PE HIGHLOW / 249 original call+absolute fields, original source-specific MSVC 14 real objects 122/122 strict. High confidence if real original gameplay caller; medium for absent E8 or anonymous constructor wrapper; whole original physical source present."
 0x004F4CB0,authored,Player,authored,medium,"CORE/ORIGIN-555; docs/ECL_BULLET_ANIMATION_6836_EXACT_ORIGIN_AUDIT.md; full immutable original PE x86 E8 and real PE HIGHLOW / 249 original call+absolute fields, original source-specific MSVC 14 real objects 122/122 strict. High confidence if real original gameplay caller; medium for absent E8 or anonymous constructor wrapper; whole original physical source present."
-0x004F4E50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004F4E50,compiler,CrtFacet,exclude,high,"docs/CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md; Complete 23B ??0_Facet_base@std@@QAE@XZ is emitted naturally by pinned SDK headers; full body/relocations, original vtable/RTTI and constructor/destructor chains reviewed."
 0x004F4E70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F4EC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F4EF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F4FD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F5020,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F5050,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004F5080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004F5080,library,CrtFacet,exclude,high,"docs/CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md; Complete 42B ??0facet@locale@std@@IAE@I@Z is emitted naturally by pinned SDK headers; full body/relocations, original vtable/RTTI and constructor/destructor chains reviewed."
 0x004F50B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F50E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F5110,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4511,10 +4511,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004F5290,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F52D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F5320,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004F54F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004F54F0,library,CrtFacet,exclude,high,"docs/CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md; Complete 20B ??1_Facet_base@std@@UAE@XZ is emitted naturally by pinned SDK headers; full body/relocations, original vtable/RTTI and constructor/destructor chains reviewed."
 0x004F5510,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F5540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004F55E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004F55E0,library,CrtFacet,exclude,high,"docs/CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md; Complete 29B ??1facet@locale@std@@MAE@XZ is emitted naturally by pinned SDK headers; full body/relocations, original vtable/RTTI and constructor/destructor chains reviewed."
 0x004F5600,library,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 80B native contribution and full control flow reviewed as ??1locale@std@@QAE@XZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
 0x004F5650,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F5690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4549,8 +4549,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004F70F0,authored,IntPoint,authored,high,CORE/EXACT-410; docs/INT_POINT_OPTION_MATH_252_EXACT_RECONSTRUCTION.md; complete custom TH20 IntPoint geometry called by original PlayerOption frame code with exact native constructor targets
 0x004F7140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F7170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004F71B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004F71E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004F71B0,compiler,CrtFacet,exclude,high,"docs/CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md; Complete 46B ??_G_Facet_base@std@@UAEPAXI@Z is emitted naturally by pinned SDK headers; full body/relocations, original vtable/RTTI and constructor/destructor chains reviewed."
+0x004F71E0,compiler,CrtFacet,exclude,high,"docs/CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md; Complete 46B ??_Gfacet@locale@std@@MAEPAXI@Z is emitted naturally by pinned SDK headers; full body/relocations, original vtable/RTTI and constructor/destructor chains reviewed."
 0x004F7210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F7430,authored,Player,authored,high,"docs/PLAYER_STATE4043_NATIVE_FRONTIER.md; Player-specific state/input/death/item protocol, ECX layout and independently exact Player callees"
 0x004F8420,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4581,7 +4581,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004FB9A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FB9C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FBA80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004FBD80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004FBD80,library,CrtFacet,exclude,high,"docs/CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md; Complete 34B ?_Decref@facet@locale@std@@UAEPAV_Facet_base@3@XZ is emitted naturally by pinned SDK headers; full body/relocations, original vtable/RTTI and constructor/destructor chains reviewed."
 0x004FBDB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FBE30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FBEB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

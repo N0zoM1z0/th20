@@ -10,8 +10,9 @@ bodies, x86 integer helpers, startup policy/TLS leaves and lock ownership. See t
 [integer ABI evidence](CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md),
 [startup defaults](CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md),
 [lock ownership](CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md),
-[global retirement](CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md), and
-[locale implementation](CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md). The combined
+[global retirement](CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md),
+[locale implementation](CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md), and
+[facet virtual lifetime](CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md). The combined
 integer divide/remainder helpers return quotient in EDX:EAX and remainder in
 EBX:ECX; preserve that compiler-helper ABI in later consumers.
 This checkpoint changes no canonical native inputs and has **zero affected exact
@@ -96,12 +97,16 @@ handler and 44-byte EH section. A separate pinned SDK-header probe emits the
 original 42-byte `_Yarn<char>::_Tidy`; its private object/receipt are retained
 beside the locale probe. Source-present and canonical exact credit are unchanged.
 
-Next review the remaining facet virtual methods bound by the observed `_Locimp`
-vtable: `0x00484700` and `0x004FBD80`, plus the `_Facet_base` deleting entry at
-`0x004F71B0`. The original RTTI, source declarations and table slots are captured
-in the locale note/session. Other pending conversion helpers begin at
-`0x00541D3B`; use independent archive symbols and full native control flow.
-Generate current counts from the ledgers.
+The facet virtual methods and their base/facet lifetime entries are now reviewed.
+The one pinned-header probe emits all eight complete bodies, including the
+four/eight-byte deleting entries; retain `Facet.obj` and its receipt beside the
+other private SDK probes. Original vtable/RTTI records distinguish the classes
+and shared reference methods. No canonical unit or source owner was added.
+
+Next review the remaining conversion helpers beginning at `0x00541D3B`, using
+independent archive symbols and complete original control flow. Reuse the locale
+lock, temporary-state and SDK cleanup bindings. Generate current counts from the
+ledgers.
 
 The following native frontiers remain available after review:
 
