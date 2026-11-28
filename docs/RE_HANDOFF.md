@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [VCRT type comparison and member-call bridges](CRT_TYPE_COMPARISON_MEMBER_BRIDGES_REVIEW.md).
-Five pending origins retain five whole contributions: 137B instructions and
-three final INT3, with one independently identified comparison call and no
-owned data/EH tables. Existing extents remain unchanged. Decorated-name
-comparison skips its prefix and returns -1/0/1; equality returns bool in AL.
-The member bridges retain stdcall/thiscall stack cleanup and source
-`guard(ignore)` behavior. getESTypes returns the raw FuncInfo+0x1C pointer.
+review covers [FrameHandler3 dispatch and type matching](CRT_FRAME_DISPATCH_TYPE_MATCH_REVIEW.md).
+Three pending origins retain 409 contiguous instruction bytes and all six
+relocation roles, without alignment or owned metadata. Existing extents remain
+unchanged. Ellipsis and bad_alloc compatibility bypass later type qualifiers;
+the dispatcher preserves /EHs, unwind, search and forward-handler branches.
+Only one of sixteen short wrapper shapes calls the actual dispatcher; no
+TypeMatch wrapper candidate calls the whole type-match provider.
 Earlier notes retain exception lifetime, validation and SEH4 evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
@@ -98,11 +98,12 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/type-info/`: five whole
-type-comparison/EH helpers, full frame/std_type_info members and original
-ledger rows. Thread startup/SEH recovery, VCRT API/cache and startup/PTD
-protocols remain in their focused preceding notes. The verifier and
-termination query remain pending.
+The current proof is in `.analysis/origin-boundary/frame-dispatch/`, reusing
+the complete frame member and attested listings in `type-info/`. Full unique
+callee signatures identify FindHandler and FrameUnwindToEmptyState, whose
+own protocol/relocation review remains pending. Earlier thread, VCRT API/cache
+and startup/PTD protocols remain in focused notes. The verifier and termination
+query remain pending.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -118,14 +119,17 @@ code for that reporter without a new retained caller or string reference.
 
 Continue with a bounded unresolved CRT owner, using archive members and
 actual callers before relying on a familiar Ghidra name. The retained
-frame.obj locates TypeMatchHelper at `0x00547033` (142B) and the internal
-FrameHandler3 at `0x005470C1` (258B). Resolve the nine-byte wrapper's real
-callee before assigning `0x005471C3`; its ordinary shape has sixteen matches.
+frame.obj locates FrameUnwindToEmptyState at `0x0054747F` (24B), the complete
+238B FrameUnwindToState contribution at `0x00547497`, and ExFilterRethrow at
+`0x00547435` (74B). Review the full SEH table, exceptional partitions and
+existing overlapping `0x0054756B` candidate together. IsInExceptionSpec at
+`0x00547585` is a separate 154B complete section calling the now-reviewed
+TypeMatchHelper. FindHandler at `0x00546B5A` remains a larger 931B owner.
 Nearby `0x005471CC`/`0x005471E7` have bad_exception constructor shapes whose
 full vtable/string ownership remains pending. The default constructor also
-has an ordinary match at `0x00540D24`; do not merge the physical bodies or
-credit either from shape alone. std type-info name/hash/list-cleanup have
-no complete match in the current member search.
+has an ordinary match at `0x00540D24`; retain separate physical bodies.
+std type-info name/hash/list-cleanup have no complete match in the current
+member search.
 
 Unlocated VCRT thread/critical-cleanup wrappers, translator setters and
 ReadNoFence lookalikes at `0x0040B2A0` remain unassigned. The similarly named
