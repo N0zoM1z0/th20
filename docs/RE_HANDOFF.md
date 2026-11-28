@@ -12,8 +12,9 @@ bodies, x86 integer helpers, startup policy/TLS leaves and lock ownership. See t
 [lock ownership](CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md),
 [global retirement](CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md),
 [locale implementation](CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md),
-[facet virtual lifetime](CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md), and
-[character conversion](CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md). The combined
+[facet virtual lifetime](CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md),
+[character conversion](CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md), and
+[ios_base lifetime](CRT_IOS_BASE_LIFETIME_ORIGIN_BOUNDARY_REVIEW.md). The combined
 integer divide/remainder helpers return quotient in EDX:EAX and remainder in
 EBX:ECX; preserve that compiler-helper ABI in later consumers.
 This checkpoint changes no canonical native inputs and has **zero affected exact
@@ -111,9 +112,15 @@ cleanup at `0x00542556` is a scoped-buffer destructor. `_Mbrtowc` ignores its
 state parameter. Preserve the observed lead-byte range endpoint and retained
 length returns in later source work; the focused note records those branches.
 
-Next review the adjoining `ios_base` lifecycle group beginning at `0x00542281`,
-using independent archive symbols and complete original control flow. Reuse the
-locale, lock and retirement bindings. Generate current counts from the ledgers.
+The four `ios_base` lifecycle methods are now reviewed, including `_Tidy`'s
+five-byte alignment, recovered 29-byte handler at `0x005679A0` and full shared
+36-byte EH record at `0x005A91B8`. Its callback and sparse-value chains retain
+their 12/16-byte deletion sizes. No native input or canonical unit changed.
+
+Next review the adjoining thread/runtime entries beginning at `0x005423C1`,
+including the unowned initializer at `0x005423F7`, using independent archive
+symbols, original startup references and complete owned EH. Generate current
+counts from the ledgers.
 
 The following native frontiers remain available after review:
 

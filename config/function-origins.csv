@@ -5987,10 +5987,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0054203B,library,CrtConversion,exclude,high,"docs/CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md; Complete 110B __Getctype from CRT _tolower.obj; full ordinary bytes, original control flow, relocation roles and PE imports reviewed."
 0x005420A9,library,CrtConversion,exclude,high,"docs/CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md; Complete 236B __Tolower from CRT _tolower.obj; full ordinary bytes, original control flow, relocation roles and PE imports reviewed."
 0x00542195,library,CrtConversion,exclude,high,"docs/CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md; Complete 236B __Toupper from CRT _toupper.obj; full ordinary bytes, original control flow, relocation roles and PE imports reviewed."
-0x00542281,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005422CD,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00542300,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00542340,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00542281,library,CrtIosLifetime,exclude,high,docs/CRT_IOS_BASE_LIFETIME_ORIGIN_BOUNDARY_REVIEW.md; Complete 76B ?_Addstd@ios_base@std@@SAXPAV12@@Z and owned alignment/EH reviewed against full CRT ios.obj contribution and original instructions/relocation roles.
+0x005422CD,library,CrtIosLifetime,exclude,high,docs/CRT_IOS_BASE_LIFETIME_ORIGIN_BOUNDARY_REVIEW.md; Complete 51B ?_Callfns@ios_base@std@@AAEXW4event@12@@Z and owned alignment/EH reviewed against full CRT ios.obj contribution and original instructions/relocation roles.
+0x00542300,library,CrtIosLifetime,exclude,high,docs/CRT_IOS_BASE_LIFETIME_ORIGIN_BOUNDARY_REVIEW.md; Complete 64B ?_Ios_base_dtor@ios_base@std@@CAXPAV12@@Z and owned alignment/EH reviewed against full CRT ios.obj contribution and original instructions/relocation roles.
+0x00542340,library,CrtIosLifetime,exclude,high,docs/CRT_IOS_BASE_LIFETIME_ORIGIN_BOUNDARY_REVIEW.md; Complete 124B ?_Tidy@ios_base@std@@AAEXXZ and owned alignment/EH reviewed against full CRT ios.obj contribution and original instructions/relocation roles.
 0x005423C1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005423E3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054242B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6927,6 +6927,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0056746F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00567600,compiler,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 29B native contribution and full control flow reviewed as __ehhandler$??1_Init_atexit@@QAE@XZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
 0x00567750,compiler,CxxRuntime,exclude,high,docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md; complete queue constructor/guard compiler EH ownership
+0x005679A0,compiler,CrtIosLifetime,exclude,high,docs/CRT_IOS_BASE_LIFETIME_ORIGIN_BOUNDARY_REVIEW.md; Complete 29B __ehhandler$?_Tidy@ios_base@std@@AAEXXZ and owned alignment/EH reviewed against full CRT ios.obj contribution and original instructions/relocation roles.
 0x00567CB0,compiler,CxxRuntime,exclude,high,docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md; complete queue constructor/guard compiler EH ownership
 0x00567CBD,compiler,CxxRuntime,exclude,high,docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md; complete queue constructor/guard compiler EH ownership
 0x00567CE0,compiler,CxxRuntime,exclude,high,"docs/GLYPH_OFFSET_PMR_FIVE_PARENTS_NATIVE_FRONTIER.md; Complete 13B contribution strictly replays as glyph_growth_eh_cleanup_13, including all relocation fields. Growth EH handler, padded cleanup and full 44B state metadata independently checked. No authored-game credit."
