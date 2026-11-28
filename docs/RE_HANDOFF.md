@@ -5,12 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [fclose cleanup and exceptional unlock](CRT_STDIO_FCLOSE_ORIGIN_REVIEW.md):
-four complete contributions, 400B/164 instructions, sixteen REL32/two DIR32
-roles and a full 28B scope table. The missing six-byte restore completes the
-151B locked owner; all five existing extents remain unchanged. Flush/close
-error precedence, conditional name release and atomic final stream reset are
-retained. Callee evidence distinguishes the same-shaped public wrappers.
+review covers [descriptor close and exceptional unlock](CRT_LOWIO_CLOSE_ORIGIN_REVIEW.md):
+three complete contributions, 468B/171 instructions, twelve REL32/nine DIR32
+roles and a full 28B scope table. The missing three-byte restore completes the
+145B guarded owner; all four existing extents remain unchanged. Distinct
+validation/recheck errors, stdout/stderr sharing and unconditional reset before
+saved-error mapping are retained. False public wrappers are rejected by their
+actual callee roles.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,13 +97,25 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The latest proof is in `.analysis/origin-boundary/stdio-fclose/`: the complete
+The latest proof is in `.analysis/origin-boundary/lowio-close/`: three complete
+close contributions, CodeView, attested listing/references, full scope and
+recovered three-byte restore. close.obj/provenance stay in `stdio-fclose/`.
+The 106B standalone close_os_handle helper has no whole ordinary-byte location;
+both 48B public close signatures instead hit fclose and fail their callee role.
+Do not add entries for those source-only candidates.
+
+Next inspect the 97B ASCII comparison candidate at `0x005669C0` using its
+complete SDK contribution and actual caller/callee roles. The retained
+stream.obj allocation owner (105B) and find-unused helper (194B) have no whole
+ordinary-byte locations; their negative scans are in
+`stdio-fclose/allocation-locations.json`. Do not repeat those scans without
+new caller or compiler evidence.
+
+`stdio-fclose/` retains the complete
 fclose/reset chain, recovered six-byte restore, full scope, CodeView and
 same-shaped public-wrapper rejection. It reuses fclose.obj in `stdio-closeall/`;
-the new stream.obj supplies the full 59B reset. close.obj independently locates
-the 163B `_close_internal` at `0x005664AE` and establishes its ABI only.
-Review that lowio close protocol next, including its guarded lock, validation,
-shared stdout/stderr handle policy and complete cleanup/metadata ownership.
+the new stream.obj supplies the full 59B reset. Its 163B `_close_internal`
+provider is now fully reviewed in `lowio-close/`.
 
 `lowio-seek64/` retains both complete
 owners, CodeView, attested listing and the rejected locked-wrapper call role.

@@ -97,10 +97,10 @@ Private `.analysis/origin-boundary/stdio-fclose/` retains complete comparisons,
 attested listings, CodeView/wrapper layout, supplemental decode and the scope
 search. It reuses fclose.obj and full locations in `stdio-closeall/`, plus
 reviewed flush/free_buffer, fileno, allocation, lock, SEH4 and cached-host roles.
-Its new stream.obj supplies the full reset helper. close.obj independently
-identifies the complete 163B `_close_internal` at `0x005664AE` and its ABI;
-that provider's own protocol/metadata review remains pending. Source is
-`ucrt/stdio/{fclose,stream}.cpp` and the stdio/PTD propagation headers.
+Its new stream.obj supplies the full reset helper. The 163B `_close_internal`
+at `0x005664AE` now has its
+[complete descriptor/handle/error/EH review](CRT_LOWIO_CLOSE_ORIGIN_REVIEW.md).
+Source is `ucrt/stdio/{fclose,stream}.cpp` and the stdio/PTD propagation headers.
 
 Only classification, evidence, handoff and generated progress change.
 All 2,151 protected hashes remain unchanged. Exact replay scope is **zero
