@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [VCRuntime catch-object construction](CRT_CATCH_OBJECT_CONSTRUCTION_REVIEW.md) — two pending origins plus six recovered entries; complete 472B instructions/two INT3 and 60B SEH/callback state, COM+/WinRT paths, copy contracts and virtual-base constructor argument.
 - [VCRuntime frame unwinding, state and rethrow filters](CRT_FRAME_UNWIND_STATE_REVIEW.md) — eight pending origins plus five recovered entries; whole 607B instructions/two INT3 and 40B SEH, reconciled finally overlap, signed byte-state reads/full writes and complete NLG call-frame protocol.
 - [VCRuntime FrameHandler3 dispatch and type matching](CRT_FRAME_DISPATCH_TYPE_MATCH_REVIEW.md) — three whole 409B contributions, six relocation roles; early ellipsis/bad_alloc success, unwind/search/forward-compatibility gates and fifteen rejected wrapper callees.
 - [VCRuntime type comparison and member-call bridges](CRT_TYPE_COMPARISON_MEMBER_BRIDGES_REVIEW.md) — five whole 137B contributions and three INT3; decorated-name comparison, AL equality return, guard-ignored thiscall bridges and raw exception-specification pointer.
