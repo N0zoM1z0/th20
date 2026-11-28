@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [VCRT foreign-exception search](CRT_FOREIGN_EXCEPTION_SEARCH_REVIEW.md).
-One pending origin retains the whole 310B contribution: 309 instruction bytes
-and final INT3, with its existing instruction extent unchanged. Breakpoints
-return before PTD access. Managed exceptions skip translation but still enter
-ellipsis search; only a try's last unflagged nonstandard ellipsis is eligible.
-Literal/encoded-null translator exclusions retain the real EncodePointer
-import, and a returned catch continues the next try after rethrow.
+review covers [VCRT throw records and unexpected rethrow](CRT_THROW_UNEXPECTED_EH_REVIEW.md).
+Two pending origins and three recovered entries retain 198B instructions,
+six INT3 and the complete 88B C++ EH metadata. CallUnexpected's whole owner
+is partitioned into primary, catch/rethrow and shared abort. Full metadata
+independently identifies its compiler handler among thirty lookalikes.
+The throw owner preserves WinRT PrepareThrow, pure magic and the real x86
+three-parameter RaiseException protocol, including its original RET 8 tail.
 Earlier notes retain exception lifetime, validation and SEH4 evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
@@ -98,11 +98,12 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/foreign-exception/`,
-reusing the complete frame member and attested foreign listing in `type-info/`.
-All 111 instructions and provider/import roles are covered. Catch lifetime,
-control transfer, construction, unwind/state and dispatch protocols remain
-in focused notes. The larger FindHandler owner still needs complete review.
+The current proof is in `.analysis/origin-boundary/throw-unexpected/`,
+reusing frame.obj in `type-info/`. It retains the complete throw member,
+bounded attested listings, all EH-candidate negatives, full metadata and
+original rows. Earlier foreign search, catch lifetime/control transfer,
+construction, unwind/state and dispatch protocols remain in focused notes.
+The larger FindHandler owner still needs complete review.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -120,10 +121,10 @@ Continue with a bounded unresolved CRT owner, using archive members and
 actual callers before relying on a familiar Ghidra name. The retained
 frame.obj locates FindHandler at `0x00546B5A` (931B). Its foreign-exception,
 catch entry/lifetime, construction, state, frame-link, translator, nested-unwind
-and continuation-transfer dependencies are now reviewed. The remaining
-exception-specification/CallUnexpected and bad_exception class/throw metadata
-require full owners and independent bindings; retain the existing failed
-short-shape controls.
+continuation transfer, CallUnexpected/rethrow and low-level throw dependencies
+are now reviewed.
+Its remaining bad_exception class/throw metadata requires full owners and
+independent bindings; retain the existing failed short-shape controls.
 
 The full memmove ordinary-byte signature uniquely locates `0x00543E20`
 (1396B); its own relocation/table/protocol review remains pending. Nearby

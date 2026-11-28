@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [VCRuntime throw records and unexpected rethrow](CRT_THROW_UNEXPECTED_EH_REVIEW.md) — two pending origins plus three recovered entries; whole 198B instructions/six INT3 and 88B C++ EH, WinRT/pure throw parameters and one metadata-proven handler among thirty candidates.
 - [VCRuntime foreign-exception search](CRT_FOREIGN_EXCEPTION_SEARCH_REVIEW.md) — one whole 309B body plus INT3; breakpoint/translator exclusions, real EncodePointer sentinel and last-handler nonstandard ellipsis eligibility.
 - [VCRuntime catch entry, rethrow and final cleanup](CRT_CATCH_ENTRY_LIFETIME_REVIEW.md) — three pending origins plus four recovered entries; complete 592B instructions and 40B SEH table, parent-state rethrow unwind, two finally entries and ordered exception/context restoration before destruction.
 - [x86 catch guards, translators and continuation transfer](CRT_CATCH_TRANSLATOR_TRANSFER_REVIEW.md) — ten whole 962B contributions/two INT3; stack guard layouts, translator nonlocal return, central SafeSEH, frame-link protocol and one shared public handler with incoming EAX FuncInfo.
