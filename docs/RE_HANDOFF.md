@@ -8,11 +8,12 @@ bodies, x86 integer helpers, startup policy/TLS leaves and lock ownership. See t
 [import entry table](IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md),
 [CRT chains and width findings](CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md),
 [integer ABI evidence](CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md),
-[startup defaults](CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md), and
-[lock ownership](CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md). The combined
+[startup defaults](CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md),
+[lock ownership](CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md), and
+[global retirement](CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md). The combined
 integer divide/remainder helpers return quotient in EDX:EAX and remainder in
 EBX:ECX; preserve that compiler-helper ABI in later consumers.
-This checkpoint changes no executable inputs and has **zero affected exact
+This checkpoint changes no canonical native inputs and has **zero affected exact
 replay units**; existing canonical products retain their captured hashes.
 
 Read [AGENTS.md](../AGENTS.md), then the focused notes for the selected owner.
@@ -80,12 +81,18 @@ call sites. Use `xrefs_to` when an empty call graph conflicts with other evidenc
 
 The false 66,925-byte span at `0x005419AC` is resolved: its 31-byte STL destructor
 conditionally tail-transfers to the separately tracked nine-byte UCRT
-`_unlock_locales` at `0x00551F10`. The complete lock protocol is reviewed, with
-seven omitted entries admitted and six additional startup/exit entries retained
-pending. Next resolve those three lifetime pairs and their cleanup roots at
-`0x00541A42`, `0x004F5600` and `0x005424BF`; the entry table and exact reference
-pairs are in the lock note. Do not infer origin from nearby library code or
-masked opcode identity. Generate current counts from the ledgers.
+`_unlock_locales` at `0x00551F10`. The lock and adjoining global retirement
+protocols are now reviewed. All six
+newly inventoried startup/exit callbacks have library/compiler origins. A single
+private SDK-header probe emits the original 80-byte `std::locale` destructor at
+`0x004F5600`; its object/receipt remain in `build/gpt61-origin-locale/`. The exit
+controller retains its complete 29-byte cookie/EH handler and 36-byte metadata.
+No canonical native input changed; exact replay scope remains zero.
+
+Next review the remaining `locale0.obj` owners around `0x005419D0`, `0x00541A66`
+and `0x00541C22`. Reuse the extracted objects, complete listings and shared lock /
+retirement bindings. Check actual imports and library symbols when ordinary
+bytes are identical across methods. Generate current counts from the ledgers.
 
 The following native frontiers remain available after review:
 

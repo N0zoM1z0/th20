@@ -29,9 +29,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040AE80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040AE90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040AEBA,compiler,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 22B original contribution agrees with CRT xlock.obj symbol ??__Einitlocks@std@@YAXXZ, including independently checked relocation roles and full attested instruction coverage."
-0x0040AED0,unknown,GlobalLifetime,review,pending,docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 12B atexit registration and native CRT-table/atexit references establish the entry boundary; original object type and origin remain pending.
-0x0040AEDC,unknown,GlobalLifetime,review,pending,docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 12B atexit registration and native CRT-table/atexit references establish the entry boundary; original object type and origin remain pending.
-0x0040AEE8,unknown,GlobalLifetime,review,pending,docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 12B atexit registration and native CRT-table/atexit references establish the entry boundary; original object type and origin remain pending.
+0x0040AED0,compiler,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 12B native contribution and full control flow reviewed as ??__E_Fac_tidy_reg@std@@YAXXZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
+0x0040AEDC,compiler,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 12B native contribution and full control flow reviewed as ??__Eclassic_locale@std@@YAXXZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
+0x0040AEE8,compiler,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 12B native contribution and full control flow reviewed as ??__Einit_atexit@@YAXXZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
 0x0040AEF4,compiler,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 22B original contribution agrees with CRT xlock.obj symbol ??__Einitlocks@std@@YAXXZ, including independently checked relocation roles and full attested instruction coverage."
 0x0040AF10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040AF40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4515,7 +4515,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004F5510,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F5540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F55E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004F5600,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004F5600,library,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 80B native contribution and full control flow reviewed as ??1locale@std@@QAE@XZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
 0x004F5650,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F5690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004F56C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5964,7 +5964,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005419AC,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 31B original contribution agrees with CRT xlock.obj symbol ??1_Lockit@std@@QAE@XZ, including independently checked relocation roles and full attested instruction coverage."
 0x005419CB,library,CxxRuntime,exclude,high,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT xonce2.obj symbol ___std_init_once_link_alternate_names_and_abort@0 reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.
 0x005419D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541A11,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00541A11,library,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 49B native contribution and full control flow reviewed as ??1_Fac_node@std@@QAE@XZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
+0x00541A42,library,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 36B native contribution and full control flow reviewed as ??1_Fac_tidy_reg_t@std@@QAE@XZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
 0x00541A66,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00541A86,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00541ACF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5997,8 +5998,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0054248E,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 21B original contribution agrees with CRT xmtx.obj symbol __Mtxinit, including independently checked relocation roles and full attested instruction coverage."
 0x005424A3,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 14B original contribution agrees with CRT xmtx.obj symbol __Mtxlock, including independently checked relocation roles and full attested instruction coverage."
 0x005424B1,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 14B original contribution agrees with CRT xmtx.obj symbol __Mtxunlock, including independently checked relocation roles and full attested instruction coverage."
-0x005424BF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00542527,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005424BF,library,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 99B native contribution and full control flow reviewed as ??1_Init_atexit@@QAE@XZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
+0x00542527,library,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 47B native contribution and full control flow reviewed as ?_Atexit@@YAXP6AXXZ@Z; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
 0x00542556,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054256F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054273F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6924,6 +6925,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005672F0,library,CRT,exclude,high,docs/CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md; Complete 149B / 58-instruction native body equals the full libcmt.lib ulldvrm.obj contribution for __aulldvrm; no relocations or external control-flow edges.
 0x00567390,library,CRT,exclude,high,docs/CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md; Complete 223B / 91-instruction native body equals the full libcmt.lib lldvrm.obj contribution for __alldvrm; no relocations or external control-flow edges.
 0x0056746F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00567600,compiler,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 29B native contribution and full control flow reviewed as __ehhandler$??1_Init_atexit@@QAE@XZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
 0x00567750,compiler,CxxRuntime,exclude,high,docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md; complete queue constructor/guard compiler EH ownership
 0x00567CB0,compiler,CxxRuntime,exclude,high,docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md; complete queue constructor/guard compiler EH ownership
 0x00567CBD,compiler,CxxRuntime,exclude,high,docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md; complete queue constructor/guard compiler EH ownership
@@ -6962,7 +6964,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0056B400,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056B430,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056B449,compiler,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 10B original contribution agrees with CRT xlock.obj symbol ??__Finitlocks@std@@YAXXZ, including independently checked relocation roles and full attested instruction coverage."
-0x0056B453,unknown,GlobalLifetime,review,pending,docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 10B exit invoker and native CRT-table/atexit references establish the entry boundary; original object type and origin remain pending.
-0x0056B45D,unknown,GlobalLifetime,review,pending,docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 10B exit invoker and native CRT-table/atexit references establish the entry boundary; original object type and origin remain pending.
-0x0056B467,unknown,GlobalLifetime,review,pending,docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 10B exit invoker and native CRT-table/atexit references establish the entry boundary; original object type and origin remain pending.
+0x0056B453,compiler,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 10B native contribution and full control flow reviewed as ??__F_Fac_tidy_reg@std@@YAXXZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
+0x0056B45D,compiler,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 10B native contribution and full control flow reviewed as ??__Fclassic_locale@std@@YAXXZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
+0x0056B467,compiler,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 10B native contribution and full control flow reviewed as ??__Finit_atexit@@YAXXZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
 0x0056B471,compiler,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 10B original contribution agrees with CRT xlock.obj symbol ??__Finitlocks@std@@YAXXZ, including independently checked relocation roles and full attested instruction coverage."

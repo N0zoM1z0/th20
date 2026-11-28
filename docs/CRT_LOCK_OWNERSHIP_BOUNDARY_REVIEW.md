@@ -9,7 +9,7 @@ independent entries and preserves the cross-function tail edge.
 The review classifies eighteen lock/lifetime entries totaling 474 code bytes:
 eleven existing candidates and seven previously omitted entries. Thirteen
 missing entries are added to the inventory in total; six adjacent startup/exit
-callbacks retain pending origins. The target remains the locked Japanese TH20
+callbacks were retained pending and are now [resolved by the retirement review](CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md). The target remains the locked Japanese TH20
 v1.00a Steamless file, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 
@@ -92,7 +92,7 @@ the ledger uses descriptive lifetime names. The shared cleanup bytes also agree
 with the library's alternate static `_Init_locks_dtor` helper, so the native
 roles do not identify every folded contributor.
 
-Six further omitted entries are retained as pending:
+Six further omitted entries were retained pending at this checkpoint:
 
 | Registration entry | Exit invoker | Receiver | Cleanup destination |
 | --- | --- | --- | --- |
@@ -102,9 +102,10 @@ Six further omitted entries are retained as pending:
 
 Each registration body is twelve bytes and each exit invoker is ten. Actual CRT
 initialization-table references and `atexit` arguments establish these heads;
-complete listings preserve their terminal RET or external JMP. Their object
-owners and origins still require review. Tracking them keeps these known gaps
-visible alongside the completed lock protocol.
+complete listings preserve their terminal RET or external JMP. Their original object
+owners are now identified as facet cleanup, classic locale and the STL exit
+controller; the [retirement review](CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md)
+supplies their complete source and object evidence.
 
 ## Evidence, useful negative controls and validation
 
