@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [stricmp and locale synchronization](CRT_STRICMP_ORIGIN_REVIEW.md):
-three whole contributions, 448B/170 instructions and eleven REL32/four DIR32
-roles, with unchanged extents. The validator's full error sentinel, actual
-ASCII/locale character differences and conditional PTD sync restoration are
-retained. The preceding [97B bounded ASCII helper](CRT_ASCII_STRNICMP_ORIGIN_REVIEW.md)
-instead returns normalized -1/0/+1; its assembly-debug void record is not the
-C return declaration.
+review covers [wide case comparison](CRT_WIDE_CASE_COMPARE_ORIGIN_REVIEW.md):
+five whole contributions, 1,080B/384 instructions and twenty-six REL32/twelve
+DIR32 roles, with unchanged extents. Full WORD differences, zero-count
+validation, asymmetric/unconditional lowering and locale sync restoration
+are retained. The existing 40B validator and 103B bounded helper are reused
+without duplicate entries. The [97B x86 narrow helper](CRT_ASCII_STRNICMP_ORIGIN_REVIEW.md)
+instead returns normalized -1/0/+1.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,65 +97,23 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The latest proof is in `.analysis/origin-boundary/ascii-stricmp/`: three unique
-whole sections, CodeView, attested listing and full comparisons. The 72B
-standalone ASCII body has no whole target location; its logic is inlined in
-the 120B public entry. Continue the adjacent case-comparison protocol through
-the independent memicmp/_memicmp members, preserving embedded NUL/count behavior.
+The latest proof is in `.analysis/origin-boundary/wide-case-compare/`: five
+unique whole sections, CodeView, two attested listings, full comparisons and
+three real tail transfers. It reuses wcsnicmp.obj in `downlevel-locale/`, the
+shared narrow validator and the already reviewed wide table/towlower owner.
+`ascii-memicmp/` retains negative whole signatures for the 89B ASCII, 336B
+public and 307B locale bodies; no matching entry was accepted. Do not repeat
+these member scans without new caller or compiler evidence.
 
-`ascii-strnicmp/` retains unique whole
-x86 member identity, attested listing/references, CodeView and full comparison.
-The separate strnicmp.obj has no whole locations for the 49B validator, 89B
-public wrapper or 343B locale implementation; do not repeat these scans without
-new evidence. No direct or absolute reference to the 97B helper was observed.
+Next inspect the unresolved 499B entry at `0x00566ED0` as a bounded owner,
+starting from its actual instructions/references and independent CRT members.
+Keep its complete extent and any shared tails/data in view before classification.
 
-`lowio-close/` retains three complete
-close contributions, CodeView, attested listing/references, full scope and
-recovered three-byte restore. close.obj/provenance stay in `stdio-fclose/`.
-The 106B standalone close_os_handle helper has no whole ordinary-byte location;
-both 48B public close signatures instead hit fclose and fail their callee role.
-Do not add entries for those source-only candidates.
+For completed comparison, stdio and lowio groups, use the focused notes in the
+[evidence index](EVIDENCE_INDEX.md). Their private proofs retain original
+member paths, complete comparisons, shared-owner identities and negative
+whole signatures. Reuse those members before extracting another copy.
 
-The retained stream.obj allocation owner (105B) and find-unused helper (194B) have no whole
-ordinary-byte locations; their negative scans are in
-`stdio-fclose/allocation-locations.json`. Do not repeat those scans without
-new caller or compiler evidence.
-
-`stdio-fclose/` retains the complete
-fclose/reset chain, recovered six-byte restore, full scope, CodeView and
-same-shaped public-wrapper rejection. It reuses fclose.obj in `stdio-closeall/`;
-the new stream.obj supplies the full 59B reset. Its 163B `_close_internal`
-provider is now fully reviewed in `lowio-close/`.
-
-`lowio-seek64/` retains both complete
-owners, CodeView, attested listing and the rejected locked-wrapper call role.
-The source member/provenance and existing whole locations stay in
-`lowio-write-nolock/`; no extra extraction is needed.
-`console-character-providers/` retains
-the full converter/console lifetime chain, complete 32B owned data, CodeView,
-attested listings/references and whole-contribution comparisons. It reuses
-mbtowc.obj/putwch.obj in `lowio-write-console/`. The additional 88B retry
-template, 34B constructor and 23B call operator have no whole ordinary-byte
-locations; do not add entries for those source-only alternatives.
-`lowio-write-console/` retains the full console pair/handler, independent
-36B FuncInfo/256B table locations and Ghidra's missing-handler observation.
-`lowio-write-text/` retains all three complete text translators and their
-short-write/accounting differences. `lowio-write-nolock/` retains the complete
-dispatch/selector/result ABI and lseek.obj. The complete 30B append wrapper
-and 131B shared 64-bit seek owner are now reviewed in `lowio-seek64/`.
-`lowio-write/` retains the full 273B parent, complete scope and recovered
-six-byte descriptor/result restore. The public 55B write wrapper remains
-without a whole ordinary-byte location.
-`lowio-commit/` retains both complete sections, CodeView, independent scope
-table and recovered three-byte restore; its member stays in `stdio-flush/`.
-`stdio-flush/` retains the complete 687B interval, CodeView, all fields/CFG and
-both independently located scope tables; fflush.obj stays in `stdio-lifetime/`.
-`stdio-closeall/` retains the complete 171B owner and 28B scope table. Its
-fclose.obj stays there and all three public/internal owners are now reviewed
-in `stdio-fclose/`, including the complete compiler cleanup and scope table.
-`stdio-lifetime/` retains all five
-initialization/buffer/lock owners, complete 56B stream layout, owned state
-and both original startup/exit registration records.
 `sse2-initializer/` retains both complete members and the recovered 16B head;
 its separate 41B set_SSE2_enable member has no complete ordinary-byte location.
 `narrow-classification/` retains full islower/isupper/isctype_l members,

@@ -52,6 +52,11 @@ locale refresh and initial-global identities are reused. The 72B standalone
 ASCII body receives no entry. Source is `ucrt/string/stricmp.cpp` and the
 locale guard/lowercase helpers in corecrt_internal.h.
 
+The neighboring memory-comparison check in private `ascii-memicmp/` found
+no whole ordinary-byte locations for the 89B x86 ASCII, 336B public or 307B
+locale contributions. Both original members and the negative locations are
+retained; no memory-comparator entry receives credit from these string owners.
+
 Only classification, evidence, handoff and generated progress change.
 All 2,151 protected hashes remain unchanged. Exact replay scope is **zero
 units**, with no new authored or maintained-source exact credit.

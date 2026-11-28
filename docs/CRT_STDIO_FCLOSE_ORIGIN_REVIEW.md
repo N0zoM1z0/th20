@@ -102,6 +102,11 @@ at `0x005664AE` now has its
 [complete descriptor/handle/error/EH review](CRT_LOWIO_CLOSE_ORIGIN_REVIEW.md).
 Source is `ucrt/stdio/{fclose,stream}.cpp` and the stdio/PTD propagation headers.
 
+The retained stream.obj has no whole ordinary-byte locations for its 105B
+allocation owner or 194B find-unused helper. The negative locations remain in
+`stdio-fclose/allocation-locations.json`; new caller/compiler evidence is needed
+before revisiting those candidates.
+
 Only classification, evidence, handoff and generated progress change.
 All 2,151 protected hashes remain unchanged. Exact replay scope is **zero
 units**, with no new authored or maintained-source exact credit.
