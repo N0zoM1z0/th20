@@ -83,6 +83,9 @@ struct Graphics : NativeGraphicsModeAction {
     void initialize_viewports();
     void set_view_offset(std::int32_t x, std::int32_t y);
     void apply_render_offset();
+    void release_scenes_4dd730();
+    std::int32_t update_scene_4da540();
+    void set_next_scene_4be250(std::int32_t scene);
 };
 // Production global definition/startup and destruction remain open.
 extern Graphics process_graphics;

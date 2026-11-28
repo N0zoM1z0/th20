@@ -17,6 +17,7 @@ public:
     void close_and_join();
     void detach();
     void close_and_detach();
+    bool joinable() const;
 
     template<class Function, class Argument>
     void start(Function& function, Argument& argument) {

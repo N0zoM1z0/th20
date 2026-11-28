@@ -1978,3 +1978,7 @@ th20::graphics_draw_overlay_4d8e90
 th20::graphics_draw_front_4d8f80
 th20::graphics_draw_frame_4d9040
 th20::NativeSurfaceSprite::submit_draw_44c570
+th20::Graphics::release_scenes_4dd730
+th20::Graphics::update_scene_4da540
+th20::graphics_update_4dc510
+th20::Worker::joinable

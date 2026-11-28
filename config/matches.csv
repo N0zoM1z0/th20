@@ -1065,3 +1065,7 @@ address,name,size,status,match_percent,unit,evidence
 0x004D8F80,th20::graphics_draw_front_4d8f80,191,matching,100.00,graphics_draw_front_4d8f80,CLAUDE/EXACT-006; docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md
 0x004D9040,th20::graphics_draw_frame_4d9040,214,matching,100.00,graphics_draw_frame_4d9040,CLAUDE/EXACT-006; docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md
 0x0044C570,th20::NativeSurfaceSprite::submit_draw_44c570,26,matching,100.00,animation_surface_sprite_submit_draw_44c570,CLAUDE/EXACT-006; docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md
+0x004DD730,th20::Graphics::release_scenes_4dd730,234,matching,100.00,graphics_release_scenes_4dd730,CLAUDE/EXACT-007; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md
+0x004DA540,th20::Graphics::update_scene_4da540,1402,matching,100.00,graphics_update_scene_4da540,CLAUDE/EXACT-007; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md
+0x004DC510,th20::graphics_update_4dc510,218,matching,100.00,graphics_update_4dc510,CLAUDE/EXACT-007; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md
+0x004DC180,th20::Worker::joinable,19,matching,100.00,worker_joinable,CLAUDE/EXACT-007; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md

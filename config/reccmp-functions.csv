@@ -1982,3 +1982,7 @@ th20::graphics_draw_overlay_4d8e90,0x004D8E90,function
 th20::graphics_draw_front_4d8f80,0x004D8F80,function
 th20::graphics_draw_frame_4d9040,0x004D9040,function
 th20::NativeSurfaceSprite::submit_draw_44c570,0x0044C570,function
+th20::Graphics::release_scenes_4dd730,0x004DD730,function
+th20::Graphics::update_scene_4da540,0x004DA540,function
+th20::graphics_update_4dc510,0x004DC510,function
+th20::Worker::joinable,0x004DC180,function
