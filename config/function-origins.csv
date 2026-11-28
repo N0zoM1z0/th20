@@ -6233,13 +6233,13 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005486A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054873B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005488AF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054894E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00548966,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0054894E,library,CrtFormatBuffer,exclude,high,"docs/CRT_FORMATTING_BUFFER_ORIGIN_REVIEW.md; Complete 24B symbol ??$count@D@formatting_buffer@__crt_stdio_output@@QBEIXZ reviewed in five complete formatting-buffer/heap-transfer contributions, 244B/95 instructions with all six real REL32 roles; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
+0x00548966,library,CrtFormatBuffer,exclude,high,"docs/CRT_FORMATTING_BUFFER_ORIGIN_REVIEW.md; Complete 128B symbol ??$ensure_buffer_is_big_enough@D@formatting_buffer@__crt_stdio_output@@QAE_NIAAV__crt_cached_ptd_host@@@Z reviewed in five complete formatting-buffer/heap-transfer contributions, 244B/95 instructions with all six real REL32 roles; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
 0x005489E6,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00548A1A,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00548A4B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00548A66,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00548C79,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00548C79,library,CrtFormatBuffer,exclude,high,"docs/CRT_FORMATTING_BUFFER_ORIGIN_REVIEW.md; Complete 30B symbol ??$scratch_data@D@formatting_buffer@__crt_stdio_output@@QAEPADXZ reviewed in five complete formatting-buffer/heap-transfer contributions, 244B/95 instructions with all six real REL32 roles; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
 0x00548C97,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00548E24,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00548FB1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6250,8 +6250,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0054930F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005493A1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00549427,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054948E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005494A8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0054948E,library,CrtFormatBuffer,exclude,high,"docs/CRT_FORMATTING_BUFFER_ORIGIN_REVIEW.md; Complete 26B symbol ??1formatting_buffer@__crt_stdio_output@@QAE@XZ reviewed in five complete formatting-buffer/heap-transfer contributions, 244B/95 instructions with all six real REL32 roles; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
+0x005494A8,library,CrtFormatBuffer,exclude,high,"docs/CRT_FORMATTING_BUFFER_ORIGIN_REVIEW.md; Complete 36B symbol ??4?$__crt_unique_heap_ptr@DU__crt_internal_free_policy@@@@QAEAAV0@$$QAV0@@Z reviewed in five complete formatting-buffer/heap-transfer contributions, 244B/95 instructions with all six real REL32 roles; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
 0x005494CC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00549536,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00549573,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

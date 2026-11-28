@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT scalar string comparison and length](CRT_SCALAR_STRING_OWNER_REVIEW.md).
-Three pending origins retain their complete 399B member contributions and
-existing extents. All 393B/146 decoded instructions, six internal INT3 and
-seventeen following INT3 across the full 416B scope are reconciled. The
-original unsigned-byte result, strncmp count/page checks and strlen detector
-remain intact. Earlier notes retain purecall, narrow/wide search, full memcmp
-table, independent CPU state and the FindHandler/exception closure.
+review covers [UCRT formatting buffer ownership and growth](CRT_FORMATTING_BUFFER_ORIGIN_REVIEW.md).
+Five pending origins retain their complete 244B/95-instruction contributions
+and existing extents. The inline/dynamic halves, doubled-size guard, cached
+errno writes, old-buffer preservation on failure and full move/release
+ordering are reconciled. All six REL32 roles use complete known providers;
+the five sections own no additional data/EH tables. Earlier notes retain
+scalar/narrow/wide strings, purecall, memory owners and the exception closure.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,7 +97,10 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/string-length-compare/`:
+The current proof is in `.analysis/origin-boundary/format-buffer/`: complete
+output.obj member, bounded class/helper locators and full byte/relocation/
+reachability proof. The malloc_base/free_base provider evidence is reused.
+The preceding proof is in `.analysis/origin-boundary/string-length-compare/`:
 three complete members, attested listing and all alignment/decoded omissions.
 Each member has zero relocation fields and owns no additional data/EH table.
 The preceding proof is in `.analysis/origin-boundary/purecall/`: complete
@@ -154,6 +157,12 @@ a bounded unresolved CRT string owner or its real caller. The retained
 from a familiar name alone.
 Strcmp, strncmp and strlen at `0x0054FD10`, `0x0054FDA0` and `0x0054FE20`
 are reviewed through their complete SDK members and alignment before acos.
+The formatting-buffer count, char growth/scratch, destructor and char heap
+move-assignment owners are reviewed. Continue with a bounded formatted-output
+owner and its actual callee roles in output.obj; do not infer the unlocated
+wide variants or generic jump helpers. The five attempted copy/concatenation
+archive members in `string-copy/` contain six function shapes without complete
+ordinary-byte matches.
 The same-shaped bad_alloc constructor at `0x00540D24` retains its previous
 class identity.
 The 14B secchk signature independently locates the cookie check at
