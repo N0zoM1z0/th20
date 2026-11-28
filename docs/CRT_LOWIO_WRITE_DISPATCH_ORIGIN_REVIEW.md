@@ -86,11 +86,11 @@ The new lseek.obj independently locates the 30B append wrapper and 131B shared
 64-bit seek owner; their own protocols remain pending. Installed source is
 `ucrt/lowio/write.cpp` and the lowio/PTD propagation headers.
 
-All five translation contributions have unique whole-member identities.
-Their own full protocols and owned metadata remain pending, especially the
-971B ANSI double translator and its 39B EH handler at `0x0056B32A`. The old
-966B primary candidate must be reconciled with that full contribution before
-acceptance. Full helper identities confer no separate reviewed credit here.
+The three text translators now have their [full short-write/accounting review](CRT_LOWIO_TEXT_WRITE_ORIGIN_REVIEW.md).
+The console pair remains pending, especially the 971B ANSI double translator
+and its 39B EH handler at `0x0056B32A`. The old 966B primary candidate must be
+reconciled with that full contribution before acceptance. Their whole-member
+identities alone confer no separate reviewed credit.
 
 Only classification, evidence, handoff and generated progress change.
 Tracking/progress checks pass and all 2,151 protected hashes remain unchanged.
