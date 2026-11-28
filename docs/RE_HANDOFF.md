@@ -5,14 +5,14 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [VCRuntime API caches and downlevel fallbacks](CRT_VCRUNTIME_API_CACHE_REVIEW.md).
-Nine pending origins retain nine whole contributions, all 623B instructions,
-five INT3, 305B of full cache/name/module data and seven zero alignment bytes.
-Every existing extent remains unchanged. Raw caches use unconditional XCHG;
-a missing export in the first available module ends resolution. TLS fallback
-retains its missing callback, and the loader's API-set prefix rule is tied to
-the complete wcsncmp provider. Actual callees and export names reject eleven
-calloc lookalikes and two UCRT interior accessor candidates.
+review covers [UCRT thread parameters, startup and exit](CRT_THREAD_LIFECYCLE_ORIGIN_REVIEW.md).
+Five pending origins and three recovered entries retain six whole contributions:
+490B instructions, three terminal INT3 and the full 28B startup SEH table.
+The missing startup/filter/handler are now separate physical entries. The
+endthreadex instruction extent drops its final INT3, retained in the full proof.
+Parameter transfer, caller-owned thread handle, apartment flag and combined
+module-release/thread-exit behavior retain the original ABI and terminal paths.
+Wrong-callee endthread and interior getter lookalikes receive no alias credit.
 Earlier notes retain exception lifetime, validation and SEH4 evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
@@ -99,11 +99,11 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/vcrt-api/`: nine whole
-cache/loader/FLS/allocation/comparator contributions and their complete
-312B data/alignment closure. Original ledger rows remain in that private
-directory. The VCRT startup/PTD and exception-lifetime notes retain the
-preceding state and destructor findings. The verifier and termination query
+The current proof is in `.analysis/origin-boundary/ucrt-thread/`: six whole
+thread contributions, the folded destructor/release and complete startup SEH
+metadata. Original ledger rows, missing-handler decode and negative cases
+remain there. The VCRT API/cache, startup/PTD and exception-lifetime notes
+retain the preceding protocol findings. The verifier and termination query
 remain pending.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
@@ -119,14 +119,14 @@ release path with no debug-only message call. Do not keep searching nearby
 code for that reporter without a new retained caller or string reference.
 
 Continue with a bounded unresolved CRT owner, using archive members and
-actual callers before relying on a familiar Ghidra name. The UCRT thread
-lifecycle group at `0x00547C41..0x00547DAF` remains pending: parameter cleanup,
-thread exit, parameter creation and begin/endthreadex. Review full exceptional
-owners and callback/module lifetime together if the installed member locates
-there. Unlocated VCRT thread/critical-cleanup wrappers, translator setters and
-ReadNoFence lookalikes at `0x0040B2A0` remain unassigned. The similarly named
-winapi_thunks.obj module-handle candidates and downlevel weak FLS accessors
-receive no credit from their ordinary matches in other CRT groups.
+actual callers before relying on a familiar Ghidra name. The VCRT type-info
+group near `0x005471C3..0x00547223` remains pending; inspect its real provider,
+shared strings and cache cleanup before assigning identities. Unlocated VCRT
+thread/critical-cleanup wrappers, translator setters and ReadNoFence lookalikes
+at `0x0040B2A0` remain unassigned. The similarly named winapi_thunks.obj
+module-handle candidates and downlevel weak FLS accessors receive no credit
+from their ordinary matches in other CRT groups. The SDK beginthread body
+also remains unlocated; its endthread lookalikes actually call invoke_watson.
 
 The SDK's unreferenced 56B badioinfo data and separate
 34B standard-ID helper have no complete target match; neither receives
