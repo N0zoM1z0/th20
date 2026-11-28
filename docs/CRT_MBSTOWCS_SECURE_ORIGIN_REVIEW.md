@@ -98,8 +98,9 @@ internal call is `0x0055D71F`, not the proved multibyte-to-wide owner at
 `0x0055D43C`. The opposite-direction SDK member supplies the corresponding
 wcstombs internal candidate. Likewise, ordinary public-wrapper bytes alone
 cannot choose between mbstowcs_s and wcstombs_s. The actual `0x0055D6E2`
-call to `0x0055D43C` resolves the reviewed wrapper. No opposite-direction
-body receives credit from these candidate names.
+call to `0x0055D43C` resolves the reviewed wrapper. The opposite-direction
+policy/core and locale-specific wrapper are now covered by the
+[complete wcstombs review](CRT_WCSTOMBS_SECURE_ORIGIN_REVIEW.md).
 
 The shared cached-locale updater at `0x0054A360` remains pending. Its ordinary
 prefix and call roles agree with the SDK's 89B helper, but the target has a
