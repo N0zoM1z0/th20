@@ -6827,14 +6827,14 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0055FAD8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055FAFB,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055FB8C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055FC0C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055FD0A,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0056006B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005600D4,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005602F1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00560316,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00560592,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00560676,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0055FC0C,library,CrtLocaleComponents,exclude,high,"docs/CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md; Complete 254B ___acrt_locale_free_monetary body reviewed in eight whole SDK component lifetime contributions covering every byte of the 2789B interval, all original branches/HIGHLOW fields, static C field identities and real allocation/query/cleanup callees."
+0x0055FD0A,library,CrtLocaleComponents,exclude,high,"docs/CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md; Complete 865B ___acrt_locale_initialize_monetary body reviewed in eight whole SDK component lifetime contributions covering every byte of the 2789B interval, all original branches/HIGHLOW fields, static C field identities and real allocation/query/cleanup callees."
+0x0056006B,library,CrtLocaleComponents,exclude,high,"docs/CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md; Complete 105B ___acrt_locale_free_numeric body reviewed in eight whole SDK component lifetime contributions covering every byte of the 2789B interval, all original branches/HIGHLOW fields, static C field identities and real allocation/query/cleanup callees."
+0x005600D4,library,CrtLocaleComponents,exclude,high,"docs/CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md; Complete 541B ___acrt_locale_initialize_numeric body reviewed in eight whole SDK component lifetime contributions covering every byte of the 2789B interval, all original branches/HIGHLOW fields, static C field identities and real allocation/query/cleanup callees."
+0x005602F1,library,CrtLocaleComponents,exclude,high,"docs/CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md; Complete 37B ?free_crt_array_internal@@YAXQAPBXI@Z body reviewed in eight whole SDK component lifetime contributions covering every byte of the 2789B interval, all original branches/HIGHLOW fields, static C field identities and real allocation/query/cleanup callees."
+0x00560316,library,CrtLocaleComponents,exclude,high,"docs/CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md; Complete 636B ?initialize_lc_time@@YA_NQAU__crt_lc_time_data@@QAU__crt_locale_data@@@Z body reviewed in eight whole SDK component lifetime contributions covering every byte of the 2789B interval, all original branches/HIGHLOW fields, static C field identities and real allocation/query/cleanup callees."
+0x00560592,library,CrtLocaleComponents,exclude,high,"docs/CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md; Complete 228B ___acrt_locale_free_time body reviewed in eight whole SDK component lifetime contributions covering every byte of the 2789B interval, all original branches/HIGHLOW fields, static C field identities and real allocation/query/cleanup callees."
+0x00560676,library,CrtLocaleComponents,exclude,high,"docs/CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md; Complete 123B ___acrt_locale_initialize_time body reviewed in eight whole SDK component lifetime contributions covering every byte of the 2789B interval, all original branches/HIGHLOW fields, static C field identities and real allocation/query/cleanup callees."
 0x00560700,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00560830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00560880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

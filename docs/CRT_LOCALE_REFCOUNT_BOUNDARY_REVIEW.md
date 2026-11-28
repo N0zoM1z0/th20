@@ -64,8 +64,9 @@ After conditional LC_TIME cleanup, all six categories preserve their individual
 wide C-string and reference-count checks. Wide cleanup frees the counter and
 the corresponding locale-name allocation; narrow cleanup frees its zero-ref
 counter allocation rather than adding a separate free of the string pointer.
-The locale-data structure itself is freed last. Monetary, numeric and time
-destructor bodies remain separate pending providers.
+The locale-data structure itself is freed last. The separate monetary, numeric
+and time providers are now covered by the
+[complete component-lifetime review](CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md).
 
 ## Pointer replacement and thread synchronization
 

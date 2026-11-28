@@ -5,13 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [locale references and corrected update-thread ownership](CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md).
-Ten pending origins and two recovered fragments retain 921 instruction bytes,
-one INT3 and complete 28B SEH metadata. The overlapping 128B primary at
-`0x00560B88` becomes a 93B primary plus all original finally/unlock/return/abort
-partitions of the full 129B owner. Reference widths, release conditions and
-new-before-old replacement order are preserved. Earlier focused notes retain
-the PTD protocol, Watson RET and corrected CompareStringEx capability identity.
+review covers [monetary, numeric and time component lifetimes](CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md).
+Eight pending library origins retain all 2,789B in the complete component
+interval. Full initialization/failure/cleanup paths preserve per-field static
+C identities, different failure values, 87 time-string slots and unchecked
+locale-name-copy flow. Earlier focused notes retain the corrected 129B locale
+update owner, PTD protocol, Watson RET and CompareStringEx capability identity.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,18 +96,19 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/locale-refcount/`: eight
-whole code contributions, twelve disjoint partitions and the full scope table.
-The recovered finally prefix at `0x00560BE5` and abort tail at `0x00560C03` stay
-inside the complete 129B update owner. Preserve the distinction between the
-80B pointer-returning replacement helper here and the 75B void PTD helper.
-Reuse the focused PTD/API evidence for unchanged dependencies.
+The current proof is in `.analysis/origin-boundary/locale-components/`: eight
+whole contributions across three SDK members, with complete attested instruction
+coverage from capped listings and finishing tails. Cleanup preserves all
+thirteen/five lconv field identities; time cleanup frees contents separately
+from the structure allocation. Reuse `locale-refcount/` for the outer counter,
+static-data and SEH ownership already reviewed.
 
-Next review the monetary, numeric and time cleanup providers at `0x0055FC0C`,
-`0x0056006B` and `0x00560592`. Their real call roles are established by the
-complete free-locale body; they still need their own full-body review, including
-all owned fields, loops and static-data exclusions. Installed locale sources
-`initmon.cpp`, `initnum.cpp` and `inittime.cpp` are the focused entry points.
+Next review CRT's allocating locale-info shim at `0x0055CF58` and locale-name
+copy at `0x00555DEF`. Their real call roles are established, but their bodies
+still need full review. Use `ucrt/locale/GetLocaleInfoA.cpp` and the focused
+copy helper in `wsetlocale.cpp`; preserve narrow/wide/integer results, allocation
+and conversion paths. The time population owner stores the name-copy result
+without a separate failure check; do not silently add one.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK

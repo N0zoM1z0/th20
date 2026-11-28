@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [UCRT monetary, numeric and time component lifetimes](CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md) — eight whole library bodies across 2,789B; resolved FID cleanup identities, thirteen/five lconv fields, all 87 time-string slots, original failure values and unchecked name-copy flow.
 - [UCRT locale references and corrected update-thread ownership](CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md) — ten pending origins and two recovered fragments; overlapping 128B primary becomes five partitions of the full 129B owner, with complete scope metadata, real reference/return contracts and preserved new-before-old replacement order.
 - [UCRT PTD allocation, FLS lifetime and errno ownership](CRT_PTD_FLS_ERRNO_ORIGIN_REVIEW.md) — twenty-four pending origins and three recovered heads, full reentrancy/failure protocol, four SEH owners and complete shared compiler metadata; writable errno fallbacks and the full 45-record OS-error table.
 - [UCRT secure strings, cached PTD and invalid-parameter dispatch](CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md) — fifteen library entries across a complete 2,133B interval; full SIMD owners, all 27 INT3 bytes, encoded handler/initializer identity, deferred PTD state and retained Watson RET despite its noreturn contract.
