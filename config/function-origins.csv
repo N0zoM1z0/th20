@@ -6570,9 +6570,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00557B1E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00557B40,library,CrtHeap,exclude,high,"docs/CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md; Complete 96B __calloc_base body reviewed in seven whole SDK code contributions, including all owned INT3 alignment, original branches, state and import/callee roles."
 0x00557BA0,library,CxxRuntime,exclude,high,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 58B native body and CRT free_base.obj symbol __free_base reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.
-0x00557BE6,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557C08,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557C6F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00557BE6,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 34B ?<lambda_invoker_stdcall>@<lambda_c91022d537dc4a9efbeb91d0d380c697>@@CG@PA_W@Z partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x00557C08,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 100B ??$?RV<lambda_6b4b7855443974f2b4b77000ea21c99c>@@AAV<lambda_8f7d3b162ab39427f4fa9995c67a7986>@@V<lambda_cc9a5ba8a5d8428b9634eab82665e5dc>@@@?$__crt_seh_guarded_call@H@@QAEH$$QAV<lambda_6b4b7855443974f2b4b77000ea21c99c>@@AAV<lambda_8f7d3b162ab39427f4fa9995c67a7986>@@$$QAV<lambda_cc9a5ba8a5d8428b9634eab82665e5dc>@@@Z partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x00557C6C,compiler,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 3B EnumSystemLocalesEx_seh_finally_entry partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x00557C6F,compiler,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 12B EnumSystemLocalesEx_unlock_funclet partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
 0x00557C7B,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 42B ?try_get_AreFileApisANSI@@YAP6GHXZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
 0x00557CA5,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 43B ?try_get_CompareStringEx@@YAP6GHPB_WK0H0HPAU_nlsversioninfo@@PAXJ@ZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
 0x00557CD0,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 43B ?try_get_EnumSystemLocalesEx@@YAP6GHP6GHPA_WKJ@ZKJPAX@ZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
@@ -6588,21 +6589,21 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00557F20,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 99B ?try_load_library_from_system_directory@@YAPAUHINSTANCE__@@QB_W@Z SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
 0x00557F83,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00557FD2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00558021,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00558040,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055809D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005580F1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005580FD,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00558109,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00558116,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00558122,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055812E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055816D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005581A9,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005581B5,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005581ED,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055822C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00558289,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00558021,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 31B ___acrt_AreFileApisANSI@0 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x00558040,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 93B ___acrt_CompareStringEx@36 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x0055809D,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 84B ___acrt_EnumSystemLocalesEx@16 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x005580F1,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 12B ___acrt_FlsAlloc@4 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x005580FD,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 12B ___acrt_FlsFree@4 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x00558109,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 13B ___acrt_FlsGetValue2@4 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x00558116,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 12B ___acrt_FlsGetValue@4 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x00558122,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 12B ___acrt_FlsSetValue@8 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x0055812E,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 63B ___acrt_GetLocaleInfoEx@16 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x0055816D,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 60B ___acrt_GetUserDefaultLocaleName@8 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x005581A9,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 12B ___acrt_InitializeCriticalSectionEx@12 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x005581B5,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 56B ___acrt_IsValidLocaleName@4 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x005581ED,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 63B ___acrt_LCIDToLocaleName@16 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x0055822C,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 93B ___acrt_LCMapStringEx@36 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
+0x00558289,library,CrtLocaleWinApi,exclude,high,"docs/CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md; Complete 49B ___acrt_LocaleNameToLCID@8 partition reviewed in seventeen whole SDK winapi_thunks.obj code sections, including shared SEH owner/table, callback state, actual getter/import roles and same-shape negative cases."
 0x005582BA,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00558304,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00558341,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [UCRT locale wrappers and shared enumeration cleanup](CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md) — eighteen pending origins and one recovered 3B SEH entry; seventeen whole code contributions, full callback/scope-table ownership, same-shape API identities and distinct direct/cached forwarding contracts.
 - [UCRT late-bound API cache and locale capability](CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md) — eighteen complete entries, full module/function tables and referenced data; protection/race/failure paths, correct CompareStringEx capability identity and a rejected same-shape thread-attach assignment.
 - [UCRT lifetime roots and static callbacks](CRT_UCRT_LIFETIME_CALLBACK_ORIGIN_REVIEW.md) — ten complete bodies, six recovered heads, paired table aliases, actual cookie-valued encoded-null operands and resolved original matherr initializer caller; distinct terminating/normal retirement paths.
 - [CRT heap lifetime, initializer rollback and in-place resize](CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md) — four recovered handle heads, paired original startup records, complete initializer executors and LFH-aware failed-contraction success path.

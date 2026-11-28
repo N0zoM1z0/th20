@@ -5,11 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [late-bound API cache and locale capability](CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md).
-Seventeen pending origins and one corrected existing role account for eighteen
-complete cache/lookup entries, full data tables and lifecycle paths. The 11B
-head at `0x00558390` is the CompareStringEx capability predicate; its earlier
-thread-attach assignment was wrong despite ordinary-byte agreement.
+review covers [locale wrappers and shared enumeration cleanup](CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md).
+Eighteen pending origins and one recovered 3B SEH entry cover seventeen whole
+code contributions (814B), full scope metadata and the shared callback slot.
+Actual getters and PE imports distinguish same-shaped wrappers. The preceding
+cache review corrected the 11B head at `0x00558390` to the CompareStringEx
+capability predicate; its earlier thread-attach assignment was wrong.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -95,18 +96,19 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current WinAPI cache proof is in `.analysis/origin-boundary/thunk-cache/`:
-eighteen entries (979B plus one INT3), all 1,934B across 52 referenced data
-sections, cache/module arrays and independent API identities. Keep the earlier
-11B thread-attach probe/report as a rejected hypothesis. The corrected head at
-`0x00558390` calls the CompareStringEx accessor; no source/manifest binding used
-the mistaken role.
+The locale wrapper proof is in `.analysis/origin-boundary/locale-wrappers/`:
+814B across seventeen whole sections, full 28B SEH metadata and the 4B callback
+slot following the 23 module handles. Preserve the recovered finally prefix
+at `0x00557C6C` and shared unlock entry. Exception cleanup unlocks without
+repeating the normal callback-slot clear. The complete cache proof remains in
+`thunk-cache/`; retain the old 11B thread-attach probe as a rejected hypothesis.
 
-Next review public locale wrappers/fallbacks, including `0x00558040`
-CompareStringEx, `0x0055822C` LCMapStringEx and the guarded EnumSystemLocalesEx
-compatibility path. Resolve same-shape wrappers through their actual getter,
-import and fallback roles. Reuse the cache's complete strings, candidate-module
-arrays and shared slow resolver rather than repeating that investigation.
+Next review the downlevel locale conversions at `0x005625C9` and `0x00562647`,
+including complete lookup tables, error paths and string comparison dependencies.
+The selected wrappers establish their named callee roles but give those bodies
+no review credit. Other late-bound wrappers at `0x00557F83`, `0x00557FD2` and
+`0x005582BA..0x0055838F` remain pending; keep their actual API/import identities.
+Reuse the cache's complete data and resolver evidence for unchanged inputs.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK
