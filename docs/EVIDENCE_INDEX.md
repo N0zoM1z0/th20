@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [CRT frame setup, cookie teardown and aligned stack probes](CRT_FRAME_STACK_HELPER_ORIGIN_REVIEW.md) — nine library origins in eight whole 350B instruction contributions plus five INT3; exact stack/register contracts, GS-versus-catch slot identity and rejected aligned-epilog substring.
 - [UCRT onexit registries and reentrant callback execution](CRT_ONEXIT_REGISTRY_BOUNDARY_REVIEW.md) — twelve pending origins and three recovered compiler entries; whole 964B instruction scope, five INT3 and 124B registries/SEH/EH, real guarded actions, reverse traversal with changed bounds and rejected quick-wrapper alias.
 - [UCRT exit cleanup modes, TLS callbacks and CLR termination](CRT_EXIT_CLEANUP_BOUNDARY_REVIEW.md) — eleven pending origins and four recovered entries; whole 818B instruction scope, 13 INT3 and 184B complete state/strings/SEH/EH, actual guarded closure, mode-specific cleanup and rejected termination getters.
 - [UCRT signal actions, raise boundaries and exception filtering](CRT_SIGNAL_ACTION_BOUNDARY_REVIEW.md) — nine pending origins and three recovered entries; whole 1,102B instruction scope, complete 228B state/tables/SEH, corrected raise overlap and original encoded-null/local-reset behavior.

@@ -5,14 +5,14 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [onexit registries and initializer traversal](CRT_ONEXIT_REGISTRY_BOUNDARY_REVIEW.md).
-Twelve pending origins and three recovered compiler entries retain eleven
-whole SDK contributions, 964B instructions, five INT3 and all 124B registries/
-SEH/EH. Both missing finally prefixes and the executor's cookie/EH handler
-are explicit. Registration preserves allocation retries and encoded-null
-fill; execution marks each callback visited before calling it and reloads
-changed table bounds afterward. The quick-wrapper lookalike selects the
-wrong table and is rejected. Earlier notes retain exit and signal evidence.
+review covers [frame setup and aligned stack probes](CRT_FRAME_STACK_HELPER_ORIGIN_REVIEW.md).
+Nine pending library origins retain eight whole libcmt contributions, all
+350B instructions and five INT3. Every existing extent remains unchanged.
+GS and catch prologs retain different meanings at EBP-16; SEH4 retains the
+encoded scope table and state -2. The stack probe moves ESP and the return
+address, and both aligned entries preserve their overflow paths. The 12B
+aligned-epilog substring is rejected by its wrong complete tail. Earlier
+notes retain onexit, cleanup and signal evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -98,13 +98,12 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/onexit-execution/`: eleven
-whole onexit/initializer/EH contributions, both complete registries, both
-scope tables and the executor's full one-state C++ EH closure. Original ledger
-rows remain in the private directory. Both 91B guards use exit lock 2; actual
-action targets distinguish all same-shaped candidates. Reuse earlier heap,
-pointer-encoding and initialization identities. The verifier, termination
-query and terminate bodies remain separate pending work.
+The current proof is in `.analysis/origin-boundary/frame-prologues/`: eight
+whole frame/stack contributions from libcmt.lib, all original register/stack
+contracts and the rejected aligned-epilog tail. Original ledger rows remain
+in the private directory. Shared library helpers receive library origin,
+while earlier per-function cookie/finally handlers retain compiler origin.
+The verifier, termination query and terminate bodies remain pending.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -118,22 +117,21 @@ sections have no complete match; the already reviewed abort follows the
 release path with no debug-only message call. Do not keep searching nearby
 code for that reporter without a new retained caller or string reference.
 
-Next review the compiler-runtime frame helpers in
-`.analysis/origin-boundary/frame-prologues/`. Installed libcmt.lib members
-ehprolg3.obj and sehprolg4.obj completely locate EH_epilog3 at `0x005435ED`,
-EH_epilog3_GS at `0x00543601`, EH_prolog3 at `0x00543610`, GS/catch variants
-at `0x00543643`/`0x00543679` and SEH_prolog4 at `0x00543C40`. Retain actual
-register/stack contracts, shared tails, cookies and all section alignment.
-ehprolg3a.obj's 12B aligned epilog has an ordinary-byte match inside the
-15B GS epilog at `0x00543604`; do not create overlapping credit or infer an
-independent entry without real caller evidence. Other aligned/catch-GS variants
-have no complete locations. These members are in libcmt.lib, not the installed
-libvcruntime.lib. No compiler build is needed for this classification proof.
+Next review SEH4 dispatch and cookie initialization in
+`.analysis/origin-boundary/seh4-dispatch/`. libvcruntime.lib's chandler4.obj
+completely locates ValidateLocalCookies at `0x005465E0` and except_handler4
+at `0x00546620`; libcmt.lib's gs_support.obj locates get_entropy at
+`0x00543C85` and security_init_cookie at `0x00543CD2`. Keep scope-pointer
+decoding, both cookie-offset protocols, filter/unwind behavior, abnormal
+termination state and complete shared metadata. chandler4_noexcept.obj has
+no complete location; chandler4gs.obj currently emits no function locations
+in the private search. Inspect its symbols before assigning any extra role.
 
 The SDK's unreferenced 56B badioinfo data and separate
 34B standard-ID helper have no complete target match; neither receives
 ownership credit. The fmode initializer also has no complete location yet.
-The stack probe at `0x005439E0` remains pending.
+The aligned/catch-GS frame variants remain unlocated; their ordinary substrings
+do not receive overlapping physical credit.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK
