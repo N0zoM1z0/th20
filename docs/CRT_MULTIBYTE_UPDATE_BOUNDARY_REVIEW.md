@@ -136,9 +136,11 @@ owned data sections and the same-shaped guard negative cases. Source context
 is `ucrt/mbstring/mbctype.cpp`, `corecrt_internal.h`, `corecrt_memcpy_s.h` and
 the compiler's `crt/src/vcruntime/internal_shared.h`.
 
-`_setmbcp_nolock`, its code-page tables/population helpers, memcpy/memset and
-the locale-changed setter remain separate pending bodies. Named call roles
-give those bodies no review credit here. Only classification, focused evidence,
+The [complete population review](CRT_MULTIBYTE_POPULATION_ORIGIN_REVIEW.md)
+now covers `_setmbcp_nolock`, its code-page tables and population helpers,
+including the original six-byte UTF-8 ctype reset. Memcpy/memset and the
+locale-changed setter remain separate pending bodies. Named call roles give
+those bodies no review credit here. Only classification, focused evidence,
 handoff and generated progress change. All 2,151 protected native input/product
 hashes remain unchanged. Exact replay scope is **zero units**, with no new
 authored or maintained-source exact credit.
