@@ -5,13 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [wide case comparison](CRT_WIDE_CASE_COMPARE_ORIGIN_REVIEW.md):
-five whole contributions, 1,080B/384 instructions and twenty-six REL32/twelve
-DIR32 roles, with unchanged extents. Full WORD differences, zero-count
-validation, asymmetric/unconditional lowering and locale sync restoration
-are retained. The existing 40B validator and 103B bounded helper are reused
-without duplicate entries. The [97B x86 narrow helper](CRT_ASCII_STRNICMP_ORIGIN_REVIEW.md)
-instead returns normalized -1/0/+1.
+review covers [power infinity handling and classification](CRT_POW_INFINITY_FPCLASS_ORIGIN_REVIEW.md):
+two whole contributions, 692B/217 instructions and four REL32/twelve DIR32
+roles, with unchanged extents. Full double/int32 ABI, original infinity and
+signed-zero cases, current-mode frnd parity and all ten classification flags
+are retained. Seven full constant sections total 72B; their nonunique pooled
+addresses remain linked observations rather than new canonical anchors.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,17 +96,18 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The latest proof is in `.analysis/origin-boundary/wide-case-compare/`: five
-unique whole sections, CodeView, two attested listings, full comparisons and
-three real tail transfers. It reuses wcsnicmp.obj in `downlevel-locale/`, the
-shared narrow validator and the already reviewed wide table/towlower owner.
-`ascii-memicmp/` retains negative whole signatures for the 89B ASCII, 336B
-public and 307B locale bodies; no matching entry was accepted. Do not repeat
-these member scans without new caller or compiler evidence.
+The latest proof is in `.analysis/origin-boundary/tail-566ed0/`: full powhlp
+and fpclass sections, CodeView, attested listings, complete CFG/fields and
+seven full constant definitions/instances. It reuses copysign.obj in
+`math-error/` and existing sptype/frnd proof. The standalone 149B inttype and
+nine remaining ieeemisc code sections have no whole ordinary-byte locations;
+their negative scans are retained rather than assigning source names.
 
-Next inspect the unresolved 499B entry at `0x00566ED0` as a bounded owner,
-starting from its actual instructions/references and independent CRT members.
-Keep its complete extent and any shared tails/data in view before classification.
+Next review the 14B cookie checker at `0x005429EE` and its actual failure
+owner. The complete secchk.obj remains in `catch-transfer/`; its signature
+already locates this entry, while its own failure protocol is still pending.
+Follow the native failure edge and use the matching CRT member before accepting
+the failure boundary, metadata or ABI.
 
 For completed comparison, stdio and lowio groups, use the focused notes in the
 [evidence index](EVIDENCE_INDEX.md). Their private proofs retain original
