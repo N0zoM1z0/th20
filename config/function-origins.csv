@@ -6838,16 +6838,18 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00560700,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00560830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00560880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005608BF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0056093C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00560A84,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00560AAD,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00560ADE,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00560B07,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00560B88,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00560BE8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00560BF1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00560C09,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005608BF,library,CrtLocaleRefcount,exclude,high,"docs/CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md; Complete 125B ___acrt_add_locale_ref partition reviewed in eight whole SDK locale_refcounting.obj contributions, full 129B update owner/28B SEH table and all original byte/branch/HIGHLOW/callee roles."
+0x0056093C,library,CrtLocaleRefcount,exclude,high,"docs/CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md; Complete 328B ___acrt_free_locale partition reviewed in eight whole SDK locale_refcounting.obj contributions, full 129B update owner/28B SEH table and all original byte/branch/HIGHLOW/callee roles."
+0x00560A84,library,CrtLocaleRefcount,exclude,high,"docs/CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md; Complete 41B ___acrt_locale_add_lc_time_reference partition reviewed in eight whole SDK locale_refcounting.obj contributions, full 129B update owner/28B SEH table and all original byte/branch/HIGHLOW/callee roles."
+0x00560AAD,library,CrtLocaleRefcount,exclude,high,"docs/CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md; Complete 49B ___acrt_locale_free_lc_time_if_unreferenced partition reviewed in eight whole SDK locale_refcounting.obj contributions, full 129B update owner/28B SEH table and all original byte/branch/HIGHLOW/callee roles."
+0x00560ADE,library,CrtLocaleRefcount,exclude,high,"docs/CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md; Complete 41B ___acrt_locale_release_lc_time_reference partition reviewed in eight whole SDK locale_refcounting.obj contributions, full 129B update owner/28B SEH table and all original byte/branch/HIGHLOW/callee roles."
+0x00560B07,library,CrtLocaleRefcount,exclude,high,"docs/CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md; Complete 129B ___acrt_release_locale_ref partition reviewed in eight whole SDK locale_refcounting.obj contributions, full 129B update owner/28B SEH table and all original byte/branch/HIGHLOW/callee roles."
+0x00560B88,library,CrtLocaleRefcount,exclude,high,"docs/CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md; Complete 93B ___acrt_update_thread_locale_data partition reviewed in eight whole SDK locale_refcounting.obj contributions, full 129B update owner/28B SEH table and all original byte/branch/HIGHLOW/callee roles."
+0x00560BE5,compiler,CrtLocaleRefcount,exclude,high,"docs/CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md; Complete 3B LocaleUpdate_finally_entry partition reviewed in eight whole SDK locale_refcounting.obj contributions, full 129B update owner/28B SEH table and all original byte/branch/HIGHLOW/callee roles."
+0x00560BE8,compiler,CrtLocaleRefcount,exclude,high,"docs/CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md; Complete 9B LocaleUpdate_unlock_funclet partition reviewed in eight whole SDK locale_refcounting.obj contributions, full 129B update owner/28B SEH table and all original byte/branch/HIGHLOW/callee roles."
+0x00560BF1,compiler,CrtLocaleRefcount,exclude,high,"docs/CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md; Complete 18B LocaleUpdate_return_continuation partition reviewed in eight whole SDK locale_refcounting.obj contributions, full 129B update owner/28B SEH table and all original byte/branch/HIGHLOW/callee roles."
+0x00560C03,compiler,CrtLocaleRefcount,exclude,high,"docs/CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md; Complete 5B LocaleUpdate_abort_tail partition reviewed in eight whole SDK locale_refcounting.obj contributions, full 129B update owner/28B SEH table and all original byte/branch/HIGHLOW/callee roles."
+0x00560C09,library,CrtLocaleRefcount,exclude,high,"docs/CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md; Complete 80B __updatetlocinfoEx_nolock partition reviewed in eight whole SDK locale_refcounting.obj contributions, full 129B update owner/28B SEH table and all original byte/branch/HIGHLOW/callee roles."
 0x00560C59,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00560CE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00560D79,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
