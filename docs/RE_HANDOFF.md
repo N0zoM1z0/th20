@@ -84,17 +84,23 @@ canonical object and receipt named in `config/match-units.toml` is protected;
 
 Also keep these private products of open questions:
 
-- Player: `build/gpt61-player-state-abi/`.
+- Player state frame: `build/gpt61-player-state-abi/` and
+  `.analysis/player-state4043-{session,abi}/`.
 - Math bindings: `build/gpt61-origin-tangent-{canonical,before,after}/`.
 - Origin compiler probes: `build/gpt61-origin-{locale,allocation,exception-copy}/`
-  and `.analysis/origin-boundary/`.
+  and the open candidate listing `.analysis/origin-boundary/runtime-542a0f/`.
 - Draw/Particle: `.analysis/draw-boss-session/`,
   `.analysis/gptweb-particle2884-owner-lifetime/`, `build/gptweb-drawboss-session/`,
   `build/gptweb-particle2884-owner-lifetime/`, `build/gptweb-particle2884-probe/`,
   the C2 trace/VCTIP products, `build/gptweb-probe/` and `build/core835-probe/`.
 
-Build directories that only held superseded objects were pruned at this
-checkpoint (830 files, 51MB), and so were 7,637 stale loose `.analysis` probes
-and decompiler exports (45MB). Directories that scripts, configuration or the
-list above refer to were kept. Raw Ghidra exports can be regenerated through
-`scripts/ghidra.py`.
+Tooling reads `.analysis/{architecture,inventory,reference-functions,reference-review,progress,factory-runtime,bootstrap}`,
+`ghidra.lock`, the enemy opcode audit JSONs and
+`stage-resource-vm-cpu-compare.json`; keep them too.
+
+At this checkpoint, build directories holding only superseded objects were
+pruned (830 files, 51MB). Everything else under `.analysis/` was also
+removed: historical probes, decompiler exports and the private proofs of
+completed origin reviews (about 150MB in total). The CRT objects those reviews
+used can be extracted again from the pinned toolchain libraries. Raw Ghidra
+exports can be regenerated through `scripts/ghidra.py`.
