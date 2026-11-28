@@ -5,14 +5,15 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [exception validation and NLG markers](CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md).
-Nine pending origins and three recovered partitions retain nine whole code
-contributions, 518B instructions, 39 INT3 and all 44B SEH/NLG data. The
-readonly-image owner's original 186B extent is covered once through four
-disjoint entries. PE bounds use VirtualSize; context checks allow both stack
-endpoints; SSE2 denormal maps to invalid operation. The actual context caller
-identifies the guard nop among 36 lookalikes. NLG shared tails and markers
-receive no overlapping credit. Earlier notes retain SEH4 and cookie evidence.
+review covers [exception-object lifetime and termination](CRT_EXCEPTION_LIFETIME_TERMINATION_REVIEW.md).
+Ten pending origins and seven recovered entries retain eleven whole code
+contributions, 538B instructions, four INT3 and all 60B SEH/strong callback
+data. The destructor's 168B and terminate's 59 instruction bytes remain
+covered once through disjoint partitions. Destructor throw policy checks
+strict MSVC record format; FrameUnwindFilter's C++ branch checks code alone.
+Terminate catches handler exceptions, while unexpected allows them to escape.
+The strong readonly destruction slot now points to the independently matched
+whole destructor. Earlier notes retain validation, SEH4 and cookie evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -98,12 +99,13 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/exception-validation/`:
-nine whole contributions, complete readonly-image SEH and NLG record, actual
-guard nop and all shared notification tails. Original ledger rows remain
-in the private directory. The source's common destruction-pointer fallback
-still does not establish the target's strong definition at `0x00597180`.
-The verifier and termination query remain pending.
+The current proof is in `.analysis/origin-boundary/exception-lifetime/`:
+eleven whole contributions, both complete scope tables and the strong
+destruction-pointer section at `0x00597180`, targeting `0x005463E0` with
+its full HIGHLOW. Original ledger rows remain in the private directory.
+Earlier whole EH metadata identifies the newly recovered std_terminate
+head at `0x005465A0`; its real callee is terminate. The verifier and
+termination query remain pending.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -117,21 +119,20 @@ sections have no complete match; the already reviewed abort follows the
 release path with no debug-only message call. Do not keep searching nearby
 code for that reporter without a new retained caller or string reference.
 
-Next review exception-object lifetime and termination in
-`.analysis/origin-boundary/exception-lifetime/`. ehhelpers.obj completely
-locates DestructExceptionObject at `0x005463E0`, member-call bridge
-`0x00546488`, current-exception filter `0x00546495`, destruction eligibility
-`0x005464ED`, AdjustPointer `0x00546513`, FrameUnwindFilter `0x00546538` and
-current exception/context getters `0x0054658E`/`0x00546597`. Its strong
-destruction-pointer definition can close the SEH4 dependency; compare its
-full data section and independently resolved function relocation.
-libucrt's terminate.obj locates the 60B terminate contribution at `0x00547B87`;
-unexpected.obj locates 29B unexpected at `0x00547AC8`. Preserve complete
-filter/handler/EH boundaries, frame-chain ownership, destructor throw policy
-and all terminal paths. std_terminate has 5,246 ordinary 5B jump candidates;
-use earlier complete EH metadata references and its real callee to locate it.
-The user.obj translator setters and unlocated helpers receive no body credit
-from this search. ReadNoFence lookalikes at `0x0040B2A0` remain unassigned.
+Next review VCRuntime initialization, locks and thread state in
+`.analysis/origin-boundary/vcrt-state/`. initialization.obj locates
+vcrt_initialize at `0x005465A5` and uninitialize at `0x005465C4`; locks.obj
+locates lock initialization at `0x005476CC` and cleanup at `0x00547708`.
+per_thread_data.obj locates freefls `0x005467BA`, nullable getter `0x005467E4`,
+noinit getter `0x00546876`, initializer `0x005468AE` and cleanup `0x005468E1`.
+Include the named required getter at `0x005467D6`, whose body is still pending.
+Preserve full
+FLS/thread state, LastError, failure rollback, shared locks and all metadata.
+The same-shaped required getter also matches UCRT, and 21B lock candidates
+start inside UCRT helpers; use actual callees/globals, not ordinary bytes.
+Thread attach/detach and cleanup lookalikes likewise need complete roles
+before alias credit. Unlocated user.obj translator setters and ReadNoFence
+lookalikes at `0x0040B2A0` remain unassigned.
 
 The SDK's unreferenced 56B badioinfo data and separate
 34B standard-ID helper have no complete target match; neither receives

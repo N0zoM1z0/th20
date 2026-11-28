@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [CRT exception-object lifetime and termination scopes](CRT_EXCEPTION_LIFETIME_TERMINATION_REVIEW.md) — ten pending origins and seven recovered entries; whole 538B instructions/four INT3, full 60B SEH/strong callback data, distinct destructor throw predicates and UCRT/VCRuntime termination state.
 - [CRT image validation, SSE2 exception repair and NLG markers](CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md) — nine pending origins and three recovered partitions; whole 518B instructions/39 INT3, complete 44B SEH/NLG, original PE interval arithmetic, inclusive context bounds and real guard-nop identity.
 - [CRT SEH4 dispatch, collided unwind and cookie initialization](CRT_SEH4_COOKIE_DISPATCH_REVIEW.md) — nine pending origins and recovered shared unwind handler; full 877B instructions/48 INT3, complete 68B cookie layout, address-based cookie XOR and distinct dispatch/collided-unwind protocols.
 - [CRT frame setup, cookie teardown and aligned stack probes](CRT_FRAME_STACK_HELPER_ORIGIN_REVIEW.md) — nine library origins in eight whole 350B instruction contributions plus five INT3; exact stack/register contracts, GS-versus-catch slot identity and rejected aligned-epilog substring.
