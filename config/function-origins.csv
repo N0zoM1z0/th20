@@ -644,15 +644,15 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041CC70,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
 0x0041CC90,authored,WindowState,authored,high,REF-011; Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
 0x0041CCC0,authored,LockRegistry,authored,high,REF-003; independent game storage/RTTI and custom member protocol
-0x0041CCF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041CCF0,authored,WindowState,authored,high,"CLAUDE/EXACT-002; docs/WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md; Game window class registration, creation and window procedure owned by WindowState startup; called from the WinMain body 0x0041E7D0; strict exact unit."
 0x0041D080,authored,WindowState,authored,high,REF-009; Original window construction and independent main/frame consumers corroborate storage and game-specific member role
-0x0041D0A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041D0A0,authored,Graphics,authored,high,CLAUDE/EXACT-002; docs/WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md; Graphics configuration predicate used by game startup and configuration loading; strict exact unit.
 0x0041D0C0,authored,WindowApi,authored,high,REF-011; Target-local callers and independently typed storage/imports corroborate game-specific native member/callback role; full canonical replay with independently established anchors
-0x0041D0F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041D0F0,authored,Graphics,authored,high,CLAUDE/EXACT-002; docs/WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md; Graphics configuration predicate used by game startup and configuration loading; strict exact unit.
 0x0041D130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041D210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041D2F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0041D350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0041D350,authored,WindowState,authored,high,"CLAUDE/EXACT-002; docs/WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md; Game window class registration, creation and window procedure owned by WindowState startup; called from the WinMain body 0x0041E7D0; strict exact unit."
 0x0041D960,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041D9F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0041DB40,authored,Animation,authored,high,"CORE/RECON-1147; docs/RENDERER_DEVICE_RESET_HOOKS108_STRICT_EXACT.md; original game-specific Renderer device reset state setter +0x6000E0C=0xB, entire 21B/9-i386 code natural MSVC exact without relocations, unique original physical head"

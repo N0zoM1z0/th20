@@ -983,3 +983,7 @@ address,name,size,status,match_percent,unit,evidence
 0x0041E010,th20::WindowState::set_field_0064,22,matching,100.00,window_set_field_0064,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
 0x0041E030,th20::WindowState::set_display_mode,25,matching,100.00,window_set_display_mode,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
 0x0041E050,th20::WindowState::compute_layout,1819,matching,100.00,window_compute_layout,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
+0x0041CCF0,th20::WindowState::create_window,905,matching,100.00,window_create,CLAUDE/EXACT-002; docs/WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md
+0x0041D350,th20::window_procedure,1168,matching,100.00,window_procedure,CLAUDE/EXACT-002; docs/WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md
+0x0041D0A0,th20::Graphics::reference_rasterizer_enabled,25,matching,100.00,graphics_reference_rasterizer_enabled,CLAUDE/EXACT-002; docs/WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md
+0x0041D0F0,th20::Graphics::uses_desktop_display_mode,56,matching,100.00,graphics_uses_desktop_display_mode,CLAUDE/EXACT-002; docs/WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md

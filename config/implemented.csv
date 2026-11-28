@@ -1896,3 +1896,7 @@ th20::WindowState::set_field_0060
 th20::WindowState::set_field_0064
 th20::WindowState::set_display_mode
 th20::WindowState::compute_layout
+th20::WindowState::create_window
+th20::window_procedure
+th20::Graphics::reference_rasterizer_enabled
+th20::Graphics::uses_desktop_display_mode

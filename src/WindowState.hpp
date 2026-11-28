@@ -62,7 +62,7 @@ struct WindowState {
         std::int32_t first, second, elapsed;
         void reset(std::int32_t value);
     };
-    std::array<RepeatCounter, 4> repeat;
+    RepeatCounter repeat[4];
 
     // Folded original native getters: the physical 16B and 17B bodies
     // are already strict exact under other game-class aliases.
@@ -108,6 +108,8 @@ struct WindowState {
     void set_field_0064(std::int32_t value);
     void set_display_mode(std::int32_t value);
     void compute_layout(std::int32_t choose_scale);
+    void set_window(HWND__* value);
+    std::int32_t create_window(HINSTANCE__* instance);
 };
 
 static_assert(sizeof(WindowFlags) == 4);

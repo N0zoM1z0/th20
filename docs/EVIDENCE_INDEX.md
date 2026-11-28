@@ -1808,6 +1808,8 @@ Compiler scores labelled "current" in historical entries below mean
 
 - [WindowState 1,819B screen layout and eleven setters strict exact](WINDOW_LAYOUT_RECONSTRUCTION.md) — display-mode scale selection, desktop-aspect and half-step viewport snapping, 640x480/384x448 placement; `/fp:strict` keeps the unfolded float placement constants; +2,088 authored bytes.
 
+- [Window creation, window procedure and Graphics startup predicates strict exact](WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md) — "BASE" class/three window styles, split message switch with tables, orphan `break` dead jumps, `case 5: default:` table; +2,154 authored bytes.
+
 - [WindowState original 346B clock whole strict exact](WINDOW_SECONDS_CLOCK346_STRICT_EXACT.md) — QPC/timeGetTime, original unsigned DWORD correction table and shared real elapsed stack lifetime; 8 E8/19 HIGHLOW anchored native roles, source-scoped 1/1, +346 game bytes.
 
 - [Window/Frame clock dispatch 32B whole strict exact](WINDOW_FRAME_CLOCK_DISPATCH32_STRICT_EXACT.md) — two original E8 and two HIGHLOW native sites, genuine 437B device frame callee and exact 37B Card clock callback, scoped 1/1 cold replay.

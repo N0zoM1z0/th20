@@ -1900,3 +1900,7 @@ th20::WindowState::set_field_0060,0x0041DFD0,function
 th20::WindowState::set_field_0064,0x0041E010,function
 th20::WindowState::set_display_mode,0x0041E030,function
 th20::WindowState::compute_layout,0x0041E050,function
+th20::WindowState::create_window,0x0041CCF0,function
+th20::window_procedure,0x0041D350,function
+th20::Graphics::reference_rasterizer_enabled,0x0041D0A0,function
+th20::Graphics::uses_desktop_display_mode,0x0041D0F0,function

@@ -71,6 +71,9 @@ struct Graphics : NativeGraphicsModeAction {
     // The locked target's texture-format predicate is a constant-zero method.
     std::int32_t texture_format_mode();
     std::int32_t field_b0c_value() const;
+    std::int32_t windowed() const;
+    std::uint32_t reference_rasterizer_enabled() const;
+    std::int32_t uses_desktop_display_mode() const;
 };
 // Production global definition/startup and destruction remain open.
 extern Graphics process_graphics;
