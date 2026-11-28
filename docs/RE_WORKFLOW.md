@@ -130,6 +130,48 @@ full-graph cold compilation. This is a narrow compiler-evidence
 receipt update, not an ABI change or license to rename unknown
 relocations without original-PE proof.
 
+## Observed /Od code-shape rules
+
+These held across the CLAUDE/EXACT-001..009 matches (WindowState, Graphics,
+AnimationPool callbacks, Laser commands) under the locked compiler. Treat them
+as starting hypotheses; the native bytes decide.
+
+- New sources use `/Od /Ob0 /GS /Gy /Zl /arch:SSE2 /fp:strict /sdl /EHsc`.
+  `/fp:precise` folds float constant expressions such as
+  `(640.0f - 384.0f) / 2.0f`, which the native code evaluates at run time.
+- A `nop` follows a call when the next statement opens or closes a block or
+  starts an `if`, `switch` or `do`. To place or drop one, use braces
+  (`{ ... }`), the forms `if ((r = f()) != 0)` versus `r = f(); if (r)`, or
+  `return g();` from an `int` wrapper instead of a `void` wrapper.
+- An unreachable native `jmp` inside a switch is an orphan `break;`. An
+  explicit `case N:` sharing the default body can be what turns a compare
+  chain into a jump table.
+- Operand order matters. `array[k].field + (int)f` computes the address
+  before the float term; the reversed sum keeps its length but moves
+  instructions and relocations.
+- `return p == nullptr;` and `? 1 : 0` add a stack temporary; an
+  early-return `if` does not.
+- Wide literals with non-ASCII text need `\u` escapes, and Shift-JIS narrow
+  literals need hex escapes (the profile has no `/utf-8`).
+- `std::array`-like member accessors without bounds checks fold across
+  element counts. Laser and Bullet command arrays share `0x0047C680`.
+
+## Binding relocations and avoiding header churn
+
+Build each relocation list from the object's COFF relocations and the native
+field, then check every symbol against independent evidence: `__real@`/
+`__xmm@` constant bytes, `$SG` literal bytes, `$LN` label offsets, PE import
+names for `__imp_` symbols, and existing manifest bindings. Calls to
+inventoried functions that have no unit yet bind to the native call target.
+Folded identical bodies already credited under another name are bound by
+address; overlapping alias units are rejected by `validate-tracking.py`.
+
+A shared header edit costs a replay of its include closure: about 90 sources
+for `Graphics.hpp`/`WindowState.hpp` and 186 for `Animation.hpp`. Batch such
+edits. For members of other owners that are still unmatched, use a local
+non-owning overlay view (for example `struct NativeSurfaceSprite : Animation`)
+instead of editing the owner's header.
+
 ## Repository size and basic checks
 
 Keep required inputs (original game, pinned tools and Ghidra project), current

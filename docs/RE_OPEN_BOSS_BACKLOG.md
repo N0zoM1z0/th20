@@ -251,7 +251,7 @@ E8/PE HIGHLOW proof before accepting an original body. Keep meaningful
 C++ with correct owner, ABI, original branches, EH and return semantics;
 no padding, asm, fabricated locals, shortened extent or false authored
 credit. `git status` dirt belongs to the active agent and must be
-resolved, not ignored. Commit stable source work with **`gpt-6.1-sol:`**;
+resolved, not ignored. Commit stable source work with the session's requested prefix;
 only replay source units actually touched, never a full cold replay.
 For documentation/ignored-artifact-only cleanup there are **zero affected
 native units** and no reason to rebuild MSVC objects.

@@ -46,8 +46,8 @@ windowed mode selected by `configuration.scale_choice`.
 The native body contains three unreachable `jmp` instructions: after the
 PAINT and DISPLAYCHANGE breaks, and before the single `SIZE_MAXIMIZED` label.
 A second `break;` reproduces each one. An empty `default: break;` does not,
-because the dispatch then targets the label instead of the switch end. A
-probe in `.analysis/claude-window-layout/sw.cpp` shows this. The orphan breaks
+because the dispatch then targets the label instead of the switch end (a
+small locked-compiler probe showed this; it was not retained). The orphan breaks
 probably remain from case bodies removed in the original source.
 
 The SIZE mode switch is `case 3, case 4, case 5/default, case 6`. Without the

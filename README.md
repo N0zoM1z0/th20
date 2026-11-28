@@ -70,6 +70,8 @@ Use the [current handoff](docs/RE_HANDOFF.md) for the next action, the
 | Animation rendering | Many backends, geometry routines and the 3,180B quad-submit contribution are exact. The enclosing [5,993B Draw dispatcher](docs/ANIMATION_DRAW_BOSS_C2_DEBUG_TRACE.md#2026-11-27-current-parent-scorecard-after-first-result-local-recovery) remains NONEXACT at a 5,977B candidate with the native 0x204 frame; four register-source reloads remain open. |
 | Glyph and text | The [2,245B compositor](docs/GLYPH_MASK_COMPOSITE2245_STRICT_EXACT.md), [2,316B GDI contribution](docs/GLYPH_TEXT_CORE2227_STRICT_EXACT.md) and queue support are exact. The 578B ASCII, 294B submit and 586B centered callers remain open. The [417B formatter uses narrow characters](docs/RENDERER_TEXT_NARROW_CRT_ABI.md). |
 | Card | The [1,896B spell start](docs/CARD_START1896_STRICT_EXACT.md) and [602B finish](docs/CARD_FINISH_602_STRICT_EXACT.md) are exact; the larger battle controller remains open. |
+| Window and Graphics owner | WindowState [layout](docs/WINDOW_LAYOUT_RECONSTRUCTION.md), [window creation and procedure](docs/WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md), the Graphics (`game/mother.cpp`) [viewports](docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md), [frame chain and passes](docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md) and [scene transitions/shutdown](docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md) are exact. The 2,537B WinMain body and the 836B configuration loader remain open. |
+| Laser | The four family vtables are mapped; the [command steppers and command array](docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md) are exact, and about 35 virtuals in `0x004C9000..0x004D8000` remain open. |
 | Large dispatchers | Bullet extended commands and Animation VM update have maintained source; the Enemy ECL root remains partial. All three parents are NONEXACT. See [the backlog](docs/RE_OPEN_BOSS_BACKLOG.md). |
 
 Mapping, source presence, compilation, linkage, runtime behavior and exactness
@@ -82,7 +84,7 @@ do not add authored credit.
 Documentation and artifact-cleanup handoffs use diff/link checks and protected
 product hashes. An unchanged native compiler-input graph needs no replay,
 compiler, Ghidra or full CI run. Source and ABI changes require comparison of
-the actual affected include closure, including complete extents and relocations. Use the `gpt-6.1-sol:` commit prefix.
+the actual affected include closure, including complete extents and relocations. Use the commit prefix requested for the current session.
 
 When code or infrastructure changes warrant broader checks, public CI needs
 Python 3.11+, with no original game or C++ compiler:

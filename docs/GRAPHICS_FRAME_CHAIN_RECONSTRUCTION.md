@@ -26,11 +26,9 @@ Ten functions from that TU are strict exact in `src/GraphicsPasses.cpp`,
 userdata and the start-up callback, then inserts it at priority 1, returning
 any nonzero insert result. It registers ten draw callbacks at priorities
 1, 14, 15, 25, 26, 47, 48, 66, 67 and 110, and finally fetches back buffer 0
-into `resource_1a4` with `GetBackBuffer`. Callbacks `0x004DC8B0`,
-`0x004D9120`, `0x004D8E90`, `0x004D8F80`, `0x004D9040` and the update
-`0x004DC510` are declared, not yet matched. Four of them call the
-unmatched Animation member `0x0044C570`, which would require an
-Animation.hpp change.
+into `resource_1a4` with `GetBackBuffer`. The remaining five draw
+callbacks are exact under EXACT-006 below, and the update node `0x004DC510`
+under EXACT-007 ([scene transitions](GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md)).
 
 Start-up loads `th20_0100a.ver` from `th20.dat`. It then sets the default
 clock to 1.0 and the clear colour to opaque black, builds the viewports and
