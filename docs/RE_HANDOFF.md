@@ -5,11 +5,11 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT rand and rand_s](CRT_RANDOM_API_ORIGIN_REVIEW.md): two
-complete owners, 105B/36 instructions, all six REL32 roles and six adjacent
-INT3 bytes. The per-thread state recurrence, real cdecl int32 signatures,
-invalid-parameter return and provider/error/output order are retained.
-Both extents remain unchanged, with no owned data, EH or jump tables.
+review covers [UCRT narrow classification](CRT_NARROW_CLASSIFICATION_ORIGIN_REVIEW.md):
+three complete owners, 467B/192 instructions, all nine REL32/five DIR32 roles
+and 33 adjacent INT3. Real integer masks, initial/current locale branches,
+packed-byte conversion, output zeroing and guard restoration are retained.
+All extents remain unchanged, with no owned data, EH or jump tables.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -95,12 +95,16 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/random-api/`: full rand/rand_s
-members, CodeView signatures, attested listing and complete comparisons.
-The 18B srand member has no complete ordinary-byte location; use a new
-independent caller/member before revisiting it. The reviewed PTD initializer
-supplies the seed-one state at +0x18, and the earlier STL random-device caller
-independently selects rand_s.
+The current proof is in `.analysis/origin-boundary/narrow-classification/`:
+full islower/isupper/isctype_l members, CodeView signatures, attested listing,
+complete comparisons and rejected alignment hypothesis. Only three INT3 follow
+isctype_l; `0x0055A1C0..0x0055A1CF` contains sixteen real code bytes missing from
+the initial inventory. Next review that entry independently using the installed
+`sse2_initializer.cpp`, its archive member and actual initializer-table owner;
+do not count it as padding or as part of isctype_l.
+`random-api/` retains full rand/rand_s state/error/output evidence. Its 18B
+srand member has no complete ordinary-byte location; the reviewed PTD initializer
+supplies seed one at +0x18 and the earlier STL random-device caller selects rand_s.
 `frexp-ldexp/` retains both complete 270B decomp identities, real double/int32*
 ABI and original zero/subnormal/special-bit paths. The current members' public
 frexp/ldexp, set_exp and conversion bodies have no complete ordinary-byte
