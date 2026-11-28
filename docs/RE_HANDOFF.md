@@ -5,12 +5,11 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers the [UCRT double decomposition helper](CRT_DECOMP_ORIGIN_REVIEW.md).
-Both SDK frexp.obj and ldexp.obj independently locate the full 270B/83-instruction
-decomp owner. Its one REL32 targets the reviewed allshl helper; the real
-cdecl double/int32-pointer ABI, original zero/subnormal/special-bit paths
-and five adjacent INT3 are retained. Its extent is unchanged, with no owned
-data, EH or embedded jump table.
+review covers [UCRT rand and rand_s](CRT_RANDOM_API_ORIGIN_REVIEW.md): two
+complete owners, 105B/36 instructions, all six REL32 roles and six adjacent
+INT3 bytes. The per-thread state recurrence, real cdecl int32 signatures,
+invalid-parameter return and provider/error/output order are retained.
+Both extents remain unchanged, with no owned data, EH or jump tables.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,14 +95,19 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/frexp-ldexp/`: both complete
-member identities, CodeView signatures, full listing/comparison and unchanged
-270B extent. It reuses frexp.obj in `math-special-round/`. The current members'
-public frexp/ldexp, set_exp and conversion bodies have no complete ordinary-byte
+The current proof is in `.analysis/origin-boundary/random-api/`: full rand/rand_s
+members, CodeView signatures, attested listing and complete comparisons.
+The 18B srand member has no complete ordinary-byte location; use a new
+independent caller/member before revisiting it. The reviewed PTD initializer
+supplies the seed-one state at +0x18, and the earlier STL random-device caller
+independently selects rand_s.
+`frexp-ldexp/` retains both complete 270B decomp identities, real double/int32*
+ABI and original zero/subnormal/special-bit paths. The current members' public
+frexp/ldexp, set_exp and conversion bodies have no complete ordinary-byte
 location. `fpexcept-tail/` similarly retains eight negative complete signatures,
-including except2, fperrraise and standalone get_fname; do not repeat those
-member scans without new evidence. Continue from an actual caller or another
-independent member in a bounded unresolved CRT family.
+including except2, fperrraise and standalone get_fname. Continue from an actual
+caller or another independent member in a bounded unresolved CRT family;
+do not repeat these member scans without new evidence.
 `umatherr/` retains the full 29-record name table, literals and callback/control
 protocol; fpexcept.obj remains in `math-error/`, with relevant CodeView signatures
 and the sptype/except1/frnd proof in `math-special-round/`.
