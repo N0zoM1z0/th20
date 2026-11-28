@@ -5,17 +5,15 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-reviews cover [application-type state](CRT_APP_TYPE_STATE_ORIGIN_REVIEW.md)
-and [lowio initialization and retirement](CRT_LOWIO_INITIALIZATION_ORIGIN_REVIEW.md).
-The app-type accessor pair retains 21B code, 11B alignment and 4B BSS, with
-fourteen wrong-storage candidates rejected and GUI startup value 2 confirmed.
-The lowio review's three pending origins and three recovered entries retain four whole SDK
-contributions, all 492B code, seven alignment bytes, 28B SEH and 516B shared
-loader-zero state. The missing initialization primary and finally prefix are
-now explicit. Inherited pipes bypass GetFileType; standard-handle failures
-install -2 in lowio and any live FILE. Retirement clears arrays without
-resetting nhandle or closing OS handles. Earlier notes retain descriptor
-lifetime, full ctype tables and UTF-8/count ownership.
+review covers [signal actions and exception filtering](CRT_SIGNAL_ACTION_BOUNDARY_REVIEW.md).
+Nine pending origins and three recovered entries retain seven whole SDK
+contributions, 1,102B instructions, one INT3 and all 228B state/tables/SEH.
+Raise's overlapping candidate is now four disjoint partitions of its full
+497B instruction owner. Both missing exception prefixes and the continuation
+are explicit. Global encoded versus local raw handlers, reset-before-callback,
+FPE arguments and original PTD restoration remain distinct. The non-FPE reset
+retains its encoded-null cookie store even for a local action. Earlier notes
+retain application-type, descriptor lifetime and conversion evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -101,11 +99,12 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/lowio-initialization/`:
-four whole SDK contributions, complete scope table, recovered primary/finally/
-retirement entries and all 128 lowio pointer slots. The earlier `wide-stdio/`
-proof retains array lifetime and real per-handle Enter/LeaveCriticalSection
-roles. Reuse those bodies and the existing heap, errno and WinAPI evidence.
+The current proof is in `.analysis/origin-boundary/signal-actions/`: seven
+whole SDK signal/filter contributions, both scope tables, full four-slot BSS,
+12-record default exception table, three DWORD constants and missing finally
+prefixes/continuation. Original overlapping ledger rows remain in the private
+directory. Reuse the earlier PTD, pointer-encoding, errno, abort and guard-check
+proofs. The lowio and app-type findings remain in their focused notes.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -113,13 +112,19 @@ under the attempted build configuration. Keep both failed logs and inputs;
 do not repeat that compile until those inputs are resolved. The 89B SDK versus
 91B target epilogue remains pending at `0x0054A360`.
 
-The app-type proof in `.analysis/origin-boundary/runtime-app-type/` closes
-the descriptor owner's named query dependency at `0x005558F0`, with setter
-`0x005558F6` and full four-byte state at `0x005E55D0`. Next locate the runtime
-error routing/report owners using original callers and string references;
-the SDK's larger `report_runtime_error.obj` sections have no complete match,
-and its 3B false-return helper has ten ambiguous candidates. Do not infer
-the reporter's identity from proximity to the accessor pair.
+The runtime reporter's banner, unknown-program text, library caption and
+abort message are absent in both ASCII and UTF-16. Larger SDK reporter
+sections have no complete match; the already reviewed abort follows the
+release path with no debug-only message call. Do not keep searching nearby
+code for that reporter without a new retained caller or string reference.
+
+Next review the actual `_exit` owner at `0x00552DED` and common cleanup
+protocol in `.analysis/origin-boundary/exit-paths/`. Complete SDK locations
+exist for `common_exit` at `0x00552C52`, cleanup body `0x00552B6A`, process
+termination selection `0x00552D10`, CLR exit `0x00552D3E`, and public wrappers.
+The 77B guarded-call section has three ordinary-byte matches; choose its
+real closure through complete calls/locks/SEH, not opcode shape. Preserve
+full EH metadata, callback ownership, cleanup modes and terminal paths.
 
 The SDK's unreferenced 56B badioinfo data and separate
 34B standard-ID helper have no complete target match; neither receives

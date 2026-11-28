@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [UCRT signal actions, raise boundaries and exception filtering](CRT_SIGNAL_ACTION_BOUNDARY_REVIEW.md) — nine pending origins and three recovered entries; whole 1,102B instruction scope, complete 228B state/tables/SEH, corrected raise overlap and original encoded-null/local-reset behavior.
 - [UCRT application-type state and accessor identities](CRT_APP_TYPE_STATE_ORIGIN_REVIEW.md) — two full accessor bodies, complete BSS/alignment and real GUI startup value; named descriptor caller and shared storage reject fourteen ordinary-byte lookalikes.
 - [UCRT lowio initialization and inherited handles](CRT_LOWIO_INITIALIZATION_ORIGIN_REVIEW.md) — three pending origins and three recovered entries; four whole 492B contributions, full alignment/SEH/516B shared state, original startup-block checks, no-console fallback and retirement without nhandle reset.
 - [UCRT descriptor arrays and handle association protocols](CRT_DESCRIPTOR_LIFETIME_ORIGIN_REVIEW.md) — eleven pending origins plus recovered finally entry; full 841B code/28B SEH, 64×56B array lifetime, actual lock imports, sentinel-specific errors and handle reset without CloseHandle/FOPEN clearing.
