@@ -5,14 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [the complete VCRT FindHandler owner](CRT_FIND_HANDLER_OWNER_REVIEW.md).
-One pending origin retains the full 931B contribution: 930B/300 instructions
-and final INT3, with the existing extent unchanged. Every relocation is bound
-through its reviewed providers, including independent bad_exception class/
-throw metadata. Rethrow adoption, specification consumption/replacement,
-next-try search after a returned catch, recursive destruction and all noexcept/
-foreign/abort paths remain in the complete parent. No local metadata is added.
-Earlier notes retain exception lifetime, validation and SEH4 evidence.
+review covers [memmove and independent CPU dispatch state](CRT_MEMMOVE_CPU_DISPATCH_REVIEW.md).
+Two pending origins retain their full 1,396B and 794B contributions, with both
+internal tables, original unreachable instructions/alignment and every
+relocation. The complete 24B CPU data/BSS provider independently binds the
+ISA/favor fields. Earlier notes retain the complete FindHandler and exception
+owner closure.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -98,7 +96,10 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/find-handler/`, reusing
+The current proof is in `.analysis/origin-boundary/memory-copy/`, reusing the
+full memmove member/listing in `catch-build/`. Preserve the independent CPU
+member, complete data/BSS proof and internal-table reachability result.
+The preceding proof in `.analysis/origin-boundary/find-handler/` reuses
 frame.obj and the full attested parent listing in `type-info/`. All 300
 instructions are listed. It reuses eleven complete unchanged code/data
 sections from the preceding focused proofs. Preserve `bad-exception/` and
@@ -127,11 +128,11 @@ physical owners. The bad_exception proof independently binds TypeDescriptor
 callbacks. Base exception and bad_exception deleting implementations have
 different target entries despite identical optimized archive shapes.
 
-The full memmove ordinary-byte signature uniquely locates `0x00543E20`
-(1396B); its own relocation/table/protocol review remains pending. Review
-its full control flow, internal jump/table ownership and independent ISA/favor
-globals to settle the provisional extent. The same-shaped bad_alloc
-constructor at `0x00540D24` retains its previous class identity.
+The complete memmove owner at `0x00543E20` (1396B) and CPU initializer at
+`0x005436C1` (794B) are reviewed. Continue with another bounded memory-runtime
+owner, such as memset, reusing the complete independent ISA/favor provider.
+The same-shaped bad_alloc constructor at `0x00540D24` retains its previous
+class identity.
 The 14B secchk signature independently locates the cookie check at
 `0x005429EE`; its own failure-owner review remains pending. std type-info
 name/hash/list-cleanup, application verifier and termination query remain

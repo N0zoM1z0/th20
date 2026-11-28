@@ -65,9 +65,10 @@ is not the constructor's extra argument. Result zero and the default switch
 path perform no member call. The outer function returns void.
 
 The copy target `0x00543E20` is independently identified by the complete
-unique 1,396B ordinary-byte signature of `memmove.obj`. Its own relocation,
-table and protocol review remains pending, with no body credit here. The
-existing AdjustPointer and member-call bridge proofs retain their complete
+unique 1,396B ordinary-byte signature of `memmove.obj`. Its subsequent
+[complete owner review](CRT_MEMMOVE_CPU_DISPATCH_REVIEW.md) binds every
+relocation, internal table and ISA/favor field through an independent provider.
+The existing AdjustPointer and member-call bridge proofs retain their complete
 PMD and stdcall/thiscall contracts.
 
 ## Complete exceptional owners
