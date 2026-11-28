@@ -5,12 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [memmove and independent CPU dispatch state](CRT_MEMMOVE_CPU_DISPATCH_REVIEW.md).
-Two pending origins retain their full 1,396B and 794B contributions, with both
+review covers [memory copy/fill and independent CPU dispatch state](CRT_MEMMOVE_CPU_DISPATCH_REVIEW.md).
+Three pending origins retain their full 1,396B/346B/794B contributions, with both
 internal tables, original unreachable instructions/alignment and every
 relocation. The complete 24B CPU data/BSS provider independently binds the
-ISA/favor fields. Earlier notes retain the complete FindHandler and exception
-owner closure.
+ISA/favor fields. Memset retains its at-most-32B scalar threshold, original
+large-loop continuation mask and overlapping end stores. Earlier notes retain
+the complete FindHandler and exception owner closure.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -99,6 +100,8 @@ shared owners, tails, alignment and owned metadata in each reviewed scope.
 The current proof is in `.analysis/origin-boundary/memory-copy/`, reusing the
 full memmove member/listing in `catch-build/`. Preserve the independent CPU
 member, complete data/BSS proof and internal-table reachability result.
+The full memset member, attested listing and complete comparison are in
+`.analysis/origin-boundary/memory-set/`, reusing that CPU provider.
 The preceding proof in `.analysis/origin-boundary/find-handler/` reuses
 frame.obj and the full attested parent listing in `type-info/`. All 300
 instructions are listed. It reuses eleven complete unchanged code/data
@@ -129,8 +132,9 @@ callbacks. Base exception and bad_exception deleting implementations have
 different target entries despite identical optimized archive shapes.
 
 The complete memmove owner at `0x00543E20` (1396B) and CPU initializer at
-`0x005436C1` (794B) are reviewed. Continue with another bounded memory-runtime
-owner, such as memset, reusing the complete independent ISA/favor provider.
+`0x005436C1` (794B) are reviewed, as is memset at `0x00544760` (346B).
+Continue with another bounded memory-runtime owner, such as memcmp, reusing
+the complete independent ISA/favor provider when applicable.
 The same-shaped bad_alloc constructor at `0x00540D24` retains its previous
 class identity.
 The 14B secchk signature independently locates the cookie check at

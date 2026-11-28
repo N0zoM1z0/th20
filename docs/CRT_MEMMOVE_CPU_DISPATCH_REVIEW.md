@@ -1,10 +1,11 @@
-# CRT memmove and CPU dispatch state
+# CRT memory copy/fill and CPU dispatch state
 
-Two complete x86 library contributions identify pending origins in the locked
+Three complete x86 library contributions identify pending origins in the locked
 Japanese TH20 Steamless target: `libcmt.lib(cpu_disp.obj)` supplies the 794B
 `___isa_available_init` at `0x005436C1`, and `libvcruntime.lib(memmove.obj)`
-supplies the 1,396B `_memmove` at `0x00543E20`. Both existing extents remain
-unchanged. The full comparisons include ordinary bytes, relocation roles,
+supplies the 1,396B `_memmove` at `0x00543E20`. The same VCRuntime archive's
+`memset.obj` supplies the 346B `_memset` at `0x00544760`. All existing extents
+remain unchanged. The full comparisons include ordinary bytes, relocation roles,
 source addends and every corresponding PE HIGHLOW field.
 
 ## Independent CPU state provider
@@ -78,6 +79,32 @@ internal table edge, leaves exactly those thirteen instructions unreachable.
 They remain compared in the full contribution; neither that jump nor its
 operand is repaired or discarded. The complete owner has no local EH table.
 
+## Memset's thresholds, tail and register preservation
+
+The complete 346B/89-instruction memset agrees with its archive member and
+bounded attested listing. All three DIR32/HIGHLOW fields use the already
+established ISA-enabled and favor slots. It owns no table, EH metadata or
+INT3 padding. Original alignment instructions remain in its full extent.
+
+This cdecl body saves EDI in EDX without a stack frame, reads only the low
+byte of the integer value argument and expands it with multiplication by
+0x01010101. Zero count returns before any destination store. Every return
+restores EDI and supplies the original destination pointer in EAX.
+
+Unlike memmove's below-32B scalar threshold, memset uses scalar copying for
+**at most 32B**. Sizes 33–127B try SSE2. At least 128B first tests favor bit 1
+for REP STOSB, then falls back to the SSE2 test or scalar owner. Scalar
+copying consumes count modulo four in bytes, an optional dword, then eight
+bytes per loop; those steps use count bits rather than destination alignment.
+
+The large SSE2 path stores a first unaligned 16B block, aligns the following
+destination upward and derives the remaining count from the original end.
+The 128B loop retains its actual `TEST count,0xFFFFFF00` continuation mask;
+the shared 32B loop handles the remaining range. A nonempty trailing range
+uses two 16B stores ending at the original buffer end, overlapping already
+written bytes. All branches, the shared tail and every return remain in the
+complete contribution.
+
 ## Evidence and validation scope
 
 Private `.analysis/origin-boundary/memory-copy/` retains the archive provider,
@@ -88,6 +115,10 @@ archives. Both memmove state symbols and every memmove relocation are bound
 through the complete independent provider, not a masked ordinary-byte match
 alone. The initializer's complete 794B and memmove's complete 1,396B retain
 their original boundaries, including all data and alignment.
+Private `memory-set/` additionally retains the full memset member/provenance,
+attested listing, complete comparison and original ledger row. Its relocation
+bindings reuse the CPU provider through its original object hash and locked
+target identity, with no new CPU-state inference from the memset fields.
 
 Only origin/boundary classification, evidence, handoff and generated progress
 change. All 2,151 protected native input/product hashes are unchanged. Exact
