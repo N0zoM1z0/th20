@@ -188,7 +188,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040E0D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040E100,library,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 36B ??0bad_array_new_length@std@@QAE@XZ reviewed against full CRT contribution or natural pinned-header emission; original flow, shared failure entries, relocation roles and complete exception-type records reconciled."
 0x0040E130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040E160,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040E160,library,CrtExceptionMessageLifetime,exclude,high,"docs/CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md; Complete 60B ??0exception@std@@QAE@ABV01@@Z reviewed in eleven whole class/message/header/string contributions: 579B instructions, full 342B class/throw/string metadata and 6B zero data alignment. Natural pinned-header variants, canonical class-specific deleting bindings and all branches/relocation roles retained; constructor/alias negatives preserved."
 0x0040E1A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040E200,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040E230,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -209,7 +209,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040E5F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040E610,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040E630,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040E650,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040E650,library,CrtExceptionMessageLifetime,exclude,high,"docs/CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md; Complete 35B ??1exception@std@@UAE@XZ reviewed in eleven whole class/message/header/string contributions: 579B instructions, full 342B class/throw/string metadata and 6B zero data alignment. Natural pinned-header variants, canonical class-specific deleting bindings and all branches/relocation roles retained; constructor/alias negatives preserved."
 0x0040E680,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040E6C0,library,ProgressFileSdk,exclude,high,"CORE/EXACT-128: Complete 20-byte native std::filesystem::path::~path body, actual receiver/argument/result flow and pinned SDK implementation independently establish library origin. Whole fresh compiled callee agrees outside relocation fields; no standalone canonical unit or authored exact credit is claimed. This is independent support for the complete load root, whose own relocations are strictly replayed. See docs/PROGRESS_LOAD_LIFETIME_EXACT_RECONSTRUCTION.md."
 0x0040E6E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -230,7 +230,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040EA60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040EA90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040EAC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040EAF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040EAF0,compiler,CrtExceptionMessageLifetime,exclude,high,"docs/CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md; Complete 46B ??_Gexception@std@@UAEPAXI@Z reviewed in eleven whole class/message/header/string contributions: 579B instructions, full 342B class/throw/string metadata and 6B zero data alignment. Natural pinned-header variants, canonical class-specific deleting bindings and all branches/relocation roles retained; constructor/alias negatives preserved."
 0x0040EB20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040EB50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040EB80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -337,7 +337,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00411720,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00411790,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004117A0,unknown,Identifier32,review,pending,"EXACT-050: Damage Region routing/configuration and shared value protocols. Complete receiver flow/AL-bool/full-EAX/RET ABI, actual196-byte Region with72-byte Motion, five shape routes, configuration preservation/alias order and independent callee anchors audited. Cold strict replay343units/65objects/55692disjointbytes and public C++20/UBSan routing/state/alias checks pass. Constructor EH/controller lifetime/names/origins pending. See docs/EXACT_DAMAGE_REGION_RECONSTRUCTION.md."
-0x004117C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004117C0,library,CrtExceptionMessageLifetime,exclude,high,"docs/CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md; Complete 43B ?what@exception@std@@UBEPBDXZ reviewed in eleven whole class/message/header/string contributions: 579B instructions, full 342B class/throw/string metadata and 6B zero data alignment. Natural pinned-header variants, canonical class-specific deleting bindings and all branches/relocation roles retained; constructor/alias negatives preserved."
 0x004117F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00411810,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00411860,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5923,7 +5923,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00540DE8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00540E03,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00540E1E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00540E4E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00540E3D,library,CrtExceptionMessageLifetime,exclude,high,"docs/CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md; Complete 17B ??1bad_exception@std@@UAE@XZ reviewed in eleven whole class/message/header/string contributions: 579B instructions, full 342B class/throw/string metadata and 6B zero data alignment. Natural pinned-header variants, canonical class-specific deleting bindings and all branches/relocation roles retained; constructor/alias negatives preserved."
+0x00540E4E,compiler,CrtExceptionMessageLifetime,exclude,high,"docs/CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md; Complete 45B ??_Gbad_exception@std@@UAEPAXI@Z reviewed in eleven whole class/message/header/string contributions: 579B instructions, full 342B class/throw/string metadata and 6B zero data alignment. Natural pinned-header variants, canonical class-specific deleting bindings and all branches/relocation roles retained; constructor/alias negatives preserved."
 0x00540E7B,library,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 28B ?__scrt_throw_std_bad_alloc@@YAXXZ reviewed against full CRT contribution or natural pinned-header emission; original flow, shared failure entries, relocation roles and complete exception-type records reconciled."
 0x00540E98,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00540EB5,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6104,8 +6105,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00544722,library,CrtCatchTranslatorTransfer,exclude,high,"docs/CRT_CATCH_TRANSLATOR_TRANSFER_REVIEW.md; Complete 54B ___CxxFrameHandler3 reviewed in ten whole x86 catch/translator/control-transfer contributions: 962B instructions, 2B INT3 and no owner-local EH tables. Full stack-guard/nonlocal-transfer ABI, both central SafeSEH registrations, named RtlUnwind import and folded handler aliases retained."
 0x00544760,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005448C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005449F7,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00544A5A,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005449F7,library,CrtExceptionMessageLifetime,exclude,high,"docs/CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md; Complete 99B ___std_exception_copy reviewed in eleven whole class/message/header/string contributions: 579B instructions, full 342B class/throw/string metadata and 6B zero data alignment. Natural pinned-header variants, canonical class-specific deleting bindings and all branches/relocation roles retained; constructor/alias negatives preserved."
+0x00544A5A,library,CrtExceptionMessageLifetime,exclude,high,"docs/CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md; Complete 34B ___std_exception_destroy reviewed in eleven whole class/message/header/string contributions: 579B instructions, full 342B class/throw/string metadata and 6B zero data alignment. Natural pinned-header variants, canonical class-specific deleting bindings and all branches/relocation roles retained; constructor/alias negatives preserved."
 0x00544A7C,library,CrtThrowUnexpected,exclude,high,"docs/CRT_THROW_UNEXPECTED_EH_REVIEW.md; Complete 109B __CxxThrowException@8 partition reviewed in whole throw/unexpected/compiler-handler contributions: 198B instructions, 6B INT3 and full 88B C++ EH metadata. Independent complete metadata identifies handler, rejecting 29 lookalikes; real RaiseException and WinRT/pure/rethrow protocol retained."
 0x00544AE9,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00544D77,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6150,8 +6151,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00547033,library,CrtFrameDispatch,exclude,high,"docs/CRT_FRAME_DISPATCH_TYPE_MATCH_REVIEW.md; Complete 142B ??$TypeMatchHelper@V__FrameHandler3@@@@YAHPBU_s_HandlerType@@PBU_s_CatchableType@@PBU_s_ThrowInfo@@@Z reviewed in three whole VCRT frame dispatch/type-match contributions: 409 contiguous instruction bytes, all six relocation roles, no alignment or owned metadata. Full unique callee signatures independently bind pending external bodies; wrong-callee wrapper lookalikes rejected."
 0x005470C1,library,CrtFrameDispatch,exclude,high,"docs/CRT_FRAME_DISPATCH_TYPE_MATCH_REVIEW.md; Complete 258B ??$__InternalCxxFrameHandler@V__FrameHandler3@@@@YA?AW4_EXCEPTION_DISPOSITION@@PAUEHExceptionRecord@@PAUEHRegistrationNode@@PAU_CONTEXT@@PAXPBU_s_FuncInfo@@H1E@Z reviewed in three whole VCRT frame dispatch/type-match contributions: 409 contiguous instruction bytes, all six relocation roles, no alignment or owned metadata. Full unique callee signatures independently bind pending external bodies; wrong-callee wrapper lookalikes rejected."
 0x005471C3,library,CrtFrameDispatch,exclude,high,"docs/CRT_FRAME_DISPATCH_TYPE_MATCH_REVIEW.md; Complete 9B ??$__InternalCxxFrameHandlerWrapper@V__FrameHandler3@@@@YA?AW4_EXCEPTION_DISPOSITION@@PAUEHExceptionRecord@@PAUEHRegistrationNode@@PAU_CONTEXT@@PAXPBU_s_FuncInfo@@H1E@Z reviewed in three whole VCRT frame dispatch/type-match contributions: 409 contiguous instruction bytes, all six relocation roles, no alignment or owned metadata. Full unique callee signatures independently bind pending external bodies; wrong-callee wrapper lookalikes rejected."
-0x005471CC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005471E7,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005471CC,library,CrtExceptionMessageLifetime,exclude,high,"docs/CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md; Complete 27B ??0bad_exception@std@@QAE@ABV01@@Z reviewed in eleven whole class/message/header/string contributions: 579B instructions, full 342B class/throw/string metadata and 6B zero data alignment. Natural pinned-header variants, canonical class-specific deleting bindings and all branches/relocation roles retained; constructor/alias negatives preserved."
+0x005471E7,library,CrtExceptionMessageLifetime,exclude,high,"docs/CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md; Complete 30B ??0bad_exception@std@@QAE@XZ reviewed in eleven whole class/message/header/string contributions: 579B instructions, full 342B class/throw/string metadata and 6B zero data alignment. Natural pinned-header variants, canonical class-specific deleting bindings and all branches/relocation roles retained; constructor/alias negatives preserved."
 0x00547205,library,CrtTypeComparison,exclude,high,"docs/CRT_TYPE_COMPARISON_MEMBER_BRIDGES_REVIEW.md; Complete 31B ??8type_info@@QBE_NABV0@@Z reviewed in five whole VCRT type-comparison/EH helper contributions: 137B instructions, 3B INT3, one independently identified comparison REL32 and no owned data/EH tables. All original branches and x86 ABI roles retained."
 0x00547224,library,CrtCatchEntryLifetime,exclude,high,"docs/CRT_CATCH_ENTRY_LIFETIME_REVIEW.md; Complete 139B ?CallCatchBlock@@YAPAXPAUEHExceptionRecord@@PAUEHRegistrationNode@@PAU_CONTEXT@@PBU_s_FuncInfo@@PAXHK@Z partition reviewed in two whole catch-entry/lifetime contributions: all 592B instructions and full 40B SEH table, no padding. Original unwind/rethrow/finally ownership, frame-link and VCRT context/destruction order retained."
 0x005472AF,compiler,CrtCatchEntryLifetime,exclude,high,"docs/CRT_CATCH_ENTRY_LIFETIME_REVIEW.md; Complete 10B CallCatchBlock_exception_filter partition reviewed in two whole catch-entry/lifetime contributions: all 592B instructions and full 40B SEH table, no padding. Original unwind/rethrow/finally ownership, frame-link and VCRT context/destruction order retained."
@@ -6226,7 +6227,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005481A0,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 352B _strnlen body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
 0x00548300,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 290B _wcslen body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
 0x00548430,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 469B _wcsnlen body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
-0x00548610,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00548610,library,CrtExceptionMessageLifetime,exclude,high,"docs/CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md; Complete 143B _strcpy_s reviewed in eleven whole class/message/header/string contributions: 579B instructions, full 342B class/throw/string metadata and 6B zero data alignment. Natural pinned-header variants, canonical class-specific deleting bindings and all branches/relocation roles retained; constructor/alias negatives preserved."
 0x005486A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054873B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005488AF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
