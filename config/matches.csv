@@ -971,3 +971,15 @@ address,name,size,status,match_percent,unit,evidence
 0x004BD410,th20::PlayerRecord::clamped_field_d4,73,matching,100.00,player_state_clamped_field_d4,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
 0x004E15E0,th20::PlayerRecord::set_field_cc_clamped,154,matching,100.00,player_state_set_field_cc_clamped,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
 0x004AB610,th20::Animation::set_secondary_color,25,matching,100.00,player_state_secondary_color,docs/PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md; locked MSVC cold build and complete canonical relocation replay
+0x0041DE50,th20::WindowState::set_nominal_height,22,matching,100.00,window_set_nominal_height,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
+0x0041DED0,th20::WindowState::set_retained_28,26,matching,100.00,window_set_retained_28,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
+0x0041DF10,th20::WindowState::set_retained_30,26,matching,100.00,window_set_retained_30,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
+0x0041DF70,th20::WindowState::set_mesh_offset_x,26,matching,100.00,window_set_mesh_offset_x,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
+0x0041DF90,th20::WindowState::set_mesh_offset_y,26,matching,100.00,window_set_mesh_offset_y,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
+0x0041DEB0,th20::WindowState::set_retained_48,26,matching,100.00,window_set_retained_48,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
+0x0041DEF0,th20::WindowState::set_retained_50,26,matching,100.00,window_set_retained_50,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
+0x0041DFF0,th20::WindowState::set_field_005c,22,matching,100.00,window_set_field_005c,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
+0x0041DFD0,th20::WindowState::set_field_0060,22,matching,100.00,window_set_field_0060,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
+0x0041E010,th20::WindowState::set_field_0064,22,matching,100.00,window_set_field_0064,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
+0x0041E030,th20::WindowState::set_display_mode,25,matching,100.00,window_set_display_mode,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md
+0x0041E050,th20::WindowState::compute_layout,1819,matching,100.00,window_compute_layout,CLAUDE/EXACT-001; docs/WINDOW_LAYOUT_RECONSTRUCTION.md

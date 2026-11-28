@@ -35,10 +35,9 @@ struct WindowState {
     std::int32_t nominal_width, nominal_height;
     std::int32_t playfield_width, playfield_height;
     std::int32_t offset_x, offset_y;
-    struct Pair { std::int32_t first, second; };
-    Pair retained_28, retained_30;
+    std::int32_t retained_28[2], retained_30[2];
     std::int32_t mesh_offset_x[2], mesh_offset_y[2];
-    Pair retained_48, retained_50;
+    std::int32_t retained_48[2], retained_50[2];
     std::int32_t field_0058, field_005c, field_0060, field_0064;
     std::uint8_t active, cursor_latch;
     std::uint32_t startup_status;
@@ -84,10 +83,34 @@ struct WindowState {
     void set_device_reset(std::uint32_t value);
     void set_reset_delay(std::uint32_t value);
     void restore_system_settings();
+
+    // Screen layout members; several bodies fold with identical game getters
+    // and setters that are already credited under other class aliases.
+    std::int32_t nominal_width_value();
+    std::int32_t nominal_height_value();
+    std::int32_t offset_x_value();
+    std::int32_t offset_y_value();
+    void set_nominal_width(std::int32_t value);
+    void set_nominal_height(std::int32_t value);
+    void set_playfield_width(std::int32_t value);
+    void set_playfield_height(std::int32_t value);
+    void set_offset_x(std::int32_t value);
+    void set_offset_y(std::int32_t value);
+    void set_retained_28(std::int32_t index, std::int32_t value);
+    void set_retained_30(std::int32_t index, std::int32_t value);
+    void set_mesh_offset_x(std::int32_t index, std::int32_t value);
+    void set_mesh_offset_y(std::int32_t index, std::int32_t value);
+    void set_retained_48(std::int32_t index, std::int32_t value);
+    void set_retained_50(std::int32_t index, std::int32_t value);
+    void set_field_0058(std::int32_t value);
+    void set_field_005c(std::int32_t value);
+    void set_field_0060(std::int32_t value);
+    void set_field_0064(std::int32_t value);
+    void set_display_mode(std::int32_t value);
+    void compute_layout(std::int32_t choose_scale);
 };
 
 static_assert(sizeof(WindowFlags) == 4);
-static_assert(sizeof(WindowState::Pair) == 8);
 static_assert(sizeof(WindowState::RepeatCounter) == 12);
 // Portable tests exercise the same member bodies; only x86 claims this layout.
 static_assert(sizeof(void*) != 4 || sizeof(WindowState) == 0x2138);

@@ -1884,3 +1884,15 @@ th20::PlayerRecord::clamped_field_d4
 th20::PlayerRecord::set_field_cc_clamped
 th20::Angle::to_vector
 th20::Animation::set_secondary_color
+th20::WindowState::set_nominal_height
+th20::WindowState::set_retained_28
+th20::WindowState::set_retained_30
+th20::WindowState::set_mesh_offset_x
+th20::WindowState::set_mesh_offset_y
+th20::WindowState::set_retained_48
+th20::WindowState::set_retained_50
+th20::WindowState::set_field_005c
+th20::WindowState::set_field_0060
+th20::WindowState::set_field_0064
+th20::WindowState::set_display_mode
+th20::WindowState::compute_layout
