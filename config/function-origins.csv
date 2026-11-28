@@ -6744,7 +6744,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0055B8F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055B904,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055BA20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055BA70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0055BA70,library,CrtLibmError,exclude,high,"docs/CRT_LIBM_ERROR_SUPPORT_ORIGIN_REVIEW.md; Complete 660B SDK contribution reviewed: 539B/143 instructions, NOP, fifteen case pointers and sixty selectors; both REL32 fields and all 37 DIR32 roles, 41B literals, eight observed BSS bytes, eleven zero alignment bytes and twelve INT3 retained. CodeView void cdecl/32B record/error enum and full callback/errno/default paths reviewed. Classification only; exact replay scope zero."
 0x0055BD10,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 243B __floor_default retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
 0x0055BE38,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055BE3E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

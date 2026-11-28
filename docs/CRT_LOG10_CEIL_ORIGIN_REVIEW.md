@@ -95,9 +95,10 @@ comparisons, independent locations, archive provenance, full control-flow
 checks and original rows. Bounded attested listings cover the existing code;
 Capstone supplements the unlisted 79B CI/adapter prefix without modifying the
 Ghidra project. The members in `fp-fltout/` and prior disjoint/x87 evidence
-are reused. Libm_error_support and CIlog10_pentium4 have full independent
-archive identity anchors for the calls here; their own remaining code/data
-review receives no credit from those anchors.
+are reused. Libm_error_support now has its
+[complete error-record and switch review](CRT_LIBM_ERROR_SUPPORT_ORIGIN_REVIEW.md).
+CIlog10_pentium4 retains a complete independent archive identity anchor for
+the call here; its own remaining code/data review receives no credit from it.
 
 Only classification, boundaries, evidence, handoff and generated progress
 change. Tracking/progress checks pass and all 2,151 protected hashes remain
