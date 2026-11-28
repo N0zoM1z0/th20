@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [UCRT secure strings, cached PTD and invalid-parameter dispatch](CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md) — fifteen library entries across a complete 2,133B interval; full SIMD owners, all 27 INT3 bytes, encoded handler/initializer identity, deferred PTD state and retained Watson RET despite its noreturn contract.
 - [UCRT policies, WinRT wrappers and random-provider lookup](CRT_POLICY_WINRT_RANDOM_ORIGIN_REVIEW.md) — eight whole library contributions, complete API identities/data and secure-process guard; distinct missing-API contracts, cached thread policy and uncached exit policy.
 - [UCRT downlevel locale tables and Konkani lookup failure](CRT_DOWNLEVEL_LOCALE_TABLE_ORIGIN_REVIEW.md) — five complete library bodies, both 228-record tables and all 389 literals; original reverse-table inversion, finite search/control evidence and retained nonreturning copy-error path.
 - [UCRT locale wrappers and shared enumeration cleanup](CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md) — eighteen pending origins and one recovered 3B SEH entry; seventeen whole code contributions, full callback/scope-table ownership, same-shape API identities and distinct direct/cached forwarding contracts.

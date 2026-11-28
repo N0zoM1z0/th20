@@ -66,7 +66,9 @@ invariant locale record has the empty string and therefore requires one unit.
 The secure copy is at `0x00548100`; a nonzero result enters the original inline
 five-zero-argument call to `__invoke_watson` at `0x005480CC`. That branch does
 not return an ordinary conversion failure. The length helper is at
-`0x00548430`. These named SDK dependencies receive no body credit here.
+`0x00548430`. These named SDK dependencies receive no body credit here; their
+[subsequent complete review](CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md)
+retains the physical Watson RET despite the SDK's noreturn contract.
 
 Name-to-LCID rejects null input, an absent name or an index outside `0..227`,
 otherwise returning the forward record's LCID. Its normal callers and the

@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [policies, WinRT wrappers and random lookup](CRT_POLICY_WINRT_RANDOM_ORIGIN_REVIEW.md).
-Eight pending library origins cover 487 instruction bytes, one INT3, complete
-API-name/candidate data and the numeric policy cache. Missing APIs select
-distinct status, success/no-op or abort paths; thread-policy defaults are cached
-while exit policy is not. Earlier API reviews retain complete cache/SEH ownership
-and corrected `0x00558390` to the CompareStringEx capability predicate,
-superseding the mistaken thread-attach assignment.
+review covers [secure strings, cached PTD and invalid-parameter dispatch](CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md).
+Fifteen pending library origins cover the complete 2,133B interval, including
+all 27 INT3 bytes, SIMD paths, cached PTD helpers and encoded handler state.
+Watson's physical RET remains despite its SDK noreturn contract. Earlier API
+reviews retain complete cache/SEH ownership and corrected `0x00558390` to the
+CompareStringEx capability predicate, superseding the mistaken thread-attach
+assignment.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,19 +97,20 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current policy/API proof is in
-`.analysis/origin-boundary/optional-api-wrappers/`: eight whole contributions,
-five complete name/candidate pairs, the 4B numeric policy cache and PEB guard.
-Reuse `thunk-cache/` for unchanged module/function arrays and resolver evidence.
-The earlier `locale-wrappers/` proof retains the finally prefix at `0x00557C6C`;
-`downlevel-locale/` retains both full tables and the original Konkani-order
-defect. Keep the rejected 11B thread-attach hypothesis as negative evidence.
+The current proof is in `.analysis/origin-boundary/secure-wide-string/`:
+fifteen whole contributions, the folded PTD-reader alias, complete padding and
+handler state. Capped Ghidra length listings are completed by the tail/final
+queries; the audit requires full union coverage. Normal handlers may return;
+the default fatal path retains its physical RET. Reuse the focused API/cache
+and downlevel notes for unchanged evidence, including the Konkani table defect
+and rejected thread-attach hypothesis.
 
-Next review the downlevel conversion's secure copy/length/fatal-error
-dependencies at `0x00548100`, `0x00548430` and `0x005480CC`, retaining full SIMD,
-validation and nonreturning paths. Their named call roles alone grant no body
-credit. The adjacent PEB application-verifier helper at `0x0055E109` also
-remains pending; its 18B SDK member candidate is retained in the latest locations.
+Next review the explicit PTD provider at `0x00557A9F` and its immediate
+allocation/FLS protocol, plus the errno leaf at `0x005516C1`. Preserve nullable
+versus required PTD behavior and LastError restoration. Named callee roles give
+these bodies no credit yet. The PEB application-verifier helper at `0x0055E109`
+also remains pending; its 18B SDK candidate is retained under
+`optional-api-wrappers/`.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK

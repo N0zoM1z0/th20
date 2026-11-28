@@ -6183,21 +6183,21 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00547CCF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547D1F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547DA2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547DB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547DF8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547E34,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547E5D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547EA3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547EC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547FF9,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00548008,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054803F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005480BC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005480CC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00548100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005481A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00548300,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00548430,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00547DB0,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 72B ??0__crt_cached_ptd_host@@QAE@QAU__crt_locale_pointers@@@Z body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x00547DF8,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 60B ??1__crt_cached_ptd_host@@QAE@XZ body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x00547E34,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 41B ?check_synchronize_global_state_index@__crt_cached_ptd_host@@AAEIXZ body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x00547E5D,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 70B ?force_synchronize_per_thread_data@__crt_cached_ptd_host@@AAEPAU__acrt_ptd@@XZ body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x00547EA3,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 28B ?get_raw_ptd@__crt_cached_ptd_host@@QAEPAU__acrt_ptd@@XZ body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x00547EC0,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 313B ___acrt_call_reportfault body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x00547FF9,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 15B ___acrt_initialize_invalid_parameter_handler body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x00548008,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 55B __invalid_parameter body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x0054803F,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 124B __invalid_parameter_internal body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x005480BC,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 16B __invalid_parameter_noinfo body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x005480CC,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 52B __invoke_watson body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x00548100,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 149B _wcscpy_s body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x005481A0,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 352B _strnlen body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x00548300,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 290B _wcslen body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
+0x00548430,library,CrtSecureStrings,exclude,high,"docs/CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md; Complete 469B _wcsnlen body reviewed in fifteen whole SDK code contributions, full 2133B interval including all 27 INT3 bytes, handler state and original branch/HIGHLOW/import roles."
 0x00548610,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005486A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054873B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
