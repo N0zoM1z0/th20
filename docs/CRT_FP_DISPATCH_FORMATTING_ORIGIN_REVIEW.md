@@ -153,11 +153,11 @@ cvt.obj and the dispatcher listing in `format-floating-owner/`, the complete
 Installed `convert/cvt.cpp`, the floating-traits header and fenv declarations
 corroborate the format and rounding roles.
 
-The 5,326B fltout at `0x0056281D` and 249B strflt-to-string at `0x00562724`
-have complete unique ordinary-byte identity anchors from their separate
-members. Their own call/data/protocol review remains pending, with no origin
-credit from those identities. The next bounded work is the 249B rounding and
-string-conversion owner, followed by the retained generator.
+The 249B strflt-to-string at `0x00562724` and its decimal rounding helpers are
+now covered by the [complete decimal digit review](CRT_STRFLT_DECIMAL_ROUNDING_ORIGIN_REVIEW.md).
+The separate 5,326B fltout at `0x0056281D` retains its unique complete ordinary-
+byte identity anchor. Its own call/data/protocol review remains pending, with
+no origin credit from the identity alone.
 
 Only classification, evidence, handoff and generated progress change.
 Tracking/progress checks pass; all 2,151 protected native input/product hashes
