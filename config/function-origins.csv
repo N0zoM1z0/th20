@@ -28,6 +28,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040AE70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040AE80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040AE90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040AEBA,compiler,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 22B original contribution agrees with CRT xlock.obj symbol ??__Einitlocks@std@@YAXXZ, including independently checked relocation roles and full attested instruction coverage."
+0x0040AED0,unknown,GlobalLifetime,review,pending,docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 12B atexit registration and native CRT-table/atexit references establish the entry boundary; original object type and origin remain pending.
+0x0040AEDC,unknown,GlobalLifetime,review,pending,docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 12B atexit registration and native CRT-table/atexit references establish the entry boundary; original object type and origin remain pending.
+0x0040AEE8,unknown,GlobalLifetime,review,pending,docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 12B atexit registration and native CRT-table/atexit references establish the entry boundary; original object type and origin remain pending.
+0x0040AEF4,compiler,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 22B original contribution agrees with CRT xlock.obj symbol ??__Einitlocks@std@@YAXXZ, including independently checked relocation roles and full attested instruction coverage."
 0x0040AF10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040AF40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040AFD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5953,9 +5958,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0054187D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005418C2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00541900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541927,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541954,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005419AC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00541927,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 45B original contribution agrees with CRT xlock.obj symbol ??0_Init_locks@std@@QAE@XZ, including independently checked relocation roles and full attested instruction coverage."
+0x00541954,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 49B original contribution agrees with CRT xlock.obj symbol ??0_Lockit@std@@QAE@H@Z, including independently checked relocation roles and full attested instruction coverage."
+0x00541985,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 39B original contribution agrees with CRT xlock.obj symbol ??1_Init_locks@std@@QAE@XZ, including independently checked relocation roles and full attested instruction coverage."
+0x005419AC,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 31B original contribution agrees with CRT xlock.obj symbol ??1_Lockit@std@@QAE@XZ, including independently checked relocation roles and full attested instruction coverage."
 0x005419CB,library,CxxRuntime,exclude,high,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT xonce2.obj symbol ___std_init_once_link_alternate_names_and_abort@0 reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.
 0x005419D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00541A11,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5987,10 +5993,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005423C1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005423E3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054242B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00542480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054248E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005424A3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005424B1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00542480,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 14B original contribution agrees with CRT xmtx.obj symbol __Mtxdst, including independently checked relocation roles and full attested instruction coverage."
+0x0054248E,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 21B original contribution agrees with CRT xmtx.obj symbol __Mtxinit, including independently checked relocation roles and full attested instruction coverage."
+0x005424A3,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 14B original contribution agrees with CRT xmtx.obj symbol __Mtxlock, including independently checked relocation roles and full attested instruction coverage."
+0x005424B1,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 14B original contribution agrees with CRT xmtx.obj symbol __Mtxunlock, including independently checked relocation roles and full attested instruction coverage."
 0x005424BF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00542527,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00542556,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6369,10 +6375,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005519B2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005519D9,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005519FE,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00551EA3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00551EBA,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00551EEB,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00551F02,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00551E62,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 65B original contribution agrees with CRT locks.obj symbol ___acrt_initialize_locks, including independently checked relocation roles and full attested instruction coverage."
+0x00551EA3,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 23B original contribution agrees with CRT locks.obj symbol ___acrt_lock, including independently checked relocation roles and full attested instruction coverage."
+0x00551EBA,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 49B original contribution agrees with CRT locks.obj symbol ___acrt_uninitialize_locks, including independently checked relocation roles and full attested instruction coverage."
+0x00551EEB,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 23B original contribution agrees with CRT locks.obj symbol ___acrt_unlock, including independently checked relocation roles and full attested instruction coverage."
+0x00551F02,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 14B original contribution agrees with CRT locks.obj symbol __lock_locales, including independently checked relocation roles and full attested instruction coverage."
+0x00551F10,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 9B original contribution agrees with CRT locks.obj symbol __unlock_locales, including independently checked relocation roles and full attested instruction coverage."
 0x00551F19,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00551F68,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00551F74,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6953,3 +6961,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0056B3F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056B400,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056B430,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0056B449,compiler,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 10B original contribution agrees with CRT xlock.obj symbol ??__Finitlocks@std@@YAXXZ, including independently checked relocation roles and full attested instruction coverage."
+0x0056B453,unknown,GlobalLifetime,review,pending,docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 10B exit invoker and native CRT-table/atexit references establish the entry boundary; original object type and origin remain pending.
+0x0056B45D,unknown,GlobalLifetime,review,pending,docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 10B exit invoker and native CRT-table/atexit references establish the entry boundary; original object type and origin remain pending.
+0x0056B467,unknown,GlobalLifetime,review,pending,docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 10B exit invoker and native CRT-table/atexit references establish the entry boundary; original object type and origin remain pending.
+0x0056B471,compiler,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 10B original contribution agrees with CRT xlock.obj symbol ??__Finitlocks@std@@YAXXZ, including independently checked relocation roles and full attested instruction coverage."

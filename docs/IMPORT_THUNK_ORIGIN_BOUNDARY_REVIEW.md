@@ -64,11 +64,12 @@ branch targets the separate nine-byte block at `0x00551F10..0x00551F18`.
 Thus the span encloses the GDI+ jumps without owning them. Checking only CSV
 interval overlap would incorrectly reject those ten independently bounded stubs.
 
-The discontiguous function remains pending. Its shared-tail ownership and origin
-need review before changing its provisional extent; neither the 31-byte local
-block nor the 40-byte address count can replace a contiguous ledger size without
-reconciling the distant tail. This is also a reason to inspect other unusually
-large runtime candidates before treating their reported span as a native body.
+The [subsequent lock ownership review](CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md)
+resolves this partition using complete independent STL and UCRT objects:
+31 bytes belong to `_Lockit::~_Lockit` and the distant nine bytes are the
+separate `_unlock_locales` function. Both bodies and the conditional tail edge
+are retained in the reviewed ledger. Other unusually large runtime spans still
+need the same ownership check before being treated as native body sizes.
 
 ## Reproduction and checkpoint scope
 

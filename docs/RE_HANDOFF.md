@@ -4,11 +4,12 @@
 
 The active task is to complete origin/boundary review before returning to native
 matching. Reviewed groups now include import-library stubs, CRT forwarding/runtime
-bodies, x86 integer helpers and startup policy/TLS leaves. See the
+bodies, x86 integer helpers, startup policy/TLS leaves and lock ownership. See the
 [import entry table](IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md),
 [CRT chains and width findings](CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md),
-[integer ABI evidence](CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md), and
-[startup defaults](CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md). The combined
+[integer ABI evidence](CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md),
+[startup defaults](CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md), and
+[lock ownership](CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md). The combined
 integer divide/remainder helpers return quotient in EDX:EAX and remainder in
 EBX:ECX; preserve that compiler-helper ABI in later consumers.
 This checkpoint changes no executable inputs and has **zero affected exact
@@ -77,11 +78,14 @@ CRT startup objects resolve `0x00543B7E` and the folded zero defaults at
 `0x00543B83`; function-level caller queries had missed their unowned startup
 call sites. Use `xrefs_to` when an empty call graph conflicts with other evidence.
 
-Next investigate `0x005419AC` using the retained 40-address listing: its
-66,925-byte provisional
-span includes a distant nine-byte tail and many unrelated functions. Preserve
-the tail while reconciling physical ownership. Do not infer library origin
-from automatic names alone. Generate current counts from the ledgers.
+The false 66,925-byte span at `0x005419AC` is resolved: its 31-byte STL destructor
+conditionally tail-transfers to the separately tracked nine-byte UCRT
+`_unlock_locales` at `0x00551F10`. The complete lock protocol is reviewed, with
+seven omitted entries admitted and six additional startup/exit entries retained
+pending. Next resolve those three lifetime pairs and their cleanup roots at
+`0x00541A42`, `0x004F5600` and `0x005424BF`; the entry table and exact reference
+pairs are in the lock note. Do not infer origin from nearby library code or
+masked opcode identity. Generate current counts from the ledgers.
 
 The following native frontiers remain available after review:
 
