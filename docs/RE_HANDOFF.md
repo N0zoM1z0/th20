@@ -5,11 +5,11 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [shared stdio flush and nested lock owners](CRT_STDIO_FLUSH_ORIGIN_REVIEW.md):
-ten entries/eight complete sections, all 687B/289 instructions, 21 REL32/six
-DIR32 roles, five real NOPs and full 56B SEH metadata. Existing extents remain
-unchanged. No-op read streams count without input-buffer reset; actual writes
-retain buffer reset before I/O, short-write error flags and commit ordering.
+review covers [lowio commit and complete descriptor unlock](CRT_LOWIO_COMMIT_ORIGIN_REVIEW.md):
+four entries/two whole sections, 287B/96 instructions, ten REL32/seven DIR32
+roles and the complete 28B scope table. The missing three-byte exception
+restore is recovered without changing old extents. No-console validation,
+locked FOPEN recheck, raw doserrno and fixed EBADF behavior remain intact.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -95,13 +95,16 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/stdio-flush/`: complete
-687B interval, CodeView, all fields/CFG and both independently located scope
-tables. Fflush.obj and its original whole locations stay in `stdio-lifetime/`.
-Next review the independently located 125B _commit at `0x005645EA` or 273B
-write_internal at `0x00564E0D` from the new retained members. Their full
-protocol/metadata closure is pending; this parent review supplies identity
-only. Keep actual lowio lock, cached-host, error and descriptor semantics.
+The current proof is in `.analysis/origin-boundary/lowio-commit/`: full code,
+CodeView, all fields/CFG, independent scope-table location and the three-byte
+exception supplement omitted by Ghidra. It reuses commit.obj in `stdio-flush/`.
+Next review the complete 273B write_internal contribution at `0x00564E0D`
+from the retained write.obj. The old inventory has a 259B primary and 8B unlock
+with six uninventoried bytes between; reconcile that full exception/normal
+owner and its metadata before assigning boundaries. Keep cached-host error
+writes, descriptor validation/recheck, actual lock and nolock call contracts.
+`stdio-flush/` retains the complete 687B interval, CodeView, all fields/CFG and
+both independently located scope tables; fflush.obj stays in `stdio-lifetime/`.
 `stdio-closeall/` retains the complete 171B owner and 28B scope table. Its
 fclose.obj also uniquely locates the 48B public entry at `0x00564518`, 151B
 internal owner at `0x005643F3` and 142B nolock owner at `0x0056448A`; their
