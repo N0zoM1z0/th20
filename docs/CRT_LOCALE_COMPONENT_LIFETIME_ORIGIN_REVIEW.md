@@ -77,8 +77,8 @@ The locale-name copy result is stored without a separate check or contribution
 to that accumulated query status. This original control flow is retained;
 failure handling is not broadened based on the helper's general purpose.
 The two shared providers are CRT's allocating locale-info shim at
-`0x0055CF58` and locale-name copy at `0x00555DEF`. Their named dependencies
-receive no body credit in this review.
+`0x0055CF58` and locale-name copy at `0x00555DEF`. Their complete bodies are now
+covered by the [locale-info and secure-copy review](CRT_LOCALE_INFO_COPY_ORIGIN_REVIEW.md).
 
 The 37B array helper frees every element in the supplied range without clearing
 the array. Time-content cleanup calls it for narrow and wide arrays of counts

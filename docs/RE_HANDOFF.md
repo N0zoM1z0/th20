@@ -5,12 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [monetary, numeric and time component lifetimes](CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md).
-Eight pending library origins retain all 2,789B in the complete component
-interval. Full initialization/failure/cleanup paths preserve per-field static
-C identities, different failure values, 87 time-string slots and unchecked
-locale-name-copy flow. Earlier focused notes retain the corrected 129B locale
-update owner, PTD protocol, Watson RET and CompareStringEx capability identity.
+review covers [allocating locale-info queries and secure copies](CRT_LOCALE_INFO_COPY_ORIGIN_REVIEW.md).
+Six pending library origins retain 1,385 body bytes, all four original INT3
+bytes and the internal 9B NOP. The query's DWORD output clear precedes even its
+byte-result mode. Temporary buffers, guard state, retries and copy failures
+retain their native contracts. A 32B member freea variant is rejected beside
+the independently reviewed shared 30B owner. Earlier focused notes retain the
+component lifetimes and corrected locale/PTD boundaries.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,19 +97,19 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/locale-components/`: eight
-whole contributions across three SDK members, with complete attested instruction
-coverage from capped listings and finishing tails. Cleanup preserves all
-thirteen/five lconv field identities; time cleanup frees contents separately
-from the structure allocation. Reuse `locale-refcount/` for the outer counter,
-static-data and SEH ownership already reviewed.
+The current proof is in `.analysis/origin-boundary/locale-info/`: six whole
+contributions and complete instruction coverage, including the 9B NOP omitted
+by Ghidra. Preserve the 32B freea definition as a failed candidate and reuse
+`allocation/` for the actual 30B shared callee; its existing owner and receipt
+are unchanged. The legacy guard here is 16B, distinct from the 40B cached PTD
+host. Reuse the focused component/reference proofs for unchanged dependencies.
 
-Next review CRT's allocating locale-info shim at `0x0055CF58` and locale-name
-copy at `0x00555DEF`. Their real call roles are established, but their bodies
-still need full review. Use `ucrt/locale/GetLocaleInfoA.cpp` and the focused
-copy helper in `wsetlocale.cpp`; preserve narrow/wide/integer results, allocation
-and conversion paths. The time population owner stores the name-copy result
-without a separate failure check; do not silently add one.
+Next review the locale/multibyte refresh helpers at `0x00558511` and
+`0x0055856F`, plus the CRT wide-to-multibyte wrapper at `0x0055DE4B`. The guard
+and converter establish their named call roles but give those bodies no credit.
+Preserve conditional synchronization, real return/call conventions and
+conversion-mode branches. The stack probe at `0x005439E0` also remains pending;
+only its caller's original temporary-allocation sequence is reviewed here.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK
