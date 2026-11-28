@@ -6109,7 +6109,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00544A5A,library,CrtExceptionMessageLifetime,exclude,high,"docs/CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md; Complete 34B ___std_exception_destroy reviewed in eleven whole class/message/header/string contributions: 579B instructions, full 342B class/throw/string metadata and 6B zero data alignment. Natural pinned-header variants, canonical class-specific deleting bindings and all branches/relocation roles retained; constructor/alias negatives preserved."
 0x00544A7C,library,CrtThrowUnexpected,exclude,high,"docs/CRT_THROW_UNEXPECTED_EH_REVIEW.md; Complete 109B __CxxThrowException@8 partition reviewed in whole throw/unexpected/compiler-handler contributions: 198B instructions, 6B INT3 and full 88B C++ EH metadata. Independent complete metadata identifies handler, rejecting 29 lookalikes; real RaiseException and WinRT/pure/rethrow protocol retained."
 0x00544AE9,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00544D77,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00544D77,library,CrtMemoryDispatch,exclude,high,"docs/CRT_MEMCMP_OWNER_REVIEW.md; Complete 4929B symbol _memcmp reviewed with complete 5060B memcmp contribution; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
 0x00546140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054628E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00546328,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

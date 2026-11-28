@@ -5,13 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [memory copy/fill and independent CPU dispatch state](CRT_MEMMOVE_CPU_DISPATCH_REVIEW.md).
-Three pending origins retain their full 1,396B/346B/794B contributions, with both
-internal tables, original unreachable instructions/alignment and every
-relocation. The complete 24B CPU data/BSS provider independently binds the
-ISA/favor fields. Memset retains its at-most-32B scalar threshold, original
-large-loop continuation mask and overlapping end stores. Earlier notes retain
-the complete FindHandler and exception owner closure.
+review covers [the complete memcmp owner](CRT_MEMCMP_OWNER_REVIEW.md).
+One pending origin retains its correct 4,929B/1,727-instruction extent and
+the complete 5,060B contribution, including the original 3B NOP and 128B
+internal table. All 32 residual cases, byte-order result and internal
+relocations are reconciled. Earlier notes retain memory copy/fill with
+independent CPU state and the complete FindHandler/exception owner closure.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,7 +96,9 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/memory-copy/`, reusing the
+The current proof is in `.analysis/origin-boundary/memory-compare/`: complete
+5,060B member, attested listing, table roles and instruction reachability.
+The preceding proof is in `.analysis/origin-boundary/memory-copy/`, reusing the
 full memmove member/listing in `catch-build/`. Preserve the independent CPU
 member, complete data/BSS proof and internal-table reachability result.
 The full memset member, attested listing and complete comparison are in
@@ -133,8 +134,9 @@ different target entries despite identical optimized archive shapes.
 
 The complete memmove owner at `0x00543E20` (1396B) and CPU initializer at
 `0x005436C1` (794B) are reviewed, as is memset at `0x00544760` (346B).
-Continue with another bounded memory-runtime owner, such as memcmp, reusing
-the complete independent ISA/favor provider when applicable.
+Memcmp at `0x00544D77` is reviewed with its complete residual table. Continue
+with another bounded string/memory owner, using whole archive contributions
+and the complete independent ISA/favor provider when applicable.
 The same-shaped bad_alloc constructor at `0x00540D24` retains its previous
 class identity.
 The 14B secchk signature independently locates the cookie check at
