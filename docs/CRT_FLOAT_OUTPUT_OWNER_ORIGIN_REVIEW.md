@@ -79,7 +79,7 @@ The complete 91B definition supplies this target's comparison owner. The
 The earlier cached-locale header probe still emitted no object; no retry or
 historical receipt change is needed to establish these archive observations.
 
-## Evidence, remaining formatter work and affected scope
+## Evidence and affected scope
 
 Private `.analysis/origin-boundary/format-floating-owner/` retains the full
 cvt member/provenance, scoped locations, attested listings, complete two-owner
@@ -88,11 +88,12 @@ and the complete buffer/decimal/provider proofs. Installed
 `corecrt_internal_stdio_output.h` and `corecrt_internal_ptd_propagation.h`
 corroborate the same arguments, field order and branches.
 
-The parent's fp-format call is independently identified by cvt.obj's complete
-unique 384B ordinary-byte signature at `0x00558F7C`. That provider's own
-seven call roles and full protocol remain next; its origin row is unchanged.
-The full member, attested 158-instruction listing and source `convert/cvt.cpp`
-are retained for that bounded follow-up.
+The parent's fp-format call was independently identified by cvt.obj's complete
+unique 384B ordinary-byte signature at `0x00558F7C`. The subsequent
+[complete dispatch/formatting review](CRT_FP_DISPATCH_FORMATTING_ORIGIN_REVIEW.md)
+now covers its seven call roles, all direct layout/rounding owners and the
+special-value table. The two separate digit-generation providers remain
+pending with their own full identity evidence retained.
 
 Only classification, evidence, handoff and generated progress change.
 Tracking/progress checks pass; all 2,151 protected native input/product hashes

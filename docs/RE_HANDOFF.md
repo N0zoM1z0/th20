@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT floating output and cached-locale ownership](CRT_FLOAT_OUTPUT_OWNER_ORIGIN_REVIEW.md).
-Two pending origins retain their complete 439B/91B contributions and existing
-extents, with all 530B/212 instructions and thirteen real REL32 roles.
-Precision/storage, double extraction, postprocessing and locale refresh remain
-complete. Output.obj's 91B SelectAny definition resolves the old shorter
-cvt.obj epilogue question. Compatible char aliases receive one row; the
-384B fp-format dispatcher remains under review.
+review covers [UCRT floating-format dispatch, layout and rounding](CRT_FP_DISPATCH_FORMATTING_ORIGIN_REVIEW.md).
+Fifteen pending origins retain their complete 3,387B contributions and existing
+instruction extents, including 3,385B/1,379 instructions and two final INT3.
+All 51 REL32/20 DIR32 roles, complete 124B data and eight inter-literal zero
+bytes are reconciled. Decimal/hex/special formatting and packed fenv modes
+remain intact. The two digit generators have full identity anchors and remain
+under their own pending review.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,12 +97,14 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/format-floating-owner/`:
-complete char/locale owners, attested listings, SelectAny variants and the
-independent formatter identity. It reuses output.obj in `format-buffer/`.
-Next reconcile the full 384B `___acrt_fp_format` at `0x00558F7C`, its seven
-callee roles and source `convert/cvt.cpp`. The full cvt member and listing are
-already retained; it has identity evidence but no origin credit yet.
+The current proof is in `.analysis/origin-boundary/fp-dispatch/`: full cvt/fenv
+comparisons, independent literal/table locations, attested listings and every
+format/rounding branch. It reuses cvt.obj in `format-floating-owner/` and the
+complete 91B locale/string/integer providers.
+Next reconcile the complete 249B `___acrt_fp_strflt_to_string` at `0x00562724`
+from `_fptostr.obj`, then the 5,326B `___acrt_fltout` at `0x0056281D` from
+cfout.obj. Their members, unique full ordinary signatures and source roles are
+retained; neither receives origin credit from the identity alone.
 `format-parse-integer/` retains the complete no-whitespace parser/source proof;
 `format-buffer/`, `format-types/` and `format-decimal/` retain the reviewed
 capacity/transfer, length tables and decimal insertion/cropping protocols.
