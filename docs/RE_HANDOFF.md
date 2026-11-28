@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [VCRT catch-object construction](CRT_CATCH_OBJECT_CONSTRUCTION_REVIEW.md).
-Two pending origins and six recovered entries retain both complete sections:
-472B instructions, two terminal INT3 and 60B of full SEH/callback state.
-The helper's old extent is repartitioned without dropping bytes. COM+ and
-bad_alloc predicates, guarded WinRT callback, reference/simple/class copying
-and virtual-base constructor argument one retain their original ABI.
-The two catch-all filters and terminal handlers are now separate entries.
+review covers [x86 catch guards, translators and continuation transfer](CRT_CATCH_TRANSLATOR_TRANSFER_REVIEW.md).
+Ten pending origins retain 962B instructions and two INT3 across ten whole
+sections. JumpToContinuation now includes its five original unreachable
+epilogue bytes; all other extents are unchanged. Both custom guards are
+registered in central SafeSEH. Translator return/recovery preserves the
+original marker and saved ESP/EBP protocol. Three public C++ handler versions
+share one complete physical entry, including the incoming EAX FuncInfo ABI.
 Earlier notes retain exception lifetime, validation and SEH4 evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
@@ -98,13 +98,12 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/catch-build/`, reusing
-the frame member/listing in `type-info/` and ehhelpers member in
-`exception-lifetime/`. It retains the full memmove identity member, all
-missing-instruction decodes and original rows. Earlier frame dispatch,
-unwind/state and thread/API/PTD protocols remain in focused notes.
-FindHandler and its remaining catch/foreign-exception protocols still need
-complete review.
+The current proof is in `.analysis/origin-boundary/catch-transfer/`, reusing
+the full trnsctrl member and attested transfer listing in `frame-unwind/`.
+It retains the complete secchk identity member, omitted-instruction decode,
+SafeSEH observations and original rows. Catch construction, state/unwind,
+dispatch and thread/API/PTD protocols remain in focused notes. FindHandler
+and its remaining catch/foreign-exception owners still need complete review.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -119,22 +118,25 @@ release path with no debug-only message call. Do not keep searching nearby
 code for that reporter without a new retained caller or string reference.
 
 Continue with a bounded unresolved CRT owner, using archive members and
-actual callers before relying on a familiar Ghidra name. FindHandler at
-`0x00546B5A` remains a 931B owner, with its foreign-exception helper at
-`0x00546EFD` (310B) and CallCatchBlock at `0x00547224` (463B). Their catch
-construction, state, type-match and unwind dependencies are now reviewed.
-trnsctrl.obj in `frame-unwind/` independently locates GetRangeOfTrysToCheck
-at `0x00544394` (111B), frame-link helpers at `0x00544617`/`0x0054463B`
-(36B/72B), and control-transfer providers. Review complete protocols and
-metadata rather than crediting its weak iterator/forward shapes.
+actual callers before relying on a familiar Ghidra name. The retained
+frame.obj locates CatchIt at `0x00546AD9` (129B) and CallCatchBlock at
+`0x00547224` (463B). Review their full SEH/rethrow/finally partitions and
+current-exception/context restoration together. Their catch construction,
+state, frame-link, nested-unwind and continuation-transfer dependencies are
+now reviewed. FindHandler at `0x00546B5A` remains a 931B owner, with its
+foreign-exception helper at `0x00546EFD` (310B). Preserve native source and
+complete local metadata for their remaining exception-specification and
+bad_exception branches.
 
 The full memmove ordinary-byte signature uniquely locates `0x00543E20`
 (1396B); its own relocation/table/protocol review remains pending. Nearby
 `0x005471CC`/`0x005471E7` have bad_exception constructor shapes whose full
 vtable/string ownership remains pending. The default constructor also has
 an ordinary match at `0x00540D24`; retain separate physical bodies.
-std type-info name/hash/list-cleanup, application verifier and termination
-query remain pending.
+The 14B secchk signature independently locates the cookie check at
+`0x005429EE`; its own failure-owner review remains pending. std type-info
+name/hash/list-cleanup, application verifier and termination query remain
+pending.
 
 Unlocated VCRT thread/critical-cleanup wrappers, translator setters and
 ReadNoFence lookalikes at `0x0040B2A0` remain unassigned. The similarly named
