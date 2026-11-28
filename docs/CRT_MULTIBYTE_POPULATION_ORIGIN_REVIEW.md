@@ -100,8 +100,9 @@ stored in casemap. Nonletters receive zero casemap values.
 
 UTF-8 or failed GetCPInfo selects ASCII A..Z/a..z classification and opposite
 case, with zero casemap elsewhere. Both paths preserve pre-existing ctype bits.
-The separate adapter providers at `0x0055D108` and `0x0055D3F3` remain pending;
-their named call roles give no body credit in this review.
+The adapter providers at `0x0055D108` and `0x0055D3F3`, including the internal
+mapping owner, are now covered by the
+[complete narrow locale adapter review](CRT_NARROW_LOCALE_ADAPTER_ORIGIN_REVIEW.md).
 
 ## Evidence and affected scope
 

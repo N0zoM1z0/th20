@@ -5,13 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [code-page population and the six-byte UTF-8 reset](CRT_MULTIBYTE_POPULATION_ORIGIN_REVIEW.md).
-Four complete SDK contributions retain all 1,099 code bytes and 308B of owned
-flag/range/name data. UTF-8 clears ctype indices 0..5, with old bits at 6..256
-surviving ASCII classification. WORD validity versus full-width CPINFO queries,
-double code-page resolution and original fallback paths are retained. Earlier
-focused notes retain complete multibyte synchronization/publication, corrected
-thread-update boundaries and refresh/conversion identities.
+review covers [narrow locale adapter counts and sort-key bytes](CRT_NARROW_LOCALE_ADAPTER_ORIGIN_REVIEW.md).
+Three complete SDK contributions retain all 820B, original query/fill flags,
+actual versus queried counts and sort-key byte output. Both 32B member freea
+variants are rejected beside the retained shared 30B release owner. Earlier
+focused notes retain the six-byte UTF-8 reset, full multibyte publication and
+corrected thread-update boundaries.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,19 +96,19 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/multibyte-population/`:
-four whole SDK contributions, all range/name data and a bounded UTF-8 store
-model using the original CP932 ranges. The unchanged SDK member and prior
-locale-name listing are retained in `multibyte-update/`; reuse its complete
-state/default arrays and SEH evidence.
+The current proof is in `.analysis/origin-boundary/narrow-locale-adapters/`:
+three whole SDK contributions and the bounded 324-instruction listing. Reuse
+the legacy guard, conversion filters and independent shared freea proof.
+The multibyte population review retains all range/name data and its UTF-8
+store model; synchronization retains complete state/default arrays and SEH.
 
-Next review the narrow locale adapters used by case generation:
-GetStringTypeA at `0x0055D108`, internal LCMapStringA at `0x0055D206` and its
-public wrapper at `0x0055D3F3`. SDK members are `getstringtypea.obj` and
-`lcmapstringa.obj`. Preserve full temporary-allocation/release branches,
-count/termination rules and character-conversion flags, reusing the reviewed
-legacy guard and conversion helpers. The stack probe at `0x005439E0` remains
-a separate pending body.
+Next review the bounded byte counter at `0x00552590` and wide count adapters
+at `0x0056665E`/`0x0056669C`. SDK members `strncnt.obj`, `lcmapstringw.obj`
+and `comparestringw.obj` have unique whole-section locations retained in
+`.analysis/origin-boundary/locale-adapter-next/`. Check the positive/zero/
+negative count branches, null-termination inclusion and comparison-empty
+handling; reuse the named wide API thunks and bounded wide counter where
+already proved. The stack probe at `0x005439E0` remains a separate pending body.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK

@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [UCRT narrow locale adapter counts and sort-key bytes](CRT_NARROW_LOCALE_ADAPTER_ORIGIN_REVIEW.md) — three whole 820B bodies; strict query versus fixed fill flags, actual versus queried counts, direct sort-key output and both rejected 32B freea variants beside the retained shared owner.
 - [UCRT code-page population and six-byte UTF-8 reset](CRT_MULTIBYTE_POPULATION_ORIGIN_REVIEW.md) — four complete bodies and all 308B range/name/string data; retained old ctype bits, WORD validity versus DWORD query, double resolver and original fallback/case-generation branches.
 - [UCRT multibyte synchronization and corrected ownership](CRT_MULTIBYTE_UPDATE_BOUNDARY_REVIEW.md) — eleven pending origins and two recovered fragments; full 160B updater, guarded publication, secure copy, 1,130B state/tables/SEH and initializer's ignored failure status.
 - [UCRT refresh identities and conversion flag rules](CRT_LOCALE_REFRESH_CONVERSION_ORIGIN_REVIEW.md) — eight whole bodies, identical-byte refresh pairs distinguished by real globals/callees; full numeric flag cases, cdecl/stdcall boundaries and UTF default-output pointer rewriting.
