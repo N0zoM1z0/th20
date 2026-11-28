@@ -5,15 +5,14 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [exception-object lifetime and termination](CRT_EXCEPTION_LIFETIME_TERMINATION_REVIEW.md).
-Ten pending origins and seven recovered entries retain eleven whole code
-contributions, 538B instructions, four INT3 and all 60B SEH/strong callback
-data. The destructor's 168B and terminate's 59 instruction bytes remain
-covered once through disjoint partitions. Destructor throw policy checks
-strict MSVC record format; FrameUnwindFilter's C++ branch checks code alone.
-Terminate catches handler exceptions, while unexpected allows them to escape.
-The strong readonly destruction slot now points to the independently matched
-whole destructor. Earlier notes retain validation, SEH4 and cookie evidence.
+review covers [VCRuntime startup and per-thread state](CRT_VCRUNTIME_STATE_ORIGIN_REVIEW.md).
+Ten pending origins retain ten whole code contributions, all 486B instructions,
+fourteen INT3 and 72B of complete lock/PTD/FLS state. Every existing extent
+remains unchanged. VCRT owns one 24B lock and a 40B startup PTD; lazy allocation
+retains its -1 sentinel, normal-return LastError restoration and free(null)
+paths. Its required getter is now reviewed. Actual globals/callees reject
+UCRT interior locks, the UCRT getter and unrelated lifecycle lookalikes.
+Earlier notes retain exception lifetime, validation and SEH4 evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -99,13 +98,12 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/exception-lifetime/`:
-eleven whole contributions, both complete scope tables and the strong
-destruction-pointer section at `0x00597180`, targeting `0x005463E0` with
-its full HIGHLOW. Original ledger rows remain in the private directory.
-Earlier whole EH metadata identifies the newly recovered std_terminate
-head at `0x005465A0`; its real callee is terminate. The verifier and
-termination query remain pending.
+The current proof is in `.analysis/origin-boundary/vcrt-state/`: ten whole
+initialization/lock/PTD contributions, the full 28B lock table/count, 40B
+startup PTD and four-byte FLS index. Original ledger rows remain in the
+private directory. The strong destruction-pointer and std_terminate findings
+remain in the preceding exception-lifetime note. The verifier and termination
+query remain pending.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -119,19 +117,19 @@ sections have no complete match; the already reviewed abort follows the
 release path with no debug-only message call. Do not keep searching nearby
 code for that reporter without a new retained caller or string reference.
 
-Next review VCRuntime initialization, locks and thread state in
-`.analysis/origin-boundary/vcrt-state/`. initialization.obj locates
-vcrt_initialize at `0x005465A5` and uninitialize at `0x005465C4`; locks.obj
-locates lock initialization at `0x005476CC` and cleanup at `0x00547708`.
-per_thread_data.obj locates freefls `0x005467BA`, nullable getter `0x005467E4`,
-noinit getter `0x00546876`, initializer `0x005468AE` and cleanup `0x005468E1`.
-Include the named required getter at `0x005467D6`, whose body is still pending.
-Preserve full
-FLS/thread state, LastError, failure rollback, shared locks and all metadata.
-The same-shaped required getter also matches UCRT, and 21B lock candidates
-start inside UCRT helpers; use actual callees/globals, not ordinary bytes.
-Thread attach/detach and cleanup lookalikes likewise need complete roles
-before alias credit. Unlocated user.obj translator setters and ReadNoFence
+Next review VCRT's downlevel API/cache protocol in
+`.analysis/origin-boundary/vcrt-api/`. winapi_downlevel.obj completely locates
+try_get_function at `0x005478A7`, system-directory loader `0x00547947`,
+FlsAlloc/Free/GetValue/SetValue at `0x00547992`/`0x005479CD`/`0x00547A08`/
+`0x00547A43`, and InitializeCriticalSectionEx at `0x00547A81`. Retain complete
+module/name/cache tables, atomic publication, failure sentinels and real
+FLS/TLS and critical-section fallback roles. The similarly named
+winapi_thunks.obj is a different provider. Its module-handle candidates and
+downlevel weak FLS accessors have ordinary matches in other CRT groups;
+resolve actual cache/resolver/import roles before alias credit. The SDK
+calloc.obj has twelve 11B candidates including the real PTD call at
+`0x00551400`; distinguish it by the independently reviewed calloc-base callee.
+Unlocated thread/critical-cleanup wrappers, translator setters and ReadNoFence
 lookalikes at `0x0040B2A0` remain unassigned.
 
 The SDK's unreferenced 56B badioinfo data and separate
