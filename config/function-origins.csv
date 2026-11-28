@@ -6070,8 +6070,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00543BD4,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00543C2A,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00543C40,library,CrtFrameStackHelpers,exclude,high,"docs/CRT_FRAME_STACK_HELPER_ORIGIN_REVIEW.md; Complete 69B __SEH_prolog4 partition reviewed in eight whole installed libcmt frame/stack contributions: 350B instructions and 5B alignment, all control flow/relocations and custom stack/cookie protocols. No overlapping aligned-epilog credit."
-0x00543C85,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543CD2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00543C85,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 77B ___get_entropy reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
+0x00543CD2,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 75B ___security_init_cookie reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
 0x00543D1D,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: __get_startup_file_mode."
 0x00543D23,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 12B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: ?__scrt_initialize_type_info@@YAXXZ."
 0x00543D2F,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 3B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: __should_initialize_environment."
@@ -6123,8 +6123,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00546597,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005465A5,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005465C4,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005465E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00546620,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005465E0,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 50B _ValidateLocalCookies reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
+0x00546620,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 350B __except_handler4 reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
 0x0054677E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005467BA,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005467D6,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6158,11 +6158,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0054769C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005476CC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547708,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547740,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547850,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547870,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547890,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00547740,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 159B __local_unwind4 reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
+0x005477E0,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 70B __unwind_handler4 reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
+0x00547830,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 23B @_EH4_CallFilterFunc@8 reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
+0x00547850,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 25B @_EH4_TransferToHandler@8 reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
+0x00547870,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 26B @_EH4_GlobalUnwind2@8 reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
+0x00547890,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 23B @_EH4_LocalUnwind@16 reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
 0x005478A7,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547947,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547992,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
