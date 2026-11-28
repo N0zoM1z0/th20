@@ -5,12 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [wide classification and the full ctype table](CRT_WIDE_CLASSIFICATION_ORIGIN_REVIEW.md).
-Five whole SDK contributions retain all 412B and 520B table/pointer data. The
-wide table includes a real final U+0100 WORD. WEOF/UTF-8 lowercase branches and
-raw classification masks stay intact; eleven same-shaped pointer getters
-load the wrong slots and are rejected. Earlier notes retain complete UTF-8
-state/count behavior and secure conversion/truncation ownership.
+review covers [descriptor arrays and handle association protocols](CRT_DESCRIPTOR_LIFETIME_ORIGIN_REVIEW.md).
+Eleven pending origins plus one recovered finally entry retain ten whole SDK
+contributions, all 841B code and the 28B SEH table. Arrays keep their 64×56B
+geometry, distinct index/per-handle locks and original failure paths. Handle
+reset preserves the OS resource and FOPEN flag; sentinel-specific errors stay
+distinct. Earlier notes retain full ctype tables and UTF-8/count ownership.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,11 +96,12 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/case-conversion/`: five
-whole code contributions, the unique complete 516B wide table and its four-byte
-pointer slot. Reuse the reviewed locale guard, PTD refresh and wide mapping
-providers. Other narrow/upper-case candidates lack complete matches; the
-eleven pointer-getter shapes all reference unrelated slots.
+The current proof is in `.analysis/origin-boundary/wide-stdio/`: ten whole SDK
+contributions, the complete expansion scope table and the missing three-byte
+finally prefix at `0x0055FAA9`. Per-handle Enter/LeaveCriticalSection roles
+reject swapping the same-shaped helpers. Reuse the existing heap, errno and
+WinAPI wrapper proofs. Global lowio/fmode slots are named dependencies here,
+without new canonical binding or body credit for their initializers.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -108,14 +109,15 @@ under the attempted build configuration. Keep both failed logs and inputs;
 do not repeat that compile until those inputs are resolved. The 89B SDK versus
 91B target epilogue remains pending at `0x0054A360`.
 
-Next review CRT descriptor helpers in `.analysis/origin-boundary/wide-stdio/`:
-fileno at `0x005597F1`, isatty at `0x00563DCF`, lowio array construction/
-retirement/expansion at `0x0055F967`/`0x0055F9E2`/`0x0055FA17`, handle reset/
-lookup at `0x0055FAFB`/`0x0055FB8C`, and set_fmode at `0x00555A57`. Complete
-SDK candidate locations exist for these eight bodies in `fileno.obj`,
-`isatty.obj`, `osfinfo.obj` and `setmode.obj`. Reconcile full locks/SEH/data,
-descriptor sentinels, handle ownership and invalid-parameter branches before
-acceptance. The stack probe at `0x005439E0` remains a separate pending body.
+Next review lowio initialization/retirement in
+`.analysis/origin-boundary/lowio-initialization/`: inherited handles at
+`0x0055982D`, standard handles at `0x005598DD`, initialization at `0x0055998D`
+and retirement at `0x005599ED`. Whole SDK locations exist in `ioinit.obj`;
+retain all shared global arrays, sentinel data, locks/SEH and original
+handle/flag installation. The fmode initializer has no complete location yet.
+The named query_app_type dependency comes from
+`ucrt/internal/report_runtime_error.cpp` and remains a separate pending body.
+The stack probe at `0x005439E0` also remains pending.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK
