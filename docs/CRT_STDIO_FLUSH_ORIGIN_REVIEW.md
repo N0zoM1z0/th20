@@ -96,9 +96,9 @@ listing, CodeView, whole comparisons/CFG/fields and independent scope searches.
 It reuses fflush.obj and unique whole locations in `stdio-lifetime/`, plus
 reviewed stdio state/layout, lock, fileno, SEH4 prolog and cached-host providers.
 Installed source is `ucrt/stdio/fflush.cpp` and `corecrt_internal_stdio.h`.
-The retained write.obj uniquely identifies its complete 273B contribution at
-`0x00564E0D`; its own protocol/metadata closure remains pending. The complete
-commit caller/guard now has its [full validation/error/unlock review](CRT_LOWIO_COMMIT_ORIGIN_REVIEW.md).
+The retained 273B write_internal now has its
+[full cached-error/exception-unlock review](CRT_LOWIO_WRITE_OWNER_ORIGIN_REVIEW.md).
+The complete commit caller/guard has its [full validation/error/unlock review](CRT_LOWIO_COMMIT_ORIGIN_REVIEW.md).
 Public fflush and its separate int-returning
 guarded template have no complete ordinary-byte locations in this member.
 

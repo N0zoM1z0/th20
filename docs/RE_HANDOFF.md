@@ -5,11 +5,11 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [lowio commit and complete descriptor unlock](CRT_LOWIO_COMMIT_ORIGIN_REVIEW.md):
-four entries/two whole sections, 287B/96 instructions, ten REL32/seven DIR32
-roles and the complete 28B scope table. The missing three-byte exception
-restore is recovered without changing old extents. No-console validation,
-locked FOPEN recheck, raw doserrno and fixed EBADF behavior remain intact.
+review covers [write_internal cached errors and complete unlock](CRT_LOWIO_WRITE_OWNER_ORIGIN_REVIEW.md):
+the complete 273B/91-instruction contribution, five REL32/five DIR32 roles
+and full 28B scope table. The missing six-byte EDI/EBX exception restore is
+recovered without changing old extents. Caller-owned cached error widths/order,
+initial versus locked validation and the unchanged delegated result are retained.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -95,14 +95,17 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/lowio-commit/`: full code,
-CodeView, all fields/CFG, independent scope-table location and the three-byte
-exception supplement omitted by Ghidra. It reuses commit.obj in `stdio-flush/`.
-Next review the complete 273B write_internal contribution at `0x00564E0D`
-from the retained write.obj. The old inventory has a 259B primary and 8B unlock
-with six uninventoried bytes between; reconcile that full exception/normal
-owner and its metadata before assigning boundaries. Keep cached-host error
-writes, descriptor validation/recheck, actual lock and nolock call contracts.
+The current proof is in `.analysis/origin-boundary/lowio-write/`: complete
+273B owner, CodeView, fields/CFG, independently located scope table and two
+exception instructions omitted by Ghidra. It reuses write.obj in `stdio-flush/`.
+Next review the complete 540B write_nolock at `0x00564F1E`. Its source selects
+binary/ANSI/UTF16/UTF8 and console double translation; keep the complete mode,
+append, buffer/count, translated-result and cached-error branches. Full member
+locations also identify its translation providers and the 39B ANSI EH handler;
+preserve their actual code/metadata ownership rather than assuming old spans.
+The current public 55B write wrapper has no whole ordinary-byte location.
+`lowio-commit/` retains both complete sections, CodeView, independent scope
+table and recovered three-byte restore; its member stays in `stdio-flush/`.
 `stdio-flush/` retains the complete 687B interval, CodeView, all fields/CFG and
 both independently located scope tables; fflush.obj stays in `stdio-lifetime/`.
 `stdio-closeall/` retains the complete 171B owner and 28B scope table. Its

@@ -6964,8 +6964,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00564B17,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00564BF2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00564CDB,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00564E0D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00564F16,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00564E0D,library,CrtLowioWrite,exclude,high,"docs/CRT_LOWIO_WRITE_OWNER_ORIGIN_REVIEW.md; Complete SDK write_internal contribution, three partitions, 273B/91 instructions, five REL32/five DIR32 roles and full 28B SEH table reviewed. Recovered six-byte exception restore, cdecl int32/uint32/reference ABI, exact cached-error widths/order, original validation/recheck/delegation and unlock retained. Existing extents unchanged; classification only, exact replay scope zero."
+0x00564F10,compiler,CrtLowioWrite,exclude,high,"docs/CRT_LOWIO_WRITE_OWNER_ORIGIN_REVIEW.md; Complete SDK write_internal contribution, three partitions, 273B/91 instructions, five REL32/five DIR32 roles and full 28B SEH table reviewed. Recovered six-byte exception restore, cdecl int32/uint32/reference ABI, exact cached-error widths/order, original validation/recheck/delegation and unlock retained. Existing extents unchanged; classification only, exact replay scope zero."
+0x00564F16,compiler,CrtLowioWrite,exclude,high,"docs/CRT_LOWIO_WRITE_OWNER_ORIGIN_REVIEW.md; Complete SDK write_internal contribution, three partitions, 273B/91 instructions, five REL32/five DIR32 roles and full 28B SEH table reviewed. Recovered six-byte exception restore, cdecl int32/uint32/reference ABI, exact cached-error widths/order, original validation/recheck/delegation and unlock retained. Existing extents unchanged; classification only, exact replay scope zero."
 0x00564F1E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056513A,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005651BD,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
