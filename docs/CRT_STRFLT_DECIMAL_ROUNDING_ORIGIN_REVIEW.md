@@ -72,5 +72,5 @@ The existing full fegetround, invalid-parameter and memmove proofs are reused.
 Only classification, evidence, handoff and generated progress change.
 Tracking/progress checks pass; all 2,151 protected native input/product hashes
 are unchanged. Exact replay scope is **zero units**, with no new authored or
-maintained-source exact credit. The separate 5,326B fltout contribution remains
-pending under its own complete scope.
+maintained-source exact credit. The separate 5,326B fltout contribution and
+shared division now have their [complete digit-generation review](CRT_BINARY_DECIMAL_DIGITS_ORIGIN_REVIEW.md).

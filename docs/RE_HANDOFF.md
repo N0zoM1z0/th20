@@ -5,12 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT decimal digit rounding and strflt-to-string](CRT_STRFLT_DECIMAL_ROUNDING_ORIGIN_REVIEW.md).
-Three pending origins retain their complete 426B/197-instruction interval
-and existing extents, with all eight real REL32 roles. Validation order,
-decimal trailing/tie/directed-rounding rules, carry propagation, decpt update
-and unchanged mantissa ownership remain intact. The separate 5,326B fltout
-contribution retains identity evidence and remains under its own review.
+review covers [UCRT binary-to-decimal digits and shared big-integer division](CRT_BINARY_DECIMAL_DIGITS_ORIGIN_REVIEW.md).
+Two pending origins retain their complete 6,565B contributions and existing
+extents, including 6,564B/1,893 instructions and the final INT3. All 49 REL32
+and 16 DIR32 roles, full 2,528B data and four alignment bytes are reconciled.
+Floating environment/denormal handling, full power tables, trial correction,
+nine-digit chunks and the quotient/remainder/trailing protocol remain intact.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,13 +96,14 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/fp-strflt/`: complete
-conversion and decimal-rounding owners, attested listing and all cursor/carry
-paths. It reuses `_fptostr.obj` and the complete providers in `fp-dispatch/`.
-Next reconcile the full 5,326B `___acrt_fltout` at `0x0056281D` from cfout.obj.
-Its member, complete unique ordinary signature and source role are retained;
-it receives no origin credit from that identity alone. `fp-dispatch/` retains
-the complete cvt/fenv and special-value data proofs.
+The current proof is in `.analysis/origin-boundary/fp-fltout/`: complete
+fltout/divide comparison, full power/literal data, attested listings and
+all fraction/digit paths. It reuses cfout.obj in `fp-dispatch/`.
+Next reconcile fegetenv `0x00565F50`, fesetenv `0x00565F70` and feholdexcept
+`0x00565FD0`, then the precise log10 and ceil provider boundaries. Full
+independent member signatures are retained in `fp-fltout/`, without own
+origin credit yet. `fp-strflt/` retains the conversion/carry proof;
+`fp-dispatch/` retains complete cvt/fenv and special-value data proofs.
 `format-parse-integer/` retains the complete no-whitespace parser/source proof;
 `format-buffer/`, `format-types/` and `format-decimal/` retain the reviewed
 capacity/transfer, length tables and decimal insertion/cropping protocols.
