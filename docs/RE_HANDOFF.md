@@ -5,12 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT SSE log10 entries, data and return contracts](CRT_SSE_LOG10_ORIGIN_REVIEW.md).
-Four library entries account for complete 1,344B contributions, including
-1,319B/296 instructions and 25B original alignment. All 42 relocation roles
-(three REL32 and 39 DIR32) and full 2,592B data are reviewed. The missing six-byte stack-input head
-is inventoried; XMM0/ST(0) returns, shared stack view, all 65 table rows and
-normal/special/fallback paths remain intact.
+review covers [UCRT special classification, rounding and except1](CRT_MATH_SPECIAL_ROUND_ORIGIN_REVIEW.md).
+Three complete library owners retain 447B/170 instructions, 24 following
+INT3 and all nine REL32/one DIR32 roles. Integer classification, caller-mode
+FRNDINT, double-returning exception paths, mutable result/control forwarding
+and the original errno/callback decisions remain intact. Existing extents
+are unchanged, with no owned static data or metadata table.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,16 +96,16 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/log10-sse/`: full code/
-data comparisons, attested listing, the unlisted six-byte head, both alignment
-sequences and the exact table-index inference. It reuses members/locations
-in `fp-fltout/` and `log10-ceil/`. Both identical private 256B banks are fully
-compared at their observed linked instances; a future canonical source unit
-still needs independent address selection. The origin review is complete.
-Next review the real sptype, except1 and frnd providers at
-`0x005524B0`/`0x00553A00`/`0x00564240` in a bounded math group, using the
-reviewed ceil/floor callers and complete SDK contributions to establish
-their own extents, return/control contracts and metadata.
+The current proof is in `.analysis/origin-boundary/math-special-round/`:
+complete sptype/except1/frnd comparisons, attested listing and CodeView
+signatures, with fpexcept.obj reused from `math-error/`.
+Next review the full 255B umatherr at `0x00554210`: independent ordinary
+identity and CodeView double return are retained, but its own function-name,
+callback and control-restoration protocol remains pending.
+`log10-sse/` retains full code/data, the missing six-byte head, alignment
+and table-index inference. Its identical private banks are fully compared
+at observed linked instances; a future canonical unit still needs independent
+address selection. Members/locations remain in `fp-fltout/` and `log10-ceil/`.
 `libm-error/` retains complete code/tables and CodeView record/enum/void
 metadata. Its separate 43B setter remains unlocated, and its two BSS cells
 are observed zero without a reviewed runtime writer. The existing ceil/
