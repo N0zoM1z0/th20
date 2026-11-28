@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT integer parsing and string-source positions](CRT_STRING_INTEGER_PARSE_ORIGIN_REVIEW.md).
-Six pending origins retain their complete 724B/293-instruction contributions
-and existing extents. The 531B no-whitespace char parser, shared source factory/
-validation, distinct byte/word unget and overflow predicate retain every
-cursor/error/range branch and all eleven real REL32 roles. Compatible char/
-wchar aliases receive one row per physical head. Earlier notes retain decimal
-output, format mappings/buffer ownership and string/memory/exception owners.
+review covers [UCRT floating output and cached-locale ownership](CRT_FLOAT_OUTPUT_OWNER_ORIGIN_REVIEW.md).
+Two pending origins retain their complete 439B/91B contributions and existing
+extents, with all 530B/212 instructions and thirteen real REL32 roles.
+Precision/storage, double extraction, postprocessing and locale refresh remain
+complete. Output.obj's 91B SelectAny definition resolves the old shorter
+cvt.obj epilogue question. Compatible char aliases receive one row; the
+384B fp-format dispatcher remains under review.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,10 +97,13 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/format-parse-integer/`:
-complete parser/source contributions, attested listings and every cursor,
-error and overflow branch. It reuses output.obj in `format-buffer/`.
-Continue with a bounded formatted-output owner and its actual callee roles;
+The current proof is in `.analysis/origin-boundary/format-floating-owner/`:
+complete char/locale owners, attested listings, SelectAny variants and the
+independent formatter identity. It reuses output.obj in `format-buffer/`.
+Next reconcile the full 384B `___acrt_fp_format` at `0x00558F7C`, its seven
+callee roles and source `convert/cvt.cpp`. The full cvt member and listing are
+already retained; it has identity evidence but no origin credit yet.
+`format-parse-integer/` retains the complete no-whitespace parser/source proof;
 `format-buffer/`, `format-types/` and `format-decimal/` retain the reviewed
 capacity/transfer, length tables and decimal insertion/cropping protocols.
 Keep unlocated wide parser variants and generic jump helpers separate from
@@ -116,8 +119,9 @@ omissions remain recorded with the complete bounded decoded supplements.
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
 under the attempted build configuration. Keep both failed logs and inputs;
-do not repeat that compile until those inputs are resolved. The 89B SDK versus
-91B target epilogue remains pending at `0x0054A360`.
+do not repeat that compile until those inputs are resolved. The target's 91B
+updater now has a complete output.obj match; the 89B cvt.obj alternative
+remains retained rather than replacing the target extent.
 
 The runtime reporter's banner, unknown-program text, library caption and
 abort message are absent in both ASCII and UTF-16. Larger SDK reporter

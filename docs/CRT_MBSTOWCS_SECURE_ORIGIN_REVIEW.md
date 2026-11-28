@@ -103,11 +103,12 @@ call to `0x0055D43C` resolves the reviewed wrapper. The opposite-direction
 policy/core and locale-specific wrapper are now covered by the
 [complete wcstombs review](CRT_WCSTOMBS_SECURE_ORIGIN_REVIEW.md).
 
-The shared cached-locale updater at `0x0054A360` remains pending. Its ordinary
-prefix and call roles agree with the SDK's 89B helper, but the target has a
-91B body ending `MOV ESP,EBP; POP EBP; RET` rather than `LEAVE; RET`.
-The full source and both epilogues are retained for a later compiler question;
-the current review grants no shared-helper body credit from that near match.
+The earlier 89B cached-locale candidate has the same prefix and call roles as
+the 91B target at `0x0054A360`, with a different frame epilogue. The subsequent
+[complete floating-output review](CRT_FLOAT_OUTPUT_OWNER_ORIGIN_REVIEW.md)
+identifies the full matching 91B output.obj definition and the 89B cvt.obj
+SelectAny alternative. Both are retained; the updater's origin/boundary
+review is now complete without admitting the shorter candidate.
 
 A focused locked-compiler attempt in
 `.analysis/origin-boundary/cached-locale/` includes the installed cached-host
@@ -115,8 +116,9 @@ header and calls its real get_locale method. The SDK source package omits
 `corecrt_internal_ffs.h`; a private empty placeholder reaches a conflicting
 `__p__fmode` declaration and another missing private header,
 `corecrt_internal_state_isolation.h`. Both failed logs and probe inputs are
-retained. No object was emitted, so the 89B/91B epilogue question remains
-open pending a complete internal-header/build configuration.
+retained. No object was emitted; a complete internal-header/build configuration
+is still needed before retrying that source probe. The later archive comparison
+does not change either failed result.
 
 ## Evidence and affected scope
 

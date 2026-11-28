@@ -45,9 +45,9 @@ write rather than adding reserved terminator space or character-aware trimming.
 
 A nonnull destination and zero bound return zero before source validation.
 Otherwise null source caches EINVAL/22 and invokes the returning invalid-
-parameter dispatcher. Locale access uses the same pending cached updater at
-`0x0054A360` as the
-[multibyte-to-wide owner](CRT_MBSTOWCS_SECURE_ORIGIN_REVIEW.md).
+parameter dispatcher. Locale access uses the shared updater at `0x0054A360`,
+now covered by the [complete cached-locale owner proof](CRT_FLOAT_OUTPUT_OWNER_ORIGIN_REVIEW.md),
+as does the [multibyte-to-wide owner](CRT_MBSTOWCS_SECURE_ORIGIN_REVIEW.md).
 The core itself does not add the policy's destination clearing on every error.
 
 UTF-8/65001 creates a fresh eight-byte mbstate_t and delegates to the separate
