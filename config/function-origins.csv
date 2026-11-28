@@ -6616,10 +6616,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0055845C,library,CrtPolicyWinApi,exclude,high,"docs/CRT_POLICY_WINRT_RANDOM_ORIGIN_REVIEW.md; Complete 58B ___acrt_get_begin_thread_init_policy body reviewed in eight whole SDK code contributions, including original INT3, API identities/candidate arrays, policy cache, secure-process guard and all branch/HIGHLOW fields."
 0x00558496,library,CrtPolicyWinApi,exclude,high,"docs/CRT_POLICY_WINRT_RANDOM_ORIGIN_REVIEW.md; Complete 39B ___acrt_get_process_end_policy body reviewed in eight whole SDK code contributions, including original INT3, API identities/candidate arrays, policy cache, secure-process guard and all branch/HIGHLOW fields."
 0x005584C0,library,CrtHeap,exclude,high,"docs/CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md; Complete 81B __malloc_base body reviewed in seven whole SDK code contributions, including all owned INT3 alignment, original branches, state and import/callee roles."
-0x00558511,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055853E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055856F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055859C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00558511,library,CrtLocaleRefreshConversion,exclude,high,"docs/CRT_LOCALE_REFRESH_CONVERSION_ORIGIN_REVIEW.md; Complete 45B ___acrt_update_locale_info body reviewed in eight whole SDK contributions covering all 632B, full branch/HIGHLOW/import/global/callee roles and exact conversion-flag cases. Same-shape refresh substitutions rejected."
+0x0055853E,library,CrtLocaleRefreshConversion,exclude,high,"docs/CRT_LOCALE_REFRESH_CONVERSION_ORIGIN_REVIEW.md; Complete 49B ___acrt_update_locale_info_explicit body reviewed in eight whole SDK contributions covering all 632B, full branch/HIGHLOW/import/global/callee roles and exact conversion-flag cases. Same-shape refresh substitutions rejected."
+0x0055856F,library,CrtLocaleRefreshConversion,exclude,high,"docs/CRT_LOCALE_REFRESH_CONVERSION_ORIGIN_REVIEW.md; Complete 45B ___acrt_update_multibyte_info body reviewed in eight whole SDK contributions covering all 632B, full branch/HIGHLOW/import/global/callee roles and exact conversion-flag cases. Same-shape refresh substitutions rejected."
+0x0055859C,library,CrtLocaleRefreshConversion,exclude,high,"docs/CRT_LOCALE_REFRESH_CONVERSION_ORIGIN_REVIEW.md; Complete 49B ___acrt_update_multibyte_info_explicit body reviewed in eight whole SDK contributions covering all 632B, full branch/HIGHLOW/import/global/callee roles and exact conversion-flag cases. Same-shape refresh substitutions rejected."
 0x005585CD,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055862F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005586E1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6762,10 +6762,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0055DC10,library,CrtFloatState,exclude,high,"docs/CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md; Complete 91B __set_statfp partition reviewed in five whole SDK fpctrl.obj code contributions, with literal/state sections and full SEH scope table. Original control flow and relocation roles retained; no authored or canonical exact credit."
 0x0055DC70,library,CrtFloatState,exclude,high,"docs/CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md; Complete 18B __statfp partition reviewed in five whole SDK fpctrl.obj code contributions, with literal/state sections and full SEH scope table. Original control flow and relocation roles retained; no authored or canonical exact credit."
 0x0055DC90,library,CrtHeap,exclude,high,"docs/CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md; Complete 105B __realloc_base body reviewed in seven whole SDK code contributions, including all owned INT3 alignment, original branches, state and import/callee roles."
-0x0055DCF9,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055DD91,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055DDBB,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055DE4B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0055DCF9,library,CrtLocaleRefreshConversion,exclude,high,"docs/CRT_LOCALE_REFRESH_CONVERSION_ORIGIN_REVIEW.md; Complete 152B ?filter_mbtowcs_flags@@YAKIK@Z body reviewed in eight whole SDK contributions covering all 632B, full branch/HIGHLOW/import/global/callee roles and exact conversion-flag cases. Same-shape refresh substitutions rejected."
+0x0055DD91,library,CrtLocaleRefreshConversion,exclude,high,"docs/CRT_LOCALE_REFRESH_CONVERSION_ORIGIN_REVIEW.md; Complete 42B ___acrt_MultiByteToWideChar body reviewed in eight whole SDK contributions covering all 632B, full branch/HIGHLOW/import/global/callee roles and exact conversion-flag cases. Same-shape refresh substitutions rejected."
+0x0055DDBB,library,CrtLocaleRefreshConversion,exclude,high,"docs/CRT_LOCALE_REFRESH_CONVERSION_ORIGIN_REVIEW.md; Complete 144B ?filter_wcstomb_flags@@YAKIK@Z body reviewed in eight whole SDK contributions covering all 632B, full branch/HIGHLOW/import/global/callee roles and exact conversion-flag cases. Same-shape refresh substitutions rejected."
+0x0055DE4B,library,CrtLocaleRefreshConversion,exclude,high,"docs/CRT_LOCALE_REFRESH_CONVERSION_ORIGIN_REVIEW.md; Complete 106B ___acrt_WideCharToMultiByte body reviewed in eight whole SDK contributions covering all 632B, full branch/HIGHLOW/import/global/callee roles and exact conversion-flag cases. Same-shape refresh substitutions rejected."
 0x0055DEC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055DF10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055DF60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

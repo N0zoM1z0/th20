@@ -60,8 +60,9 @@ After filling the UTF-16 buffer, conversion calls the CRT wide-to-multibyte
 wrapper with flags zero, input length `-1` and null default-character outputs.
 A zero destination size passes a null destination to obtain the required size.
 The temporary release, locale guard restoration and GS cookie check remain on
-the original exits. The stack-probe and conversion provider bodies receive no
-credit here from their named call roles.
+the original exits. The conversion provider is now covered by the
+[complete refresh/conversion review](CRT_LOCALE_REFRESH_CONVERSION_ORIGIN_REVIEW.md);
+the stack-probe body remains outside these reviewed owners.
 
 The thiscall guard constructor accepts a supplied locale, otherwise initial
 pointers when the locale has not changed, otherwise required PTD plus locale/

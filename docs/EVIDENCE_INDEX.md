@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [UCRT refresh identities and conversion flag rules](CRT_LOCALE_REFRESH_CONVERSION_ORIGIN_REVIEW.md) — eight whole bodies, identical-byte refresh pairs distinguished by real globals/callees; full numeric flag cases, cdecl/stdcall boundaries and UTF default-output pointer rewriting.
 - [UCRT allocating locale-info queries and secure copies](CRT_LOCALE_INFO_COPY_ORIGIN_REVIEW.md) — six complete library bodies, original DWORD-clear/byte-result widths, malloca stack/heap protocol and guard state; bounded/truncating copies and a rejected 32B freea variant beside the retained shared 30B owner.
 - [UCRT monetary, numeric and time component lifetimes](CRT_LOCALE_COMPONENT_LIFETIME_ORIGIN_REVIEW.md) — eight whole library bodies across 2,789B; resolved FID cleanup identities, thirteen/five lconv fields, all 87 time-string slots, original failure values and unchecked name-copy flow.
 - [UCRT locale references and corrected update-thread ownership](CRT_LOCALE_REFCOUNT_BOUNDARY_REVIEW.md) — ten pending origins and two recovered fragments; overlapping 128B primary becomes five partitions of the full 129B owner, with complete scope metadata, real reference/return contracts and preserved new-before-old replacement order.
