@@ -5,12 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [narrow locale adapter counts and sort-key bytes](CRT_NARROW_LOCALE_ADAPTER_ORIGIN_REVIEW.md).
-Three complete SDK contributions retain all 820B, original query/fill flags,
-actual versus queried counts and sort-key byte output. Both 32B member freea
-variants are rejected beside the retained shared 30B release owner. Earlier
-focused notes retain the six-byte UTF-8 reset, full multibyte publication and
-corrected thread-update boundaries.
+review covers [byte-counter loads and wide adapter count rules](CRT_WIDE_COUNT_ADAPTER_ORIGIN_REVIEW.md).
+Three complete SDK contributions retain all 194B. The byte counter reads
+before testing its limit, including the zero-count entry. Wide mapping
+includes an early null; wide comparison excludes it and retains raw
+zero/negative-count result branches. Earlier focused notes retain narrow
+mapping/classification, the six-byte UTF-8 reset and full multibyte ownership.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,19 +96,17 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/narrow-locale-adapters/`:
-three whole SDK contributions and the bounded 324-instruction listing. Reuse
-the legacy guard, conversion filters and independent shared freea proof.
-The multibyte population review retains all range/name data and its UTF-8
-store model; synchronization retains complete state/default arrays and SEH.
+The current proof is in `.analysis/origin-boundary/locale-adapter-next/`:
+three whole counter/wide-adapter contributions, complete attested listings and
+bounded models of byte reads and zero-count comparisons. Reuse the existing
+wcsnlen and WinAPI thunk proofs, without granting duplicate body credit.
 
-Next review the bounded byte counter at `0x00552590` and wide count adapters
-at `0x0056665E`/`0x0056669C`. SDK members `strncnt.obj`, `lcmapstringw.obj`
-and `comparestringw.obj` have unique whole-section locations retained in
-`.analysis/origin-boundary/locale-adapter-next/`. Check the positive/zero/
-negative count branches, null-termination inclusion and comparison-empty
-handling; reuse the named wide API thunks and bounded wide counter where
-already proved. The stack probe at `0x005439E0` remains a separate pending body.
+Next investigate the pending 221B/452B/61B group at `0x0055D43C`, `0x0055D519`
+and `0x0055D6E2`. The installed CompareStringA member's 671B/70B candidates
+do not locate as complete matches. Its source and private
+`.analysis/origin-boundary/compare-a/` context are hypotheses; inspect complete
+control flow and actual call roles before naming or classifying these heads.
+The stack probe at `0x005439E0` remains a separate pending body.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK

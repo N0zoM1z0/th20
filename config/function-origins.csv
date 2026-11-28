@@ -6399,7 +6399,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005524B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00552530,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00552540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00552590,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00552590,library,CrtWideCountAdapters,exclude,high,"docs/CRT_WIDE_COUNT_ADAPTER_ORIGIN_REVIEW.md; Complete 30B ___strncnt body reviewed in three whole SDK counter/wide-adapter contributions, all 194B, full branches/REL32/HIGHLOW and independently reviewed callee roles. Original load-before-limit and raw-count comparison branches retained."
 0x005525AE,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00552660,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00552722,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6948,8 +6948,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00566551,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005665F1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056662C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0056665E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0056669C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0056665E,library,CrtWideCountAdapters,exclude,high,"docs/CRT_WIDE_COUNT_ADAPTER_ORIGIN_REVIEW.md; Complete 62B ___acrt_LCMapStringW body reviewed in three whole SDK counter/wide-adapter contributions, all 194B, full branches/REL32/HIGHLOW and independently reviewed callee roles. Original load-before-limit and raw-count comparison branches retained."
+0x0056669C,library,CrtWideCountAdapters,exclude,high,"docs/CRT_WIDE_COUNT_ADAPTER_ORIGIN_REVIEW.md; Complete 102B ___acrt_CompareStringW body reviewed in three whole SDK counter/wide-adapter contributions, all 194B, full branches/REL32/HIGHLOW and independently reviewed callee roles. Original load-before-limit and raw-count comparison branches retained."
 0x0056675F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00566913,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00566932,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

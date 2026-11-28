@@ -101,8 +101,10 @@ members, locations, the bounded attested 324-instruction listing, `review.py`
 and `reviewed.json`. The audit compares three whole sections, complete control
 flow and all relocation roles, the PE import name and both rejected freea
 definitions. Installed implementation sources are `ucrt/locale/GetStringTypeA.cpp`
-and `ucrt/locale/LCMapStringA.cpp`. The bounded string counter, stack probe and
-memset remain separate pending bodies; their call roles confer no body credit.
+and `ucrt/locale/LCMapStringA.cpp`. The bounded string counter is now covered
+by the [complete counter/wide-adapter review](CRT_WIDE_COUNT_ADAPTER_ORIGIN_REVIEW.md).
+The stack probe and memset remain separate pending bodies; their call roles
+confer no body credit.
 
 Only classification, focused evidence, handoff and generated progress change.
 All 2,151 protected native input/product hashes remain unchanged. Exact replay
