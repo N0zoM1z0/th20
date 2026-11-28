@@ -5,11 +5,11 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [write_internal cached errors and complete unlock](CRT_LOWIO_WRITE_OWNER_ORIGIN_REVIEW.md):
-the complete 273B/91-instruction contribution, five REL32/five DIR32 roles
-and full 28B scope table. The missing six-byte EDI/EBX exception restore is
-recovered without changing old extents. Caller-owned cached error widths/order,
-initial versus locked validation and the unchanged delegated result are retained.
+review covers [write_nolock dispatch and console selection](CRT_LOWIO_WRITE_DISPATCH_ORIGIN_REVIEW.md):
+two complete owners, 665B/241 instructions, eleven REL32/ten DIR32 roles and
+the full 12B aggregate-return contract. Extents remain unchanged, with no
+owned data/EH/table. Original Unicode-input validation, cached locale routing,
+ignored append-seek result and progress-before-error selection are retained.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -95,15 +95,20 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/lowio-write/`: complete
-273B owner, CodeView, fields/CFG, independently located scope table and two
-exception instructions omitted by Ghidra. It reuses write.obj in `stdio-flush/`.
-Next review the complete 540B write_nolock at `0x00564F1E`. Its source selects
-binary/ANSI/UTF16/UTF8 and console double translation; keep the complete mode,
-append, buffer/count, translated-result and cached-error branches. Full member
-locations also identify its translation providers and the 39B ANSI EH handler;
-preserve their actual code/metadata ownership rather than assuming old spans.
-The current public 55B write wrapper has no whole ordinary-byte location.
+The current proof is in `.analysis/origin-boundary/lowio-write-nolock/`: both
+whole bodies, CodeView/result layout, full CFG/fields and named imports. It
+reuses write.obj and its full locations in `lowio-write/`. Next review the
+translation owners: 219B ANSI text at `0x00564B17`, 233B UTF16LE at `0x00564BF2`
+and 306B UTF8 at `0x00564CDB`, or the console pair. Their common 12B result has
+three unsigned DWORDs: error_code, char_count and lf_count. The 971B ANSI
+console translator at `0x00564667` and 39B EH handler at `0x0056B32A` require
+complete code/metadata reconciliation against the old 966B candidate before
+acceptance; 104B Unicode console is at `0x00564A32`. Whole identities alone
+have no own reviewed credit. The retained lseek.obj also locates the 30B
+append wrapper and 131B shared 64-bit seek owner for later protocol review.
+`lowio-write/` retains the full 273B parent, complete scope and recovered
+six-byte descriptor/result restore. The public 55B write wrapper remains
+without a whole ordinary-byte location.
 `lowio-commit/` retains both complete sections, CodeView, independent scope
 table and recovered three-byte restore; its member stays in `stdio-flush/`.
 `stdio-flush/` retains the complete 687B interval, CodeView, all fields/CFG and

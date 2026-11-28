@@ -73,9 +73,9 @@ invalid-parameter identities. Installed source is `ucrt/lowio/write.cpp`,
 Ghidra omits the two restore instructions; bounded pinned decoding and the
 complete object/native comparison retain all six bytes and their scope root.
 
-The complete 540B write_nolock contribution at `0x00564F1E` has a unique member
-identity and the same four-argument ABI. Its text/encoding/write/error protocol
-remains the next owner review. The current member's 55B public write wrapper
+The complete 540B write_nolock at `0x00564F1E` now has its
+[full dispatch/console/result review](CRT_LOWIO_WRITE_DISPATCH_ORIGIN_REVIEW.md),
+with the same four-argument ABI. The current member's 55B public write wrapper
 has no full ordinary-byte location and receives no reviewed credit.
 
 Only classification, evidence, handoff and generated progress change.
