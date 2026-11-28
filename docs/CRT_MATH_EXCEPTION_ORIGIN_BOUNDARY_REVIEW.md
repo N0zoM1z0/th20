@@ -108,9 +108,12 @@ places it in the zero-filled virtual tail of `.data`. The initializer stores
 its already encoded argument directly. The shipped UCRT
 `internal/initialization.cpp` computes encoded null before calling this
 initializer; its raw zero-filled image value is not the later initialized
-null representation. Ghidra reports no direct caller for this initializer,
-so the source call is corroboration of the parameter contract rather than a
-claimed native caller location.
+null representation. The subsequent
+[UCRT lifetime review](CRT_UCRT_LIFETIME_CALLBACK_ORIGIN_REVIEW.md) resolves the
+empty Ghidra reference result: the unlisted `initialize_pointers` body contains
+an original CALL at `0x0055390A` to this initializer, passing the security cookie
+as encoded null. Complete archive/table roles and original-byte decoding retain
+that native caller independently of Ghidra's incomplete instruction inventory.
 
 The setter encodes a callback with the security-cookie rotation/XOR and stores
 it. The presence check decodes the same slot and returns a boolean in AL. The

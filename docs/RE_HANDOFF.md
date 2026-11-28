@@ -5,9 +5,9 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [heap lifetime, initializer rollback and in-place resize](CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md).
-Nine entries include four recovered heap-handle heads, paired startup records,
-complete initializer executors and the LFH-aware failed-contraction path.
+review covers [UCRT lifetime roots and static callbacks](CRT_UCRT_LIFETIME_CALLBACK_ORIGIN_REVIEW.md).
+Eleven complete bodies include six recovered heads, encoded-null pointer
+initialization, paired table roles and distinct terminating/normal retirement.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -157,9 +157,14 @@ execution/rollback and the complete `_expand` family are now reviewed in
 `heap-control/`: four code contributions, 45 INT3 bytes and the full 128B paired
 initializer table at `0x00599410`. Shutdown clears the CRT handle rather than
 destroying the process heap; failed LFH contraction can return the original
-block successfully. Next follow that table and the original calls to the two
-executors into the root UCRT initialization/termination owner, using the
-retained `initialization.obj` and installed source. Reuse heap/import bindings.
+block successfully. Root UCRT initialization/retirement and static callbacks
+are now reviewed in `ucrt-lifetime/`, reusing `initialization.obj`: 328B complete
+code plus the existing table proof. The original unlisted CALL at `0x0055390A`
+initializes matherr with cookie-valued encoded null; preserve all five pointer
+initializer operands. The five folded true callback roles at `0x00543D2F`
+receive no duplicate head credit. Next review the paired WinAPI thunk-cache
+lifetime callbacks at `0x005583D2`/`0x00558426` from the same table, with full
+array initialization/retirement and actual lookup/import dependencies.
 Use independent archive symbols and complete original control flow, including
 nonreturning paths and owned EH. Generate current counts from the ledgers.
 
