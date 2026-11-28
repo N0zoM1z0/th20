@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [VCRuntime FindHandler owner](CRT_FIND_HANDLER_OWNER_REVIEW.md) — one complete 930B/300-instruction parent plus INT3; every relocation independently bound, rethrow/specification replacement, next-try catch continuation and complete recursive/noexcept/foreign terminal paths.
 - [bad_exception identity and standard exception message lifetime](CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md) — ten pending origins plus one recovered destructor; 579B code, full 342B class/throw/string data and six alignment bytes, natural header variants and rejected base/derived deleting alias.
 - [VCRuntime throw records and unexpected rethrow](CRT_THROW_UNEXPECTED_EH_REVIEW.md) — two pending origins plus three recovered entries; whole 198B instructions/six INT3 and 88B C++ EH, WinRT/pure throw parameters and one metadata-proven handler among thirty candidates.
 - [VCRuntime foreign-exception search](CRT_FOREIGN_EXCEPTION_SEARCH_REVIEW.md) — one whole 309B body plus INT3; breakpoint/translator exclusions, real EncodePointer sentinel and last-handler nonstandard ellipsis eligibility.

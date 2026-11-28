@@ -5,14 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [bad_exception identity and standard exception message lifetime](CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md).
-Ten pending origins and one recovered destructor retain eleven whole bodies:
-579B instructions, 342B class/throw/string data and six zero data-alignment
-bytes. Existing extents are unchanged. A fresh natural <exception> probe
-matches the 60B copy, 43B what, 35B destructor and 46B base deleting variants.
-The target's base/derived deleting implementations remain distinct despite
-identical optimized archive shapes. The full bad_exception throw closure is
-now independently located, including its 27B copy and 17B destruction callbacks.
+review covers [the complete VCRT FindHandler owner](CRT_FIND_HANDLER_OWNER_REVIEW.md).
+One pending origin retains the full 931B contribution: 930B/300 instructions
+and final INT3, with the existing extent unchanged. Every relocation is bound
+through its reviewed providers, including independent bad_exception class/
+throw metadata. Rethrow adoption, specification consumption/replacement,
+next-try search after a returned catch, recursive destruction and all noexcept/
+foreign/abort paths remain in the complete parent. No local metadata is added.
 Earlier notes retain exception lifetime, validation and SEH4 evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
@@ -99,13 +98,13 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/bad-exception/`, reusing
-frame.obj in `type-info/`. It retains complete class/message/string members,
-the rejected scalar-alias hypothesis, constructor negatives, native listings
-and original rows. Keep the fresh natural probe/object/receipt under
-`build/gpt61-origin-exception-copy/`. Earlier throw/unexpected, foreign search,
-catch lifetime/control transfer, construction, unwind and dispatch protocols
-remain in focused notes. FindHandler still needs its full owner review.
+The current proof is in `.analysis/origin-boundary/find-handler/`, reusing
+frame.obj and the full attested parent listing in `type-info/`. All 300
+instructions are listed. It reuses eleven complete unchanged code/data
+sections from the preceding focused proofs. Preserve `bad-exception/` and
+`build/gpt61-origin-exception-copy/` for the natural header variants and
+rejected scalar-alias hypothesis. The selected frame search, dispatch,
+construction, transfer, rethrow and cleanup owners are now reviewed.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -120,19 +119,19 @@ release path with no debug-only message call. Do not keep searching nearby
 code for that reporter without a new retained caller or string reference.
 
 Continue with a bounded unresolved CRT owner, using archive members and
-actual callers before relying on a familiar Ghidra name. The retained
-frame.obj locates FindHandler at `0x00546B5A` (931B). All its construction,
-catch/rethrow, foreign search, transfer, exception-specification, throw and
-bad_exception dependencies now have complete reviewed providers. Reuse the
-full class/throw proof: bad_exception TypeDescriptor `0x005B4030`, ThrowInfo
-`0x005AC1FC`, default constructor `0x005471E7`, copy `0x005471CC` and destructor
-`0x00540E3D`. Review the whole parent control flow without shrinking its
-abort/rethrow/terminal branches or assigning credit to unlocated weak wrappers.
+actual callers before relying on a familiar Ghidra name. The frame owner
+closure is retained through the focused notes and private reports; keep
+unlocated weak forwarding/type-info helpers separate from those complete
+physical owners. The bad_exception proof independently binds TypeDescriptor
+`0x005B4030`, ThrowInfo `0x005AC1FC` and its real constructor/destructor
+callbacks. Base exception and bad_exception deleting implementations have
+different target entries despite identical optimized archive shapes.
 
 The full memmove ordinary-byte signature uniquely locates `0x00543E20`
-(1396B); its own relocation/table/protocol review remains pending. The
-same-shaped bad_alloc constructor at `0x00540D24` retains its previous
-identity; the new class proof rejects it as a bad_exception candidate.
+(1396B); its own relocation/table/protocol review remains pending. Review
+its full control flow, internal jump/table ownership and independent ISA/favor
+globals to settle the provisional extent. The same-shaped bad_alloc
+constructor at `0x00540D24` retains its previous class identity.
 The 14B secchk signature independently locates the cookie check at
 `0x005429EE`; its own failure-owner review remains pending. std type-info
 name/hash/list-cleanup, application verifier and termination query remain
