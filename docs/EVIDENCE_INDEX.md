@@ -1812,6 +1812,8 @@ Compiler scores labelled "current" in historical entries below mean
 
 - [Graphics viewport layout, view offset and startup predicates strict exact](GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md) — six ViewportState records, unsigned-to-float clip bounds, operand order of offset sums; +5,778 authored bytes.
 
+- [AnimationPoolOwner draw-chain callbacks strict exact](ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md) — 51 registered renderer-group callbacks and the +0x6C0 view reset; +772 authored bytes.
+
 - [WindowState original 346B clock whole strict exact](WINDOW_SECONDS_CLOCK346_STRICT_EXACT.md) — QPC/timeGetTime, original unsigned DWORD correction table and shared real elapsed stack lifetime; 8 E8/19 HIGHLOW anchored native roles, source-scoped 1/1, +346 game bytes.
 
 - [Window/Frame clock dispatch 32B whole strict exact](WINDOW_FRAME_CLOCK_DISPATCH32_STRICT_EXACT.md) — two original E8 and two HIGHLOW native sites, genuine 437B device frame callee and exact 37B Card clock callback, scoped 1/1 cold replay.

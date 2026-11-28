@@ -1303,7 +1303,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044EBF0,authored,AnimationFile,review,high,CORE/RECON-1095; docs/ANIMATION_FILE_GROUP336_NATIVE_FRONTIER.md; native zero slot EBP-0x120 differs from reader size output EBP-0x10C. Corrected caller output ownership yields 326B/82 candidate versus 336B/83 native. Authored origin retained; NONEXACT with no exact game credit.
 0x0044ED40,authored,AnimationFile,authored,high,"CORE/RECON-1097; docs/ANIMATION_FILE_PRELOAD269_STRICT_EXACT.md; whole original 269B/79 native Renderer preload; exact 10 E8/9 HIGHLOW under real lock17, checked array and 1022B load, full whole canonical source"
 0x0044EE50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044EE70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044EE70,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
 0x0044EE90,authored,AnimationPool,authored,high,CORE/EXACT-449; docs/ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md; independently original AnimationPoolOwner and AnimationHandle ABI with full exception aware child walk
 0x0044EF90,authored,AnimationPool,authored,high,CORE/EXACT-449; docs/ANIMATION_POOL_INTERRUPT_246_EXACT_RECONSTRUCTION.md; independently original AnimationPoolOwner and AnimationHandle ABI with full exception aware child walk
 0x0044EFC0,authored,AnimationChildren,authored,high,"CORE/RECON-989; docs/ANIMATION_POOL_EVENT_DESCENDANTS261_STRICT_EXACT.md; original complete game-specific 261B/81-i386 two-phase animation descendant interrupt/VM visit, actual 14 E8/2 PE HIGHLOW, 456B exact resolver child and 39470B VM still NONEXACT; whole 261/261 strict"
@@ -1351,57 +1351,57 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00450850,authored,AnimationHandle,authored,high,CORE/RECON-1122; docs/BOMB_PULSE_START500_CLOSURE.md; Resolve live/fallback animation and store real callback owner at Animation+0x5C8.
 0x00450870,library,STL,exclude,high,"CORE/RECON-974; docs/ANIMATION_FILE_SLOT_SIZE16_STRICT_EXACT.md; native entire 16B/8-i386 std::array<AnimationFile*,42>::size() compiler-generated 42 constant, true 209B parent physical E8; 16/16 MSVC strict exact library origin"
 0x00450880,authored,AnimationPool,authored,high,"CORE/RECON-978; docs/ANIMATION_RENDERER_UPDATE_GATE59_STRICT_EXACT.md; full original 59B/18-i386 GameController two native status flags and conditional renderer update, real 3 E8 and 3 HIGHLOW; complete C++20 original strict 59/59"
-0x004508C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004508D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004508E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004508F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450910,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450930,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450940,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450950,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450960,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450970,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450980,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450990,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004509A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004509B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004509C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004509D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004509E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004509F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450A00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450A10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450A30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450A40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450A50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450A70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450A80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450A90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450AB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450AC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450AE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450AF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450B10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450B20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450B30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450B40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450B60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450B70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450B90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450BA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450BB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450BC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450BD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450BE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450BF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450C00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450C10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450C30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450C40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450C50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450C60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004508C0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x004508D0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x004508E0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x004508F0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450900,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450910,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450920,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450930,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450940,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450950,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450960,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450970,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450980,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450990,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x004509A0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x004509B0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x004509C0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x004509D0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x004509E0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x004509F0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450A00,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450A10,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450A30,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450A40,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450A50,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450A70,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450A80,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450A90,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450AB0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450AC0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450AE0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450AF0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450B10,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450B20,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450B30,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450B40,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450B60,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450B70,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450B90,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450BA0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450BB0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450BC0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450BD0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450BE0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450BF0,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450C00,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450C10,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450C30,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450C40,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450C50,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
+0x00450C60,authored,AnimationPool,authored,high,CLAUDE/EXACT-004; docs/ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md; Game draw-chain callback registered by the AnimationPoolOwner constructor 0x00447E00 (or its owner view reset); strict exact unit.
 0x00450C70,authored,MeshResource,authored,high,"CORE/EXACT-138: Actual global Graphics surface-file consumers select layers41/42 and preserve hidden handle/output arguments through null-position, zero-rotation, flags-zero forwarding into the real custom File/VM producer. Complete boundary and existing-object strict replay verified; no new physical bytes or compiler calls. See docs/MESH_RESOURCE_ORIGIN_AUDIT.md."
 0x00450CB0,authored,Animation,authored,high,"CORE/RECON-958; docs/ANIMATION_FILE_SPAWN_922_STRICT_EXACT.md; full original 922B/269-i386 native AnimationFile::spawn complete canonical C++20 original 20 E8/14 PE HIGHLOW, 922/922 exact; earlier CORE/EXACT-138 authored provenance: Complete922-byte native File creation has game lock9, File+68 count, optional output publication, requested-stem check, script binding, full Animation VM call and four flag-selected Renderer registrations. This establishes authored origin, not source or exactness. Actual Renderer owner and whole-game link remain open; original 922B now full strict exact with native PE proof. Earlier provenance docs/MESH_RESOURCE_ORIGIN_AUDIT.md."
 0x00451050,authored,AnimationFile,authored,high,"CORE/RECON-1156; docs/ANIMATION_FILE_SPAWN_CHILD604_STRICT_EXACT.md; original Animation VM opcodes 0x72-0x75, 0x77 and 0x7C call this member; actual AnimationFile lock/count, pool allocation, renderer registration and parent-child list ownership; whole native function exact"

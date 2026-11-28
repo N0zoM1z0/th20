@@ -9,5 +9,7 @@ void __fastcall apply_renderer_staging_449fa0(NativeRendererClassificationView* 
 struct NativeRendererClassificationOwner : AnimationPoolOwner {
     int select_renderer_group_449e40(int identifier);
     void perform_classification_44f3d0(int identifier,int view_index);
+    // Clears the +0x6C0 view selection before a draw-group classification.
+    void clear_view_selection_44ee70();
 };
 }
