@@ -5,12 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [byte-counter loads and wide adapter count rules](CRT_WIDE_COUNT_ADAPTER_ORIGIN_REVIEW.md).
-Three complete SDK contributions retain all 194B. The byte counter reads
-before testing its limit, including the zero-count entry. Wide mapping
-includes an early null; wide comparison excludes it and retains raw
-zero/negative-count result branches. Earlier focused notes retain narrow
-mapping/classification, the six-byte UTF-8 reset and full multibyte ownership.
+review covers [secure multibyte-to-wide counts and direction identities](CRT_MBSTOWCS_SECURE_ORIGIN_REVIEW.md).
+Three pending library origins and one recovered compiler handler retain
+763 instruction bytes, five INT3 bytes and the full 36B FuncInfo. The secure
+policy, UTF-8 delegation and DBCS retry remain intact. Same-shaped opposite
+conversion wrappers are rejected by their real callees; the cached-locale
+89B/91B epilogue variant remains pending. Earlier notes retain the scalar
+counter's load order and wide/narrow adapter count rules.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,17 +97,19 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/locale-adapter-next/`:
-three whole counter/wide-adapter contributions, complete attested listings and
-bounded models of byte reads and zero-count comparisons. Reuse the existing
-wcsnlen and WinAPI thunk proofs, without granting duplicate body credit.
+The current proof is in `.analysis/origin-boundary/mbstowcs/`: four whole SDK
+contributions, complete FuncInfo and the rejected same-shape locale wrapper.
+The original primary listing remains in `compare-a/native.txt`, preserving
+the failed CompareStringA hypothesis. Reuse prior cached host, conversion and
+invalid-parameter proofs. Its shared locale updater at `0x0054A360` differs
+only in the SDK's LEAVE versus target's MOV/POP epilogue and remains pending.
 
-Next investigate the pending 221B/452B/61B group at `0x0055D43C`, `0x0055D519`
-and `0x0055D6E2`. The installed CompareStringA member's 671B/70B candidates
-do not locate as complete matches. Its source and private
-`.analysis/origin-boundary/compare-a/` context are hypotheses; inspect complete
-control flow and actual call roles before naming or classifying these heads.
-The stack probe at `0x005439E0` remains a separate pending body.
+Next review wide-to-multibyte policy/core at `0x0055D71F`/`0x0055D7F5` and
+locale wrapper `0x0055DA96`, using the retained `wcstombs-context.obj` and its
+locations in `mbstowcs/`. Both secure wrapper shapes also suggest the wrong
+direction; require actual internal callee identities. Preserve full SBCS/DBCS/
+UTF-8/default-character and byte-truncation behavior. The UTF-8 provider at
+`0x005596DE` and stack probe at `0x005439E0` remain separate pending bodies.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK

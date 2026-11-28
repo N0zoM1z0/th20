@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [UCRT secure multibyte-to-wide counts and direction identities](CRT_MBSTOWCS_SECURE_ORIGIN_REVIEW.md) — three complete library bodies and recovered 29B cookie/EH handler, all five INT3 and full FuncInfo; original DBCS retry/truncation and rejected opposite-direction wrapper/epilogue candidates.
 - [UCRT byte-counter loads and wide adapter count rules](CRT_WIDE_COUNT_ADAPTER_ORIGIN_REVIEW.md) — three whole 194B bodies; load-before-limit byte counter, mapping's included null, comparison's excluded null and raw zero/negative-count result branches.
 - [UCRT narrow locale adapter counts and sort-key bytes](CRT_NARROW_LOCALE_ADAPTER_ORIGIN_REVIEW.md) — three whole 820B bodies; strict query versus fixed fill flags, actual versus queried counts, direct sort-key output and both rejected 32B freea variants beside the retained shared owner.
 - [UCRT code-page population and six-byte UTF-8 reset](CRT_MULTIBYTE_POPULATION_ORIGIN_REVIEW.md) — four complete bodies and all 308B range/name/string data; retained old ctype bits, WORD validity versus DWORD query, double resolver and original fallback/case-generation branches.
