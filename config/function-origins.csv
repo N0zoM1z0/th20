@@ -6362,9 +6362,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0054FC13,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054FC37,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054FC8E,library,CrtMultibyteUpdate,exclude,high,"docs/CRT_MULTIBYTE_UPDATE_BOUNDARY_REVIEW.md; Complete 129B _memcpy_s partition reviewed in eight whole SDK mbctype.obj contributions, all 1041 instruction bytes/one INT3 and 1130B state/tables/SEH, complete branch/HIGHLOW/callee/import roles."
-0x0054FD10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054FDA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054FE20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0054FD10,library,CrtScalarString,exclude,high,"docs/CRT_SCALAR_STRING_OWNER_REVIEW.md; Complete 140B symbol _strcmp reviewed in three complete scalar string members and full 416B interval; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
+0x0054FDA0,library,CrtScalarString,exclude,high,"docs/CRT_SCALAR_STRING_OWNER_REVIEW.md; Complete 120B symbol _strncmp reviewed in three complete scalar string members and full 416B interval; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
+0x0054FE20,library,CrtScalarString,exclude,high,"docs/CRT_SCALAR_STRING_OWNER_REVIEW.md; Complete 139B symbol _strlen reviewed in three complete scalar string members and full 416B interval; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
 0x0054FEB0,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 67B _acos retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
 0x0054FF00,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 67B _atan retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
 0x0054FF50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
