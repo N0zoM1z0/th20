@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [UCRT onexit registries and reentrant callback execution](CRT_ONEXIT_REGISTRY_BOUNDARY_REVIEW.md) — twelve pending origins and three recovered compiler entries; whole 964B instruction scope, five INT3 and 124B registries/SEH/EH, real guarded actions, reverse traversal with changed bounds and rejected quick-wrapper alias.
 - [UCRT exit cleanup modes, TLS callbacks and CLR termination](CRT_EXIT_CLEANUP_BOUNDARY_REVIEW.md) — eleven pending origins and four recovered entries; whole 818B instruction scope, 13 INT3 and 184B complete state/strings/SEH/EH, actual guarded closure, mode-specific cleanup and rejected termination getters.
 - [UCRT signal actions, raise boundaries and exception filtering](CRT_SIGNAL_ACTION_BOUNDARY_REVIEW.md) — nine pending origins and three recovered entries; whole 1,102B instruction scope, complete 228B state/tables/SEH, corrected raise overlap and original encoded-null/local-reset behavior.
 - [UCRT application-type state and accessor identities](CRT_APP_TYPE_STATE_ORIGIN_REVIEW.md) — two full accessor bodies, complete BSS/alignment and real GUI startup value; named descriptor caller and shared storage reject fourteen ordinary-byte lookalikes.
