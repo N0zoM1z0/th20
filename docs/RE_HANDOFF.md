@@ -5,12 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [the x86 ASCII comparator](CRT_ASCII_STRNICMP_ORIGIN_REVIEW.md):
-the complete 97B/48-instruction _strnicm.obj contribution has no relocations
-and retains its existing extent. It returns normalized -1/0/+1, unlike the
-generic non-x86 C++ body's character difference. Its MASM debug void type
-does not override the C int declaration and actual EAX result. Count/read
-order, unsigned folding and the internal loop-alignment LEA are retained.
+review covers [stricmp and locale synchronization](CRT_STRICMP_ORIGIN_REVIEW.md):
+three whole contributions, 448B/170 instructions and eleven REL32/four DIR32
+roles, with unchanged extents. The validator's full error sentinel, actual
+ASCII/locale character differences and conditional PTD sync restoration are
+retained. The preceding [97B bounded ASCII helper](CRT_ASCII_STRNICMP_ORIGIN_REVIEW.md)
+instead returns normalized -1/0/+1; its assembly-debug void record is not the
+C return declaration.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,13 +97,17 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The latest proof is in `.analysis/origin-boundary/ascii-strnicmp/`: unique whole
+The latest proof is in `.analysis/origin-boundary/ascii-stricmp/`: three unique
+whole sections, CodeView, attested listing and full comparisons. The 72B
+standalone ASCII body has no whole target location; its logic is inlined in
+the 120B public entry. Continue the adjacent case-comparison protocol through
+the independent memicmp/_memicmp members, preserving embedded NUL/count behavior.
+
+`ascii-strnicmp/` retains unique whole
 x86 member identity, attested listing/references, CodeView and full comparison.
 The separate strnicmp.obj has no whole locations for the 49B validator, 89B
 public wrapper or 343B locale implementation; do not repeat these scans without
 new evidence. No direct or absolute reference to the 97B helper was observed.
-Continue the case-comparison family from the independent stricmp.obj member,
-or select another bounded unresolved CRT owner if it supplies no whole match.
 
 `lowio-close/` retains three complete
 close contributions, CodeView, attested listing/references, full scope and
