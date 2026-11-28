@@ -5,12 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT binary-to-decimal digits and shared big-integer division](CRT_BINARY_DECIMAL_DIGITS_ORIGIN_REVIEW.md).
-Two pending origins retain their complete 6,565B contributions and existing
-extents, including 6,564B/1,893 instructions and the final INT3. All 49 REL32
-and 16 DIR32 roles, full 2,528B data and four alignment bytes are reconciled.
-Floating environment/denormal handling, full power tables, trial correction,
-nine-digit chunks and the quotient/remainder/trailing protocol remain intact.
+review covers [UCRT floating environment packing and restoration](CRT_FENV_ENVIRONMENT_ORIGIN_REVIEW.md).
+Seven pending origins retain their complete 1,279B/465 instructions and
+existing extents, with 51 original INT3 and all eight REL32/three DIR32 roles.
+CodeView confirms the unsigned long32 enum and void setter ABIs. Separate
+x87/SSE fields, partial writes and exact readback remain intact. The original
+feholdexcept low-word OR can fail readback and skip clearfp; its concrete
+bit-field inference is recorded separately from execution evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,14 +97,17 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/fp-fltout/`: complete
-fltout/divide comparison, full power/literal data, attested listings and
-all fraction/digit paths. It reuses cfout.obj in `fp-dispatch/`.
-Next reconcile fegetenv `0x00565F50`, fesetenv `0x00565F70` and feholdexcept
-`0x00565FD0`, then the precise log10 and ceil provider boundaries. Full
-independent member signatures are retained in `fp-fltout/`, without own
-origin credit yet. `fp-strflt/` retains the conversion/carry proof;
-`fp-dispatch/` retains complete cvt/fenv and special-value data proofs.
+The current proof is in `.analysis/origin-boundary/fenv-environment/`:
+complete API/packing/setter comparisons, attested listings, CodeView types
+and the separately labelled mask inference. It reuses members in
+`fp-dispatch/` and `fp-fltout/`. The 26B status-from-mask helper has no full
+ordinary-byte location and remains uncredited.
+Next reconcile the full 688B precise log10 at `0x00566030` and the full 317B
+ceil contribution at `0x005662E0`, including its exported entry at `0x00566320`.
+Independent complete signatures remain in `fp-fltout/`; the provisional
+675B log10 and merged 1,523B ceil ledger extents need boundary reconciliation.
+`fp-fltout/` also retains full fraction/power/digit evidence; `fp-strflt/`
+retains conversion/carry and `fp-dispatch/` complete cvt/fenv/special data.
 `format-parse-integer/` retains the complete no-whitespace parser/source proof;
 `format-buffer/`, `format-types/` and `format-decimal/` retain the reviewed
 capacity/transfer, length tables and decimal insertion/cropping protocols.

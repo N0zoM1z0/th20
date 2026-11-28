@@ -119,10 +119,11 @@ signatures, archive provenance and original rows. It reuses cfout.obj in
 and floating declarations corroborate the layouts and algorithms. Existing
 classifier, memcpy_s, memory, cookie and integer-helper evidence is reused.
 
-Fegetenv, feholdexcept, fesetenv, the precise SSE2 log10 and ceil have complete
-independent archive identity anchors for the calls here. Their own remaining
-boundary/data/protocol work receives no origin credit from these identities.
-Next review the environment API owners, then reconcile the math-provider
+Fegetenv, feholdexcept and fesetenv now have their
+[complete environment review](CRT_FENV_ENVIRONMENT_ORIGIN_REVIEW.md), including
+the original mask/readback asymmetry. The precise SSE2 log10 and ceil retain
+complete independent archive identity anchors for the calls here. Their own
+boundary/data/protocol work remains pending. Next reconcile those math-provider
 shared tails and inferred boundaries.
 
 Only classification, evidence, handoff and generated progress change.
