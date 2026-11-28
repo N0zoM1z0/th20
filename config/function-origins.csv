@@ -6874,10 +6874,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00561F90,library,CrtFloatControl,exclude,high,"docs/CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md; Complete 281B __clearfp SDK archive contribution and original control flow reviewed, including all ordinary bytes, HIGHLOW fields, independent caller/callee roles and x87/MXCSR contracts. No authored or canonical exact credit."
 0x005620B0,library,CrtFloatControl,exclude,high,"docs/CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md; Complete 906B __control87 SDK archive contribution and original control flow reviewed, including all ordinary bytes, HIGHLOW fields, independent caller/callee roles and x87/MXCSR contracts. No authored or canonical exact credit."
 0x00562440,library,CrtFloatControl,exclude,high,"docs/CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md; Complete 242B __hw_cw SDK archive contribution and original control flow reviewed, including all ordinary bytes, HIGHLOW fields, independent caller/callee roles and x87/MXCSR contracts. No authored or canonical exact credit."
-0x00562532,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00562575,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005625C9,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00562647,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00562532,library,CrtDownlevelLocale,exclude,high,"docs/CRT_DOWNLEVEL_LOCALE_TABLE_ORIGIN_REVIEW.md; Complete 67B ?GetTableIndexFromLcid@@YAHK@Z body reviewed in whole SDK code contributions, with original INT3, both 228-record tables, all 389 literal sections, complete branches and HIGHLOW sets. Original reverse-table inversion retained."
+0x00562575,library,CrtDownlevelLocale,exclude,high,"docs/CRT_DOWNLEVEL_LOCALE_TABLE_ORIGIN_REVIEW.md; Complete 84B ?GetTableIndexFromLocaleName@@YAHPB_W@Z body reviewed in whole SDK code contributions, with original INT3, both 228-record tables, all 389 literal sections, complete branches and HIGHLOW sets. Original reverse-table inversion retained."
+0x005625C9,library,CrtDownlevelLocale,exclude,high,"docs/CRT_DOWNLEVEL_LOCALE_TABLE_ORIGIN_REVIEW.md; Complete 125B ___acrt_DownlevelLCIDToLocaleName body reviewed in whole SDK code contributions, with original INT3, both 228-record tables, all 389 literal sections, complete branches and HIGHLOW sets. Original reverse-table inversion retained."
+0x00562647,library,CrtDownlevelLocale,exclude,high,"docs/CRT_DOWNLEVEL_LOCALE_TABLE_ORIGIN_REVIEW.md; Complete 44B ___acrt_DownlevelLocaleNameToLCID body reviewed in whole SDK code contributions, with original INT3, both 228-record tables, all 389 literal sections, complete branches and HIGHLOW sets. Original reverse-table inversion retained."
 0x00562673,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00562696,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00562724,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6928,7 +6928,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00565B6D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00565C1F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00565C91,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00565CD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00565CD0,library,CrtDownlevelLocale,exclude,high,"docs/CRT_DOWNLEVEL_LOCALE_TABLE_ORIGIN_REVIEW.md; Complete 103B ___ascii_wcsnicmp body reviewed in whole SDK code contributions, with original INT3, both 228-record tables, all 389 literal sections, complete branches and HIGHLOW sets. Original reverse-table inversion retained."
 0x00565D40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00565D90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00565F50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

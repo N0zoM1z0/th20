@@ -5,12 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [locale wrappers and shared enumeration cleanup](CRT_LOCALE_WINAPI_WRAPPER_ORIGIN_REVIEW.md).
-Eighteen pending origins and one recovered 3B SEH entry cover seventeen whole
-code contributions (814B), full scope metadata and the shared callback slot.
-Actual getters and PE imports distinguish same-shaped wrappers. The preceding
-cache review corrected the 11B head at `0x00558390` to the CompareStringEx
-capability predicate; its earlier thread-attach assignment was wrong.
+review covers [downlevel locale tables and Konkani lookup failure](CRT_DOWNLEVEL_LOCALE_TABLE_ORIGIN_REVIEW.md).
+Five pending library origins cover 423 instruction bytes, one INT3 and 8,152B
+of complete tables/literals. The original reverse-table order makes `kok` and
+`kok-in` unreachable under the confirmed binary-search algorithm; preserve it.
+Earlier API reviews retain complete cache/SEH ownership and corrected the 11B
+head at `0x00558390` to the CompareStringEx capability predicate, superseding
+the mistaken thread-attach assignment.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,19 +97,20 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The locale wrapper proof is in `.analysis/origin-boundary/locale-wrappers/`:
-814B across seventeen whole sections, full 28B SEH metadata and the 4B callback
-slot following the 23 module handles. Preserve the recovered finally prefix
-at `0x00557C6C` and shared unlock entry. Exception cleanup unlocks without
-repeating the normal callback-slot clear. The complete cache proof remains in
-`thunk-cache/`; retain the old 11B thread-attach probe as a rejected hypothesis.
+The current downlevel proof is in `.analysis/origin-boundary/downlevel-locale/`:
+five whole code contributions, both 228-record tables, 389 complete literal
+sections and the original Konkani-order defect. Its finite search model and
+sorted-copy control explain the behavior; no runtime game test is claimed.
+The preceding `locale-wrappers/` proof retains the finally prefix at
+`0x00557C6C`, shared unlock and full scope table. The complete cache proof
+remains in `thunk-cache/`; keep the rejected 11B thread-attach hypothesis.
 
-Next review the downlevel locale conversions at `0x005625C9` and `0x00562647`,
-including complete lookup tables, error paths and string comparison dependencies.
-The selected wrappers establish their named callee roles but give those bodies
-no review credit. Other late-bound wrappers at `0x00557F83`, `0x00557FD2` and
-`0x005582BA..0x0055838F` remain pending; keep their actual API/import identities.
-Reuse the cache's complete data and resolver evidence for unchanged inputs.
+Next review the remaining late-bound wrappers at `0x00557F83`, `0x00557FD2` and
+`0x005582BA..0x0055838F`, including complete API-name/candidate data and their
+actual fallback contracts. Reuse existing cache/resolver evidence for unchanged
+inputs. The downlevel copy/length/fatal-error dependencies at `0x00548100`,
+`0x00548430` and `0x005480CC` remain pending body reviews; named call roles alone
+do not grant them credit.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK
