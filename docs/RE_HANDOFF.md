@@ -2,277 +2,126 @@
 
 ## Start here
 
-The active task is to complete origin/boundary review before returning to native
-matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
-startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [cookie checking and failure reporting](CRT_SECURITY_COOKIE_FAILURE_ORIGIN_REVIEW.md):
-five whole contributions, 526B/124 instructions and four REL32/fifty-eight
-DIR32 roles, with unchanged extents. Full 68B cookie definition, 796B report
-state and 8B pointer record are checked. Fastcall/cdecl distinctions, tail
-attribution, partial capture, generic/range differences and all original
-epilogues are retained. External PDB types are unavailable; source declarations
-and native sequences supply the ABI evidence.
-This classification-only checkpoint changes no native graph;
-exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
+The next reconstruction task is origin/boundary review, before further native
+matching. This handoff and cleanup change no native source, compiler input,
+ledger, profile or exact acceptance. Exact replay scope is **zero units**.
 
-Read [AGENTS.md](../AGENTS.md), then the focused notes for the selected owner.
-Use the **`gpt-6.1-sol:`** commit prefix. Keep native writes and heavy jobs serial,
-at reduced scheduling priority. Use `scripts/repo-python` for all repository
-Python and `scripts/ghidra.py` for attested Ghidra work; do not use REA or IDA.
+Read [AGENTS.md](../AGENTS.md), the selected owner's focused note in the
+[evidence index](EVIDENCE_INDEX.md), and the complete live Git status. Use
+**`gpt-6.1-sol:`** for checkpoints and `scripts/repo-python` for repository
+Python. Keep heavy jobs serial at reduced priority. Ghidra work goes through
+`scripts/ghidra.py`; do not use REA or IDA. Documentation/cleanup needs diff,
+link and protected-hash checks, with no compiler, Ghidra or cold replay.
 
-## Target and authoritative status
+## Target and live status
 
-The target is Japanese TH20 v1.00a Steamless, `resources/th20.exe`, 1,858,560B:
+Preserve the Japanese TH20 v1.00a Steamless target, `resources/th20.exe`,
+1,858,560B, SHA-256:
 
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`
 
-Registry/package identity is v1.00a; embedded title/replay strings say 1.00c
-in this same file. See [target provenance](TARGET_PROVENANCE.md). Preserve the
-Steam-original backup as provenance, without substituting it as the target.
-A complete playable reconstruction has not been built, linked or validated.
+Its embedded title/replay label is 1.00c; both observations describe this same
+locked file. Keep the supplied Steam-original backup as provenance. See
+[target provenance](TARGET_PROVENANCE.md). A playable reconstruction has not
+been built, linked or runtime-validated.
 
-Read live counts with:
+Read current counts from the canonical ledgers, without copying old totals:
 
 ```bash
 scripts/repo-python scripts/report-reconstruction-status.py --summary
 ```
 
-`config/matches.csv` records authored exact credit; `match-units.toml` records
-complete comparison units and bindings. Source presence and origin are separate
-ledgers. The tracked README SVG is generated from them by `scripts/progress.py`.
-Its denominator is the currently confirmed authored set, not the whole game.
+The README SVG measures exact coverage of the confirmed authored-byte set.
+Library/compiler exclusions, source presence and exactness remain separate.
+Keep `config/claims.csv` header-only. Do not edit old receipts to manufacture
+freshness or replay an unchanged native graph for documentation.
 
-## Latest native correction — math-adapter bindings
+## Current origin/boundary investigation
 
-`GraphicsCameraTanAdapter35.cpp` now calls `std::tan(double)` at `0x00439850`.
-`ScalarMath.cpp` binds `arccosine` at `0x00439760` to `_acos`/`0x0054FEB0` and
-`arctangent_single` at `0x00439790` to `_atan`/`0x0054FF00`. The old ordinary
-bytes could not distinguish their incorrect external names. Full independent
-CRT sections now establish the identities, and fresh complete canonical replay
-passes: **84/84 affected units from 31 fresh providers**. The Animation VM's
-runtime contributions agree before/after the three expected call-name
-substitutions; the VM remains NONEXACT. All three wrapper origins remain
-unknown/review. The existing true square-root wrapper and two-argument atan2
-retain their bindings.
+The last completed review is
+[cookie checking and failure reporting](CRT_SECURITY_COOKIE_FAILURE_ORIGIN_REVIEW.md):
+five complete contributions, 526B/124 instructions, four REL32/fifty-eight DIR32
+roles and 872B cookie/report data. The original fastcall/cdecl distinctions,
+tail attribution, partial context writes and emitted epilogues remain intact.
+The external PDB type server is unavailable; installed declarations and native
+sequences supply ABI evidence. Private proof is in
+`.analysis/origin-boundary/security-cookie-check/`. Reuse secchk.obj in
+`catch-transfer/` and gs_cookie.obj in `seh4-dispatch/` rather than extracting
+copies. Cookie initialization was already reviewed at `0x00543CD2`.
 
-Preserve `build/gpt61-origin-tangent-canonical/`, the before/after VM objects in
-`build/gpt61-origin-tangent-{before,after}/`, and
-`.analysis/origin-boundary/{x87,tangent-binding}/`. The latter holds captured
-include closures, old product hashes, the 84-unit replay log, consumer comparison
-and the old wrong-symbol source/object negative case. Do not overwrite old
-receipts. The two public camera verifiers read current manifest object paths.
+The next **unaccepted** candidate is `0x00542A0F`, 35B. The newly retained
+attested listing in `.analysis/origin-boundary/runtime-542a0f/native.txt`
+shows a deleting-destructor pattern: ECX is this, the vptr becomes `0x00597124`,
+`flags & 1` selects `0x0054278D(this, 12)`, and EAX returns this with RET 4.
+No class/member identity or origin has been accepted. Resolve the vtable,
+size-deallocation callee and adjacent nine-byte candidate at `0x00542A01`
+using independent runtime evidence before assigning names or ownership.
+This investigation has no public source/ledger changes to recover.
 
-## Retained native frontier — Player state frame
+Completed comparison, lowio, exception and math reviews are indexed in their
+focused notes. Reuse original member paths, complete comparisons and retained
+negative signatures. In particular, `tail-566ed0/` retains full powhlp/fpclass
+proof; its pooled constants remain observed instances rather than new
+canonical anchors. The standalone inttype, other ieeemisc bodies and separate
+report_securityfailureEx have no whole signatures. Revisit such misses only
+with new caller/compiler evidence.
 
-`src/PlayerStateFrame4043.cpp` contains the complete state owner at `0x004F7430`.
-Its 4,043B body, one NOP and seven switch pointers form a **4,072B** contribution.
-All 3,256 nonrelocation bytes match. Complete independent relocation bindings
-remain open, so the parent is **source-present, NONEXACT**, with no canonical
-unit. See [native ownership and compiler findings](PLAYER_STATE4043_NATIVE_FRONTIER.md).
+## Native frontiers after origin review
 
-`src/PlayerStateNativeAccessors.cpp` adds thirteen exact physical helper units.
-The 68B Angle method remains under origin review. The 22B Player state setter
-shares an existing FunctionChain physical head and receives no duplicate credit.
-The power-consumption method produces a full integer result: using `bool`
-changes two native opcode bytes. Feedback update returns `void`, while the
-shot-controller update returns an integer. See
-[the complete helper and return-ABI proof](PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md).
+- **Player state:** `src/PlayerStateFrame4043.cpp` covers the 4,043B owner at
+  `0x004F7430`, its NOP and seven switch pointers: a 4,072B contribution.
+  All ordinary bytes agree, but independent relocation bindings remain open.
+  The zero Vector3 at `0x00572664` has only this root's known reference.
+  Thirteen physical accessors are exact; the 68B Angle origin remains under
+  review. The separate 663B death-entry owner at `0x004F8420` is another
+  frontier. See [state frame](PLAYER_STATE4043_NATIVE_FRONTIER.md) and
+  [accessor ABI proof](PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md).
+- **Animation Draw:** native is 5,993B/1,501 instructions. Current retained
+  source build is **5,977B/1,497**, with the correct **0x204 frame**, 84/123
+  physical E8 sites and 23/32 HIGHLOW site/target pairs. The first-result
+  stores and frame discrepancy are closed. Four register-source scalar
+  reloads account for the remaining 16B deficit. It remains NONEXACT.
+  Use [the current scorecard](ANIMATION_DRAW_BOSS_C2_DEBUG_TRACE.md#2026-11-27-current-parent-scorecard-after-first-result-local-recovery).
+- **Particle Update:** native is 2,884B/768; current retained source build is
+  **2,888B/770**, with the native **0x19C frame**, 99/99 signature-checked E8
+  destinations and 25 data roles. Four-byte local-slot displacement and
+  x87/SSE materialization remain open. The old 2,875B prefix-Timer candidate
+  matched only 98/99 actual destinations. Preserve the corrected postfix
+  `Timer::operator++(int)` ABI. See [current source](ANIMATION_PARTICLE_GRID_UPDATE_2884_TYPED_OWNER_SOURCE_FRONTIER.md)
+  and [Timer/lifetime findings](ANIMATION_PARTICLE_GRID_UPDATE_2884_ESI_POLAR_LIFETIME_CONVERGENCE.md).
 
-Nine declaration headers changed. The captured closure passed **1,146/1,146
-existing units from 313 fresh providers**; the thirteen new units passed from
-one additional provider. No old extent, relocation or profile was changed.
-The complete parent also compiled and retained its private candidate's full
-contribution and relocation roles. This establishes no parent exact credit.
+Player main/movement, Glyph compositor/text core, Card start/finish, polygon
+updater and rotated projection already have whole exact proofs. Historical
+NONEXACT notes do not reopen them. Other large parents remain in
+[the backlog](RE_OPEN_BOSS_BACKLOG.md). Source navigation, architecture and
+workflow each retain their own documentation role.
 
-Products are in `build/gpt61-player-state-canonical/`. Preserve both
-`.analysis/player-state4043-session/` and `.analysis/player-state4043-abi/`:
-attested queries, private source/header hypotheses, ABI negative controls,
-complete comparisons, affected include closure and replay log are there.
-Earlier Player canonical products remain intact.
+## Protected products and useful compiler contexts
 
-## Next useful work
+Preserve the target, `../game_exe/`, pinned `.tools/`, game-specific Wine state,
+`ghidra-project/` and Factory runtime configuration/cache. Current canonical
+objects/receipts come from `config/match-units.toml`; this cleanup also retains
+all existing canonical directories and the 2,151-file protected baseline.
+Do not infer current acceptance merely from an old directory's name.
 
-Continue origin/boundary review in bounded groups. Use instruction/data
-references when Ghidra's function graph omits original callers; the pointer
-initializer and recovered heap callbacks are retained examples. Keep complete
-shared owners, tails, alignment and owned metadata in each reviewed scope.
+Keep the private Player sessions and corrected-ABI parent in
+`build/gpt61-player-state-abi/`, plus the Player canonical products. Keep math
+binding correction products in `build/gpt61-origin-tangent-canonical/` and
+`build/gpt61-origin-tangent-{before,after}/`; the corrected native bindings
+and affected replay are in [the focused proof](CRT_X87_CONTROL_TANGENT_ORIGIN_REVIEW.md).
 
-The latest proof is in `.analysis/origin-boundary/security-cookie-check/`:
-five complete code sections, three attested listings, full CFG/fields/imports
-and 872B data. It reuses secchk.obj in `catch-transfer/` and gs_cookie.obj in
-`seh4-dispatch/`. The report-state placement remains observed rather than an
-independent canonical anchor. The separate 284B report_securityfailureEx has no
-whole ordinary-byte location. Cookie initialization at `0x00543CD2` was already
-reviewed with SEH4; do not add duplicate credit.
+For Draw/C2, retain `.analysis/draw-boss-session/`,
+`.analysis/gptweb-particle2884-owner-lifetime/` (the historical directory name
+also contains Draw controls), `build/gptweb-drawboss-session/`,
+`build/gptweb-particle2884-owner-lifetime/`, the C2 trace/VCTIP/debug products
+and `build/gptweb-probe/`. The first-result object and its receipt retain the
+current source fingerprint. Particle's current object/receipt are
+`build/gptweb-particle2884-probe/ParticleUpdate2884Research.*`.
+Retain `build/core835-probe/` for its source verifier, and useful origin
+compiler probes in `build/gpt61-origin-{locale,allocation,exception-copy}/`.
 
-Next inspect the unresolved 35B entry at `0x00542A0F`, using its actual
-instructions/references and independent runtime member before accepting a name
-or shared boundary. Nearby code alone does not establish the same owner.
-
-`tail-566ed0/` retains both complete power/classification owners and seven
-constant definitions/instances, with no new canonical pooled-address claims.
-Its standalone 149B inttype and nine remaining ieeemisc code sections have no
-whole ordinary-byte locations; do not repeat these scans without new evidence.
-
-For completed comparison, stdio and lowio groups, use the focused notes in the
-[evidence index](EVIDENCE_INDEX.md). Their private proofs retain original
-member paths, complete comparisons, shared-owner identities and negative
-whole signatures. Reuse those members before extracting another copy.
-
-`sse2-initializer/` retains both complete members and the recovered 16B head;
-its separate 41B set_SSE2_enable member has no complete ordinary-byte location.
-`narrow-classification/` retains full islower/isupper/isctype_l members,
-CodeView signatures, attested listing, complete comparisons and the rejected
-nineteen-byte padding hypothesis; only three INT3 follow isctype_l before
-the now recovered SSE2 initializer.
-`random-api/` retains full rand/rand_s state/error/output evidence. Its 18B
-srand member has no complete ordinary-byte location; the reviewed PTD initializer
-supplies seed one at +0x18 and the earlier STL random-device caller selects rand_s.
-`frexp-ldexp/` retains both complete 270B decomp identities, real double/int32*
-ABI and original zero/subnormal/special-bit paths. The current members' public
-frexp/ldexp, set_exp and conversion bodies have no complete ordinary-byte
-location. `fpexcept-tail/` similarly retains eight negative complete signatures,
-including except2, fperrraise and standalone get_fname. Continue from an actual
-caller or another independent member in a bounded unresolved CRT family;
-do not repeat these member scans without new evidence.
-`umatherr/` retains the full 29-record name table, literals and callback/control
-protocol; fpexcept.obj remains in `math-error/`, with relevant CodeView signatures
-and the sptype/except1/frnd proof in `math-special-round/`.
-`log10-sse/` retains full code/data, the missing six-byte head, alignment
-and table-index inference. Its identical private banks are fully compared
-at observed linked instances; a future canonical unit still needs independent
-address selection. Members/locations remain in `fp-fltout/` and `log10-ceil/`.
-`libm-error/` retains complete code/tables and CodeView record/enum/void
-metadata. Its separate 43B setter remains unlocated, and its two BSS cells
-are observed zero without a reviewed runtime writer. The existing ceil/
-x87 review and supplemental 79B intrinsic prefix remain in `log10-ceil/`.
-`fenv-environment/` retains complete types/state/packing and mask inference;
-the 26B status-from-mask helper has no full ordinary location. `fp-fltout/`,
-`fp-strflt/` and `fp-dispatch/` retain full fraction/carry/format evidence.
-`format-parse-integer/` retains the complete no-whitespace parser/source proof;
-`format-buffer/`, `format-types/` and `format-decimal/` retain the reviewed
-capacity/transfer, length tables and decimal insertion/cropping protocols.
-Keep unlocated wide parser variants and generic jump helpers separate from
-those owners. The char width helper still takes
-the original unused 64-bit options argument.
-
-The [evidence index](EVIDENCE_INDEX.md) links the completed string/memory,
-purecall and exception owner groups to their focused notes and private proofs.
-Preserve `bad-exception/` and `build/gpt61-origin-exception-copy/` for natural
-header variants and the rejected scalar-alias hypothesis. Ghidra listing
-omissions remain recorded with the complete bounded decoded supplements.
-
-The cached-locale probe in `cached-locale/` emitted no object: installed SDK
-source omits FFS/state-isolation private headers and conflicts on __p__fmode
-under the attempted build configuration. Keep both failed logs and inputs;
-do not repeat that compile until those inputs are resolved. The target's 91B
-updater now has a complete output.obj match; the 89B cvt.obj alternative
-remains retained rather than replacing the target extent.
-
-The runtime reporter's banner, unknown-program text, library caption and
-abort message are absent in both ASCII and UTF-16. Larger SDK reporter
-sections have no complete match; the already reviewed abort follows the
-release path with no debug-only message call. Do not keep searching nearby
-code for that reporter without a new retained caller or string reference.
-
-Continue with a bounded unresolved CRT owner, using archive members and
-actual callers before relying on a familiar Ghidra name. The frame owner
-closure is retained through the focused notes and private reports; keep
-unlocated weak forwarding/type-info helpers separate from those complete
-physical owners. The bad_exception proof independently binds TypeDescriptor
-`0x005B4030`, ThrowInfo `0x005AC1FC` and its real constructor/destructor
-callbacks. Base exception and bad_exception deleting implementations have
-different target entries despite identical optimized archive shapes.
-
-The retained 173B memchr member has no complete ordinary-byte match. The five
-attempted copy/concatenation archive members in `string-copy/` contain six
-function shapes without complete matches. Reuse those negatives rather than
-assigning familiar names or repeating the same scans without new evidence.
-The same-shaped bad_alloc constructor at `0x00540D24` retains its previous
-class identity.
-The 14B secchk signature independently locates the cookie check at
-`0x005429EE`; its own failure-owner review remains pending. std type-info
-name/hash/list-cleanup, application verifier and termination query remain
-pending.
-
-Unlocated VCRT thread/critical-cleanup wrappers, translator setters and
-ReadNoFence lookalikes at `0x0040B2A0` remain unassigned. The similarly named
-winapi_thunks.obj module-handle candidates and downlevel weak FLS accessors
-receive no credit from their ordinary matches in other CRT groups. The SDK
-beginthread body remains unlocated; its endthread lookalikes actually call
-invoke_watson.
-
-The SDK's unreferenced 56B badioinfo data and separate
-34B standard-ID helper have no complete target match; neither receives
-ownership credit. The fmode initializer also has no complete location yet.
-The aligned/catch-GS frame variants remain unlocated; their ordinary substrings
-do not receive overlapping physical credit.
-
-The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
-focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK
-probes/receipts under `build/gpt61-origin-locale/` and
-`build/gpt61-origin-allocation/`: Locale, Yarn, Facet and BadArray retain natural
-compiler evidence. The math correction's fresh products and negative controls
-are listed above. Closed-review history and byte partitions belong in those
-focused notes, rather than a cumulative handoff log.
-
-The following native frontiers remain available after review:
-
-1. Resolve independent Player state-frame bindings, especially the zero Vector3
-   at `0x00572664`. Its only known reference is in this same root; reading that
-   field or finding twelve zero bytes does not independently bind its address.
-   Existing scalar/global aliases and remaining member dependencies also need
-   complete bindings before creating a canonical parent unit.
-2. Recover the separate **663B death-entry owner at `0x004F8420`**. The existing
-   attested `owner-callbacks.txt` under the Player session contains its native
-   behavior. Preserve the ordered controller notifications, two option sweeps,
-   animation-handle cleanup and timer resets. Bomb, Identifier32 damage-flag,
-   shot and feedback implementations are other remaining state dependencies.
-3. For another bounded frontier, use [the backlog](RE_OPEN_BOSS_BACKLOG.md).
-   The [5,993B Animation Draw source decision](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-native-width-preparation-and-one-zero-result-return)
-   is current: candidate 5,969B, four cases account for the full 24B deficit.
-   Two first-getter stores and four register reloads remain open. Reuse its
-   failed controls and compiler-context evidence rather than repeating them.
-
-The 3,111B Player main, 555B movement, Glyph compositor/text core, Card start,
-827B polygon updater and 1,486B rotated projection are now whole exact. Use
-[the evidence index](EVIDENCE_INDEX.md) to find their current proofs; historical
-NONEXACT notes are superseded. [Source navigation](SOURCE_MAP.md),
-[architecture](ARCHITECTURE.md) and [workflow](RE_WORKFLOW.md) have separate roles.
-
-## Protected local products and cleanup boundary
-
-Preserve the target, supplied `../game_exe/`, `.tools/`, game-specific Wine
-state, `ghidra-project/`, Factory runtime directories and every canonical
-object/receipt, including superseded canonical directories. Keep private native
-source, attested exports and useful open-question controls under `.analysis/`.
-
-Completed investigation snapshots, bulk reference-audit exports, old validation
-logs and ledger baselines have been retired. Noncanonical compiled batteries,
-portable host binaries and duplicate generated copies were removed. The private
-Player state sessions remain; its corrected-ABI parent object is retained under
-`build/gpt61-player-state-abi/`. Draw keeps the current and restored-order parent
-objects, compiler/link calibration controls and debug metadata; the source
-verifier's `build/core835-probe/` output is also retained. Other ordinary probe
-objects can be rebuilt when needed. Historical scratch paths are not a retention
-requirement; use canonical source/units and the focused findings for closed work.
-
-For native changes, inspect all live Git dirt and run the preflight in AGENTS.
-Derive affected providers from captured include closures and manifest
-relationships. Replay only explicit source filters or individual units,
-including full owned extents and relocations. Keep `config/claims.csv`
-header-only. Never edit historical receipts to manufacture a pass.
-
-## Earlier native investigation — 2026-11-27
-
-The historical native-work instruction was: continue substantive TH20 reconstruction on both large boss functions and small leaf functions, do not avoid pre-existing dirty work, make multiple checkpoints after real progress (the current required prefix is `gpt-6.1-sol:`), use targeted rather than full cold replay, and reconstruct natural C/C++ rather than assembly or padding. The active large-function investigation is `AnimationPoolOwner::draw` at `0x00443880`; its current residual and compiler evidence are recorded in `ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md` and `ANIMATION_DRAW_BOSS_C2_DEBUG_TRACE.md`. The TH10-style C2 debugger has now reached the x64 `InvokeCompilerPassW` entry and observed typed in-memory IL arguments. The actual codegen/register-allocation entry is not yet identified, and no exactness claim is made. A separate StageResource leaf has since advanced: `StageResourceOwner::set_primary_rotation_flag` at `0x00477790` now uses a layout-preserving bitfield alias and strictly replays 45/45 bytes; its shared-header dependents passed targeted replay and compile smoke checks. The 2,884B particle-grid Update remains source-present/nonexact at 2,875B/767; its polar getter order is retained while one `float angle` is reused, reducing E8 offset delta from 883 to 440 (first 20: 84). The candidate frame is 0x194 versus native 0x19C; vector roles remain mapped from original call operands with a four-byte local displacement. C2 RVA `0x1d01a8` is argv setup (22 wide arguments), while RVA `0x1d1e20` is a six-record VCTIP instrumentation writer, not lowering. The bundled VCTIP server cannot run in this Wine prefix because Wine Mono is absent; the actual register-allocation/codegen path remains unidentified.
-
-**2026-11-27 C2 worker/typed-IL continuation:** The VCTIP local consumer now
-allows the real pinned compiler invocation to complete and capture the full
-five-segment `-il` object (lengths `0x346DB/0x1E321/0x6B6C5/0x3AAF/0x760D1`).
-C2 creates eight `_beginthreadex` workers; the generic worker entry candidate
-is C2 RVA `0x36CB38`, which dispatches through a callback pointer at worker
-context `+0x20`. The callback target is not yet decoded. Continue from
-`ANIMATION_DRAW_BOSS_C2_DEBUG_TRACE.md`; do not label the worker trampoline as
-register allocation or lowering. The large draw body remains 5,969B versus
-5,993B native and NONEXACT.
+Private source, focused attested exports, failed ABI inputs and useful debug
+metadata remain available. Rebuildable compiled matrices, obsolete invocation
+exports and old runtime logs have been retired. Git objects were packed with
+pruning and reflog expiration disabled; history and references are retained.
+No historical receipt or native acceptance was rewritten.

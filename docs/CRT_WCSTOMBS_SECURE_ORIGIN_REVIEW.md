@@ -104,8 +104,9 @@ The unchanged SDK member and locations remain at
 sections, every branch/relocation and import/callee role, the wrong-direction
 wrapper and final-byte store model. Installed source is
 `ucrt/convert/wcstombs.cpp`. The UTF-8 provider is now covered by the
-[complete UTF-8 review](CRT_UTF8_STATE_ORIGIN_REVIEW.md); the cached updater
-remains a separate pending body.
+[complete UTF-8 review](CRT_UTF8_STATE_ORIGIN_REVIEW.md). The actual 91B cached
+updater is covered by its [complete owner review](CRT_FLOAT_OUTPUT_OWNER_ORIGIN_REVIEW.md);
+the member's 89B variant does not replace that target extent.
 
 Only classification, focused evidence, handoff and generated progress change.
 All 2,151 protected native input/product hashes remain unchanged. Exact replay

@@ -88,8 +88,8 @@ This adds **one newly credited game-authored function /602 original `.text`
 bytes**; its previously exact children and folded generic helpers retain
 one physical credit each. No shared header, canonical old provider, full
 cold replay, full runtime or pre-existing accepted unit has changed. The
-**1,896B Card::start_spell** and still nonexact 39,470B Animation VM remain
-separate open game Bosses. A native-exact function is not a whole linked or
+**1,896B Card::start_spell** is now [whole strict exact](CARD_START1896_STRICT_EXACT.md);
+the 39,470B Animation VM remains a separate NONEXACT parent. A native-exact function is not a whole linked or
 playable game.
 
 ```bash

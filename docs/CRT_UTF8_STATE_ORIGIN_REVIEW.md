@@ -136,8 +136,10 @@ corresponding `ucrt/convert/*.cpp` files plus `corecrt.h` and
 
 This completes the UTF-8 providers called by the reviewed
 [mbstowcs](CRT_MBSTOWCS_SECURE_ORIGIN_REVIEW.md) and
-[wcstombs](CRT_WCSTOMBS_SECURE_ORIGIN_REVIEW.md) owners. Memcpy remains a
-separate pending body; its named call role gives no body credit here. Only
+[wcstombs](CRT_WCSTOMBS_SECURE_ORIGIN_REVIEW.md) owners. The named memcpy call
+uses the [reviewed physical copy owner](CRT_MEMMOVE_CPU_DISPATCH_REVIEW.md)
+at `0x00543E20`, shared with the canonical memcpy binding; it receives no second
+physical credit. Only
 classification, focused evidence, handoff and generated progress change.
 All 2,151 protected native input/product hashes remain unchanged. Exact replay
 scope is **zero units**, with no new authored or maintained-source exact credit.

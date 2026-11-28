@@ -1,3 +1,8 @@
+> **Superseded source measurement:** The 5,969B/0x200 candidate below is the
+> 2026-11-26 checkpoint. The current retained build is 5,977B with the native
+> 0x204 frame and recovered first-result stores; four register-source reloads
+> remain. See [the current C2 scorecard](ANIMATION_DRAW_BOSS_C2_DEBUG_TRACE.md#2026-11-27-current-parent-scorecard-after-first-result-local-recovery).
+
 # 5,993B Animation Draw Boss: mode45/46 temporary and return frontier
 
 The maintained AnimationPoolOwner::draw(Animation*) at 0x00443880 remains

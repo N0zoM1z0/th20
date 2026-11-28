@@ -72,10 +72,10 @@ No instruction is omitted from these five bounded listings.
 The same member search found no complete target match for std type-info
 name, hash or name-list cleanup. Their generic allocation/free callbacks
 and pointer-getter shapes confer no additional identity. Nearby
-`0x005471CC` and `0x005471E7` instead have bad_exception constructor shapes;
-their full class/vtable/string ownership remains pending. Likewise, the
-nine-byte frame-handler wrapper needs its real callee before assignment.
-The retained frame member supplies concrete next scopes for that work.
+`0x005471CC` and `0x005471E7` are now the reviewed bad_exception copy/default
+constructors in the [complete class/message proof](CRT_BAD_EXCEPTION_MESSAGE_LIFETIME_REVIEW.md).
+The nine-byte frame-handler wrapper at `0x005471C3` also has its
+[full dispatcher/callee review](CRT_FRAME_DISPATCH_TYPE_MATCH_REVIEW.md).
 
 Only classification, evidence, handoff and generated progress change.
 All 2,151 protected native input/product hashes remain unchanged. Exact

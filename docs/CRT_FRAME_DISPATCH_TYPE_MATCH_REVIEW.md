@@ -70,8 +70,9 @@ The full 931B FindHandler section uniquely locates at `0x00546B5A`; the
 full 24B FrameUnwindToEmptyState section uniquely locates at `0x0054747F`.
 Their complete ordinary-byte signatures independently identify the two
 local callees, without deriving either identity from the dispatcher field
-being checked. Their own protocol and relocation review remains pending;
-neither receives body credit in this checkpoint. Context validation,
+being checked. Their complete protocols are now covered by the
+[FindHandler owner](CRT_FIND_HANDLER_OWNER_REVIEW.md) and
+[frame-unwind review](CRT_FRAME_UNWIND_STATE_REVIEW.md). Context validation,
 required VCRT PTD and the guard pointer retain their preceding reviewed
 bindings.
 

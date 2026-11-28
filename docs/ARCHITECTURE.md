@@ -69,7 +69,7 @@ pointers (**3,180/3,180B relocated contribution**) and an independent
 The **3,735B Bullet emitter is also whole strict exact**; older
 quad/emitter NONEXACT frontiers are superseded. See
 [full quad proof](ANIMATION_QUAD_SUBMIT_3159_STRICT_EXACT.md) and
-[current Draw frontier](ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md#2026-11-26-native-width-preparation-and-one-zero-result-return).
+[current Draw frontier](ANIMATION_DRAW_BOSS_C2_DEBUG_TRACE.md#2026-11-27-current-parent-scorecard-after-first-result-local-recovery).
 
 The independent ECL Runtime tick at 0x0053B5C0 is accepted with its complete
 11,504-byte compiler contribution (11,110B game-body coverage), including
@@ -88,6 +88,7 @@ negative searches. Ghidra function bodies can omit valid listing
 instructions; only the complete original PE control flow/tables establish
 whole native extents.
 
-No whole-game compile/link or playable reconstruction is available. Test fixtures
-exercise maintained owners with explicit unresolved boundaries; they do not
-replace original startup, resource lifetimes or runtime execution.
+No whole-game compile/link or playable reconstruction is available. Historical
+semantic fixtures describe dated investigations; that portable suite is retired.
+Current validation uses affected native comparisons and the retained oracle/tool
+checks, with startup, resource lifetime and runtime integration still open.

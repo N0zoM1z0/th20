@@ -107,7 +107,8 @@ does not express it. One physical entry receives credit.
 
 The cookie-check callee independently matches the complete unique 14B
 `libcmt.lib(secchk.obj)` signature and the already reviewed cookie storage.
-Its own failure-owner review remains pending. Existing cookie, PTD,
+The checker and failure owners now have their
+[complete state/ABI review](CRT_SECURITY_COOKIE_FAILURE_ORIGIN_REVIEW.md). Existing cookie, PTD,
 CallSettingFrame, guard-thunk and wrapper proofs retain their bindings.
 The object's explicit alternatename directive binds its SSE2-filter call to
 the already reviewed default filter at `0x0056746F`.
