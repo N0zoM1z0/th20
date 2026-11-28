@@ -5,15 +5,14 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [signal actions and exception filtering](CRT_SIGNAL_ACTION_BOUNDARY_REVIEW.md).
-Nine pending origins and three recovered entries retain seven whole SDK
-contributions, 1,102B instructions, one INT3 and all 228B state/tables/SEH.
-Raise's overlapping candidate is now four disjoint partitions of its full
-497B instruction owner. Both missing exception prefixes and the continuation
-are explicit. Global encoded versus local raw handlers, reset-before-callback,
-FPE arguments and original PTD restoration remain distinct. The non-FPE reset
-retains its encoded-null cookie store even for a local action. Earlier notes
-retain application-type, descriptor lifetime and conversion evidence.
+review covers [exit cleanup and CLR termination](CRT_EXIT_CLEANUP_BOUNDARY_REVIEW.md).
+Eleven pending origins and four recovered entries retain twelve whole SDK
+contributions, 818B instructions, thirteen INT3 and all 184B state/strings/SEH/EH.
+The cleanup filter/terminate handler, returning no-cleanup wrapper and common
+cookie/EH handler are now explicit. Real lock-2 closure, TLS-before-atexit,
+separate cleanup/return modes and CLR/WinAPI fallback order remain intact.
+Both apparent termination-state getters access wrong storage and are rejected.
+Earlier notes retain signal, application-type and descriptor evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -99,12 +98,12 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/signal-actions/`: seven
-whole SDK signal/filter contributions, both scope tables, full four-slot BSS,
-12-record default exception table, three DWORD constants and missing finally
-prefixes/continuation. Original overlapping ledger rows remain in the private
-directory. Reuse the earlier PTD, pointer-encoding, errno, abort and guard-check
-proofs. The lowio and app-type findings remain in their focused notes.
+The current proof is in `.analysis/origin-boundary/exit-paths/`: twelve whole
+exit/cleanup/EH contributions, all nine local BSS bytes, full CLR literals,
+both scope tables and both complete C++ EH metadata sections. Original ledger
+rows remain in the private directory. Reuse earlier pointer-encoding, managed-
+image, process-policy and shared zero-state EH proofs. Named external onexit,
+initterm, verifier and terminate dependencies receive no body credit here.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -118,13 +117,15 @@ sections have no complete match; the already reviewed abort follows the
 release path with no debug-only message call. Do not keep searching nearby
 code for that reporter without a new retained caller or string reference.
 
-Next review the actual `_exit` owner at `0x00552DED` and common cleanup
-protocol in `.analysis/origin-boundary/exit-paths/`. Complete SDK locations
-exist for `common_exit` at `0x00552C52`, cleanup body `0x00552B6A`, process
-termination selection `0x00552D10`, CLR exit `0x00552D3E`, and public wrappers.
-The 77B guarded-call section has three ordinary-byte matches; choose its
-real closure through complete calls/locks/SEH, not opcode shape. Preserve
-full EH metadata, callback ownership, cleanup modes and terminal paths.
+Next review onexit registration/execution and initializer traversal in
+`.analysis/origin-boundary/onexit-execution/`. Whole SDK locations exist for
+registration action `0x00553622`, execution action `0x00553735`, executor
+`0x00553825`, table initializer `0x00553863`, registration `0x0055388C`,
+`_initterm` at `0x005559FE` and `_initterm_e` at `0x00555A29`. Both 91B
+guarded-call sections have three ordinary-byte candidates; resolve real
+action/lock/SEH roles and avoid physical aliases. Preserve reverse callback
+order, reentrant table updates, allocation ownership and complete metadata.
+The extracted initialization.obj is earlier reviewed context, not a new task.
 
 The SDK's unreferenced 56B badioinfo data and separate
 34B standard-ID helper have no complete target match; neither receives
