@@ -6464,10 +6464,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005539BA,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005539CC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00553A00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00553B40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00553E70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00553EA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005541D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00553B40,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 809B __handle_exc instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
+0x00553E70,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 35B __raise_exc instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
+0x00553EA0,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 785B __raise_exc_ex instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
+0x005541D0,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 49B __set_errno_from_matherr instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
 0x00554210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00554310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00554330,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6490,10 +6490,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005557D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005558F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005558F6,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00555910,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00555930,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00555940,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00555980,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00555910,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 29B ___acrt_has_user_matherr instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
+0x00555930,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 15B ___acrt_initialize_user_matherr instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
+0x00555940,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 57B ___acrt_invoke_user_matherr instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
+0x00555980,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 38B ___setusermatherr instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
 0x005559A6,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005559FE,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00555A29,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6876,9 +6876,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00563E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00563EB5,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056408D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005640A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005640B7,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00564100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005640A0,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 23B __startTwoArgErrorHandling instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
+0x005640B7,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 60B __startOneArgErrorHandling instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
+0x00564100,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 277B __87except instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
 0x00564240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00564257,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005642DB,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

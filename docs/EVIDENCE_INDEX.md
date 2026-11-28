@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [CRT math exception dispatch and encoded callbacks](CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md) — eleven entries, shared 83B assembly bridge, both complete embedded switch tables and resumable exception paths; four methods agree on one encoded callback slot and conditional startup registration.
 - [CRT x87 control, tangent and shared exits](CRT_X87_CONTROL_TANGENT_ORIGIN_REVIEW.md) — seventeen entries including six recovered heads; false 755B tangent span resolved, full common/SSE sections and tables retained. Three wrong math-adapter bindings corrected; 84/84 affected units strictly replayed.
 - [ScalarMath acos/atan adapters](SCALAR_MATH_ACOS_ATAN_35_EXACT.md) — complete 35B leaves with independently corrected CRT destinations; source exact, origins unknown/review.
 - [CRT math dispatch and corrected disjoint boundaries](CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md) — four oversized spans resolved; complete default/SSE groups, intrinsic and stack interfaces, retained atan instruction and full shared coefficient tables.

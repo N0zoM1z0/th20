@@ -5,13 +5,11 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [x87 control, tangent and shared exits](CRT_X87_CONTROL_TANGENT_ORIGIN_REVIEW.md).
-It identifies `_tan` at `0x00550000` and true `_sqrt` at `0x00550050`, correcting
-three wrong maintained math-adapter bindings. The changed headers, source and
-canonical graph passed **84/84 affected units from 31 fresh providers**; all
-superseded canonical objects/receipts remain intact. The Animation VM consumer
-compiled before/after with only the three expected call-name changes and stays
-NONEXACT. The reviewed CRT entries and corrected adapters add no authored credit.
+review covers [math exception dispatch and encoded callbacks](CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md).
+Eleven entries are reviewed through complete archive contributions, both owned
+switch tables, the shared assembly continuation and original startup callback
+registration. This classification-only checkpoint changes no native graph;
+exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
 Read [AGENTS.md](../AGENTS.md), then the focused notes for the selected owner.
 Use the **`gpt-6.1-sol:`** commit prefix. Keep native writes and heavy jobs serial,
@@ -47,8 +45,11 @@ Its denominator is the currently confirmed authored set, not the whole game.
 `arctangent_single` at `0x00439790` to `_atan`/`0x0054FF00`. The old ordinary
 bytes could not distinguish their incorrect external names. Full independent
 CRT sections now establish the identities, and fresh complete canonical replay
-passes. All three wrapper origins remain unknown/review. The existing true
-square-root wrapper and two-argument atan2 retain their bindings.
+passes: **84/84 affected units from 31 fresh providers**. The Animation VM's
+runtime contributions agree before/after the three expected call-name
+substitutions; the VM remains NONEXACT. All three wrapper origins remain
+unknown/review. The existing true square-root wrapper and two-argument atan2
+retain their bindings.
 
 Preserve `build/gpt61-origin-tangent-canonical/`, the before/after VM objects in
 `build/gpt61-origin-tangent-{before,after}/`, and
@@ -131,9 +132,13 @@ stack argument view; kernels need that view as well as XMM0/XMM7. Reuse
 The common x87 support and tangent group are now reviewed. The false 755-byte
 span at `0x0055B518` is a six-byte head, followed by a separate 564-byte shared
 kernel, fourteen alignment bytes and independent common helpers. Reuse
-`x87/reviewed.json`, including all 5,929 constant/table bytes. Next review the
-shared one-/two-argument math error entries at `0x005640B7`/`0x005640A0` and
-their complete owner, or continue a separate bounded CRT group.
+`x87/reviewed.json`, including all 5,929 constant/table bytes. The shared
+one-/two-argument math error entries at `0x005640B7`/`0x005640A0`, `_87except`,
+mask/raise/errno handlers and four encoded-callback methods are also reviewed.
+Preserve `math-error/` with its complete 2,231B code contributions, 40 constant
+bytes and original callback references. Next review the floating-state helpers
+at `0x0055DBC0`, `0x0055DBE0`, `0x0055DC10` and `0x0055DC70`, keeping x87/SSE
+state and shared compiler/CRT interfaces distinct.
 Underlying heap entries at `0x005584C0`, `0x00554310` and `0x00554330` remain
 another bounded allocation frontier. Reuse established runtime bindings.
 Use independent archive symbols and complete original control flow, including
