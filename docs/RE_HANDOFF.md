@@ -5,13 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [descriptor close and exceptional unlock](CRT_LOWIO_CLOSE_ORIGIN_REVIEW.md):
-three complete contributions, 468B/171 instructions, twelve REL32/nine DIR32
-roles and a full 28B scope table. The missing three-byte restore completes the
-145B guarded owner; all four existing extents remain unchanged. Distinct
-validation/recheck errors, stdout/stderr sharing and unconditional reset before
-saved-error mapping are retained. False public wrappers are rejected by their
-actual callee roles.
+review covers [the x86 ASCII comparator](CRT_ASCII_STRNICMP_ORIGIN_REVIEW.md):
+the complete 97B/48-instruction _strnicm.obj contribution has no relocations
+and retains its existing extent. It returns normalized -1/0/+1, unlike the
+generic non-x86 C++ body's character difference. Its MASM debug void type
+does not override the C int declaration and actual EAX result. Count/read
+order, unsigned folding and the internal loop-alignment LEA are retained.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,16 +96,22 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The latest proof is in `.analysis/origin-boundary/lowio-close/`: three complete
+The latest proof is in `.analysis/origin-boundary/ascii-strnicmp/`: unique whole
+x86 member identity, attested listing/references, CodeView and full comparison.
+The separate strnicmp.obj has no whole locations for the 49B validator, 89B
+public wrapper or 343B locale implementation; do not repeat these scans without
+new evidence. No direct or absolute reference to the 97B helper was observed.
+Continue the case-comparison family from the independent stricmp.obj member,
+or select another bounded unresolved CRT owner if it supplies no whole match.
+
+`lowio-close/` retains three complete
 close contributions, CodeView, attested listing/references, full scope and
 recovered three-byte restore. close.obj/provenance stay in `stdio-fclose/`.
 The 106B standalone close_os_handle helper has no whole ordinary-byte location;
 both 48B public close signatures instead hit fclose and fail their callee role.
 Do not add entries for those source-only candidates.
 
-Next inspect the 97B ASCII comparison candidate at `0x005669C0` using its
-complete SDK contribution and actual caller/callee roles. The retained
-stream.obj allocation owner (105B) and find-unused helper (194B) have no whole
+The retained stream.obj allocation owner (105B) and find-unused helper (194B) have no whole
 ordinary-byte locations; their negative scans are in
 `stdio-fclose/allocation-locations.json`. Do not repeat those scans without
 new caller or compiler evidence.
