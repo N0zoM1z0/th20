@@ -90,9 +90,10 @@ math-error caller roles and verifies all 2,151 protected hashes unchanged.
 
 Other SSE helper sections in `fpctrl.obj` gave no full ordinary-byte location
 in the original `.text` during the bounded search (`locations.json`). This
-does not establish their absence: inspect the actual public control/status
-owners and their compiler/inlining context next, using `ieee87.obj`. No origin
-or address was assigned to those unmatched sections.
+does not establish their absence. The subsequent
+[public control review](CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md) identifies
+the complete `_control87`/`_clearfp` owners and their real converters, including
+inlined abstract/MXCSR operations. No address was assigned to unmatched sections.
 
 Only classification, evidence, handoff and generated progress change. The
 native source graph and canonical products are unchanged, so exact replay scope

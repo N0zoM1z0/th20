@@ -6533,7 +6533,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005571C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005571D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005571FF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00557210,library,CrtFloatControl,exclude,high,"docs/CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md; Complete 108B __controlfp_s SDK archive contribution and original control flow reviewed, including all ordinary bytes, HIGHLOW fields, independent caller/callee roles and x87/MXCSR contracts. No authored or canonical exact credit."
 0x0055727C,library,CxxRuntime,exclude,high,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B native body and CRT ucrt-checkcfg.obj symbol @_guard_check_icall@4 reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.
 0x00557290,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005572D3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6859,10 +6859,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00561BEC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00561C61,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00561CC8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00561EC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00561F90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005620B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00562440,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00561EC0,library,CrtFloatControl,exclude,high,"docs/CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md; Complete 199B ___hw_cw_sse2 SDK archive contribution and original control flow reviewed, including all ordinary bytes, HIGHLOW fields, independent caller/callee roles and x87/MXCSR contracts. No authored or canonical exact credit."
+0x00561F90,library,CrtFloatControl,exclude,high,"docs/CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md; Complete 281B __clearfp SDK archive contribution and original control flow reviewed, including all ordinary bytes, HIGHLOW fields, independent caller/callee roles and x87/MXCSR contracts. No authored or canonical exact credit."
+0x005620B0,library,CrtFloatControl,exclude,high,"docs/CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md; Complete 906B __control87 SDK archive contribution and original control flow reviewed, including all ordinary bytes, HIGHLOW fields, independent caller/callee roles and x87/MXCSR contracts. No authored or canonical exact credit."
+0x00562440,library,CrtFloatControl,exclude,high,"docs/CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md; Complete 242B __hw_cw SDK archive contribution and original control flow reviewed, including all ordinary bytes, HIGHLOW fields, independent caller/callee roles and x87/MXCSR contracts. No authored or canonical exact credit."
 0x00562532,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00562575,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005625C9,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

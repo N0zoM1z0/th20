@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [CRT public floating control and bit conversion](CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md) — five complete API/converter owners, abstract hardware masks, ambiguity reporting, post-DAZ hardware re-read and all checked-control error/output paths.
 - [CRT x87 state and MXCSR recovery ownership](CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md) — raw signed old-word returns, complete 222B DAZ owner split into normal/SEH partitions, recovered filter/handler and full 28B scope table.
 - [CRT math exception dispatch and encoded callbacks](CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md) — eleven entries, shared 83B assembly bridge, both complete embedded switch tables and resumable exception paths; four methods agree on one encoded callback slot and conditional startup registration.
 - [CRT x87 control, tangent and shared exits](CRT_X87_CONTROL_TANGENT_ORIGIN_REVIEW.md) — seventeen entries including six recovered heads; false 755B tangent span resolved, full common/SSE sections and tables retained. Three wrong math-adapter bindings corrected; 84/84 affected units strictly replayed.

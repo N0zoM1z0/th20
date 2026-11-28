@@ -5,11 +5,10 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [x87 state and MXCSR recovery ownership](CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md).
-Five existing candidates and three recovered partitions account for complete
-floating-state contributions, including the DAZ setter's previously unlisted
-SEH filter/handler and full scope table. This classification-only checkpoint
-changes no native graph;
+review covers [public floating control and bit conversion](CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md).
+Five complete API/converter owners account for public abstract masks, x87/SSE
+updates, actual hardware re-read after the DAZ setter and checked-control error
+paths. This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
 Read [AGENTS.md](../AGENTS.md), then the focused notes for the selected owner.
@@ -142,11 +141,14 @@ setter are now reviewed: internal control/status words return with sign
 extension, and the DAZ trial owns a complete SEH filter/recovery path. Preserve
 `fp-state/`, including all five code sections, extended literals, initialized
 cache and 28B scope table. Four nonoverlapping partitions retain all 222B of the
-setter owner. Next inspect the actual public
-control/status owners using the retained `ieee87.obj`; several helper sections
-had no full ordinary-byte location and must not be assigned guessed addresses.
-Underlying heap entries at `0x005584C0`, `0x00554310` and `0x00554330` remain
-another bounded allocation frontier. Reuse established runtime bindings.
+setter owner. The complete public `_control87`, `_clearfp`, `_controlfp_s` and
+both hardware converters are now reviewed in `reviewed-ieee.json`, including
+all 1,736B and the independent default-precision caller. Their inline abstract/
+MXCSR paths explain several failed standalone helper searches. Keep the public
+abstract flags separate from raw internal words. Next review underlying heap
+entries at `0x005584C0`, `0x00554310` and `0x00554330` through their original
+allocation callers and installed CRT objects/source. Reuse established runtime
+bindings. Unmatched archive sections alone do not establish pending entries.
 Use independent archive symbols and complete original control flow, including
 nonreturning paths and owned EH. Generate current counts from the ledgers.
 
