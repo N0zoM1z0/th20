@@ -5,12 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [power infinity handling and classification](CRT_POW_INFINITY_FPCLASS_ORIGIN_REVIEW.md):
-two whole contributions, 692B/217 instructions and four REL32/twelve DIR32
-roles, with unchanged extents. Full double/int32 ABI, original infinity and
-signed-zero cases, current-mode frnd parity and all ten classification flags
-are retained. Seven full constant sections total 72B; their nonunique pooled
-addresses remain linked observations rather than new canonical anchors.
+review covers [cookie checking and failure reporting](CRT_SECURITY_COOKIE_FAILURE_ORIGIN_REVIEW.md):
+five whole contributions, 526B/124 instructions and four REL32/fifty-eight
+DIR32 roles, with unchanged extents. Full 68B cookie definition, 796B report
+state and 8B pointer record are checked. Fastcall/cdecl distinctions, tail
+attribution, partial capture, generic/range differences and all original
+epilogues are retained. External PDB types are unavailable; source declarations
+and native sequences supply the ABI evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,18 +97,22 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The latest proof is in `.analysis/origin-boundary/tail-566ed0/`: full powhlp
-and fpclass sections, CodeView, attested listings, complete CFG/fields and
-seven full constant definitions/instances. It reuses copysign.obj in
-`math-error/` and existing sptype/frnd proof. The standalone 149B inttype and
-nine remaining ieeemisc code sections have no whole ordinary-byte locations;
-their negative scans are retained rather than assigning source names.
+The latest proof is in `.analysis/origin-boundary/security-cookie-check/`:
+five complete code sections, three attested listings, full CFG/fields/imports
+and 872B data. It reuses secchk.obj in `catch-transfer/` and gs_cookie.obj in
+`seh4-dispatch/`. The report-state placement remains observed rather than an
+independent canonical anchor. The separate 284B report_securityfailureEx has no
+whole ordinary-byte location. Cookie initialization at `0x00543CD2` was already
+reviewed with SEH4; do not add duplicate credit.
 
-Next review the 14B cookie checker at `0x005429EE` and its actual failure
-owner. The complete secchk.obj remains in `catch-transfer/`; its signature
-already locates this entry, while its own failure protocol is still pending.
-Follow the native failure edge and use the matching CRT member before accepting
-the failure boundary, metadata or ABI.
+Next inspect the unresolved 35B entry at `0x00542A0F`, using its actual
+instructions/references and independent runtime member before accepting a name
+or shared boundary. Nearby code alone does not establish the same owner.
+
+`tail-566ed0/` retains both complete power/classification owners and seven
+constant definitions/instances, with no new canonical pooled-address claims.
+Its standalone 149B inttype and nine remaining ieeemisc code sections have no
+whole ordinary-byte locations; do not repeat these scans without new evidence.
 
 For completed comparison, stdio and lowio groups, use the focused notes in the
 [evidence index](EVIDENCE_INDEX.md). Their private proofs retain original
