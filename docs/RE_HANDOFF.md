@@ -5,8 +5,11 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [lowio initialization and retirement](CRT_LOWIO_INITIALIZATION_ORIGIN_REVIEW.md).
-Three pending origins and three recovered entries retain four whole SDK
+reviews cover [application-type state](CRT_APP_TYPE_STATE_ORIGIN_REVIEW.md)
+and [lowio initialization and retirement](CRT_LOWIO_INITIALIZATION_ORIGIN_REVIEW.md).
+The app-type accessor pair retains 21B code, 11B alignment and 4B BSS, with
+fourteen wrong-storage candidates rejected and GUI startup value 2 confirmed.
+The lowio review's three pending origins and three recovered entries retain four whole SDK
 contributions, all 492B code, seven alignment bytes, 28B SEH and 516B shared
 loader-zero state. The missing initialization primary and finally prefix are
 now explicit. Inherited pipes bypass GetFileType; standard-handle failures
@@ -110,9 +113,15 @@ under the attempted build configuration. Keep both failed logs and inputs;
 do not repeat that compile until those inputs are resolved. The 89B SDK versus
 91B target epilogue remains pending at `0x0054A360`.
 
-Next inspect the named query_app_type dependency at `0x005558F0`, from
-`ucrt/internal/report_runtime_error.cpp`, with its setter, global state and
-full report owner. The SDK's unreferenced 56B badioinfo data and separate
+The app-type proof in `.analysis/origin-boundary/runtime-app-type/` closes
+the descriptor owner's named query dependency at `0x005558F0`, with setter
+`0x005558F6` and full four-byte state at `0x005E55D0`. Next locate the runtime
+error routing/report owners using original callers and string references;
+the SDK's larger `report_runtime_error.obj` sections have no complete match,
+and its 3B false-return helper has ten ambiguous candidates. Do not infer
+the reporter's identity from proximity to the accessor pair.
+
+The SDK's unreferenced 56B badioinfo data and separate
 34B standard-ID helper have no complete target match; neither receives
 ownership credit. The fmode initializer also has no complete location yet.
 The stack probe at `0x005439E0` remains pending.

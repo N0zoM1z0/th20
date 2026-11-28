@@ -6494,8 +6494,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00555720,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00555750,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005557D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005558F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005558F6,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005558F0,library,CrtAppTypeState,exclude,high,"docs/CRT_APP_TYPE_STATE_ORIGIN_REVIEW.md; Complete 6B __query_app_type in whole 21B SDK app-type accessor pair, full 4B BSS and 11B alignment. Real named caller, shared state and startup value distinguish fourteen same-shaped rejected candidates."
+0x005558F6,library,CrtAppTypeState,exclude,high,"docs/CRT_APP_TYPE_STATE_ORIGIN_REVIEW.md; Complete 15B __set_app_type in whole 21B SDK app-type accessor pair, full 4B BSS and 11B alignment. Real named caller, shared state and startup value distinguish fourteen same-shaped rejected candidates."
 0x00555910,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 29B ___acrt_has_user_matherr instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
 0x00555930,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 15B ___acrt_initialize_user_matherr instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
 0x00555940,library,CrtMathException,exclude,high,"docs/CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md; Full 57B ___acrt_invoke_user_matherr instruction extent and complete owned contribution reviewed against SDK archive symbols/sections, original control flow, shared relocations and callback protocol. No authored or canonical exact credit."
