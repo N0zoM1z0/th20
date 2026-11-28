@@ -5,11 +5,11 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT stdio lifetime](CRT_STDIO_LIFETIME_ORIGIN_REVIEW.md): five
-complete owners, 380B/137 instructions, all ten REL32/twenty DIR32 roles and
-184B owned data. The missing 200B initializer and 76B terminator are recovered,
-with real int/void signatures and original allocation/buffer/cleanup order.
-The four _file entries fill the complete 316B interval without padding or EH.
+review closes [fcloseall and its compiler finally](CRT_STDIO_CLOSEALL_ORIGIN_REVIEW.md):
+the full 171B/57-instruction contribution, all five REL32/nine DIR32 roles,
+complete 28B scope table and four zero alignment bytes. The original 162B/9B
+partition is unchanged. Returned fclose failure still permits object retirement;
+the normal result counts only successful closes, with shared exception unlock.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -95,15 +95,18 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/stdio-lifetime/`: complete
-members, 56B CodeView stream layout, all five bodies, full data/registration
-contributions and attested references. Next review closeall and fflush's
-shared lock/flush owners: whole identities and locations are already retained
-in `provider-locations.json`. Closeall's complete 171B contribution at
-`0x0055CADC` includes the existing 162B primary and 9B unlock entry. Fflush
-has whole 140B/172B guarded owners, 76B common wrapper and further leaf/body
-providers; preserve each normal/exception tail and full SEH metadata. The
-current parent review gives those providers identity evidence, not own credit.
+The current proof is in `.analysis/origin-boundary/stdio-closeall/`: full
+171B closeall contribution, independently located scope table, attested listing,
+CodeView and complete comparison. It reuses closeall.obj in `stdio-lifetime/`.
+The retained fclose.obj uniquely locates the 48B public entry at `0x00564518`,
+151B internal owner at `0x005643F3` and 142B nolock owner at `0x0056448A`;
+their own protocols/metadata remain pending.
+Next review fflush's shared lock/flush owners from the members and
+`stdio-lifetime/provider-locations.json`. It has whole 140B/172B guarded
+owners, 76B common wrapper and further leaf/body providers; preserve every
+normal/exception tail and full SEH metadata. The parent review supplies their
+identity evidence, not body credit. The stdio five-owner/state/layout proof
+and both startup/exit registration records remain in `stdio-lifetime/`.
 `sse2-initializer/` retains both complete members and the recovered 16B head;
 its separate 41B set_SSE2_enable member has no complete ordinary-byte location.
 `narrow-classification/` retains full islower/isupper/isctype_l members,

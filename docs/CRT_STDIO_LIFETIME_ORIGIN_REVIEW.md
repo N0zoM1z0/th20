@@ -85,9 +85,10 @@ references, complete comparisons and original rows. Installed sources are
 `ucrt/initializers/stdio_initializer.cpp`. Reviewed allocators, lowio state,
 critical-section wrapper and startup/exit ranges supply external identities.
 
-The complete closeall contribution at `0x0055CADC` and flushall contribution
-at `0x0055CE2D` have independent member identities. Their own protocol/SEH
-closure remains the next scope, with fflush's shared owners also located.
+The complete closeall contribution at `0x0055CADC` now has its
+[full counting/retirement/finally review](CRT_STDIO_CLOSEALL_ORIGIN_REVIEW.md).
+The flushall contribution at `0x0055CE2D` has an independent member identity;
+its shared flush/lock protocol remains the next scope, with all owners located.
 The separate iob accessor, stream-buffer-pointer accessor and unreferenced
 cflush state have no established native ownership in this batch. Tiny folded
 helper matches receive no duplicate credit.

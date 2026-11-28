@@ -6774,8 +6774,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0055CA7F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055CA88,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055CAD3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055CADC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055CB7E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0055CADC,library,CrtStdioCloseall,exclude,high,"docs/CRT_STDIO_CLOSEALL_ORIGIN_REVIEW.md; Complete 171B/57-instruction SDK fcloseall contribution, existing 162B primary/9B compiler finally, five REL32/nine DIR32 roles and full 28B SEH table reviewed. Real int32 count result, returned-EOF cleanup, loop condition, index lock 8 and normal/exception unlock retained. Extents unchanged; classification only, exact replay scope zero."
+0x0055CB7E,compiler,CrtStdioCloseall,exclude,high,"docs/CRT_STDIO_CLOSEALL_ORIGIN_REVIEW.md; Complete 171B/57-instruction SDK fcloseall contribution, existing 162B primary/9B compiler finally, five REL32/nine DIR32 roles and full 28B SEH table reviewed. Real int32 count result, returned-EOF cleanup, loop condition, index lock 8 and normal/exception unlock retained. Extents unchanged; classification only, exact replay scope zero."
 0x0055CB87,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055CC07,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055CC13,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
