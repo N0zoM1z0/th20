@@ -5,11 +5,11 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review recovers the [UCRT SSE2 math initializer](CRT_SSE2_INITIALIZER_ORIGIN_REVIEW.md)
-at `0x0055A1C0`: all 16B/five instructions, both code DIR32 roles, the complete
-4B C-initializer record and 4B common state are reviewed. It stores the full
-feature-query BOOL and always returns integer zero. The new row preserves
-the adjacent isctype_l/CIacos boundaries and three original INT3 bytes.
+review covers [UCRT stdio lifetime](CRT_STDIO_LIFETIME_ORIGIN_REVIEW.md): five
+complete owners, 380B/137 instructions, all ten REL32/twenty DIR32 roles and
+184B owned data. The missing 200B initializer and 76B terminator are recovered,
+with real int/void signatures and original allocation/buffer/cleanup order.
+The four _file entries fill the complete 316B interval without padding or EH.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -95,14 +95,17 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/sse2-initializer/`: both
-complete members, CodeView, attested five-instruction listing and original
-initializer data reference. The full C-startup context is retained with the
-independent startup range; the registration record is at `0x0056C42C`.
-Next independently resolve the remaining C-table target `0x00551851`, omitted
-from the initial inventory between the candidate ending at `0x00551850` and
-the file-lock entry at `0x00551965`. Bound its complete owner/member first.
-The separate 41B set_SSE2_enable member has no complete ordinary-byte location.
+The current proof is in `.analysis/origin-boundary/stdio-lifetime/`: complete
+members, 56B CodeView stream layout, all five bodies, full data/registration
+contributions and attested references. Next review closeall and fflush's
+shared lock/flush owners: whole identities and locations are already retained
+in `provider-locations.json`. Closeall's complete 171B contribution at
+`0x0055CADC` includes the existing 162B primary and 9B unlock entry. Fflush
+has whole 140B/172B guarded owners, 76B common wrapper and further leaf/body
+providers; preserve each normal/exception tail and full SEH metadata. The
+current parent review gives those providers identity evidence, not own credit.
+`sse2-initializer/` retains both complete members and the recovered 16B head;
+its separate 41B set_SSE2_enable member has no complete ordinary-byte location.
 `narrow-classification/` retains full islower/isupper/isctype_l members,
 CodeView signatures, attested listing, complete comparisons and the rejected
 nineteen-byte padding hypothesis; only three INT3 follow isctype_l before
