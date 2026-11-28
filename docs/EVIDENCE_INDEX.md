@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [CRT image validation, SSE2 exception repair and NLG markers](CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md) — nine pending origins and three recovered partitions; whole 518B instructions/39 INT3, complete 44B SEH/NLG, original PE interval arithmetic, inclusive context bounds and real guard-nop identity.
 - [CRT SEH4 dispatch, collided unwind and cookie initialization](CRT_SEH4_COOKIE_DISPATCH_REVIEW.md) — nine pending origins and recovered shared unwind handler; full 877B instructions/48 INT3, complete 68B cookie layout, address-based cookie XOR and distinct dispatch/collided-unwind protocols.
 - [CRT frame setup, cookie teardown and aligned stack probes](CRT_FRAME_STACK_HELPER_ORIGIN_REVIEW.md) — nine library origins in eight whole 350B instruction contributions plus five INT3; exact stack/register contracts, GS-versus-catch slot identity and rejected aligned-epilog substring.
 - [UCRT onexit registries and reentrant callback execution](CRT_ONEXIT_REGISTRY_BOUNDARY_REVIEW.md) — twelve pending origins and three recovered compiler entries; whole 964B instruction scope, five INT3 and 124B registries/SEH/EH, real guarded actions, reverse traversal with changed bounds and rejected quick-wrapper alias.

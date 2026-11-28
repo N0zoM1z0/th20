@@ -6048,7 +6048,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00543320,library,CxxRuntime,exclude,high,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 124B native body and CRT ftol2.obj symbol __ftoi2 reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.
 0x00543461,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005435E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005435EA,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005435EA,library,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 3B @_guard_check_icall_nop@4 partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
 0x005435ED,library,CrtFrameStackHelpers,exclude,high,"docs/CRT_FRAME_STACK_HELPER_ORIGIN_REVIEW.md; Complete 20B __EH_epilog3 partition reviewed in eight whole installed libcmt frame/stack contributions: 350B instructions and 5B alignment, all control flow/relocations and custom stack/cookie protocols. No overlapping aligned-epilog credit."
 0x00543601,library,CrtFrameStackHelpers,exclude,high,"docs/CRT_FRAME_STACK_HELPER_ORIGIN_REVIEW.md; Complete 15B __EH_epilog3_GS partition reviewed in eight whole installed libcmt frame/stack contributions: 350B instructions and 5B alignment, all control flow/relocations and custom stack/cookie protocols. No overlapping aligned-epilog credit."
 0x00543610,library,CrtFrameStackHelpers,exclude,high,"docs/CRT_FRAME_STACK_HELPER_ORIGIN_REVIEW.md; Complete 51B __EH_prolog3 partition reviewed in eight whole installed libcmt frame/stack contributions: 350B instructions and 5B alignment, all control flow/relocations and custom stack/cookie protocols. No overlapping aligned-epilog credit."
@@ -6155,7 +6155,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0054762F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547642,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547650,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054769C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0054769C,library,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 48B ___except_validate_context_record partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
 0x005476CC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547708,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547740,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 159B __local_unwind4 reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
@@ -6174,9 +6174,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00547AC8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547AE5,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547B02,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547B10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547B20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547B40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00547B10,library,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 12B __NLG_Notify1 partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
+0x00547B20,library,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 31B __NLG_Notify partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
+0x00547B40,library,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 3B __NLG_Call partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
 0x00547B43,library,CxxRuntime,exclude,high,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 67B native body and CRT abort.obj symbol _abort reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.
 0x00547B87,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547C41,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6973,12 +6973,15 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00566A4E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00566ED0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005670D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005671A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005671F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005672B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005671A0,library,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 67B __FindPESection partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
+0x005671F0,library,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 137B __IsNonwritableInCurrentImage partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
+0x00567279,compiler,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 19B ReadonlyImage_exception_filter partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
+0x0056728C,compiler,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 3B ReadonlyImage_exception_handler partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
+0x0056728F,library,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 27B ReadonlyImage_failure_continuation partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
+0x005672B0,library,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 49B __ValidateImageBase partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
 0x005672F0,library,CRT,exclude,high,docs/CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md; Complete 149B / 58-instruction native body equals the full libcmt.lib ulldvrm.obj contribution for __aulldvrm; no relocations or external control-flow edges.
 0x00567390,library,CRT,exclude,high,docs/CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md; Complete 223B / 91-instruction native body equals the full libcmt.lib lldvrm.obj contribution for __alldvrm; no relocations or external control-flow edges.
-0x0056746F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0056746F,library,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 119B __filter_x86_sse2_floating_point_exception_default partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
 0x00567600,compiler,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 29B native contribution and full control flow reviewed as __ehhandler$??1_Init_atexit@@QAE@XZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
 0x00567750,compiler,CxxRuntime,exclude,high,docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md; complete queue constructor/guard compiler EH ownership
 0x005679A0,compiler,CrtIosLifetime,exclude,high,docs/CRT_IOS_BASE_LIFETIME_ORIGIN_BOUNDARY_REVIEW.md; Complete 29B __ehhandler$?_Tidy@ios_base@std@@AAEXXZ and owned alignment/EH reviewed against full CRT ios.obj contribution and original instructions/relocation roles.

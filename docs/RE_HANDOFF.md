@@ -5,15 +5,14 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [SEH4 dispatch and cookie initialization](CRT_SEH4_COOKIE_DISPATCH_REVIEW.md).
-Nine pending origins and one recovered shared unwind handler retain ten
-whole code contributions, 877B instructions, 48 INT3 and the full 68B
-cookie/complement definition. Every existing extent remains unchanged.
-Cookie XOR uses a frame-relative address, dispatch keeps filter signs distinct
-from returned dispositions, and local unwind updates level before finally.
-The temporary node's handler validates its cookie and returns collided unwind.
-The cookie occupies a full 64B cache line before the complement. Earlier
-notes retain frame, onexit and cleanup evidence.
+review covers [exception validation and NLG markers](CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md).
+Nine pending origins and three recovered partitions retain nine whole code
+contributions, 518B instructions, 39 INT3 and all 44B SEH/NLG data. The
+readonly-image owner's original 186B extent is covered once through four
+disjoint entries. PE bounds use VirtualSize; context checks allow both stack
+endpoints; SSE2 denormal maps to invalid operation. The actual context caller
+identifies the guard nop among 36 lookalikes. NLG shared tails and markers
+receive no overlapping credit. Earlier notes retain SEH4 and cookie evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -99,12 +98,12 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/seh4-dispatch/`: ten
-whole code contributions from chandler4/exsup4/gs_support and complete
-gs_cookie data. Original ledger rows remain in the private directory.
-The source's common destruction-pointer fallback does not establish the
-target's selected strong definition at `0x00597180`. The verifier, termination
-query and terminate bodies remain pending.
+The current proof is in `.analysis/origin-boundary/exception-validation/`:
+nine whole contributions, complete readonly-image SEH and NLG record, actual
+guard nop and all shared notification tails. Original ledger rows remain
+in the private directory. The source's common destruction-pointer fallback
+still does not establish the target's strong definition at `0x00597180`.
+The verifier and termination query remain pending.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -118,19 +117,21 @@ sections have no complete match; the already reviewed abort follows the
 release path with no debug-only message call. Do not keep searching nearby
 code for that reporter without a new retained caller or string reference.
 
-Next review the validation/notification dependencies in
-`.analysis/origin-boundary/exception-validation/`. pesect.obj completely
-locates FindPESection at `0x005671A0`, IsNonwritableInCurrentImage at
-`0x005671F0` and ValidateImageBase at `0x005672B0`. x86_exception_filter.obj
-locates the default SSE2 exception filter at `0x0056746F`; jbcxrval.obj owns
-the context validator at `0x0054769C`. exsup.obj locates NLG_Notify1/Notify/
-Call at `0x00547B10`/`0x00547B20`/`0x00547B40`. Preserve complete PE bounds,
-SSE state rules, real context-target role and NLG shared data/control flow.
-The extracted eh3valid.obj has no complete locations and is not the context
-validator's provider. chandler4gs.obj contains no code; the noexcept variant
-and SEH longjmp bridge remain unlocated.
-The 10B ReadNoFence lookalikes at `0x0040B2A0` have no reviewed caller role;
-do not assign an origin from that ordinary-byte match.
+Next review exception-object lifetime and termination in
+`.analysis/origin-boundary/exception-lifetime/`. ehhelpers.obj completely
+locates DestructExceptionObject at `0x005463E0`, member-call bridge
+`0x00546488`, current-exception filter `0x00546495`, destruction eligibility
+`0x005464ED`, AdjustPointer `0x00546513`, FrameUnwindFilter `0x00546538` and
+current exception/context getters `0x0054658E`/`0x00546597`. Its strong
+destruction-pointer definition can close the SEH4 dependency; compare its
+full data section and independently resolved function relocation.
+libucrt's terminate.obj locates the 60B terminate contribution at `0x00547B87`;
+unexpected.obj locates 29B unexpected at `0x00547AC8`. Preserve complete
+filter/handler/EH boundaries, frame-chain ownership, destructor throw policy
+and all terminal paths. std_terminate has 5,246 ordinary 5B jump candidates;
+use earlier complete EH metadata references and its real callee to locate it.
+The user.obj translator setters and unlocated helpers receive no body credit
+from this search. ReadNoFence lookalikes at `0x0040B2A0` remain unassigned.
 
 The SDK's unreferenced 56B badioinfo data and separate
 34B standard-ID helper have no complete target match; neither receives
