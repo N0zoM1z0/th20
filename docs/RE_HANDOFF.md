@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [downlevel locale tables and Konkani lookup failure](CRT_DOWNLEVEL_LOCALE_TABLE_ORIGIN_REVIEW.md).
-Five pending library origins cover 423 instruction bytes, one INT3 and 8,152B
-of complete tables/literals. The original reverse-table order makes `kok` and
-`kok-in` unreachable under the confirmed binary-search algorithm; preserve it.
-Earlier API reviews retain complete cache/SEH ownership and corrected the 11B
-head at `0x00558390` to the CompareStringEx capability predicate, superseding
-the mistaken thread-attach assignment.
+review covers [policies, WinRT wrappers and random lookup](CRT_POLICY_WINRT_RANDOM_ORIGIN_REVIEW.md).
+Eight pending library origins cover 487 instruction bytes, one INT3, complete
+API-name/candidate data and the numeric policy cache. Missing APIs select
+distinct status, success/no-op or abort paths; thread-policy defaults are cached
+while exit policy is not. Earlier API reviews retain complete cache/SEH ownership
+and corrected `0x00558390` to the CompareStringEx capability predicate,
+superseding the mistaken thread-attach assignment.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,20 +97,19 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current downlevel proof is in `.analysis/origin-boundary/downlevel-locale/`:
-five whole code contributions, both 228-record tables, 389 complete literal
-sections and the original Konkani-order defect. Its finite search model and
-sorted-copy control explain the behavior; no runtime game test is claimed.
-The preceding `locale-wrappers/` proof retains the finally prefix at
-`0x00557C6C`, shared unlock and full scope table. The complete cache proof
-remains in `thunk-cache/`; keep the rejected 11B thread-attach hypothesis.
+The current policy/API proof is in
+`.analysis/origin-boundary/optional-api-wrappers/`: eight whole contributions,
+five complete name/candidate pairs, the 4B numeric policy cache and PEB guard.
+Reuse `thunk-cache/` for unchanged module/function arrays and resolver evidence.
+The earlier `locale-wrappers/` proof retains the finally prefix at `0x00557C6C`;
+`downlevel-locale/` retains both full tables and the original Konkani-order
+defect. Keep the rejected 11B thread-attach hypothesis as negative evidence.
 
-Next review the remaining late-bound wrappers at `0x00557F83`, `0x00557FD2` and
-`0x005582BA..0x0055838F`, including complete API-name/candidate data and their
-actual fallback contracts. Reuse existing cache/resolver evidence for unchanged
-inputs. The downlevel copy/length/fatal-error dependencies at `0x00548100`,
-`0x00548430` and `0x005480CC` remain pending body reviews; named call roles alone
-do not grant them credit.
+Next review the downlevel conversion's secure copy/length/fatal-error
+dependencies at `0x00548100`, `0x00548430` and `0x005480CC`, retaining full SIMD,
+validation and nonreturning paths. Their named call roles alone grant no body
+credit. The adjacent PEB application-verifier helper at `0x0055E109` also
+remains pending; its 18B SDK member candidate is retained in the latest locations.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK
