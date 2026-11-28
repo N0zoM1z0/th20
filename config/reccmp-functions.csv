@@ -1986,3 +1986,7 @@ th20::Graphics::release_scenes_4dd730,0x004DD730,function
 th20::Graphics::update_scene_4da540,0x004DA540,function
 th20::graphics_update_4dc510,0x004DC510,function
 th20::Worker::joinable,0x004DC180,function
+th20::Graphics::create_surface_targets_4dbd70,0x004DBD70,function
+th20::shutdown_graphics_4dd490,0x004DD490,function
+th20::NativeSurfaceFile::texture_4bfb00,0x004BFB00,function
+th20::NativeSurfaceSprite::set_mode_2_3_4dda30,0x004DDA30,function

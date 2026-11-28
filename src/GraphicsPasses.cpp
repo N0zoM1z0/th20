@@ -6,6 +6,7 @@
 #include <cstdio>
 
 #include "Animation.hpp"
+#include "AnimationFile.hpp"
 #include "ArchiveOwner.hpp"
 #include "ClockScalar.hpp"
 #include "DiagnosticAllocator.hpp"
@@ -33,7 +34,10 @@ std::int32_t __fastcall graphics_disable_depth_writes(Graphics* graphics);
 // 0x0044C570 submits the sprite to the current AnimationPool draw queue.
 struct NativeSurfaceSprite : Animation {
     std::int32_t submit_draw_44c570();
+    void set_mode_2_3_4dda30(std::uint8_t value);
 };
+
+std::uint32_t __fastcall animation_draw_enabled(Animation* animation);
 
 // Startup factories in other subsystems; their results are owned elsewhere.
 void* create_task_4ac1a0();
@@ -340,6 +344,64 @@ std::int32_t __cdecl graphics_draw_world_4dc8b0(void*) {
         }
     }
     return 1;
+}
+
+// Non-owning AnimationFile view; the 26B native getter at 0x004BFB00 returns
+// one loaded texture.
+struct NativeSurfaceFile : AnimationFile {
+    IDirect3DTexture9* texture_4bfb00(std::int32_t index);
+};
+
+IDirect3DTexture9* NativeSurfaceFile::texture_4bfb00(std::int32_t index) {
+    return textures[index].texture;
+}
+
+void NativeSurfaceSprite::set_mode_2_3_4dda30(std::uint8_t value) {
+    base.flags.bits_08.other_2_3 = value;
+}
+
+// Acquires the back buffer and both offscreen surfaces, then binds the five
+// surface sprites to the scripts for the current frame width. Once the
+// offscreen targets exist, viewport 3 is reset from viewport 0 instead.
+void Graphics::create_surface_targets_4dbd70() {
+    if (resource_19c == nullptr) {
+        if (resource_1a4 == nullptr) {
+            if (get_device()->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO,
+                                            reinterpret_cast<IDirect3DSurface9**>(&resource_1a4)) != D3D_OK) {
+                return;
+            }
+        }
+        static_cast<NativeSurfaceFile*>(surface_animation)->texture_4bfb00(0)->GetSurfaceLevel(
+            0, reinterpret_cast<IDirect3DSurface9**>(&resource_19c));
+        static_cast<NativeSurfaceFile*>(surface_animation)->texture_4bfb00(1)->GetSurfaceLevel(
+            0, reinterpret_cast<IDirect3DSurface9**>(&resource_1a0));
+        if (!animation_draw_enabled(surface_sprite_0)) {
+            if (window_state.scaled_width == 640) {
+                surface_animation->bind_animation(surface_sprite_0, 0, nullptr);
+                surface_animation->bind_animation(surface_sprite_1, 7, nullptr);
+                surface_animation->bind_animation(surface_sprite_2, 4, nullptr);
+                surface_animation->bind_animation(surface_sprite_3, 10, nullptr);
+                surface_animation->bind_animation(surface_sprite_4, 13, nullptr);
+            } else if (window_state.scaled_width == 960) {
+                surface_animation->bind_animation(surface_sprite_0, 1, nullptr);
+                surface_animation->bind_animation(surface_sprite_1, 8, nullptr);
+                surface_animation->bind_animation(surface_sprite_2, 5, nullptr);
+                surface_animation->bind_animation(surface_sprite_3, 11, nullptr);
+                surface_animation->bind_animation(surface_sprite_4, 14, nullptr);
+            } else if (window_state.scaled_width == 1280) {
+                surface_animation->bind_animation(surface_sprite_0, 2, nullptr);
+                surface_animation->bind_animation(surface_sprite_1, 9, nullptr);
+                surface_animation->bind_animation(surface_sprite_2, 6, nullptr);
+                surface_animation->bind_animation(surface_sprite_3, 12, nullptr);
+                surface_animation->bind_animation(surface_sprite_4, 15, nullptr);
+            }
+        }
+        if (window_state.scale == 1.5f) {
+            static_cast<NativeSurfaceSprite*>(surface_sprite_2)->set_mode_2_3_4dda30(0);
+        }
+    } else {
+        viewports[3] = viewports[0];
+    }
 }
 
 // Opens th20.dat and loads the version record; both failures are reported

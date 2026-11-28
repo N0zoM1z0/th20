@@ -1069,3 +1069,7 @@ address,name,size,status,match_percent,unit,evidence
 0x004DA540,th20::Graphics::update_scene_4da540,1402,matching,100.00,graphics_update_scene_4da540,CLAUDE/EXACT-007; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md
 0x004DC510,th20::graphics_update_4dc510,218,matching,100.00,graphics_update_4dc510,CLAUDE/EXACT-007; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md
 0x004DC180,th20::Worker::joinable,19,matching,100.00,worker_joinable,CLAUDE/EXACT-007; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md
+0x004DBD70,th20::Graphics::create_surface_targets_4dbd70,891,matching,100.00,graphics_create_surface_targets_4dbd70,CLAUDE/EXACT-008; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md
+0x004DD490,th20::shutdown_graphics_4dd490,356,matching,100.00,graphics_shutdown_4dd490,CLAUDE/EXACT-008; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md
+0x004BFB00,th20::NativeSurfaceFile::texture_4bfb00,26,matching,100.00,animation_file_texture_4bfb00,CLAUDE/EXACT-008; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md
+0x004DDA30,th20::NativeSurfaceSprite::set_mode_2_3_4dda30,45,matching,100.00,animation_set_mode_2_3_4dda30,CLAUDE/EXACT-008; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md

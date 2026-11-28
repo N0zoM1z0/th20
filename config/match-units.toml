@@ -36159,3 +36159,125 @@ relocations = [
   { offset = 0x91, type = "REL32", symbol = "?reset_delay_value@WindowState@th20@@QAEIXZ", target = 0x004DAB80 },
   { offset = 0xBF, type = "REL32", symbol = "?update_scene_4da540@Graphics@th20@@QAEHXZ", target = 0x004DA540 },
 ]
+
+# CLAUDE/EXACT-008: Graphics surface targets and sprite/texture helpers.
+[units.animation_file_texture_4bfb00]
+source = "src/GraphicsPasses.cpp"
+object = "build/claude-canonical/GraphicsPasses.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::NativeSurfaceFile::texture_4bfb00"]
+symbol = "?texture_4bfb00@NativeSurfaceFile@th20@@QAEPAUIDirect3DTexture9@@H@Z"
+target_address = 0x004BFB00
+size = 26
+relocations = []
+
+[units.animation_set_mode_2_3_4dda30]
+source = "src/GraphicsPasses.cpp"
+object = "build/claude-canonical/GraphicsPasses.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::NativeSurfaceSprite::set_mode_2_3_4dda30"]
+symbol = "?set_mode_2_3_4dda30@NativeSurfaceSprite@th20@@QAEXE@Z"
+target_address = 0x004DDA30
+size = 45
+relocations = []
+
+[units.graphics_create_surface_targets_4dbd70]
+source = "src/GraphicsPasses.cpp"
+object = "build/claude-canonical/GraphicsPasses.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::Graphics::create_surface_targets_4dbd70"]
+symbol = "?create_surface_targets_4dbd70@Graphics@th20@@QAEXXZ"
+target_address = 0x004DBD70
+size = 891
+relocations = [
+  { offset = 0x2B, type = "REL32", symbol = "?get_device@Graphics@th20@@QAEPAUIDirect3DDevice9@@XZ", target = 0x00412730 },
+  { offset = 0x6F, type = "REL32", symbol = "?texture_4bfb00@NativeSurfaceFile@th20@@QAEPAUIDirect3DTexture9@@H@Z", target = 0x004BFB00 },
+  { offset = 0xA5, type = "REL32", symbol = "?texture_4bfb00@NativeSurfaceFile@th20@@QAEPAUIDirect3DTexture9@@H@Z", target = 0x004BFB00 },
+  { offset = 0xD5, type = "REL32", symbol = "?animation_draw_enabled@th20@@YIIPAVAnimation@1@@Z", target = 0x00445AB0 },
+  { offset = 0xE3, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x10F, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x131, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x153, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x175, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x197, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x1A3, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x1CF, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x1F1, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x213, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x235, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x257, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x263, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x28F, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x2B1, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x2D3, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x2F5, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x317, type = "REL32", symbol = "?bind_animation@AnimationFile@th20@@QAEXPAVAnimation@2@H0@Z", target = 0x004382B0 },
+  { offset = 0x320, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x327, type = "DIR32", symbol = "__real@3fc00000", target = 0x0056CD68 },
+  { offset = 0x343, type = "REL32", symbol = "?set_mode_2_3_4dda30@NativeSurfaceSprite@th20@@QAEXE@Z", target = 0x004DDA30 },
+]
+
+
+# CLAUDE/EXACT-008: Graphics process shutdown.
+[units.graphics_shutdown_4dd490]
+source = "src/GraphicsScenes.cpp"
+object = "build/claude-canonical/GraphicsScenes.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::shutdown_graphics_4dd490"]
+symbol = "?shutdown_graphics_4dd490@th20@@YAHXZ"
+target_address = 0x004DD490
+size = 356
+relocations = [
+  { offset = 0x4, type = "DIR32", symbol = "$SG180500", target = 0x00571ADC },
+  { offset = 0x9, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0x11, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0x16, type = "REL32", symbol = "?update_4277f0@NativeSceneSound@th20@@QAEHXZ", target = 0x004277F0 },
+  { offset = 0x21, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x26, type = "REL32", symbol = "?close_and_join@Worker@th20@@QAEXXZ", target = 0x0040BCF0 },
+  { offset = 0x2B, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x30, type = "REL32", symbol = "?bail_out_4d9e30@NativeTickGraphicsView@th20@@QAEXXZ", target = 0x004D9E30 },
+  { offset = 0x37, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x40, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x48, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x4F, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x54, type = "REL32", symbol = "?release_bytes@DiagnosticAllocator@th20@@QAEXPAX@Z", target = 0x0041F670 },
+  { offset = 0x5A, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x64, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x6D, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x72, type = "REL32", symbol = "?release_scenes_4dd730@Graphics@th20@@QAEXXZ", target = 0x004DD730 },
+  { offset = 0x78, type = "DIR32", symbol = "?native_scene_task_5c4a00@th20@@3PAXA", target = 0x005C4A00 },
+  { offset = 0x7E, type = "REL32", symbol = "?release_scene_task_4217c0@th20@@YAXPAX@Z", target = 0x004217C0 },
+  { offset = 0x87, type = "DIR32", symbol = "?process_input_inf@th20@@3PAVInputInf@1@A", target = 0x005B8898 },
+  { offset = 0x8D, type = "REL32", symbol = "?release_scene_task_4217c0@th20@@YAXPAX@Z", target = 0x004217C0 },
+  { offset = 0x95, type = "DIR32", symbol = "$SG180503", target = 0x00571AF0 },
+  { offset = 0x9A, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0xA3, type = "DIR32", symbol = "?current_animation_pool@th20@@3PAUAnimationPoolOwner@1@A", target = 0x005C0028 },
+  { offset = 0xA8, type = "REL32", symbol = "?release_vertex_buffer_4dab40@NativeScenePool@th20@@QAEXXZ", target = 0x004DAB40 },
+  { offset = 0xAD, type = "DIR32", symbol = "$SG180504", target = 0x00571B08 },
+  { offset = 0xB2, type = "REL32", symbol = "?ecl_diagnostic_hint@th20@@YAXPBDZZ", target = 0x0040C6B0 },
+  { offset = 0xBA, type = "DIR32", symbol = "$SG180505", target = 0x00571B14 },
+  { offset = 0xC3, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0xC8, type = "REL32", symbol = "?enqueue@SoundInf@th20@@QAEXHHPBD@Z", target = 0x00428C90 },
+  { offset = 0xCD, type = "DIR32", symbol = "?archive_owner@th20@@3UArchiveOwner@1@A", target = 0x005B66C8 },
+  { offset = 0xD2, type = "REL32", symbol = "?close@ArchiveOwner@th20@@QAEXXZ", target = 0x0053A170 },
+  { offset = 0xD7, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0xDE, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0xE3, type = "REL32", symbol = "??$release_object@VAnimation@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimation@1@@Z", target = 0x00447410 },
+  { offset = 0xE9, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0xF3, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0xFA, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0xFF, type = "REL32", symbol = "??$release_object@VAnimation@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimation@1@@Z", target = 0x00447410 },
+  { offset = 0x105, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x10F, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x116, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x11B, type = "REL32", symbol = "??$release_object@VAnimation@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimation@1@@Z", target = 0x00447410 },
+  { offset = 0x121, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x12A, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x131, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x136, type = "REL32", symbol = "??$release_object@VAnimation@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimation@1@@Z", target = 0x00447410 },
+  { offset = 0x13C, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x146, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0x14D, type = "DIR32", symbol = "?process_allocator@th20@@3PAVDiagnosticAllocator@1@A", target = 0x005B8894 },
+  { offset = 0x152, type = "REL32", symbol = "??$release_object@VAnimation@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimation@1@@Z", target = 0x00447410 },
+  { offset = 0x158, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+]

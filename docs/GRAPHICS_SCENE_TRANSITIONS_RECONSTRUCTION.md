@@ -64,3 +64,33 @@ shared headers.
 `Graphics.hpp` (three members) and `Worker.hpp` (`joinable`) changed. A
 source-filtered replay of their 93-source include closure, including the new
 `GraphicsScenes.cpp`, gives 225/225 exact units in 93 cold objects.
+
+## Surface targets and shutdown (CLAUDE/EXACT-008)
+
+Four more functions are strict exact, 1,318 credited bytes:
+
+- `Graphics::create_surface_targets_4dbd70` (891B, called five times by the
+  window frame scheduler) runs while `resource_19c` is still null. It fetches
+  back buffer 0 into `resource_1a4` (returning on failure), takes surface
+  level 0 of surface-file textures 0 and 1 as the two offscreen targets, and
+  binds the five surface sprites to the scripts for the frame width: 640 uses
+  0/7/4/10/13, 960 uses 1/8/5/11/14 and 1280 uses 2/9/6/12/15. At scale 1.5
+  it clears sprite 2's mode bits 2..3. Once the targets exist, it copies
+  viewport 0 into viewport 3 instead.
+- `0x004BFB00` (26B) returns `textures[index].texture` from an
+  AnimationFile. `0x004DDA30` (45B) sets Animation mode bits 2..3
+  (`base.flags.bits_08.other_2_3`). Both sit on local overlay views.
+- `shutdown_graphics_4dd490` (356B, called by the WinMain body) logs
+  `shutdown MotherInf` and drains the sound queue. It then closes both
+  Graphics workers, releases the version data through the existing
+  `TH20_RELEASE_BYTES_AND_RESET` macro plus a final reset (the native code
+  checks twice and stores null twice), releases the scenes and input owners,
+  the pool vertex buffer, music and the archive, and frees the five surface
+  sprites.
+
+The inlined `DiagnosticAllocator::release_object<Animation>` compiles
+byte-identical to the 97B native body at `0x00447410`. It is bound there,
+and, as for the other allocator instantiations, receives no authored credit.
+
+Replay for EXACT-008: only `Graphics.hpp` changed. The source-filtered
+replay of its 72-source closure gives 152/152 exact units in 72 cold objects.

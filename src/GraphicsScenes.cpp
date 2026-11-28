@@ -2,7 +2,10 @@
 #include <mutex>
 
 #include "EclDiagnostic.hpp"
+#include "Animation.hpp"
 #include "AnimationRuntimeOwner.hpp"
+#include "ArchiveOwner.hpp"
+#include "DiagnosticAllocator.hpp"
 #include "GameController.hpp"
 #include "GraphicsPasses.hpp"
 #include "InputInf.hpp"
@@ -51,7 +54,12 @@ struct NativeSceneInput : InputInf {
 };
 struct NativeScenePool : AnimationPoolOwner {
     std::int32_t update_44dfb0();
+    void release_vertex_buffer_4dab40();
 };
+struct NativeTickGraphicsView : Graphics {
+    void bail_out_4d9e30();
+};
+extern void* native_scene_task_5c4a00;
 
 // Non-owning PlayerTable view for two members still under review.
 struct NativeScenePlayerTable : PlayerTable {
@@ -264,6 +272,40 @@ std::int32_t __cdecl graphics_update_4dc510(void* graphics) {
         return result;
     }
     return 1;
+}
+
+// Process shutdown of the Graphics owner: drains the sound queue, stops both
+// workers, releases the version data, scenes, vertex buffer, music, archive
+// and the five surface sprites.
+std::int32_t shutdown_graphics_4dd490() {
+    ecl_diagnostic_hint("shutdown MotherInf\n");
+    while (static_cast<NativeSceneSound&>(process_sound).update_4277f0() != 0) {
+    }
+    process_graphics.worker_1.close_and_join();
+    static_cast<NativeTickGraphicsView&>(process_graphics).bail_out_4d9e30();
+    if (process_graphics.dynamic_buffer != nullptr) {
+        TH20_RELEASE_BYTES_AND_RESET(process_graphics.dynamic_buffer);
+        process_graphics.dynamic_buffer = nullptr;
+    }
+    process_graphics.release_scenes_4dd730();
+    release_scene_task_4217c0(native_scene_task_5c4a00);
+    release_scene_task_4217c0(process_input_inf);
+    ecl_diagnostic_hint("VertexBuffer delete\n");
+    static_cast<NativeScenePool*>(current_animation_pool)->release_vertex_buffer_4dab40();
+    ecl_diagnostic_hint("Sound Stop\n");
+    process_sound.enqueue(4, 0, "dummy");
+    archive_owner.close();
+    process_allocator->release_object(process_graphics.surface_sprite_0);
+    process_graphics.surface_sprite_0 = nullptr;
+    process_allocator->release_object(process_graphics.surface_sprite_1);
+    process_graphics.surface_sprite_1 = nullptr;
+    process_allocator->release_object(process_graphics.surface_sprite_2);
+    process_graphics.surface_sprite_2 = nullptr;
+    process_allocator->release_object(process_graphics.surface_sprite_3);
+    process_graphics.surface_sprite_3 = nullptr;
+    process_allocator->release_object(process_graphics.surface_sprite_4);
+    process_graphics.surface_sprite_4 = nullptr;
+    return 0;
 }
 
 } // namespace th20

@@ -1982,3 +1982,7 @@ th20::Graphics::release_scenes_4dd730
 th20::Graphics::update_scene_4da540
 th20::graphics_update_4dc510
 th20::Worker::joinable
+th20::Graphics::create_surface_targets_4dbd70
+th20::shutdown_graphics_4dd490
+th20::NativeSurfaceFile::texture_4bfb00
+th20::NativeSurfaceSprite::set_mode_2_3_4dda30
