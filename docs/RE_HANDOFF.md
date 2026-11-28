@@ -5,10 +5,11 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [math exception dispatch and encoded callbacks](CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md).
-Eleven entries are reviewed through complete archive contributions, both owned
-switch tables, the shared assembly continuation and original startup callback
-registration. This classification-only checkpoint changes no native graph;
+review covers [x87 state and MXCSR recovery ownership](CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md).
+Five existing candidates and three recovered partitions account for complete
+floating-state contributions, including the DAZ setter's previously unlisted
+SEH filter/handler and full scope table. This classification-only checkpoint
+changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
 Read [AGENTS.md](../AGENTS.md), then the focused notes for the selected owner.
@@ -136,9 +137,14 @@ kernel, fourteen alignment bytes and independent common helpers. Reuse
 one-/two-argument math error entries at `0x005640B7`/`0x005640A0`, `_87except`,
 mask/raise/errno handlers and four encoded-callback methods are also reviewed.
 Preserve `math-error/` with its complete 2,231B code contributions, 40 constant
-bytes and original callback references. Next review the floating-state helpers
-at `0x0055DBC0`, `0x0055DBE0`, `0x0055DC10` and `0x0055DC70`, keeping x87/SSE
-state and shared compiler/CRT interfaces distinct.
+bytes and original callback references. The four x87 state helpers and MXCSR
+setter are now reviewed: internal control/status words return with sign
+extension, and the DAZ trial owns a complete SEH filter/recovery path. Preserve
+`fp-state/`, including all five code sections, extended literals, initialized
+cache and 28B scope table. Four nonoverlapping partitions retain all 222B of the
+setter owner. Next inspect the actual public
+control/status owners using the retained `ieee87.obj`; several helper sections
+had no full ordinary-byte location and must not be assigned guessed addresses.
 Underlying heap entries at `0x005584C0`, `0x00554310` and `0x00554330` remain
 another bounded allocation frontier. Reuse established runtime bindings.
 Use independent archive symbols and complete original control flow, including

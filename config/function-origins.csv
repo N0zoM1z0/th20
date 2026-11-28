@@ -6745,11 +6745,14 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0055D71F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055D7F5,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055DA96,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055DAE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055DBC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055DBE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055DC10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055DC70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0055DAE0,library,CrtFloatState,exclude,high,"docs/CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md; Complete 118B ___set_fpsr_sse2 partition reviewed in five whole SDK fpctrl.obj code contributions, with literal/state sections and full SEH scope table. Original control flow and relocation roles retained; no authored or canonical exact credit."
+0x0055DB56,compiler,CrtFloatState,exclude,high,"docs/CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md; Complete 30B ___set_fpsr_sse2$seh_filter partition reviewed in five whole SDK fpctrl.obj code contributions, with literal/state sections and full SEH scope table. Original control flow and relocation roles retained; no authored or canonical exact credit."
+0x0055DB74,compiler,CrtFloatState,exclude,high,"docs/CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md; Complete 46B ___set_fpsr_sse2$seh_handler partition reviewed in five whole SDK fpctrl.obj code contributions, with literal/state sections and full SEH scope table. Original control flow and relocation roles retained; no authored or canonical exact credit."
+0x0055DBA2,library,CrtFloatState,exclude,high,"docs/CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md; Complete 28B ___set_fpsr_sse2$normal_continuation partition reviewed in five whole SDK fpctrl.obj code contributions, with literal/state sections and full SEH scope table. Original control flow and relocation roles retained; no authored or canonical exact credit."
+0x0055DBC0,library,CrtFloatState,exclude,high,"docs/CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md; Complete 19B __clrfp partition reviewed in five whole SDK fpctrl.obj code contributions, with literal/state sections and full SEH scope table. Original control flow and relocation roles retained; no authored or canonical exact credit."
+0x0055DBE0,library,CrtFloatState,exclude,high,"docs/CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md; Complete 44B __ctrlfp partition reviewed in five whole SDK fpctrl.obj code contributions, with literal/state sections and full SEH scope table. Original control flow and relocation roles retained; no authored or canonical exact credit."
+0x0055DC10,library,CrtFloatState,exclude,high,"docs/CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md; Complete 91B __set_statfp partition reviewed in five whole SDK fpctrl.obj code contributions, with literal/state sections and full SEH scope table. Original control flow and relocation roles retained; no authored or canonical exact credit."
+0x0055DC70,library,CrtFloatState,exclude,high,"docs/CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md; Complete 18B __statfp partition reviewed in five whole SDK fpctrl.obj code contributions, with literal/state sections and full SEH scope table. Original control flow and relocation roles retained; no authored or canonical exact credit."
 0x0055DC90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055DCF9,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055DD91,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
