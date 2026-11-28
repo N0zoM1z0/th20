@@ -1972,3 +1972,9 @@ th20::load_version_data
 th20::Graphics::apply_render_offset
 th20::graphics_startup_4dd600
 th20::NativeRendererClassificationOwner::reset_layer_marker_4dd820
+th20::graphics_draw_world_4dc8b0
+th20::graphics_draw_scene_4d9120
+th20::graphics_draw_overlay_4d8e90
+th20::graphics_draw_front_4d8f80
+th20::graphics_draw_frame_4d9040
+th20::NativeSurfaceSprite::submit_draw_44c570

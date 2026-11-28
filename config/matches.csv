@@ -1059,3 +1059,9 @@ address,name,size,status,match_percent,unit,evidence
 0x004DBCE0,th20::Graphics::apply_render_offset,132,matching,100.00,graphics_apply_render_offset,CLAUDE/EXACT-005; docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md
 0x004DD600,th20::graphics_startup_4dd600,300,matching,100.00,graphics_startup_4dd600,CLAUDE/EXACT-005; docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md
 0x004DD820,th20::NativeRendererClassificationOwner::reset_layer_marker_4dd820,21,matching,100.00,animation_pool_reset_layer_marker_4dd820,CLAUDE/EXACT-005; docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md
+0x004DC8B0,th20::graphics_draw_world_4dc8b0,2307,matching,100.00,graphics_draw_world_4dc8b0,CLAUDE/EXACT-006; docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md
+0x004D9120,th20::graphics_draw_scene_4d9120,238,matching,100.00,graphics_draw_scene_4d9120,CLAUDE/EXACT-006; docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md
+0x004D8E90,th20::graphics_draw_overlay_4d8e90,225,matching,100.00,graphics_draw_overlay_4d8e90,CLAUDE/EXACT-006; docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md
+0x004D8F80,th20::graphics_draw_front_4d8f80,191,matching,100.00,graphics_draw_front_4d8f80,CLAUDE/EXACT-006; docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md
+0x004D9040,th20::graphics_draw_frame_4d9040,214,matching,100.00,graphics_draw_frame_4d9040,CLAUDE/EXACT-006; docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md
+0x0044C570,th20::NativeSurfaceSprite::submit_draw_44c570,26,matching,100.00,animation_surface_sprite_submit_draw_44c570,CLAUDE/EXACT-006; docs/GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md

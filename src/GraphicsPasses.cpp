@@ -17,6 +17,8 @@
 #include "GameResourceIo.hpp"
 #include "Graphics.hpp"
 #include "NativeRendererClassificationOwner.hpp"
+#include "SpriteVertices.hpp"
+#include "Vector3.hpp"
 #include "WindowState.hpp"
 
 namespace th20 {
@@ -25,6 +27,14 @@ extern GameRandom native_polygon_random_5ba4c4;
 extern GameRandom native_random_5ba4e0;
 extern GameRandom native_random_5ba4fc;
 extern template Animation* DiagnosticAllocator::allocate_object<Animation>(const char*);
+std::int32_t __fastcall graphics_disable_depth_writes(Graphics* graphics);
+
+// Non-owning view of a Graphics surface sprite. The 26B native member at
+// 0x0044C570 submits the sprite to the current AnimationPool draw queue.
+struct NativeSurfaceSprite : Animation {
+    std::int32_t submit_draw_44c570();
+};
+
 // Startup factories in other subsystems; their results are owned elsewhere.
 void* create_task_4ac1a0();
 void* create_input_422b00();
@@ -188,6 +198,148 @@ std::int32_t register_graphics_chain() {
         0, 0, D3DBACKBUFFER_TYPE_MONO,
         reinterpret_cast<IDirect3DSurface9**>(&process_graphics.resource_1a4));
     return 0;
+}
+
+
+std::int32_t NativeSurfaceSprite::submit_draw_44c570() {
+    return current_animation_pool->draw(this);
+}
+
+// The scene, overlay, front and frame passes each draw one surface sprite
+// with alpha test off and depth writes disabled; scene and overlay can be
+// replaced by a hook.
+std::int32_t __cdecl graphics_draw_scene_4d9120(void*) {
+    if (process_graphics.resource_19c != nullptr) {
+        if (graphics_scene_draw_hook == nullptr) {
+            process_graphics.get_device()->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
+            process_graphics.get_device()->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
+            graphics_disable_depth_writes(&process_graphics);
+            process_graphics.set_clip_41dce0(3);
+            static_cast<NativeSurfaceSprite*>(process_graphics.surface_sprite_0)->submit_draw_44c570();
+            process_graphics.surface_sprite_0->set_packed_color(0xFFFFFFFF);
+            static_cast<NativeRendererClassificationOwner*>(current_animation_pool)->select_renderer_group_449e40(0x29);
+            current_animation_pool->flush_draws();
+            process_graphics.get_device()->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+        } else {
+            graphics_scene_draw_hook();
+        }
+    }
+    return 1;
+}
+
+std::int32_t __cdecl graphics_draw_overlay_4d8e90(void*) {
+    if (process_graphics.resource_19c != nullptr) {
+        if (graphics_overlay_draw_hook == nullptr) {
+            process_graphics.get_device()->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
+            process_graphics.get_device()->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
+            graphics_disable_depth_writes(&process_graphics);
+            process_graphics.set_clip_41dce0(3);
+            static_cast<NativeSurfaceSprite*>(process_graphics.surface_sprite_1)->submit_draw_44c570();
+            process_graphics.surface_sprite_1->set_packed_color(0xFFFFFFFF);
+            current_animation_pool->flush_draws();
+            process_graphics.get_device()->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+        } else {
+            graphics_overlay_draw_hook();
+        }
+    }
+    return 1;
+}
+
+std::int32_t __cdecl graphics_draw_front_4d8f80(void*) {
+    if (process_graphics.resource_19c != nullptr) {
+        process_graphics.get_device()->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
+        process_graphics.get_device()->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
+        graphics_disable_depth_writes(&process_graphics);
+        static_cast<NativeSurfaceSprite*>(process_graphics.surface_sprite_2)->submit_draw_44c570();
+        current_animation_pool->flush_draws();
+        process_graphics.surface_sprite_2->set_packed_color(0xFFFFFFFF);
+        process_graphics.get_device()->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+    }
+    return 1;
+}
+
+// View modes 7 and 12 draw surface sprite 3; the others draw sprite 4.
+std::int32_t __cdecl graphics_draw_frame_4d9040(void*) {
+    if (process_graphics.resource_19c != nullptr) {
+        static_cast<NativeRendererClassificationOwner*>(current_animation_pool)->perform_classification_44f3d0(0x1F, 0);
+        process_graphics.get_device()->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
+        if (process_graphics.field_b0c_value() == 7 || process_graphics.field_b0c_value() == 12) {
+            static_cast<NativeSurfaceSprite*>(process_graphics.surface_sprite_3)->submit_draw_44c570();
+            process_graphics.surface_sprite_3->set_packed_color(0xFFFFFFFF);
+        } else {
+            static_cast<NativeSurfaceSprite*>(process_graphics.surface_sprite_4)->submit_draw_44c570();
+            process_graphics.surface_sprite_4->set_packed_color(0xFFFFFFFF);
+        }
+        current_animation_pool->flush_draws();
+        process_graphics.get_device()->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+    }
+    return 1;
+}
+
+// Composites the offscreen world target onto the 416x480 frame of viewport 3:
+// an opaque-black quad drawn with alpha-only blending, then the second
+// offscreen target is bound and cleared for the overlay passes.
+std::int32_t __cdecl graphics_draw_world_4dc8b0(void*) {
+    if (process_graphics.resource_19c != nullptr) {
+        process_graphics.set_render_state_4d9db0(0x17, 8);
+        current_animation_pool->flush_draws();
+        process_graphics.get_device()->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
+        process_graphics.get_device()->SetRenderState(D3DRS_SEPARATEALPHABLENDENABLE, TRUE);
+        process_graphics.get_device()->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_ZERO);
+        process_graphics.get_device()->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
+        process_graphics.get_device()->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
+        process_graphics.get_device()->SetRenderState(D3DRS_SRCBLENDALPHA, D3DBLEND_ONE);
+        process_graphics.get_device()->SetRenderState(D3DRS_DESTBLENDALPHA, D3DBLEND_ZERO);
+        process_graphics.get_device()->SetRenderState(D3DRS_BLENDOPALPHA, D3DBLENDOP_ADD);
+        SpriteColoredVertex vertices[4];
+        vertices[3].position = Vector3(static_cast<float>(process_graphics.viewports[3].viewport.x),
+                                       static_cast<float>(process_graphics.viewports[3].viewport.y), 0.0f);
+        vertices[2].position = vertices[3].position;
+        vertices[1].position = vertices[2].position;
+        vertices[0].position = vertices[1].position;
+        vertices[1].position.x += static_cast<float>(process_graphics.viewports[3].viewport.width);
+        vertices[2].position.y += static_cast<float>(process_graphics.viewports[3].viewport.height);
+        vertices[3].position.x += static_cast<float>(process_graphics.viewports[3].viewport.width);
+        vertices[3].position.y += static_cast<float>(process_graphics.viewports[3].viewport.height);
+        vertices[3].reciprocal_w = 1.0f;
+        vertices[2].reciprocal_w = 1.0f;
+        vertices[1].reciprocal_w = 1.0f;
+        vertices[0].reciprocal_w = 1.0f;
+        vertices[0].color = 0xFF000000;
+        vertices[1].color = 0xFF000000;
+        vertices[2].color = 0xFF000000;
+        vertices[3].color = 0xFF000000;
+        process_graphics.get_device()->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1);
+        process_graphics.get_device()->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_SELECTARG1);
+        process_graphics.get_device()->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_DIFFUSE);
+        process_graphics.get_device()->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_DIFFUSE);
+        process_graphics.get_device()->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE);
+        process_graphics.get_device()->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, vertices,
+                                                       sizeof(SpriteColoredVertex));
+        process_graphics.get_device()->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+        process_graphics.get_device()->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+        process_graphics.get_device()->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+        process_graphics.get_device()->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+        process_graphics.get_device()->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+        current_animation_pool->restart_state_41db40();
+        process_graphics.get_device()->SetRenderState(D3DRS_SRCBLENDALPHA, D3DBLEND_SRCALPHA);
+        process_graphics.get_device()->SetRenderState(D3DRS_DESTBLENDALPHA, D3DBLEND_ONE);
+        process_graphics.get_device()->SetRenderState(D3DRS_BLENDOPALPHA, D3DBLENDOP_ADD);
+        {
+            current_animation_pool->flush_draws();
+            process_graphics.get_device()->SetRenderTarget(
+                0, static_cast<IDirect3DSurface9*>(process_graphics.resource_1a0));
+            // The rectangle is filled but the clear covers the whole target.
+            D3DRECT rect;
+            rect.x1 = process_graphics.viewports[3].viewport.x;
+            rect.y1 = process_graphics.viewports[3].viewport.y;
+            rect.x2 = process_graphics.viewports[3].viewport.x + process_graphics.viewports[3].viewport.width;
+            rect.y2 = process_graphics.viewports[3].viewport.y + process_graphics.viewports[3].viewport.height;
+            process_graphics.get_device()->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
+                                                 process_graphics.clear_color, 1.0f, 0);
+        }
+    }
+    return 1;
 }
 
 // Opens th20.dat and loads the version record; both failures are reported

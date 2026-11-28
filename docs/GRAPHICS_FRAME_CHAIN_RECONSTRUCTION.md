@@ -65,3 +65,32 @@ state.
 members) changed. A source-filtered replay of the 94-source closure,
 including the new `GraphicsPasses.cpp`, gives 256/256 exact units in 94
 cold objects.
+
+## World compositor and surface passes (CLAUDE/EXACT-006)
+
+Six more functions are strict exact in the same source, 3,201 bytes:
+
+- `0x004DC8B0` (2,307B, draw priority 14) composites the world target onto
+  viewport 3's 416x480 frame. It sets render state `0x17 = 8`, separate alpha
+  blending (colour ZERO/ONE, alpha ONE/ZERO) and selects the diffuse
+  texture-stage arguments. It then draws a four-vertex opaque-black
+  `SpriteColoredVertex` strip (`FVF 0x44`, `DrawPrimitiveUP` triangle strip),
+  restores the stages and alpha blend, binds `resource_1a0` and clears it.
+  The `D3DRECT` built before that clear is not passed to it (`Clear(0, NULL, ...)`).
+- `0x004D9120`/`0x004D8E90` (scene/overlay) draw surface sprites 0 and 1
+  unless the `0x005C4D30`/`0x005C4D34` hook is set. The scene pass also
+  classifies renderer group `0x29`.
+- `0x004D8F80` draws sprite 2. `0x004D9040` draws sprite 3 in view modes 7
+  and 12 and sprite 4 otherwise, after classifying group `0x1F`.
+- `0x0044C570` (26B) is the Animation member `return
+  current_animation_pool->draw(this)`, with 16 native callers. It sits on a
+  local `NativeSurfaceSprite` overlay so that Animation.hpp (a 186-source
+  closure) stays unchanged. It can move into Animation once that header
+  changes for another reason.
+
+`nop` placement settled the scopes. Opening a block also puts a `nop` after
+the preceding call, so the native compositor has a scope around its final
+flush, retarget, rectangle and clear, and none around the vertex array. The
+`int` return of `submit_draw_44c570` avoids the trailing `nop` that a `void`
+wrapper emits. The source-filtered replay of `GraphicsPasses.cpp` gives
+16/16 exact units. No shared header changed.

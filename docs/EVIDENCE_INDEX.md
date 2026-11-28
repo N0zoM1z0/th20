@@ -1814,7 +1814,7 @@ Compiler scores labelled "current" in historical entries below mean
 
 - [AnimationPoolOwner draw-chain callbacks strict exact](ANIMATION_POOL_DRAW_CALLBACKS_RECONSTRUCTION.md) — 51 registered renderer-group callbacks and the +0x6C0 view reset; +875 authored bytes.
 
-- [Graphics frame chain registration, start-up and frame clears strict exact](GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md) — original TU `game/mother.cpp`; D3D9 clear/target callbacks, version data load, seeded random streams; +2,373 authored bytes.
+- [Graphics frame chain registration, start-up and frame clears strict exact](GRAPHICS_FRAME_CHAIN_RECONSTRUCTION.md) — original TU `game/mother.cpp`; D3D9 clear/target callbacks, version data load, seeded random streams; +2,373 authored bytes. EXACT-006 adds the 2,307B world compositor and four surface passes (+3,201 bytes).
 
 - [WindowState original 346B clock whole strict exact](WINDOW_SECONDS_CLOCK346_STRICT_EXACT.md) — QPC/timeGetTime, original unsigned DWORD correction table and shared real elapsed stack lifetime; 8 E8/19 HIGHLOW anchored native roles, source-scoped 1/1, +346 game bytes.
 
