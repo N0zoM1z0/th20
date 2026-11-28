@@ -5,10 +5,10 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [public floating control and bit conversion](CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md).
-Five complete API/converter owners account for public abstract masks, x87/SSE
-updates, actual hardware re-read after the DAZ setter and checked-control error
-paths. This classification-only checkpoint changes no native graph;
+review covers [heap bases, aligned owners and new-mode state](CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md).
+Twenty-five entries cover seven full code contributions, the complete shared
+aligned owner, all original INT3 alignment, retry/overflow paths and new-mode
+state. This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
 Read [AGENTS.md](../AGENTS.md), then the focused notes for the selected owner.
@@ -145,10 +145,16 @@ setter owner. The complete public `_control87`, `_clearfp`, `_controlfp_s` and
 both hardware converters are now reviewed in `reviewed-ieee.json`, including
 all 1,736B and the independent default-precision caller. Their inline abstract/
 MXCSR paths explain several failed standalone helper searches. Keep the public
-abstract flags separate from raw internal words. Next review underlying heap
-entries at `0x005584C0`, `0x00554310` and `0x00554330` through their original
-allocation callers and installed CRT objects/source. Reuse established runtime
-bindings. Unmatched archive sections alone do not establish pending entries.
+abstract flags separate from raw internal words.
+
+The malloc/calloc/realloc/recalloc/msize bases, their forwarding heads, all
+sixteen public/internal aligned allocation entries and new-mode state are now
+reviewed. Preserve `heap/` with seven full code sections: 5,463B of instructions
+and all 220 INT3 bytes, full import/callee roles and the zero-filled new-mode
+cell. The complete 5,124B align section resolves duplicate byte shapes through
+real layout and original allocator-facing calls. Next inspect heap-handle
+initialization and the `_expand` family at `0x0055F720`, including the separate
+base owner and in-place failure behavior. Reuse established heap/import bindings.
 Use independent archive symbols and complete original control flow, including
 nonreturning paths and owned EH. Generate current counts from the ledgers.
 

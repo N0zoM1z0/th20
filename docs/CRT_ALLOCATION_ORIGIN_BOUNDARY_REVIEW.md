@@ -27,7 +27,9 @@ the pointer. Failure calls `_callnewh(size)` at `0x00552860` and retries when th
 returns nonzero. A zero handler result selects the bad-array helper for size
 `0xFFFFFFFF`, otherwise the bad-allocation helper. Both final transfers are
 nonreturning branches, as the independent CRT source and full objects show.
-The underlying heap allocation implementations remain separate review work.
+The underlying heap bases, full aligned allocation owner and new-mode state
+are reviewed separately in the
+[complete heap protocol note](CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md).
 
 The full original aligned-new listing contains 52 bytes at
 `0x00542E42..0x00542E75` and 28 bytes at `0x00543A0C..0x00543A27`.

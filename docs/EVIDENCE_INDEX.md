@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [CRT heap bases, aligned owners and new-mode state](CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md) — twenty-five entries across seven whole contributions, complete 5,124B aligned owner, all 220 INT3 bytes, retry/overflow/resize/fill paths and independently named heap imports.
 - [CRT public floating control and bit conversion](CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md) — five complete API/converter owners, abstract hardware masks, ambiguity reporting, post-DAZ hardware re-read and all checked-control error/output paths.
 - [CRT x87 state and MXCSR recovery ownership](CRT_FLOAT_STATE_ORIGIN_BOUNDARY_REVIEW.md) — raw signed old-word returns, complete 222B DAZ owner split into normal/SEH partitions, recovered filter/handler and full 28B scope table.
 - [CRT math exception dispatch and encoded callbacks](CRT_MATH_EXCEPTION_ORIGIN_BOUNDARY_REVIEW.md) — eleven entries, shared 83B assembly bridge, both complete embedded switch tables and resumable exception paths; four methods agree on one encoded callback slot and conditional startup registration.
