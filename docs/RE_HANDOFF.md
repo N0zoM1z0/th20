@@ -5,13 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [the 64-bit nolock seek pair](CRT_LOWIO_SEEK64_ORIGIN_REVIEW.md):
-161B/64 instructions and three REL32/three DIR32 roles, with unchanged extents.
-Full EDX:EAX results, cached API errors and success-only EOF clearing are
-retained. Independent callee evidence rejects the same-shaped locked wrapper.
-The preceding [character/console review](CRT_CONSOLE_CHARACTER_ORIGIN_REVIEW.md)
-retains shared UTF8 state, the original DBCS error fallback, WORD output,
-single invalid-handle retry and complete console termination registration.
+review covers [fclose cleanup and exceptional unlock](CRT_STDIO_FCLOSE_ORIGIN_REVIEW.md):
+four complete contributions, 400B/164 instructions, sixteen REL32/two DIR32
+roles and a full 28B scope table. The missing six-byte restore completes the
+151B locked owner; all five existing extents remain unchanged. Flush/close
+error precedence, conditional name release and atomic final stream reset are
+retained. Callee evidence distinguishes the same-shaped public wrappers.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,7 +96,15 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The latest proof is in `.analysis/origin-boundary/lowio-seek64/`: both complete
+The latest proof is in `.analysis/origin-boundary/stdio-fclose/`: the complete
+fclose/reset chain, recovered six-byte restore, full scope, CodeView and
+same-shaped public-wrapper rejection. It reuses fclose.obj in `stdio-closeall/`;
+the new stream.obj supplies the full 59B reset. close.obj independently locates
+the 163B `_close_internal` at `0x005664AE` and establishes its ABI only.
+Review that lowio close protocol next, including its guarded lock, validation,
+shared stdout/stderr handle policy and complete cleanup/metadata ownership.
+
+`lowio-seek64/` retains both complete
 owners, CodeView, attested listing and the rejected locked-wrapper call role.
 The source member/provenance and existing whole locations stay in
 `lowio-write-nolock/`; no extra extraction is needed.
@@ -121,10 +128,8 @@ table and recovered three-byte restore; its member stays in `stdio-flush/`.
 `stdio-flush/` retains the complete 687B interval, CodeView, all fields/CFG and
 both independently located scope tables; fflush.obj stays in `stdio-lifetime/`.
 `stdio-closeall/` retains the complete 171B owner and 28B scope table. Its
-fclose.obj also uniquely locates the 48B public entry at `0x00564518`, 151B
-internal owner at `0x005643F3` and 142B nolock owner at `0x0056448A`.
-Review this bounded fclose owner/protocol next, including full cleanup,
-locking and owned EH metadata; current locations establish identity only.
+fclose.obj stays there and all three public/internal owners are now reviewed
+in `stdio-fclose/`, including the complete compiler cleanup and scope table.
 `stdio-lifetime/` retains all five
 initialization/buffer/lock owners, complete 56B stream layout, owned state
 and both original startup/exit registration records.

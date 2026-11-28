@@ -30,9 +30,9 @@ cleanup also occurs for an unallocated stream or a returned fclose failure.
 The first three standard records, the pointer table itself and _nstream
 are retained by this owner.
 
-The independently located 48B fclose entry at `0x00564518` matches its full
-fclose.obj contribution. Its own internal close/flush/EH protocol remains a
-separate review; it receives no body credit from this caller review.
+The 48B fclose entry at `0x00564518` now has its
+[complete cleanup/reset/EH review](CRT_STDIO_FCLOSE_ORIGIN_REVIEW.md), including
+the recovered six-byte exceptional restore and full scope table.
 
 ## Normal and exceptional unlock share the complete scope table
 
@@ -57,8 +57,8 @@ Private `.analysis/origin-boundary/stdio-closeall/` retains the complete
 attested listing, CodeView signature, table search/comparison, all fields,
 complete CFG and original rows. It reuses closeall.obj and the established
 stdio state/layout, allocation and critical-section identities in
-`stdio-lifetime/`. The new fclose member and full location results retain
-its separate public/internal owners for later work. Source is
+`stdio-lifetime/`. The fclose member and full location results stay here;
+its own complete review is retained in `stdio-fclose/`. Source is
 `ucrt/stdio/closeall.cpp` and `corecrt_internal_stdio.h`.
 
 Two existing origins become library/compiler exclusions. Tracking/progress
