@@ -80,9 +80,9 @@ math-error and floating-state reviews. The source tree lacks these tran
 implementation files; the archive/native bodies supply their implementation
 evidence. The fourteen INT3 bytes after sptype and ten after except1 are checked.
 
-The complete 255B umatherr at `0x00554210` has an independent archive identity
-and CodeView double-return signature. Its own function-name mapping, callback
-and control-restoration protocol remains pending and is the next bounded scope.
+The complete 255B umatherr at `0x00554210` now has its
+[full name-table and callback review](CRT_UMATHERR_NAME_TABLE_ORIGIN_REVIEW.md),
+including the double result and original control-restoration order.
 
 Only classification, evidence, handoff and generated progress change.
 Tracking/progress checks pass and all 2,151 protected hashes remain unchanged.

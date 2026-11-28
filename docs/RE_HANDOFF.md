@@ -5,12 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT special classification, rounding and except1](CRT_MATH_SPECIAL_ROUND_ORIGIN_REVIEW.md).
-Three complete library owners retain 447B/170 instructions, 24 following
-INT3 and all nine REL32/one DIR32 roles. Integer classification, caller-mode
-FRNDINT, double-returning exception paths, mutable result/control forwarding
-and the original errno/callback decisions remain intact. Existing extents
-are unchanged, with no owned static data or metadata table.
+review covers [UCRT umatherr name lookup and callback/control order](CRT_UMATHERR_NAME_TABLE_ORIGIN_REVIEW.md).
+The complete 255B/84-instruction owner retains all seven REL32/31 DIR32 roles,
+the full 232B/29-record name table and 151B of strings, plus 49 zero alignment
+bytes and 16 original INT3. The double result, original-type errno decisions
+and control restoration before callback remain intact. The existing extent
+is unchanged, with no owned EH or embedded jump table.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,12 +96,14 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/math-special-round/`:
-complete sptype/except1/frnd comparisons, attested listing and CodeView
-signatures, with fpexcept.obj reused from `math-error/`.
-Next review the full 255B umatherr at `0x00554210`: independent ordinary
-identity and CodeView double return are retained, but its own function-name,
-callback and control-restoration protocol remains pending.
+The current proof is in `.analysis/origin-boundary/umatherr/`: full code,
+independently located name table, complete literals and attested listing.
+It reuses fpexcept.obj in `math-error/` and CodeView signatures in
+`math-special-round/`, which retains the sptype/except1/frnd proof.
+Next inspect the remaining complete fpexcept.obj math-error contributions,
+starting with except2 and its real caller/return/control protocol. Use the
+now reviewed handling/raising/callback/name providers and preserve every
+owned table and alignment byte.
 `log10-sse/` retains full code/data, the missing six-byte head, alignment
 and table-index inference. Its identical private banks are fully compared
 at observed linked instances; a future canonical unit still needs independent
