@@ -5,12 +5,14 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [descriptor arrays and handle association protocols](CRT_DESCRIPTOR_LIFETIME_ORIGIN_REVIEW.md).
-Eleven pending origins plus one recovered finally entry retain ten whole SDK
-contributions, all 841B code and the 28B SEH table. Arrays keep their 64×56B
-geometry, distinct index/per-handle locks and original failure paths. Handle
-reset preserves the OS resource and FOPEN flag; sentinel-specific errors stay
-distinct. Earlier notes retain full ctype tables and UTF-8/count ownership.
+review covers [lowio initialization and retirement](CRT_LOWIO_INITIALIZATION_ORIGIN_REVIEW.md).
+Three pending origins and three recovered entries retain four whole SDK
+contributions, all 492B code, seven alignment bytes, 28B SEH and 516B shared
+loader-zero state. The missing initialization primary and finally prefix are
+now explicit. Inherited pipes bypass GetFileType; standard-handle failures
+install -2 in lowio and any live FILE. Retirement clears arrays without
+resetting nhandle or closing OS handles. Earlier notes retain descriptor
+lifetime, full ctype tables and UTF-8/count ownership.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,12 +98,11 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/wide-stdio/`: ten whole SDK
-contributions, the complete expansion scope table and the missing three-byte
-finally prefix at `0x0055FAA9`. Per-handle Enter/LeaveCriticalSection roles
-reject swapping the same-shaped helpers. Reuse the existing heap, errno and
-WinAPI wrapper proofs. Global lowio/fmode slots are named dependencies here,
-without new canonical binding or body credit for their initializers.
+The current proof is in `.analysis/origin-boundary/lowio-initialization/`:
+four whole SDK contributions, complete scope table, recovered primary/finally/
+retirement entries and all 128 lowio pointer slots. The earlier `wide-stdio/`
+proof retains array lifetime and real per-handle Enter/LeaveCriticalSection
+roles. Reuse those bodies and the existing heap, errno and WinAPI evidence.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -109,15 +110,12 @@ under the attempted build configuration. Keep both failed logs and inputs;
 do not repeat that compile until those inputs are resolved. The 89B SDK versus
 91B target epilogue remains pending at `0x0054A360`.
 
-Next review lowio initialization/retirement in
-`.analysis/origin-boundary/lowio-initialization/`: inherited handles at
-`0x0055982D`, standard handles at `0x005598DD`, initialization at `0x0055998D`
-and retirement at `0x005599ED`. Whole SDK locations exist in `ioinit.obj`;
-retain all shared global arrays, sentinel data, locks/SEH and original
-handle/flag installation. The fmode initializer has no complete location yet.
-The named query_app_type dependency comes from
-`ucrt/internal/report_runtime_error.cpp` and remains a separate pending body.
-The stack probe at `0x005439E0` also remains pending.
+Next inspect the named query_app_type dependency at `0x005558F0`, from
+`ucrt/internal/report_runtime_error.cpp`, with its setter, global state and
+full report owner. The SDK's unreferenced 56B badioinfo data and separate
+34B standard-ID helper have no complete target match; neither receives
+ownership credit. The fmode initializer also has no complete location yet.
+The stack probe at `0x005439E0` remains pending.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK
