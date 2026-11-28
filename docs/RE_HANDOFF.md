@@ -85,8 +85,21 @@ retained. One natural pinned-header probe emits the original 36-byte bad-array
 default constructor; preserve `build/gpt61-origin-allocation/BadArray.obj`, its
 receipt and `.analysis/origin-boundary/allocation/` alongside the earlier probes.
 
-Next review the remaining allocation protocol entries at `0x00552860`,
-`0x0054A550` and `0x00542E76`. Reuse established new/delete/failure bindings.
+The remaining malloc/aligned-delete heads and complete new-handler state owner
+are now reviewed. The 317-byte shared code section includes 57 INT3 bytes and
+two EH-only three-byte prefixes at `0x0055290B`/`0x00552979`; the complete SEH
+section is 60 bytes. Both prefixes fall through to existing nine-byte unlock
+entries. The missed legacy overload at `0x00552990` passes the security-cookie
+value to the setter; preserve that operand. Private `reviewed-handler.json`
+captures the complete text, codecs, wrappers and scope-table comparisons.
+
+Next resolve the large provisional convex spans beginning at `0x0054FEB0`,
+`0x0054FF00`, `0x0054FFB0` and `0x00550130`. They intersect the new-handler
+region in the ledger, while attested body membership is only 250/201/214/339
+bytes; `allocation/overlapping-provisional-spans.txt` captures the discrepancy.
+Follow each actual fragment before changing its span. The underlying heap
+entries at `0x005584C0`, `0x00554310` and `0x00554330` remain another bounded
+allocation frontier. Reuse established new/delete/failure and handler bindings.
 Use independent archive symbols and complete original control flow, including
 nonreturning paths and owned EH. Generate current counts from the ledgers.
 

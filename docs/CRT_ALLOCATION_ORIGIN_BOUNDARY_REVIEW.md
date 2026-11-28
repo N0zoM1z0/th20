@@ -1,8 +1,9 @@
 # CRT allocation, shared failure entries and corrected aligned-new boundary
 
-Seven pending candidates have reviewed library origins, and one missing shared
-throw entry is now inventoried. The former 3,046-byte aligned-new ledger span
-combined two disjoint bodies. Independent complete CRT contributions identify
+The allocation roots and new-handler state protocol have reviewed library/compiler
+origins, including recovered shared failure and EH entries. The former
+3,046-byte aligned-new ledger span combined two disjoint bodies. Independent
+complete CRT contributions identify
 its 52-byte parent and the separate 28-byte failure helper without discarding
 either path. The target is Japanese TH20 v1.00a Steamless, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
@@ -26,7 +27,7 @@ the pointer. Failure calls `_callnewh(size)` at `0x00552860` and retries when th
 returns nonzero. A zero handler result selects the bad-array helper for size
 `0xFFFFFFFF`, otherwise the bad-allocation helper. Both final transfers are
 nonreturning branches, as the independent CRT source and full objects show.
-The called allocator/handler implementations remain separate review work.
+The underlying heap allocation implementations remain separate review work.
 
 The full original aligned-new listing contains 52 bytes at
 `0x00542E42..0x00542E75` and 28 bytes at `0x00543A0C..0x00543A27`.
@@ -80,6 +81,78 @@ pointer to the existing unsized delete at `0x005429FC`. The full body agrees
 with `delete_scalar_size.obj` and its source; the size is not a second pointer
 or an allocator-selection flag.
 
+## New-handler state, encoding and complete SEH cleanup
+
+The complete UCRT `new_handler.obj` shared text section occupies 317 bytes at
+`0x00552860..0x0055299C`. The original and object agree throughout, including
+both EH-only prefixes, both normal cleanup entries and all 57 INT3 bytes.
+The pointer codecs and two remaining allocator wrappers also agree with their
+complete independent contributions.
+
+| Entry | Code bytes | Role | Origin |
+| --- | ---: | --- | --- |
+| 0x00542E76 | 14 | aligned scalar delete | library |
+| 0x0054A550 | 11 | `malloc` forwarding head | library |
+| 0x00552860 | 44 | `_callnewh` | library |
+| 0x005528A0 | 15 | `__acrt_initialize_new_handler` | library |
+| 0x005528C0 | 75 | `_query_new_handler` | library |
+| 0x0055290B | 3 | query EH restore prefix | compiler |
+| 0x0055290E | 9 | query finally unlock | compiler |
+| 0x00552920 | 89 | `_set_new_handler` | library |
+| 0x00552979 | 3 | setter EH restore prefix | compiler |
+| 0x0055297C | 9 | setter finally unlock | compiler |
+| 0x00552990 | 13 | C++ `_set_new_handler(int)` overload | library |
+| 0x0055299D | 27 | fast pointer decoder | library |
+| 0x005529B8 | 31 | fast pointer encoder | library |
+
+`_callnewh` obtains the current decoded handler, returns zero for null, otherwise
+performs the CFG check and invokes the callback with the requested allocation
+size. It normalizes any nonzero callback result to integer one. It does not
+introduce a catch around the callback.
+
+The initializer stores the supplied encoded value unchanged at `0x005E548C`.
+Query acquires UCRT lock index zero, decodes that global and releases the lock.
+Setter acquires the same lock, decodes and preserves the previous handler,
+encodes the supplied pointer, stores it and returns the previous decoded value.
+These use the independently reviewed `_acrt_lock`/`_acrt_unlock` destinations;
+the pool is distinct from the STL `_Lockit` critical sections.
+
+For cookie `C` at `0x005B25C0`, the 32-bit decoder computes
+`ROR(encoded ^ C, C & 31)`. The encoder computes
+`ROR(pointer, 32 - (C & 31)) ^ C`, with x86 rotation-count masking.
+The existing Ghidra encoder name describes a different callback signature;
+the new-handler object and its actual consumers establish this shared pointer
+operation without assigning an exclusive callback type to the physical body.
+
+The legacy integer overload ignores its argument and pushes the value of
+`__security_cookie` before calling the pointer-valued setter. The independent
+object emits the same operation, including its encoded-null conversion helper.
+Preserve that actual operand rather than replacing it with literal zero or
+assuming that this overload clears the callback.
+
+Each normal query/set body calls its nine-byte unlock entry directly. The
+corresponding SEH table instead targets a three-byte `MOV ESI,[EBP-0x1C]` prefix
+that falls through to that same unlock body. Those two prefixes and the legacy
+overload were missing from the ledger. All physical heads are retained without
+counting either unlock body twice. The complete 60-byte `.xdata$x` section at
+`0x005AC2C0` includes both 28-byte scope tables and their four-byte separation;
+all ordinary fields and both cleanup-pointer HIGHLOW relocations agree.
+
+The full text partition is 44+20 bytes for the call entry and alignment,
+15+17 for initialization, 75+3+9+9 for query, 89+3+9+11 for setter, and 13 for
+the legacy overload. This accounts for every byte of the 317-byte section.
+The adjacent codec contributions are 27 and 31 bytes. The malloc head retains
+its hotpatch/frame instructions before tail-transferring to `_malloc_base`
+at `0x005584C0`. Aligned delete ignores the alignment argument and forwards
+the pointer to `_aligned_free` at `0x00554310`.
+
+Four pending ledger spans at `0x0054FEB0`, `0x0054FF00`, `0x0054FFB0` and
+`0x00550130` also extend across this region. The attested body query reports
+only 250, 201, 214 and 339 actual body bytes respectively, with distant fragments
+inside those convex spans. Their own shared fragments require separate boundary
+review; these four rows remain pending. The query is retained as
+`overlapping-provisional-spans.txt` beside the handler evidence.
+
 ## Evidence and validation
 
 Private `.analysis/origin-boundary/allocation/` retains complete archive members,
@@ -94,8 +167,20 @@ in `build/gpt61-origin-allocation/BadArray.obj` and `BadArray.receipt.json`.
 
 `review.py` checks all 266 code bytes, two INT3 bytes, complete instruction
 coverage, relocation roles, full HIGHLOW sets, complete shared type records,
-RTTI identities and corrected nonoverlapping ledger ranges. Tracking and
-generated progress pass. All 2,089 protected native inputs/products retain their
-hashes. No maintained native input, unit extent or binding changed; canonical
+RTTI identities and corrected nonoverlapping ledger ranges.
+
+The handler/forwarding review uses `new_handler.obj` and `malloc.obj` from
+`Windows Kits/10/Lib/10.0.26100.0/ucrt/x86/libucrt.lib`, plus
+`delete_scalar_align.obj` from `libcmt.lib`. Its behavior is read from the complete
+original instructions and named object contributions. `remaining-native.txt`,
+`new-handler-native.txt` and `reviewed-handler.json` retain that evidence.
+`review-handler.py` compares all 400 bytes of the complete shared text, codecs
+and forwarding contributions, including 57 alignment bytes, and the entire
+60-byte SEH section. Bounded pinned Capstone decoding covers the three unlisted
+heads without changing the Ghidra database. All other instructions reuse the
+attested listings. No additional compiler run is needed for this part.
+
+Tracking and generated progress pass. All 2,089 protected native inputs/products
+retain their hashes. No maintained native input, unit extent or binding changed; canonical
 exact replay scope is **zero units**. This review adds no source-present or
 exact credit.

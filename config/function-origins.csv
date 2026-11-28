@@ -6030,7 +6030,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00542D98,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00542E00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00542E42,library,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 52B ??2@YAPAXIW4align_val_t@std@@@Z reviewed against full CRT contribution or natural pinned-header emission; original flow, shared failure entries, relocation roles and complete exception-type records reconciled."
-0x00542E76,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00542E76,library,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 14B ??3@YAXPAXW4align_val_t@std@@@Z reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
 0x00542E90,library,CRT,exclude,high,REF-001
 0x00542EAF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00542F0F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6246,7 +6246,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0054A498,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054A4E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054A540,library,CxxRuntime,exclude,high,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT free.obj symbol _free reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.
-0x0054A550,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0054A550,library,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 11B _malloc reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
 0x0054A55B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054A57C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054A5BB,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6409,14 +6409,17 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005527E3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00552804,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00552818,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00552860,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005528A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005528C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055290E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00552920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055297C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055299D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005529B8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00552860,library,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 44B __callnewh reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
+0x005528A0,library,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 15B ___acrt_initialize_new_handler reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
+0x005528C0,library,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 75B __query_new_handler reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
+0x0055290B,compiler,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 3B __query_new_handler$finally_restore reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
+0x0055290E,compiler,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 9B __query_new_handler$finally_unlock reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
+0x00552920,library,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 89B __set_new_handler reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
+0x00552979,compiler,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 3B __set_new_handler$finally_restore reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
+0x0055297C,compiler,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 9B __set_new_handler$finally_unlock reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
+0x00552990,library,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 13B ?_set_new_handler@@YAP6AHI@ZH@Z reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
+0x0055299D,library,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 27B ??$__crt_fast_decode_pointer@P6AHI@Z@@YAP6AHI@ZQ6AHI@Z@Z reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
+0x005529B8,library,CrtAllocation,exclude,high,"docs/CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 31B ??$__crt_fast_encode_pointer@P6AHI@Z@@YAP6AHI@ZQ6AHI@Z@Z reviewed through full CRT object contributions, 317B shared text and 60B SEH section; original flow, encoding, cleanup and relocation roles retained."
 0x005529D7,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00552B1D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00552B5E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
