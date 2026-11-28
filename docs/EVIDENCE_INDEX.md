@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [CRT startup defaults and folded zero-return origins](CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md) — thirteen policy/TLS/SDK leaves; previously missing startup callers and locale records resolve the final inventoried thunk.
 - [x86 integer-helper origins and result registers](CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md) — eight full CRT helpers; complete byte identity, RET 16, and separate quotient/remainder register pairs.
 - [CRT forwarding origins and full boundaries](CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md) — fifteen runtime bodies and forwarding heads; deallocation chain, exception count, conversion, environment widths and guard pointer independently corroborated.
 - [Import-library origins and six-byte boundaries](IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md) — 31 independently PE-bound import stubs excluded; discontiguous runtime span counterexample retained for further review.

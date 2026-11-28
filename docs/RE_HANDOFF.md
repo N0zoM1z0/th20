@@ -4,9 +4,11 @@
 
 The active task is to complete origin/boundary review before returning to native
 matching. Reviewed groups now include import-library stubs, CRT forwarding/runtime
-bodies and eight x86 integer helpers. See the [import entry table](IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md),
-[CRT chains and width findings](CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md), and
-[integer ABI evidence](CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md). The combined
+bodies, x86 integer helpers and startup policy/TLS leaves. See the
+[import entry table](IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md),
+[CRT chains and width findings](CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md),
+[integer ABI evidence](CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md), and
+[startup defaults](CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md). The combined
 integer divide/remainder helpers return quotient in EDX:EAX and remainder in
 EBX:ECX; preserve that compiler-helper ABI in later consumers.
 This checkpoint changes no executable inputs and has **zero affected exact
@@ -69,13 +71,14 @@ Earlier Player canonical products remain intact.
 
 ## Next useful work
 
-Continue origin/boundary review in bounded groups. One original Ghidra thunk
-remains pending: `0x00543B7E`, together with its three-byte zero-return target
-at `0x00543B83`. A matching library thread-locale default
-and no reported callers do not identify the original folded contributors.
-Keep both pending until independent use or linker evidence resolves origin.
-Investigate
-`0x005419AC` using the retained 40-address listing: its 66,925-byte provisional
+Continue origin/boundary review in bounded groups. All current Ghidra thunk
+candidates have reviewed origins. Instruction-level references and complete
+CRT startup objects resolve `0x00543B7E` and the folded zero defaults at
+`0x00543B83`; function-level caller queries had missed their unowned startup
+call sites. Use `xrefs_to` when an empty call graph conflicts with other evidence.
+
+Next investigate `0x005419AC` using the retained 40-address listing: its
+66,925-byte provisional
 span includes a distant nine-byte tail and many unrelated functions. Preserve
 the tail while reconciling physical ownership. Do not infer library origin
 from automatic names alone. Generate current counts from the ledgers.

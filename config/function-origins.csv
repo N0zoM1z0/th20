@@ -6050,27 +6050,27 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005436C1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005439E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005439F6,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543A29,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00543A29,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 4B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: __get_startup_argv_mode."
 0x00543A2D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00543A39,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00543B4E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543B7E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543B83,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543B86,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543BC8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00543B7E,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: ___scrt_initialize_mta."
+0x00543B83,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 3B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: folded CRT zero defaults."
+0x00543B86,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 66B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: ___scrt_is_managed_app."
+0x00543BC8,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 12B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: ___scrt_set_unhandled_exception_filter."
 0x00543BD4,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00543C2A,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00543C40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00543C85,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00543CD2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543D1D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543D23,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543D2F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543D32,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543D53,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543D70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543D7C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543D82,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00543D1D,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: __get_startup_file_mode."
+0x00543D23,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 12B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: ?__scrt_initialize_type_info@@YAXXZ."
+0x00543D2F,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 3B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: __should_initialize_environment."
+0x00543D32,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 32B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: __initialize_default_precision."
+0x00543D53,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 29B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: ___scrt_initialize_default_local_stdio_options."
+0x00543D70,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 12B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: ___scrt_is_user_matherr_present."
+0x00543D7C,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: ___scrt_get_dyn_tls_init_callback."
+0x00543D82,library,CrtStartup,exclude,high,"docs/CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B native body reviewed against installed CRT contributions, complete startup caller objects and original references. Library role: ___scrt_get_dyn_tls_dtor_callback."
 0x00543D88,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00543DE0,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C33C to gdiplus.dll::GdipAlloc; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
 0x00543DE6,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C340 to gdiplus.dll::GdipFree; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.

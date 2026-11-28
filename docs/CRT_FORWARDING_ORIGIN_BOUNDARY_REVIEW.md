@@ -116,11 +116,11 @@ symbol roles and native chains are inspected separately. These archive
 comparisons support origin and boundary review. They are not fresh compilations
 of maintained source and confer no canonical exact credit.
 
-The five-byte jump at `0x00543B7E` and three-byte zero return at `0x00543B83`
-remain pending. The latter agrees with a library thread-locale default, but that
-trivial byte identity and the lack of reported callers do not identify its
-original contributors. Preserve this uncertainty instead of applying the nearby
-CRT classification to both rows.
+The zero-return origin uncertainty from this checkpoint is now resolved by
+[complete startup callers and locale records](CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md).
+The later review classifies both `0x00543B7E` and `0x00543B83`; a function-level
+caller query had omitted calls in startup instructions without an owning
+Ghidra function.
 
 Only the fifteen selected rows in each classification ledger and the associated
 notes/progress change. Tracking, generated progress and protected native input /
