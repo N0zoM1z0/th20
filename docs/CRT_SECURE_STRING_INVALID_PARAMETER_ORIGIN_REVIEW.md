@@ -73,7 +73,7 @@ Forced synchronization calls `__acrt_getptd_noexit_explicit` at `0x00557A9F`,
 caches the nullable result, and returns it. The required reader calls abort if
 lazy synchronization fails. The invalid-parameter path uses the nullable result
 so that missing PTD can still fall through to the global handler. The explicit
-provider itself remains a pending body review.
+provider is now covered by the [full PTD/FLS protocol review](CRT_PTD_FLS_ERRNO_ORIGIN_REVIEW.md).
 
 ## Handler precedence, encoded null and normal returns
 

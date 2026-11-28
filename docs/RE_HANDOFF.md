@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [secure strings, cached PTD and invalid-parameter dispatch](CRT_SECURE_STRING_INVALID_PARAMETER_ORIGIN_REVIEW.md).
-Fifteen pending library origins cover the complete 2,133B interval, including
-all 27 INT3 bytes, SIMD paths, cached PTD helpers and encoded handler state.
-Watson's physical RET remains despite its SDK noreturn contract. Earlier API
-reviews retain complete cache/SEH ownership and corrected `0x00558390` to the
-CompareStringEx capability predicate, superseding the mistaken thread-attach
-assignment.
+review covers [PTD allocation, FLS lifetime and errno ownership](CRT_PTD_FLS_ERRNO_ORIGIN_REVIEW.md).
+Twenty-four pending origins and three recovered heads cover the complete PTD
+protocol, both compiler EH handlers and errno owner. Full comparison retains
+1,749 instruction bytes, sixteen INT3 bytes and 581B of owned data/metadata.
+The allocation sentinel, distinct nullable/required getters, LastError behavior
+and writable errno fallbacks are preserved. Earlier focused notes retain the
+Watson RET and corrected CompareStringEx capability identity.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,20 +97,18 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/secure-wide-string/`:
-fifteen whole contributions, the folded PTD-reader alias, complete padding and
-handler state. Capped Ghidra length listings are completed by the tail/final
-queries; the audit requires full union coverage. Normal handlers may return;
-the default fatal path retains its physical RET. Reuse the focused API/cache
-and downlevel notes for unchanged evidence, including the Konkani table defect
-and rejected thread-attach hypothesis.
+The current proof is in `.analysis/origin-boundary/ptd-fls/`: complete PTD
+lifetime/providers, four guarded SEH owners, full EH/unwind records and errno
+table/state. The missing 54B initializer is bound by the prior paired startup
+table. Ghidra has no functions at the two recovered EH heads; pinned decoding
+and complete SDK comparisons cover their 58B. Preserve the shared head/explicit
+handler and metadata as one physical owner, plus the rejected other 14B PTD head.
 
-Next review the explicit PTD provider at `0x00557A9F` and its immediate
-allocation/FLS protocol, plus the errno leaf at `0x005516C1`. Preserve nullable
-versus required PTD behavior and LastError restoration. Named callee roles give
-these bodies no credit yet. The PEB application-verifier helper at `0x0055E109`
-also remains pending; its 18B SDK candidate is retained under
-`optional-api-wrappers/`.
+Next review the locale reference/lifetime providers called by PTD:
+`0x005608BF`, `0x0056093C` and `0x00560B07`, with the intervening LC_TIME helpers.
+The provisional 128B owner at `0x00560B88` overlaps existing 9B/18B entries;
+reconcile its complete code/SEH ownership before using that span. Installed
+`ucrt/locale/locale_refcounting.cpp` is the focused source entry point.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK
