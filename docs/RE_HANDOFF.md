@@ -5,12 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [narrow/wide first and last character search](CRT_STRING_SEARCH_ORIGIN_REVIEW.md).
-Four pending origins retain their full 926B/360-instruction union and existing
-extents. Independent ISA-level bindings, different narrow/wide thresholds,
-zero-search returns, page/alignment checks and the internal strchr alternate
-entry are reconciled. Earlier notes retain the full memcmp table, memory
-copy/fill with independent CPU state, and the FindHandler/exception closure.
+review covers [recovered purecall and its handler getter](CRT_PURECALL_OWNER_REVIEW.md).
+Two missed library entries cover 34B/12 instructions and the original final
+INT3 in the complete 35B interval. Full member comparison, prior facet virtual
+roots, actual getter call and guard/abort providers resolve the ownership.
+The seven-byte query_new_mode lookalike is rejected. Earlier notes retain
+the narrow/wide search, full memcmp table, independent CPU state and
+FindHandler/exception closure.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,7 +97,10 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/string-search/`: four
+The current proof is in `.analysis/origin-boundary/purecall/`: complete
+members, decoded supplement, facet roots and getter negative. Ghidra lists no
+instructions in this original interval; its bytes and all fields are covered.
+The preceding proof is in `.analysis/origin-boundary/string-search/`: four
 complete members, attested listings and full byte/relocation/reachability proof.
 The four ISA fields reuse the independent complete CPU-state provider.
 The preceding proof is in `.analysis/origin-boundary/memory-compare/`: complete
@@ -140,11 +144,11 @@ The complete memmove owner at `0x00543E20` (1396B) and CPU initializer at
 Memcmp at `0x00544D77` is reviewed with its complete residual table. Continue
 with another bounded string/memory owner, using whole archive contributions
 and the complete independent ISA/favor provider when applicable.
-Strchr, strrchr, wcschr and wcsrchr are now reviewed. The original code between
-strchr and wcschr at `0x0054626B..0x0054628D` is a separate getter/guarded
-callback/abort owner, not string padding. Reconcile it with the retained
-purecall-handler lookalike before adding its missing entries; the xref query
-omits its original direct call despite the bytes being present.
+Strchr, strrchr, wcschr and wcsrchr are now reviewed. The complete purecall
+and getter at `0x0054626B..0x0054628D` are separately recorded. Continue with
+a bounded unresolved CRT string owner or its real caller. The retained
+173B memchr member has no complete ordinary-byte match; do not assign it
+from a familiar name alone.
 The same-shaped bad_alloc constructor at `0x00540D24` retains its previous
 class identity.
 The 14B secchk signature independently locates the cookie check at
