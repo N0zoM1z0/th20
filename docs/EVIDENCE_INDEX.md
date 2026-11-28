@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [VCRuntime API caches and downlevel fallbacks](CRT_VCRUNTIME_API_CACHE_REVIEW.md) — nine whole 623B bodies, five INT3 and complete 312B data/alignment; raw XCHG publication, first-module export failure, TLS callback loss and real calloc/wcsncmp providers.
 - [VCRuntime startup, lock ownership and per-thread state](CRT_VCRUNTIME_STATE_ORIGIN_REVIEW.md) — ten whole 486B bodies plus fourteen INT3 and 72B state; one-lock geometry, static/dynamic 40B PTD, LastError/sentinel protocol and rejected UCRT/lifecycle aliases.
 - [CRT exception-object lifetime and termination scopes](CRT_EXCEPTION_LIFETIME_TERMINATION_REVIEW.md) — ten pending origins and seven recovered entries; whole 538B instructions/four INT3, full 60B SEH/strong callback data, distinct destructor throw predicates and UCRT/VCRuntime termination state.
 - [CRT image validation, SSE2 exception repair and NLG markers](CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md) — nine pending origins and three recovered partitions; whole 518B instructions/39 INT3, complete 44B SEH/NLG, original PE interval arithmetic, inclusive context bounds and real guard-nop identity.
