@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [mbtowc state and console handle lifetime](CRT_CONSOLE_CHARACTER_ORIGIN_REVIEW.md):
-six complete owners, 524B/189 instructions, nine REL32/fifteen DIR32 roles and
-32B state/literal/termination registration. Shared UTF8 state, the original
-DBCS error fallback, WORD output and single invalid-handle retry are retained.
-All six extents remain unchanged. The preceding
-[console write review](CRT_LOWIO_CONSOLE_WRITE_ORIGIN_REVIEW.md) retains the
-recovered 39B EH handler, full FuncInfo/table and original LFCR output order.
+review covers [the 64-bit nolock seek pair](CRT_LOWIO_SEEK64_ORIGIN_REVIEW.md):
+161B/64 instructions and three REL32/three DIR32 roles, with unchanged extents.
+Full EDX:EAX results, cached API errors and success-only EOF clearing are
+retained. Independent callee evidence rejects the same-shaped locked wrapper.
+The preceding [character/console review](CRT_CONSOLE_CHARACTER_ORIGIN_REVIEW.md)
+retains shared UTF8 state, the original DBCS error fallback, WORD output,
+single invalid-handle retry and complete console termination registration.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,7 +97,11 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The latest proof is in `.analysis/origin-boundary/console-character-providers/`:
+The latest proof is in `.analysis/origin-boundary/lowio-seek64/`: both complete
+owners, CodeView, attested listing and the rejected locked-wrapper call role.
+The source member/provenance and existing whole locations stay in
+`lowio-write-nolock/`; no extra extraction is needed.
+`console-character-providers/` retains
 the full converter/console lifetime chain, complete 32B owned data, CodeView,
 attested listings/references and whole-contribution comparisons. It reuses
 mbtowc.obj/putwch.obj in `lowio-write-console/`. The additional 88B retry
@@ -107,10 +111,8 @@ locations; do not add entries for those source-only alternatives.
 36B FuncInfo/256B table locations and Ghidra's missing-handler observation.
 `lowio-write-text/` retains all three complete text translators and their
 short-write/accounting differences. `lowio-write-nolock/` retains the complete
-dispatch/selector/result ABI and lseek.obj, which also locates the 30B append
-wrapper and 131B shared 64-bit seek owner. Review that seek protocol next,
-including the split 64-bit result, native SetFilePointerEx/error roles and
-descriptor EOF flag; their current evidence establishes identity only.
+dispatch/selector/result ABI and lseek.obj. The complete 30B append wrapper
+and 131B shared 64-bit seek owner are now reviewed in `lowio-seek64/`.
 `lowio-write/` retains the full 273B parent, complete scope and recovered
 six-byte descriptor/result restore. The public 55B write wrapper remains
 without a whole ordinary-byte location.
@@ -120,8 +122,10 @@ table and recovered three-byte restore; its member stays in `stdio-flush/`.
 both independently located scope tables; fflush.obj stays in `stdio-lifetime/`.
 `stdio-closeall/` retains the complete 171B owner and 28B scope table. Its
 fclose.obj also uniquely locates the 48B public entry at `0x00564518`, 151B
-internal owner at `0x005643F3` and 142B nolock owner at `0x0056448A`; their
-own protocols/metadata remain pending. `stdio-lifetime/` retains all five
+internal owner at `0x005643F3` and 142B nolock owner at `0x0056448A`.
+Review this bounded fclose owner/protocol next, including full cleanup,
+locking and owned EH metadata; current locations establish identity only.
+`stdio-lifetime/` retains all five
 initialization/buffer/lock owners, complete 56B stream layout, owned state
 and both original startup/exit registration records.
 `sse2-initializer/` retains both complete members and the recovered 16B head;

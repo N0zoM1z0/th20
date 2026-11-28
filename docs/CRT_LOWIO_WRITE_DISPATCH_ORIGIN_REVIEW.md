@@ -82,8 +82,8 @@ Private `.analysis/origin-boundary/lowio-write-nolock/` retains both attested
 listings, CodeView/aggregate layout, full comparisons/CFG/fields and named PE
 imports. It reuses write.obj and its complete locations from `lowio-write/`,
 plus reviewed lowio state, cached locale, isatty and error/handler providers.
-The new lseek.obj independently locates the 30B append wrapper and 131B shared
-64-bit seek owner; their own protocols remain pending. Installed source is
+The 30B append wrapper and 131B shared 64-bit owner now have their
+[complete seek/error/EOF review](CRT_LOWIO_SEEK64_ORIGIN_REVIEW.md). Installed source is
 `ucrt/lowio/write.cpp` and the lowio/PTD propagation headers.
 
 The three text translators now have their [full short-write/accounting review](CRT_LOWIO_TEXT_WRITE_ORIGIN_REVIEW.md).
