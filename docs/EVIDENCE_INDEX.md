@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [CRT forwarding origins and full boundaries](CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md) — fifteen runtime bodies and forwarding heads; deallocation chain, exception count, conversion, environment widths and guard pointer independently corroborated.
 - [Import-library origins and six-byte boundaries](IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md) — 31 independently PE-bound import stubs excluded; discontiguous runtime span counterexample retained for further review.
 
 - [Player state-frame ownership and 4,072B contribution](PLAYER_STATE4043_NATIVE_FRONTIER.md) — complete maintained seven-state root and ordinary-byte match; independent relocation bindings remain open, no parent exact credit.

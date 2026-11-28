@@ -5956,7 +5956,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00541927,45,0x00541953,FUN_00541927,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00541954,49,0x00541984,std::_Lockit::_Lockit,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005419AC,66925,0x00551F18,FUN_005419ac,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x005419CB,5,0x005419CF,thunk_FUN_00547b43,,,unclassified,0.00,,,true,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x005419CB,5,0x005419CF,thunk_FUN_00547b43,,CxxRuntime,excluded,0.00,,,true,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT xonce2.obj symbol ___std_init_once_link_alternate_names_and_abort@0 reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x005419D0,65,0x00541A10,std::locale::_Locimp::_Locimp,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00541A11,49,0x00541A41,FUN_00541a11,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00541A66,32,0x00541A85,FUN_00541a66,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -5976,7 +5976,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00541DAE,306,0x00541EDF,__Mbrtowc,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00541EE0,87,0x00541F36,__Utf8_trailing_byte_count,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00541F37,255,0x00542035,FUN_00541f37,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00542036,5,0x0054203A,thunk_FUN_005463d0,,,unclassified,0.00,,,true,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00542036,5,0x0054203A,thunk_FUN_005463d0,,CxxRuntime,excluded,0.00,,,true,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT uncaught_exceptions.obj symbol ?uncaught_exceptions@std@@YAHXZ reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x0054203B,110,0x005420A8,FUN_0054203b,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005420A9,236,0x00542194,FUN_005420a9,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00542195,236,0x00542280,FUN_00542195,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -6008,9 +6008,9 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x005429AB,46,0x005429D8,FUN_005429ab,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005429D9,21,0x005429ED,FUN_005429d9,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005429EE,14,0x005429FB,__security_check_cookie,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x005429FC,5,0x00542A00,thunk_FUN_00557ba0,,,unclassified,0.00,,,true,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x005429FC,5,0x00542A00,thunk_FUN_00557ba0,,CxxRuntime,excluded,0.00,,,true,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT delete_scalar.obj symbol ??3@YAXPAX@Z reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x00542A01,9,0x00542A09,FUN_00542a01,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00542A0A,5,0x00542A0E,thunk_FUN_00557ba0,,,unclassified,0.00,,,true,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00542A0A,5,0x00542A0E,thunk_FUN_00557ba0,,CxxRuntime,excluded,0.00,,,true,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT delete_array.obj symbol ??_V@YAXPAX@Z reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x00542A0F,35,0x00542A31,FUN_00542a0f,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00542A32,40,0x00542A59,FUN_00542a32,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00542A5A,251,0x00542B54,FUN_00542a5a,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -6036,8 +6036,8 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00543200,104,0x00543267,__aulldiv,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00543270,117,0x005432E4,__aullrem,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005432F0,31,0x0054330E,__allshl,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00543310,5,0x00543314,thunk_FUN_00543320,,,unclassified,0.00,,,true,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00543320,124,0x0054339B,FUN_00543320,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00543310,5,0x00543314,thunk_FUN_00543320,,CxxRuntime,excluded,0.00,,,true,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT ftol2.obj symbol __ftol2_sse_excpt reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
+0x00543320,124,0x0054339B,FUN_00543320,,CxxRuntime,excluded,0.00,,,false,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 124B native body and CRT ftol2.obj symbol __ftoi2 reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x00543461,382,0x005435DE,FUN_00543461,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005435E0,10,0x005435E9,entry,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005435EA,3,0x005435EC,guard_check_icall,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -6103,7 +6103,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00546140,299,0x0054626A,FUN_00546140,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0054628E,154,0x00546327,FUN_0054628e,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00546328,162,0x005463C9,FUN_00546328,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x005463D0,16,0x005463DF,FUN_005463d0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x005463D0,16,0x005463DF,FUN_005463d0,,CxxRuntime,excluded,0.00,,,false,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 16B native body and CRT ptd-match.obj symbol ___uncaught_exceptions reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x005463E0,168,0x00546487,FUN_005463e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00546488,13,0x00546494,FUN_00546488,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00546495,87,0x005464EB,FUN_00546495,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -6167,7 +6167,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00547B10,12,0x00547B1B,FUN_00547b10,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00547B20,31,0x00547B3E,__NLG_Notify,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00547B40,3,0x00547B42,FUN_00547b40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00547B43,67,0x00547B85,FUN_00547b43,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00547B43,67,0x00547B85,FUN_00547b43,,CxxRuntime,excluded,0.00,,,false,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 67B native body and CRT abort.obj symbol _abort reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x00547B87,59,0x00547BC1,FUN_00547b87,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00547C41,55,0x00547C77,"__crt_unique_heap_ptr<__acrt_thread_parameter,_anon_4E93FCDD::thread_parameter_free_policy>::~__crt_unique_heap_ptr<__acrt_thread_parameter,_anon_4E93FCDD::thread_parameter_free_policy>",,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00547C78,86,0x00547CCD,common_end_thread,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -6236,7 +6236,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0054A476,34,0x0054A497,___acrt_locale_get_ctype_array_value,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0054A498,65,0x0054A4D8,FUN_0054a498,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0054A4E0,90,0x0054A539,FUN_0054a4e0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0054A540,5,0x0054A544,thunk_FUN_00557ba0,,,unclassified,0.00,,,true,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0054A540,5,0x0054A544,thunk_FUN_00557ba0,,CxxRuntime,excluded,0.00,,,true,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT free.obj symbol _free reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x0054A550,11,0x0054A55A,FUN_0054a550,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0054A55B,33,0x0054A57B,__crt_strtox::assemble_floating_point_snan<double>,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0054A57C,63,0x0054A5BA,FUN_0054a57c,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -6422,8 +6422,8 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00552F7C,370,0x005530ED,FUN_00552f7c,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005530EE,79,0x0055313C,___acrt_allocate_buffer_for_argv,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0055313D,11,0x00553147,FUN_0055313d,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00553148,44,0x00553173,FUN_00553148,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00553174,90,0x005531CD,FUN_00553174,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00553148,44,0x00553173,FUN_00553148,,CxxRuntime,excluded,0.00,,,false,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 44B native body and CRT environment_initialization.obj symbol ??$common_get_or_create_environment_nolock@_W@@YAPAPA_WXZ reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
+0x00553174,90,0x005531CD,FUN_00553174,,CxxRuntime,excluded,0.00,,,false,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 90B native body and CRT environment_initialization.obj symbol ??$common_initialize_environment_nolock@D@@YAHXZ reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x005531CE,85,0x00553222,FUN_005531ce,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00553223,228,0x00553306,FUN_00553223,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00553308,290,0x00553429,FUN_00553308,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -6431,9 +6431,9 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x0055345A,129,0x005534DA,FUN_0055345a,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005534DB,27,0x005534F5,uninitialize_environment_internal<>,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005534F6,27,0x00553510,uninitialize_environment_internal<>,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00553511,5,0x00553515,thunk_FUN_00553148,,,unclassified,0.00,,,true,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00553511,5,0x00553515,thunk_FUN_00553148,,CxxRuntime,excluded,0.00,,,true,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT environment_initialization.obj symbol ___dcrt_get_or_create_wide_environment_nolock reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x00553516,76,0x00553561,FUN_00553516,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00553567,5,0x0055356B,thunk_FUN_00553174,,,unclassified,0.00,,,true,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00553567,5,0x0055356B,thunk_FUN_00553174,,CxxRuntime,excluded,0.00,,,true,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT environment_initialization.obj symbol __initialize_narrow_environment reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x0055356C,76,0x005535B7,"__crt_seh_guarded_call<int>::operator()<<lambda_69a2805e680e0e292e8ba93315fe43a8>,<lambda_f03950bc5685219e0bcd2087efbe011e>&,<lambda_03fcd07e894ec930e3f35da366ca99d6>_>",,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005535BB,12,0x005535C6,FUN_005535bb,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005535C7,76,0x00553612,"__crt_seh_guarded_call<int>::operator()<<lambda_8e746cf0007f6ed984d6f78af1fec997>,<lambda_22ebabd17bc4fa466a2aca6d8deb888d>&,<lambda_18ed0c0b38a6dc0daf1e7ac6d6adf05e>_>",,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -6519,7 +6519,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x005571D0,47,0x005571FE,__set_new_mode,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005571FF,6,0x00557204,FUN_005571ff,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00557210,108,0x0055727B,FUN_00557210,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x0055727C,6,0x00557281,guard_check_icall,,,unclassified,0.00,,,true,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x0055727C,6,0x00557281,guard_check_icall,,CxxRuntime,excluded,0.00,,,true,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B native body and CRT ucrt-checkcfg.obj symbol @_guard_check_icall@4 reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x00557290,67,0x005572D2,FUN_00557290,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x005572D3,89,0x0055732B,FUN_005572d3,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x0055732F,12,0x0055733A,FUN_0055732f,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
@@ -6548,7 +6548,7 @@ address,size,span_end,current_name,proposed_name,module,status,match_percent,cal
 0x00557A9F,68,0x00557AE2,FUN_00557a9f,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00557B1E,26,0x00557B37,FUN_00557b1e,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00557B40,96,0x00557B9F,FUN_00557b40,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
-0x00557BA0,58,0x00557BD9,FUN_00557ba0,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
+0x00557BA0,58,0x00557BD9,FUN_00557ba0,,CxxRuntime,excluded,0.00,,,false,,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 58B native body and CRT free_base.obj symbol __free_base reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.,library,Full native control flow reviewed with attested Ghidra and independent installed CRT object/source evidence. Forwarding chains retain each physical head.
 0x00557BE6,34,0x00557C07,FUN_00557be6,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00557C08,100,0x00557C6B,FUN_00557c08,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,
 0x00557C6F,12,0x00557C7A,FUN_00557c6f,,,unclassified,0.00,,,false,,Ghidra 12.1.3 auto-analysis candidate; boundary unreviewed,,

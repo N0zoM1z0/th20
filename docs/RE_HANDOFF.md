@@ -3,9 +3,10 @@
 ## Start here
 
 The active task is to complete origin/boundary review before returning to native
-matching. The first review checkpoint classifies 31 import-library stubs using
-independent PE import/relocation evidence and attested complete Ghidra bodies.
-See [the review and entry table](IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md).
+matching. Two review checkpoints classify 31 import-library stubs and fifteen CRT
+forwarding/runtime bodies using independent PE and library evidence plus
+attested complete Ghidra bodies. See the [import entry table](IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md)
+and [CRT chains and width findings](CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md).
 This checkpoint changes no executable inputs and has **zero affected exact
 replay units**; existing canonical products retain their captured hashes.
 
@@ -66,9 +67,12 @@ Earlier Player canonical products remain intact.
 
 ## Next useful work
 
-Continue origin/boundary review in bounded groups. The remaining ten Ghidra
-thunks include local relative jumps and an indirect guard helper; establish
-their actual destination ownership before assigning an origin. Investigate
+Continue origin/boundary review in bounded groups. One original Ghidra thunk
+remains pending: `0x00543B7E`, together with its three-byte zero-return target
+at `0x00543B83`. A matching library thread-locale default
+and no reported callers do not identify the original folded contributors.
+Keep both pending until independent use or linker evidence resolves origin.
+Investigate
 `0x005419AC` using the retained 40-address listing: its 66,925-byte provisional
 span includes a distant nine-byte tail and many unrelated functions. Preserve
 the tail while reconciling physical ownership. Do not infer library origin
@@ -123,7 +127,7 @@ header-only. Never edit historical receipts to manufacture a pass.
 
 ## Earlier native investigation — 2026-11-27
 
-The earlier native-work instruction was: continue substantive TH20 reconstruction on both large boss functions and small leaf functions, do not avoid pre-existing dirty work, make multiple checkpoints after real progress (the current required prefix is `gpt-6.1-sol:`), use targeted rather than full cold replay, and reconstruct natural C/C++ rather than assembly or padding. The active large-function investigation is `AnimationPoolOwner::draw` at `0x00443880`; its current residual and compiler evidence are recorded in `ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md` and `ANIMATION_DRAW_BOSS_C2_DEBUG_TRACE.md`. The TH10-style C2 debugger has now reached the x64 `InvokeCompilerPassW` entry and observed typed in-memory IL arguments. The actual codegen/register-allocation entry is not yet identified, and no exactness claim is made. A separate StageResource leaf has since advanced: `StageResourceOwner::set_primary_rotation_flag` at `0x00477790` now uses a layout-preserving bitfield alias and strictly replays 45/45 bytes; its shared-header dependents passed targeted replay and compile smoke checks. The 2,884B particle-grid Update remains source-present/nonexact at 2,875B/767; its polar getter order is retained while one `float angle` is reused, reducing E8 offset delta from 883 to 440 (first 20: 84). The candidate frame is 0x194 versus native 0x19C; vector roles remain mapped from original call operands with a four-byte local displacement. C2 RVA `0x1d01a8` is argv setup (22 wide arguments), while RVA `0x1d1e20` is a six-record VCTIP instrumentation writer, not lowering. The bundled VCTIP server cannot run in this Wine prefix because Wine Mono is absent; the actual register-allocation/codegen path remains unidentified.
+The historical native-work instruction was: continue substantive TH20 reconstruction on both large boss functions and small leaf functions, do not avoid pre-existing dirty work, make multiple checkpoints after real progress (the current required prefix is `gpt-6.1-sol:`), use targeted rather than full cold replay, and reconstruct natural C/C++ rather than assembly or padding. The active large-function investigation is `AnimationPoolOwner::draw` at `0x00443880`; its current residual and compiler evidence are recorded in `ANIMATION_DRAW_BOSS_5993_MODE45_MODE46_RETURN_FRONTIER.md` and `ANIMATION_DRAW_BOSS_C2_DEBUG_TRACE.md`. The TH10-style C2 debugger has now reached the x64 `InvokeCompilerPassW` entry and observed typed in-memory IL arguments. The actual codegen/register-allocation entry is not yet identified, and no exactness claim is made. A separate StageResource leaf has since advanced: `StageResourceOwner::set_primary_rotation_flag` at `0x00477790` now uses a layout-preserving bitfield alias and strictly replays 45/45 bytes; its shared-header dependents passed targeted replay and compile smoke checks. The 2,884B particle-grid Update remains source-present/nonexact at 2,875B/767; its polar getter order is retained while one `float angle` is reused, reducing E8 offset delta from 883 to 440 (first 20: 84). The candidate frame is 0x194 versus native 0x19C; vector roles remain mapped from original call operands with a four-byte local displacement. C2 RVA `0x1d01a8` is argv setup (22 wide arguments), while RVA `0x1d1e20` is a six-record VCTIP instrumentation writer, not lowering. The bundled VCTIP server cannot run in this Wine prefix because Wine Mono is absent; the actual register-allocation/codegen path remains unidentified.
 
 **2026-11-27 C2 worker/typed-IL continuation:** The VCTIP local consumer now
 allows the real pinned compiler invocation to complete and capture the full
