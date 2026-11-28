@@ -141,6 +141,14 @@ static_assert(offsetof(LaserType3Parameters, commands) == 0x3c);
 // consumers; unresolved slots remain abstract and have no invented behavior.
 // Layout is deliberately partial until the complete Laser lifetimes are
 // recovered. Its participating fields match the actual native offsets.
+// The 24 per-laser extended commands. Its native constructor at 0x004C81F0
+// builds the slots; at() folds with the identical Bullet accessor.
+struct LaserExtendedCommands {
+    ExtendedCommand slots[24];
+    LaserExtendedCommands() noexcept;
+    ExtendedCommand& at(std::int32_t index);
+};
+
 #if defined(_M_IX86)
 #pragma pack(push, 4)
 #endif
@@ -181,10 +189,10 @@ public:
     void set_parameter_field_714(float value);
     void set_handle(std::uint32_t value);
     virtual void slot_50() = 0;
-    virtual void slot_54() = 0;
-    virtual void slot_58() = 0;
-    virtual void slot_5c() = 0;
-    virtual void slot_60() = 0;
+    virtual std::int32_t advance_command1();      // slot 54; base returns 0
+    virtual std::int32_t advance_command10();     // slot 58; base returns 0
+    virtual std::int32_t advance_command2();      // slot 5C; base returns 0
+    virtual std::int32_t advance_command3();      // slot 60; base returns 0
     virtual void slot_64() = 0;
     virtual void slot_68() = 0;
     virtual void slot_6c() = 0;
@@ -207,7 +215,7 @@ public:
     Vector3 position, velocity;
     float angle, field_74, speed, field_7c, field_80;
     std::uint32_t field_84, field_88, handle;
-    ExtendedCommand commands[24];
+    LaserExtendedCommands commands;
     std::uint32_t command_index, field_694;
     std::uint64_t active_commands;
     std::uint32_t field_6a0, field_6a4, field_6a8;

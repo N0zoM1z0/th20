@@ -48,6 +48,9 @@ public:
     std::int32_t cancel_circle(const Vector3& center, float radius,
                                std::int32_t mode, std::int32_t argument) override;
     std::int32_t erase(std::int32_t mode, std::int32_t argument) override;
+    std::int32_t advance_command1() override;
+    std::int32_t advance_command2() override;
+    std::int32_t advance_command3() override;
 
     LaserType2Parameters parameters;
     Animation animation_0;

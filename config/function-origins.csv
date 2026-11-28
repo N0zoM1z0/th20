@@ -3876,7 +3876,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004C80E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8130,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004C8190,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004C81F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004C81F0,authored,Laser,authored,high,CLAUDE/EXACT-009; docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md; Laser extended-command member; vtable slot of LaserLineInf/LaserCurveInf or the command-array constructor called by the Laser base constructor; strict exact unit.
 0x004C8240,authored,LaserRuntimeState,authored,medium,CORE/RECON-1241; docs/LASER_RUNTIME_STATE_RECONSTRUCTION.md; native caller/factory boundary and object offsets independently grounded
 0x004C82C0,authored,LaserCurve,authored,medium,CORE/EXACT-1222; docs/LASER_CURVE_PATH_STATE_CTOR_EXACT.md; called as a distinct 0x40-byte LaserCurveInf subobject at +0x1330 by the game-authored 159-byte Curve constructor
 0x004C8390,authored,LaserBeamInf,authored,high,CORE/EXACT-1229; docs/LASER_BEAM_CONSTRUCTOR_EXACT.md; original create_laser type-3 diagnostic string at 0x00571508 names LaserBeamInf; factory 0x004C8020 allocates 0x1D30 and calls this constructor; native vtable 0x00571374 independently confirms the base circle-cancel default
@@ -3971,11 +3971,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004D46E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D47F0,authored,LaserController,authored,high,"CORE/EXACT-195; docs/LASER_CONTROLLER_CREATE_WHOLE_EXACT_RECONSTRUCTION.md; original 474B game-specific four-variant Laser creation with true 4-entry 16B switch table, native label/globals, 4 allocator/virtual init/registration consumer paths, real intrusivelist registration at exact 0x4C9300; complete 492B comparison with 21 native original relocations and 33 affected TUs/223 whole strict units."
 0x004D49E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004D50A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004D5310,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004D5580,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004D5710,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004D58D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004D50A0,authored,Laser,authored,high,CLAUDE/EXACT-009; docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md; Laser extended-command member; vtable slot of LaserLineInf/LaserCurveInf or the command-array constructor called by the Laser base constructor; strict exact unit.
+0x004D5310,authored,Laser,authored,high,CLAUDE/EXACT-009; docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md; Laser extended-command member; vtable slot of LaserLineInf/LaserCurveInf or the command-array constructor called by the Laser base constructor; strict exact unit.
+0x004D5580,authored,Laser,authored,high,CLAUDE/EXACT-009; docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md; Laser extended-command member; vtable slot of LaserLineInf/LaserCurveInf or the command-array constructor called by the Laser base constructor; strict exact unit.
+0x004D5710,authored,Laser,authored,high,CLAUDE/EXACT-009; docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md; Laser extended-command member; vtable slot of LaserLineInf/LaserCurveInf or the command-array constructor called by the Laser base constructor; strict exact unit.
+0x004D58D0,authored,Laser,authored,high,CLAUDE/EXACT-009; docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md; Laser extended-command member; vtable slot of LaserLineInf/LaserCurveInf or the command-array constructor called by the Laser base constructor; strict exact unit.
 0x004D5A90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D5B10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D5BB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

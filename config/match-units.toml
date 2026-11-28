@@ -36281,3 +36281,162 @@ relocations = [
   { offset = 0x152, type = "REL32", symbol = "??$release_object@VAnimation@th20@@@DiagnosticAllocator@th20@@QAEXPAVAnimation@1@@Z", target = 0x00447410 },
   { offset = 0x158, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
 ]
+
+# CLAUDE/EXACT-009: Laser extended-command wrapper and Line/Curve command steppers.
+[units.laser_extended_commands_ctor]
+source = "src/LaserCommands.cpp"
+object = "build/claude-canonical/LaserCommands.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::LaserExtendedCommands::LaserExtendedCommands"]
+symbol = "??0LaserExtendedCommands@th20@@QAE@XZ"
+target_address = 0x004C81F0
+size = 75
+compare_size = 80
+relocations = [
+  { offset = 0x6, type = "DIR32", symbol = "__ehhandler$??0LaserExtendedCommands@th20@@QAE@XZ", target = 0x00567600 },
+  { offset = 0x13, type = "DIR32", symbol = "___security_cookie", target = 0x005B25C0 },
+  { offset = 0x27, type = "DIR32", symbol = "??0ExtendedCommand@th20@@QAE@XZ", target = 0x0047BD90 },
+  { offset = 0x34, type = "REL32", symbol = "??_H@YGXPAXIIP6EPAX0@Z@Z", target = 0x0040BC20 },
+]
+
+[units.laser_line_advance_command1]
+source = "src/LaserCommands.cpp"
+object = "build/claude-canonical/LaserCommands.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::LaserLineInf::advance_command1"]
+symbol = "?advance_command1@LaserLineInf@th20@@UAEHXZ"
+target_address = 0x004D58D0
+size = 438
+relocations = [
+  { offset = 0x1B, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x34, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x46, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x87, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x8E, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x93, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0xDA, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0xE5, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0xEA, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x104, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+  { offset = 0x110, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x124, type = "REL32", symbol = "?absolute@scalar_math@th20@@YAMM@Z", target = 0x0047A630 },
+  { offset = 0x136, type = "DIR32", symbol = "?native_velocity_threshold@th20@@3MB", target = 0x0056FD30 },
+  { offset = 0x14B, type = "REL32", symbol = "?absolute@scalar_math@th20@@YAMM@Z", target = 0x0047A630 },
+  { offset = 0x15D, type = "DIR32", symbol = "?native_velocity_threshold@th20@@3MB", target = 0x0056FD30 },
+  { offset = 0x180, type = "REL32", symbol = "?arctangent@scalar_math@th20@@YAMMM@Z", target = 0x00459280 },
+  { offset = 0x19E, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x1AB, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+]
+
+[units.laser_line_advance_command10]
+source = "src/LaserCommands.cpp"
+object = "build/claude-canonical/LaserCommands.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::LaserLineInf::advance_command10"]
+symbol = "?advance_command10@LaserLineInf@th20@@UAEHXZ"
+target_address = 0x004D5710
+size = 440
+relocations = [
+  { offset = 0x1B, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x34, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x46, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x89, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x90, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x95, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0xDC, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0xE7, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0xEC, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x106, type = "REL32", symbol = "??DVector3@th20@@QBE?AU01@M@Z", target = 0x004292F0 },
+  { offset = 0x112, type = "REL32", symbol = "??YVector3@th20@@QAEAAU01@ABU01@@Z", target = 0x004296E0 },
+  { offset = 0x126, type = "REL32", symbol = "?absolute@scalar_math@th20@@YAMM@Z", target = 0x0047A630 },
+  { offset = 0x138, type = "DIR32", symbol = "?native_velocity_threshold@th20@@3MB", target = 0x0056FD30 },
+  { offset = 0x14D, type = "REL32", symbol = "?absolute@scalar_math@th20@@YAMM@Z", target = 0x0047A630 },
+  { offset = 0x15F, type = "DIR32", symbol = "?native_velocity_threshold@th20@@3MB", target = 0x0056FD30 },
+  { offset = 0x182, type = "REL32", symbol = "?arctangent@scalar_math@th20@@YAMMM@Z", target = 0x00459280 },
+  { offset = 0x1A0, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x1AD, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+]
+
+[units.laser_curve_advance_command2]
+source = "src/LaserCommands.cpp"
+object = "build/claude-canonical/LaserCommands.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::LaserCurveInf::advance_command2"]
+symbol = "?advance_command2@LaserCurveInf@th20@@UAEHXZ"
+target_address = 0x004D5580
+size = 386
+relocations = [
+  { offset = 0x1B, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x34, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x46, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x87, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x8E, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0x93, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0xCD, type = "REL32", symbol = "?add_angles@th20@@YAMMM@Z", target = 0x00438600 },
+  { offset = 0xEC, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0xF3, type = "DIR32", symbol = "?default_timer_clock@th20@@3UClockScalar@1@A", target = 0x005AEFE4 },
+  { offset = 0xF8, type = "REL32", symbol = "??BClockScalar@th20@@QBEMXZ", target = 0x004292E0 },
+  { offset = 0x151, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x16A, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x177, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+]
+
+[units.laser_line_advance_command3]
+source = "src/LaserCommands.cpp"
+object = "build/claude-canonical/LaserCommands.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::LaserLineInf::advance_command3"]
+symbol = "?advance_command3@LaserLineInf@th20@@UAEHXZ"
+target_address = 0x004D5310
+size = 609
+relocations = [
+  { offset = 0x1B, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x34, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x46, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x6E, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0x73, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
+  { offset = 0x8A, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0xB2, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0xF0, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x11E, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x125, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x147, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x153, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x180, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x1C6, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x1DA, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x1E1, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x230, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x249, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x256, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+]
+
+[units.laser_curve_advance_command3]
+source = "src/LaserCommands.cpp"
+object = "build/claude-canonical/LaserCommands.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::LaserCurveInf::advance_command3"]
+symbol = "?advance_command3@LaserCurveInf@th20@@UAEHXZ"
+target_address = 0x004D50A0
+size = 609
+relocations = [
+  { offset = 0x1B, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x34, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x46, type = "REL32", symbol = "?at_least@Timer@th20@@QBE_NH@Z", target = 0x004235C0 },
+  { offset = 0x6E, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0x73, type = "REL32", symbol = "?request_effect@SoundInf@th20@@QAEXHH@Z", target = 0x00426D70 },
+  { offset = 0x8A, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0xB2, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0xF0, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x11E, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x125, type = "REL32", symbol = "??4Timer@th20@@QAEXH@Z", target = 0x00423520 },
+  { offset = 0x147, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x153, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x180, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x1C6, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x1DA, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x1E1, type = "REL32", symbol = "?fraction@Timer@th20@@QBEMXZ", target = 0x00423BD0 },
+  { offset = 0x230, type = "REL32", symbol = "?polar@th20@@YAXAAUVector3@1@MM@Z", target = 0x00439330 },
+  { offset = 0x249, type = "REL32", symbol = "?at@LaserExtendedCommands@th20@@QAEAAUExtendedCommand@2@H@Z", target = 0x0047C680 },
+  { offset = 0x256, type = "REL32", symbol = "??ETimer@th20@@QAEXH@Z", target = 0x00423540 },
+]

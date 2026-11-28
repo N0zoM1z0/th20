@@ -1986,3 +1986,9 @@ th20::Graphics::create_surface_targets_4dbd70
 th20::shutdown_graphics_4dd490
 th20::NativeSurfaceFile::texture_4bfb00
 th20::NativeSurfaceSprite::set_mode_2_3_4dda30
+th20::LaserExtendedCommands::LaserExtendedCommands
+th20::LaserLineInf::advance_command1
+th20::LaserLineInf::advance_command10
+th20::LaserCurveInf::advance_command2
+th20::LaserLineInf::advance_command3
+th20::LaserCurveInf::advance_command3

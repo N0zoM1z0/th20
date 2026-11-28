@@ -1073,3 +1073,9 @@ address,name,size,status,match_percent,unit,evidence
 0x004DD490,th20::shutdown_graphics_4dd490,356,matching,100.00,graphics_shutdown_4dd490,CLAUDE/EXACT-008; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md
 0x004BFB00,th20::NativeSurfaceFile::texture_4bfb00,26,matching,100.00,animation_file_texture_4bfb00,CLAUDE/EXACT-008; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md
 0x004DDA30,th20::NativeSurfaceSprite::set_mode_2_3_4dda30,45,matching,100.00,animation_set_mode_2_3_4dda30,CLAUDE/EXACT-008; docs/GRAPHICS_SCENE_TRANSITIONS_RECONSTRUCTION.md
+0x004C81F0,th20::LaserExtendedCommands::LaserExtendedCommands,75,matching,100.00,laser_extended_commands_ctor,CLAUDE/EXACT-009; docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md
+0x004D58D0,th20::LaserLineInf::advance_command1,438,matching,100.00,laser_line_advance_command1,CLAUDE/EXACT-009; docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md
+0x004D5710,th20::LaserLineInf::advance_command10,440,matching,100.00,laser_line_advance_command10,CLAUDE/EXACT-009; docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md
+0x004D5580,th20::LaserCurveInf::advance_command2,386,matching,100.00,laser_curve_advance_command2,CLAUDE/EXACT-009; docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md
+0x004D5310,th20::LaserLineInf::advance_command3,609,matching,100.00,laser_line_advance_command3,CLAUDE/EXACT-009; docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md
+0x004D50A0,th20::LaserCurveInf::advance_command3,609,matching,100.00,laser_curve_advance_command3,CLAUDE/EXACT-009; docs/LASER_COMMAND_STEPPERS_RECONSTRUCTION.md

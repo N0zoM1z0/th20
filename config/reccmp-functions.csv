@@ -1990,3 +1990,9 @@ th20::Graphics::create_surface_targets_4dbd70,0x004DBD70,function
 th20::shutdown_graphics_4dd490,0x004DD490,function
 th20::NativeSurfaceFile::texture_4bfb00,0x004BFB00,function
 th20::NativeSurfaceSprite::set_mode_2_3_4dda30,0x004DDA30,function
+th20::LaserExtendedCommands::LaserExtendedCommands,0x004C81F0,function
+th20::LaserLineInf::advance_command1,0x004D58D0,function
+th20::LaserLineInf::advance_command10,0x004D5710,function
+th20::LaserCurveInf::advance_command2,0x004D5580,function
+th20::LaserLineInf::advance_command3,0x004D5310,function
+th20::LaserCurveInf::advance_command3,0x004D50A0,function
