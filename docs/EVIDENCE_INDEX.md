@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [STL random-device and condition-broadcast leaves](CRT_RANDOM_CONDITION_LEAF_ORIGIN_REVIEW.md) — complete 33B/20B bodies plus one INT3; nonreturning range error and PE-bound broadcast identity despite identical signal opcodes.
 - [CRT optional Win32 APIs and time fallback](CRT_OPTIONAL_WIN32_API_ORIGIN_BOUNDARY_REVIEW.md) — complete 52B missed initializer and 80B wrapper; independent startup slot, cached pointers and shared handler/EH ownership.
 - [CRT ios_base lifetime and full cleanup range](CRT_IOS_BASE_LIFETIME_ORIGIN_BOUNDARY_REVIEW.md) — four SDK methods plus a recovered 29B compiler handler; stream counts, callback order, five-byte alignment and shared 36B EH metadata.
 - [CRT character conversion and case-mapping origins](CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md) — nine complete archive contributions; conversion state/results, packed DBCS case mapping and stack/heap buffer cleanup.

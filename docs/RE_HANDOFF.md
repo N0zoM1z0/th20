@@ -5,7 +5,7 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-owner is [optional Win32 API initialization and time fallback](CRT_OPTIONAL_WIN32_API_ORIGIN_BOUNDARY_REVIEW.md).
+review covers [random-device and condition-broadcast leaves](CRT_RANDOM_CONDITION_LEAF_ORIGIN_REVIEW.md).
 This checkpoint changes no canonical native inputs and has **zero affected exact
 replay units**; existing canonical products retain their captured hashes.
 
@@ -84,8 +84,9 @@ at `0x00567600` are retained; the handler is shared with the exit controller.
 The 36-byte FuncInfo at `0x005A91B8` is also shared with `ios_base::_Tidy`'s
 separate handler at `0x005679A0`. Avoid duplicate physical-head credit.
 
-Next review the remaining small STL leaves at `0x005423C1` and `0x005423E3`,
-then the allocation entries beginning at `0x0054273F`. Use independent archive
+The random-device and condition-broadcast leaves at `0x005423C1`/`0x005423E3`
+are reviewed, including the one-byte alignment and PE-bound broadcast identity.
+Next review the allocation entries beginning at `0x0054273F`. Use independent archive
 symbols and complete original control flow, including nonreturning paths and
 owned EH. Generate current counts from the ledgers.
 
