@@ -96,9 +96,9 @@ handler decode, tables and provider identities. It reuses write.obj and its
 CodeView/layout from the preceding write reviews. read.obj owns the lookup
 definition. Existing memmove/canonical memcpy bindings, 91B cached-locale
 updater, UTF8 decoder, conversion wrapper and FrameHandler3 retain their roles.
-The new mbtowc.obj/putwch.obj uniquely identify the 304B/50B providers and their
-CodeView signatures; their own protocols remain pending. Source is
-`ucrt/lowio/write.cpp`, `read.cpp` and the lowio header.
+The 304B/50B mbtowc/putwch providers now have their
+[complete state and console-handle review](CRT_CONSOLE_CHARACTER_ORIGIN_REVIEW.md).
+Source is `ucrt/lowio/write.cpp`, `read.cpp` and the lowio header.
 
 Only classification, evidence, handoff and generated progress change.
 Tracking/progress checks pass and all 2,151 protected hashes remain unchanged.
