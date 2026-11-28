@@ -3,10 +3,12 @@
 ## Start here
 
 The active task is to complete origin/boundary review before returning to native
-matching. Two review checkpoints classify 31 import-library stubs and fifteen CRT
-forwarding/runtime bodies using independent PE and library evidence plus
-attested complete Ghidra bodies. See the [import entry table](IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md)
-and [CRT chains and width findings](CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md).
+matching. Reviewed groups now include import-library stubs, CRT forwarding/runtime
+bodies and eight x86 integer helpers. See the [import entry table](IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md),
+[CRT chains and width findings](CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md), and
+[integer ABI evidence](CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md). The combined
+integer divide/remainder helpers return quotient in EDX:EAX and remainder in
+EBX:ECX; preserve that compiler-helper ABI in later consumers.
 This checkpoint changes no executable inputs and has **zero affected exact
 replay units**; existing canonical products retain their captured hashes.
 

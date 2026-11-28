@@ -6030,12 +6030,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00542F9B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00542FAB,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054303B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543050,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543100,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543200,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005432F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00543050,library,CRT,exclude,high,docs/CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md; Complete 170B / 70-instruction native body equals the full libcmt.lib lldiv.obj contribution for __alldiv; no relocations or external control-flow edges.
+0x00543100,library,CRT,exclude,high,docs/CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md; Complete 52B / 19-instruction native body equals the full libcmt.lib llmul.obj contribution for __allmul; no relocations or external control-flow edges.
+0x00543140,library,CRT,exclude,high,docs/CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md; Complete 178B / 69-instruction native body equals the full libcmt.lib llrem.obj contribution for __allrem; no relocations or external control-flow edges.
+0x00543200,library,CRT,exclude,high,docs/CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md; Complete 104B / 43-instruction native body equals the full libcmt.lib ulldiv.obj contribution for __aulldiv; no relocations or external control-flow edges.
+0x00543270,library,CRT,exclude,high,docs/CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md; Complete 117B / 44-instruction native body equals the full libcmt.lib ullrem.obj contribution for __aullrem; no relocations or external control-flow edges.
+0x005432F0,library,CRT,exclude,high,docs/CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md; Complete 31B / 15-instruction native body equals the full libcmt.lib llshl.obj contribution for __allshl; no relocations or external control-flow edges.
 0x00543310,library,CxxRuntime,exclude,high,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT ftol2.obj symbol __ftol2_sse_excpt reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.
 0x00543320,library,CxxRuntime,exclude,high,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 124B native body and CRT ftol2.obj symbol __ftoi2 reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.
 0x00543461,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6913,8 +6913,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005671A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005671F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005672B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005672F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00567390,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005672F0,library,CRT,exclude,high,docs/CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md; Complete 149B / 58-instruction native body equals the full libcmt.lib ulldvrm.obj contribution for __aulldvrm; no relocations or external control-flow edges.
+0x00567390,library,CRT,exclude,high,docs/CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md; Complete 223B / 91-instruction native body equals the full libcmt.lib lldvrm.obj contribution for __alldvrm; no relocations or external control-flow edges.
 0x0056746F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00567750,compiler,CxxRuntime,exclude,high,docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md; complete queue constructor/guard compiler EH ownership
 0x00567CB0,compiler,CxxRuntime,exclude,high,docs/GLYPH_QUEUE_FORWARDING_STRICT_EXACT.md; complete queue constructor/guard compiler EH ownership
