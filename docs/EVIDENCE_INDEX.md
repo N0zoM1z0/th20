@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [UCRT UTF-8 state, resumed counts and surrogate boundaries](CRT_UTF8_STATE_ORIGIN_REVIEW.md) — ten whole 1,554B bodies plus complete fallback states/literal; single-wide replacement versus surrogate output, resumed-count undercount and state changes before short-buffer exits.
 - [UCRT wide-to-multibyte conversion and final-byte truncation](CRT_WCSTOMBS_SECURE_ORIGIN_REVIEW.md) — three whole 949B bodies; actual locale-wrapper direction, default-substitution rejection, five-byte fallback and policy's final terminator overwrite after whole-character conversion.
 - [UCRT secure multibyte-to-wide counts and direction identities](CRT_MBSTOWCS_SECURE_ORIGIN_REVIEW.md) — three complete library bodies and recovered 29B cookie/EH handler, all five INT3 and full FuncInfo; original DBCS retry/truncation and rejected opposite-direction wrapper/epilogue candidates.
 - [UCRT byte-counter loads and wide adapter count rules](CRT_WIDE_COUNT_ADAPTER_ORIGIN_REVIEW.md) — three whole 194B bodies; load-before-limit byte counter, mapping's included null, comparison's excluded null and raw zero/negative-count result branches.

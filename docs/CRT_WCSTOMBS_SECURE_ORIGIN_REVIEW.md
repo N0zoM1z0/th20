@@ -103,8 +103,9 @@ The unchanged SDK member and locations remain at
 `mbstowcs/wcstombs-context.obj`. The audit compares all three whole code
 sections, every branch/relocation and import/callee role, the wrong-direction
 wrapper and final-byte store model. Installed source is
-`ucrt/convert/wcstombs.cpp`. The UTF-8 provider and cached updater remain
-separate pending bodies.
+`ucrt/convert/wcstombs.cpp`. The UTF-8 provider is now covered by the
+[complete UTF-8 review](CRT_UTF8_STATE_ORIGIN_REVIEW.md); the cached updater
+remains a separate pending body.
 
 Only classification, focused evidence, handoff and generated progress change.
 All 2,151 protected native input/product hashes remain unchanged. Exact replay

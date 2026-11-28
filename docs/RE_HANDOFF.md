@@ -5,12 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [wide-to-multibyte conversion and final-byte truncation](CRT_WCSTOMBS_SECURE_ORIGIN_REVIEW.md).
-Three complete SDK contributions retain all 949B, default-substitution checks,
-five-byte whole-character fallback and actual locale-wrapper direction. The
-secure policy still overwrites its final byte with NUL after core conversion;
-an exactly full two-byte result can lose its trail byte. Earlier notes retain
-the complete mbstowcs/EH ownership and scalar/wide adapter count rules.
+review covers [UTF-8 state, resumed counts and surrogate boundaries](CRT_UTF8_STATE_ORIGIN_REVIEW.md).
+Ten whole SDK contributions retain all 1,554B and 17B owned static state/literal
+data. Single-wide replacement and string surrogate output stay distinct. A
+resumed supplementary scalar can be undercounted by query mode, and primitive
+state changes precede short-buffer exits without rollback. Earlier notes
+retain secure conversion/truncation and complete mbstowcs/EH ownership.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,19 +96,20 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/wcstombs/`: three whole
-SDK contributions, the complete listing and bounded final-byte store model.
-The unchanged SDK member remains in `mbstowcs/wcstombs-context.obj`; reuse
-its cached-host/invalid-parameter dependencies. The shared locale updater at
-`0x0054A360` still has an unresolved SDK LEAVE versus target MOV/POP epilogue.
+The current proof is in `.analysis/origin-boundary/utf8-conversions/`: ten
+whole SDK code contributions, complete fallback states/literal and bounded
+resumed-scalar/short-output state models. The unrelated mbrtoc16 candidates
+do not locate as complete matches and receive no credit. Ordinary bytes also
+suggest mbrtoc32/mbsrtowcs/wcsrtombs at one 58B wrapper; resolve real callees
+before naming that separate pending head.
 
-Next review UTF-8 restartable providers at `0x005596DE` (275B) and
-`0x005652D2` (263B), with the 67B character decoder adapter at `0x0055969B`.
-SDK members `mbrtowc.obj` and `wcrtomb.obj` and complete candidate locations
-are retained in `.analysis/origin-boundary/utf8-conversions/`. Use focused
-UTF-8 sections of the corresponding `ucrt/convert/*.cpp` sources; reconcile
-primitive providers, state/error sentinels, source-pointer updates and count
-versus output behavior. The stack probe at `0x005439E0` remains pending.
+Next resolve the shared cached-locale updater at `0x0054A360`. Its complete
+SDK 89B candidate and target 91B listing remain in `mbstowcs/`: all ordinary
+prefix bytes agree, but LEAVE/RET differs from MOV ESP,EBP/POP EBP/RET. The
+natural method is in `corecrt_internal_ptd_propagation.h`; use a focused
+locked-compiler probe if needed to explain this exact epilogue. Preserve all
+existing receipts and compare the full body and real explicit-refresh calls.
+The stack probe at `0x005439E0` remains a separate pending body.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK

@@ -58,9 +58,10 @@ EINVAL and returns `SIZE_MAX`; the two branches are not merged into a generic
 validation-first rule.
 
 The helper lazily obtains cached locale data. UTF-8/65001 initializes a fresh
-eight-byte mbstate_t and delegates to the separately pending UTF-8 provider at
+eight-byte mbstate_t and delegates to the UTF-8 provider at
 `0x005596DE`, passing the source pointer by address and the original bound.
-This review does not replace that provider with a Win32 conversion call.
+The provider and its scalar/state dependencies are now covered by the
+[complete UTF-8 review](CRT_UTF8_STATE_ORIGIN_REVIEW.md).
 
 For other code pages, a null LC_CTYPE locale-name pointer selects the C path:
 copy unsigned source bytes into UTF-16 elements until null or the bound.
