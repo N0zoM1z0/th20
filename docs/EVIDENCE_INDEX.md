@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [VCRuntime type comparison and member-call bridges](CRT_TYPE_COMPARISON_MEMBER_BRIDGES_REVIEW.md) — five whole 137B contributions and three INT3; decorated-name comparison, AL equality return, guard-ignored thiscall bridges and raw exception-specification pointer.
 - [UCRT thread parameters, startup and exit](CRT_THREAD_LIFECYCLE_ORIGIN_REVIEW.md) — five pending origins plus recovered startup/filter/handler; full 493B code/INT3 and 28B SEH table, folded destructor/release, callback ABI and combined module release/thread exit.
 - [VCRuntime API caches and downlevel fallbacks](CRT_VCRUNTIME_API_CACHE_REVIEW.md) — nine whole 623B bodies, five INT3 and complete 312B data/alignment; raw XCHG publication, first-module export failure, TLS callback loss and real calloc/wcsncmp providers.
 - [VCRuntime startup, lock ownership and per-thread state](CRT_VCRUNTIME_STATE_ORIGIN_REVIEW.md) — ten whole 486B bodies plus fourteen INT3 and 72B state; one-lock geometry, static/dynamic 40B PTD, LastError/sentinel protocol and rejected UCRT/lifecycle aliases.

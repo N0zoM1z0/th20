@@ -6129,7 +6129,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005465C4,library,CrtVcruntimeState,exclude,high,"docs/CRT_VCRUNTIME_STATE_ORIGIN_REVIEW.md; Complete 23B ___vcrt_uninitialize reviewed in ten whole VCRuntime state contributions: 486B instructions, 14B INT3 and full 72B lock/PTD/FLS state. All branches, imports and relocation roles retain real VCRT ownership; UCRT/lifecycle lookalikes rejected."
 0x005465E0,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 50B _ValidateLocalCookies reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
 0x00546620,library,CrtSeh4Cookie,exclude,high,"docs/CRT_SEH4_COOKIE_DISPATCH_REVIEW.md; Complete 350B __except_handler4 reviewed in ten whole SEH4/cookie code contributions: 877B instructions, 48B INT3 and full 68B aligned cookie/complement data. All control flow/import/relocation roles and collided-unwind/callback protocols retained."
-0x0054677E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0054677E,library,CrtTypeComparison,exclude,high,"docs/CRT_TYPE_COMPARISON_MEMBER_BRIDGES_REVIEW.md; Complete 60B ___std_type_info_compare reviewed in five whole VCRT type-comparison/EH helper contributions: 137B instructions, 3B INT3, one independently identified comparison REL32 and no owned data/EH tables. All original branches and x86 ABI roles retained."
 0x005467BA,library,CrtVcruntimeState,exclude,high,"docs/CRT_VCRUNTIME_STATE_ORIGIN_REVIEW.md; Complete 28B ___vcrt_freefls@4 reviewed in ten whole VCRuntime state contributions: 486B instructions, 14B INT3 and full 72B lock/PTD/FLS state. All branches, imports and relocation roles retain real VCRT ownership; UCRT/lifecycle lookalikes rejected."
 0x005467D6,library,CrtVcruntimeState,exclude,high,"docs/CRT_VCRUNTIME_STATE_ORIGIN_REVIEW.md; Complete 14B ___vcrt_getptd reviewed in ten whole VCRuntime state contributions: 486B instructions, 14B INT3 and full 72B lock/PTD/FLS state. All branches, imports and relocation roles retain real VCRT ownership; UCRT/lifecycle lookalikes rejected."
 0x005467E4,library,CrtVcruntimeState,exclude,high,"docs/CRT_VCRUNTIME_STATE_ORIGIN_REVIEW.md; Complete 146B ___vcrt_getptd_noexit reviewed in ten whole VCRuntime state contributions: 486B instructions, 14B INT3 and full 72B lock/PTD/FLS state. All branches, imports and relocation roles retain real VCRT ownership; UCRT/lifecycle lookalikes rejected."
@@ -6146,7 +6146,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005471C3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005471CC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005471E7,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547205,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00547205,library,CrtTypeComparison,exclude,high,"docs/CRT_TYPE_COMPARISON_MEMBER_BRIDGES_REVIEW.md; Complete 31B ??8type_info@@QBE_NABV0@@Z reviewed in five whole VCRT type-comparison/EH helper contributions: 137B instructions, 3B INT3, one independently identified comparison REL32 and no owned data/EH tables. All original branches and x86 ABI roles retained."
 0x00547224,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547378,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005473F3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6155,9 +6155,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00547497,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054756B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00547585,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054761F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054762F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00547642,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0054761F,library,CrtTypeComparison,exclude,high,"docs/CRT_TYPE_COMPARISON_MEMBER_BRIDGES_REVIEW.md; Complete 16B ?_CallMemberFunction1@@YGXQAX00@Z reviewed in five whole VCRT type-comparison/EH helper contributions: 137B instructions, 3B INT3, one independently identified comparison REL32 and no owned data/EH tables. All original branches and x86 ABI roles retained."
+0x0054762F,library,CrtTypeComparison,exclude,high,"docs/CRT_TYPE_COMPARISON_MEMBER_BRIDGES_REVIEW.md; Complete 19B ?_CallMemberFunction2@@YGXQAX00H@Z reviewed in five whole VCRT type-comparison/EH helper contributions: 137B instructions, 3B INT3, one independently identified comparison REL32 and no owned data/EH tables. All original branches and x86 ABI roles retained."
+0x00547642,library,CrtTypeComparison,exclude,high,"docs/CRT_TYPE_COMPARISON_MEMBER_BRIDGES_REVIEW.md; Complete 11B ?getESTypes@__FrameHandler3@@SAPBU_s_ESTypeList@@PBU_s_FuncInfo@@@Z reviewed in five whole VCRT type-comparison/EH helper contributions: 137B instructions, 3B INT3, one independently identified comparison REL32 and no owned data/EH tables. All original branches and x86 ABI roles retained."
 0x00547650,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054769C,library,CrtExceptionValidation,exclude,high,"docs/CRT_EXCEPTION_VALIDATION_NLG_REVIEW.md; Complete 48B ___except_validate_context_record partition reviewed in nine whole CRT validation/notification contributions: 518B instructions, 39B alignment and full 44B SEH/NLG data. All branches, relocation roles, exceptional ownership and actual shared tails retained."
 0x005476CC,library,CrtVcruntimeState,exclude,high,"docs/CRT_VCRUNTIME_STATE_ORIGIN_REVIEW.md; Complete 60B ___vcrt_initialize_locks reviewed in ten whole VCRuntime state contributions: 486B instructions, 14B INT3 and full 72B lock/PTD/FLS state. All branches, imports and relocation roles retain real VCRT ownership; UCRT/lifecycle lookalikes rejected."
