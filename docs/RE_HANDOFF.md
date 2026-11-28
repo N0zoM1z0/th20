@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT decimal insertion and trailing-zero cropping](CRT_DECIMAL_OUTPUT_ORIGIN_REVIEW.md).
-Two pending origins retain their complete 204B/96-instruction contributions
-and existing extents. Supplied locale fields, exponent/hexadecimal branches,
-single-byte separator and original carry/copy order through the terminator
-are reconciled. Both sections have zero relocation fields and no local data
-or EH table. Earlier notes retain format mappings/buffer ownership, string/
-memory owners and the exception closure.
+review covers [UCRT integer parsing and string-source positions](CRT_STRING_INTEGER_PARSE_ORIGIN_REVIEW.md).
+Six pending origins retain their complete 724B/293-instruction contributions
+and existing extents. The 531B no-whitespace char parser, shared source factory/
+validation, distinct byte/word unget and overflow predicate retain every
+cursor/error/range branch and all eleven real REL32 roles. Compatible char/
+wchar aliases receive one row per physical head. Earlier notes retain decimal
+output, format mappings/buffer ownership and string/memory/exception owners.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,13 +97,14 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/format-decimal/`: complete
-crop/insert contributions, attested listing and original locale/copy-order
-observations. It reuses the full output.obj member in `format-buffer/`.
+The current proof is in `.analysis/origin-boundary/format-parse-integer/`:
+complete parser/source contributions, attested listings and every cursor,
+error and overflow branch. It reuses output.obj in `format-buffer/`.
 Continue with a bounded formatted-output owner and its actual callee roles;
-`format-buffer/` and `format-types/` retain the reviewed capacity/transfer
-protocol and complete length tables. Keep unlocated wide variants and generic
-jump helpers separate from those owners. The char width helper still takes
+`format-buffer/`, `format-types/` and `format-decimal/` retain the reviewed
+capacity/transfer, length tables and decimal insertion/cropping protocols.
+Keep unlocated wide parser variants and generic jump helpers separate from
+those owners. The char width helper still takes
 the original unused 64-bit options argument.
 
 The [evidence index](EVIDENCE_INDEX.md) links the completed string/memory,
