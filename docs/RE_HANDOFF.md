@@ -103,13 +103,19 @@ do not locate as complete matches and receive no credit. Ordinary bytes also
 suggest mbrtoc32/mbsrtowcs/wcsrtombs at one 58B wrapper; resolve real callees
 before naming that separate pending head.
 
-Next resolve the shared cached-locale updater at `0x0054A360`. Its complete
-SDK 89B candidate and target 91B listing remain in `mbstowcs/`: all ordinary
-prefix bytes agree, but LEAVE/RET differs from MOV ESP,EBP/POP EBP/RET. The
-natural method is in `corecrt_internal_ptd_propagation.h`; use a focused
-locked-compiler probe if needed to explain this exact epilogue. Preserve all
-existing receipts and compare the full body and real explicit-refresh calls.
-The stack probe at `0x005439E0` remains a separate pending body.
+The cached-locale probe in `cached-locale/` emitted no object: installed SDK
+source omits FFS/state-isolation private headers and conflicts on __p__fmode
+under the attempted build configuration. Keep both failed logs and inputs;
+do not repeat that compile until those inputs are resolved. The 89B SDK versus
+91B target epilogue remains pending at `0x0054A360`.
+
+Next review the 212B `_towlower_l` candidate at `0x005653D9` using the complete
+`towlower.obj` location and `ucrt/convert/towlower.cpp`. The SDK objects and
+candidate catalogue are retained in `.analysis/origin-boundary/case-conversion/`.
+Other narrow/upper candidates currently lack complete byte matches; do not
+assign them from their names. Preserve WEOF, C/ASCII/byte fast paths, wide
+mapping counts and guard restoration. The stack probe at `0x005439E0` remains
+a separate pending body.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK

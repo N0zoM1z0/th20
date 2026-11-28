@@ -109,6 +109,15 @@ prefix and call roles agree with the SDK's 89B helper, but the target has a
 The full source and both epilogues are retained for a later compiler question;
 the current review grants no shared-helper body credit from that near match.
 
+A focused locked-compiler attempt in
+`.analysis/origin-boundary/cached-locale/` includes the installed cached-host
+header and calls its real get_locale method. The SDK source package omits
+`corecrt_internal_ffs.h`; a private empty placeholder reaches a conflicting
+`__p__fmode` declaration and another missing private header,
+`corecrt_internal_state_isolation.h`. Both failed logs and probe inputs are
+retained. No object was emitted, so the 89B/91B epilogue question remains
+open pending a complete internal-header/build configuration.
+
 ## Evidence and affected scope
 
 Private `.analysis/origin-boundary/mbstowcs/` retains the SDK member,
