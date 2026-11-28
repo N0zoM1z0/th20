@@ -5,12 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [the complete memcmp owner](CRT_MEMCMP_OWNER_REVIEW.md).
-One pending origin retains its correct 4,929B/1,727-instruction extent and
-the complete 5,060B contribution, including the original 3B NOP and 128B
-internal table. All 32 residual cases, byte-order result and internal
-relocations are reconciled. Earlier notes retain memory copy/fill with
-independent CPU state and the complete FindHandler/exception owner closure.
+review covers [narrow/wide first and last character search](CRT_STRING_SEARCH_ORIGIN_REVIEW.md).
+Four pending origins retain their full 926B/360-instruction union and existing
+extents. Independent ISA-level bindings, different narrow/wide thresholds,
+zero-search returns, page/alignment checks and the internal strchr alternate
+entry are reconciled. Earlier notes retain the full memcmp table, memory
+copy/fill with independent CPU state, and the FindHandler/exception closure.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,7 +96,10 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/memory-compare/`: complete
+The current proof is in `.analysis/origin-boundary/string-search/`: four
+complete members, attested listings and full byte/relocation/reachability proof.
+The four ISA fields reuse the independent complete CPU-state provider.
+The preceding proof is in `.analysis/origin-boundary/memory-compare/`: complete
 5,060B member, attested listing, table roles and instruction reachability.
 The preceding proof is in `.analysis/origin-boundary/memory-copy/`, reusing the
 full memmove member/listing in `catch-build/`. Preserve the independent CPU
@@ -137,6 +140,11 @@ The complete memmove owner at `0x00543E20` (1396B) and CPU initializer at
 Memcmp at `0x00544D77` is reviewed with its complete residual table. Continue
 with another bounded string/memory owner, using whole archive contributions
 and the complete independent ISA/favor provider when applicable.
+Strchr, strrchr, wcschr and wcsrchr are now reviewed. The original code between
+strchr and wcschr at `0x0054626B..0x0054628D` is a separate getter/guarded
+callback/abort owner, not string padding. Reconcile it with the retained
+purecall-handler lookalike before adding its missing entries; the xref query
+omits its original direct call despite the bytes being present.
 The same-shaped bad_alloc constructor at `0x00540D24` retains its previous
 class identity.
 The 14B secchk signature independently locates the cookie check at
