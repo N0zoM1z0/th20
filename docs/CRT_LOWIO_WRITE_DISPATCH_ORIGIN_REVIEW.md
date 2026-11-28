@@ -87,10 +87,9 @@ The new lseek.obj independently locates the 30B append wrapper and 131B shared
 `ucrt/lowio/write.cpp` and the lowio/PTD propagation headers.
 
 The three text translators now have their [full short-write/accounting review](CRT_LOWIO_TEXT_WRITE_ORIGIN_REVIEW.md).
-The console pair remains pending, especially the 971B ANSI double translator
-and its 39B EH handler at `0x0056B32A`. The old 966B primary candidate must be
-reconciled with that full contribution before acceptance. Their whole-member
-identities alone confer no separate reviewed credit.
+The console pair now has its [full buffered-input/output/EH review](CRT_LOWIO_CONSOLE_WRITE_ORIGIN_REVIEW.md).
+The 971B ANSI contribution comprises the unchanged 966B body and five INT3;
+the previously missing 39B handler and complete metadata/table are retained.
 
 Only classification, evidence, handoff and generated progress change.
 Tracking/progress checks pass and all 2,151 protected hashes remain unchanged.

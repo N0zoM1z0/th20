@@ -5,11 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [text-write translation and byte accounting](CRT_LOWIO_TEXT_WRITE_ORIGIN_REVIEW.md):
-three complete owners, 758B/266 instructions and seven REL32/twelve DIR32
-roles, with original buffer bounds/page probes/cookies. Extents remain unchanged.
-ANSI/UTF16 retain prepared LF counts after short/failing output; UTF8 drains
-converted output before advancing its input-byte count and keeps LF count zero.
+review covers [console conversion, buffered input and full EH](CRT_LOWIO_CONSOLE_WRITE_ORIGIN_REVIEW.md):
+1,109B/394 instructions, thirteen REL32/seventeen DIR32 roles, full 36B FuncInfo
+and 256B lookup table. The 966B ANSI/104B Unicode extents remain unchanged;
+its 971B source section includes five INT3. The missing 39B handler is recovered,
+with dual cookies, flags 5 metadata and fifteen following INT3. Buffered state,
+input-credit and original LFCR output order are retained.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -95,17 +96,18 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/lowio-write-text/`: all
-three complete bodies, attested listing, fields/CFG and native frame/buffer
-constants. CodeView/result layout remains in `lowio-write-nolock/`; write.obj
-and its whole locations remain in `stdio-flush/` and `lowio-write/`.
-Next review the console pair. The 971B ANSI translator at `0x00564667` and
-39B EH handler at `0x0056B32A` require complete code/metadata reconciliation
-against the old 966B candidate before acceptance. The 104B Unicode console
-translator is at `0x00564A32`. Retain original conversion errors, console
-output order, DBCS state and full aggregate accounting. Their whole identities
-have no own reviewed credit. The retained lseek.obj in `lowio-write-nolock/`
-also locates the 30B append wrapper and 131B shared 64-bit seek owner.
+The current proof is in `.analysis/origin-boundary/lowio-write-console/`:
+full console pair/handler, independent 36B FuncInfo/256B table locations,
+CodeView, complete comparisons and the handler's Ghidra no-function observation.
+It reuses write.obj and earlier write ABI/layout. The new mbtowc.obj and
+putwch.obj independently locate the 304B internal converter at `0x0055929A`
+and 50B wchar console provider at `0x0056662C`. Next review their own complete
+protocol/data/metadata, preserving cached error/locale handling, console state
+and WORD results; current caller evidence gives them identity only.
+`lowio-write-text/` retains all three complete text translators and their
+short-write/accounting differences. `lowio-write-nolock/` retains the complete
+dispatch/selector/result ABI and lseek.obj, which also locates the 30B append
+wrapper and 131B shared 64-bit seek owner for later review.
 `lowio-write/` retains the full 273B parent, complete scope and recovered
 six-byte descriptor/result restore. The public 55B write wrapper remains
 without a whole ordinary-byte location.
