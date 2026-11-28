@@ -67,8 +67,8 @@ adapter reviews establish every external code/state role. The already reviewed
 There are six INT3 bytes before islower, twelve after each public function,
 and three after isctype_l. Treating the latter gap as nineteen INT3 up to the
 next inventory entry failed: `0x0055A1C0..0x0055A1CF` contains sixteen real code
-bytes omitted from that inventory. Its independent member/initializer review
-is the next bounded task; it is not part of isctype_l or accepted alignment.
+bytes omitted from that inventory. Its [independent SSE2 initializer review](CRT_SSE2_INITIALIZER_ORIGIN_REVIEW.md)
+now recovers that entry; it is not part of isctype_l or accepted alignment.
 Other unlocated member shapes remain private negative search evidence.
 
 Only classification, evidence, handoff and generated progress change.

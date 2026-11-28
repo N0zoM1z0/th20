@@ -5,11 +5,11 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT narrow classification](CRT_NARROW_CLASSIFICATION_ORIGIN_REVIEW.md):
-three complete owners, 467B/192 instructions, all nine REL32/five DIR32 roles
-and 33 adjacent INT3. Real integer masks, initial/current locale branches,
-packed-byte conversion, output zeroing and guard restoration are retained.
-All extents remain unchanged, with no owned data, EH or jump tables.
+review recovers the [UCRT SSE2 math initializer](CRT_SSE2_INITIALIZER_ORIGIN_REVIEW.md)
+at `0x0055A1C0`: all 16B/five instructions, both code DIR32 roles, the complete
+4B C-initializer record and 4B common state are reviewed. It stores the full
+feature-query BOOL and always returns integer zero. The new row preserves
+the adjacent isctype_l/CIacos boundaries and three original INT3 bytes.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -95,13 +95,18 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/narrow-classification/`:
-full islower/isupper/isctype_l members, CodeView signatures, attested listing,
-complete comparisons and rejected alignment hypothesis. Only three INT3 follow
-isctype_l; `0x0055A1C0..0x0055A1CF` contains sixteen real code bytes missing from
-the initial inventory. Next review that entry independently using the installed
-`sse2_initializer.cpp`, its archive member and actual initializer-table owner;
-do not count it as padding or as part of isctype_l.
+The current proof is in `.analysis/origin-boundary/sse2-initializer/`: both
+complete members, CodeView, attested five-instruction listing and original
+initializer data reference. The full C-startup context is retained with the
+independent startup range; the registration record is at `0x0056C42C`.
+Next independently resolve the remaining C-table target `0x00551851`, omitted
+from the initial inventory between the candidate ending at `0x00551850` and
+the file-lock entry at `0x00551965`. Bound its complete owner/member first.
+The separate 41B set_SSE2_enable member has no complete ordinary-byte location.
+`narrow-classification/` retains full islower/isupper/isctype_l members,
+CodeView signatures, attested listing, complete comparisons and the rejected
+nineteen-byte padding hypothesis; only three INT3 follow isctype_l before
+the now recovered SSE2 initializer.
 `random-api/` retains full rand/rand_s state/error/output evidence. Its 18B
 srand member has no complete ordinary-byte location; the reviewed PTD initializer
 supplies seed one at +0x18 and the earlier STL random-device caller selects rand_s.
