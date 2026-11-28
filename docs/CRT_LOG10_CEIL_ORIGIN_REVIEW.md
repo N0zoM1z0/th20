@@ -78,15 +78,13 @@ full indefinite/control-word/common-exit evidence is reused. The fourteen
 original INT3 bytes at `0x00566702..0x0056670F` are checked before the recovered
 CI head; both reviewed default bodies end directly before their next entries.
 
-## Precise SSE2 log10 remains pending
+## Complete SSE log10 follow-up
 
-The separate precise owner at `0x00566030` retains its complete 688B ordinary
-signature, including the 675B instruction extent and two original alignment
-LEAs totaling 13B at `0x005662D3`. Its 256B private constant section has two
-complete aligned candidates, `0x005A2650` and `0x005A2FE0`, also shared by the
-retained Pentium4 object's signature. No independent bank assignment is
-established here, so this owner keeps its pending origin and unchanged extent.
-The two complete 1,040B log10 table signatures are also retained for that work.
+The separate precise owner at `0x00566030` and three Pentium4 entry partitions
+now have their [complete SSE log10 review](CRT_SSE_LOG10_ORIGIN_REVIEW.md),
+including both private banks, the two full 1,040B tables, alignment and all
+normal/special/fallback protocols. That review distinguishes observed linked
+bank instances from independent canonical source-unit anchors.
 
 ## Evidence and affected scope
 
@@ -97,8 +95,7 @@ Capstone supplements the unlisted 79B CI/adapter prefix without modifying the
 Ghidra project. The members in `fp-fltout/` and prior disjoint/x87 evidence
 are reused. Libm_error_support now has its
 [complete error-record and switch review](CRT_LIBM_ERROR_SUPPORT_ORIGIN_REVIEW.md).
-CIlog10_pentium4 retains a complete independent archive identity anchor for
-the call here; its own remaining code/data review receives no credit from it.
+CIlog10_pentium4 and its shared body are covered by the complete follow-up above.
 
 Only classification, boundaries, evidence, handoff and generated progress
 change. Tracking/progress checks pass and all 2,151 protected hashes remain

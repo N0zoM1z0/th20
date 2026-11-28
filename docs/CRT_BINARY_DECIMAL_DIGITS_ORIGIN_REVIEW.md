@@ -123,9 +123,8 @@ Fegetenv, feholdexcept and fesetenv now have their
 [complete environment review](CRT_FENV_ENVIRONMENT_ORIGIN_REVIEW.md), including
 the original mask/readback asymmetry. Ceil now has its
 [complete disjoint entry review](CRT_LOG10_CEIL_ORIGIN_REVIEW.md).
-The precise SSE2 log10 retains complete code/table identities, but its two
-identical private constant banks still need an independent assignment before
-its own origin review is accepted.
+The precise SSE2 log10 now has its [complete SSE entry/data review](CRT_SSE_LOG10_ORIGIN_REVIEW.md)
+alongside the Pentium4 implementation and distinct return interfaces.
 
 Only classification, evidence, handoff and generated progress change.
 Tracking/progress checks pass and all 2,151 protected hashes remain unchanged.

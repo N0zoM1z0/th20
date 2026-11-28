@@ -5,12 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT libm error records and full switch ownership](CRT_LIBM_ERROR_SUPPORT_ORIGIN_REVIEW.md).
-The full 660B contribution includes 539B/143 instructions, one NOP and both
-60B tables, with both REL32 fields and all 37 DIR32 roles. Void cdecl/32B record types,
-all selectors, guarded callbacks and distinct errno/underflow/default paths
-remain intact. Linked literal/BSS instances are retained as observations,
-separate from independent canonical source-unit anchors.
+review covers [UCRT SSE log10 entries, data and return contracts](CRT_SSE_LOG10_ORIGIN_REVIEW.md).
+Four library entries account for complete 1,344B contributions, including
+1,319B/296 instructions and 25B original alignment. All 42 relocation roles
+(three REL32 and 39 DIR32) and full 2,592B data are reviewed. The missing six-byte stack-input head
+is inventoried; XMM0/ST(0) returns, shared stack view, all 65 table rows and
+normal/special/fallback paths remain intact.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,21 +96,20 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/libm-error/`: complete
-code/tables, attested listing and full CodeView error/record/void metadata.
-It reuses libm_error.obj in `log10-ceil/`; the separate 43B setter remains
-unlocated. The two BSS cells are observed zero in the image, without a
-reviewed runtime writer.
-Next review the precise log10/CI Pentium4 pair's remaining data and protocol
-scope. `log10-ceil/` retains complete 688B/656B code identities, two full
-1,040B tables and both identical 256B constant banks at `0x005A2650` and
-`0x005A2FE0`. The precise contribution contains 675B code and two LEAs/13B
-alignment. Keep observed linked bank instances separate from any future
-independent canonical binding; the earlier origin review is still pending.
-The existing ceil/x87 review and supplemental 79B intrinsic prefix remain
-in the same directory. If the pair needs further evidence, the real sptype,
-except1 and frnd providers at `0x005524B0`/`0x00553A00`/`0x00564240` are
-separately pending bounded math scopes.
+The current proof is in `.analysis/origin-boundary/log10-sse/`: full code/
+data comparisons, attested listing, the unlisted six-byte head, both alignment
+sequences and the exact table-index inference. It reuses members/locations
+in `fp-fltout/` and `log10-ceil/`. Both identical private 256B banks are fully
+compared at their observed linked instances; a future canonical source unit
+still needs independent address selection. The origin review is complete.
+Next review the real sptype, except1 and frnd providers at
+`0x005524B0`/`0x00553A00`/`0x00564240` in a bounded math group, using the
+reviewed ceil/floor callers and complete SDK contributions to establish
+their own extents, return/control contracts and metadata.
+`libm-error/` retains complete code/tables and CodeView record/enum/void
+metadata. Its separate 43B setter remains unlocated, and its two BSS cells
+are observed zero without a reviewed runtime writer. The existing ceil/
+x87 review and supplemental 79B intrinsic prefix remain in `log10-ceil/`.
 `fenv-environment/` retains complete types/state/packing and mask inference;
 the 26B status-from-mask helper has no full ordinary location. `fp-fltout/`,
 `fp-strflt/` and `fp-dispatch/` retain full fraction/carry/format evidence.
