@@ -5,12 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UTF-8 state, resumed counts and surrogate boundaries](CRT_UTF8_STATE_ORIGIN_REVIEW.md).
-Ten whole SDK contributions retain all 1,554B and 17B owned static state/literal
-data. Single-wide replacement and string surrogate output stay distinct. A
-resumed supplementary scalar can be undercounted by query mode, and primitive
-state changes precede short-buffer exits without rollback. Earlier notes
-retain secure conversion/truncation and complete mbstowcs/EH ownership.
+review covers [wide classification and the full ctype table](CRT_WIDE_CLASSIFICATION_ORIGIN_REVIEW.md).
+Five whole SDK contributions retain all 412B and 520B table/pointer data. The
+wide table includes a real final U+0100 WORD. WEOF/UTF-8 lowercase branches and
+raw classification masks stay intact; eleven same-shaped pointer getters
+load the wrong slots and are rejected. Earlier notes retain complete UTF-8
+state/count behavior and secure conversion/truncation ownership.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,12 +96,11 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/utf8-conversions/`: ten
-whole SDK code contributions, complete fallback states/literal and bounded
-resumed-scalar/short-output state models. The unrelated mbrtoc16 candidates
-do not locate as complete matches and receive no credit. Ordinary bytes also
-suggest mbrtoc32/mbsrtowcs/wcsrtombs at one 58B wrapper; resolve real callees
-before naming that separate pending head.
+The current proof is in `.analysis/origin-boundary/case-conversion/`: five
+whole code contributions, the unique complete 516B wide table and its four-byte
+pointer slot. Reuse the reviewed locale guard, PTD refresh and wide mapping
+providers. Other narrow/upper-case candidates lack complete matches; the
+eleven pointer-getter shapes all reference unrelated slots.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -109,13 +108,14 @@ under the attempted build configuration. Keep both failed logs and inputs;
 do not repeat that compile until those inputs are resolved. The 89B SDK versus
 91B target epilogue remains pending at `0x0054A360`.
 
-Next review the 212B `_towlower_l` candidate at `0x005653D9` using the complete
-`towlower.obj` location and `ucrt/convert/towlower.cpp`. The SDK objects and
-candidate catalogue are retained in `.analysis/origin-boundary/case-conversion/`.
-Other narrow/upper candidates currently lack complete byte matches; do not
-assign them from their names. Preserve WEOF, C/ASCII/byte fast paths, wide
-mapping counts and guard restoration. The stack probe at `0x005439E0` remains
-a separate pending body.
+Next review CRT descriptor helpers in `.analysis/origin-boundary/wide-stdio/`:
+fileno at `0x005597F1`, isatty at `0x00563DCF`, lowio array construction/
+retirement/expansion at `0x0055F967`/`0x0055F9E2`/`0x0055FA17`, handle reset/
+lookup at `0x0055FAFB`/`0x0055FB8C`, and set_fmode at `0x00555A57`. Complete
+SDK candidate locations exist for these eight bodies in `fileno.obj`,
+`isatty.obj`, `osfinfo.obj` and `setmode.obj`. Reconcile full locks/SEH/data,
+descriptor sentinels, handle ownership and invalid-parameter branches before
+acceptance. The stack probe at `0x005439E0` remains a separate pending body.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK

@@ -6242,7 +6242,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0054A3BB,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054A3D6,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054A407,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054A476,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0054A476,library,CrtWideClassification,exclude,high,"docs/CRT_WIDE_CLASSIFICATION_ORIGIN_REVIEW.md; Complete 34B ___acrt_locale_get_ctype_array_value body reviewed in five whole SDK case/classification contributions, all 412B code and 520B complete table/pointer data. Full branches/HIGHLOW/callee/import roles and all 258 wide table words retained."
 0x0054A498,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054A4E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054A540,library,CxxRuntime,exclude,high,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT free.obj symbol _free reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.
@@ -6390,7 +6390,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00551F74,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005520D3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055216E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005521A6,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005521A6,library,CrtWideClassification,exclude,high,"docs/CRT_WIDE_CLASSIFICATION_ORIGIN_REVIEW.md; Complete 36B ___pctype_func body reviewed in five whole SDK case/classification contributions, all 412B code and 520B complete table/pointer data. Full branches/HIGHLOW/callee/import roles and all 258 wide table words retained."
 0x005521D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00552260,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005522F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6653,7 +6653,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00559C80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00559D30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00559F80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055A089,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0055A089,library,CrtWideClassification,exclude,high,"docs/CRT_WIDE_CLASSIFICATION_ORIGIN_REVIEW.md; Complete 105B _iswctype body reviewed in five whole SDK case/classification contributions, all 412B code and 520B complete table/pointer data. Full branches/HIGHLOW/callee/import roles and all 258 wide table words retained."
 0x0055A0F2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055A1D0,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 59B __CIacos retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
 0x0055A20B,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 20B __CIacos_default retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
@@ -6891,7 +6891,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00563D99,library,CrtUtf8State,exclude,high,"docs/CRT_UTF8_STATE_ORIGIN_REVIEW.md; Complete 20B ?reset_and_return@__crt_mbstring@@YAIIPAU_Mbstatet@@@Z body reviewed in ten whole SDK UTF8 contributions, all 1554B code/17B owned state and literal data. Full control flow/HIGHLOW/callee roles, field widths and resumed/surrogate contracts retained."
 0x00563DAD,library,CrtUtf8State,exclude,high,"docs/CRT_UTF8_STATE_ORIGIN_REVIEW.md; Complete 34B ?return_illegal_sequence@__crt_mbstring@@YAIPAU_Mbstatet@@AAV__crt_cached_ptd_host@@@Z body reviewed in ten whole SDK UTF8 contributions, all 1554B code/17B owned state and literal data. Full control flow/HIGHLOW/callee roles, field widths and resumed/surrogate contracts retained."
 0x00563DCF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00563E25,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00563E25,library,CrtWideClassification,exclude,high,"docs/CRT_WIDE_CLASSIFICATION_ORIGIN_REVIEW.md; Complete 25B ___acrt_GetStringTypeW body reviewed in five whole SDK case/classification contributions, all 412B code and 520B complete table/pointer data. Full branches/HIGHLOW/callee/import roles and all 258 wide table words retained."
 0x00563E40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00563EB5,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056408D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6924,7 +6924,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005651BD,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005651E0,library,CrtLocaleInfo,exclude,high,"docs/CRT_LOCALE_INFO_COPY_ORIGIN_REVIEW.md; Complete 242B _strncpy_s body reviewed in six whole SDK contributions, all owned/linker INT3 and internal NOP alignment, original branch/HIGHLOW/callee roles, actual output widths and independently proved shared freea. Rejected 32B variant retained."
 0x005652D2,library,CrtUtf8State,exclude,high,"docs/CRT_UTF8_STATE_ORIGIN_REVIEW.md; Complete 263B ?__wcsrtombs_utf8@__crt_mbstring@@YAIPADPAPB_WIPAU_Mbstatet@@AAV__crt_cached_ptd_host@@@Z body reviewed in ten whole SDK UTF8 contributions, all 1554B code/17B owned state and literal data. Full control flow/HIGHLOW/callee roles, field widths and resumed/surrogate contracts retained."
-0x005653D9,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005653D9,library,CrtWideClassification,exclude,high,"docs/CRT_WIDE_CLASSIFICATION_ORIGIN_REVIEW.md; Complete 212B __towlower_l body reviewed in five whole SDK case/classification contributions, all 412B code and 520B complete table/pointer data. Full branches/HIGHLOW/callee/import roles and all 258 wide table words retained."
 0x005654B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005658F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00565930,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
