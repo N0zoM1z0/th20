@@ -1904,3 +1904,13 @@ th20::WindowState::create_window,0x0041CCF0,function
 th20::window_procedure,0x0041D350,function
 th20::Graphics::reference_rasterizer_enabled,0x0041D0A0,function
 th20::Graphics::uses_desktop_display_mode,0x0041D0F0,function
+th20::Graphics::initialize_viewports,0x004DABA0,function
+th20::Graphics::set_view_offset,0x004DDB20,function
+th20::Graphics::reset_view_selection,0x004DC0F0,function
+th20::Graphics::stop_background_music,0x004D9BC0,function
+th20::Graphics::fog_disabled,0x004DC140,function
+th20::Graphics::direct_input_disabled,0x004DC1A0,function
+th20::Graphics::vsync_disabled,0x004DC160,function
+th20::Graphics::text_detection_disabled,0x004DC120,function
+th20::WindowState::reset_delay_value,0x004DAB80,function
+th20::WindowState::add_reset_delay,0x004D9E70,function

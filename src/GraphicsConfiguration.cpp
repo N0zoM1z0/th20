@@ -17,4 +17,20 @@ std::int32_t Graphics::uses_desktop_display_mode() const {
     return configuration.saved_display_mode == 8 || configuration.saved_display_mode == 9;
 }
 
+std::uint32_t Graphics::fog_disabled() const {
+    return configuration.flags.disable_fog;
+}
+
+std::uint32_t Graphics::direct_input_disabled() const {
+    return configuration.flags.disable_direct_input;
+}
+
+std::uint32_t Graphics::vsync_disabled() const {
+    return configuration.flags.disable_vsync;
+}
+
+std::uint32_t Graphics::text_detection_disabled() const {
+    return configuration.flags.disable_text_detection;
+}
+
 } // namespace th20

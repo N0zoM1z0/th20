@@ -45,6 +45,8 @@ void WindowState::set_field_005c(std::int32_t value) { field_005c = value; }
 void WindowState::set_field_0060(std::int32_t value) { field_0060 = value; }
 void WindowState::set_field_0064(std::int32_t value) { field_0064 = value; }
 void WindowState::set_display_mode(std::int32_t value) { display_mode_value = value; }
+std::uint32_t WindowState::reset_delay_value() { return reset_delay; }
+void WindowState::add_reset_delay(std::int32_t delta) { reset_delay += delta; }
 
 // Derives the client size, render scale and 640x480 scaled frame from the
 // display mode, then places the 384x448 playfield inside the scaled frame.

@@ -74,6 +74,14 @@ struct Graphics : NativeGraphicsModeAction {
     std::int32_t windowed() const;
     std::uint32_t reference_rasterizer_enabled() const;
     std::int32_t uses_desktop_display_mode() const;
+    std::uint32_t fog_disabled() const;
+    std::uint32_t direct_input_disabled() const;
+    std::uint32_t vsync_disabled() const;
+    std::uint32_t text_detection_disabled() const;
+    void reset_view_selection();
+    std::int32_t stop_background_music();
+    void initialize_viewports();
+    void set_view_offset(std::int32_t x, std::int32_t y);
 };
 // Production global definition/startup and destruction remain open.
 extern Graphics process_graphics;

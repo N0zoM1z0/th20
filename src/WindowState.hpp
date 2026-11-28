@@ -110,6 +110,8 @@ struct WindowState {
     void compute_layout(std::int32_t choose_scale);
     void set_window(HWND__* value);
     std::int32_t create_window(HINSTANCE__* instance);
+    std::uint32_t reset_delay_value();
+    void add_reset_delay(std::int32_t delta);
 };
 
 static_assert(sizeof(WindowFlags) == 4);

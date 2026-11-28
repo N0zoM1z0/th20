@@ -4046,29 +4046,29 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004D99D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9A70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9B50,unknown,Graphics,review,unknown,"CORE/RECON-1208; docs/FRONT_DIALOGUE_VOICE_SOUND104_STRICT_EXACT.md; original caller at 0x004B9890 explicitly loads process_graphics into ECX, proving Graphics receiver; authored spelling/provenance remain unknown"
-0x004D9BC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004D9BC0,authored,Graphics,authored,high,"CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md; Graphics game member on the process_graphics receiver with game startup, configuration or menu callers; strict exact unit."
 0x004D9C10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9C40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9DB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9E00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9E30,authored,Graphics,authored,high,CORE/RECON-1140; docs/GRAPHICS_WORKER_CLOSE53_STRICT_EXACT.md; unique original 53B/17-i386 game Graphics Worker shutdown method with actual diagnostics and two real Worker calls; whole-native exact
-0x004D9E70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004D9E70,authored,WindowState,authored,high,CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md; WindowState device-reset delay accessor called with window_state by Graphics device recovery 0x004DC510; strict exact unit.
 0x004D9EA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004D9F60,authored,Graphics,authored,high,"CORE/RECON-1307; docs/STAGE_BACKGROUND_UPDATE_RECONSTRUCTION.md; the original Graphics camera builder constructs the game left-handed view and projection matrices from ViewportState camera vectors/FOV/aspect, publishes both D3D transforms and refreshes the camera-right vector. The 0.01 normalization threshold and near/far constants are PE-anchored."
 0x004DA120,authored,Graphics,authored,high,"CORE/RECON-1141; docs/GRAPHICS_PREPARE_DEVICE194_STRICT_EXACT.md; unique game-authored 194B Graphics D3D9 transform setup, original 55 i386 with 3 E8 and 7 data native fields; whole MSVC source strict exact"
 0x004DA1F0,authored,Graphics,authored,high,"CORE/RECON-1142; docs/GRAPHICS_CAMERA_MATRIX_BOSS846_STRICT_EXACT.md; unique 846B game-authored Graphics D3DX9 view/projection camera Boss, unsigned viewport double conversion native 0/2^32 table, 7 E8 and 20 data fields, complete 194-i386/846B original source exact"
 0x004DA540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DAB40,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004DAB80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004DABA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004DAB80,authored,WindowState,authored,high,CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md; WindowState device-reset delay accessor called with window_state by Graphics device recovery 0x004DC510; strict exact unit.
+0x004DABA0,authored,Graphics,authored,high,"CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md; Graphics game member on the process_graphics receiver with game startup, configuration or menu callers; strict exact unit."
 0x004DBCE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DBD70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004DC0F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004DC120,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004DC140,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004DC160,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004DC0F0,authored,Graphics,authored,high,"CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md; Graphics game member on the process_graphics receiver with game startup, configuration or menu callers; strict exact unit."
+0x004DC120,authored,Graphics,authored,high,"CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md; Graphics game member on the process_graphics receiver with game startup, configuration or menu callers; strict exact unit."
+0x004DC140,authored,Graphics,authored,high,"CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md; Graphics game member on the process_graphics receiver with game startup, configuration or menu callers; strict exact unit."
+0x004DC160,authored,Graphics,authored,high,"CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md; Graphics game member on the process_graphics receiver with game startup, configuration or menu callers; strict exact unit."
 0x004DC180,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004DC1A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004DC1A0,authored,Graphics,authored,high,"CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md; Graphics game member on the process_graphics receiver with game startup, configuration or menu callers; strict exact unit."
 0x004DC1C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DC510,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DC5F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -4088,7 +4088,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004DDA30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004DDA60,authored,Graphics,authored,high,"CORE/RECON-785; docs/GRAPHICS_DRAW_RENDERSTATES_276_STRICT_EXACT_RECONSTRUCTION.md; original game Graphics render cache own state 1C, actual 5993B custom Animation draw boss caller 2x, 92 whole original bytes and physical E8/HIGHLOW independently proven"
 0x004DDAC0,authored,Graphics,authored,high,"CORE/RECON-785; docs/GRAPHICS_DRAW_RENDERSTATES_276_STRICT_EXACT_RECONSTRUCTION.md; original game Graphics render cache own state 1C, actual 5993B custom Animation draw boss caller 2x, 92 whole original bytes and physical E8/HIGHLOW independently proven"
-0x004DDB20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004DDB20,authored,Graphics,authored,high,"CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md; Graphics game member on the process_graphics receiver with game startup, configuration or menu callers; strict exact unit."
 0x004DDF80,authored,Graphics,authored,high,"CORE/RECON-785; docs/GRAPHICS_DRAW_RENDERSTATES_276_STRICT_EXACT_RECONSTRUCTION.md; original game Graphics render cache own state E, actual 5993B custom Animation draw boss caller 1x, 92 whole original bytes and physical E8/HIGHLOW independently proven"
 0x004DDFE0,authored,Graphics,authored,high,"CORE/RECON-849; docs/GRAPHICS_DEPTH_WRITE_ENABLE_92_STRICT_EXACT.md; Whole original 92B/30 native x86 game Graphics ZWRITEENABLE cache transition, original real __fastcall ECX Graphics receiver and field +0xDBC, cache compare/store value1, original device SetRenderState(D3DRS_ZWRITEENABLE=14,1) via D3D9 vtbl +0xE4. Real game animation_pool pointer 0x005C0028 PE HIGHLOW at +0x17 and true original E8 at +0x1B to already exact 192B AnimationPoolOwner::flush_draws. Native 2136B game mesh renderer directly calls at +0x98, not a CRT/compiler thunk; original 92B/30 instruction whole method, pinned C++ 92/92B strict native COFF with two original relocation roles. Separate and distinct from existing original 92B disable-depth method at 0x004DDF80; count one 92B game-owned function once."
 0x004DE040,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

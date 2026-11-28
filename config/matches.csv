@@ -987,3 +987,13 @@ address,name,size,status,match_percent,unit,evidence
 0x0041D350,th20::window_procedure,1168,matching,100.00,window_procedure,CLAUDE/EXACT-002; docs/WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md
 0x0041D0A0,th20::Graphics::reference_rasterizer_enabled,25,matching,100.00,graphics_reference_rasterizer_enabled,CLAUDE/EXACT-002; docs/WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md
 0x0041D0F0,th20::Graphics::uses_desktop_display_mode,56,matching,100.00,graphics_uses_desktop_display_mode,CLAUDE/EXACT-002; docs/WINDOW_CREATION_PROCEDURE_RECONSTRUCTION.md
+0x004DABA0,th20::Graphics::initialize_viewports,4401,matching,100.00,graphics_initialize_viewports,CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md
+0x004DDB20,th20::Graphics::set_view_offset,1113,matching,100.00,graphics_set_view_offset,CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md
+0x004DC0F0,th20::Graphics::reset_view_selection,37,matching,100.00,graphics_reset_view_selection,CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md
+0x004D9BC0,th20::Graphics::stop_background_music,69,matching,100.00,graphics_stop_background_music,CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md
+0x004DC140,th20::Graphics::fog_disabled,26,matching,100.00,graphics_fog_disabled,CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md
+0x004DC1A0,th20::Graphics::direct_input_disabled,26,matching,100.00,graphics_direct_input_disabled,CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md
+0x004DC160,th20::Graphics::vsync_disabled,26,matching,100.00,graphics_vsync_disabled,CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md
+0x004DC120,th20::Graphics::text_detection_disabled,26,matching,100.00,graphics_text_detection_disabled,CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md
+0x004DAB80,th20::WindowState::reset_delay_value,20,matching,100.00,window_reset_delay_value,CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md
+0x004D9E70,th20::WindowState::add_reset_delay,34,matching,100.00,window_add_reset_delay,CLAUDE/EXACT-003; docs/GRAPHICS_VIEWPORT_LAYOUT_RECONSTRUCTION.md

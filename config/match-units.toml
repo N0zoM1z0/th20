@@ -34517,3 +34517,259 @@ relocations = [
   { offset = 0x604, type = "DIR32", symbol = "$LN61", target = 0x0041D6ED },
   { offset = 0x608, type = "DIR32", symbol = "$LN62", target = 0x0041D6FC },
 ]
+
+# CLAUDE/EXACT-003: Graphics viewport layout, view selection reset and music stop.
+[units.graphics_initialize_viewports]
+source = "src/GraphicsViewports.cpp"
+object = "build/claude-canonical/GraphicsViewports.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::Graphics::initialize_viewports"]
+symbol = "?initialize_viewports@Graphics@th20@@QAEXXZ"
+target_address = 0x004DABA0
+size = 4401
+relocations = [
+  { offset = 0x44, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x7D, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0xA5, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0xBE, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0xDC, type = "DIR32", symbol = "__real@40490fdb", target = 0x0056E0F0 },
+  { offset = 0xE4, type = "DIR32", symbol = "__real@40c00000", target = 0x0056F00C },
+  { offset = 0x10F, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x11E, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x13D, type = "DIR32", symbol = "__real@3f800000", target = 0x0056C8CC },
+  { offset = 0x178, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x1B4, type = "REL32", symbol = "??0Vector3@th20@@QAE@MMM@Z", target = 0x00422DD0 },
+  { offset = 0x1D3, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x1DF, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x25C, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x26B, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x291, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x2CC, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x307, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x337, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x376, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x3A6, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x3DB, type = "REL32", symbol = "?recompute_current_4da1f0@NativeGraphicsModeAction@th20@@QAEXPAUViewportState@2@PAUNativeViewport@2@@Z", target = 0x004DA1F0 },
+  { offset = 0x437, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x444, type = "DIR32", symbol = "__real@43c00000", target = 0x0056CDA4 },
+  { offset = 0x44C, type = "DIR32", symbol = "__real@42000000", target = 0x0056CD94 },
+  { offset = 0x454, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x468, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x475, type = "DIR32", symbol = "__real@43e00000", target = 0x0056D7C0 },
+  { offset = 0x47D, type = "DIR32", symbol = "__real@42000000", target = 0x0056CD94 },
+  { offset = 0x485, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x49C, type = "DIR32", symbol = "__real@43c00000", target = 0x0056CDA4 },
+  { offset = 0x4A4, type = "DIR32", symbol = "__real@42000000", target = 0x0056CD94 },
+  { offset = 0x4B9, type = "DIR32", symbol = "__real@43e00000", target = 0x0056D7C0 },
+  { offset = 0x4C1, type = "DIR32", symbol = "__real@42000000", target = 0x0056CD94 },
+  { offset = 0x522, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x55D, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x598, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x5C8, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x607, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x637, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x66B, type = "REL32", symbol = "?recompute_current_4da1f0@NativeGraphicsModeAction@th20@@QAEXPAUViewportState@2@PAUNativeViewport@2@@Z", target = 0x004DA1F0 },
+  { offset = 0x6CB, type = "DIR32", symbol = "__real@44200000", target = 0x0056CDAC },
+  { offset = 0x6D3, type = "DIR32", symbol = "__real@43c00000", target = 0x0056CDA4 },
+  { offset = 0x6DB, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0x6E3, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x6F8, type = "DIR32", symbol = "__real@41800000", target = 0x0056CD90 },
+  { offset = 0x700, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x715, type = "DIR32", symbol = "__real@43c00000", target = 0x0056CDA4 },
+  { offset = 0x71D, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x732, type = "DIR32", symbol = "__real@43e00000", target = 0x0056D7C0 },
+  { offset = 0x73A, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x79B, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x7D6, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x811, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x841, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x880, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x8B0, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x8E4, type = "REL32", symbol = "?recompute_current_4da1f0@NativeGraphicsModeAction@th20@@QAEXPAUViewportState@2@PAUNativeViewport@2@@Z", target = 0x004DA1F0 },
+  { offset = 0x982, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x991, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x9EA, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xA25, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xA60, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xA90, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xACF, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xAFF, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xB34, type = "REL32", symbol = "?recompute_current_4da1f0@NativeGraphicsModeAction@th20@@QAEXPAUViewportState@2@PAUNativeViewport@2@@Z", target = 0x004DA1F0 },
+  { offset = 0xB80, type = "DIR32", symbol = "__real@44200000", target = 0x0056CDAC },
+  { offset = 0xB88, type = "DIR32", symbol = "__real@43c00000", target = 0x0056CDA4 },
+  { offset = 0xB90, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xB98, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xBB0, type = "DIR32", symbol = "__real@43c00000", target = 0x0056CDA4 },
+  { offset = 0xBB8, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xBDB, type = "DIR32", symbol = "__real@41800000", target = 0x0056CD90 },
+  { offset = 0xBE3, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xC09, type = "DIR32", symbol = "__real@44200000", target = 0x0056CDAC },
+  { offset = 0xC11, type = "DIR32", symbol = "__real@43c00000", target = 0x0056CDA4 },
+  { offset = 0xC19, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xC21, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xC47, type = "DIR32", symbol = "__real@41800000", target = 0x0056CD90 },
+  { offset = 0xC4F, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xC75, type = "DIR32", symbol = "__real@43c00000", target = 0x0056CDA4 },
+  { offset = 0xC7D, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xCA3, type = "DIR32", symbol = "__real@43e00000", target = 0x0056D7C0 },
+  { offset = 0xCAB, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xD15, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xD50, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xD8B, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xDBB, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xDFA, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xE2A, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xE5F, type = "REL32", symbol = "?recompute_current_4da1f0@NativeGraphicsModeAction@th20@@QAEXPAUViewportState@2@PAUNativeViewport@2@@Z", target = 0x004DA1F0 },
+  { offset = 0xEBF, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xEC7, type = "DIR32", symbol = "__real@43c00000", target = 0x0056CDA4 },
+  { offset = 0xECF, type = "DIR32", symbol = "__real@42000000", target = 0x0056CD94 },
+  { offset = 0xEDB, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xEF0, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xEF8, type = "DIR32", symbol = "__real@43e00000", target = 0x0056D7C0 },
+  { offset = 0xF00, type = "DIR32", symbol = "__real@42000000", target = 0x0056CD94 },
+  { offset = 0xF0C, type = "DIR32", symbol = "__real@40000000", target = 0x0056C8D0 },
+  { offset = 0xF21, type = "DIR32", symbol = "__real@43c00000", target = 0x0056CDA4 },
+  { offset = 0xF29, type = "DIR32", symbol = "__real@42000000", target = 0x0056CD94 },
+  { offset = 0xF3E, type = "DIR32", symbol = "__real@43e00000", target = 0x0056D7C0 },
+  { offset = 0xF46, type = "DIR32", symbol = "__real@42000000", target = 0x0056CD94 },
+  { offset = 0xFAF, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xFF3, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x1037, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x1070, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x10B8, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x10F1, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x1126, type = "REL32", symbol = "?recompute_current_4da1f0@NativeGraphicsModeAction@th20@@QAEXPAUViewportState@2@PAUNativeViewport@2@@Z", target = 0x004DA1F0 },
+]
+
+[units.graphics_set_view_offset]
+source = "src/GraphicsViewports.cpp"
+object = "build/claude-canonical/GraphicsViewports.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::Graphics::set_view_offset"]
+symbol = "?set_view_offset@Graphics@th20@@QAEXHH@Z"
+target_address = 0x004DDB20
+size = 1113
+relocations = [
+  { offset = 0x94, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xA3, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0xC9, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0xFE, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x133, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x15D, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x196, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x1C0, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x1F6, type = "DIR32", symbol = "__real@42000000", target = 0x0056CD94 },
+  { offset = 0x1FE, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x20D, type = "DIR32", symbol = "__real@43c00000", target = 0x0056CDA4 },
+  { offset = 0x215, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x231, type = "DIR32", symbol = "__real@41800000", target = 0x0056CD90 },
+  { offset = 0x239, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x251, type = "DIR32", symbol = "__real@42000000", target = 0x0056CD94 },
+  { offset = 0x259, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x271, type = "DIR32", symbol = "__real@41800000", target = 0x0056CD90 },
+  { offset = 0x279, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x291, type = "DIR32", symbol = "__real@43c00000", target = 0x0056CDA4 },
+  { offset = 0x299, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x2AE, type = "DIR32", symbol = "__real@43e00000", target = 0x0056D7C0 },
+  { offset = 0x2B6, type = "DIR32", symbol = "?window_state@th20@@3UWindowState@1@A", target = 0x005B6758 },
+  { offset = 0x317, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x34C, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x381, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x3AB, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x3EA, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x41A, type = "DIR32", symbol = "__xmm@41f00000000000000000000000000000", target = 0x0056CDD0 },
+  { offset = 0x44E, type = "REL32", symbol = "?recompute_current_4da1f0@NativeGraphicsModeAction@th20@@QAEXPAUViewportState@2@PAUNativeViewport@2@@Z", target = 0x004DA1F0 },
+]
+
+[units.graphics_reset_view_selection]
+source = "src/GraphicsViewports.cpp"
+object = "build/claude-canonical/GraphicsViewports.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::Graphics::reset_view_selection"]
+symbol = "?reset_view_selection@Graphics@th20@@QAEXXZ"
+target_address = 0x004DC0F0
+size = 37
+relocations = []
+
+[units.graphics_stop_background_music]
+source = "src/GraphicsViewports.cpp"
+object = "build/claude-canonical/GraphicsViewports.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::Graphics::stop_background_music"]
+symbol = "?stop_background_music@Graphics@th20@@QAEHXZ"
+target_address = 0x004D9BC0
+size = 69
+relocations = [
+  { offset = 0x8, type = "DIR32", symbol = "?process_graphics@th20@@3UGraphics@1@A", target = 0x005C4D40 },
+  { offset = 0xD, type = "REL32", symbol = "?uses_preloaded_music@Graphics@th20@@QBEHXZ", target = 0x00428FA0 },
+  { offset = 0x16, type = "DIR32", symbol = "$SG177627", target = 0x00571B14 },
+  { offset = 0x1F, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0x24, type = "REL32", symbol = "?enqueue@SoundInf@th20@@QAEXHHPBD@Z", target = 0x00428C90 },
+  { offset = 0x2C, type = "DIR32", symbol = "$SG177628", target = 0x00571B14 },
+  { offset = 0x35, type = "DIR32", symbol = "?process_sound@th20@@3USoundInf@1@A", target = 0x005BA830 },
+  { offset = 0x3A, type = "REL32", symbol = "?enqueue@SoundInf@th20@@QAEXHHPBD@Z", target = 0x00428C90 },
+]
+
+
+# CLAUDE/EXACT-003: Graphics configuration flag predicates read by configuration loading.
+[units.graphics_fog_disabled]
+source = "src/GraphicsConfiguration.cpp"
+object = "build/claude-canonical/GraphicsConfiguration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::Graphics::fog_disabled"]
+symbol = "?fog_disabled@Graphics@th20@@QBEIXZ"
+target_address = 0x004DC140
+size = 26
+relocations = []
+
+[units.graphics_direct_input_disabled]
+source = "src/GraphicsConfiguration.cpp"
+object = "build/claude-canonical/GraphicsConfiguration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::Graphics::direct_input_disabled"]
+symbol = "?direct_input_disabled@Graphics@th20@@QBEIXZ"
+target_address = 0x004DC1A0
+size = 26
+relocations = []
+
+[units.graphics_vsync_disabled]
+source = "src/GraphicsConfiguration.cpp"
+object = "build/claude-canonical/GraphicsConfiguration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::Graphics::vsync_disabled"]
+symbol = "?vsync_disabled@Graphics@th20@@QBEIXZ"
+target_address = 0x004DC160
+size = 26
+relocations = []
+
+[units.graphics_text_detection_disabled]
+source = "src/GraphicsConfiguration.cpp"
+object = "build/claude-canonical/GraphicsConfiguration.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::Graphics::text_detection_disabled"]
+symbol = "?text_detection_disabled@Graphics@th20@@QBEIXZ"
+target_address = 0x004DC120
+size = 26
+relocations = []
+
+
+# CLAUDE/EXACT-003: WindowState device-reset delay accessors.
+[units.window_reset_delay_value]
+source = "src/WindowLayout.cpp"
+object = "build/claude-canonical/WindowLayout.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::WindowState::reset_delay_value"]
+symbol = "?reset_delay_value@WindowState@th20@@QAEIXZ"
+target_address = 0x004DAB80
+size = 20
+relocations = []
+
+[units.window_add_reset_delay]
+source = "src/WindowLayout.cpp"
+object = "build/claude-canonical/WindowLayout.obj"
+profile = ["/nologo", "/c", "/std:c++20", "/Od", "/Ob0", "/GS", "/Gy", "/Zl", "/arch:SSE2", "/fp:strict", "/sdl", "/EHsc"]
+functions = ["th20::WindowState::add_reset_delay"]
+symbol = "?add_reset_delay@WindowState@th20@@QAEXH@Z"
+target_address = 0x004D9E70
+size = 34
+relocations = []

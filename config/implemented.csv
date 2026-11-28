@@ -1900,3 +1900,13 @@ th20::WindowState::create_window
 th20::window_procedure
 th20::Graphics::reference_rasterizer_enabled
 th20::Graphics::uses_desktop_display_mode
+th20::Graphics::initialize_viewports
+th20::Graphics::set_view_offset
+th20::Graphics::reset_view_selection
+th20::Graphics::stop_background_music
+th20::Graphics::fog_disabled
+th20::Graphics::direct_input_disabled
+th20::Graphics::vsync_disabled
+th20::Graphics::text_detection_disabled
+th20::WindowState::reset_delay_value
+th20::WindowState::add_reset_delay
