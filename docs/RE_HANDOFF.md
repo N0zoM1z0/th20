@@ -5,13 +5,12 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT formatting buffer ownership and growth](CRT_FORMATTING_BUFFER_ORIGIN_REVIEW.md).
-Five pending origins retain their complete 244B/95-instruction contributions
-and existing extents. The inline/dynamic halves, doubled-size guard, cached
-errno writes, old-buffer preservation on failure and full move/release
-ordering are reconciled. All six REL32 roles use complete known providers;
-the five sections own no additional data/EH tables. Earlier notes retain
-scalar/narrow/wide strings, purecall, memory owners and the exception closure.
+review covers [UCRT format length and character-width mappings](CRT_FORMAT_TYPE_MAPPING_ORIGIN_REVIEW.md).
+Two pending origins retain their 49B instruction extents. The complete 133B
+contributions include 98B/47 instructions, a 3B NOP, twelve selectors and
+five internal code pointers. The x86 enum mapping, default cases and narrow
+character policy retain the original cdecl/options ABI. Earlier notes retain
+formatting-buffer ownership, string/memory owners and the exception closure.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,7 +96,10 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/format-buffer/`: complete
+The current proof is in `.analysis/origin-boundary/format-types/`: complete
+mapping tables, attested listing and every selector/default result. It reuses
+the full output.obj member in `format-buffer/`.
+The preceding proof is in `.analysis/origin-boundary/format-buffer/`: complete
 output.obj member, bounded class/helper locators and full byte/relocation/
 reachability proof. The malloc_base/free_base provider evidence is reused.
 The preceding proof is in `.analysis/origin-boundary/string-length-compare/`:
@@ -163,6 +165,9 @@ owner and its actual callee roles in output.obj; do not infer the unlocated
 wide variants or generic jump helpers. The five attempted copy/concatenation
 archive members in `string-copy/` contain six function shapes without complete
 ordinary-byte matches.
+The char character-width helper and complete to_integer_size tables are also
+reviewed. Keep the 64-bit options stack slot even for the char helper that
+does not read it; the separate wchar_t variant remains unlocated.
 The same-shaped bad_alloc constructor at `0x00540D24` retains its previous
 class identity.
 The 14B secchk signature independently locates the cookie check at
