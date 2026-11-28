@@ -4,7 +4,7 @@ The AnimationPoolOwner constructor at `0x00447E00` registers 50 draw
 callbacks and two update callbacks through `register_draw`/`register_update`
 (push callback, push priority). Fifty-one of these callbacks, plus their
 shared view reset, are strict exact in `src/AnimationPoolDrawCallbacks.cpp`:
-52 functions and 772 credited bytes.
+52 functions and 875 credited bytes.
 
 - `0x004508C0` (13B) forwards the pool to the fastcall
   `animation_renderer_update_secondary_449a70`.

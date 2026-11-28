@@ -82,6 +82,7 @@ struct Graphics : NativeGraphicsModeAction {
     std::int32_t stop_background_music();
     void initialize_viewports();
     void set_view_offset(std::int32_t x, std::int32_t y);
+    void apply_render_offset();
 };
 // Production global definition/startup and destruction remain open.
 extern Graphics process_graphics;

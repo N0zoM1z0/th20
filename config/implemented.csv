@@ -1962,3 +1962,13 @@ th20::draw_renderer_group_47_450c30
 th20::draw_renderer_group_48_450c40
 th20::draw_renderer_group_14_450c50
 th20::draw_renderer_group_13_450c60
+th20::graphics_begin_frame_4dc5f0
+th20::graphics_clear_scene_depth_4dd1c0
+th20::graphics_clear_overlay_depth_4dd2e0
+th20::graphics_select_backbuffer_4dd400
+th20::graphics_clear_view_points_4dc7c0
+th20::register_graphics_chain
+th20::load_version_data
+th20::Graphics::apply_render_offset
+th20::graphics_startup_4dd600
+th20::NativeRendererClassificationOwner::reset_layer_marker_4dd820
