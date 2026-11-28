@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [VCRuntime foreign-exception search](CRT_FOREIGN_EXCEPTION_SEARCH_REVIEW.md) — one whole 309B body plus INT3; breakpoint/translator exclusions, real EncodePointer sentinel and last-handler nonstandard ellipsis eligibility.
 - [VCRuntime catch entry, rethrow and final cleanup](CRT_CATCH_ENTRY_LIFETIME_REVIEW.md) — three pending origins plus four recovered entries; complete 592B instructions and 40B SEH table, parent-state rethrow unwind, two finally entries and ordered exception/context restoration before destruction.
 - [x86 catch guards, translators and continuation transfer](CRT_CATCH_TRANSLATOR_TRANSFER_REVIEW.md) — ten whole 962B contributions/two INT3; stack guard layouts, translator nonlocal return, central SafeSEH, frame-link protocol and one shared public handler with incoming EAX FuncInfo.
 - [VCRuntime catch-object construction](CRT_CATCH_OBJECT_CONSTRUCTION_REVIEW.md) — two pending origins plus six recovered entries; complete 472B instructions/two INT3 and 60B SEH/callback state, COM+/WinRT paths, copy contracts and virtual-base constructor argument.
