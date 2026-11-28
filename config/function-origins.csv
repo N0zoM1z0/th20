@@ -5993,7 +5993,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00542340,library,CrtIosLifetime,exclude,high,docs/CRT_IOS_BASE_LIFETIME_ORIGIN_BOUNDARY_REVIEW.md; Complete 124B ?_Tidy@ios_base@std@@AAEXXZ and owned alignment/EH reviewed against full CRT ios.obj contribution and original instructions/relocation roles.
 0x005423C1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005423E3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054242B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005423F7,library,CrtOptionalWin32,exclude,high,"docs/CRT_OPTIONAL_WIN32_API_ORIGIN_BOUNDARY_REVIEW.md; Complete 52B ?initialize_pointers@@YAHXZ and owned alignment/shared EH reviewed against full CRT winapisupp.obj; original startup pointer, import identities and cached-function protocol corroborate library origin."
+0x0054242B,library,CrtOptionalWin32,exclude,high,"docs/CRT_OPTIONAL_WIN32_API_ORIGIN_BOUNDARY_REVIEW.md; Complete 80B ___crtGetSystemTimePreciseAsFileTime and owned alignment/shared EH reviewed against full CRT winapisupp.obj; original startup pointer, import identities and cached-function protocol corroborate library origin."
 0x00542480,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 14B original contribution agrees with CRT xmtx.obj symbol __Mtxdst, including independently checked relocation roles and full attested instruction coverage."
 0x0054248E,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 21B original contribution agrees with CRT xmtx.obj symbol __Mtxinit, including independently checked relocation roles and full attested instruction coverage."
 0x005424A3,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 14B original contribution agrees with CRT xmtx.obj symbol __Mtxlock, including independently checked relocation roles and full attested instruction coverage."

@@ -3,20 +3,9 @@
 ## Start here
 
 The active task is to complete origin/boundary review before returning to native
-matching. Reviewed groups now include import-library stubs, CRT forwarding/runtime
-bodies, x86 integer helpers, startup policy/TLS leaves and lock ownership. See the
-[import entry table](IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md),
-[CRT chains and width findings](CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md),
-[integer ABI evidence](CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md),
-[startup defaults](CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md),
-[lock ownership](CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md),
-[global retirement](CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md),
-[locale implementation](CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md),
-[facet virtual lifetime](CRT_FACET_VIRTUAL_LIFETIME_ORIGIN_REVIEW.md),
-[character conversion](CRT_CHARACTER_CONVERSION_ORIGIN_BOUNDARY_REVIEW.md), and
-[ios_base lifetime](CRT_IOS_BASE_LIFETIME_ORIGIN_BOUNDARY_REVIEW.md). The combined
-integer divide/remainder helpers return quotient in EDX:EAX and remainder in
-EBX:ECX; preserve that compiler-helper ABI in later consumers.
+matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
+startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
+owner is [optional Win32 API initialization and time fallback](CRT_OPTIONAL_WIN32_API_ORIGIN_BOUNDARY_REVIEW.md).
 This checkpoint changes no canonical native inputs and has **zero affected exact
 replay units**; existing canonical products retain their captured hashes.
 
@@ -78,49 +67,27 @@ Earlier Player canonical products remain intact.
 ## Next useful work
 
 Continue origin/boundary review in bounded groups. All current Ghidra thunk
-candidates have reviewed origins. Instruction-level references and complete
-CRT startup objects resolve `0x00543B7E` and the folded zero defaults at
-`0x00543B83`; function-level caller queries had missed their unowned startup
-call sites. Use `xrefs_to` when an empty call graph conflicts with other evidence.
+candidates have reviewed origins. Use `xrefs_to` when an empty function-level
+call graph conflicts with original startup references. Preserve external tails:
+the corrected 31-byte `_Lockit` destructor at `0x005419AC` conditionally transfers
+to the separate nine-byte `_unlock_locales` at `0x00551F10`.
 
-The false 66,925-byte span at `0x005419AC` is resolved: its 31-byte STL destructor
-conditionally tail-transfers to the separately tracked nine-byte UCRT
-`_unlock_locales` at `0x00551F10`. The lock and adjoining global retirement
-protocols are now reviewed. All six
-newly inventoried startup/exit callbacks have library/compiler origins. A single
-private SDK-header probe emits the original 80-byte `std::locale` destructor at
-`0x004F5600`; its object/receipt remain in `build/gpt61-origin-locale/`. The exit
-controller retains its complete 29-byte cookie/EH handler and 36-byte metadata.
-No canonical native input changed; exact replay scope remains zero.
+Keep the private evidence in `.analysis/origin-boundary/` and the pinned SDK
+probes/receipts in `build/gpt61-origin-locale/`: `Locale.obj` emits the original
+80-byte destructor, `Yarn.obj` the 42-byte cleanup, and `Facet.obj` eight complete
+virtual/lifetime contributions. Reuse those results for unchanged inputs.
 
-The `_Locimp` lifetime, global publication and `_Locinfo` switch/restore methods
-are reviewed, including `_Init`'s 8-byte cleanup / 5-byte alignment, 29-byte
-handler and 44-byte EH section. A separate pinned SDK-header probe emits the
-original 42-byte `_Yarn<char>::_Tidy`; its private object/receipt are retained
-beside the locale probe. Source-present and canonical exact credit are unchanged.
+The latest Win32 owner adds the missing 52-byte initializer at `0x005423F7`
+and classifies the 80-byte time wrapper at `0x0054242B`. The original startup
+pointer is at `0x0056C424`. Its five alignment bytes and existing 29-byte handler
+at `0x00567600` are retained; the handler is shared with the exit controller.
+The 36-byte FuncInfo at `0x005A91B8` is also shared with `ios_base::_Tidy`'s
+separate handler at `0x005679A0`. Avoid duplicate physical-head credit.
 
-The facet virtual methods and their base/facet lifetime entries are now reviewed.
-The one pinned-header probe emits all eight complete bodies, including the
-four/eight-byte deleting entries; retain `Facet.obj` and its receipt beside the
-other private SDK probes. Original vtable/RTTI records distinguish the classes
-and shared reference methods. No canonical unit or source owner was added.
-
-Nine character-conversion/case-mapping entries now have reviewed library origins.
-Complete archive bodies and original instruction coverage agree for 1,834 bytes.
-`0x00541F37` is the explicit-code-page `__std_get_cvt`, and the 25-byte mapping
-cleanup at `0x00542556` is a scoped-buffer destructor. `_Mbrtowc` ignores its
-state parameter. Preserve the observed lead-byte range endpoint and retained
-length returns in later source work; the focused note records those branches.
-
-The four `ios_base` lifecycle methods are now reviewed, including `_Tidy`'s
-five-byte alignment, recovered 29-byte handler at `0x005679A0` and full shared
-36-byte EH record at `0x005A91B8`. Its callback and sparse-value chains retain
-their 12/16-byte deletion sizes. No native input or canonical unit changed.
-
-Next review the adjoining thread/runtime entries beginning at `0x005423C1`,
-including the unowned initializer at `0x005423F7`, using independent archive
-symbols, original startup references and complete owned EH. Generate current
-counts from the ledgers.
+Next review the remaining small STL leaves at `0x005423C1` and `0x005423E3`,
+then the allocation entries beginning at `0x0054273F`. Use independent archive
+symbols and complete original control flow, including nonreturning paths and
+owned EH. Generate current counts from the ledgers.
 
 The following native frontiers remain available after review:
 
