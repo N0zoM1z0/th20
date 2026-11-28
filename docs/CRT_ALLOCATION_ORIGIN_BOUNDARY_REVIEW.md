@@ -146,12 +146,11 @@ its hotpatch/frame instructions before tail-transferring to `_malloc_base`
 at `0x005584C0`. Aligned delete ignores the alignment argument and forwards
 the pointer to `_aligned_free` at `0x00554310`.
 
-Four pending ledger spans at `0x0054FEB0`, `0x0054FF00`, `0x0054FFB0` and
-`0x00550130` also extend across this region. The attested body query reports
-only 250, 201, 214 and 339 actual body bytes respectively, with distant fragments
-inside those convex spans. Their own shared fragments require separate boundary
-review; these four rows remain pending. The query is retained as
-`overlapping-provisional-spans.txt` beside the handler evidence.
+Four provisional ledger spans at `0x0054FEB0`, `0x0054FF00`, `0x0054FFB0` and
+`0x00550130` intersected this region. The later
+[math dispatch review](CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md) resolves them
+as small public entries and separate distant fallbacks. The original body-union
+query remains in `overlapping-provisional-spans.txt` beside the handler evidence.
 
 ## Evidence and validation
 

@@ -5,7 +5,7 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [allocation and the corrected aligned-new boundary](CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md).
+review covers [math dispatch and corrected disjoint boundaries](CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md).
 This checkpoint changes no canonical native inputs and has **zero affected exact
 replay units**; existing canonical products retain their captured hashes.
 
@@ -93,13 +93,19 @@ entries. The missed legacy overload at `0x00552990` passes the security-cookie
 value to the setter; preserve that operand. Private `reviewed-handler.json`
 captures the complete text, codecs, wrappers and scope-table comparisons.
 
-Next resolve the large provisional convex spans beginning at `0x0054FEB0`,
-`0x0054FF00`, `0x0054FFB0` and `0x00550130`. They intersect the new-handler
-region in the ledger, while attested body membership is only 250/201/214/339
-bytes; `allocation/overlapping-provisional-spans.txt` captures the discrepancy.
-Follow each actual fragment before changing its span. The underlying heap
-entries at `0x005584C0`, `0x00554310` and `0x00554330` remain another bounded
-allocation frontier. Reuse established new/delete/failure and handler bindings.
+The four oversized spans beginning at `0x0054FEB0`, `0x0054FF00`, `0x0054FFB0`
+and `0x00550130` are now resolved as acos/atan/sin/floor entries and independent
+fallbacks. The complete eight code sections and five literal sections are
+retained in `.analysis/origin-boundary/disjoint/`. Atan's five-byte instruction
+at `0x0055A8F6` remains inside the full 139-byte default body. Floor's earlier
+64-byte compatibility dispatcher at `0x005500F0` is separately inventoried.
+
+Next review the SSE math entry/kernel groups beginning at `0x0055A2E0`,
+`0x0055A920` and `0x0055B240`. Their six-byte stack-input prefixes fall through
+to separately inventoried kernels; do not treat the prefixes as whole functions.
+The corresponding Pentium4 objects are already extracted under `disjoint/`.
+Underlying heap entries at `0x005584C0`, `0x00554310` and `0x00554330` remain
+another bounded allocation frontier. Reuse established runtime bindings.
 Use independent archive symbols and complete original control flow, including
 nonreturning paths and owned EH. Generate current counts from the ledgers.
 
