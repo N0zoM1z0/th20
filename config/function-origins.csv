@@ -6573,19 +6573,19 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00557BE6,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00557C08,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00557C6F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557C7B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557CA5,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557CD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557CFB,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557D26,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557D51,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557D7C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557DA7,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557DD2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557DFD,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557E28,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557E53,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00557F20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00557C7B,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 42B ?try_get_AreFileApisANSI@@YAP6GHXZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00557CA5,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 43B ?try_get_CompareStringEx@@YAP6GHPB_WK0H0HPAU_nlsversioninfo@@PAXJ@ZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00557CD0,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 43B ?try_get_EnumSystemLocalesEx@@YAP6GHP6GHPA_WKJ@ZKJPAX@ZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00557CFB,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 43B ?try_get_GetDateFormatEx@@YAP6GHPB_WKPBU_SYSTEMTIME@@0PA_WH0@ZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00557D26,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 43B ?try_get_GetLocaleInfoEx@@YAP6GHPB_WKPA_WH@ZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00557D51,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 43B ?try_get_GetTimeFormatEx@@YAP6GHPB_WKPBU_SYSTEMTIME@@0PA_WH@ZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00557D7C,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 43B ?try_get_GetUserDefaultLocaleName@@YAP6GHPA_WH@ZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00557DA7,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 43B ?try_get_IsValidLocaleName@@YAP6GHPB_W@ZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00557DD2,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 43B ?try_get_LCIDToLocaleName@@YAP6GHKPA_WHK@ZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00557DFD,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 43B ?try_get_LCMapStringEx@@YAP6GHPB_WK0HPA_WHPAU_nlsversioninfo@@PAXJ@ZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00557E28,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 43B ?try_get_LocaleNameToLCID@@YAP6GKPB_WK@ZXZ SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00557E53,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 204B ?try_get_function_slow@@YAPAXW4function_id@?A0x391cf84c@@QBDQBW4module_id@2@2@Z SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00557F20,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 99B ?try_load_library_from_system_directory@@YAPAUHINSTANCE__@@QB_W@Z SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
 0x00557F83,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00557FD2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00558021,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6606,11 +6606,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005582BA,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00558304,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00558341,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00558390,library,CrtUcrtLifetime,exclude,high,"docs/CRT_UCRT_LIFETIME_CALLBACK_ORIGIN_REVIEW.md; Complete 11B ___acrt_thread_attach SDK contribution reviewed with full original control flow, paired table roles, ordinary bytes, HIGHLOW sets and callback/callee bindings."
-0x0055839B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005583D2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005583F5,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00558426,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00558390,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 11B ___acrt_can_use_vista_locale_apis SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x0055839B,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 55B ___acrt_eagerly_load_locale_apis SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x005583D2,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 35B ___acrt_initialize_winapi_thunks SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x005583F5,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 49B ___acrt_tls2_supported SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
+0x00558426,library,CrtWinApiCache,exclude,high,"docs/CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md; Complete 54B ___acrt_uninitialize_winapi_thunks SDK contribution reviewed with full cache/module tables, referenced literals, original branches, HIGHLOW sets, import and callee identities."
 0x0055845C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00558496,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005584C0,library,CrtHeap,exclude,high,"docs/CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md; Complete 81B __malloc_base body reviewed in seven whole SDK code contributions, including all owned INT3 alignment, original branches, state and import/callee roles."

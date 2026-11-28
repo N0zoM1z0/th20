@@ -1,7 +1,7 @@
 # UCRT lifetime roots, static callbacks and encoded-null initialization
 
-Eleven library entries are reviewed through complete Windows SDK 10.0.26100.0
-x86 `libucrt.lib` member `initialization.obj` contributions: 328 code bytes and
+Ten library entries are reviewed through complete Windows SDK 10.0.26100.0
+x86 `libucrt.lib` member `initialization.obj` contributions: 317 code bytes and
 the existing full 128B initializer table. Six heads were missing from the
 provisional function ledger. The target is the locked Japanese TH20 v1.00a
 Steamless executable; the native source graph and exact unit graph are unchanged.
@@ -18,12 +18,13 @@ Steamless executable; the native source graph and exact unit graph are unchanged
 | `0x0055398C` | 46 | multibyte retirement lambda | existing |
 | `0x005539BA` | 18 | `__acrt_initialize` | existing |
 | `0x005539CC` | 48 | `__acrt_uninitialize` | existing |
-| `0x00558390` | 11 | `__acrt_thread_attach` | existing |
 
-The first ten contributions fill `0x005538BF..0x005539FB` contiguously, 317B
+The ten contributions fill `0x005538BF..0x005539FB` contiguously, 317B
 without gaps or alignment. Each complete archive contribution ends at its
 original return. Full ordinary bytes, HIGHLOW sets and local branch targets
-agree. The standalone thread-attach contribution adds eleven bytes.
+agree. The earlier eleven-byte thread-attach assignment at `0x00558390` was
+incorrect and is superseded by the
+[complete API cache identity proof](CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md).
 
 ## Paired table and static-CRT callbacks
 
@@ -77,8 +78,6 @@ masked matches are candidates until their external roles are reconciled.
 `_flushall` only when the stdio table pointer is nonnull, then returns true in
 AL. On false, it uses the complete reverse executor. The stdio predicate is
 inline here; no address is assigned to an unmatched standalone helper.
-`__acrt_thread_attach` calls `__acrt_getptd_noexit` and returns a boolean in AL
-according to whether the pointer result is nonnull.
 
 The 80B buffer-retirement callback frees stdout storage, stderr storage, narrow
 argv and wide argv in the original order, clearing each pointer slot along the
@@ -99,9 +98,11 @@ Private `.analysis/origin-boundary/ucrt-lifetime/` contains bounded native and
 caller queries, `review.py`, `reviewed.json` and diagnostic member locations.
 It reuses the extracted `heap-control/initialization.obj`. Pinned decoding
 supplements 126 original bytes absent from Ghidra's instruction listing: the
-46B pointer initializer and 80B buffer cleanup. All eleven complete bodies and
+46B pointer initializer and 80B buffer cleanup. All ten accepted complete bodies and
 the table retain their original extents; the new ledger heads do not mutate
-Ghidra or target bytes.
+Ghidra or target bytes. The retained original report includes the rejected
+eleventh role as failed-hypothesis evidence; the linked cache review supplies
+its corrected identity.
 
 Only classification, focused evidence, handoff and generated progress change.
 All 2,151 protected native input/product hashes remain unchanged. Exact replay

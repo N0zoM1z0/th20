@@ -9,7 +9,8 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
-- [UCRT lifetime roots and static callbacks](CRT_UCRT_LIFETIME_CALLBACK_ORIGIN_REVIEW.md) — eleven complete bodies, six recovered heads, paired table aliases, actual cookie-valued encoded-null operands and resolved original matherr initializer caller; distinct terminating/normal retirement paths.
+- [UCRT late-bound API cache and locale capability](CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md) — eighteen complete entries, full module/function tables and referenced data; protection/race/failure paths, correct CompareStringEx capability identity and a rejected same-shape thread-attach assignment.
+- [UCRT lifetime roots and static callbacks](CRT_UCRT_LIFETIME_CALLBACK_ORIGIN_REVIEW.md) — ten complete bodies, six recovered heads, paired table aliases, actual cookie-valued encoded-null operands and resolved original matherr initializer caller; distinct terminating/normal retirement paths.
 - [CRT heap lifetime, initializer rollback and in-place resize](CRT_HEAP_LIFECYCLE_EXPAND_ORIGIN_REVIEW.md) — four recovered handle heads, paired original startup records, complete initializer executors and LFH-aware failed-contraction success path.
 - [CRT heap bases, aligned owners and new-mode state](CRT_HEAP_ALIGNED_ALLOCATION_ORIGIN_REVIEW.md) — twenty-five entries across seven whole contributions, complete 5,124B aligned owner, all 220 INT3 bytes, retry/overflow/resize/fill paths and independently named heap imports.
 - [CRT public floating control and bit conversion](CRT_FLOAT_CONTROL_PUBLIC_ORIGIN_REVIEW.md) — five complete API/converter owners, abstract hardware masks, ambiguity reporting, post-DAZ hardware re-read and all checked-control error/output paths.

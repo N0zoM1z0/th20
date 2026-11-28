@@ -5,9 +5,11 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT lifetime roots and static callbacks](CRT_UCRT_LIFETIME_CALLBACK_ORIGIN_REVIEW.md).
-Eleven complete bodies include six recovered heads, encoded-null pointer
-initialization, paired table roles and distinct terminating/normal retirement.
+review covers [late-bound API cache and locale capability](CRT_WINAPI_THUNK_CACHE_ORIGIN_REVIEW.md).
+Seventeen pending origins and one corrected existing role account for eighteen
+complete cache/lookup entries, full data tables and lifecycle paths. The 11B
+head at `0x00558390` is the CompareStringEx capability predicate; its earlier
+thread-attach assignment was wrong despite ordinary-byte agreement.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -88,85 +90,31 @@ Earlier Player canonical products remain intact.
 
 ## Next useful work
 
-Continue origin/boundary review in bounded groups. All current Ghidra thunk
-candidates have reviewed origins. Use `xrefs_to` when an empty function-level
-call graph conflicts with original startup references. Preserve external tails:
-the corrected 31-byte `_Lockit` destructor at `0x005419AC` conditionally transfers
-to the separate nine-byte `_unlock_locales` at `0x00551F10`.
+Continue origin/boundary review in bounded groups. Use instruction/data
+references when Ghidra's function graph omits original callers; the pointer
+initializer and recovered heap callbacks are retained examples. Keep complete
+shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-Keep the private evidence in `.analysis/origin-boundary/` and the pinned SDK
-probes/receipts in `build/gpt61-origin-locale/`: `Locale.obj` emits the original
-80-byte destructor, `Yarn.obj` the 42-byte cleanup, and `Facet.obj` eight complete
-virtual/lifetime contributions. Reuse those results for unchanged inputs.
+The current WinAPI cache proof is in `.analysis/origin-boundary/thunk-cache/`:
+eighteen entries (979B plus one INT3), all 1,934B across 52 referenced data
+sections, cache/module arrays and independent API identities. Keep the earlier
+11B thread-attach probe/report as a rejected hypothesis. The corrected head at
+`0x00558390` calls the CompareStringEx accessor; no source/manifest binding used
+the mistaken role.
 
-The allocation review resolves the false 3,046-byte span at `0x00542E42`:
-the full aligned-new parent is 52 bytes, and its shared 28-byte bad-array throw
-helper at `0x00543A0C` is now separately inventoried. Both allocation parents'
-failure edges, two throw-helper INT3 bytes and all ten shared type records are
-retained. One natural pinned-header probe emits the original 36-byte bad-array
-default constructor; preserve `build/gpt61-origin-allocation/BadArray.obj`, its
-receipt and `.analysis/origin-boundary/allocation/` alongside the earlier probes.
+Next review public locale wrappers/fallbacks, including `0x00558040`
+CompareStringEx, `0x0055822C` LCMapStringEx and the guarded EnumSystemLocalesEx
+compatibility path. Resolve same-shape wrappers through their actual getter,
+import and fallback roles. Reuse the cache's complete strings, candidate-module
+arrays and shared slow resolver rather than repeating that investigation.
 
-The remaining malloc/aligned-delete heads and complete new-handler state owner
-are now reviewed. The 317-byte shared code section includes 57 INT3 bytes and
-two EH-only three-byte prefixes at `0x0055290B`/`0x00552979`; the complete SEH
-section is 60 bytes. Both prefixes fall through to existing nine-byte unlock
-entries. The missed legacy overload at `0x00552990` passes the security-cookie
-value to the setter; preserve that operand. Private `reviewed-handler.json`
-captures the complete text, codecs, wrappers and scope-table comparisons.
-
-The four oversized spans beginning at `0x0054FEB0`, `0x0054FF00`, `0x0054FFB0`
-and `0x00550130` are now resolved as acos/atan/sin/floor entries and independent
-fallbacks. The complete eight code sections and five literal sections are
-retained in `.analysis/origin-boundary/disjoint/`. Atan's five-byte instruction
-at `0x0055A8F6` remains inside the full 139-byte default body. Floor's earlier
-64-byte compatibility dispatcher at `0x005500F0` is separately inventoried.
-
-The SSE groups beginning at `0x0055A2E0`, `0x0055A920` and `0x0055B240` are
-also reviewed through complete Pentium4 sections, both trailing NOPs and all
-14,880 bytes of local/shared tables. The six-byte stack-input heads fall through
-to the separately owned kernels. Intrinsic adapters consume ST(0) and create the
-stack argument view; kernels need that view as well as XMM0/XMM7. Reuse
-`disjoint/reviewed-sse.json` and its original listing for unchanged inputs.
-
-The common x87 support and tangent group are now reviewed. The false 755-byte
-span at `0x0055B518` is a six-byte head, followed by a separate 564-byte shared
-kernel, fourteen alignment bytes and independent common helpers. Reuse
-`x87/reviewed.json`, including all 5,929 constant/table bytes. The shared
-one-/two-argument math error entries at `0x005640B7`/`0x005640A0`, `_87except`,
-mask/raise/errno handlers and four encoded-callback methods are also reviewed.
-Preserve `math-error/` with its complete 2,231B code contributions, 40 constant
-bytes and original callback references. The four x87 state helpers and MXCSR
-setter are now reviewed: internal control/status words return with sign
-extension, and the DAZ trial owns a complete SEH filter/recovery path. Preserve
-`fp-state/`, including all five code sections, extended literals, initialized
-cache and 28B scope table. Four nonoverlapping partitions retain all 222B of the
-setter owner. The complete public `_control87`, `_clearfp`, `_controlfp_s` and
-both hardware converters are now reviewed in `reviewed-ieee.json`, including
-all 1,736B and the independent default-precision caller. Their inline abstract/
-MXCSR paths explain several failed standalone helper searches. Keep the public
-abstract flags separate from raw internal words.
-
-The malloc/calloc/realloc/recalloc/msize bases, their forwarding heads, all
-sixteen public/internal aligned allocation entries and new-mode state are now
-reviewed. Preserve `heap/` with seven full code sections: 5,463B of instructions
-and all 220 INT3 bytes, full import/callee roles and the zero-filled new-mode
-cell. The complete 5,124B align section resolves duplicate byte shapes through
-real layout and original allocator-facing calls. Heap lifetime, initializer
-execution/rollback and the complete `_expand` family are now reviewed in
-`heap-control/`: four code contributions, 45 INT3 bytes and the full 128B paired
-initializer table at `0x00599410`. Shutdown clears the CRT handle rather than
-destroying the process heap; failed LFH contraction can return the original
-block successfully. Root UCRT initialization/retirement and static callbacks
-are now reviewed in `ucrt-lifetime/`, reusing `initialization.obj`: 328B complete
-code plus the existing table proof. The original unlisted CALL at `0x0055390A`
-initializes matherr with cookie-valued encoded null; preserve all five pointer
-initializer operands. The five folded true callback roles at `0x00543D2F`
-receive no duplicate head credit. Next review the paired WinAPI thunk-cache
-lifetime callbacks at `0x005583D2`/`0x00558426` from the same table, with full
-array initialization/retirement and actual lookup/import dependencies.
-Use independent archive symbols and complete original control flow, including
-nonreturning paths and owned EH. Generate current counts from the ledgers.
+The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
+focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK
+probes/receipts under `build/gpt61-origin-locale/` and
+`build/gpt61-origin-allocation/`: Locale, Yarn, Facet and BadArray retain natural
+compiler evidence. The math correction's fresh products and negative controls
+are listed above. Closed-review history and byte partitions belong in those
+focused notes, rather than a cumulative handoff log.
 
 The following native frontiers remain available after review:
 
