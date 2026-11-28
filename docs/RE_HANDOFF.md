@@ -5,13 +5,14 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [FrameHandler3 dispatch and type matching](CRT_FRAME_DISPATCH_TYPE_MATCH_REVIEW.md).
-Three pending origins retain 409 contiguous instruction bytes and all six
-relocation roles, without alignment or owned metadata. Existing extents remain
-unchanged. Ellipsis and bad_alloc compatibility bypass later type qualifiers;
-the dispatcher preserves /EHs, unwind, search and forward-handler branches.
-Only one of sixteen short wrapper shapes calls the actual dispatcher; no
-TypeMatch wrapper candidate calls the whole type-match provider.
+review covers [VCRT frame unwinding, state and rethrow filters](CRT_FRAME_UNWIND_STATE_REVIEW.md).
+Eight pending origins and five recovered entries retain seven whole sections:
+607B instructions, two terminal INT3 and the full 40B SEH table. The unwind
+parent/finally overlap is removed through disjoint full-owner partitions.
+Normal and EH finally entries differ by the saved-state reload prefix.
+Byte-state reads sign-extend at maxState<=128; writes remain full DWORD.
+The call-frame bridge preserves original NLG/frame transitions, and exception
+specification membership continues the outer loop after finding a match.
 Earlier notes retain exception lifetime, validation and SEH4 evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
@@ -98,12 +99,12 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/frame-dispatch/`, reusing
-the complete frame member and attested listings in `type-info/`. Full unique
-callee signatures identify FindHandler and FrameUnwindToEmptyState, whose
-own protocol/relocation review remains pending. Earlier thread, VCRT API/cache
-and startup/PTD protocols remain in focused notes. The verifier and termination
-query remain pending.
+The current proof is in `.analysis/origin-boundary/frame-unwind/`, reusing
+the complete frame member and unwind listing in `type-info/`. It retains
+full ehstate/lowhelpr members, complete SEH labels, missing-instruction decode
+and original ledger rows. FrameHandler3 dispatch/type matching and preceding
+thread/API/PTD protocols remain in their focused notes. FindHandler and its
+remaining catch/foreign-exception protocols still need complete review.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -119,17 +120,19 @@ code for that reporter without a new retained caller or string reference.
 
 Continue with a bounded unresolved CRT owner, using archive members and
 actual callers before relying on a familiar Ghidra name. The retained
-frame.obj locates FrameUnwindToEmptyState at `0x0054747F` (24B), the complete
-238B FrameUnwindToState contribution at `0x00547497`, and ExFilterRethrow at
-`0x00547435` (74B). Review the full SEH table, exceptional partitions and
-existing overlapping `0x0054756B` candidate together. IsInExceptionSpec at
-`0x00547585` is a separate 154B complete section calling the now-reviewed
-TypeMatchHelper. FindHandler at `0x00546B5A` remains a larger 931B owner.
+frame.obj locates the complete 318B BuildCatchObjectHelperInternal at
+`0x005468FF` and 156B BuildCatchObjectInternal at `0x00546A3D`. Review their
+full SEH/filter/terminal partitions, WinRT callback role and object-copy
+ownership together; member-call bridges and AdjustPointer are already reviewed.
+FindHandler at `0x00546B5A` remains a larger 931B owner, with its foreign
+exception helper at `0x00546EFD` (310B) and CallCatchBlock at `0x00547224`
+(463B). trnsctrl.obj is retained for their independently located control-
+transfer dependencies; do not credit its weak iterator/forward shapes.
 Nearby `0x005471CC`/`0x005471E7` have bad_exception constructor shapes whose
 full vtable/string ownership remains pending. The default constructor also
 has an ordinary match at `0x00540D24`; retain separate physical bodies.
-std type-info name/hash/list-cleanup have no complete match in the current
-member search.
+std type-info name/hash/list-cleanup, application verifier and termination
+query remain pending.
 
 Unlocated VCRT thread/critical-cleanup wrappers, translator setters and
 ReadNoFence lookalikes at `0x0040B2A0` remain unassigned. The similarly named
