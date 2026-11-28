@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [x86 catch guards, translators and continuation transfer](CRT_CATCH_TRANSLATOR_TRANSFER_REVIEW.md).
-Ten pending origins retain 962B instructions and two INT3 across ten whole
-sections. JumpToContinuation now includes its five original unreachable
-epilogue bytes; all other extents are unchanged. Both custom guards are
-registered in central SafeSEH. Translator return/recovery preserves the
-original marker and saved ESP/EBP protocol. Three public C++ handler versions
-share one complete physical entry, including the incoming EAX FuncInfo ABI.
+review covers [VCRT catch entry, rethrow and final cleanup](CRT_CATCH_ENTRY_LIFETIME_REVIEW.md).
+Three pending origins and four recovered entries retain 592 instruction bytes
+and the complete 40B SEH table. The CallCatchBlock owner is fully partitioned;
+its existing finally body and CatchIt extents are unchanged. Cleanup restores
+subject ESP, frame-info links and outer VCRT exception/context before deciding
+whether to destroy the original exception object. Rethrow clears continuation;
+normal and EH finally paths retain distinct entry prefixes and abnormal flags.
 Earlier notes retain exception lifetime, validation and SEH4 evidence.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
@@ -98,12 +98,12 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/catch-transfer/`, reusing
-the full trnsctrl member and attested transfer listing in `frame-unwind/`.
-It retains the complete secchk identity member, omitted-instruction decode,
-SafeSEH observations and original rows. Catch construction, state/unwind,
-dispatch and thread/API/PTD protocols remain in focused notes. FindHandler
-and its remaining catch/foreign-exception owners still need complete review.
+The current proof is in `.analysis/origin-boundary/catch-lifetime/`, reusing
+the complete frame member and attested catch listings in `type-info/`.
+It retains all 61 omitted filter/handler/prefix instruction decodes and
+original rows. Catch transfer, construction, unwind/state and dispatch
+protocols remain in focused notes. FindHandler and its foreign-exception
+owner still need complete review.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -119,14 +119,12 @@ code for that reporter without a new retained caller or string reference.
 
 Continue with a bounded unresolved CRT owner, using archive members and
 actual callers before relying on a familiar Ghidra name. The retained
-frame.obj locates CatchIt at `0x00546AD9` (129B) and CallCatchBlock at
-`0x00547224` (463B). Review their full SEH/rethrow/finally partitions and
-current-exception/context restoration together. Their catch construction,
-state, frame-link, nested-unwind and continuation-transfer dependencies are
-now reviewed. FindHandler at `0x00546B5A` remains a 931B owner, with its
-foreign-exception helper at `0x00546EFD` (310B). Preserve native source and
-complete local metadata for their remaining exception-specification and
-bad_exception branches.
+frame.obj locates FindHandler at `0x00546B5A` (931B) and its foreign-exception
+helper at `0x00546EFD` (310B). Catch entry/lifetime, construction, state,
+frame-link, translator, nested-unwind and continuation-transfer dependencies
+are now reviewed. Their remaining exception-specification/CallUnexpected
+and bad_exception class/throw metadata require full owners and independent
+bindings; retain the existing failed short-shape controls.
 
 The full memmove ordinary-byte signature uniquely locates `0x00543E20`
 (1396B); its own relocation/table/protocol review remains pending. Nearby
