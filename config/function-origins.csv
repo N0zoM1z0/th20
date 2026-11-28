@@ -6650,15 +6650,15 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0055A1D0,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 59B __CIacos retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
 0x0055A20B,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 20B __CIacos_default retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
 0x0055A21F,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 183B __acos_default retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
-0x0055A2E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055A2F8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055A2FE,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0055A2E0,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 24B entry/kernel partition reviewed in full Pentium4 code section, with both original NOPs and complete local/shared table sections; native input interfaces, fallthrough, control flow and relocation roles retained."
+0x0055A2F8,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B entry/kernel partition reviewed in full Pentium4 code section, with both original NOPs and complete local/shared table sections; native input interfaces, fallthrough, control flow and relocation roles retained."
+0x0055A2FE,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 1334B entry/kernel partition reviewed in full Pentium4 code section, with both original NOPs and complete local/shared table sections; native input interfaces, fallthrough, control flow and relocation roles retained."
 0x0055A840,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 59B __CIatan retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
 0x0055A87B,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 20B __CIatan_default retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
 0x0055A88F,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 139B __atan_default retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
-0x0055A920,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055A938,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055A93E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0055A920,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 24B entry/kernel partition reviewed in full Pentium4 code section, with both original NOPs and complete local/shared table sections; native input interfaces, fallthrough, control flow and relocation roles retained."
+0x0055A938,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B entry/kernel partition reviewed in full Pentium4 code section, with both original NOPs and complete local/shared table sections; native input interfaces, fallthrough, control flow and relocation roles retained."
+0x0055A93E,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 681B entry/kernel partition reviewed in full Pentium4 code section, with both original NOPs and complete local/shared table sections; native input interfaces, fallthrough, control flow and relocation roles retained."
 0x0055AC3F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055ACE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055ACF8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6673,9 +6673,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0055B150,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 59B __CIsin retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
 0x0055B18B,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 20B __CIsin_default retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
 0x0055B19F,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 147B __sin_default retained in eight whole CRT code sections and five literal sections; ordinary bytes, original branches, shared entry ownership and full relocation roles reviewed."
-0x0055B240,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055B258,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0055B25E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0055B240,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 24B entry/kernel partition reviewed in full Pentium4 code section, with both original NOPs and complete local/shared table sections; native input interfaces, fallthrough, control flow and relocation roles retained."
+0x0055B258,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B entry/kernel partition reviewed in full Pentium4 code section, with both original NOPs and complete local/shared table sections; native input interfaces, fallthrough, control flow and relocation roles retained."
+0x0055B25E,library,CrtMathDispatch,exclude,high,"docs/CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md; Complete 425B entry/kernel partition reviewed in full Pentium4 code section, with both original NOPs and complete local/shared table sections; native input interfaces, fallthrough, control flow and relocation roles retained."
 0x0055B45F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055B500,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0055B518,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

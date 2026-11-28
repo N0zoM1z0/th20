@@ -9,7 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
-- [CRT math dispatch and corrected disjoint boundaries](CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md) — sixteen library entries; four oversized spans resolved through eight complete code sections, floor's earlier dispatcher and retained atan instruction.
+- [CRT math dispatch and corrected disjoint boundaries](CRT_MATH_DISPATCH_ORIGIN_BOUNDARY_REVIEW.md) — four oversized spans resolved; complete default/SSE groups, intrinsic and stack interfaces, retained atan instruction and full shared coefficient tables.
 - [CRT allocation origins and corrected aligned-new boundary](CRT_ALLOCATION_ORIGIN_BOUNDARY_REVIEW.md) — 3,046B false span becomes 52B parent plus shared 28B throw helper; complete new-handler text/SEH, encoded state, missed restore prefixes and natural 36B SDK constructor emission.
 - [STL random-device and condition-broadcast leaves](CRT_RANDOM_CONDITION_LEAF_ORIGIN_REVIEW.md) — complete 33B/20B bodies plus one INT3; nonreturning range error and PE-bound broadcast identity despite identical signal opcodes.
 - [CRT optional Win32 APIs and time fallback](CRT_OPTIONAL_WIN32_API_ORIGIN_BOUNDARY_REVIEW.md) — complete 52B missed initializer and 80B wrapper; independent startup slot, cached pointers and shared handler/EH ownership.

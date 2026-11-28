@@ -100,10 +100,15 @@ retained in `.analysis/origin-boundary/disjoint/`. Atan's five-byte instruction
 at `0x0055A8F6` remains inside the full 139-byte default body. Floor's earlier
 64-byte compatibility dispatcher at `0x005500F0` is separately inventoried.
 
-Next review the SSE math entry/kernel groups beginning at `0x0055A2E0`,
-`0x0055A920` and `0x0055B240`. Their six-byte stack-input prefixes fall through
-to separately inventoried kernels; do not treat the prefixes as whole functions.
-The corresponding Pentium4 objects are already extracted under `disjoint/`.
+The SSE groups beginning at `0x0055A2E0`, `0x0055A920` and `0x0055B240` are
+also reviewed through complete Pentium4 sections, both trailing NOPs and all
+14,880 bytes of local/shared tables. The six-byte stack-input heads fall through
+to the separately owned kernels. Intrinsic adapters consume ST(0) and create the
+stack argument view; kernels need that view as well as XMM0/XMM7. Reuse
+`disjoint/reviewed-sse.json` and its original listing for unchanged inputs.
+
+Next review the common x87 support around `0x0055B518` and `0x0055B775`,
+including shared entry fragments and floating control/error exits.
 Underlying heap entries at `0x005584C0`, `0x00554310` and `0x00554330` remain
 another bounded allocation frontier. Reuse established runtime bindings.
 Use independent archive symbols and complete original control flow, including

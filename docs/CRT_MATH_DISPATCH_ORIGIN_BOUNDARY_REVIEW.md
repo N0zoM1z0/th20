@@ -2,8 +2,9 @@
 
 Four provisional spans of 42,022, 43,546, 45,698 and 48,339 bytes conflated small
 math entry points with distant fallback implementations. Complete UCRT objects
-resolve the actual entries for acos, atan, sin and floor. Five existing candidates
-now have reviewed library origins and eleven omitted entries are inventoried.
+resolve the actual entries for acos, atan, sin and floor. The dispatchers,
+default implementations and complete SSE entry/kernel groups have reviewed
+library origins; eleven omitted entries are inventoried.
 The target remains Japanese TH20 v1.00a Steamless, SHA-256
 `a274b45fe6ec53511718bb328c2ff169a74e67f95d1b0c74d97d348b955a0897`.
 
@@ -75,7 +76,7 @@ classification, the finite rounding operation and common exception-reporting
 calls. Its complete 243-byte body and eight-byte 1.0 constant agree with
 `floor.obj`.
 
-## Boundary accounting and next math scope
+## Boundary accounting
 
 The old Ghidra unions explain the oversized ledger spans:
 
@@ -92,12 +93,55 @@ All eight reviewed code sections total 1,435 bytes, with no unaccounted padding
 inside them. Five complete literal sections total 111 bytes. They have no owned
 EH tables or trailing jump tables.
 
-The SSE entries at `0x0055A2F8`, `0x0055A938` and `0x0055B258` remain the next
-scope. Each current six-byte ledger entry is an input load that falls through
-to its separately inventoried kernel. Review each complete kernel and its
-intrinsic adapter together before assigning those six-byte prefixes an origin
-or accepting their provisional boundaries. This review names their outgoing
-roles from independent symbols without giving those rows credit.
+## Complete SSE entry/kernel groups
+
+The nine SSE entries below also have reviewed library origins. Their three
+complete Pentium4 objects contain 2,532 bytes: 2,530 code bytes and two original
+NOPs. All entry styles and shared bodies are compared together.
+
+| Group | Intrinsic adapter, 24B | Stack-input head, 6B | Shared kernel | Whole code section |
+| --- | --- | --- | --- | ---: |
+| acos | 0x0055A2E0 | 0x0055A2F8 | 0x0055A2FE, 1,334B | 1,364B |
+| atan | 0x0055A920 | 0x0055A938 | 0x0055A93E, 681B | 712B |
+| sin | 0x0055B240 | 0x0055B258 | 0x0055B25E, 425B | 456B |
+
+The adapters have independent symbols `__CIacos_pentium4`,
+`__CIatan_pentium4` and `__CIsin_pentium4`. Each saves EBP, reserves storage,
+aligns ESP to 16 bytes, consumes ST(0) into a double temporary and loads the
+input register before calling its shared kernel. LEAVE restores the original
+stack after the call. The ordinary `__acos_pentium4`/`__sin_pentium4` heads load
+the stack argument into XMM0; `__atan_pentium4` loads XMM7. Those six-byte heads
+fall through into the same kernels.
+
+The six-byte ledger spans are entry partitions with explicit shared fallthrough,
+and each kernel has one physical owner. Internal entry is not a general vector
+calling convention: special-result paths also read the original stack argument,
+and results return through x87. The intrinsic adapters create that stack view
+before their internal call. The descriptive `$shared_kernel` ledger names refer
+to each object's local `start` label at code-section offset 30.
+
+The complete acos kernel retains table-assisted evaluation, endpoint/invalid
+branches and the call to `__libm_error_support` at `0x0055BA70`. Atan retains its
+table evaluation, tiny-value arithmetic and special-input returns. Sin retains
+its table-assisted path and the final large-input transfer to the already
+reviewed `__sin_default` at `0x0055B19F`. The full atan and sin sections end with
+one NOP each at `0x0055ABE7` and `0x0055B407`; these bytes remain compared
+outside their kernel code counts.
+
+All three complete local constant sections agree: acos 288B, atan 336B and sin
+160B. Independent provider objects also identify and match every byte of the
+four shared tables:
+
+| Original address | Bytes | Provider and symbol |
+| --- | ---: | --- |
+| 0x0059D8D0 | 3,840 | `acos_asin_tbl_addr.obj`: `___acrt_acos_asin_tbl_addr` |
+| 0x0059E7D0 | 2,048 | `acos_asin_t_table.obj`: `___acrt_acos_asin_t_table` |
+| 0x0059EFD0 | 6,160 | `atan_table.obj`: `__atan_table` |
+| 0x005A07E0 | 2,048 | `cos_sin_ctable.obj`: `___acrt_cos_sin_ctable` |
+
+The seven complete constant/table sections total 14,880 bytes. They are shared
+data evidence and receive no function-code credit. No owned EH or jump-table
+extent is omitted from these code sections.
 
 ## Evidence and validation
 
@@ -109,6 +153,13 @@ observations. `review.py` checks every byte of all eight code sections and five
 literal sections, complete HIGHLOW sets, consistent shared relocation roles and
 the disjoint entry partition. Pinned Capstone supplements unlisted CI/adapter
 instructions and the atan gap without changing the Ghidra database.
+
+The additional Pentium4 and table members are retained beside those objects.
+`sse-native.txt` contains the bounded attested adapter/kernel listings;
+`reviewed-sse.json` records the whole sections, observed relocation roles and
+supplementary decoding. `review-sse.py` checks all three full code sections,
+both NOP bytes, all seven constant/table sections, complete HIGHLOW sets and
+instruction coverage. Their origin comparisons do not create canonical units.
 
 Tracking and generated progress pass. All 2,089 protected native inputs/products
 retain their hashes. No maintained native input or canonical unit changed;
