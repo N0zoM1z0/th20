@@ -9,6 +9,8 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [Import-library origins and six-byte boundaries](IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md) — 31 independently PE-bound import stubs excluded; discontiguous runtime span counterexample retained for further review.
+
 - [Player state-frame ownership and 4,072B contribution](PLAYER_STATE4043_NATIVE_FRONTIER.md) — complete maintained seven-state root and ordinary-byte match; independent relocation bindings remain open, no parent exact credit.
 - [Player state native dependencies and return ABI](PLAYER_STATE_NATIVE_ACCESSORS_STRICT_EXACT.md) — thirteen exact physical helpers, integer power return, no folded-setter duplicate; complete affected header closure.
 - [Exact 555B Player movement](PLAYER_MOVEMENT555_STRICT_EXACT.md) — C++14 conversion lifetime and real world-coordinate values; complete 17-call/ten-data replay, 92/92 affected units.

@@ -5873,25 +5873,25 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00540550,unknown,EclSelection,review,pending,"EXACT-066: Nineteen complete actual Enemy creation/initialization, script reset/selection, generation, hidden-result identifier and non-consuming value forwarding bodies;1279bytes. Frozen-source500units/93coldobjects/90121disjointbytes strictly replay. Owned O2/UBSan tests exercise actual creation/init/reset/selection and list/generation lifetimes. Scalar allocation/context/spawn application, supplied-value virtual materialization, whole653-byte spawn opcode and41KB main dispatcher remain pending. See docs/EXACT_ENEMY_CREATION_RECONSTRUCTION.md."
 0x00540590,unknown,EclSelection,review,pending,"EXACT-066: Nineteen complete actual Enemy creation/initialization, script reset/selection, generation, hidden-result identifier and non-consuming value forwarding bodies;1279bytes. Frozen-source500units/93coldobjects/90121disjointbytes strictly replay. Owned O2/UBSan tests exercise actual creation/init/reset/selection and list/generation lifetimes. Scalar allocation/context/spawn application, supplied-value virtual materialization, whole653-byte spawn opcode and41KB main dispatcher remain pending. See docs/EXACT_ENEMY_CREATION_RECONSTRUCTION.md."
 0x005405B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054065A,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00540660,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00540666,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054066C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00540672,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00540678,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054067E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00540684,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054068A,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00540690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00540696,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0054069C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005406A2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005406A8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005406AE,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005406B4,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005406BA,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005406C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x005406C6,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0054065A,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C290 to USER32.dll::WINNLSEnableIME; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00540660,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C000 to DINPUT8.dll::DirectInput8Create; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00540666,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C008 to DSOUND.dll::Ordinal_11; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x0054066C,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C2F8 to d3d9.dll::Direct3DCreate9; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00540672,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C32C to d3dx9_43.dll::D3DXVec3Transform; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00540678,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C328 to d3dx9_43.dll::D3DXVec3Project; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x0054067E,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C324 to d3dx9_43.dll::D3DXMatrixMultiply; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00540684,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C320 to d3dx9_43.dll::D3DXMatrixRotationX; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x0054068A,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C31C to d3dx9_43.dll::D3DXMatrixRotationY; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00540690,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C304 to d3dx9_43.dll::D3DXMatrixRotationZ; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00540696,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C334 to d3dx9_43.dll::D3DXLoadSurfaceFromFileInMemory; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x0054069C,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C314 to d3dx9_43.dll::D3DXLoadSurfaceFromSurface; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x005406A2,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C300 to d3dx9_43.dll::D3DXCreateTexture; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x005406A8,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C318 to d3dx9_43.dll::D3DXVec3TransformCoord; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x005406AE,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C308 to d3dx9_43.dll::D3DXVec3ProjectArray; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x005406B4,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C30C to d3dx9_43.dll::D3DXMatrixTranslation; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x005406BA,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C310 to d3dx9_43.dll::D3DXMatrixLookAtLH; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x005406C0,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C330 to d3dx9_43.dll::D3DXMatrixPerspectiveFovLH; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x005406C6,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C2F0 to XINPUT1_4.dll::Ordinal_2; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
 0x005406CC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x005406DF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00540753,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5900,7 +5900,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x005408A2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00540917,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00540A0F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00540A27,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00540A27,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C1E0 to KERNEL32.dll::GetCurrentThreadId; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
 0x00540A2D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00540A7C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00540A8D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5927,7 +5927,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00540F15,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00540F3B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00540F5F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00540FD9,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00540FD9,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C12C to KERNEL32.dll::LocalFree; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
 0x00540FDF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00541004,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00541026,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6072,16 +6072,16 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00543D7C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00543D82,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00543D88,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543DE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543DE6,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543DEC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543DF2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543DF8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543DFE,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543E04,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543E0A,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543E10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00543E16,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00543DE0,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C33C to gdiplus.dll::GdipAlloc; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00543DE6,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C340 to gdiplus.dll::GdipFree; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00543DEC,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C344 to gdiplus.dll::GdiplusStartup; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00543DF2,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C360 to gdiplus.dll::GdiplusShutdown; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00543DF8,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C348 to gdiplus.dll::GdipCloneImage; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00543DFE,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C34C to gdiplus.dll::GdipDisposeImage; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00543E04,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C350 to gdiplus.dll::GdipSaveImageToFile; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00543E0A,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C354 to gdiplus.dll::GdipCreateBitmapFromHBITMAP; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00543E10,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C358 to gdiplus.dll::GdipGetImageEncodersSize; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
+0x00543E16,library,ImportThunk,exclude,high,docs/IMPORT_THUNK_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B FF25 import-library jump through 0x0056C35C to gdiplus.dll::GdipGetImageEncoders; independent PE ILT/IAT and HIGHLOW at +2; attested Ghidra body has exactly six addresses.
 0x00543E20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00544394,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00544403,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
