@@ -5,12 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [UCRT format length and character-width mappings](CRT_FORMAT_TYPE_MAPPING_ORIGIN_REVIEW.md).
-Two pending origins retain their 49B instruction extents. The complete 133B
-contributions include 98B/47 instructions, a 3B NOP, twelve selectors and
-five internal code pointers. The x86 enum mapping, default cases and narrow
-character policy retain the original cdecl/options ABI. Earlier notes retain
-formatting-buffer ownership, string/memory owners and the exception closure.
+review covers [UCRT decimal insertion and trailing-zero cropping](CRT_DECIMAL_OUTPUT_ORIGIN_REVIEW.md).
+Two pending origins retain their complete 204B/96-instruction contributions
+and existing extents. Supplied locale fields, exponent/hexadecimal branches,
+single-byte separator and original carry/copy order through the terminator
+are reconciled. Both sections have zero relocation fields and no local data
+or EH table. Earlier notes retain format mappings/buffer ownership, string/
+memory owners and the exception closure.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -96,35 +97,20 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/format-types/`: complete
-mapping tables, attested listing and every selector/default result. It reuses
-the full output.obj member in `format-buffer/`.
-The preceding proof is in `.analysis/origin-boundary/format-buffer/`: complete
-output.obj member, bounded class/helper locators and full byte/relocation/
-reachability proof. The malloc_base/free_base provider evidence is reused.
-The preceding proof is in `.analysis/origin-boundary/string-length-compare/`:
-three complete members, attested listing and all alignment/decoded omissions.
-Each member has zero relocation fields and owns no additional data/EH table.
-The preceding proof is in `.analysis/origin-boundary/purecall/`: complete
-members, decoded supplement, facet roots and getter negative. Ghidra lists no
-instructions in this original interval; its bytes and all fields are covered.
-The preceding proof is in `.analysis/origin-boundary/string-search/`: four
-complete members, attested listings and full byte/relocation/reachability proof.
-The four ISA fields reuse the independent complete CPU-state provider.
-The preceding proof is in `.analysis/origin-boundary/memory-compare/`: complete
-5,060B member, attested listing, table roles and instruction reachability.
-The preceding proof is in `.analysis/origin-boundary/memory-copy/`, reusing the
-full memmove member/listing in `catch-build/`. Preserve the independent CPU
-member, complete data/BSS proof and internal-table reachability result.
-The full memset member, attested listing and complete comparison are in
-`.analysis/origin-boundary/memory-set/`, reusing that CPU provider.
-The preceding proof in `.analysis/origin-boundary/find-handler/` reuses
-frame.obj and the full attested parent listing in `type-info/`. All 300
-instructions are listed. It reuses eleven complete unchanged code/data
-sections from the preceding focused proofs. Preserve `bad-exception/` and
-`build/gpt61-origin-exception-copy/` for the natural header variants and
-rejected scalar-alias hypothesis. The selected frame search, dispatch,
-construction, transfer, rethrow and cleanup owners are now reviewed.
+The current proof is in `.analysis/origin-boundary/format-decimal/`: complete
+crop/insert contributions, attested listing and original locale/copy-order
+observations. It reuses the full output.obj member in `format-buffer/`.
+Continue with a bounded formatted-output owner and its actual callee roles;
+`format-buffer/` and `format-types/` retain the reviewed capacity/transfer
+protocol and complete length tables. Keep unlocated wide variants and generic
+jump helpers separate from those owners. The char width helper still takes
+the original unused 64-bit options argument.
+
+The [evidence index](EVIDENCE_INDEX.md) links the completed string/memory,
+purecall and exception owner groups to their focused notes and private proofs.
+Preserve `bad-exception/` and `build/gpt61-origin-exception-copy/` for natural
+header variants and the rejected scalar-alias hypothesis. Ghidra listing
+omissions remain recorded with the complete bounded decoded supplements.
 
 The cached-locale probe in `cached-locale/` emitted no object: installed SDK
 source omits FFS/state-isolation private headers and conflicts on __p__fmode
@@ -147,27 +133,10 @@ physical owners. The bad_exception proof independently binds TypeDescriptor
 callbacks. Base exception and bad_exception deleting implementations have
 different target entries despite identical optimized archive shapes.
 
-The complete memmove owner at `0x00543E20` (1396B) and CPU initializer at
-`0x005436C1` (794B) are reviewed, as is memset at `0x00544760` (346B).
-Memcmp at `0x00544D77` is reviewed with its complete residual table. Continue
-with another bounded string/memory owner, using whole archive contributions
-and the complete independent ISA/favor provider when applicable.
-Strchr, strrchr, wcschr and wcsrchr are now reviewed. The complete purecall
-and getter at `0x0054626B..0x0054628D` are separately recorded. Continue with
-a bounded unresolved CRT string owner or its real caller. The retained
-173B memchr member has no complete ordinary-byte match; do not assign it
-from a familiar name alone.
-Strcmp, strncmp and strlen at `0x0054FD10`, `0x0054FDA0` and `0x0054FE20`
-are reviewed through their complete SDK members and alignment before acos.
-The formatting-buffer count, char growth/scratch, destructor and char heap
-move-assignment owners are reviewed. Continue with a bounded formatted-output
-owner and its actual callee roles in output.obj; do not infer the unlocated
-wide variants or generic jump helpers. The five attempted copy/concatenation
-archive members in `string-copy/` contain six function shapes without complete
-ordinary-byte matches.
-The char character-width helper and complete to_integer_size tables are also
-reviewed. Keep the 64-bit options stack slot even for the char helper that
-does not read it; the separate wchar_t variant remains unlocated.
+The retained 173B memchr member has no complete ordinary-byte match. The five
+attempted copy/concatenation archive members in `string-copy/` contain six
+function shapes without complete matches. Reuse those negatives rather than
+assigning familiar names or repeating the same scans without new evidence.
 The same-shaped bad_alloc constructor at `0x00540D24` retains its previous
 class identity.
 The 14B secchk signature independently locates the cookie check at

@@ -6252,9 +6252,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00549427,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054948E,library,CrtFormatBuffer,exclude,high,"docs/CRT_FORMATTING_BUFFER_ORIGIN_REVIEW.md; Complete 26B symbol ??1formatting_buffer@__crt_stdio_output@@QAE@XZ reviewed in five complete formatting-buffer/heap-transfer contributions, 244B/95 instructions with all six real REL32 roles; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
 0x005494A8,library,CrtFormatBuffer,exclude,high,"docs/CRT_FORMATTING_BUFFER_ORIGIN_REVIEW.md; Complete 36B symbol ??4?$__crt_unique_heap_ptr@DU__crt_internal_free_policy@@@@QAEAAV0@$$QAV0@@Z reviewed in five complete formatting-buffer/heap-transfer contributions, 244B/95 instructions with all six real REL32 roles; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
-0x005494CC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005494CC,library,CrtDecimalOutput,exclude,high,"docs/CRT_DECIMAL_OUTPUT_ORIGIN_REVIEW.md; Complete 106B symbol ?crop_zeroes@__crt_stdio_output@@YAXPADQAU__crt_locale_pointers@@@Z reviewed in two complete decimal-output contributions, 204B/96 instructions with original runtime locale fields and carry/copy order; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
 0x00549536,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00549573,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00549573,library,CrtDecimalOutput,exclude,high,"docs/CRT_DECIMAL_OUTPUT_ORIGIN_REVIEW.md; Complete 98B symbol ?force_decimal_point@__crt_stdio_output@@YAXPADQAU__crt_locale_pointers@@@Z reviewed in two complete decimal-output contributions, 204B/96 instructions with original runtime locale fields and carry/copy order; every ordinary byte, source addend, relocation role, embedded table and alignment retained. Classification only; exact replay scope zero."
 0x005495D5,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0054964D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00549935,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
