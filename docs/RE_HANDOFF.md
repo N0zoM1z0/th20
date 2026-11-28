@@ -5,13 +5,13 @@
 The active task is to complete origin/boundary review before returning to native
 matching. The [evidence index](EVIDENCE_INDEX.md) links the reviewed import, CRT,
 startup, lock, locale, facet, conversion and stream-lifetime groups. The latest
-review covers [refresh identities and conversion flag rules](CRT_LOCALE_REFRESH_CONVERSION_ORIGIN_REVIEW.md).
-Eight pending library origins retain all 632B of the complete refresh/conversion
-bodies. Same-shaped refresh pairs are distinguished through actual global and
-updater roles. Conversion filters keep their different numeric cases; UTF-7/8
-wide conversion rewrites both default-character pointers and pre-clears the
-supplied used-default BOOL. Earlier focused notes retain locale-info/component
-ownership and corrected locale/PTD boundaries.
+review covers [multibyte synchronization and corrected ownership](CRT_MULTIBYTE_UPDATE_BOUNDARY_REVIEW.md).
+Eleven pending origins and two recovered compiler fragments retain eight whole
+SDK contributions: 1,041 instruction bytes, one INT3 and 1,130B state/tables/SEH.
+The overlapping 159B updater primary becomes 124B within its complete 160B
+owner. Original release-before-publication order, secure-copy failures and the
+initializer's ignored setter status are retained. Earlier focused notes retain
+refresh/conversion identities and corrected locale/PTD/component boundaries.
 This classification-only checkpoint changes no native graph;
 exact replay scope is **zero units**, and all 2,151 protected hashes are unchanged.
 
@@ -97,20 +97,20 @@ references when Ghidra's function graph omits original callers; the pointer
 initializer and recovered heap callbacks are retained examples. Keep complete
 shared owners, tails, alignment and owned metadata in each reviewed scope.
 
-The current proof is in `.analysis/origin-boundary/locale-refresh-conversion/`:
-eight whole SDK contributions and complete attested instruction coverage. The
-two 45B and two 49B refresh candidates have identical ordinary bytes; globals
-and real update targets resolve them. A bounded decoded-branch model records
-all conversion flag cases without invoking Win32 conversion. Reuse prior
-locale-info evidence, including the rejected 32B freea context and retained
-30B shared owner.
+The current proof is in `.analysis/origin-boundary/multibyte-update/`: eight
+whole SDK contributions, complete owned state/default arrays and two full SEH
+tables. The recovered finally prefix at `0x0055EDB2` is absent from Ghidra's
+listing but covered by pinned decoding and the whole SDK/target comparison.
+Three generic guarded-call candidates are distinguished by their real action
+and scope roles. Reuse the refresh/conversion and earlier lifetime evidence.
 
-Next review the multibyte thread updater at `0x0055EE1E` and its state owner
-near `0x0055ED36`, with initialization at `0x0055EDD6`. The provisional 159B
-owner overlaps existing 9B/18B entries; retain complete SEH/return/abort
-ownership when reconciling it. Use the focused update/lifetime sections of
-`ucrt/mbstring/mbctype.cpp`, including current/static multibyte data and all
-owned tables. The stack probe at `0x005439E0` remains a separate pending body.
+Next review `_setmbcp_nolock` at `0x0055EE31` with code-page-to-locale at
+`0x0055E92A`, SBCS reset at `0x0055E9D9` and case-map generation at
+`0x0055EA3C`. Their whole SDK sections are located in the current private
+`mbctype.obj` context. Retain complete code-page range tables, locale-name
+pointers/strings and original UTF/OS/fallback/error paths from
+`ucrt/mbstring/mbctype.cpp`. The stack probe at `0x005439E0` remains a
+separate pending body.
 
 The [evidence index](EVIDENCE_INDEX.md) links closed CRT groups and their
 focused findings. Preserve `.analysis/origin-boundary/` and all useful SDK

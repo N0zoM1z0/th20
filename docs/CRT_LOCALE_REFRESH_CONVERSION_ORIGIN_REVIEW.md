@@ -82,8 +82,9 @@ The original pre-call write is retained even if the conversion later fails.
 
 The wrappers do not add locale lookup, errno handling or retry logic. Their
 filters and calling conventions are the complete original adapter behavior.
-The multibyte thread updater remains a separate pending body; its named call
-role grants no body credit here.
+The multibyte thread updater is now covered by the
+[complete synchronization/publication review](CRT_MULTIBYTE_UPDATE_BOUNDARY_REVIEW.md),
+including its corrected primary and complete SEH/return/abort ownership.
 
 ## Evidence and affected scope
 
