@@ -121,10 +121,11 @@ classifier, memcpy_s, memory, cookie and integer-helper evidence is reused.
 
 Fegetenv, feholdexcept and fesetenv now have their
 [complete environment review](CRT_FENV_ENVIRONMENT_ORIGIN_REVIEW.md), including
-the original mask/readback asymmetry. The precise SSE2 log10 and ceil retain
-complete independent archive identity anchors for the calls here. Their own
-boundary/data/protocol work remains pending. Next reconcile those math-provider
-shared tails and inferred boundaries.
+the original mask/readback asymmetry. Ceil now has its
+[complete disjoint entry review](CRT_LOG10_CEIL_ORIGIN_REVIEW.md).
+The precise SSE2 log10 retains complete code/table identities, but its two
+identical private constant banks still need an independent assignment before
+its own origin review is accepted.
 
 Only classification, evidence, handoff and generated progress change.
 Tracking/progress checks pass and all 2,151 protected hashes remain unchanged.
