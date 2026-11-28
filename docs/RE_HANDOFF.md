@@ -9,8 +9,9 @@ bodies, x86 integer helpers, startup policy/TLS leaves and lock ownership. See t
 [CRT chains and width findings](CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md),
 [integer ABI evidence](CRT_INTEGER_ABI_ORIGIN_BOUNDARY_REVIEW.md),
 [startup defaults](CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md),
-[lock ownership](CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md), and
-[global retirement](CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md). The combined
+[lock ownership](CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md),
+[global retirement](CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md), and
+[locale implementation](CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md). The combined
 integer divide/remainder helpers return quotient in EDX:EAX and remainder in
 EBX:ECX; preserve that compiler-helper ABI in later consumers.
 This checkpoint changes no canonical native inputs and has **zero affected exact
@@ -89,10 +90,18 @@ private SDK-header probe emits the original 80-byte `std::locale` destructor at
 controller retains its complete 29-byte cookie/EH handler and 36-byte metadata.
 No canonical native input changed; exact replay scope remains zero.
 
-Next review the remaining `locale0.obj` owners around `0x005419D0`, `0x00541A66`
-and `0x00541C22`. Reuse the extracted objects, complete listings and shared lock /
-retirement bindings. Check actual imports and library symbols when ordinary
-bytes are identical across methods. Generate current counts from the ledgers.
+The `_Locimp` lifetime, global publication and `_Locinfo` switch/restore methods
+are reviewed, including `_Init`'s 8-byte cleanup / 5-byte alignment, 29-byte
+handler and 44-byte EH section. A separate pinned SDK-header probe emits the
+original 42-byte `_Yarn<char>::_Tidy`; its private object/receipt are retained
+beside the locale probe. Source-present and canonical exact credit are unchanged.
+
+Next review the remaining facet virtual methods bound by the observed `_Locimp`
+vtable: `0x00484700` and `0x004FBD80`, plus the `_Facet_base` deleting entry at
+`0x004F71B0`. The original RTTI, source declarations and table slots are captured
+in the locale note/session. Other pending conversion helpers begin at
+`0x00541D3B`; use independent archive symbols and full native control flow.
+Generate current counts from the ledgers.
 
 The following native frontiers remain available after review:
 

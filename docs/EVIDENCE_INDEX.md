@@ -9,6 +9,7 @@ not current facts when newer canonical units supersede them.
 
 ## Start here: current state and remaining Bosses
 
+- [Locale implementation origins and exception guard cleanup](CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md) — seventeen `_Locimp`/name/global/temporary-locale entries; independent RTTI, 42B SDK cleanup emission and full one-state EH section.
 - [CRT global retirement and SDK locale destructor](CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md) — twelve locale/facet/exit-stack contributions, natural 80B SDK emission and complete 29B handler/36B metadata; all six pending callback origins resolved.
 - [CRT lock pools and corrected destructor boundary](CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md) — complete 31B destructor plus separate 9B locale unlock; eighteen reviewed entries, omitted startup/exit heads and two distinct lock pools.
 - [CRT startup defaults and folded zero-return origins](CRT_STARTUP_DEFAULT_ORIGIN_BOUNDARY_REVIEW.md) — thirteen policy/TLS/SDK leaves; previously missing startup callers and locale records resolve the final inventoried thunk.

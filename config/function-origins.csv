@@ -4631,7 +4631,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004FCCD0,library,EclBuffer,exclude,high,CORE/EXACT-127: Complete 30-byte seek_to contribution strictly replays from the real ECL buffer translation unit with the locked C++17 profile and independently reviewed native callee/metadata anchors. Pinned SDK iterator/vector implementation and complete native receiver/result/argument flow establish library origin. See docs/ECL_BUFFER_REGISTRATION_EXACT_RECONSTRUCTION.md.
 0x004FCCF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FCD20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004FCD50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004FCD50,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 42B body reviewed as ?_Tidy@?$_Yarn@D@std@@AAEXXZ; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
 0x004FCD80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FCDC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004FCDF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -5963,22 +5963,22 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00541985,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 39B original contribution agrees with CRT xlock.obj symbol ??1_Init_locks@std@@QAE@XZ, including independently checked relocation roles and full attested instruction coverage."
 0x005419AC,library,CrtLocks,exclude,high,"docs/CRT_LOCK_OWNERSHIP_BOUNDARY_REVIEW.md; Complete 31B original contribution agrees with CRT xlock.obj symbol ??1_Lockit@std@@QAE@XZ, including independently checked relocation roles and full attested instruction coverage."
 0x005419CB,library,CxxRuntime,exclude,high,docs/CRT_FORWARDING_ORIGIN_BOUNDARY_REVIEW.md; Complete 5B native body and CRT xonce2.obj symbol ___std_init_once_link_alternate_names_and_abort@0 reviewed; full ordinary-byte agreement and original relocation roles; no authored or canonical exact credit.
-0x005419D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x005419D0,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 65B body reviewed as ??0_Locimp@locale@std@@AAE@_N@Z; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
 0x00541A11,library,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 49B native contribution and full control flow reviewed as ??1_Fac_node@std@@QAE@XZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
 0x00541A42,library,CrtGlobalLifetime,exclude,high,docs/CRT_GLOBAL_RETIREMENT_ORIGIN_REVIEW.md; Complete 36B native contribution and full control flow reviewed as ??1_Fac_tidy_reg_t@std@@QAE@XZ; original startup references and independent CRT object or pinned SDK-header emission corroborate origin.
-0x00541A66,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541A86,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541ACF,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541AF1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541B1E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541B24,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541BB1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541C22,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541C6E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541C88,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541CAB,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541CD3,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00541D0E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00541A66,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 32B body reviewed as ??1_Locimp@locale@std@@MAE@XZ; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x00541A86,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 73B body reviewed as ??4?$_Yarn@D@std@@QAEAAV01@PBD@Z; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x00541ACF,compiler,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 34B body reviewed as ??_G_Locimp@locale@std@@MAEPAXI@Z; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x00541AF1,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 44B body reviewed as ?_Facet_Register@std@@YAXPAV_Facet_base@1@@Z; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x00541B1E,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 6B body reviewed as ?_Getgloballocale@locale@std@@CAPAV_Locimp@12@XZ; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x00541B24,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 141B body reviewed as ?_Init@locale@std@@CAPAV_Locimp@12@_N@Z; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x00541BB1,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 113B body reviewed as ?_Locimp_dtor@_Locimp@locale@std@@CAXPAV123@@Z; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x00541C22,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 76B body reviewed as ?_Locinfo_ctor@_Locinfo@std@@SAXPAV12@PBD@Z; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x00541C6E,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 26B body reviewed as ?_Locinfo_dtor@_Locinfo@std@@SAXPAV12@@Z; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x00541C88,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 35B body reviewed as ?_New_Locimp@_Locimp@locale@std@@CAPAV123@_N@Z; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x00541CAB,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 40B body reviewed as ?_Setgloballocale@locale@std@@CAXPAX@Z; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x00541CD3,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 59B body reviewed as __Deletegloballocale; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x00541D0E,library,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 45B body reviewed as _tidy_global; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
 0x00541D3B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00541DAE,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00541EE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -6951,6 +6951,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00569230,compiler,CxxRuntime,exclude,high,docs/CARD_START1896_STRICT_EXACT.md; whole compiler-owned Card-start EH contribution and independently anchored two-state map
 0x00569238,compiler,CxxRuntime,exclude,high,docs/CARD_START1896_STRICT_EXACT.md; whole compiler-owned Card-start EH contribution and independently anchored two-state map
 0x00569248,compiler,CxxRuntime,exclude,high,docs/CARD_START1896_STRICT_EXACT.md; whole compiler-owned Card-start EH contribution and independently anchored two-state map
+0x0056B248,compiler,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 8B body reviewed as __unwindfunclet$?_Init@locale@std@@CAPAV_Locimp@12@_N@Z$0; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
+0x0056B255,compiler,CrtLocale,exclude,high,"docs/CRT_LOCALE_IMPLEMENTATION_ORIGIN_BOUNDARY_REVIEW.md; Complete 29B body reviewed as __ehhandler$?_Init@locale@std@@CAPAV_Locimp@12@_N@Z; full CRT contribution or pinned header emission, original field/call roles, native control flow and owned EH/alignment are reconciled."
 0x0056B360,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056B370,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0056B380,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
